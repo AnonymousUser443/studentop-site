@@ -8,7 +8,7 @@ window.SITE = {
   profile: {
     name: 'Aiden',
     display: 'Aiden',
-    handle: '@biteraiden',
+    handle: '@AnonymousUser443',
     avatarText: 'A',                 // 头像里的字（可用 emoji）
     role: '学生 · 全栈折腾者',
     tagline: '把生活折腾成自己喜欢的样子',
@@ -33,7 +33,7 @@ window.SITE = {
     // 社交链接（url 为空则自动隐藏）
     links: [
       { icon: 'mail',     label: '写邮件',   url: 'mailto:aiden@studentop.cn', display: 'aiden@studentop.cn' },
-      { icon: 'github',   label: 'GitHub',   url: 'https://github.com/biteraiden', display: '@biteraiden' },
+      { icon: 'github',   label: 'GitHub',   url: 'https://github.com/AnonymousUser443', display: '@AnonymousUser443' },
       { icon: 'globe',    label: '本站',     url: 'https://studentop.cn:14355', display: 'studentop.cn:14355' },
       { icon: 'image',    label: '相册',     url: '', display: '（待补充）' }
     ]
@@ -206,7 +206,7 @@ window.SITE = {
   /* ---------- 终端里的虚拟文件（cat 可读） ---------- */
   terminalFiles: {
     'readme.txt': '这是 Aiden 的个人主页。\n它长得像 Windows 11，但其实是一张网页。\n输入 help 看看能做什么。',
-    'contact.txt': 'email : aiden@studentop.cn\ngithub: @biteraiden',
+    'contact.txt': 'email : aiden@studentop.cn\ngithub: @AnonymousUser443',
     'todo.txt': '- 把相册页填满\n- 换一好的壁纸\n- 早点睡'
   },
 

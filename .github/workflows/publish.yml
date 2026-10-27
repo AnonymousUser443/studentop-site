@@ -1,0 +1,74 @@
+name: publish-site
+
+# 树莓派部署只能由仓库所有者发起（见 DEPLOYMENT-POLICY.md）。
+#  - 触发：push 到 main 且改动 site/ 或 deploy/；或手动 workflow_dispatch
+#  - 硬闸门：job 的 if 只允许 github.actor == 'AnonymousUser443'，别人触发不执行部署
+#  - 不监听 pull_request：本 workflow 跑在自托管 runner（所有者 Windows）上，
+#    监听 PR 会让 fork 的代码在所有者机器上执行
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'deploy/**'
+      - '.github/workflows/publish.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: publish-site
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: 发布到树莓派（owner-only）
+    if: github.actor == 'AnonymousUser443'
+    runs-on: [self-hosted, Windows, X64, deploy]
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: 准备 SSH 配置（secrets 写入 ssh_config）
+        shell: powershell
+        env:
+          PI_SSH_KEY: ${{ secrets.PI_SSH_KEY }}
+          PI_HOST_VALUE: ${{ secrets.PI_HOST }}
+          PI_PORT_VALUE: ${{ secrets.PI_PORT }}
+          PI_USER_VALUE: ${{ secrets.PI_USER }}
+        run: |
+          $dir = Join-Path $env:USERPROFILE 'gh-runner'
+          New-Item -ItemType Directory -Force -Path $dir | Out-Null
+          $key = Join-Path $dir 'deploy_key'
+          Set-Content -Path $key -Value $env:PI_SSH_KEY -NoNewline -Encoding ascii
+          icacls $key /inheritance:r /grant:r ('{0}:(R)' -f $env:USERNAME) | Out-Null
+          $cfgPath = Join-Path $dir 'ssh_config'
+          $known = (Join-Path $dir 'known_hosts') -replace '\\','/'
+          $cfg = @(
+            'Host pi',
+            ('  HostName ' + $env:PI_HOST_VALUE),
+            ('  Port ' + $env:PI_PORT_VALUE),
+            ('  User ' + $env:PI_USER_VALUE),
+            ('  IdentityFile ' + ($key -replace '\\','/')),
+            '  IdentitiesOnly yes',
+            '  StrictHostKeyChecking accept-new',
+            ('  UserKnownHostsFile ' + $known),
+            '  ConnectTimeout 15'
+          ) -join [char]10
+          Set-Content -Path $cfgPath -Value $cfg -Encoding ascii
+          ('SSH_OPTS=-F ' + ($cfgPath -replace '\\','/')) | Out-File $env:GITHUB_ENV -Append -Encoding utf8
+          'PI_HOST=pi' | Out-File $env:GITHUB_ENV -Append -Encoding utf8
+          Write-Output 'SSH 配置就绪'
+
+      - name: 发布主页（scp + 原子切换 + 失败自动回滚）
+        shell: powershell
+        run: |
+          & 'C:\Program Files\Git\bin\bash.exe' -c 'bash deploy/deploy-site.sh site'
+
+      - name: 公网 8 项体检
+        shell: powershell
+        run: |
+          & 'C:\Program Files\Git\bin\bash.exe' -c 'bash deploy/preflight-public.sh'

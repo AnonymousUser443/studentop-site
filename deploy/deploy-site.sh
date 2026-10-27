@@ -21,6 +21,9 @@
 # ==============================================================================
 set -euo pipefail
 
+# 约定：树莓派部署只能由仓库所有者发起（见 DEPLOYMENT-POLICY.md）
+printf '\n!! 部署权限：树莓派只能由仓库所有者发起部署（见 DEPLOYMENT-POLICY.md）\n\n'
+
 PI_HOST="${PI_HOST:-pi}"
 
 # --- 传输层参数（CI 用）：SSH_OPTS 透传 -i/-F/-o，PI_SSH_PORT 指定非 22 端口 ---

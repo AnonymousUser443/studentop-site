@@ -266,7 +266,7 @@
               '</div>' +
               '<div class="about-links-inline">' +
                 '<a class="btn" href="mailto:' + esc(window.SITE.profile.email) + '">' + ICONS.glyph('mail') + '写邮件</a>' +
-                '<a class="btn" href="https://github.com/biteraiden" target="_blank" rel="noopener noreferrer">' + ICONS.glyph('github') + 'GitHub</a>' +
+                '<a class="btn" href="https://github.com/AnonymousUser443" target="_blank" rel="noopener noreferrer">' + ICONS.glyph('github') + 'GitHub</a>' +
               '</div>' +
             '</section>';
         }

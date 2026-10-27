@@ -9,6 +9,14 @@
 > 为什么地址带 \`:14355\`：当前唯一可用的隧道是普通 TCP 隧道，远程端口固定 14355。
 > 免端口的「建站隧道」节点长期宕机，取舍与排障过程见 [deploy/PUBLIC-ACCESS-STATUS.md](deploy/PUBLIC-ACCESS-STATUS.md)。
 
+## ⚠️ 部署权限（重要）
+
+**树莓派上的一切部署，只能由仓库所有者（AnonymousUser443）本人发起。**
+其他协作者、团队成员、CI 机器人、AI Agent 一律不要执行部署脚本、不要触发发布 workflow、不要连接这台服务器。
+
+- 完整约定：[DEPLOYMENT-POLICY.md](DEPLOYMENT-POLICY.md)
+- 想贡献代码：[CONTRIBUTING.md](CONTRIBUTING.md)（只提 PR，不要部署）
+
 ## 站点一览
 
 | 站点 | 地址 | 形态 | 技术栈 |
