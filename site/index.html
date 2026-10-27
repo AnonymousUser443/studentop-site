@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" data-wall="bloom" data-align="center">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Aiden 的个人主页 · Windows 11</title>
+  <meta name="description" content="一个伪装成 Windows 11 桌面的个人主页：关于我、项目、技能、联系方式，全都藏在桌面图标和开始菜单里。" />
+  <meta name="author" content="Aiden" />
+  <meta name="theme-color" content="#0a2472" />
+  <meta name="color-scheme" content="light dark" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Aiden 的个人主页 · Windows 11" />
+  <meta property="og:description" content="双击桌面图标，打开我的数字客厅。" />
+  <meta property="og:image" content="https://studentop.cn:14355/assets/img/og-cover.jpg" />
+  <meta property="og:url" content="https://studentop.cn:14355/" />
+  <link rel="canonical" href="https://studentop.cn:14355/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="preload" as="image" href="assets/img/wall-bloom.jpg" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/shell.css" />
+  <link rel="stylesheet" href="assets/css/apps.css" />
+</head>
+<body>
+  <!-- ============ 锁屏 ============ -->
+  <div class="lock-screen" id="lockScreen" role="button" tabindex="0" aria-label="点击进入桌面">
+    <div class="lock-wall" id="lockWall" aria-hidden="true"></div>
+    <div class="lock-inner">
+      <div class="lock-clock" id="lockClock">--:--</div>
+      <div class="lock-date" id="lockDate"></div>
+      <div class="lock-weekday" id="lockWeekday"></div>
+    </div>
+    <div class="lock-tip" id="lockTip">
+      点击任意位置进入桌面<span class="lock-hint-keys">Enter</span>
+    </div>
+    <div class="lock-bar">
+      <span class="avatar" id="lockAvatar">A</span>
+      <span id="lockUser">Aiden</span>
+    </div>
+  </div>
+
+  <!-- ============ 桌面 ============ -->
+  <div class="desktop" id="desktop">
+    <div class="wallpaper" id="wallpaper" aria-hidden="true"></div>
+
+    <!-- 桌面图标 -->
+    <div class="desktop-icons" id="desktopIcons" aria-label="桌面图标"></div>
+
+    <!-- 窗口层 -->
+    <div class="window-layer" id="windowLayer"></div>
+
+    <!-- 贴边预览 -->
+    <div class="snap-preview" id="snapPreview" aria-hidden="true"></div>
+
+    <!-- 任务栏 -->
+    <div class="taskbar" id="taskbar" data-align="center" role="toolbar" aria-label="任务栏">
+      <div class="tb-left" id="tbLeft"></div>
+      <div class="tb-center" id="tbCenter"></div>
+      <div class="tb-right" id="tbRight">
+        <button class="tray-btn" id="trayTray" aria-label="系统托盘" title="系统托盘">
+          <span id="trayIcons"></span>
+        </button>
+        <button class="tray-clock" id="trayClock" aria-label="日期和时间" title="日期和时间">
+          <span class="t-time" id="clockTime">--:--</span>
+          <span class="t-date" id="clockDate">----/--/--</span>
+        </button>
+        <button class="notif-btn" id="notifBtn" aria-label="通知中心" title="通知中心">
+          <span id="notifIcon"></span>
+          <span class="dot" id="notifDot"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 浮出面板容器 -->
+    <div id="flyoutHost"></div>
+
+    <!-- 通知横幅 -->
+    <div class="toast-host" id="toastHost" aria-live="polite"></div>
+
+    <!-- 右键菜单容器 -->
+    <div id="ctxHost"></div>
+  </div>
+
+  <noscript>
+    <div class="noscript-box">
+      <div>
+        <h1 style="font-size:20px;margin:0 0 8px">Aiden 的个人主页</h1>
+        <p style="margin:0;opacity:.75">这个页面是一个仿 Windows 11 桌面的交互式主页，需要启用 JavaScript 才能打开窗口。</p>
+        <p style="margin:12px 0 0;opacity:.6">你仍然可以通过下方链接访问内容：</p>
+      </div>
+    </div>
+  </noscript>
+
+  <!-- 图标库 -->
+  <script src="assets/js/icons.js"></script>
+  <!-- 站点内容（改这里 = 改主页） -->
+  <script src="assets/js/content.js"></script>
+  <!-- 内核 -->
+  <script src="assets/js/core.js"></script>
+  <!-- 窗口管理器 -->
+  <script src="assets/js/wm.js"></script>
+  <!-- 外壳：任务栏 / 开始菜单 / 面板 / 桌面 -->
+  <script src="assets/js/shell.js"></script>
+  <!-- 应用 -->
+  <script src="assets/js/apps-about.js"></script>
+  <script src="assets/js/apps-system.js"></script>
+  <!-- 应用注册表 + 启动 -->
+  <script src="assets/js/apps.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

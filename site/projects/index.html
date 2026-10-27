@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d1b2a">
+<title>项目 · Projects | studentop.cn</title>
+<meta name="description" content="studentop.cn 上的两个自建项目：北湖霜降雅集（交互游园图）与理韵寻踪（校园探索 HUD）。">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg-0: #0b1622;
+    --bg-1: #12283c;
+    --ink: #f2f7fc;
+    --ink-dim: rgba(242, 247, 252, 0.66);
+    --ink-faint: rgba(242, 247, 252, 0.44);
+    --line: rgba(255, 255, 255, 0.14);
+    --card: rgba(255, 255, 255, 0.07);
+    --card-hover: rgba(255, 255, 255, 0.11);
+    --accent: #7cc4ff;
+    --radius: 14px;
+    --font: "Segoe UI", "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--font);
+    color: var(--ink);
+    background:
+      radial-gradient(1100px 620px at 12% -10%, #2b6d99 0%, transparent 60%),
+      radial-gradient(900px 540px at 92% 4%, #6b4f8a 0%, transparent 58%),
+      radial-gradient(760px 520px at 50% 116%, #1d5f6b 0%, transparent 62%),
+      linear-gradient(160deg, var(--bg-1), var(--bg-0) 70%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: clamp(28px, 6vw, 72px) clamp(18px, 4vw, 40px) 64px;
+  }
+  header.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: clamp(26px, 5vw, 52px);
+  }
+  .breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-dim);
+    text-decoration: none;
+    padding: 7px 13px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.05);
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+  .breadcrumb:hover { background: rgba(255, 255, 255, 0.12); color: var(--ink); }
+  .breadcrumb svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .kicker { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); }
+  h1 {
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.12;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    margin: 10px 0 12px;
+  }
+  h1 .thin { font-weight: 350; color: var(--ink-dim); }
+  .lead { margin: 0; max-width: 46em; color: var(--ink-dim); font-size: 15px; line-height: 1.75; }
+  .grid {
+    margin-top: clamp(26px, 4vw, 44px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 22px;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--card);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+    transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1), background 0.2s ease, border-color 0.2s ease;
+    overflow: hidden;
+  }
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: var(--tone, var(--accent));
+    opacity: 0.85;
+  }
+  .card:hover { transform: translateY(-3px); background: var(--card-hover); border-color: rgba(255, 255, 255, 0.26); }
+  .card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .card-head { display: flex; align-items: center; gap: 13px; }
+  .glyph {
+    width: 46px; height: 46px; flex: none;
+    display: grid; place-items: center;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .glyph svg { width: 26px; height: 26px; stroke: var(--tone, var(--accent)); fill: none; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+  .card h2 { margin: 0; font-size: 19px; font-weight: 620; letter-spacing: 0.01em; }
+  .card .sub { margin: 3px 0 0; font-size: 13px; color: var(--ink-faint); }
+  .card p.desc { margin: 0; font-size: 13.5px; line-height: 1.72; color: var(--ink-dim); }
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+  .tag {
+    font-size: 11.5px;
+    padding: 3.5px 9px;
+    border-radius: 999px;
+    color: var(--ink-dim);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .open {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 6px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--tone, var(--accent));
+  }
+  .open svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.18s ease; }
+  .card:hover .open svg { transform: translate(2px, -2px); }
+  footer.bottom {
+    margin-top: clamp(38px, 6vw, 68px);
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    justify-content: space-between;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+  }
+  footer.bottom a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.22); }
+  footer.bottom a:hover { color: var(--ink); }
+  @media (prefers-reduced-motion: reduce) {
+    .card, .card:hover { transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="breadcrumb" href="/">
+        <svg viewBox="0 0 24 24"><path d="M19.6 12H4.4"/><path d="M10.4 6l-6 6 6 6"/></svg>
+        返回桌面
+      </a>
+      <span class="kicker">studentop.cn / projects</span>
+    </header>
+
+    <main>
+      <h1>两个自己写的项目<span class="thin">，现在都跑在这块树莓派上。</span></h1>
+      <p class="lead">一个是给协会秋日活动做的交互游园图，一个是课程里的校园探索 HUD。两个项目独立部署、各自有自己的地址，下面的卡片点进去就是线上版本。</p>
+
+      <div class="grid">
+        <a class="card" href="https://frost.studentop.cn:14355/" target="_blank" rel="noopener noreferrer" style="--tone:#e9c37c">
+          <div class="card-head">
+            <span class="glyph">
+              <svg viewBox="0 0 24 24"><path d="M3 17.5 9 9.2l3.6 4.8 2.7-3.3L21 17.5z"/><circle cx="17.4" cy="6.6" r="2"/><path d="M3.4 20.4h17.2"/></svg>
+            </span>
+            <div>
+              <h2>北湖霜降雅集</h2>
+              <p class="sub">理韵文化协会 2026 霜降雅集 · 交互游园图</p>
+            </div>
+          </div>
+          <p class="desc">六艺打卡、霜信收藏、双面明信片。原生前端 + Node 24 服务端（内置 SQLite），零第三方依赖；账户与照片只存在服务器的私有数据卷里，公网入口是 HTTPS。</p>
+          <div class="tags"><span class="tag">HTML / CSS / JS</span><span class="tag">Node 24</span><span class="tag">SQLite</span><span class="tag">树莓派</span></div>
+          <span class="open">打开 frost.studentop.cn
+            <svg viewBox="0 0 24 24"><path d="M14 3.8h6.2V10"/><path d="M20.2 3.8 11 13"/><path d="M18.4 13.6v4.6a2.2 2.2 0 0 1-2.2 2.2H5.6a2.2 2.2 0 0 1-2.2-2.2V7.6a2.2 2.2 0 0 1 2.2-2.2h4.6"/></svg>
+          </span>
+        </a>
+
+        <a class="card" href="https://liyun.studentop.cn:14355/" target="_blank" rel="noopener noreferrer" style="--tone:#6fe0c6">
+          <div class="card-head">
+            <span class="glyph">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="3.4"/><path d="M12 3.6v3.2M12 17.2v3.2M3.6 12h3.2M17.2 12h3.2"/></svg>
+            </span>
+            <div>
+              <h2>理韵寻踪</h2>
+              <p class="sub">软件工程导论研究型课程 · 北理校园探索 HUD</p>
+            </div>
+          </div>
+          <p class="desc">在一纸山水间找到校园里的故事：手绘感地图、点位探索、HUD 交互层，React + TypeScript + Vite 构建，画面层用 p5.js，氛围音走 Web Audio。</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">p5.js</span><span class="tag">Web Audio</span></div>
+          <span class="open">打开 liyun.studentop.cn
+            <svg viewBox="0 0 24 24"><path d="M14 3.8h6.2V10"/><path d="M20.2 3.8 11 13"/><path d="M18.4 13.6v4.6a2.2 2.2 0 0 1-2.2 2.2H5.6a2.2 2.2 0 0 1-2.2-2.2V7.6a2.2 2.2 0 0 1 2.2-2.2h4.6"/></svg>
+          </span>
+        </a>
+      </div>
+    </main>
+
+    <footer class="bottom">
+      <span>用一台 Raspberry Pi 4B 撑着 · Nginx + frp 内网穿透</span>
+      <span><a href="/">studentop.cn</a> · 仿 Windows 11 桌面主页</span>
+    </footer>
+  </div>
+</body>
+</html>

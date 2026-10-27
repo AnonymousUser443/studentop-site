@@ -1,0 +1,106 @@
+{
+  "generatedAt": "2026-10-27T06:23:23.534Z",
+  "mapId": "campus-v04-eaa124716c51375f",
+  "logicalCanvas": [
+    4000,
+    4958
+  ],
+  "totalBytes": 24901050,
+  "files": [
+    {
+      "path": "public/assets/art/mountain-right.png",
+      "bytes": 1283128,
+      "sha256": "7d0e4cde0de0974ba8ce1b3bea98a4fb0d587ebe1e2c5bb7c04689114bba5b27"
+    },
+    {
+      "path": "public/assets/art/pine-left.png",
+      "bytes": 2097170,
+      "sha256": "c0c4c62f621438050d43290c50c6c6dba6df9c54533a572dcae4dbc81f644e81"
+    },
+    {
+      "path": "public/assets/audio/bgm1.mp3",
+      "bytes": 4162484,
+      "sha256": "e2a78a32718c7e7925f5be91032ed588616f48b09c09134473a522e57ac54b26"
+    },
+    {
+      "path": "public/assets/audio/bgm1.opus",
+      "bytes": 1474749,
+      "sha256": "98d796f591562ad5b08edc6fc36be27e2fdd3555625399f786a4cbc95fb7f867"
+    },
+    {
+      "path": "public/assets/audio/bgm2.mp3",
+      "bytes": 2167124,
+      "sha256": "207518b0cc92ac70076189edd5872a7b980eafbef2716c1f21b9c29a1c1f8fd5"
+    },
+    {
+      "path": "public/assets/audio/bgm2.opus",
+      "bytes": 860478,
+      "sha256": "a9fc970e8cd1c573c4a8f356d9d518495eeace5512f26523223d0b9244d3d9ca"
+    },
+    {
+      "path": "public/assets/audio/bgm3.mp3",
+      "bytes": 1904444,
+      "sha256": "d739f064b85e3f798a57d712aa3cc50f3fa42a54d78764ab7bd24dd2aae77f5b"
+    },
+    {
+      "path": "public/assets/audio/bgm3.opus",
+      "bytes": 836979,
+      "sha256": "eb7efd453b8a5312fce929d52d0666440912054c632c31d8227ddd7e29ab5f1f"
+    },
+    {
+      "path": "public/assets/audio/manifest.json",
+      "bytes": 653,
+      "sha256": "be5b234f75ddf924527789008c45ccde991b003ccdc920cb26dee66dc629e1b5"
+    },
+    {
+      "path": "public/assets/fonts/MaShanZheng-OFL.txt",
+      "bytes": 4397,
+      "sha256": "d7bdb1cee215b689e23c2f95672a6084c790542170648267a55114103d756a08"
+    },
+    {
+      "path": "public/assets/fonts/MaShanZheng-Regular.ttf",
+      "bytes": 5857936,
+      "sha256": "6d2546bb189c732a8ca29af9e22457b152387d158aa459e4ac2ce1e51788b7fb"
+    },
+    {
+      "path": "public/assets/fonts/MaShanZheng-UI.woff2",
+      "bytes": 187600,
+      "sha256": "0fb93e13b42a4166152d1e0a7978564ec5fff4fc317f3004d0c3439d5823d08d"
+    },
+    {
+      "path": "public/assets/fonts/NotoSerifSC-OFL.txt",
+      "bytes": 4350,
+      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6"
+    },
+    {
+      "path": "public/assets/fonts/NotoSerifSC-UI.woff2",
+      "bytes": 222552,
+      "sha256": "859a10a1fd5bc24e044ba5abe131cdccf6ee92dcbc1debc4f9bdec23566c5d0e"
+    },
+    {
+      "path": "public/assets/maps/campus-enhanced-mobile.webp",
+      "bytes": 218434,
+      "sha256": "5aaca5e3a3a63e5c4c85f125cfbfd51ad1eccd167d7a7e459d8be3c956a42e84"
+    },
+    {
+      "path": "public/assets/maps/campus-enhanced.webp",
+      "bytes": 573342,
+      "sha256": "31cf0e8547893453e04c45d6ebe2ddf57a24b8f102202c0477af43daa615abd4"
+    },
+    {
+      "path": "public/assets/maps/campus.png",
+      "bytes": 1973144,
+      "sha256": "ed9fae1e1ef6fea0d0998abf7a2d586d1a15bd3058411c06cd1b9268be5e447f"
+    },
+    {
+      "path": "public/assets/maps/campus.webp",
+      "bytes": 1070594,
+      "sha256": "bc5f8dd0c07b6a296152cade00a11d9c32055ea01a06a837a559ab0d8a37c474"
+    },
+    {
+      "path": "public/assets/maps/metadata.json",
+      "bytes": 1492,
+      "sha256": "2998857bea6918e6b4bc8ca6a54f7c58f9be22012fa3e5e576962e9ae5014907"
+    }
+  ]
+}

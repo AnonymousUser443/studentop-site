@@ -1,0 +1,12 @@
+export type UV = { u: number; v: number };
+export type MapCamera = { scale: number; x: number; y: number };
+export type Viewport = { width: number; height: number };
+export type IconName = 'book' | 'flower' | 'leaf' | 'scroll' | 'people' | 'settings' | 'compass' | 'chest' | 'lake' | 'gate' | 'sport' | 'star' | 'lock' | 'moon' | 'tower' | 'close' | 'sound' | 'fullscreen' | 'plus';
+export type Landmark = { id: string; name: string; subtitle: string; uv: UV; icon: IconName; regionId: string; description: string; verse: string; progress: number; isBeacon?: boolean };
+export type GameSettings = { music: boolean; volume: number; quality: 'high' | 'low'; reducedMotion: boolean; track: number };
+export type ExplorationState = { version: 1; discoveredIds: string[]; unlockedRegionIds: string[]; playerUV: UV; settings: GameSettings };
+export type SceneEvent = { id: number; type: 'discover'; landmarkId: string; from: UV; to: UV; startedAt: number; duration: number };
+export type PanelId = 'main' | 'season' | 'festival' | 'stories' | 'party' | 'settings' | 'guide' | 'collection' | 'stamina' | 'chapter' | null;
+export type MapSceneProps = { camera: MapCamera; viewport: Viewport; landmarks: Landmark[]; discoveredIds: string[]; selectedId: string | null; playerUV: UV; event: SceneEvent | null; reducedMotion: boolean; onCameraChange: (camera: MapCamera) => void; onSelect: (id: string) => void; onVisualPosition?: (uv:UV,camera:MapCamera)=>void; disabled?: boolean; fixedTime?: number; paused?: boolean };
+export type EffectsProps = { camera: MapCamera; viewport: Viewport; landmarks: Landmark[]; discoveredIds: string[]; event: SceneEvent | null; settings: GameSettings; paused: boolean; seed?: number; fixedTime?: number };
+export type HudProps = { progress: number; collected: number; activePanel: PanelId; selected: Landmark | null; discovered: boolean; state: ExplorationState; landmarks: Landmark[]; entered: boolean; toast: string | null; isFullscreen: boolean; audioBlocked: boolean; onPanel: (id: PanelId) => void; onSelect: (id: string) => void; onClose: () => void; onExplore: () => void; onSettings: (settings: Partial<GameSettings>) => void; onReset: () => void; onFullscreen: () => void; onCenter: () => void; onEnter: () => void };

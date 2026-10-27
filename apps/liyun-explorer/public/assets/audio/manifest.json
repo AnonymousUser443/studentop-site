@@ -1,0 +1,11 @@
+{
+  "source": "User-provided BGM directory",
+  "tracks": [
+    { "id": 0, "opus": "bgm1.opus", "fallback": "bgm1.mp3", "duration": 216.382 },
+    { "id": 1, "opus": "bgm2.opus", "fallback": "bgm2.mp3", "duration": 114.786 },
+    { "id": 2, "opus": "bgm3.opus", "fallback": "bgm3.mp3", "duration": 108.209 }
+  ],
+  "selection": "Parent selects one random track on first user entry; settings can select another.",
+  "rights": "User-supplied audio for the local project; ownership and redistribution rights not independently verified.",
+  "processing": "Original Opus copied unchanged; FFmpeg libmp3lame quality 4 fallback with source metadata removed."
+}

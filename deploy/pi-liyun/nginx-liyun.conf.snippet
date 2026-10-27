@@ -1,0 +1,28 @@
+# 建议加入 /etc/nginx 的 server{} 内（Lead 自行决定，未由我修改）
+# 站点根 = release 软链；无客户端路由，不需要 SPA fallback
+root /opt/projects/liyun/current;
+index index.html;
+
+location / {
+    try_files $uri $uri/ =404;
+}
+
+# 性能（可选）：JS 1.36MB → gzip 约 364KB
+gzip on;
+gzip_types text/css application/javascript application/json image/svg+xml;
+
+# 缓存（可选）：assets/art|audio|fonts|maps 文件名不含哈希，建议 7d；
+# hashed 主包可更长。index.html 必须 no-cache。
+location /assets/ {
+    expires 7d;
+}
+location = /index.html {
+    add_header Cache-Control "no-cache";
+}
+
+# 注意：nginx 默认 mime.types 无 opus 扩展 → .opus 会以 octet-stream 返回。
+# 前端已有 mp3 自动降级，故不阻塞；如需修正，在 /etc/nginx/mime.types 把
+#   audio/ogg   ogg;
+# 改为
+#   audio/ogg   ogg opus;
+# 切勿在 server 级写 types{}（会覆盖整张 MIME 表）。

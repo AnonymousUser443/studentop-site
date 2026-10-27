@@ -1,0 +1,32 @@
+# 统一换行：仓库内一律 LF，Windows 检出时按需转换
+* text=auto
+*.sh        text eol=lf
+*.conf      text eol=lf
+*.md        text eol=lf
+*.js        text eol=lf
+*.mjs       text eol=lf
+*.ts        text eol=lf
+*.tsx       text eol=lf
+*.py        text eol=lf
+*.json      text eol=lf
+*.ps1       text eol=crlf
+*.cmd       text eol=crlf
+*.bat       text eol=crlf
+
+# 二进制
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.mp3   binary
+*.ogg   binary
+*.opus  binary
+*.glb   binary
+*.gltf  binary
+*.svg   text

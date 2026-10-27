@@ -1,0 +1,10 @@
+{
+  "style": "二次元新国风赛璐璐剪纸",
+  "palette": {"jade":"#193c37","cream":"#f6eaca","gold":"#d4b874","ginkgo":"#cba84e"},
+  "layers": ["background","map","cel-shaded scenery","fog","landmarks","player","golden effects","paper-cut foreground","hud","dialog"],
+  "defaultScene": "fog",
+  "emotion": ["进入校园","停留观察","选中地标","循光前往","雾散点亮","继续探索"],
+  "discovery": {"durationMs":3200,"trigger":"地标详情中的前往探索","movement":[0,0.45],"gather":[0.35,0.65],"reveal":[0.5,0.95],"settle":[0.85,1],"persistence":"commit before visual playback; idempotent landmark IDs"},
+  "world": {"mapId":"campus-v04-eaa124716c51375f","width":4000,"height":4958,"coordinates":"normalized full-canvas UV"},
+  "mobile": {"mode":"landscape edge-anchored HUD","minTouchTarget":44,"portrait":"rotation guidance, preserve state"}
+}

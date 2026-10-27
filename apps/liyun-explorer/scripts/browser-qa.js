@@ -1,0 +1,80 @@
+(async () => {
+  const qa = () => window.__LIYUN__;
+  const commit = () => new Promise(resolve => {
+    const channel = new MessageChannel();
+    channel.port1.onmessage = () => { channel.port1.close(); channel.port2.close(); resolve(); };
+    channel.port2.postMessage(0);
+  });
+  const frames = async () => { await commit(); await commit(); };
+  const results = [];
+  window.__qaResults = {timestamp:new Date().toISOString(), viewport:{width:innerWidth,height:innerHeight},results};
+  const check = (name, ok, detail) => { results.push({name, passed:Boolean(ok), detail}); if (!ok) throw new Error(name + ': ' + JSON.stringify(detail)); };
+  const dialog = () => document.querySelector('[role="dialog"]');
+  const button = (root, text) => [...root.querySelectorAll('button')].find(x => x.textContent.includes(text));
+  const close = async () => { dialog()?.querySelector('.modal-close').click(); await frames(); };
+  qa().flushSync(() => { qa().showPanel(null); qa().reset(); qa().setPreset('fog'); }); await frames();
+  check('Initial exploration preset', document.querySelector('.game-stage').dataset.progress === '3', qa().getState().discoveredIds);
+  for (const element of document.querySelectorAll('.story-button')) {
+    const title = element.querySelector('strong').textContent;
+    element.click(); await frames();
+    check('Menu: ' + title, dialog()?.getAttribute('aria-label') === title);
+    await close();
+  }
+  const resourceTitles = ['收集图鉴', '行旅体力', '多人同行', '第3章 · 理韵悠长'];
+  for (const [index, element] of [...document.querySelectorAll('.resource-pill')].entries()) {
+    element.click(); await frames();
+    check('Resource: ' + resourceTitles[index], dialog()?.getAttribute('aria-label') === resourceTitles[index]);
+    await close();
+  }
+  button(document.querySelector('.utility-nav'), '设置').click(); await frames();
+  check('Settings opens', dialog()?.getAttribute('aria-label') === '设置');
+  const quality = document.querySelector('#scene-quality');
+  quality.value = 'low'; quality.dispatchEvent(new Event('change',{bubbles:true})); await frames();
+  check('Quality setting updates', qa().getState().settings.quality === 'low');
+  const reduced = document.querySelector('[role="switch"][aria-label="减少动态效果"]');
+  reduced.click(); await frames();
+  check('Reduced motion updates', qa().getState().settings.reducedMotion === true);
+  reduced.click(); await frames();
+  quality.value = 'high'; quality.dispatchEvent(new Event('change',{bubbles:true})); await frames();
+  const volume = document.querySelector('#music-volume');
+  Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(volume,'0.3');
+  volume.dispatchEvent(new Event('input',{bubbles:true})); volume.dispatchEvent(new Event('change',{bubbles:true})); await frames();
+  check('Volume updates', qa().getState().settings.volume === .3, qa().getState().settings.volume);
+  button(dialog(),'重置探索进度').click(); await frames();
+  check('Reset requires deliberate second click', Boolean(document.querySelector('.reset-confirm')) && qa().getState().discoveredIds.length === 1);
+  button(dialog(),'保留当前旅程').click(); await frames();
+  check('Reset can be cancelled', !document.querySelector('.reset-confirm'));
+  await close();
+  button(document.querySelector('.utility-nav'),'探索指引').click(); await frames();
+  check('Guide opens', dialog()?.getAttribute('aria-label') === '探索指引');
+  button(dialog(),'循光去看看').click(); await frames();
+  check('Guide selects current beacon', dialog()?.getAttribute('aria-label') === '真理之塔');
+  await close();
+  button(document.querySelector('.utility-nav'),'收集图鉴').click(); await frames();
+  check('Collection content and discovery state', document.querySelectorAll('.collection-item').length === 8 && document.querySelectorAll('.collection-item.is-known').length === 1);
+  await close();
+  const surface = document.querySelector('[data-testid="map-scene"]');
+  const anchor = {x:Math.round(innerWidth*.63),y:Math.round(innerHeight*.5)};
+  const old = qa().getCamera();
+  const before = {u:(anchor.x-old.x)/(4000*old.scale),v:(anchor.y-old.y)/(4958*old.scale)};
+  qa().flushSync(() => surface.dispatchEvent(new WheelEvent('wheel',{clientX:anchor.x,clientY:anchor.y,deltaY:-80,bubbles:true,cancelable:true}))); await frames();
+  const next = qa().getCamera();
+  const after = {u:(anchor.x-next.x)/(4000*next.scale),v:(anchor.y-next.y)/(4958*next.scale)};
+  check('Wheel anchor stays fixed', Math.abs(after.u-before.u)<1e-8 && Math.abs(after.v-before.v)<1e-8 && next.scale>old.scale, {before,after,old,next});
+  const marker = document.querySelector('[data-testid="poi-wencui"]');
+  const world = new DOMMatrix(getComputedStyle(document.querySelector('.map-world')).transform);
+  const point = {x:world.e+Number(marker.dataset.u)*4000*world.a,y:world.f+Number(marker.dataset.v)*4958*world.d};
+  check('Hotspot stays aligned after zoom', Math.abs(parseFloat(marker.style.left)-point.x)<.01 && Math.abs(parseFloat(marker.style.top)-point.y)<.01,point);
+  qa().flushSync(() => qa().setCamera(old)); await frames();
+  document.querySelector('[data-testid="poi-tower"]').click(); await frames();
+  check('Landmark click opens details', dialog()?.getAttribute('aria-label') === '真理之塔');
+  button(dialog(),'前往探索').click(); await frames();
+  check('Explore commits once and closes details', !dialog() && qa().getState().discoveredIds.includes('tower') && document.querySelector('.game-stage').dataset.progress === '8', qa().getState().unlockedRegionIds);
+  qa().flushSync(() => qa().freeze(1900)); await frames();
+  const saved = JSON.stringify(qa().getState());
+  qa().flushSync(() => qa().discover('tower')); await frames();
+  check('Repeated discovery is idempotent', JSON.stringify(qa().getState()) === saved);
+  check('p5 layers are transparent non-interactive overlays', document.querySelectorAll('canvas').length === 2 && [...document.querySelectorAll('.atmosphere-layer')].every(x => getComputedStyle(x).pointerEvents === 'none'));
+  window.__qaResults = {timestamp:new Date().toISOString(), viewport:{width:innerWidth,height:innerHeight},results};
+  return window.__qaResults;
+})()

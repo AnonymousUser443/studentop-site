@@ -1,0 +1,52 @@
+[Unit]
+Description=Beihu Frost Atlas v4.0.8 (static site + private SQLite API)
+Documentation=file:///opt/projects/frost/current/docs/SERVER.md
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=frost
+Group=frost
+WorkingDirectory=/opt/projects/frost/current
+ExecStart=/opt/node24/bin/node servers/dev.mjs
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=4173
+Environment=FROST_DATA_DIR=/var/lib/frost-atlas/data
+Environment=FROST_PUBLIC_ORIGIN=https://frost.studentop.cn:14355
+Environment=FROST_TRUST_PROXY=1
+Environment=FROST_TRUSTED_PROXIES=127.0.0.1
+Environment=FROST_PROXY_CLIENT_HEADER=x-forwarded-for
+Restart=always
+RestartSec=3
+TimeoutStopSec=10
+LimitNOFILE=65536
+UMask=0077
+
+# Sandbox hardening. If any directive breaks Node/SQLite startup, fall back to the
+# minimal working set and document why (see deploy/pi-frost/DEPLOY-REPORT.md).
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/frost-atlas
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+AmbientCapabilities=
+RemoveIPC=true
+
+[Install]
+WantedBy=multi-user.target

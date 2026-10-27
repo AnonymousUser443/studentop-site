@@ -1,0 +1,155 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  cursor: url('/Genshin/T_Mouse.png'), default;
+}
+
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   没有 WebGL 时的降级页（见 src/main.tsx 的 renderNoWebGL）
+   --------------------------------------------------------------------------- */
+.nogl {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 6vw;
+  background:
+    radial-gradient(900px 520px at 18% 6%, #1d3c63 0%, transparent 62%),
+    radial-gradient(760px 480px at 88% 90%, #0d4f52 0%, transparent 60%),
+    linear-gradient(150deg, #0b1520, #070d14 70%);
+  color: #eef5fc;
+  font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+  text-align: left;
+}
+
+.nogl-card {
+  max-width: 560px;
+}
+
+.nogl-kicker {
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(238, 245, 252, 0.5);
+}
+
+.nogl h1 {
+  margin: 0 0 14px;
+  font-size: clamp(24px, 4vw, 34px);
+  line-height: 1.2;
+  font-weight: 650;
+}
+
+.nogl-text {
+  margin: 0 0 22px;
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: rgba(238, 245, 252, 0.72);
+}
+
+.nogl-text b {
+  color: #f0d79b;
+}
+
+.nogl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f6e2ac, #e4bf76);
+  color: #2a2007;
+  font-size: 15px;
+  font-weight: 650;
+  text-decoration: none;
+  box-shadow: 0 10px 26px rgba(228, 191, 118, 0.28);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.nogl-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(228, 191, 118, 0.36);
+  color: #2a2007;
+}
+
+.nogl-url {
+  margin: 18px 0 0;
+  font-size: 12px;
+  color: rgba(238, 245, 252, 0.38);
+  word-break: break-all;
+}
