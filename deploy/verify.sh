@@ -17,12 +17,28 @@
 set -euo pipefail
 
 PI_HOST="${PI_HOST:-pi}"
+
+# --- 传输层参数（CI 用）：SSH_OPTS 透传 -i/-F/-o，PI_SSH_PORT 指定非 22 端口 ---
+PI_SSH_PORT="${PI_SSH_PORT-}"
+SSH_OPTS="${SSH_OPTS-}"
+SSH_CMD=(ssh)
+SCP_CMD=(scp)
+if [ -n "$PI_SSH_PORT" ]; then
+  SSH_CMD+=(-p "$PI_SSH_PORT")
+  SCP_CMD+=(-P "$PI_SSH_PORT")
+fi
+if [ -n "$SSH_OPTS" ]; then
+  # shellcheck disable=SC2206
+  __SSH_OPTS_ARR=($SSH_OPTS)
+  SSH_CMD+=("${__SSH_OPTS_ARR[@]}")
+  SCP_CMD+=("${__SSH_OPTS_ARR[@]}")
+fi
 EXPECT_TITLE="${EXPECT_TITLE:-}"
 
 printf '==== win11-home verify (%s) ====\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
 set +e
-ssh -o ConnectTimeout=10 -o BatchMode=yes "$PI_HOST" "EXPECT_TITLE='$EXPECT_TITLE' bash -s" <<'REMOTE_SCRIPT'
+"${SSH_CMD[@]}" -o ConnectTimeout=10 -o BatchMode=yes "$PI_HOST" "EXPECT_TITLE='$EXPECT_TITLE' bash -s" <<'REMOTE_SCRIPT'
 set -uo pipefail
 FAIL=0
 ok()   { printf '  [ OK ] %s\n' "$*"; }

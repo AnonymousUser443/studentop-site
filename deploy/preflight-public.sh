@@ -22,10 +22,26 @@
 set -uo pipefail
 
 PI_HOST="${PI_HOST:-pi}"
+
+# --- 传输层参数（CI 用）：SSH_OPTS 透传 -i/-F/-o，PI_SSH_PORT 指定非 22 端口 ---
+PI_SSH_PORT="${PI_SSH_PORT-}"
+SSH_OPTS="${SSH_OPTS-}"
+SSH_CMD=(ssh)
+SCP_CMD=(scp)
+if [ -n "$PI_SSH_PORT" ]; then
+  SSH_CMD+=(-p "$PI_SSH_PORT")
+  SCP_CMD+=(-P "$PI_SSH_PORT")
+fi
+if [ -n "$SSH_OPTS" ]; then
+  # shellcheck disable=SC2206
+  __SSH_OPTS_ARR=($SSH_OPTS)
+  SSH_CMD+=("${__SSH_OPTS_ARR[@]}")
+  SCP_CMD+=("${__SSH_OPTS_ARR[@]}")
+fi
 EXPECT_TITLE="${EXPECT_TITLE:-Aiden 的个人主页}"
 PUBLIC_URL="${PUBLIC_URL:-https://studentop.cn:14355/}"
 
-ssh -o ConnectTimeout=10 -o BatchMode=yes "$PI_HOST" "EXPECT_TITLE='$EXPECT_TITLE' PUBLIC_URL='$PUBLIC_URL' FROST_URL='${FROST_URL:-}' LIYUN_URL='${LIYUN_URL:-}' GENSHIN_URL='${GENSHIN_URL:-}' bash -s" <<'REMOTE_SCRIPT'
+"${SSH_CMD[@]}" -o ConnectTimeout=10 -o BatchMode=yes "$PI_HOST" "EXPECT_TITLE='$EXPECT_TITLE' PUBLIC_URL='$PUBLIC_URL' FROST_URL='${FROST_URL:-}' LIYUN_URL='${LIYUN_URL:-}' GENSHIN_URL='${GENSHIN_URL:-}' bash -s" <<'REMOTE_SCRIPT'
 set -uo pipefail
 
 PASS_N=0

@@ -16,6 +16,22 @@
 set -euo pipefail
 
 PI_HOST="${PI_HOST:-pi}"
+
+# --- 传输层参数（CI 用）：SSH_OPTS 透传 -i/-F/-o，PI_SSH_PORT 指定非 22 端口 ---
+PI_SSH_PORT="${PI_SSH_PORT-}"
+SSH_OPTS="${SSH_OPTS-}"
+SSH_CMD=(ssh)
+SCP_CMD=(scp)
+if [ -n "$PI_SSH_PORT" ]; then
+  SSH_CMD+=(-p "$PI_SSH_PORT")
+  SCP_CMD+=(-P "$PI_SSH_PORT")
+fi
+if [ -n "$SSH_OPTS" ]; then
+  # shellcheck disable=SC2206
+  __SSH_OPTS_ARR=($SSH_OPTS)
+  SSH_CMD+=("${__SSH_OPTS_ARR[@]}")
+  SCP_CMD+=("${__SSH_OPTS_ARR[@]}")
+fi
 SRC="${1:-win11-homepage}"
 REMOTE_DIR="${2:-/opt/win11-home/current}"
 
@@ -43,7 +59,7 @@ hash_dir() {
 say "local : $SRC"
 say "remote: $PI_HOST:$REMOTE_DIR"
 hash_dir "$SRC" > "$LOCAL_LIST"
-ssh -o ConnectTimeout=10 "$PI_HOST" "REMOTE_DIR='$REMOTE_DIR' bash -s" > "$REMOTE_LIST" <<'REMOTE_HASH' || die "remote hash listing failed (does $REMOTE_DIR exist?)"
+"${SSH_CMD[@]}" -o ConnectTimeout=10 "$PI_HOST" "REMOTE_DIR='$REMOTE_DIR' bash -s" > "$REMOTE_LIST" <<'REMOTE_HASH' || die "remote hash listing failed (does $REMOTE_DIR exist?)"
 cd "$REMOTE_DIR" || exit 2
 find . -type f \( -path './index.html' -o -path './assets/*' \) -print | LC_ALL=C sort | while IFS= read -r f; do
   printf '%s  %s\n' "$(sha256sum "$f" | cut -d' ' -f1)" "${f#./}"

@@ -22,6 +22,22 @@
 set -euo pipefail
 
 PI_HOST="${PI_HOST:-pi}"
+
+# --- 传输层参数（CI 用）：SSH_OPTS 透传 -i/-F/-o，PI_SSH_PORT 指定非 22 端口 ---
+PI_SSH_PORT="${PI_SSH_PORT-}"
+SSH_OPTS="${SSH_OPTS-}"
+SSH_CMD=(ssh)
+SCP_CMD=(scp)
+if [ -n "$PI_SSH_PORT" ]; then
+  SSH_CMD+=(-p "$PI_SSH_PORT")
+  SCP_CMD+=(-P "$PI_SSH_PORT")
+fi
+if [ -n "$SSH_OPTS" ]; then
+  # shellcheck disable=SC2206
+  __SSH_OPTS_ARR=($SSH_OPTS)
+  SSH_CMD+=("${__SSH_OPTS_ARR[@]}")
+  SCP_CMD+=("${__SSH_OPTS_ARR[@]}")
+fi
 REMOTE_ROOT="${REMOTE_ROOT:-/opt/win11-home}"
 SRC="${1:-win11-homepage}"
 FORCE_FAIL_AFTER_SWITCH="${FORCE_FAIL_AFTER_SWITCH:-0}"
@@ -55,13 +71,13 @@ tar -czf "$ARCHIVE" -C "$SRC" \
 say "archive: $(du -h "$ARCHIVE" | cut -f1)"
 
 # ---- 2. preflight ------------------------------------------------------------
-ssh -o ConnectTimeout=10 -o BatchMode=yes "$PI_HOST" true \
+"${SSH_CMD[@]}" -o ConnectTimeout=10 -o BatchMode=yes "$PI_HOST" true \
   || die "cannot ssh to $PI_HOST"
-PREV="$(ssh -o ConnectTimeout=10 "$PI_HOST" 'readlink -f /opt/win11-home/current 2>/dev/null || true')"
+PREV="$("${SSH_CMD[@]}" -o ConnectTimeout=10 "$PI_HOST" 'readlink -f /opt/win11-home/current 2>/dev/null || true')"
 say "previous current: ${PREV:-<none>}"
 
 # make the release timestamp unique on the remote side
-EXISTS="$(ssh -o ConnectTimeout=10 "$PI_HOST" "test -e $REMOTE_ROOT/releases/$TS && echo yes || echo no")"
+EXISTS="$("${SSH_CMD[@]}" -o ConnectTimeout=10 "$PI_HOST" "test -e $REMOTE_ROOT/releases/$TS && echo yes || echo no")"
 if [ "$EXISTS" = "yes" ]; then
   TS="${TS}-$(date -u +%s)"
   say "timestamp collision, using $TS"
@@ -70,13 +86,13 @@ REMOTE_ARCH="/tmp/win11-home-${TS}.tar.gz"
 
 # ---- 3. upload ---------------------------------------------------------------
 say "uploading to $PI_HOST:$REMOTE_ARCH"
-scp -o ConnectTimeout=10 -q "$ARCHIVE" "$PI_HOST:$REMOTE_ARCH" \
+"${SCP_CMD[@]}" -o ConnectTimeout=10 -q "$ARCHIVE" "$PI_HOST:$REMOTE_ARCH" \
   || die "scp failed"
 
 # ---- 4. remote activate + self-check (rollback on failure) -------------------
 say "activating release $TS on $PI_HOST"
 set +e
-ssh -o ConnectTimeout=10 "$PI_HOST" "TS='$TS' PREV='$PREV' REMOTE_ROOT='$REMOTE_ROOT' REMOTE_ARCH='$REMOTE_ARCH' FORCE_FAIL_AFTER_SWITCH='$FORCE_FAIL_AFTER_SWITCH' bash -s" <<'REMOTE_SCRIPT'
+"${SSH_CMD[@]}" -o ConnectTimeout=10 "$PI_HOST" "TS='$TS' PREV='$PREV' REMOTE_ROOT='$REMOTE_ROOT' REMOTE_ARCH='$REMOTE_ARCH' FORCE_FAIL_AFTER_SWITCH='$FORCE_FAIL_AFTER_SWITCH' bash -s" <<'REMOTE_SCRIPT'
 set -euo pipefail
 ROOT="${REMOTE_ROOT}"
 REL="$ROOT/releases/$TS"
