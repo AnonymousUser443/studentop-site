@@ -3,9 +3,21 @@ const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
-const CDP = require('chrome-remote-interface');
+/* chrome-remote-interface：优先本地依赖，其次全局安装（npm i -g chrome-remote-interface） */
+const CDP = loadCDP();
+function loadCDP() {
+  try { return require('chrome-remote-interface'); } catch (e) { /* 继续找全局 */ }
+  try {
+    const { execSync } = require('child_process');
+    const root = execSync('npm root -g', { encoding: 'utf8' }).trim();
+    return require(require('path').join(root, 'chrome-remote-interface'));
+  } catch (e) {
+    throw new Error('缺少 chrome-remote-interface，请先执行：npm i -g chrome-remote-interface');
+  }
+}
 
-const EDGE = 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
+/* 浏览器路径可用环境变量覆盖：EDGE_PATH=... */
+const EDGE = process.env.EDGE_PATH || 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
 
 function arg(name, def) {
   const i = process.argv.indexOf('--' + name);

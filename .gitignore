@@ -3,6 +3,9 @@ node_modules/
 dist/
 *.tsbuildinfo
 
+# 本地归档：迁移前的旧工作副本（各项目的散落目录、构建产物、旧截图）
+_legacy-workspace/
+
 # 日志与临时文件
 *.log
 tmp/
