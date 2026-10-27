@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# 由 deploy/install-git-hooks.sh 生成：push 前先通过 SSH 发布主页到树莓派
+# 跳过发布：SKIP_DEPLOY=1 git push
+set -euo pipefail
+
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+if [ "$BRANCH" != "main" ]; then
+  echo "[pre-push] 当前分支 $BRANCH，不是 main，跳过发布"
+  exit 0
+fi
+
+if [ -n "${SKIP_DEPLOY:-}" ]; then
+  echo "[pre-push] SKIP_DEPLOY=1，跳过发布，直接推送"
+  exit 0
+fi
+
+# 钩子把"发布"当作推送的前置门槛：发布失败就不推代码
+echo "[pre-push] 先把 site/ 发布到树莓派…"
+PI_HOST="${PI_HOST:-__PI_ALIAS__}" bash deploy/deploy-site.sh site
+echo "[pre-push] 发布 OK，继续 git push"
