@@ -43,7 +43,10 @@ jobs:
           $dir = Join-Path $env:USERPROFILE 'gh-runner'
           New-Item -ItemType Directory -Force -Path $dir | Out-Null
           $key = Join-Path $dir 'deploy_key'
-          Set-Content -Path $key -Value $env:PI_SSH_KEY -NoNewline -Encoding ascii
+          # 私钥必须用「LF 换行 + 结尾换行 + 无 BOM」书写，否则 ssh 会报 error in libcrypto
+          $keyText = ($env:PI_SSH_KEY -replace ([char]13 + [char]10), [char]10)
+          if ($keyText.Length -gt 0 -and $keyText[-1] -ne [char]10) { $keyText += [char]10 }
+          [System.IO.File]::WriteAllText($key, $keyText, (New-Object System.Text.UTF8Encoding($false)))
           icacls $key /inheritance:r /grant:r ('{0}:(R)' -f $env:USERNAME) | Out-Null
           $cfgPath = Join-Path $dir 'ssh_config'
           $known = (Join-Path $dir 'known_hosts') -replace '\\','/'
