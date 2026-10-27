@@ -3,85 +3,18 @@ import P5 from 'p5';
 import { MAP_WIDTH, MAP_HEIGHT } from '../data';
 import type { EffectsProps, Landmark } from '../types';
 import { clamp01, eventTiming, seededRandom } from './timing';
+import { FogField } from './fog';
 import './effects.css';
 
 type Leaf = { x: number; y: number; size: number; speed: number; phase: number; direction: number };
 type Mote = { x: number; y: number; phase: number; speed: number; size: number };
 const TAU = Math.PI * 2;
 
-function makeCanvas(width: number, height: number) {
-  const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
-  return canvas;
-}
-
-/** Flat, scalloped cloud silhouettes: deliberately illustrated rather than smoke simulation. */
-function cloudPath(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, flip = 1) {
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.scale(flip, 1);
-  ctx.beginPath();
-  ctx.moveTo(-w * 0.5, h * 0.18);
-  ctx.bezierCurveTo(-w * 0.62, -h * 0.06, -w * 0.35, -h * 0.38, -w * 0.2, -h * 0.23);
-  ctx.bezierCurveTo(-w * 0.19, -h * 0.68, w * 0.13, -h * 0.6, w * 0.16, -h * 0.28);
-  ctx.bezierCurveTo(w * 0.36, -h * 0.56, w * 0.61, -h * 0.25, w * 0.43, -h * 0.04);
-  ctx.bezierCurveTo(w * 0.66, h * 0.02, w * 0.5, h * 0.3, w * 0.26, h * 0.25);
-  ctx.bezierCurveTo(w * 0.09, h * 0.52, -w * 0.25, h * 0.4, -w * 0.5, h * 0.18);
-  ctx.closePath();
-  ctx.restore();
-}
-
-function cloudTexture(seed: number) {
-  const canvas = makeCanvas(1000, 1240);
-  const ctx = canvas.getContext('2d')!;
-  const random = seededRandom(seed);
-  ctx.fillStyle = 'rgba(78,105,88,0.66)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  // The cached three-value palette provides paper-cut depth without a per-pixel noise pass.
-  for (let row = -1; row < 29; row++) {
-    for (let column = -1; column < 14; column++) {
-      const x = column * 85 + (row % 2) * 38 + random() * 32;
-      const y = row * 46 + random() * 24;
-      const width = 105 + random() * 75;
-      const height = 31 + random() * 18;
-      const flip = random() > 0.5 ? 1 : -1;
-      ctx.fillStyle = 'rgba(62,89,77,0.16)';
-      cloudPath(ctx, x + 5, y + 5, width, height, flip); ctx.fill();
-      ctx.fillStyle = random() > 0.45 ? 'rgba(224,222,193,0.32)' : 'rgba(186,203,177,0.25)';
-      cloudPath(ctx, x, y, width, height, flip); ctx.fill();
-      ctx.strokeStyle = 'rgba(244,237,204,0.12)'; ctx.lineWidth = .7; ctx.stroke();
-      if (random() > 0.55) {
-        ctx.strokeStyle = 'rgba(242,235,202,0.2)';
-        ctx.beginPath();
-        ctx.ellipse(x + width * 0.1, y - height * 0.08, width * 0.16, height * 0.22, 0, 0.1, Math.PI * 1.55);
-        ctx.stroke();
-      }
-    }
-  }
-  return canvas;
-}
-
 function landmarkPoint(landmark: Landmark, props: EffectsProps) {
   return {
     x: props.camera.x + landmark.uv.u * MAP_WIDTH * props.camera.scale,
     y: props.camera.y + landmark.uv.v * MAP_HEIGHT * props.camera.scale,
   };
-}
-
-function eraseRegion(ctx: CanvasRenderingContext2D, x: number, y: number, radius: number, strength = 1) {
-  if (radius <= 0 || strength <= 0) return;
-  ctx.save();
-  ctx.globalCompositeOperation = 'destination-out';
-  ctx.translate(x, y);
-  ctx.scale(1, 0.83);
-  const gradient = ctx.createRadialGradient(0, 0, radius * 0.45, 0, 0, radius);
-  gradient.addColorStop(0, `rgba(0,0,0,${strength})`);
-  gradient.addColorStop(0.64, `rgba(0,0,0,${strength * 0.9})`);
-  gradient.addColorStop(1, 'rgba(0,0,0,0)');
-  ctx.fillStyle = gradient;
-  ctx.beginPath(); ctx.arc(0, 0, radius, 0, TAU); ctx.fill();
-  ctx.restore();
 }
 
 function drawLeaf(ctx: CanvasRenderingContext2D, size: number, angle: number, alpha: number) {
@@ -117,10 +50,8 @@ export default function Atmosphere(props: EffectsProps) {
 
   useEffect(() => {
     if (!fogHost.current || !lightHost.current) return;
-    let texture = cloudTexture(current.current.seed ?? 1386);
-    let textureSeed = current.current.seed ?? 1386;
-    const buffer = makeCanvas(1, 1);
-    const random = seededRandom(textureSeed + 17);
+    const fogField = new FogField();
+    const random = seededRandom((current.current.seed ?? 1386) + 17);
     const leaves: Leaf[] = Array.from({ length: 25 }, () => ({ x: random(), y: random(), size: 5 + random() * 8, speed: 0.012 + random() * 0.011, phase: random() * TAU, direction: random() > 0.5 ? 1 : -1 }));
     const motes: Mote[] = Array.from({ length: 52 }, () => ({ x: random(), y: random(), phase: random() * TAU, speed: 0.005 + random() * 0.008, size: 0.7 + random() * 1.6 }));
 
@@ -141,36 +72,9 @@ export default function Atmosphere(props: EffectsProps) {
       p.setup = () => prepare(p, fogHost.current!, 'fog');
       p.draw = () => {
         const config = current.current;
-        const { width, height } = config.viewport;
         const now = config.fixedTime ?? performance.now();
-        const t = config.settings.reducedMotion ? 0 : now / 1000;
         const ctx = p.drawingContext as CanvasRenderingContext2D;
-        p.clear();
-        if ((config.seed ?? 1386) !== textureSeed) { textureSeed = config.seed ?? 1386; texture = cloudTexture(textureSeed); }
-        const resolution = Math.min(config.settings.quality === 'low' ? 0.45 : 0.65, 1250 / Math.max(1, width));
-        const bw = Math.max(1, Math.ceil(width * resolution));
-        const bh = Math.max(1, Math.ceil(height * resolution));
-        if (buffer.width !== bw || buffer.height !== bh) { buffer.width = bw; buffer.height = bh; }
-        const b = buffer.getContext('2d')!;
-        b.setTransform(resolution, 0, 0, resolution, 0, 0);
-        b.clearRect(0, 0, width, height);
-        b.fillStyle = 'rgba(47,75,64,0.10)'; b.fillRect(0, 0, width, height);
-        const driftX = Math.sin(t * 0.075) * 12 * config.camera.scale;
-        const driftY = Math.sin(t * 0.056 + 2) * 6 * config.camera.scale;
-        b.drawImage(texture, config.camera.x + driftX, config.camera.y + driftY, MAP_WIDTH * config.camera.scale, MAP_HEIGHT * config.camera.scale);
-        const timing = eventTiming(config.event, now);
-        for (const landmark of config.landmarks) {
-          if (!config.discoveredIds.includes(landmark.id)) continue;
-          const point = landmarkPoint(landmark, config);
-          const revealing = config.event?.landmarkId === landmark.id && timing.progress < 1;
-          const reveal = revealing ? timing.reveal : 1;
-          const radius = (landmark.isBeacon ? 620 : 515) * config.camera.scale * reveal;
-          eraseRegion(b, point.x, point.y, radius, Math.min(1, reveal * 2));
-        }
-        // The bright beacon stays visible inside the undiscovered world without unlocking it.
-        const beacon = config.landmarks.find(x => x.isBeacon);
-        if (beacon) { const point = landmarkPoint(beacon, config); eraseRegion(b, point.x, point.y, 165 * config.camera.scale, 0.46); }
-        ctx.save(); ctx.setTransform(p.pixelDensity(), 0, 0, p.pixelDensity(), 0, 0); ctx.drawImage(buffer, 0, 0, width, height); ctx.restore();
+        fogField.draw(ctx, config, p.pixelDensity(), now);
       };
     }, fogHost.current);
 
@@ -256,7 +160,7 @@ export default function Atmosphere(props: EffectsProps) {
       };
     }, lightHost.current);
     instances.current = [fog, light];
-    return () => { instances.current = []; readyInstances.current.clear(); fog.remove(); light.remove(); buffer.width = 1; buffer.height = 1; texture.width = 1; texture.height = 1; };
+    return () => { instances.current = []; readyInstances.current.clear(); fog.remove(); light.remove(); fogField.dispose(); };
   }, []);
 
   useEffect(() => {
