@@ -43,6 +43,8 @@ jobs:
           $dir = Join-Path $env:USERPROFILE 'gh-runner'
           New-Item -ItemType Directory -Force -Path $dir | Out-Null
           $key = Join-Path $dir 'deploy_key'
+          # 上一轮把 key 设成了只读，重跑前先恢复写权限，否则 WriteAllText 会 Access denied
+          if (Test-Path $key) { icacls $key /inheritance:r /grant:r ('{0}:(F)' -f $env:USERNAME) | Out-Null }
           # 私钥必须用「LF 换行 + 结尾换行 + 无 BOM」书写，否则 ssh 会报 error in libcrypto
           $keyText = ($env:PI_SSH_KEY -replace ([char]13 + [char]10), [char]10)
           if ($keyText.Length -gt 0 -and $keyText[-1] -ne [char]10) { $keyText += [char]10 }
