@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "id": "liyun-20261028T125837Z-d42554f163",
+  "appCommit": "d42554f163dec8d6fd98f263d8afe5d6e58ad2a6",
+  "current": "/opt/projects/liyun/releases/liyun-20261028T125837Z-d42554f163",
+  "previous": "/opt/projects/liyun/releases/20261027T0656Z",
+  "files": 24,
+  "newDistFiles": 23,
+  "uploadedFiles": 3,
+  "compatibility": {
+    "oldToNew": [
+      "assets/index-BY2Dy2Ra.js"
+    ],
+    "newToOld": [
+      "assets/index-CaGXelMX.js",
+      "favicon.svg"
+    ]
+  },
+  "neighborsUnchanged": true,
+  "servicesAndPIDsUnchanged": true,
+  "nginxConfigChanged": false,
+  "privateConfigTransferred": false,
+  "completedAt": "2026-10-28T13:28:58.006Z",
+  "archiveSHA256": "536b394c2987cc6de2a872f09e640693202dc148e1d680e443f90c42b12633c6",
+  "archiveBytes": 367006
+}

@@ -23,6 +23,13 @@ describe('compass bearing and calibrated map direction', () => {
     expect(readDeviceHeading({...sample,webkitCompassHeading:-1}).bearing).toBeNull();
     expect(readDeviceHeading({absolute:true,alpha:0,beta:90,gamma:0},0).issue).toBe('tilt');
   });
+  it('does not invent a bearing from absolute alpha when the display pose is incomplete', () => {
+    expect(readDeviceHeading({absolute:true,alpha:0,beta:null,gamma:null} as never).bearing).toBeNull();
+    expect(readDeviceHeading({absolute:true,alpha:0,beta:NaN,gamma:20} as never).bearing).toBeNull();
+    expect(readDeviceHeading({absolute:true,alpha:0,beta:null,gamma:null} as never).issue).toBe('tilt');
+    // Safari's own compass heading stays usable without a pose sample.
+    expect(readDeviceHeading({webkitCompassHeading:90,webkitCompassAccuracy:5} as never).bearing).toBe(90);
+  });
   it('projects a tilted landscape display instead of treating alpha as a flat compass', () => {
     // At beta=30/gamma=30 the display's right edge projects east+north,
     // so landscape top is about 73.90 degrees, rather than a flat 90.

@@ -45,7 +45,8 @@ export function readDeviceHeading(event: OrientationSample, screenAngle = 0): Be
     return { bearing:normalizeHeading(event.webkitCompassHeading + correction) };
   }
   if (!(event.absolute === true || event.type === 'deviceorientationabsolute') || !finite(event.alpha)) return { bearing:null, issue:'relative' };
-  const bearing = hasPose ? projectTop(event.alpha, event.beta!, event.gamma!, angle) : normalizeHeading(360 - event.alpha + angle);
+  if (!hasPose) return { bearing:null, issue:'tilt' };
+  const bearing = projectTop(event.alpha, event.beta!, event.gamma!, angle);
   return bearing === null ? { bearing:null, issue:'tilt' } : { bearing };
 }
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import type { HudProps, IconName, PanelId } from '../types';
+import type { AccountUser, HudProps, IconName, PanelId } from '../types';
 import { Icon } from './Icon';
 import { BrandGate, CompassRose, EdgeOrnaments, MenuShape } from './Ornaments';
 import './hud.css';
@@ -43,6 +43,52 @@ function Toggle({ checked, onChange, label, description }: { checked: boolean; o
   return <div className="setting-row"><div><label>{label}</label>{description && <small>{description}</small>}</div><button type="button" className={`ornate-toggle ${checked ? 'is-on' : ''}`} role="switch" aria-checked={checked} aria-label={label} onClick={() => onChange(!checked)}><span/></button></div>;
 }
 
+function EntryGate({ account, loginBusy, loginError, onEnter, onLogin, onGuest, onLogout }: {
+  account: AccountUser | null;
+  loginBusy: boolean;
+  loginError: string | null;
+  onEnter: () => void;
+  onLogin: (nickname: string, studentId: string, password: string) => void;
+  onGuest: () => void;
+  onLogout: () => void;
+}) {
+  const [nickname, setNickname] = useState('');
+  const [studentId, setStudentId] = useState('');
+  const [password, setPassword] = useState('');
+  useEffect(() => setPassword(''), [account]);
+  return <div className="entrance-overlay"><div className="entry-card">
+    <span className="entry-frame" aria-hidden="true"/>
+    <div className="entry-scene" aria-hidden="true">
+      <span className="scene-cloud scene-cloud-1"/><span className="scene-cloud scene-cloud-2"/><span className="scene-cloud scene-cloud-3"/>
+      <svg className="scene-mountains" viewBox="0 0 420 150" preserveAspectRatio="none">
+        <path className="mountain-far" d="M0 150 0 95 55 58 110 98 165 52 225 100 280 62 340 102 385 70 420 96 420 150 Z"/>
+        <path className="mountain-near" d="M0 150 0 116 70 82 132 122 190 88 250 124 305 94 360 126 420 108 420 150 Z"/>
+      </svg>
+      <div className="scene-water"><span className="wave wave-a"/><span className="wave wave-b"/></div>
+    </div>
+    <div className="entry-content">
+      <div className="entry-flourish">◇ <span/> 良乡 · 秋日 <span/> ◇</div>
+      <p>一纸山水，万般理韵</p>
+      {account ? <>
+        <div className="account-chip"><Icon name="people"/><div><strong>{account.nickname}</strong><small>UID {account.uid} · 学号 {account.studentId}</small></div></div>
+        <button className="enter-campus" onClick={onEnter}><span>继续旅程</span><Icon name="star"/></button>
+        <button className="entry-alt" onClick={onLogout} disabled={loginBusy}>退出登录 · 以游客身份进入</button>
+      </> : <>
+        <form className="entry-login" autoComplete="off" onSubmit={e => { e.preventDefault(); if (!loginBusy) { const submitted = password; setPassword(''); onLogin(nickname.trim(), studentId.trim(), submitted); } }}>
+          <label><span>昵称</span><input value={nickname} onChange={e => setNickname(e.target.value)} placeholder="游戏昵称，请勿用真实姓名" required maxLength={24} autoComplete="off" disabled={loginBusy}/></label>
+          <label><span>学号 / ID</span><input value={studentId} onChange={e => setStudentId(e.target.value)} placeholder="可用测试游戏 ID，不作实名核验" required maxLength={32} autoComplete="off" spellCheck={false} disabled={loginBusy}/></label>
+          <label><span>访问口令</span><input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="8–128 个字符，请勿复用学校密码" required minLength={8} maxLength={128} autoComplete="off" spellCheck={false} aria-describedby="entry-account-help" disabled={loginBusy}/></label>
+          <div id="entry-account-help" className="entry-login-help">首次使用该 ID 会创建存档与访问口令；下次须用相同口令。旧版无口令存档请联系管理员核验迁移。口令提交后即清空，不写入本机存档。</div>
+          <button className="enter-campus" type="submit" disabled={loginBusy}><span>{loginBusy ? '登录中…' : '登录并进入'}</span><Icon name="star"/></button>
+        </form>
+        <button className="entry-alt" onClick={() => { setPassword(''); onGuest(); }} disabled={loginBusy}>游客模式 · 进度仅保存在本机</button>
+        {loginError && <p className="entry-error" role="alert">{loginError}</p>}
+      </>}
+      <small>轻触启程 · 开启声音与沉浸体验</small>
+    </div>
+  </div></div>;
+}
+
 function Panels(p: HudProps) {
   const [resetArmed, setResetArmed] = useState(false);
   useEffect(() => setResetArmed(false), [p.activePanel]);
@@ -68,6 +114,17 @@ function Panels(p: HudProps) {
   const common = { onClose: p.onClose };
   switch (p.activePanel) {
     case 'settings': return <Modal title="设置" eyebrow="让旅途自在一些" icon="settings" {...common}>
+      <div className="account-card">
+        {p.account ? <>
+          <span className="account-avatar"><Icon name="people"/></span>
+          <div className="account-meta"><strong>{p.account.nickname}</strong><small>{p.account.studentId} · {p.account.uid}</small></div>
+          <button className="outline-button" onClick={p.onLogout}>退出登录</button>
+        </> : <>
+          <span className="account-avatar"><Icon name="people"/></span>
+          <div className="account-meta"><strong>游客模式</strong><small>进度仅保存在本机</small></div>
+          <button className="outline-button" onClick={p.onLoginPrompt}>登录账号</button>
+        </>}
+      </div>
       <Toggle label="校园配乐" description="与风同行，让旋律伴你漫游" checked={settings.music} onChange={music => p.onSettings({ music })}/>
       <div className="setting-row"><label htmlFor="music-volume">音乐音量</label><div className="range-wrap"><input id="music-volume" type="range" min="0" max="1" step=".05" value={settings.volume} onChange={e => p.onSettings({ volume: +e.target.value })}/><output>{Math.round(settings.volume * 100)}%</output></div></div>
       <div className="setting-row"><label htmlFor="music-track">当前曲目</label><select id="music-track" value={settings.track} onChange={e => p.onSettings({ track: +e.target.value })}><option value="0">校园配乐 · 壹</option><option value="1">校园配乐 · 贰</option><option value="2">校园配乐 · 叁</option></select></div>
@@ -126,11 +183,11 @@ export default function Hud(p: HudProps) {
       <button className="fullscreen-control" onClick={p.onFullscreen} aria-label={p.isFullscreen ? '退出全屏' : '进入全屏'} title={p.isFullscreen ? '退出全屏' : '进入全屏'}><Icon name="fullscreen"/></button>
       <button className="map-compass" onClick={p.onCenter} aria-label="回到当前探索位置"><span>北</span><CompassRose/></button>
       <nav className="utility-nav" aria-label="旅途工具">{([{ id: 'settings', icon: 'settings', title: '设置' }, { id: 'guide', icon: 'compass', title: '探索指引' }, { id: 'collection', icon: 'chest', title: '收集图鉴' }] as const).map(item => <button key={item.id} onClick={() => p.onPanel(item.id)}><span className="utility-disc"><Icon name={item.icon}/>{item.id === 'collection' && <span className="notice-dot"/>}</span><strong>{item.title}</strong></button>)}</nav>
-      <div className="campus-progress" aria-label={`良乡校区，探索度 ${Math.round(p.progress)}%`}><div className="campus-name">良乡校区<span className="campus-seal">寻</span></div><p>探索度 <strong>{Math.round(p.progress)}<span>%</span></strong></p><div className="progress-track"><span style={{ width: `${Math.min(100, p.progress)}%` }}/><i/></div><small>UID: LY06112403</small></div>
+      <div className="campus-progress" aria-label={`良乡校区，探索度 ${Math.round(p.progress)}%`}><div className="campus-name">良乡校区<span className="campus-seal">寻</span></div><p>探索度 <strong>{Math.round(p.progress)}<span>%</span></strong></p><div className="progress-track"><span style={{ width: `${Math.min(100, p.progress)}%` }}/><i/></div><small>{p.account ? `${p.account.nickname} · UID ${p.account.uid}` : '游客 · 本机存档'}</small></div>
       <div className="map-help"><span className="help-diamond">◇</span><span className="desktop-help">拖动地图 · 滚轮缩放</span><span className="touch-help">拖动地图 · 双指缩放</span></div>
     </div>
     {p.entered && <Panels {...p}/>}
     {p.toast && p.entered && <div className="game-toast" role="status"><Icon name="star"/><span>{p.toast}</span></div>}
-    {!p.entered && <div className="entrance-overlay"><div className="entry-card"><div className="entry-flourish">◇ <span/> 良乡 · 秋日 <span/> ◇</div><p>一纸山水，万般理韵</p><button className="enter-campus" onClick={p.onEnter}><span>进入校园</span><Icon name="star"/></button><small>轻触启程 · 开启声音与沉浸体验</small></div></div>}
+    {!p.entered && <EntryGate account={p.account} loginBusy={p.loginBusy} loginError={p.loginError} onEnter={p.onEnter} onLogin={p.onLogin} onGuest={p.onGuest} onLogout={p.onLogout}/>}
   </>;
 }
