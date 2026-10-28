@@ -3,3 +3,4 @@ dist/
 .vite/
 qa/*.mp4
 art-source/
+server/data/
