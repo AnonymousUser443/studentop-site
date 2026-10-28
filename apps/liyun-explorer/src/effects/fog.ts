@@ -24,7 +24,7 @@ const PALETTE = {
 /** Density knobs: `coverage` and `haze` are the two values worth touching. */
 export const FOG_TUNING = {
   coverage: 1,
-  haze: 0.42,
+  haze: 0.48,
   driftWorld: 16,
   breath: 0.065,
   morphSeconds: 15,
@@ -130,8 +130,8 @@ function buildFogTexture(seed: number) {
       const n = field[index];
       const fine = body[index];
 
-      let alpha = smoothstepRange(0.3, 0.56, n);
-      alpha = 0.58 + 0.42 * alpha;
+      let alpha = smoothstepRange(0.24, 0.52, n);
+      alpha = 0.72 + 0.28 * alpha;
       alpha *= 0.8 + 0.2 * smoothstepRange(0.1, 0.9, fine);
 
       // Surface normal approximation from the density gradient: uphill faces catch the light.
@@ -223,8 +223,8 @@ export class FogField {
     const breathA = 1 + (reduced ? 0 : tuning.breath) * Math.sin(t * 0.041);
     const breathB = 1 + (reduced ? 0 : tuning.breath * 1.35) * Math.cos(t * 0.033);
 
-    drawBank(this.textures[0], bankA, bankB, breathA, tuning.coverage * (0.5 + 0.42 * (1 - morph)));
-    drawBank(this.textures[1], bankC, bankD, breathB, tuning.coverage * (0.5 + 0.42 * morph));
+    drawBank(this.textures[0], bankA, bankB, breathA, tuning.coverage * (0.66 + 0.3 * (1 - morph)));
+    drawBank(this.textures[1], bankC, bankD, breathB, tuning.coverage * (0.66 + 0.3 * morph));
     paint.globalAlpha = 1;
 
     // 2. Reveal state, derived from props so QA's fixedTime stays reproducible.
