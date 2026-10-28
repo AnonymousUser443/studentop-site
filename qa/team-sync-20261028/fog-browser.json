@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "upstream": "62ea0f00994061596e3714997f5f1bed7852c805",
+  "upstream": "27f0a4a80ed4d603acc34ce3513d8ab0b278c01e",
   "method": "isolated owned Edge/CDP against existing loopback Vite; genuine canvas pixels and trusted UI; independent renderer fixtures are separate from app state",
   "checks": [
     {
@@ -12,16 +12,18 @@
       "pass": true,
       "detail": {
         "before": {
-          "hash": "4a01a2a4",
-          "alpha": 33218784,
+          "hash": "58b17a2b",
+          "alpha": 27151894,
+          "changedOverOne": 0,
           "width": 2160,
           "height": 1350,
           "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)",
           "known": 1
         },
         "after": {
-          "hash": "85db4b78",
-          "alpha": 33981692,
+          "hash": "ad65e36b",
+          "alpha": 26994371,
+          "changedOverOne": 229714,
           "width": 2160,
           "height": 1350,
           "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)",
@@ -42,71 +44,71 @@
       "pass": true,
       "detail": {
         "initial": {
-          "hash": "1603c4e4",
-          "centerAlpha": 218,
+          "hash": "cfaa5224",
+          "centerAlpha": 207,
           "outsideAlpha": 0
         },
         "repeated": {
-          "hash": "5c3909bd",
-          "centerAlpha": 218,
+          "hash": "62a56dd3",
+          "centerAlpha": 207,
           "outsideAlpha": 0
         },
         "later": {
-          "hash": "53bedf7",
-          "centerAlpha": 217,
+          "hash": "5b99ca81",
+          "centerAlpha": 185,
           "outsideAlpha": 0
         },
         "r1": {
-          "hash": "30f5bd50",
-          "centerAlpha": 215,
+          "hash": "8781143e",
+          "centerAlpha": 209,
           "outsideAlpha": 0
         },
         "r2": {
-          "hash": "30f5bd50",
-          "centerAlpha": 215,
+          "hash": "8781143e",
+          "centerAlpha": 209,
           "outsideAlpha": 0
         },
         "before": {
-          "hash": "30f5bd50",
-          "centerAlpha": 215,
+          "hash": "8781143e",
+          "centerAlpha": 209,
           "outsideAlpha": 0
         },
         "after": {
-          "hash": "cb01d1a",
+          "hash": "ba3015db",
           "centerAlpha": 18,
           "outsideAlpha": 0
         },
         "movedImage": {
-          "hash": "8ba3a66c",
+          "hash": "52d4c8e0",
           "centerAlpha": 18,
           "outsideAlpha": 0
         },
         "highDpr": {
-          "hash": "2b5c8ee9",
+          "hash": "b0f73ad5",
           "centerAlpha": 18,
           "outsideAlpha": 0
         },
         "low": {
-          "hash": "c787d0f6",
+          "hash": "dda0b61e",
           "centerAlpha": 18,
           "outsideAlpha": 0
         },
         "restored": {
-          "hash": "5c3909bd",
-          "centerAlpha": 218,
+          "hash": "62a56dd3",
+          "centerAlpha": 207,
           "outsideAlpha": 0
         },
-        "coldMs": 277.2999999821186,
+        "coldMs": 342.40000000596046,
         "repeatDifference": {
           "max": 1,
-          "mean": 0.0017060185185185186,
-          "changed": 2211,
+          "mean": 0.0007322530864197531,
+          "changed": 949,
           "channels": 1296000
         },
         "recreateDifference": {
           "max": 1,
-          "mean": 0.0017060185185185186,
-          "changed": 2211,
+          "mean": 0.0007322530864197531,
+          "changed": 949,
           "channels": 1296000
         }
       }

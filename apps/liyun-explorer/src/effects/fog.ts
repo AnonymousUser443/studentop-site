@@ -1,21 +1,21 @@
 import { MAP_HEIGHT, MAP_WIDTH } from '../data';
 import type { EffectsProps, Landmark } from '../types';
-import { clamp01, eventTiming } from './timing';
+import { clamp01, eventTiming, seededRandom } from './timing';
 
 /**
  * Campus fog field.
  *
- * Replaces the old "one cloud silhouette stamped on an 85×46 grid" texture with
- * two fBm noise maps that are composited, drift, and are erased per landmark.
- * Everything is computed from the props (camera / discoveredIds / event), so a
- * fixed `fixedTime` still produces a reproducible frame for the QA scripts.
+ * Volumetric-looking mist built from a few dozen feathered "puff" sprites that
+ * drift, breathe and overlap. A thin flat haze underneath keeps the sheet
+ * coherent. Everything is derived from the props (camera / discoveredIds /
+ * event), so a fixed `fixedTime` still produces a reproducible frame.
  */
 
 const TAU = Math.PI * 2;
 
 const PALETTE = {
-  edge: [188, 203, 188],
-  core: [247, 250, 239],
+  edge: [198, 211, 200],
+  core: [250, 252, 246],
   deep: [92, 116, 100],
   warm: [255, 220, 165],
   rim: [240, 245, 235],
@@ -24,18 +24,19 @@ const PALETTE = {
 /** Density knobs: `coverage` and `haze` are the two values worth touching. */
 export const FOG_TUNING = {
   coverage: 1,
-  haze: 0.42,
-  driftWorld: 16,
-  breath: 0.065,
-  morphSeconds: 15,
-  wisps: 24,
-  rays: 0.62,
-  raysCount: 6,
-  grainWidth: 640,
-  grainHeight: 793,
+  haze: 0.36,
+  puffCount: 240,
+  puffDriftX: 78,
+  puffDriftY: 58,
+  puffSpeed: 34,
+  puffMinRadius: 220,
+  puffMaxRadius: 520,
   revealRadius: 560,
   beaconRadius: 780,
   beaconPeek: 200,
+  rays: 0.62,
+  raysCount: 6,
+  wisps: 24,
 };
 
 const rgba = (color: readonly number[], alpha: number) =>
@@ -90,81 +91,97 @@ function fbm(table: Float32Array, x: number, y: number, octaves: number) {
   return sum / norm;
 }
 
-/** One fog map: billowing banks with baked-in relief (lit tops, shaded undersides). */
-function buildFogTexture(seed: number) {
-  const width = FOG_TUNING.grainWidth;
-  const height = FOG_TUNING.grainHeight;
+const PUFF_SIZE = 256;
+
+/**
+ * One soft cloud puff: a very feathered radial falloff, nibbled by noise so the
+ * silhouette is lumpy instead of circular, with a touch of top light.
+ */
+function buildPuff(seed: number) {
+  const size = PUFF_SIZE;
   const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
+  canvas.width = size;
+  canvas.height = size;
   const ctx = canvas.getContext('2d')!;
-  const image = ctx.createImageData(width, height);
+  const image = ctx.createImageData(size, size);
   const data = image.data;
   const table = makeTable(seed);
-  const [edgeR, edgeG, edgeB] = PALETTE.edge;
   const [coreR, coreG, coreB] = PALETTE.core;
-  const [deepR, deepG, deepB] = PALETTE.deep;
+  const [edgeR, edgeG, edgeB] = PALETTE.edge;
+  const half = size / 2;
 
-  // First pass: the density field, kept around so the shading pass can read neighbours.
-  const field = new Float32Array(width * height);
-  const body = new Float32Array(width * height);
-  for (let y = 0; y < height; y++) {
-    const v = y / height;
-    for (let x = 0; x < width; x++) {
-      const u = x / width;
-      // Billowing banks: a wide base shape, a mid band that breaks the silhouette, fine wisps.
-      const big = fbm(table, u * 1.3, v * 1.3, 5);
-      const mid = fbm(table, u * 3.7 + 13.7, v * 3.7 + 5.3, 4);
-      const fine = fbm(table, u * 9.6 + 41.1, v * 9.6 + 7.7, 3);
-      const raw = big * 0.56 + mid * 0.3 + fine * 0.14;
-      const index = y * width + x;
-      field[index] = clamp01((raw - 0.5) * 3.1 + 0.5);
-      body[index] = fine;
-    }
-  }
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      const dx = (x - half) / half;
+      const dy = (y - half) / half;
+      const d = Math.sqrt(dx * dx + dy * dy);
 
-  // Second pass: alpha from the field, colour from a light coming in from the upper left.
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-      const index = y * width + x;
-      const n = field[index];
-      const fine = body[index];
+      // Angular noise breaks the circle; radial noise adds wisps toward the rim.
+      const angle = Math.atan2(dy, dx);
+      const ring = fbm(table, Math.cos(angle) * 1.6 + 5.2, Math.sin(angle) * 1.6 + 8.4, 3);
+      const wisps = fbm(table, x / size * 3.4 + 2.1, y / size * 3.4 + 6.3, 4);
+      const rim = 0.88 + 0.24 * (ring - 0.5) + 0.16 * (wisps - 0.5);
+      const outer = Math.max(0, 1 - d / rim);
 
-      let alpha = smoothstepRange(0.3, 0.56, n);
-      alpha = 0.58 + 0.42 * alpha;
-      alpha *= 0.8 + 0.2 * smoothstepRange(0.1, 0.9, fine);
+      // Squared falloff reads as volume: dense core, long feathered edge.
+      let alpha = Math.pow(clamp01(outer), 1.35);
+      alpha *= 0.86 + 0.14 * smoothstepRange(0.2, 0.8, wisps);
 
-      // Surface normal approximation from the density gradient: uphill faces catch the light.
-      const nx = field[y * width + Math.min(width - 1, x + 2)];
-      const ny = field[Math.min(height - 1, y + 2) * width + x];
-      const lit = clamp01(0.52 + (n - (nx * 0.55 + ny * 0.45)) * 11);
-
-      // Thin wisps go slightly inky so the silhouette stays readable against the parchment map.
-      const rimInk = (1 - smoothstepRange(0.02, 0.26, alpha)) * 0.5;
-      const tone = smoothstepRange(0.12, 0.94, lit);
-
-      const index4 = index * 4;
-      data[index4] = lerp(lerp(deepR, coreR, tone), deepR, rimInk * 0.7);
-      data[index4 + 1] = lerp(lerp(deepG, coreG, tone), deepG, rimInk * 0.7);
-      data[index4 + 2] = lerp(lerp(deepB, coreB, tone), deepB, rimInk * 0.7);
-      data[index4 + 3] = Math.round(clamp01(alpha) * 255);
+      // Light from above: tops sit a touch brighter than the underside.
+      const lit = clamp01(0.62 - dy * 0.3 + (wisps - 0.5) * 0.3);
+      const index = (y * size + x) * 4;
+      data[index] = lerp(edgeR, coreR, lit);
+      data[index + 1] = lerp(edgeG, coreG, lit);
+      data[index + 2] = lerp(edgeB, coreB, lit);
+      data[index + 3] = Math.round(clamp01(alpha) * 255);
     }
   }
   ctx.putImageData(image, 0, 0);
   return canvas;
 }
 
+type Puff = {
+  x: number;
+  y: number;
+  radius: number;
+  alpha: number;
+  phase: number;
+  speed: number;
+  driftX: number;
+  driftY: number;
+  pulse: number;
+  variant: number;
+};
+
 type Reveal = { landmark: Landmark; progress: number; x: number; y: number };
 
 export class FogField {
-  private textures: HTMLCanvasElement[] = [];
+  private sprites: HTMLCanvasElement[] = [];
+  private puffs: Puff[] = [];
   private seed = Number.NaN;
   private buffer = document.createElement('canvas');
 
   private ensure(seed: number) {
-    if (this.textures.length === 2 && this.seed === seed) return;
+    if (this.seed === seed && this.sprites.length) return;
     this.seed = seed;
-    this.textures = [buildFogTexture(seed * 7 + 1337), buildFogTexture(seed * 11 + 9871)];
+    this.sprites = [buildPuff(seed * 3 + 11), buildPuff(seed * 5 + 29), buildPuff(seed * 7 + 47)];
+    const random = seededRandom(seed * 13 + 5);
+    const tuning = FOG_TUNING;
+    this.puffs = Array.from({ length: tuning.puffCount }, () => {
+      const radius = tuning.puffMinRadius + random() * (tuning.puffMaxRadius - tuning.puffMinRadius);
+      return {
+        x: random() * MAP_WIDTH,
+        y: random() * MAP_HEIGHT,
+        radius,
+        alpha: 0.7 + random() * 0.28,
+        phase: random() * TAU,
+        speed: 0.35 + random() * 0.55,
+        driftX: (random() - 0.5) * 2 * tuning.puffDriftX,
+        driftY: (random() - 0.5) * 2 * tuning.puffDriftY,
+        pulse: 0.05 + random() * 0.07,
+        variant: Math.floor(random() * 3),
+      };
+    });
   }
 
   draw(ctx: CanvasRenderingContext2D, props: EffectsProps, pixelDensity: number, now: number) {
@@ -177,8 +194,7 @@ export class FogField {
     const reduced = props.settings.reducedMotion;
     const t = reduced ? 0 : now / 1000;
 
-    // Offscreen at ~0.72x: the fog is soft anyway and this keeps 1920 wide cheap.
-    const resolution = Math.min(props.settings.quality === 'low' ? 0.5 : 0.72, 1400 / Math.max(1, width), 1);
+    const resolution = Math.min(props.settings.quality === 'low' ? 0.42 : 0.58, 1200 / Math.max(1, width), 1);
     const bufferWidth = Math.max(1, Math.ceil(width * resolution));
     const bufferHeight = Math.max(1, Math.ceil(height * resolution));
     if (this.buffer.width !== bufferWidth || this.buffer.height !== bufferHeight) {
@@ -189,7 +205,8 @@ export class FogField {
     paint.setTransform(1, 0, 0, 1, 0, 0);
     paint.clearRect(0, 0, bufferWidth, bufferHeight);
 
-    // 1. Fog body: a flat haze plus two noise fields that slowly melt into each other.
+    // 1. Mist body: a whisper-thin haze so the gaps are never fully clear,
+    //    then the puff banks on top.
     paint.setTransform(
       resolution * camera.scale,
       0,
@@ -201,30 +218,30 @@ export class FogField {
     paint.fillStyle = rgba(PALETTE.edge, tuning.haze * tuning.coverage);
     paint.fillRect(-2, -2, MAP_WIDTH + 4, MAP_HEIGHT + 4);
 
-    const drift = reduced ? 0 : tuning.driftWorld;
-    // 0..1 over `morphSeconds`: the two banks trade off, so the silhouettes keep reshaping
-    // instead of the whole sheet sliding. This is the "churning" read at rest.
-    const morph = reduced ? 0.5 : 0.5 + 0.5 * Math.sin((t / tuning.morphSeconds) * TAU);
+    paint.setTransform(1, 0, 0, 1, 0, 0);
+    paint.scale(resolution, resolution);
+    paint.translate(camera.x, camera.y);
+    paint.scale(camera.scale, camera.scale);
 
-    const drawBank = (texture: HTMLCanvasElement, offsetX: number, offsetY: number, scale: number, alpha: number) => {
-      paint.save();
-      paint.translate(MAP_WIDTH / 2, MAP_HEIGHT / 2);
-      paint.scale(scale, scale);
-      paint.translate(-MAP_WIDTH / 2 + offsetX, -MAP_HEIGHT / 2 + offsetY);
-      paint.globalAlpha = alpha;
-      paint.drawImage(texture, -40, -40, MAP_WIDTH + 80, MAP_HEIGHT + 80);
-      paint.restore();
-    };
+    const margin = 240;
+    for (const puff of this.puffs) {
+      const wobbleX = Math.sin(t * puff.speed * 0.31 + puff.phase) * puff.driftX;
+      const wobbleY = Math.cos(t * puff.speed * 0.27 + puff.phase * 1.7) * puff.driftY;
+      const x = puff.x + wobbleX;
+      const y = puff.y + wobbleY;
+      const radius = puff.radius * (1 + puff.pulse * Math.sin(t * puff.speed * 0.45 + puff.phase * 2.1));
+      const alpha = puff.alpha * (0.82 + 0.18 * Math.sin(t * puff.speed * 0.37 + puff.phase));
 
-    const bankA = Math.sin(t * 0.083) * drift;
-    const bankB = Math.cos(t * 0.061) * drift * 0.75;
-    const bankC = -Math.cos(t * 0.047) * drift * 1.25;
-    const bankD = Math.sin(t * 0.039) * drift * 1.05;
-    const breathA = 1 + (reduced ? 0 : tuning.breath) * Math.sin(t * 0.041);
-    const breathB = 1 + (reduced ? 0 : tuning.breath * 1.35) * Math.cos(t * 0.033);
+      // Cull against the viewport in screen space before drawing the sprite.
+      const screenX = (camera.x + x * camera.scale) * resolution;
+      const screenY = (camera.y + y * camera.scale) * resolution;
+      const screenR = radius * camera.scale * resolution;
+      if (screenX + screenR < -margin || screenX - screenR > bufferWidth + margin) continue;
+      if (screenY + screenR < -margin || screenY - screenR > bufferHeight + margin) continue;
 
-    drawBank(this.textures[0], bankA, bankB, breathA, tuning.coverage * (0.5 + 0.42 * (1 - morph)));
-    drawBank(this.textures[1], bankC, bankD, breathB, tuning.coverage * (0.5 + 0.42 * morph));
+      paint.globalAlpha = clamp01(alpha * tuning.coverage);
+      paint.drawImage(this.sprites[puff.variant], x - radius, y - radius, radius * 2, radius * 2);
+    }
     paint.globalAlpha = 1;
 
     // 2. Reveal state, derived from props so QA's fixedTime stays reproducible.
@@ -270,7 +287,7 @@ export class FogField {
       paint.translate(camera.x + beacon.uv.u * MAP_WIDTH * camera.scale, camera.y + beacon.uv.v * MAP_HEIGHT * camera.scale);
       paint.scale(1, 0.88);
       const gradient = paint.createRadialGradient(0, 0, radius * 0.4, 0, 0, radius);
-      gradient.addColorStop(0, 'rgba(0,0,0,0.75)');
+      gradient.addColorStop(0, 'rgba(0,0,0,0.7)');
       gradient.addColorStop(1, 'rgba(0,0,0,0)');
       paint.fillStyle = gradient;
       paint.beginPath();
@@ -305,7 +322,7 @@ export class FogField {
 
     paint.globalCompositeOperation = 'source-over';
 
-    // 6. Present. Clearing the whole backing store keeps pixelDensity changes clean.
+    // 6. Present.
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.save();
@@ -397,7 +414,6 @@ export class FogField {
     if (alpha <= 0.002) return;
     const { x, y } = reveal;
 
-    // Warm halo. Plain compositing (not `lighter`) because the fog is nearly white.
     const halo = paint.createRadialGradient(x, y, 0, x, y, radius * 1.2);
     halo.addColorStop(0, rgba(PALETTE.warm, alpha * 0.55));
     halo.addColorStop(0.45, rgba(PALETTE.warm, alpha * 0.22));
@@ -437,7 +453,8 @@ export class FogField {
   }
 
   dispose() {
-    this.textures = [];
+    this.sprites = [];
+    this.puffs = [];
     this.seed = Number.NaN;
     this.buffer.width = 1;
     this.buffer.height = 1;
