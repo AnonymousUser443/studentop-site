@@ -6,10 +6,13 @@ import './hud.css';
 
 const NAV: { id: PanelId; title: string; subtitle: string; icon: IconName; notice?: boolean }[] = [
   { id: 'main', title: '校园主线', subtitle: '探寻北理的昨日与今朝', icon: 'book' },
-  { id: 'season', title: '时令纪事', subtitle: '四时流转 · 校园风物', icon: 'flower', notice: true },
-  { id: 'festival', title: '霜降雅集', subtitle: '限时活动 · 秋意同游', icon: 'leaf', notice: true },
-  { id: 'stories', title: '校园异闻录', subtitle: '未知的故事与相遇', icon: 'scroll' },
-  { id: 'party', title: '多人同行', subtitle: '与同学一起探索', icon: 'people' }
+  { id: 'events', title: '活动', subtitle: '限时活动 · 与友同行', icon: 'leaf', notice: true }
+];
+
+type EventId = 'festival' | 'party';
+const EVENTS: { id: EventId; title: string; subtitle: string; tag: string; status: string; icon: IconName; tone: EventId }[] = [
+  { id: 'festival', title: '霜降雅集', subtitle: '限时活动 · 秋意同游', tag: '限时', status: '10月24日 — 11月7日', icon: 'leaf', tone: 'festival' },
+  { id: 'party', title: '多人同行', subtitle: '同游有伴 · 山水有期', tag: '筹备中', status: '即将开启', icon: 'people', tone: 'party' }
 ];
 
 /**
@@ -51,7 +54,8 @@ function Toggle({ checked, onChange, label, description }: { checked: boolean; o
 
 function Panels(p: HudProps) {
   const [resetArmed, setResetArmed] = useState(false);
-  useEffect(() => setResetArmed(false), [p.activePanel]);
+  const [eventId, setEventId] = useState<EventId>('festival');
+  useEffect(() => { setResetArmed(false); setEventId('festival'); }, [p.activePanel]);
   const settings = p.state.settings;
   if (p.selected) {
     const item = p.selected;
@@ -100,14 +104,41 @@ function Panels(p: HudProps) {
     case 'main': return <Modal title="校园主线" eyebrow="第一卷 · 初见良乡" icon="book" {...common}>
       <div className="chapter-art"><Icon name="gate"/><span>循光入境</span></div><p className="landmark-verse">校园的故事，从你的第一步开始。</p><p className="landmark-description">从文萃楼出发，跟随探索信标，点亮北湖、图书馆与更多熟悉的校园地标。</p><div className="chapter-progress"><span>校园探索</span><strong>{Math.round(p.progress)}%</strong><progress value={p.progress} max="100"/></div><button className="parchment-button" onClick={() => p.onSelect('tower')}>追寻金色信标<Icon name="tower"/></button>
     </Modal>;
+    case 'events': {
+      const current = EVENTS.find(item => item.id === eventId) ?? EVENTS[0];
+      return <Modal title="活动" eyebrow="新章待启 · 共赴良乡" icon="leaf" {...common} className="events-modal">
+        <div className="events-layout">
+          <aside className="events-list" aria-label="活动列表">
+            {EVENTS.map(item => (
+              <button key={item.id} className={`event-entry ${item.tone} ${item.id === current.id ? 'is-active' : ''}`} onClick={() => setEventId(item.id)} aria-pressed={item.id === current.id}>
+                <span className="event-medallion"><Icon name={item.icon}/></span>
+                <span className="event-copy"><strong>{item.title}</strong><small>{item.subtitle}</small></span>
+                <span className="event-tag">{item.tag}</span>
+              </button>
+            ))}
+            <p className="event-list-foot">◇ 更多篇章 · 敬请期待 ◇</p>
+          </aside>
+          <div className={`event-hero ${current.tone}`}>
+            {current.id === 'festival' ? <>
+              <div className="event-art"><Icon name="leaf"/><span>一叶知秋</span><Icon name="leaf"/></div>
+              <p className="landmark-verse">把校园的秋，收进你的行囊。</p>
+              <p className="landmark-description">银杏渐黄，湖风微凉。沿着校园地图漫游，在熟悉的转角遇见这一季的风物。</p>
+              <div className="festival-date"><span>霜降 · 校园同游</span><strong>10月24日 — 11月7日</strong></div>
+              <button className="parchment-button" onClick={() => p.onPanel('festival')}>进入活动<Icon name="leaf"/></button>
+            </> : <>
+              <div className="event-art"><span className="event-portraits"><Icon name="people"/><Icon name="star"/><Icon name="flower"/><Icon name="leaf"/></span></div>
+              <p className="landmark-verse">下一程，约上同行的人。</p>
+              <p className="landmark-description">组队探索与合作玩法即将启程。当前地图可独自漫游，顶部同行人数为界面演示数据。</p>
+              <div className="festival-date"><span>同游有伴 · 山水有期</span><strong>即将开启</strong></div>
+              <button className="parchment-button" onClick={() => p.onPanel('party')}>进入活动<Icon name="people"/></button>
+            </>}
+            <p className="panel-footnote">活动奖励与日程以游戏内公告为准</p>
+          </div>
+        </div>
+      </Modal>;
+    }
     case 'festival': return <Modal title="霜降雅集" eyebrow="时令篇章 · 秋意同游" icon="leaf" {...common} className="festival-modal">
       <div className="festival-illustration"><Icon name="leaf"/><span>一叶知秋</span><Icon name="leaf"/></div><p className="landmark-verse">把校园的秋，收进你的行囊。</p><p className="landmark-description">银杏渐黄，湖风微凉。沿着校园地图漫游，在熟悉的转角遇见这一季的风物。</p><div className="festival-date"><span>霜降 · 校园同游</span><strong>10月24日 — 11月7日</strong></div><button className="parchment-button" onClick={() => p.onSelect('beihu')}>去北湖赏秋<Icon name="leaf"/></button><p className="panel-footnote">当前为秋日活动主题展示</p>
-    </Modal>;
-    case 'season': return <Modal title="时令纪事" eyebrow="四时流转 · 校园风物" icon="flower" {...common}>
-      <div className="season-poem"><span>秋</span><p>风从湖上来<br/>叶落在书页间</p></div><p className="landmark-description">校园的四季各有回响。这一程，先把目光交给金黄的树梢与澄澈的湖水。</p><button className="parchment-button" onClick={() => p.onSelect('beihu')}>寻访秋日湖光<Icon name="lake"/></button>
-    </Modal>;
-    case 'stories': return <Modal title="校园异闻录" eyebrow="未知的故事与相遇" icon="scroll" {...common}>
-      <div className="chapter-art"><Icon name="scroll"/><span>待君续写</span></div><p className="landmark-verse">每条熟悉的路，都藏着未读的故事。</p><p className="landmark-description">校园叙事篇章正在筹备。此刻，先去图书馆点亮一页属于你的探索记忆。</p><button className="parchment-button" onClick={() => p.onSelect('library')}>寻访书海<Icon name="book"/></button>
     </Modal>;
     case 'party': return <Modal title="多人同行" eyebrow="同游有伴 · 山水有期" icon="people" {...common}>
       <div className="companion-portraits"><span><Icon name="people"/></span><span><Icon name="star"/></span><span><Icon name="flower"/></span><span><Icon name="leaf"/></span></div><p className="landmark-verse">下一程，约上同行的人。</p><p className="landmark-description">组队探索与合作玩法即将启程。当前地图可独自漫游，顶部同行人数为界面演示数据。</p><button className="parchment-button" onClick={p.onClose}>继续我的旅程<Icon name="compass"/></button>
@@ -131,8 +162,8 @@ export default function Hud(p: HudProps) {
         <span className="brand-seal">理<br/>韵</span>
       </div>
       <nav className="story-nav" aria-label="探索篇章"><span className="nav-timeline"/>{NAV.map(item => {
-        const active = p.activePanel === item.id || (!p.activePanel && item.id === 'main'); const variant = item.id === 'festival' ? 'gold' : active ? 'light' : 'dark';
-        return <button key={item.id} className={`story-button ${variant} ${active ? 'is-active' : ''}`} onClick={() => p.onPanel(item.id)} aria-pressed={active}><MenuShape variant={variant}/><span className="nav-medallion"><Icon name={item.icon}/></span><span className="nav-copy"><strong>{item.title}</strong><small>{item.subtitle}</small></span>{item.id === 'festival' && <Icon name="leaf" className="festival-leaf"/>}{item.notice && <span className="notice-dot"/>}</button>;
+        const active = p.activePanel === item.id || (!p.activePanel && item.id === 'main'); const variant = item.id === 'events' && !active ? 'gold' : active ? 'light' : 'dark';
+        return <button key={item.id} className={`story-button ${variant} ${active ? 'is-active' : ''}`} onClick={() => p.onPanel(item.id)} aria-pressed={active}><MenuShape variant={variant}/><span className="nav-medallion"><Icon name={item.icon}/></span><span className="nav-copy"><strong>{item.title}</strong><small>{item.subtitle}</small></span>{item.id === 'events' && <Icon name="leaf" className="festival-leaf"/>}{item.notice && <span className="notice-dot"/>}</button>;
       })}</nav>
       <div className="resource-bar" aria-label="旅途状态">
         <button className="resource-pill" onClick={() => p.onPanel('collection')} aria-label={`收录 ${p.collected}/36，打开图鉴`}><Icon name="book"/><span className="resource-label">收录</span><strong>{p.collected}<span>/36</span></strong></button>
