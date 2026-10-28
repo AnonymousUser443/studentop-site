@@ -1,50 +1,38 @@
 # 理韵寻踪 · 账号 API 部署说明
 
-为「理韵寻踪」新增的可选后端：账号 + 打卡/进度持久化。前端保持纯静态，仅在能连上 `/api` 时启用账号；未部署本服务时前端自动退化为游客模式（localStorage），与改动前行为一致，因此本服务**可灰度、可后装**。
+[账号契约](<../../apps/liyun-explorer/docs/ACCOUNT.md>)与[服务端说明](<../../apps/liyun-explorer/server/README.md>)为实现依据。部署/SSH/服务/测试仅由 Lead 执行；本文不是已部署或测试通过的证据。
 
-设计契约见 [`apps/liyun-explorer/docs/ACCOUNT.md`](../../apps/liyun-explorer/docs/ACCOUNT.md)，服务端见 [`apps/liyun-explorer/server/`](../../apps/liyun-explorer/server/)。
+## 独立服务与私库
 
-## 1. 服务端程序放哪
+Node 24 内置 SQLite，无 npm 服务端依赖。独立服务用户 liyun-account，私有目录 /var/lib/liyun-account，0700、umask 0077；数据、WAL、备份均不得进入仓库或静态 webroot。
 
-复用既有 Node 24（`/opt/node24/bin/node`）与 liyun 目录布局。把 `server/` 目录随源码部署到树莓派（可与 dist 一起进 release，或单独放到 `/opt/projects/liyun/account/`）：
+生产程序至少包含[入口](<../../apps/liyun-explorer/server/server.mjs>)、[存储](<../../apps/liyun-explorer/server/store.mjs>)、[进度白名单](<../../apps/liyun-explorer/server/progress.mjs>)；离线[旧账号迁移工具](<../../apps/liyun-explorer/server/migrate-legacy.mjs>)只供管理员按需使用，不挂 HTTP。服务器不要使用静态站点目录提供这些源码。
 
-```sh
-# 假设服务端源码放在 release 内（与 dist 同版本发布）
-ls /opt/projects/liyun/current/server/
-# store.mjs  server.mjs  README.md
-```
+独立 release 的 current 软链可用于 WorkingDirectory/绝对入口；入口用 canonical realpath 判断，不会因软链跳过 listen。
 
-数据目录独立于 webroot，避免误删：
+## systemd 关键配置示例
 
-```sh
-sudo -n install -d -m 0700 -o liyun -g liyun /var/lib/liyun-account
-```
-
-## 2. systemd 单元（`/etc/systemd/system/liyun-account.service`）
-
-参考 `deploy/nginx/frost-atlas.service.txt` 的加固项；最小可用版本如下：
+由 Lead 合入部署脚本并检查既有环境，不直接覆盖不相关服务：
 
 ```ini
 [Unit]
-Description=Liyun account API (SQLite)
+Description=Liyun account API
 After=network.target
-StartLimitIntervalSec=0
 
 [Service]
 Type=simple
-User=liyun
-Group=liyun
-WorkingDirectory=/opt/projects/liyun/current
-ExecStart=/opt/node24/bin/node server/server.mjs
+User=liyun-account
+Group=liyun-account
+WorkingDirectory=/opt/projects/liyun-api/current
+ExecStart=/opt/node24/bin/node server.mjs
 Environment=NODE_ENV=production
 Environment=LIYUN_API_HOST=127.0.0.1
 Environment=LIYUN_API_PORT=8787
 Environment=LIYUN_DATA_DIR=/var/lib/liyun-account
-Restart=always
+Environment=LIYUN_PUBLIC_ORIGIN=https://liyun.studentop.cn:14355
+Restart=on-failure
 RestartSec=3
-TimeoutStopSec=10
 UMask=0077
-
 NoNewPrivileges=true
 PrivateTmp=true
 PrivateDevices=true
@@ -59,41 +47,37 @@ AmbientCapabilities=
 WantedBy=multi-user.target
 ```
 
-启用：
+LIYUN_PUBLIC_ORIGIN 必须是浏览器实际使用的精确 HTTPS origin，包含 14355，不含路径/尾斜杠；缺失、HTTP 或非法值会启动失败，不能为了“修通”删除该保护。
 
-```sh
-sudo -n systemctl daemon-reload
-sudo -n systemctl enable --now liyun-account
-sudo -n systemctl status liyun-account
-curl -s http://127.0.0.1:8787/api/health   # {"ok":true}
-```
+## nginx 同源反代
 
-> 用户/组 `liyun` 若不存在先 `useradd -r -s /usr/sbin/nologin liyun`；`ReadWritePaths` 若导致 SQLite WAL 启动失败，先退回最小可用集合并记录原因（同 frost 部署报告的做法）。
-
-## 3. nginx 反代（在 liyun.studentop.cn 的 server{} 内追加）
-
-静态站点仍在 `location / { try_files $uri $uri/ =404; }`，只把 `/api/` 反代到本机 Node：
+只在理韵 HTTPS 虚拟主机中追加 /api/ 反代，保留现有静态缓存、安全头及其他站点。不要把主站 desktop-auth 或其他应用 API 混用，也不要启用通配 CORS：
 
 ```nginx
 location /api/ {
     proxy_pass http://127.0.0.1:8787;
     proxy_http_version 1.1;
-    proxy_set_header Host $host;
+    proxy_set_header Host $http_host;
+    proxy_set_header Origin $http_origin;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_read_timeout 30s;
+    client_max_body_size 256k;
+    proxy_cache off;
 }
 ```
 
-改完 `nginx -t && systemctl reload nginx`。公网自检：
+应用不信任 X-Forwarded-For 作为身份/限流键；主要按 ID 哈希限制 5 次失败/5分钟。代理 socket 600次失败/5分钟只作高阈值防滥用，frp/nginx 回环来源共享，不能设置30次/IP这样的低阈值串锁正常用户。
 
-```sh
-curl -s https://liyun.studentop.cn:14355/api/health   # {"ok":true}
-```
+修改请求须有匹配的 Origin。运维合成请求若要 POST/PUT，显式加该 Origin；不要因此豁免公网请求的 Origin 校验。health 可从回环 GET 检查且不读取私密配置。
 
-## 4. 上线注意
+## 上线与回滚门禁
 
-- 数据目录与 webroot 分离，`0700`，仅服务进程可读写；**不要把 `server/data/` 提交进仓库**（已在 `.gitignore` 排除）。
-- 本服务是无密码登录（学号即身份），见设计文档的取舍说明；上线前建议在 nginx 侧加简单限流（当前后端未内置限流）。
-- 前端静态包无需改 `base`、无需 SPA fallback，`/api` 反代是唯一需要的 nginx 变更。
+1. 负责人先在隔离临时库运行存储/HTTP/客户端回归及构建，再验证真实浏览器正常注册/错误口令不改档/游客/位置隐私。只用合成账号、合成位置，不输出真实口令或原始坐标。
+2. 先创建独立私有目录/服务，检查回环 health、同源正确 Origin 与错误 Origin 行为，再切前端。不要借机重启其他服务。
+3. 若检测到旧 schema1 库，升级自动锁定旧账号并撤销旧令牌；无密码账户不可公开首登认领。按[受控迁移](<../../apps/liyun-explorer/docs/ACCOUNT.md#旧账号的受控迁移>)停服备份、线下核验并用本机隐藏输入工具迁移。无旧库时直接 schema2。
+4. v1旧演示进度只迁移设置，不补发 GPS 打卡；v2进度保留白名单。旧快照清洗不等于历史备份/WAL物理擦除，备份依私有保留策略处理。
+5. 不允许回滚到无口令后端，或把 schema2 降级成 schema1。回滚需保留新安全后端与私库，或先关闭账号能力让用户用游客；静态前端不能绕过后端身份校验。
+
+会话仍为随机高熵 Bearer、服务端哈希与30天到期。昵称/ID/地标记录属于私有用户数据，数据库不能上传公开 QA 或仓库。此轻量方案不提供学校身份认证、密码找回或防作弊证明。

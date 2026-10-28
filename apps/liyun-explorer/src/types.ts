@@ -1,13 +1,27 @@
+import type { CampusReading } from './location/geolocation';
+import type { CheckInEligibility } from './location/checkIn';
 export type UV = { u: number; v: number };
 export type MapCamera = { scale: number; x: number; y: number };
 export type Viewport = { width: number; height: number };
 export type IconName = 'book' | 'flower' | 'leaf' | 'scroll' | 'people' | 'settings' | 'compass' | 'chest' | 'lake' | 'gate' | 'sport' | 'star' | 'lock' | 'moon' | 'tower' | 'close' | 'sound' | 'fullscreen' | 'plus';
-export type Landmark = { id: string; name: string; subtitle: string; uv: UV; icon: IconName; regionId: string; description: string; verse: string; progress: number; isBeacon?: boolean };
+export type Landmark = { id: string; name: string; subtitle: string; uv: UV; icon: IconName; regionId: string; description: string; verse: string; progress: number; checkInRadius: number; isBeacon?: boolean };
 export type GameSettings = { music: boolean; volume: number; quality: 'high' | 'low'; reducedMotion: boolean; track: number };
-export type ExplorationState = { version: 1; discoveredIds: string[]; unlockedRegionIds: string[]; playerUV: UV; settings: GameSettings };
+// Version 2 distinguishes GPS-gated check-ins from legacy demo progress.
+// playerUV is the virtual exploration avatar; live GPS/heading must never be persisted or synced.
+export type ExplorationState = { version: 2; discoveredIds: string[]; unlockedRegionIds: string[]; playerUV: UV; settings: GameSettings };
 export type AccountUser = { id: string; nickname: string; studentId: string; uid: string };
 export type SceneEvent = { id: number; type: 'discover'; landmarkId: string; from: UV; to: UV; startedAt: number; duration: number };
 export type PanelId = 'main' | 'season' | 'festival' | 'stories' | 'party' | 'settings' | 'guide' | 'collection' | 'stamina' | 'chapter' | null;
-export type MapSceneProps = { camera: MapCamera; viewport: Viewport; landmarks: Landmark[]; discoveredIds: string[]; selectedId: string | null; playerUV: UV; event: SceneEvent | null; reducedMotion: boolean; onCameraChange: (camera: MapCamera) => void; onSelect: (id: string) => void; onVisualPosition?: (uv:UV,camera:MapCamera)=>void; disabled?: boolean; fixedTime?: number; paused?: boolean };
+export type MapSceneProps = { camera: MapCamera; viewport: Viewport; landmarks: Landmark[]; discoveredIds: string[]; selectedId: string | null; playerUV: UV; liveLocation?: CampusReading | null; locationFresh?: boolean; headingAngle?: number | null; event: SceneEvent | null; reducedMotion: boolean; onCameraChange: (camera: MapCamera) => void; onSelect: (id: string) => void; onVisualPosition?: (uv:UV,camera:MapCamera)=>void; disabled?: boolean; fixedTime?: number; paused?: boolean };
 export type EffectsProps = { camera: MapCamera; viewport: Viewport; landmarks: Landmark[]; discoveredIds: string[]; event: SceneEvent | null; settings: GameSettings; paused: boolean; seed?: number; fixedTime?: number };
-export type HudProps = { progress: number; collected: number; activePanel: PanelId; selected: Landmark | null; discovered: boolean; state: ExplorationState; landmarks: Landmark[]; entered: boolean; toast: string | null; isFullscreen: boolean; audioBlocked: boolean; account: AccountUser | null; loginBusy: boolean; loginError: string | null; onPanel: (id: PanelId) => void; onSelect: (id: string) => void; onClose: () => void; onExplore: () => void; onSettings: (settings: Partial<GameSettings>) => void; onReset: () => void; onFullscreen: () => void; onCenter: () => void; onEnter: () => void; onLogin: (nickname: string, studentId: string) => void; onGuest: () => void; onLogout: () => void; onLoginPrompt: () => void };
+export type HudProps = {
+  progress: number; collected: number; activePanel: PanelId; selected: Landmark | null; discovered: boolean;
+  checkIn: CheckInEligibility | null; state: ExplorationState; landmarks: Landmark[];
+  entered: boolean; toast: string | null; isFullscreen: boolean; audioBlocked: boolean;
+  account: AccountUser | null; loginBusy: boolean; loginError: string | null;
+  onPanel: (id: PanelId) => void; onSelect: (id: string) => void; onClose: () => void;
+  onExplore: () => void; onLocate: () => void; onSettings: (settings: Partial<GameSettings>) => void;
+  onReset: () => void; onFullscreen: () => void; onCenter: () => void; onEnter: () => void;
+  onLogin: (nickname: string, studentId: string, password: string) => void; onGuest: () => void;
+  onLogout: () => void; onLoginPrompt: () => void;
+};

@@ -4,6 +4,8 @@
 
 ## 校园地图
 
+2026-10-28 FE-01 接入更新：当前 `MapScene.tsx` 直接加载 `public/assets/maps/calibrated/campus_no_labels.webp`，失败回退同目录 PNG。二者从用户指定的 v0.4 标定包原样复制，均为完整 4000×4958 画布；不再把下列增强图作为运行底图。原文件保留用于追溯。`npm run verify:map` 校验两张原图、模型、元数据及 SDK 的固定 SHA-256。映射代码在 `src/location/vendor/`，未经重拟合或修改。
+
 迁移前记录的原始包为外部素材 `图片资产/其他预置资产/liyun-map-v04-calibrated-20261026T122237Z.zip`；它未随当前源码迁入，不再假定相邻目录存在。其中 `assets/maps/campus_no_labels.webp` 与 `campus_no_labels.png` 已分别作为本项目的 `campus.webp` 与 `campus.png` 保留；原包同时包含 SVG、校准与控制点记录。`scripts/map-source.svg` 是地图装饰处理的源文件。
 
 | 本地文件 | 用途 |
@@ -27,7 +29,7 @@ screen_x = camera.x + u × 4000 × camera.scale
 screen_y = camera.y + v × 4958 × camera.scale
 ```
 
-移动图只降低像素分辨率，仍表示同一完整画布。视口通过相机变换展示其中一部分，不能用视口裁图重新计算 UV。地标数据集中在 `src/data.ts`。源包记载 WGS84 校准信息，本前端没有启用地理定位或经纬度转换服务。
+移动图只降低像素分辨率，仍表示同一完整画布。视口通过相机变换展示其中一部分，不能用视口裁图重新计算 UV。地标数据集中在 `src/data.ts`。当前前端已经通过原包的无依赖 SDK 启用 WGS84 真实定位映射，详见 [REAL-LOCATION.md](REAL-LOCATION.md)。
 
 `metadata.json` 内的 `image.url` 与 `fallback_url` 保留原包路径，不是当前前端运行时路径；实际请求由 `MapScene.tsx` 指向上表中的文件。其源哈希用于追溯原图，不应被解释为增强图的哈希。
 

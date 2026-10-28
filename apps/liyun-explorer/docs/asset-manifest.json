@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-27T06:23:23.534Z",
+  "generatedAt": "2026-10-28T13:16:28.294Z",
   "mapId": "campus-v04-eaa124716c51375f",
   "logicalCanvas": [
     4000,
     4958
   ],
-  "totalBytes": 24901050,
+  "totalBytes": 27944975,
   "files": [
     {
       "path": "public/assets/art/mountain-right.png",
@@ -54,8 +54,8 @@
     },
     {
       "path": "public/assets/fonts/MaShanZheng-OFL.txt",
-      "bytes": 4397,
-      "sha256": "d7bdb1cee215b689e23c2f95672a6084c790542170648267a55114103d756a08"
+      "bytes": 4490,
+      "sha256": "8989e84e52586916204640b31620dd2d12a4dddfb4aec87cbf04ba7acad1e6b6"
     },
     {
       "path": "public/assets/fonts/MaShanZheng-Regular.ttf",
@@ -69,13 +69,23 @@
     },
     {
       "path": "public/assets/fonts/NotoSerifSC-OFL.txt",
-      "bytes": 4350,
-      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6"
+      "bytes": 4444,
+      "sha256": "64538aaa923b7e75559725ecf64eff7b18f623857b8e6d31a7347743ab27e907"
     },
     {
       "path": "public/assets/fonts/NotoSerifSC-UI.woff2",
       "bytes": 222552,
       "sha256": "859a10a1fd5bc24e044ba5abe131cdccf6ee92dcbc1debc4f9bdec23566c5d0e"
+    },
+    {
+      "path": "public/assets/maps/calibrated/campus_no_labels.png",
+      "bytes": 1973144,
+      "sha256": "ed9fae1e1ef6fea0d0998abf7a2d586d1a15bd3058411c06cd1b9268be5e447f"
+    },
+    {
+      "path": "public/assets/maps/calibrated/campus_no_labels.webp",
+      "bytes": 1070594,
+      "sha256": "bc5f8dd0c07b6a296152cade00a11d9c32055ea01a06a837a559ab0d8a37c474"
     },
     {
       "path": "public/assets/maps/campus-enhanced-mobile.webp",

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "map_id": "campus-v04-eaa124716c51375f",
+  "title": "理韵寻踪 · 良乡校区",
+  "revision": "v0.4",
+  "view_box": [
+    0.0,
+    0.0,
+    1000.56,
+    1240.28003
+  ],
+  "source_svg": "output/campus_base.svg",
+  "source_sha256": "eaa124716c51375f5345c33e8eec9d42c4f99db2faa4b11d684c66af2019fda9",
+  "rasterized_at": "2026-10-26T08:37:26.933565+00:00",
+  "renderer": "isolated installed Microsoft Edge, complete 2800px single frame, full-frame Lanczos resampling to 4000px",
+  "image": {
+    "url": "/assets/campus-v04-e8962f7f7846.webp",
+    "fallback_url": "/assets/campus-v04-729161c3e9f0.png",
+    "width": 4000,
+    "height": 4958,
+    "sha256": "e8962f7f784648e33d67f69857719bbd7690dfa44049b01cabe4fedfe3486997",
+    "png_sha256": "729161c3e9f007a06908a9aaf0aa39e2f76a0a09b76d4413d448ab56d484ba20",
+    "encoding": "webp_lossless",
+    "raster_revision": "faithful-single-frame-v1"
+  },
+  "initial_bounds_svg": [
+    144,
+    145,
+    912,
+    1105
+  ],
+  "coordinate_contract": "u=x/image_width; v=y/image_height; svg_x=viewBox.x+u*viewBox.width; svg_y=viewBox.y+v*viewBox.height",
+  "gps_coordinate_system": "WGS84",
+  "raster_repair": {
+    "date": "2026-10-26",
+    "geometry_unchanged": true,
+    "pixel_encoding": "lossless",
+    "cause": "large single-viewport SVG masks dropped content; use one complete safe-size frame, full-frame resampling and lossless encoding",
+    "verification": "output/raster_repair/20261026T061633Z/raster-qa.json"
+  }
+}

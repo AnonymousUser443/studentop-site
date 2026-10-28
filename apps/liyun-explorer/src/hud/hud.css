@@ -15,6 +15,12 @@
 }
 
 .ly-icon { display: block; width: 1.5em; height: 1.5em; flex: none; }
+.check-in-status{margin:12px 0;padding:10px 12px;border:1px solid #9b946e;border-radius:8px;background:#e4dcc0;color:#2a493c;text-align:left;font-family:system-ui,sans-serif}
+.check-in-status p{margin:0 0 5px;line-height:1.6;font-size:14px}
+.check-in-status small{display:block;color:#52614c;line-height:1.6;font-size:12px}
+.check-in-status.is-ready{border-color:#477c5f;color:#204f3e;background:#dce9cc}
+.parchment-button:disabled{opacity:.5;cursor:not-allowed;filter:saturate(.4)}
+.check-in-locate{margin-top:9px;width:100%}
 .game-hud {
   --hud-inset: clamp(22px, 2.25vw, 46px);
   --nav-width: clamp(266px, 20.4vw, 400px);
@@ -253,11 +259,14 @@
 .entry-content > small { display: block; margin-top: 18px; color: #b4b997; font-size: 10px; letter-spacing: .06em; animation: rise .55s ease .42s both; }
 .entry-login { display: flex; flex-direction: column; gap: 12px; width: min(320px, 100%); margin: 0 auto; animation: rise .55s ease .26s both; }
 .entry-login label { display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left; }
-.entry-login label > span { flex: none; width: 40px; color: #c8b680; font-size: 12px; letter-spacing: .1em; }
+.entry-login label > span { flex: none; width: 66px; color: #c8b680; font-size: 12px; letter-spacing: .1em; }
 .entry-login input { flex: 1; min-width: 0; height: 44px; padding: 8px 12px; color: #f7e9bb; background: #123229; border: 1px solid #7d9a76; outline: none; font-size: 14px; letter-spacing: .04em; }
 .entry-login input::placeholder { color: #8fa98f; }
 .entry-login input:focus { border-color: #e0c67c; }
 .entry-login .enter-campus { margin-top: 8px; }
+.entry-login-help { color: #d5d8b9; font-size: 11px; line-height: 1.6; text-align: left; overflow-wrap: anywhere; }
+.entry-card { max-height: calc(100dvh - 24px); overflow-y: auto; overscroll-behavior: contain; }
+.entry-login input { user-select: text; -webkit-user-select: text; }
 .enter-campus:disabled, .entry-alt:disabled { opacity: .55; cursor: default; transform: none; }
 .entry-alt { display: block; margin: 13px auto 0; padding: 6px 10px; border: 0; background: none; color: #b4b997; font-size: 11px; letter-spacing: .04em; text-decoration: underline; text-underline-offset: 3px; animation: rise .55s ease .34s both; }
 .entry-alt:hover { color: #f1e2ac; }

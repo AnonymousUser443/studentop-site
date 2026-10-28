@@ -48,12 +48,14 @@ function EntryGate({ account, loginBusy, loginError, onEnter, onLogin, onGuest, 
   loginBusy: boolean;
   loginError: string | null;
   onEnter: () => void;
-  onLogin: (nickname: string, studentId: string) => void;
+  onLogin: (nickname: string, studentId: string, password: string) => void;
   onGuest: () => void;
   onLogout: () => void;
 }) {
   const [nickname, setNickname] = useState('');
   const [studentId, setStudentId] = useState('');
+  const [password, setPassword] = useState('');
+  useEffect(() => setPassword(''), [account]);
   return <div className="entrance-overlay"><div className="entry-card">
     <span className="entry-frame" aria-hidden="true"/>
     <div className="entry-scene" aria-hidden="true">
@@ -72,12 +74,14 @@ function EntryGate({ account, loginBusy, loginError, onEnter, onLogin, onGuest, 
         <button className="enter-campus" onClick={onEnter}><span>继续旅程</span><Icon name="star"/></button>
         <button className="entry-alt" onClick={onLogout} disabled={loginBusy}>退出登录 · 以游客身份进入</button>
       </> : <>
-        <form className="entry-login" onSubmit={e => { e.preventDefault(); if (!loginBusy) onLogin(nickname.trim(), studentId.trim()); }}>
-          <label><span>昵称</span><input value={nickname} onChange={e => setNickname(e.target.value)} placeholder="你的昵称" maxLength={24} autoComplete="nickname" disabled={loginBusy}/></label>
-          <label><span>学号</span><input value={studentId} onChange={e => setStudentId(e.target.value)} placeholder="用于识别你的存档" maxLength={32} autoComplete="username" disabled={loginBusy}/></label>
+        <form className="entry-login" autoComplete="off" onSubmit={e => { e.preventDefault(); if (!loginBusy) { const submitted = password; setPassword(''); onLogin(nickname.trim(), studentId.trim(), submitted); } }}>
+          <label><span>昵称</span><input value={nickname} onChange={e => setNickname(e.target.value)} placeholder="游戏昵称，请勿用真实姓名" required maxLength={24} autoComplete="off" disabled={loginBusy}/></label>
+          <label><span>学号 / ID</span><input value={studentId} onChange={e => setStudentId(e.target.value)} placeholder="可用测试游戏 ID，不作实名核验" required maxLength={32} autoComplete="off" spellCheck={false} disabled={loginBusy}/></label>
+          <label><span>访问口令</span><input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="8–128 个字符，请勿复用学校密码" required minLength={8} maxLength={128} autoComplete="off" spellCheck={false} aria-describedby="entry-account-help" disabled={loginBusy}/></label>
+          <div id="entry-account-help" className="entry-login-help">首次使用该 ID 会创建存档与访问口令；下次须用相同口令。旧版无口令存档请联系管理员核验迁移。口令提交后即清空，不写入本机存档。</div>
           <button className="enter-campus" type="submit" disabled={loginBusy}><span>{loginBusy ? '登录中…' : '登录并进入'}</span><Icon name="star"/></button>
         </form>
-        <button className="entry-alt" onClick={onGuest} disabled={loginBusy}>游客模式 · 进度仅保存在本机</button>
+        <button className="entry-alt" onClick={() => { setPassword(''); onGuest(); }} disabled={loginBusy}>游客模式 · 进度仅保存在本机</button>
         {loginError && <p className="entry-error" role="alert">{loginError}</p>}
       </>}
       <small>轻触启程 · 开启声音与沉浸体验</small>
@@ -95,8 +99,15 @@ function Panels(p: HudProps) {
       <div className={`landmark-seal ${item.isBeacon ? 'beacon-seal' : ''}`}><div className="seal-orbit"/><Icon name={item.icon}/><span>{p.discovered ? '已 点 亮' : '待 发 现'}</span></div>
       <p className="landmark-verse">{item.verse}</p><div className="ornament-divider"><span>◆</span></div><p className="landmark-description">{item.description}</p>
       <div className="landmark-reward"><span><Icon name="star"/>{p.discovered ? '这段旅途已收入记忆' : `探索度 +${item.progress}%`}</span><span><Icon name="book"/>{p.discovered ? '地标已收录' : '收录校园地标'}</span></div>
-      {p.discovered ? <button className="parchment-button" onClick={() => { p.onClose(); p.onCenter(); }}>返回地图<Icon name="compass"/></button> : <button className="parchment-button" onClick={p.onExplore}>前往探索<Icon name="star"/></button>}
-      {!p.discovered && <p className="panel-footnote">循着指引，点亮此处的校园记忆</p>}
+      {!p.discovered && <div className={`check-in-status ${p.checkIn?.allowed ? 'is-ready' : ''}`} data-testid="check-in-status" data-reason={p.checkIn?.reason} role="status">
+        <p>{p.checkIn?.message}</p>
+        <small>{item.isBeacon ? '虚构信标按地图标记位置判定，无实体塔楼。' : ''}打卡范围：{item.checkInRadius}米{p.checkIn?.distance !== null && p.checkIn?.distance !== undefined ? ` · 当前直线距离约${Math.ceil(p.checkIn.distance)}米` : ''}</small>
+      </div>}
+      {p.discovered ? <button className="parchment-button" onClick={() => { p.onClose(); p.onCenter(); }}>返回地图<Icon name="compass"/></button> : <>
+        <button className="parchment-button" data-testid="check-in-button" disabled={!p.checkIn?.allowed} onClick={p.onExplore}>{p.checkIn?.allowed ? '确认打卡' : '到达范围后可打卡'}<Icon name="star"/></button>
+        {!p.checkIn?.allowed && <button className="outline-button check-in-locate" onClick={p.onLocate}>定位并显示朝向<Icon name="compass"/></button>}
+      </>}
+      {!p.discovered && <p className="panel-footnote">到达地图点位附近，使用有效定位完成打卡</p>}
     </Modal>;
   }
   if (!p.activePanel) return null;
@@ -124,7 +135,7 @@ function Panels(p: HudProps) {
       {resetArmed && <div className="reset-confirm" role="alert"><p>将清除已点亮的地标，回到初见校园时。</p><button onClick={() => setResetArmed(false)}>保留当前旅程</button></div>}
     </Modal>;
     case 'guide': return <Modal title="探索指引" eyebrow="循光而行 · 山水可期" icon="compass" {...common}>
-      <ol className="guide-steps"><li><span>壹</span><div><h3>展开校园</h3><p>拖动地图自在漫游。电脑滚轮、手机双指，都可以拉近眼前的风景。</p></div></li><li><span>贰</span><div><h3>寻找微光</h3><p>点击地图上的地标，阅读这一站的故事。金色信标会指引新的探索方向。</p></div></li><li><span>叁</span><div><h3>点亮记忆</h3><p>选择「前往探索」，看云雾散开。地标与旅程进度会自动保存。</p></div></li></ol>
+      <ol className="guide-steps"><li><span>壹</span><div><h3>展开校园</h3><p>拖动地图自在漫游。电脑滚轮、手机双指，都可以拉近眼前的风景。</p></div></li><li><span>贰</span><div><h3>开启定位</h3><p>点击「定位到我」，允许定位后，在地图上查看实际位置和点位距离。</p></div></li><li><span>叁</span><div><h3>到达打卡</h3><p>走进点位允许范围，在详情页确认打卡。定位有效且精度满足要求后才能解锁，记录会自动保存。</p></div></li></ol>
       <button className="parchment-button" onClick={() => p.onSelect(p.landmarks.find(x => !p.state.discoveredIds.includes(x.id) && x.isBeacon)?.id ?? p.landmarks.find(x => !p.state.discoveredIds.includes(x.id))?.id ?? p.landmarks[0].id)}>循光去看看<Icon name="star"/></button>
     </Modal>;
     case 'collection': return <Modal title="收集图鉴" eyebrow={`校园记忆 · 已点亮 ${p.collected} 处`} icon="chest" {...common} className="collection-modal">
