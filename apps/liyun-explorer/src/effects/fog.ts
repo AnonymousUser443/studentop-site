@@ -17,6 +17,7 @@ const PALETTE = {
   edge: [188, 203, 188],
   core: [247, 250, 239],
   deep: [92, 116, 100],
+  shade: [132, 156, 136],
   warm: [255, 220, 165],
   rim: [240, 245, 235],
 } as const;
@@ -24,7 +25,7 @@ const PALETTE = {
 /** Density knobs: `coverage` and `haze` are the two values worth touching. */
 export const FOG_TUNING = {
   coverage: 1,
-  haze: 0.48,
+  haze: 0.52,
   driftWorld: 16,
   breath: 0.065,
   morphSeconds: 15,
@@ -49,6 +50,8 @@ const smoothstepRange = (edge0: number, edge1: number, x: number) => {
 };
 
 const easeOut = (t: number) => 1 - Math.pow(1 - clamp01(t), 2.2);
+
+const clampInt = (value: number, min: number, max: number) => (value < min ? min : value > max ? max : value);
 
 function makeTable(seed: number) {
   let state = (seed >>> 0) || 1;
@@ -104,10 +107,11 @@ function buildFogTexture(seed: number) {
   const [edgeR, edgeG, edgeB] = PALETTE.edge;
   const [coreR, coreG, coreB] = PALETTE.core;
   const [deepR, deepG, deepB] = PALETTE.deep;
+  const [shadeR, shadeG, shadeB] = PALETTE.shade;
 
   // First pass: the density field, kept around so the shading pass can read neighbours.
   const field = new Float32Array(width * height);
-  const body = new Float32Array(width * height);
+  const lumps = new Float32Array(width * height);
   for (let y = 0; y < height; y++) {
     const v = y / height;
     for (let x = 0; x < width; x++) {
@@ -119,34 +123,44 @@ function buildFogTexture(seed: number) {
       const raw = big * 0.56 + mid * 0.3 + fine * 0.14;
       const index = y * width + x;
       field[index] = clamp01((raw - 0.5) * 3.1 + 0.5);
-      body[index] = fine;
+      // A second, tighter field drives the cauliflowers so relief reads as puffs, not streaks.
+      lumps[index] = fbm(table, u * 7.6 + 3.3, v * 7.6 + 9.1, 3);
     }
   }
 
-  // Second pass: alpha from the field, colour from a light coming in from the upper left.
+  // Second pass: alpha from the field, colour from two gradients — a broad one for the
+  // bank silhouette and a tighter one for the cauliflowers on top of it.
+  const at = (x: number, y: number) => field[clampInt(y, 0, height - 1) * width + clampInt(x, 0, width - 1)];
+  const lumpAt = (x: number, y: number) => lumps[clampInt(y, 0, height - 1) * width + clampInt(x, 0, width - 1)];
+
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
       const index = y * width + x;
       const n = field[index];
-      const fine = body[index];
+      const fine = lumps[index];
 
       let alpha = smoothstepRange(0.24, 0.52, n);
-      alpha = 0.72 + 0.28 * alpha;
+      alpha = 0.78 + 0.22 * alpha;
+      // A tight band around the silhouette: bright where the bank curls into the light.
+      const edge = clamp01(1 - Math.abs(n - 0.42) / 0.16);
       alpha *= 0.8 + 0.2 * smoothstepRange(0.1, 0.9, fine);
 
-      // Surface normal approximation from the density gradient: uphill faces catch the light.
-      const nx = field[y * width + Math.min(width - 1, x + 2)];
-      const ny = field[Math.min(height - 1, y + 2) * width + x];
-      const lit = clamp01(0.52 + (n - (nx * 0.55 + ny * 0.45)) * 11);
+      // Light comes from the upper left. Broad slope shapes the banks,
+      // the tight slope adds the small billows, the fine octave a little grain.
+      const broad = (at(x - 12, y) - at(x + 12, y)) * 0.55 + (at(x, y - 12) - at(x, y + 12)) * 0.45;
+      const tight = (lumpAt(x - 4, y) - lumpAt(x + 4, y)) * 0.55 + (lumpAt(x, y - 4) - lumpAt(x, y + 4)) * 0.45;
+      const lit = clamp01(0.5 + broad * 9 + tight * 32);
 
       // Thin wisps go slightly inky so the silhouette stays readable against the parchment map.
       const rimInk = (1 - smoothstepRange(0.02, 0.26, alpha)) * 0.5;
-      const tone = smoothstepRange(0.12, 0.94, lit);
+      const tone = smoothstepRange(0.04, 0.96, lit);
+      // Rim light: the outer shell of a bank catches more light than its belly.
+      const rimLight = edge * edge * 0.26;
 
       const index4 = index * 4;
-      data[index4] = lerp(lerp(deepR, coreR, tone), deepR, rimInk * 0.7);
-      data[index4 + 1] = lerp(lerp(deepG, coreG, tone), deepG, rimInk * 0.7);
-      data[index4 + 2] = lerp(lerp(deepB, coreB, tone), deepB, rimInk * 0.7);
+      data[index4] = lerp(lerp(lerp(shadeR, coreR, tone), coreR, rimLight), deepR, rimInk * 0.7);
+      data[index4 + 1] = lerp(lerp(lerp(shadeG, coreG, tone), coreG, rimLight), deepG, rimInk * 0.7);
+      data[index4 + 2] = lerp(lerp(lerp(shadeB, coreB, tone), coreB, rimLight), deepB, rimInk * 0.7);
       data[index4 + 3] = Math.round(clamp01(alpha) * 255);
     }
   }
@@ -223,8 +237,8 @@ export class FogField {
     const breathA = 1 + (reduced ? 0 : tuning.breath) * Math.sin(t * 0.041);
     const breathB = 1 + (reduced ? 0 : tuning.breath * 1.35) * Math.cos(t * 0.033);
 
-    drawBank(this.textures[0], bankA, bankB, breathA, tuning.coverage * (0.66 + 0.3 * (1 - morph)));
-    drawBank(this.textures[1], bankC, bankD, breathB, tuning.coverage * (0.66 + 0.3 * morph));
+    drawBank(this.textures[0], bankA, bankB, breathA, tuning.coverage * (0.72 + 0.26 * (1 - morph)));
+    drawBank(this.textures[1], bankC, bankD, breathB, tuning.coverage * (0.72 + 0.26 * morph));
     paint.globalAlpha = 1;
 
     // 2. Reveal state, derived from props so QA's fixedTime stays reproducible.
