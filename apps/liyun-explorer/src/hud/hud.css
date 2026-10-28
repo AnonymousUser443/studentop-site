@@ -15,6 +15,12 @@
 }
 
 .ly-icon { display: block; width: 1.5em; height: 1.5em; flex: none; }
+.check-in-status{margin:12px 0;padding:10px 12px;border:1px solid #9b946e;border-radius:8px;background:#e4dcc0;color:#2a493c;text-align:left;font-family:system-ui,sans-serif}
+.check-in-status p{margin:0 0 5px;line-height:1.6;font-size:14px}
+.check-in-status small{display:block;color:#52614c;line-height:1.6;font-size:12px}
+.check-in-status.is-ready{border-color:#477c5f;color:#204f3e;background:#dce9cc}
+.parchment-button:disabled{opacity:.5;cursor:not-allowed;filter:saturate(.4)}
+.check-in-locate{margin-top:9px;width:100%}
 .game-hud {
   --hud-inset: clamp(22px, 2.25vw, 46px);
   --nav-width: clamp(266px, 20.4vw, 400px);

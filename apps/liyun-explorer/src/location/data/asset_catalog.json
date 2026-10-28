@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "map_id": "campus-v04-eaa124716c51375f",
+  "recommended_map": "assets/maps/campus_no_labels.webp",
+  "view_box": [
+    0.0,
+    0.0,
+    1000.56,
+    1240.28003
+  ],
+  "variants": [
+    {
+      "path": "assets/maps/campus_labeled.png",
+      "width": 4000,
+      "height": 4958,
+      "sha256": "729161c3e9f007a06908a9aaf0aa39e2f76a0a09b76d4413d448ab56d484ba20",
+      "labels": true,
+      "full_canvas": true,
+      "coordinate_compatible_with_map_id": "campus-v04-eaa124716c51375f"
+    },
+    {
+      "path": "assets/maps/campus_labeled.webp",
+      "width": 4000,
+      "height": 4958,
+      "sha256": "e8962f7f784648e33d67f69857719bbd7690dfa44049b01cabe4fedfe3486997",
+      "labels": true,
+      "full_canvas": true,
+      "coordinate_compatible_with_map_id": "campus-v04-eaa124716c51375f"
+    },
+    {
+      "path": "assets/maps/campus_no_labels.png",
+      "width": 4000,
+      "height": 4958,
+      "sha256": "ed9fae1e1ef6fea0d0998abf7a2d586d1a15bd3058411c06cd1b9268be5e447f",
+      "labels": false,
+      "full_canvas": true,
+      "coordinate_compatible_with_map_id": "campus-v04-eaa124716c51375f"
+    },
+    {
+      "path": "assets/maps/campus_no_labels.webp",
+      "width": 4000,
+      "height": 4958,
+      "sha256": "bc5f8dd0c07b6a296152cade00a11d9c32055ea01a06a837a559ab0d8a37c474",
+      "labels": false,
+      "full_canvas": true,
+      "coordinate_compatible_with_map_id": "campus-v04-eaa124716c51375f"
+    }
+  ],
+  "geometry_equivalence": "SVGs differ only in visibility of layer 11_Places_Labels."
+}

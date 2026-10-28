@@ -35,3 +35,7 @@
 site/assets/fonts/OFL-*.txt -whitespace
 apps/genshin-start/public/campus/fonts/OFL-*.txt -whitespace
 apps/genshin-start/scripts/licenses/Apache-2.0.txt -whitespace
+
+# Preserve the audited campus calibration bytes and SHA-256 on all platforms.
+apps/liyun-explorer/src/location/data/*.json -text whitespace=cr-at-eol
+apps/liyun-explorer/src/location/vendor/*.mjs -text

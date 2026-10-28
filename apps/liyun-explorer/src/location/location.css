@@ -1,0 +1,19 @@
+.location-controls{position:absolute;right:max(18px,env(safe-area-inset-right));top:30%;width:min(286px,35vw);z-index:11;padding:12px 14px;color:#f7edd0;background:#183c36ed;border:1px solid #cfb57099;border-radius:10px;box-shadow:0 4px 20px #092d3344;font-family:system-ui,sans-serif;pointer-events:auto}
+.location-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.location-actions button{min-height:40px;border:1px solid #d8c28a66;border-radius:6px;padding:6px 10px;background:transparent;color:inherit;font-size:13px}
+.location-actions .location-primary{background:#ead5a0;color:#163e38;font-weight:600;flex:1}
+.location-actions button:disabled{opacity:.65}
+.location-controls p{margin:8px 0 0;font-size:12px;line-height:1.65;overflow-wrap:anywhere}
+.location-controls .location-distance{color:#f6d990}
+.location-good{border-color:#77c9c0}
+.location-controls .location-heading-status{color:#b9dac7}
+.map-heading-sector{position:absolute;left:-50px;top:-50px;width:100px;height:100px;transform-origin:50% 50%;pointer-events:none}
+.map-location-arrow{filter:drop-shadow(0 2px 2px #0e302bdd) drop-shadow(0 0 4px #fff1bd66)}
+.map-location-neutral{position:absolute;left:-14px;top:-14px;width:28px;height:28px;filter:drop-shadow(0 2px 3px #0e302bb3)}
+.map-real-location{position:absolute;z-index:6;width:0;height:0;pointer-events:none}
+.map-location-accuracy{position:absolute;border:1px solid #83af96aa;border-radius:50%;background:#85b99a26;transform:translate(-50%,-50%);max-width:1600px;max-height:1600px}
+.map-location-label{position:absolute;left:25px;top:-12px;padding:3px 8px;white-space:nowrap;background:#183e38ed;color:#f8edcf;border:1px solid #d9c38e;border-radius:5px;font:12px/1.4 system-ui,sans-serif;box-shadow:0 2px 4px #12392c33}
+.map-real-location.is-unreliable .map-location-neutral{opacity:.7;filter:grayscale(.7)}
+.map-real-location.is-unreliable .map-location-accuracy{border-style:dashed;background:#899b9c22;border-color:#9aa9aa}
+@media(max-height:540px){.location-controls{top:27%;width:230px;padding:8px 10px;right:max(12px,env(safe-area-inset-right))}.location-controls p{font-size:11px;margin-top:5px}.location-actions button{min-height:34px;font-size:12px}}
+@media(orientation:portrait){.location-controls{top:max(12px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right));width:calc(100% - 24px);max-width:360px}}

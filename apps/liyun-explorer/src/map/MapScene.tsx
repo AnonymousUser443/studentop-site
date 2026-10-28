@@ -4,6 +4,8 @@ import { MAP_HEIGHT, MAP_WIDTH } from '../data';
 import type { IconName, MapCamera, MapSceneProps, UV } from '../types';
 import { cameraLimits, clamp, clampCamera, screenToUV, uvToScreen, zoomAt } from './geometry';
 import './map.css';
+import { CAMPUS_MAP_IMAGE, CAMPUS_MAP_FALLBACK, GOOD_ACCURACY_M } from '../location/campus';
+import '../location/location.css';
 
 type Point = { x: number; y: number };
 type Gesture = { camera: MapCamera; origin: Point; distance: number; anchor: UV };
@@ -39,7 +41,6 @@ function Beacon() {
 export default function MapScene(props: MapSceneProps) {
   const { camera, viewport, landmarks, discoveredIds, selectedId, playerUV, event, reducedMotion, disabled, fixedTime, paused, onSelect, onVisualPosition } = props;
   const surface = useRef<HTMLDivElement>(null);
-  const player = useRef<HTMLDivElement>(null);
   const propsRef = useRef(props);
   propsRef.current = props;
   const gestureCamera = useRef(camera);
@@ -123,8 +124,6 @@ export default function MapScene(props: MapSceneProps) {
         position = { u: event.from.u + (event.to.u - event.from.u) * eased, v: event.from.v + (event.to.v - event.from.v) * eased };
         if (t < 1 && !document.hidden && !paused && fixedTime === undefined) raf = requestAnimationFrame(render);
       }
-      const point = uvToScreen(position, camera);
-      if (player.current) player.current.style.transform = `translate3d(${point.x}px,${point.y}px,0)`;
       onVisualPosition?.(position,camera);
     };
     render();
@@ -135,17 +134,16 @@ export default function MapScene(props: MapSceneProps) {
 
   const worldStyle: CSSProperties = { width: MAP_WIDTH, height: MAP_HEIGHT, transform: `translate3d(${camera.x}px,${camera.y}px,0) scale(${camera.scale})` };
   const mobile = viewport.height < 540 || viewport.width < 900;
+  const live = props.liveLocation?.insideImage ? props.liveLocation : null;
+  const liveScreen = live ? uvToScreen(live.uv, camera) : null;
+  const reliable = props.locationFresh && live && live.accuracy <= GOOD_ACCURACY_M;
   return <div ref={surface} className={`map-scene ${dragging ? 'is-dragging' : ''} ${reducedMotion ? 'map-reduced-motion' : ''}`} role="region" aria-label="良乡校区探索地图" data-testid="map-scene" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} onDoubleClick={e => {
     if (disabled || (e.target as Element).closest('button')) return;
     const point = localPoint(e); const limits = cameraLimits(viewport);
     changeCamera(clampCamera(zoomAt(gestureCamera.current, 1.45, point.x, point.y, limits.min, limits.max), viewport));
   }}>
     <div className="map-world" style={worldStyle} aria-hidden="true">
-      <img className="map-base-image" src={imageFailed ? '/assets/maps/campus.webp' : mobile ? '/assets/maps/campus-enhanced-mobile.webp' : '/assets/maps/campus-enhanced.webp'} onError={() => setImageFailed(true)} draggable={false} alt="" width={MAP_WIDTH} height={MAP_HEIGHT}/>
-      <svg className="map-water-ribbons" viewBox="0 0 1000.56 1240.28003" fill="none">
-        <path d="M277 450c18-3 27-2 38-1m12 7c16-4 30-3 41-1m-56-20c12-2 19-1 29 0m18 32c14-2 22-1 32 0" stroke="#e6ecd2" strokeWidth="1" opacity=".5"/>
-        <path d="M548 257c33 38 90 65 164 75" stroke="#d6e2b7" strokeWidth=".75" opacity=".4"/>
-      </svg>
+      <img className="map-base-image" src={imageFailed ? CAMPUS_MAP_FALLBACK : CAMPUS_MAP_IMAGE} onError={() => setImageFailed(true)} draggable={false} alt="" width={MAP_WIDTH} height={MAP_HEIGHT}/>
     </div>
     <div className="map-ground-vignette" aria-hidden="true"/>
     <div className="map-markers">
@@ -169,9 +167,23 @@ export default function MapScene(props: MapSceneProps) {
         </button>;
       })}
     </div>
-    <div ref={player} className="map-player" aria-label="你的位置" data-testid="player-marker">
-      <span className="map-player-light"/>
-      <svg viewBox="0 0 66 76" aria-hidden="true"><path d="m33 8 23 49-23-9-23 9Z" fill="#e7fdff" stroke="#efe6ba" strokeWidth="2"/><path d="m33 12 17 37-17-7-17 7Z" fill="#3aafce"/><path d="m33 12 1 29 16 8Z" fill="#127fac"/><path d="m33 12-17 37 8-5Z" fill="#84deeb"/><ellipse cx="33" cy="61" rx="27" ry="8" fill="none" stroke="#fff0b6" strokeWidth="1.1" opacity=".85"/></svg>
-    </div>
+    {live && liveScreen && <div className={`map-real-location ${reliable ? '' : 'is-unreliable'}`} style={{ left: liveScreen.x, top: liveScreen.y }} aria-label={props.locationFresh ? '设备实际位置' : '上次定位位置'} data-testid="real-location-marker" data-u={live.uv.u} data-v={live.uv.v}>
+      <span className="map-location-accuracy" style={{ width: live.radius.x * 2 * camera.scale, height: live.radius.y * 2 * camera.scale }}/>
+      {reliable && typeof props.headingAngle === 'number' && Number.isFinite(props.headingAngle) ? <svg className="map-heading-sector map-location-pointer" viewBox="0 0 100 100" style={{ transform:`rotate(${props.headingAngle}deg)` }} aria-label="当前位置与手机朝向指针" data-testid="heading-sector" data-angle={props.headingAngle}>
+        <defs><linearGradient id="heading-fade" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stopColor="#b6d9bd" stopOpacity=".4"/><stop offset="1" stopColor="#efdaa5" stopOpacity=".03"/></linearGradient></defs>
+        <path d="M50 50 27 10Q50-1 73 10Z" fill="url(#heading-fade)" stroke="#e5d3a0" strokeOpacity=".4" strokeWidth=".9"/>
+        <circle cx="50" cy="50" r="23" fill="#163e35" fillOpacity=".12" stroke="#e0c58a" strokeOpacity=".52" strokeWidth=".8" strokeDasharray="14 7 2 7"/>
+        <g className="map-location-arrow">
+          <path d="m50 28 17 37-17-8-17 8Z" fill="#f8edcf" stroke="#ddc185" strokeWidth="1.6" strokeLinejoin="round"/>
+          <path d="m50 32 13.5 29-13.5-7Z" fill="#6caa92"/>
+          <path d="m50 32-13.5 29 13.5-7Z" fill="#fff7df"/>
+          <path d="M50 34v19" fill="none" stroke="#e7d39a" strokeWidth=".8"/>
+        </g>
+      </svg> : <svg className="map-location-neutral" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="m16 3 13 13-13 13L3 16Z" fill="#285747" stroke="#dfc58c" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="m16 9 7 7-7 7-7-7Z" fill="#f8edcf"/><path d="m16 9 7 7-7 7Z" fill="#9dc2ac"/>
+      </svg>}
+      <span className="map-location-label">{props.locationFresh ? reliable ? '我的位置' : '位置精度较低' : '上次位置'}</span>
+    </div>}
   </div>;
 }
