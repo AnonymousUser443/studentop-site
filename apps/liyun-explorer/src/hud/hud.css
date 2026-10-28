@@ -236,6 +236,29 @@
 .enter-campus:hover { background: #fff4cb; transform: translateY(-2px); }
 .enter-campus .ly-icon { width: 21px; height: 21px; color: #8e7845; }
 .entry-card > small { display: block; margin-top: 18px; color: #b4b997; font-size: 10px; letter-spacing: .06em; }
+.entry-login { display: flex; flex-direction: column; gap: 12px; width: min(320px, 100%); margin: 0 auto; }
+.entry-login label { display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left; }
+.entry-login label > span { flex: none; width: 40px; color: #c8b680; font-size: 12px; letter-spacing: .1em; }
+.entry-login input { flex: 1; min-width: 0; height: 44px; padding: 8px 12px; color: #f7e9bb; background: #123229; border: 1px solid #7d9a76; outline: none; font-size: 14px; letter-spacing: .04em; }
+.entry-login input::placeholder { color: #8fa98f; }
+.entry-login input:focus { border-color: #e0c67c; }
+.entry-login .enter-campus { margin-top: 8px; }
+.enter-campus:disabled, .entry-alt:disabled { opacity: .55; cursor: default; transform: none; }
+.entry-alt { display: block; margin: 13px auto 0; padding: 6px 10px; border: 0; background: none; color: #b4b997; font-size: 11px; letter-spacing: .04em; text-decoration: underline; text-underline-offset: 3px; }
+.entry-alt:hover { color: #f1e2ac; }
+.entry-error { margin: 13px 0 0; color: #e2a07a; font-size: 11px; line-height: 1.6; }
+.account-chip { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 0 auto 20px; padding: 12px 18px; border: 1px solid #7d9a76; background: #123229; }
+.account-chip .ly-icon { width: 30px; height: 30px; color: #e4c880; flex: none; }
+.account-chip > div { text-align: left; }
+.account-chip strong { display: block; color: #f7e9bb; font-size: 17px; letter-spacing: .05em; }
+.account-chip small { display: block; margin-top: 3px; color: #9fb7a2; font-size: 10px; letter-spacing: .03em; }
+.account-card { display: flex; align-items: center; gap: 14px; padding: 12px 14px; margin-bottom: 8px; background: #e6dcb6; border: 1px solid #c4b07a; }
+.account-avatar { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border: 1px solid #a89555; border-radius: 50%; background: #385e47; color: #eddda9; }
+.account-avatar .ly-icon { width: 26px; height: 26px; }
+.account-meta { flex: 1; min-width: 0; }
+.account-meta strong { display: block; color: #36523e; font-size: 15px; font-weight: 600; letter-spacing: .03em; }
+.account-meta small { display: block; margin-top: 3px; color: #8b8668; font-size: 11px; }
+.account-card .outline-button { flex: none; }
 .game-toast { position: absolute; z-index: 35; left: 50%; top: 15%; display: flex; align-items: center; justify-content: center; gap: 12px; max-width: calc(100% - 36px); padding: 13px 29px; border: 1px solid #ccb577; background: #21493eee; color: #f7e8b9; box-shadow: 0 6px 18px #153e3144, inset 0 0 0 4px #21493e, inset 0 0 0 5px #ccb57744; transform: translateX(-50%); font-size: 14px; letter-spacing: .04em; pointer-events: none; text-align: center; animation: toast-in .3s ease both; }
 .game-toast .ly-icon { width: 24px; height: 24px; color: #e4c880; }
 @keyframes veil-in { from { opacity: 0; } to { opacity: 1; } }
