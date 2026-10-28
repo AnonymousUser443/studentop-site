@@ -24,8 +24,8 @@ const PALETTE = {
 /** Density knobs: `coverage` and `haze` are the two values worth touching. */
 export const FOG_TUNING = {
   coverage: 1,
-  haze: 0.36,
-  puffCount: 240,
+  haze: 0.44,
+  puffCount: 330,
   puffDriftX: 78,
   puffDriftY: 58,
   puffSpeed: 34,
@@ -173,7 +173,7 @@ export class FogField {
         x: random() * MAP_WIDTH,
         y: random() * MAP_HEIGHT,
         radius,
-        alpha: 0.7 + random() * 0.28,
+        alpha: 0.76 + random() * 0.24,
         phase: random() * TAU,
         speed: 0.35 + random() * 0.55,
         driftX: (random() - 0.5) * 2 * tuning.puffDriftX,
