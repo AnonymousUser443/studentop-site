@@ -26,8 +26,8 @@ export const FOG_TUNING = {
   coverage: 1,
   haze: 0.44,
   puffCount: 330,
-  puffDriftX: 78,
-  puffDriftY: 58,
+  puffDriftX: 130,
+  puffDriftY: 96,
   puffSpeed: 34,
   puffMinRadius: 220,
   puffMaxRadius: 520,
@@ -94,10 +94,10 @@ function fbm(table: Float32Array, x: number, y: number, octaves: number) {
 const PUFF_SIZE = 256;
 
 /**
- * One soft cloud puff: a very feathered radial falloff, nibbled by noise so the
- * silhouette is lumpy instead of circular, with a touch of top light.
+ * One soft cloud puff. `tone` 0 builds the lit bank used closest to the camera,
+ * 1 builds the shaded bank used behind it — that pair is what gives the sheet depth.
  */
-function buildPuff(seed: number) {
+function buildPuff(seed: number, tone: 0 | 1) {
   const size = PUFF_SIZE;
   const canvas = document.createElement('canvas');
   canvas.width = size;
@@ -108,6 +108,7 @@ function buildPuff(seed: number) {
   const table = makeTable(seed);
   const [coreR, coreG, coreB] = PALETTE.core;
   const [edgeR, edgeG, edgeB] = PALETTE.edge;
+  const [deepR, deepG, deepB] = PALETTE.deep;
   const half = size / 2;
 
   for (let y = 0; y < size; y++) {
@@ -119,7 +120,7 @@ function buildPuff(seed: number) {
       // Angular noise breaks the circle; radial noise adds wisps toward the rim.
       const angle = Math.atan2(dy, dx);
       const ring = fbm(table, Math.cos(angle) * 1.6 + 5.2, Math.sin(angle) * 1.6 + 8.4, 3);
-      const wisps = fbm(table, x / size * 3.4 + 2.1, y / size * 3.4 + 6.3, 4);
+      const wisps = fbm(table, (x / size) * 3.4 + 2.1, (y / size) * 3.4 + 6.3, 4);
       const rim = 0.88 + 0.24 * (ring - 0.5) + 0.16 * (wisps - 0.5);
       const outer = Math.max(0, 1 - d / rim);
 
@@ -127,12 +128,26 @@ function buildPuff(seed: number) {
       let alpha = Math.pow(clamp01(outer), 1.35);
       alpha *= 0.86 + 0.14 * smoothstepRange(0.2, 0.8, wisps);
 
-      // Light from above: tops sit a touch brighter than the underside.
-      const lit = clamp01(0.62 - dy * 0.3 + (wisps - 0.5) * 0.3);
+      // Volume: a lit crown, a soft terminator around the middle, a shaded base.
+      const height = -dy; // +1 at the top of the puff
+      const crown = smoothstepRange(0.05, 0.75, height);
+      const base = smoothstepRange(-0.15, -0.8, height);
+      const relief = 0.5 + crown * 0.42 - base * 0.5 + (wisps - 0.5) * 0.35;
+      const lit = clamp01(relief);
+
+      // Back banks sit in the shadow of the front ones.
+      const shadowMix = tone === 1 ? 0.45 : 0;
+      const bodyR = lerp(lerp(edgeR, coreR, lit), deepR, shadowMix);
+      const bodyG = lerp(lerp(edgeG, coreG, lit), deepG, shadowMix);
+      const bodyB = lerp(lerp(edgeB, coreB, lit), deepB, shadowMix);
+
+      // Thin rims fade toward the deep tone so overlapping banks keep an edge.
+      const rimInk = (1 - smoothstepRange(0, 0.22, alpha)) * (tone === 1 ? 0.45 : 0.25);
+
       const index = (y * size + x) * 4;
-      data[index] = lerp(edgeR, coreR, lit);
-      data[index + 1] = lerp(edgeG, coreG, lit);
-      data[index + 2] = lerp(edgeB, coreB, lit);
+      data[index] = lerp(bodyR, deepR, rimInk);
+      data[index + 1] = lerp(bodyG, deepG, rimInk);
+      data[index + 2] = lerp(bodyB, deepB, rimInk);
       data[index + 3] = Math.round(clamp01(alpha) * 255);
     }
   }
@@ -151,6 +166,11 @@ type Puff = {
   driftY: number;
   pulse: number;
   variant: number;
+  depth: number;
+  rotation: number;
+  spin: number;
+  wave: number;
+  highlight: boolean;
 };
 
 type Reveal = { landmark: Landmark; progress: number; x: number; y: number };
@@ -164,11 +184,20 @@ export class FogField {
   private ensure(seed: number) {
     if (this.seed === seed && this.sprites.length) return;
     this.seed = seed;
-    this.sprites = [buildPuff(seed * 3 + 11), buildPuff(seed * 5 + 29), buildPuff(seed * 7 + 47)];
+    // Front (lit) sprites first, then the shaded set used for banks further back.
+    this.sprites = [
+      buildPuff(seed * 3 + 11, 0),
+      buildPuff(seed * 5 + 29, 0),
+      buildPuff(seed * 7 + 47, 0),
+      buildPuff(seed * 3 + 11, 1),
+      buildPuff(seed * 5 + 29, 1),
+      buildPuff(seed * 7 + 47, 1),
+    ];
     const random = seededRandom(seed * 13 + 5);
     const tuning = FOG_TUNING;
     this.puffs = Array.from({ length: tuning.puffCount }, () => {
       const radius = tuning.puffMinRadius + random() * (tuning.puffMaxRadius - tuning.puffMinRadius);
+      const depth = random(); // 0 = far bank, 1 = right in front of the camera
       return {
         x: random() * MAP_WIDTH,
         y: random() * MAP_HEIGHT,
@@ -178,10 +207,18 @@ export class FogField {
         speed: 0.35 + random() * 0.55,
         driftX: (random() - 0.5) * 2 * tuning.puffDriftX,
         driftY: (random() - 0.5) * 2 * tuning.puffDriftY,
-        pulse: 0.05 + random() * 0.07,
+        pulse: 0.10 + random() * 0.10,
         variant: Math.floor(random() * 3),
+        highlight: random() > 0.72,
+        depth,
+        rotation: random() * TAU,
+        spin: (random() - 0.5) * 0.05,
+        // The travelling wave is keyed off position, so neighbouring banks rise together.
+        wave: (random() * MAP_WIDTH * 0.0024 + random() * MAP_HEIGHT * 0.0017) % TAU,
       };
     });
+    // Back banks first so the lit ones end up in front.
+    this.puffs.sort((a, b) => a.depth - b.depth);
   }
 
   draw(ctx: CanvasRenderingContext2D, props: EffectsProps, pixelDensity: number, now: number) {
@@ -225,22 +262,49 @@ export class FogField {
 
     const margin = 240;
     for (const puff of this.puffs) {
-      const wobbleX = Math.sin(t * puff.speed * 0.31 + puff.phase) * puff.driftX;
-      const wobbleY = Math.cos(t * puff.speed * 0.27 + puff.phase * 1.7) * puff.driftY;
-      const x = puff.x + wobbleX;
-      const y = puff.y + wobbleY;
-      const radius = puff.radius * (1 + puff.pulse * Math.sin(t * puff.speed * 0.45 + puff.phase * 2.1));
-      const alpha = puff.alpha * (0.82 + 0.18 * Math.sin(t * puff.speed * 0.37 + puff.phase));
+      // A slow wave runs across the map: banks in the same area swell together,
+      // so the sheet rolls instead of every puff bobbing on its own clock.
+      const wave = Math.sin(t * 0.85 - puff.wave + puff.phase * 0.15);
+      const swell = Math.sin(t * 0.62 - puff.wave * 1.3 + puff.phase * 0.6);
+
+      const x = puff.x + Math.sin(t * puff.speed * 0.22 + puff.phase) * puff.driftX * (0.6 + 0.4 * wave);
+      const y = puff.y + Math.cos(t * puff.speed * 0.19 + puff.phase * 1.7) * puff.driftY * (0.6 + 0.4 * swell);
+      const radius = puff.radius * (1 + puff.pulse * (1 + swell));
+      const alpha = puff.alpha * (0.58 + 0.42 * wave);
 
       // Cull against the viewport in screen space before drawing the sprite.
       const screenX = (camera.x + x * camera.scale) * resolution;
       const screenY = (camera.y + y * camera.scale) * resolution;
-      const screenR = radius * camera.scale * resolution;
+      const screenR = radius * camera.scale * resolution * 1.1;
       if (screenX + screenR < -margin || screenX - screenR > bufferWidth + margin) continue;
       if (screenY + screenR < -margin || screenY - screenR > bufferHeight + margin) continue;
 
-      paint.globalAlpha = clamp01(alpha * tuning.coverage);
-      paint.drawImage(this.sprites[puff.variant], x - radius, y - radius, radius * 2, radius * 2);
+      // Depth: far banks are dimmer, squatter and slightly bigger; front ones are crisp.
+      const shade = 0.62 + 0.38 * puff.depth;
+      const squash = 0.82 + 0.1 * puff.depth;
+      const sprite = this.sprites[puff.depth < 0.5 ? puff.variant + 3 : puff.variant];
+      paint.globalAlpha = clamp01(alpha * tuning.coverage * shade);
+      paint.save();
+      paint.translate(x, y);
+      paint.rotate(puff.rotation + (reduced ? 0 : t * puff.spin));
+      paint.scale(1, squash);
+      paint.drawImage(sprite, -radius, -radius, radius * 2, radius * 2);
+      paint.restore();
+
+      // Lit crowns: a few banks pick up a travelling highlight, so the sheet reads
+      // as rolling even where the fog is nearly opaque.
+      if (puff.highlight && !reduced) {
+        paint.globalCompositeOperation = 'lighter';
+        const glow = 0.16 * clamp01(0.5 + 0.5 * wave);
+        paint.globalAlpha = glow;
+        paint.save();
+        paint.translate(x, y - radius * 0.12);
+        paint.rotate(puff.rotation - (t * puff.spin) / 2);
+        paint.scale(1, squash * 0.9);
+        paint.drawImage(sprite, -radius * 0.85, -radius * 0.85, radius * 1.7, radius * 1.7);
+        paint.restore();
+        paint.globalCompositeOperation = 'source-over';
+      }
     }
     paint.globalAlpha = 1;
 
