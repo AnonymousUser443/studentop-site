@@ -71,4 +71,4 @@
 
 未进行 iOS/Android 真机全屏、横屏锁定、物理双指和移动音频策略实测。源码保留失败回退，当前验收涵盖桌面原生全屏及桌面移动视口。构建有 p5 导致的单包体积提示（约 364KB gzip），构建成功；如需公网分发，可后续拆分与延迟加载特效包。
 
-体力、在线人数、章节、活动日期和 `/36` 为 Mock；任务、联机、GPS、相机与后端接入属于后续范围。素材来源与许可见 [ASSETS.md](ASSETS.md)，完整本地文件哈希见 [asset-manifest.json](asset-manifest.json)。
+在线人数、活动日期和 `/36` 为 Mock（体力与章节仅保留面板说明）；任务、联机、GPS、相机与后端接入属于后续范围。素材来源与许可见 [ASSETS.md](ASSETS.md)，完整本地文件哈希见 [asset-manifest.json](asset-manifest.json)。

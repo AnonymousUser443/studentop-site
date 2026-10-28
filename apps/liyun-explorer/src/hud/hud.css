@@ -85,17 +85,15 @@
 .festival-leaf { position: absolute; right: 15px; bottom: 5px; width: 24%; height: 73%; color: #c88534; transform: rotate(24deg); opacity: .45; }
 .notice-dot { position: absolute; z-index: 3; right: 6%; top: 9%; width: 11px; height: 11px; border: 1.5px solid #fff0c8; border-radius: 50%; background: #df654c; box-shadow: 0 1px 2px #1d3d3055; }
 
-.resource-bar { position: absolute; top: clamp(23px, 3.1vh, 35px); right: clamp(108px, 6.8vw, 145px); display: flex; align-items: center; gap: clamp(10px, .9vw, 19px); }
+.resource-bar { position: absolute; top: clamp(23px, 3.1vh, 35px); right: clamp(104px, 6.6vw, 138px); display: flex; align-items: center; gap: clamp(10px, .9vw, 19px); }
 .resource-pill { display: flex; align-items: center; justify-content: center; gap: clamp(7px, .55vw, 12px); min-height: 46px; height: clamp(46px, 5.2vh, 58px); padding: 5px clamp(13px, .95vw, 21px); border: 1px solid #dfc88f; border-radius: 36px; background: #1b3d35e0; box-shadow: inset 0 0 0 3px #23483b, inset 0 0 0 4px #ddca971a, 0 2px 3px #16392d33; white-space: nowrap; font-size: clamp(14px, 1.05vw, 20px); text-shadow: 0 1px 2px #132e27; }
 .resource-pill > .ly-icon { width: 31px; height: 31px; color: #e8d8a9; }
 .resource-pill strong { font-weight: 600; font-variant-numeric: tabular-nums; }
 .resource-pill strong > span { font-weight: 400; font-size: .86em; margin-left: 2px; }
 .resource-label { font-size: .88em; letter-spacing: .04em; }
-.stamina-pill > .ly-icon { color: #a9dbed; }
 .resource-plus { display: grid; place-items: center; width: 27px; height: 27px; margin: 0 -8px 0 3px; border-radius: 50%; color: #28463c; background: #fff0c8; }
 .resource-plus .ly-icon { width: 21px; height: 21px; }
-.chapter-pill { min-width: 130px; }
-.fullscreen-control { position: absolute; top: clamp(16px, 2.2vh, 25px); right: var(--hud-inset); width: clamp(58px, 4.5vw, 80px); height: clamp(58px, 4.5vw, 80px); padding: 14px; border: 1px solid #e3c68a; border-radius: 50%; color: #29493e!important; background: #f0e2b9; box-shadow: inset 0 0 0 5px #d1ba80, inset 0 0 0 7px #fff1c4, 0 2px 4px #18392a40; }
+.fullscreen-control { position: absolute; top: clamp(24px, 3vh, 33px); right: var(--hud-inset); width: clamp(46px, 3.5vw, 62px); height: clamp(46px, 3.5vw, 62px); padding: 11px; border: 1px solid #e3c68a; border-radius: 50%; color: #29493e!important; background: #f0e2b9; box-shadow: inset 0 0 0 4px #d1ba80, inset 0 0 0 6px #fff1c4, 0 2px 3px #18392a40; }
 .fullscreen-control .ly-icon { width: 100%; height: 100%; }
 .map-compass { position: absolute; top: 11.5%; right: calc(var(--hud-inset) + 2px); width: clamp(86px, 6.3vw, 120px); padding: 0; border: 0; background: none; color: #e9dcb6; filter: drop-shadow(0 2px 2px #1d382c77); }
 .map-compass > span { display: block; margin-bottom: -8px; font-size: clamp(17px, 1.25vw, 23px); line-height: 1.5; }
@@ -269,14 +267,13 @@
   .notice-dot { width: 8px; height: 8px; border-width: 1px; top: 4px; right: 12px; }
   .nav-timeline { left: -5px; top: 12px; bottom: 10px; opacity: .8; }
   .nav-timeline::before { width: 5px; height: 5px; transform: translateX(-2px) rotate(45deg); }
-  .resource-bar { top: max(10px, env(safe-area-inset-top)); right: max(68px, calc(env(safe-area-inset-right) + 52px)); gap: 6px; }
+  .resource-bar { top: max(10px, env(safe-area-inset-top)); right: max(62px, calc(env(safe-area-inset-right) + 46px)); gap: 6px; }
   .resource-pill { min-height: 44px; height: 44px; gap: 5px; padding: 3px 9px; font-size: 12px; border-color: #d9c38d; }
   .resource-pill > .ly-icon { width: 22px; height: 22px; }
   .resource-label { display: none; }
   .resource-plus { width: 18px; height: 18px; margin: 0 -4px 0 0; }
   .resource-plus .ly-icon { width: 15px; height: 15px; }
-  .chapter-pill { min-width: 75px; }
-  .fullscreen-control { top: max(10px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); width: 44px; height: 44px; min-height: 44px; padding: 10px; box-shadow: inset 0 0 0 3px #d1ba80, inset 0 0 0 4px #fff1c4; }
+  .fullscreen-control { top: max(10px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); width: 38px; height: 38px; min-height: 38px; padding: 8px; box-shadow: inset 0 0 0 3px #d1ba80, inset 0 0 0 4px #fff1c4; }
   .map-compass { top: 68px; right: max(15px, env(safe-area-inset-right)); width: 57px; min-height: 62px; }
   .map-compass > span { font-size: 12px; margin-bottom: -8px; }
   .utility-nav { left: var(--hud-inset); bottom: max(9px, env(safe-area-inset-bottom)); gap: 12px; }
@@ -370,12 +367,11 @@
   .story-button { gap: 7px; }
   .nav-copy strong { font-size: 13px; }
   .nav-medallion { width: 29px; height: 29px; }
-  .resource-bar { right: max(63px, calc(env(safe-area-inset-right) + 50px)); gap: 4px; }
+  .resource-bar { right: max(56px, calc(env(safe-area-inset-right) + 44px)); gap: 4px; }
   .resource-pill { gap: 4px; padding: 3px 8px; font-size: 10px; }
   .resource-pill > .ly-icon { width: 18px; height: 18px; }
   .resource-plus { width: 16px; height: 16px; margin-left: 0; }
   .resource-plus .ly-icon { width: 12px; height: 12px; }
-  .chapter-pill { min-width: 62px; }
   .utility-nav { gap: 8px; }
   .utility-nav strong { font-size: 8px; }
   .campus-progress { width: 124px; right: 18px; }

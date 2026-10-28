@@ -20,7 +20,7 @@
     check('Menu: ' + title, dialog()?.getAttribute('aria-label') === title);
     await close();
   }
-  const resourceTitles = ['收集图鉴', '行旅体力', '多人同行', '第3章 · 理韵悠长'];
+  const resourceTitles = ['收集图鉴', '多人同行'];
   for (const [index, element] of [...document.querySelectorAll('.resource-pill')].entries()) {
     element.click(); await frames();
     check('Resource: ' + resourceTitles[index], dialog()?.getAttribute('aria-label') === resourceTitles[index]);

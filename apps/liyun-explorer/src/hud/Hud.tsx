@@ -112,9 +112,7 @@ export default function Hud(p: HudProps) {
       })}</nav>
       <div className="resource-bar" aria-label="旅途状态">
         <button className="resource-pill" onClick={() => p.onPanel('collection')} aria-label={`收录 ${p.collected}/36，打开图鉴`}><Icon name="book"/><span className="resource-label">收录</span><strong>{p.collected}<span>/36</span></strong></button>
-        <button className="resource-pill stamina-pill" onClick={() => p.onPanel('stamina')} aria-label="体力164/200，查看说明"><Icon name="moon"/><span className="resource-label">体力</span><strong>164<span>/200</span></strong><span className="resource-plus"><Icon name="plus"/></span></button>
         <button className="resource-pill" onClick={() => p.onPanel('party')} aria-label="同行演示，打开多人同行"><Icon name="people"/><span className="resource-label">在线</span><strong>4<span>人</span></strong></button>
-        <button className="resource-pill chapter-pill" onClick={() => p.onPanel('chapter')}><Icon name="star"/><strong>第3章</strong></button>
       </div>
       <button className="fullscreen-control" onClick={p.onFullscreen} aria-label={p.isFullscreen ? '退出全屏' : '进入全屏'} title={p.isFullscreen ? '退出全屏' : '进入全屏'}><Icon name="fullscreen"/></button>
       <button className="map-compass" onClick={p.onCenter} aria-label="回到当前探索位置"><span>北</span><CompassRose/></button>
