@@ -236,6 +236,35 @@
   .profile-avatar .ly-icon { width: 32px; height: 32px; }
   .profile-meta strong { font-size: 16px; }
 }
+/* 书卷展开：弹窗像卷轴一样自上而下铺开 */
+.hud-modal.is-scroll { animation: scroll-unroll .66s cubic-bezier(.22, .8, .2, 1) both; }
+@keyframes scroll-unroll {
+  0% { clip-path: inset(0 0 97% 0); }
+  62% { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+.is-scroll .modal-heading { animation: scroll-fade .42s .16s both; }
+.is-scroll .modal-body { animation: scroll-fade .5s .24s both; }
+@keyframes scroll-fade {
+  0% { opacity: 0; transform: translateY(-6px); }
+  100% { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hud-modal.is-scroll, .is-scroll .modal-heading, .is-scroll .modal-body { animation: none; }
+}
+
+/* 活动场景画框 */
+.event-stage { position: relative; margin: -2px 0 10px; padding: 6px 4px 2px; border-top: 1px solid #c8b27466; border-bottom: 1px solid #c8b27466; }
+.event-stage::before { content: ''; position: absolute; inset: 6px 4px 2px; pointer-events: none; box-shadow: inset 0 0 26px #f6e3ae55; }
+.event-scene { display: block; width: 100%; height: auto; }
+.event-stage-large { margin-bottom: 8px; }
+.event-motto { margin: 0 0 10px; text-align: center; font-size: 10.5px; letter-spacing: .3em; color: #9d8a5b; }
+.event-motto::before, .event-motto::after { content: '◇'; margin: 0 8px; color: #c3ae79; }
+
+/* 活动列表序号 */
+.event-index { flex: none; width: 16px; text-align: center; font-size: 10px; letter-spacing: 0; color: #a8905c; }
+.event-entry.is-active .event-index { color: #8a4a2e; }
+
 /* 活动中心：原神式的左侧活动列表 + 右侧活动预览 */
 .events-modal { width: min(740px, 100%); }
 .events-layout { display: grid; grid-template-columns: 218px 1fr; gap: 0; min-height: 396px; }
@@ -252,7 +281,7 @@
 .event-tag { margin-left: auto; padding: 2px 8px; border: 1px solid #bca56a; border-radius: 12px; color: #8a6d33; background: #f1e6bf; font-size: 10px; letter-spacing: .12em; white-space: nowrap; }
 .event-entry.is-active .event-tag { color: #7c4a1e; border-color: #c98a3a; background: #ffe9b8; }
 .event-list-foot { margin-top: auto; padding-top: 12px; text-align: center; font-size: 10px; letter-spacing: .22em; color: #a89a6c; }
-.event-hero { display: flex; flex-direction: column; padding: 4px 4px 4px 22px; }
+.event-hero { display: flex; flex-direction: column; padding: 2px 4px 4px 20px; }
 .event-art { position: relative; display: flex; align-items: center; justify-content: center; gap: 16px; min-height: 128px; margin-bottom: 6px; background: radial-gradient(ellipse at center, #ead08e88, transparent 72%); color: #a97535; }
 .event-art > .ly-icon { width: 58px; height: 58px; transform: rotate(-22deg); color: #bc8540; }
 .event-art > .ly-icon:last-child { transform: rotate(27deg); color: #d0a250; }
