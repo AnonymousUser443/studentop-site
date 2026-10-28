@@ -26,8 +26,8 @@ export const FOG_TUNING = {
   coverage: 1,
   haze: 0.44,
   puffCount: 330,
-  puffDriftX: 130,
-  puffDriftY: 96,
+  puffDriftX: 240,
+  puffDriftY: 180,
   puffSpeed: 34,
   puffMinRadius: 220,
   puffMaxRadius: 520,
@@ -132,7 +132,7 @@ function buildPuff(seed: number, tone: 0 | 1) {
       const height = -dy; // +1 at the top of the puff
       const crown = smoothstepRange(0.05, 0.75, height);
       const base = smoothstepRange(-0.15, -0.8, height);
-      const relief = 0.5 + crown * 0.42 - base * 0.5 + (wisps - 0.5) * 0.35;
+      const relief = 0.5 + crown * 0.58 - base * 0.62 + (wisps - 0.5) * 0.35;
       const lit = clamp01(relief);
 
       // Back banks sit in the shadow of the front ones.
@@ -207,12 +207,12 @@ export class FogField {
         speed: 0.35 + random() * 0.55,
         driftX: (random() - 0.5) * 2 * tuning.puffDriftX,
         driftY: (random() - 0.5) * 2 * tuning.puffDriftY,
-        pulse: 0.10 + random() * 0.10,
+        pulse: 0.24 + random() * 0.2,
         variant: Math.floor(random() * 3),
-        highlight: random() > 0.72,
+        highlight: random() > 0.55,
         depth,
         rotation: random() * TAU,
-        spin: (random() - 0.5) * 0.05,
+        spin: (random() - 0.5) * 0.12,
         // The travelling wave is keyed off position, so neighbouring banks rise together.
         wave: (random() * MAP_WIDTH * 0.0024 + random() * MAP_HEIGHT * 0.0017) % TAU,
       };
@@ -229,7 +229,8 @@ export class FogField {
     const camera = props.camera;
     const tuning = FOG_TUNING;
     const reduced = props.settings.reducedMotion;
-    const t = reduced ? 0 : now / 1000;
+    // Even in reduced-motion the sheet keeps a very slow drift, so the scene never looks frozen.
+    const t = (now / 1000) * (reduced ? 0.55 : 1);
 
     const resolution = Math.min(props.settings.quality === 'low' ? 0.42 : 0.58, 1200 / Math.max(1, width), 1);
     const bufferWidth = Math.max(1, Math.ceil(width * resolution));
@@ -260,17 +261,21 @@ export class FogField {
     paint.translate(camera.x, camera.y);
     paint.scale(camera.scale, camera.scale);
 
+    // A slow wind pushes the whole sheet, which reads as motion even where the fog is dense.
+    const windX = Math.sin(t * 0.3) * 240;
+    const windY = Math.cos(t * 0.26) * 170;
+
     const margin = 240;
     for (const puff of this.puffs) {
       // A slow wave runs across the map: banks in the same area swell together,
       // so the sheet rolls instead of every puff bobbing on its own clock.
-      const wave = Math.sin(t * 0.85 - puff.wave + puff.phase * 0.15);
-      const swell = Math.sin(t * 0.62 - puff.wave * 1.3 + puff.phase * 0.6);
+      const wave = Math.sin(t * 1.9 - puff.wave + puff.phase * 0.15);
+      const swell = Math.sin(t * 1.4 - puff.wave * 1.3 + puff.phase * 0.6);
 
-      const x = puff.x + Math.sin(t * puff.speed * 0.22 + puff.phase) * puff.driftX * (0.6 + 0.4 * wave);
-      const y = puff.y + Math.cos(t * puff.speed * 0.19 + puff.phase * 1.7) * puff.driftY * (0.6 + 0.4 * swell);
-      const radius = puff.radius * (1 + puff.pulse * (1 + swell));
-      const alpha = puff.alpha * (0.58 + 0.42 * wave);
+      const x = windX + puff.x + Math.sin(t * puff.speed * 0.22 + puff.phase) * puff.driftX * (0.6 + 0.4 * wave);
+      const y = windY + puff.y + Math.cos(t * puff.speed * 0.19 + puff.phase * 1.7) * puff.driftY * (0.6 + 0.4 * swell) + Math.sin(t * 0.9 + puff.phase) * 34;
+      const radius = puff.radius * (1 + puff.pulse * (0.6 + swell));
+      const alpha = puff.alpha * (0.42 + 0.58 * wave);
 
       // Cull against the viewport in screen space before drawing the sprite.
       const screenX = (camera.x + x * camera.scale) * resolution;
@@ -293,9 +298,9 @@ export class FogField {
 
       // Lit crowns: a few banks pick up a travelling highlight, so the sheet reads
       // as rolling even where the fog is nearly opaque.
-      if (puff.highlight && !reduced) {
+      if (puff.highlight) {
         paint.globalCompositeOperation = 'lighter';
-        const glow = 0.16 * clamp01(0.5 + 0.5 * wave);
+        const glow = 0.34 * clamp01(0.5 + 0.5 * wave);
         paint.globalAlpha = glow;
         paint.save();
         paint.translate(x, y - radius * 0.12);
@@ -307,6 +312,24 @@ export class FogField {
       }
     }
     paint.globalAlpha = 1;
+
+    // 1b. Sun patches drifting over the bank tops. Brightness waves stay legible
+    //     even when the sheet is almost opaque, where translated puffs are not.
+    paint.globalCompositeOperation = 'lighter';
+    for (let i = 0; i < 5; i++) {
+      const phase = i * 2.399;
+      const cx = MAP_WIDTH * (0.5 + 0.42 * Math.sin(t * 0.18 + phase));
+      const cy = MAP_HEIGHT * (0.5 + 0.38 * Math.cos(t * 0.15 + phase * 1.3));
+      const radius = 900 + 520 * Math.sin(t * 0.045 + phase * 0.7);
+      const strength = 0.055 + 0.045 * Math.sin(t * 0.13 + phase);
+      const gradient = paint.createRadialGradient(cx, cy, 0, cx, cy, radius);
+      gradient.addColorStop(0, rgba(PALETTE.core, Math.max(0, strength)));
+      gradient.addColorStop(0.55, rgba(PALETTE.core, Math.max(0, strength * 0.5)));
+      gradient.addColorStop(1, rgba(PALETTE.core, 0));
+      paint.fillStyle = gradient;
+      paint.fillRect(cx - radius, cy - radius, radius * 2, radius * 2);
+    }
+    paint.globalCompositeOperation = 'source-over';
 
     // 2. Reveal state, derived from props so QA's fixedTime stays reproducible.
     paint.setTransform(resolution, 0, 0, resolution, 0, 0);
