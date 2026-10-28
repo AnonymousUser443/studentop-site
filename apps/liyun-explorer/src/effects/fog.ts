@@ -173,7 +173,12 @@ type Puff = {
   highlight: boolean;
 };
 
-type Reveal = { landmark: Landmark; progress: number; x: number; y: number };
+type Reveal = { landmark: Landmark; progress: number; raw: number; x: number; y: number };
+
+// The erase front is compressed into ~190ms of the 3.2s scene event: the fog is
+// gone almost at once, exactly like the reference clip.
+const REVEAL_AT = 0.39;
+const REVEAL_SPAN = 0.04;
 
 export class FogField {
   private sprites: HTMLCanvasElement[] = [];
@@ -300,36 +305,18 @@ export class FogField {
       // as rolling even where the fog is nearly opaque.
       if (puff.highlight) {
         paint.globalCompositeOperation = 'lighter';
-        const glow = 0.34 * clamp01(0.5 + 0.5 * wave);
+        const glow = 0.16 * clamp01(0.5 + 0.5 * wave);
         paint.globalAlpha = glow;
         paint.save();
         paint.translate(x, y - radius * 0.12);
         paint.rotate(puff.rotation - (t * puff.spin) / 2);
         paint.scale(1, squash * 0.9);
-        paint.drawImage(sprite, -radius * 0.85, -radius * 0.85, radius * 1.7, radius * 1.7);
+        paint.drawImage(sprite, -radius, -radius, radius * 2.1, radius * 2.1);
         paint.restore();
         paint.globalCompositeOperation = 'source-over';
       }
     }
     paint.globalAlpha = 1;
-
-    // 1b. Sun patches drifting over the bank tops. Brightness waves stay legible
-    //     even when the sheet is almost opaque, where translated puffs are not.
-    paint.globalCompositeOperation = 'lighter';
-    for (let i = 0; i < 5; i++) {
-      const phase = i * 2.399;
-      const cx = MAP_WIDTH * (0.5 + 0.42 * Math.sin(t * 0.18 + phase));
-      const cy = MAP_HEIGHT * (0.5 + 0.38 * Math.cos(t * 0.15 + phase * 1.3));
-      const radius = 900 + 520 * Math.sin(t * 0.045 + phase * 0.7);
-      const strength = 0.055 + 0.045 * Math.sin(t * 0.13 + phase);
-      const gradient = paint.createRadialGradient(cx, cy, 0, cx, cy, radius);
-      gradient.addColorStop(0, rgba(PALETTE.core, Math.max(0, strength)));
-      gradient.addColorStop(0.55, rgba(PALETTE.core, Math.max(0, strength * 0.5)));
-      gradient.addColorStop(1, rgba(PALETTE.core, 0));
-      paint.fillStyle = gradient;
-      paint.fillRect(cx - radius, cy - radius, radius * 2, radius * 2);
-    }
-    paint.globalCompositeOperation = 'source-over';
 
     // 2. Reveal state, derived from props so QA's fixedTime stays reproducible.
     paint.setTransform(resolution, 0, 0, resolution, 0, 0);
@@ -338,10 +325,13 @@ export class FogField {
     for (const landmark of props.landmarks) {
       if (!props.discoveredIds.includes(landmark.id)) continue;
       const revealing = props.event?.landmarkId === landmark.id && timing.progress < 1;
-      const progress = revealing ? timing.reveal : 1;
+      // Reference: the fog does not melt away slowly — it is gone almost at once,
+      // then the light spreads. So the erase front is compressed into a few frames.
+      const progress = revealing ? clamp01((timing.progress - REVEAL_AT) / REVEAL_SPAN) : 1;
       reveals.push({
         landmark,
         progress,
+        raw: revealing ? timing.progress : 1,
         x: camera.x + landmark.uv.u * MAP_WIDTH * camera.scale,
         y: camera.y + landmark.uv.v * MAP_HEIGHT * camera.scale,
       });
@@ -354,10 +344,12 @@ export class FogField {
       paint.save();
       paint.translate(reveal.x, reveal.y);
       paint.scale(1, 0.88);
-      const gradient = paint.createRadialGradient(0, 0, radius * 0.42, 0, 0, radius);
+      // A hard-ish leading edge with a short soft rim: it reads as a shock front
+      // rather than a radial gradient wipe.
+      const gradient = paint.createRadialGradient(0, 0, radius * 0.7, 0, 0, radius);
       gradient.addColorStop(0, 'rgba(0,0,0,1)');
-      gradient.addColorStop(0.62, 'rgba(0,0,0,0.94)');
-      gradient.addColorStop(0.86, 'rgba(0,0,0,0.55)');
+      gradient.addColorStop(0.72, 'rgba(0,0,0,0.98)');
+      gradient.addColorStop(0.93, 'rgba(0,0,0,0.6)');
       gradient.addColorStop(1, 'rgba(0,0,0,0)');
       paint.fillStyle = gradient;
       paint.beginPath();
@@ -389,34 +381,45 @@ export class FogField {
     // 4. A restrained warm glow inside every discovered area.
     paint.globalCompositeOperation = 'lighter';
     for (const reveal of reveals) {
-      if (reveal.progress < 0.55) continue;
+      if (reveal.raw < 0.55) continue;
       const radius = this.revealRadius(reveal, camera.scale) * 0.72;
-      const strength = (reveal.progress - 0.55) / 0.45;
+      const strength = Math.min(1, (reveal.raw - 0.55) / 0.3);
       const gradient = paint.createRadialGradient(reveal.x, reveal.y, 0, reveal.x, reveal.y, radius);
-      gradient.addColorStop(0, rgba(PALETTE.warm, 0.075 * strength));
-      gradient.addColorStop(0.6, rgba(PALETTE.warm, 0.028 * strength));
+      gradient.addColorStop(0, rgba(PALETTE.warm, 0.06 * strength));
+      gradient.addColorStop(0.6, rgba(PALETTE.warm, 0.022 * strength));
       gradient.addColorStop(1, rgba(PALETTE.warm, 0));
       paint.fillStyle = gradient;
       paint.fillRect(reveal.x - radius, reveal.y - radius, radius * 2, radius * 2);
     }
 
-    // 5. Light pouring out of the fog centre during the reveal.
+    // 5. The unlock itself: one hard flash, a shock ring racing outward, and a
+    //    handful of streaks. Fast and punchy — no slow halo.
     paint.globalCompositeOperation = 'source-over';
     for (const reveal of reveals) {
-      if (reveal.progress <= 0 || reveal.progress >= 1) continue;
-      this.drawRevealLight(paint, reveal, camera.scale, t, reduced);
+      if (reveal.raw <= 0 || reveal.raw >= 1) continue;
+      this.drawRevealLight(paint, reveal, camera.scale, reduced);
     }
 
     paint.globalCompositeOperation = 'source-over';
 
-    // 6. Present.
+    // 6. Present. The whole sheet also thins for a moment on unlock: the reference does
+    //    not melt a hole, it blows the fog away and lets it drift back.
+    let sheetFade = 1;
+    for (const reveal of reveals) {
+      if (reveal.raw <= REVEAL_AT || reveal.raw >= 1) continue;
+      const k = clamp01((reveal.raw - REVEAL_AT) / 0.18);
+      sheetFade = Math.min(sheetFade, 1 - 0.62 * Math.pow(1 - k, 2.2));
+    }
+
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.save();
     ctx.setTransform(pixelDensity, 0, 0, pixelDensity, 0, 0);
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
+    ctx.globalAlpha = sheetFade;
     ctx.drawImage(this.buffer, 0, 0, width, height);
+    ctx.globalAlpha = 1;
     ctx.restore();
   }
 
@@ -487,55 +490,101 @@ export class FogField {
     }
   }
 
+  /**
+   * The unlock burst. Reference behaviour: the fog is already gone, a single hard
+   * flash pops at the point, a thin shock ring races outward, a few streaks fly
+   * with it and the whole thing is over in well under a second.
+   */
   private drawRevealLight(
     paint: CanvasRenderingContext2D,
     reveal: Reveal,
     scale: number,
-    t: number,
     reduced: boolean,
   ) {
-    const progress = reveal.progress;
+    const p = reveal.raw;
     const radius = this.revealRadius({ ...reveal, progress: 1 }, scale);
-    const fade = Math.sin(Math.PI * clamp01(progress * 1.12)) * (1 - smoothstepRange(0.72, 1, progress));
-    const alpha = FOG_TUNING.rays * fade;
-    if (alpha <= 0.002) return;
     const { x, y } = reveal;
 
-    const halo = paint.createRadialGradient(x, y, 0, x, y, radius * 1.2);
-    halo.addColorStop(0, rgba(PALETTE.warm, alpha * 0.55));
-    halo.addColorStop(0.45, rgba(PALETTE.warm, alpha * 0.22));
-    halo.addColorStop(0.78, rgba(PALETTE.warm, alpha * 0.16));
-    halo.addColorStop(0.93, rgba(PALETTE.warm, alpha * 0.62));
-    halo.addColorStop(1, rgba(PALETTE.warm, 0));
-    paint.fillStyle = halo;
-    paint.beginPath();
-    paint.arc(x, y, radius * 1.2, 0, TAU);
-    paint.fill();
+    // 0 at the moment the fog tears open, 1 at the end of the burst.
+    const since = clamp01((p - REVEAL_AT) / 0.22);
+    if (since <= 0 || since >= 1) return;
 
-    const length = radius * 1.3;
-    const spin = reduced ? 0 : t * 0.16;
-    for (let i = 0; i < FOG_TUNING.raysCount; i++) {
-      const angle = (i / FOG_TUNING.raysCount) * TAU + spin + 0.4;
-      const spread = 0.075 + 0.035 * Math.sin(i * 2.1 + t * 0.5);
-      const gradient = paint.createLinearGradient(x, y, x + Math.cos(angle) * length, y + Math.sin(angle) * length * 0.88);
-      gradient.addColorStop(0, rgba(PALETTE.warm, alpha * 0.75));
-      gradient.addColorStop(0.45, rgba(PALETTE.warm, alpha * 0.3));
-      gradient.addColorStop(1, rgba(PALETTE.warm, 0));
-      paint.fillStyle = gradient;
+    const flash = Math.exp(-since * 22);
+    const ringT = clamp01(since / 0.62);
+    const ringA = Math.pow(1 - ringT, 1.6);
+    const streakA = Math.pow(clamp01(1 - since / 0.42), 2);
+    const bloomA = Math.pow(1 - since, 2);
+
+    // Soft bloom left where the fog used to be.
+    if (bloomA > 0.01) {
+      const bloom = paint.createRadialGradient(x, y, 0, x, y, radius * 0.95);
+      bloom.addColorStop(0, rgba(PALETTE.core, bloomA * 0.5));
+      bloom.addColorStop(0.45, rgba(PALETTE.core, bloomA * 0.22));
+      bloom.addColorStop(1, rgba(PALETTE.core, 0));
+      paint.fillStyle = bloom;
       paint.beginPath();
-      paint.moveTo(x, y);
-      paint.arc(x, y, length, angle - spread, angle + spread);
-      paint.closePath();
+      paint.arc(x, y, radius * 0.95, 0, TAU);
       paint.fill();
     }
 
-    const ring = clamp01((progress - 0.15) / 0.75);
-    if (ring > 0 && ring < 1) {
-      paint.strokeStyle = rgba(PALETTE.warm, alpha * 1.4 * (1 - ring));
-      paint.lineWidth = 1.6;
+    // Streaks: straight, sharp, gone almost immediately.
+    if (streakA > 0.02 && !reduced) {
+      const count = FOG_TUNING.raysCount * 2;
+      for (let i = 0; i < count; i++) {
+        const angle = (i / count) * TAU + 0.26;
+        const length = radius * (0.8 + 0.75 * ringT);
+        const width = 0.014 + 0.01 * ((i * 7) % 5) / 4;
+        const gradient = paint.createLinearGradient(x, y, x + Math.cos(angle) * length, y + Math.sin(angle) * length * 0.88);
+        gradient.addColorStop(0, rgba(PALETTE.core, streakA * 0.55));
+        gradient.addColorStop(0.55, rgba(PALETTE.warm, streakA * 0.22));
+        gradient.addColorStop(1, rgba(PALETTE.warm, 0));
+        paint.fillStyle = gradient;
+        paint.beginPath();
+        paint.moveTo(x, y);
+        paint.arc(x, y, length, angle - width, angle + width);
+        paint.closePath();
+        paint.fill();
+      }
+    }
+
+    // Shock ring: a crisp bright hoop with a soft outer wash.
+    if (ringA > 0.01) {
+      const rr = radius * (0.18 + 1.85 * Math.pow(ringT, 0.62));
+      paint.save();
+      paint.translate(x, y);
+      paint.scale(1, 0.88);
+      const band = paint.createRadialGradient(0, 0, rr * 0.9, 0, 0, rr * 1.1);
+      band.addColorStop(0, rgba(PALETTE.core, 0));
+      band.addColorStop(0.45, rgba(PALETTE.core, ringA * 0.55));
+      band.addColorStop(0.55, rgba(PALETTE.core, ringA * 0.75));
+      band.addColorStop(1, rgba(PALETTE.core, 0));
+      paint.fillStyle = band;
       paint.beginPath();
-      paint.ellipse(x, y, radius * 1.06 * ring, radius * 1.06 * ring * 0.88, 0, 0, TAU);
-      paint.stroke();
+      paint.arc(0, 0, rr * 1.1, 0, TAU);
+      paint.fill();
+
+      const wash = paint.createRadialGradient(0, 0, rr * 0.82, 0, 0, rr * 1.16);
+      wash.addColorStop(0, rgba(PALETTE.core, 0));
+      wash.addColorStop(0.5, rgba(PALETTE.core, ringA * 0.28));
+      wash.addColorStop(1, rgba(PALETTE.core, 0));
+      paint.fillStyle = wash;
+      paint.beginPath();
+      paint.arc(0, 0, rr * 1.16, 0, TAU);
+      paint.fill();
+      paint.restore();
+    }
+
+    // The flash itself: a hot pin-prick that blows out the first couple of frames.
+    if (flash > 0.02) {
+      const coreR = radius * (0.16 + 0.1 * (1 - flash));
+      const core = paint.createRadialGradient(x, y, 0, x, y, coreR);
+      core.addColorStop(0, rgba([255, 253, 244], flash));
+      core.addColorStop(0.35, rgba(PALETTE.warm, flash * 0.75));
+      core.addColorStop(1, rgba(PALETTE.warm, 0));
+      paint.fillStyle = core;
+      paint.beginPath();
+      paint.arc(x, y, coreR, 0, TAU);
+      paint.fill();
     }
   }
 
