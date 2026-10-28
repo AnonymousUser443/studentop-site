@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
-import type { ExplorationState, GameSettings, MapCamera, PanelId, SceneEvent, Viewport } from './types';
+import type { AccountUser, ExplorationState, GameSettings, MapCamera, PanelId, SceneEvent, Viewport } from './types';
 import { LANDMARKS, MAP_HEIGHT, MAP_WIDTH } from './data';
 import { createExploredState, createInitialState, explore, progressOf, restoreState, SAVE_KEY } from './state';
+import { ApiError, fetchMe, fetchProgress, isAuthError, login, logout, readToken, saveProgress, writeToken } from './account';
 import MapScene from './map/MapScene';
 import { cameraAt, clampCamera, initialCamera, uvToScreen } from './map/geometry';
 import Hud from './hud/Hud';
@@ -29,6 +30,10 @@ export default function App() {
   const visual = useRef({uv:state.playerUV,camera});
   const rememberVisual=useCallback((uv:ExplorationState['playerUV'],view:MapCamera)=>{visual.current={uv,camera:view};},[]);
   const stateRef = useRef(state); stateRef.current = state;
+  const tokenRef = useRef<string | null>(null);
+  const [account, setAccount] = useState<AccountUser | null>(null);
+  const [loginBusy, setLoginBusy] = useState(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
   const [entered, setEntered] = useState(qaMode);
   const [activePanel, setActivePanel] = useState<PanelId>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -45,6 +50,40 @@ export default function App() {
   const selected = LANDMARKS.find(x => x.id === selectedId) ?? null;
   const message = useCallback((text:string) => { setToast(text); clearTimeout(toastTimer.current); toastTimer.current = setTimeout(() => setToast(null), 3600); }, []);
   useEffect(() => { if (preset) return; try { localStorage.setItem(SAVE_KEY, JSON.stringify(state)); } catch { /* Private mode keeps a usable in-memory session. */ } }, [state]);
+  const restoredRef = useRef(false);
+  useEffect(() => {
+    if (restoredRef.current || qaMode) return;
+    restoredRef.current = true;
+    const token = readToken();
+    if (!token) return;
+    tokenRef.current = token;
+    void (async () => {
+      try {
+        const { user } = await fetchMe(token);
+        try {
+          const progress = await fetchProgress(token);
+          if (progress.state) setState(restoreState(JSON.stringify(progress.state), matchMedia('(prefers-reduced-motion: reduce)').matches));
+          else await saveProgress(token, stateRef.current);
+        } catch { /* 进度拉取失败：保留本机存档，登录态仍有效 */ }
+        setAccount(user);
+      }
+      catch (error) {
+        if (isAuthError(error)) { writeToken(null); tokenRef.current = null; setAccount(null); }
+        // 网络失败：保持游客与本地存档，下次进入再重试。
+      }
+    })();
+  }, []);
+  useEffect(() => {
+    if (!account || qaMode) return;
+    const token = tokenRef.current;
+    if (!token) return;
+    const timer = setTimeout(() => {
+      void saveProgress(token, stateRef.current).catch(error => {
+        if (isAuthError(error)) { writeToken(null); tokenRef.current = null; setAccount(null); }
+      });
+    }, 700);
+    return () => clearTimeout(timer);
+  }, [state, account]);
   useEffect(() => {
     if (!stage.current) return;
     const observer = new ResizeObserver(([entry]) => {
@@ -105,6 +144,43 @@ export default function App() {
   },[audio.playChime,message]);
   const center=useCallback(()=>moveCamera(initialCamera(viewportRef.current)),[moveCamera]);
   const reset=()=>{setState(s=>({...createInitialState(s.settings.reducedMotion),settings:s.settings}));setEvent(null);setSelectedId(null);setActivePanel(null);center();message('云雾归来，新的旅途已开启');};
+  const handleLogin = useCallback((nickname: string, studentId: string) => {
+    if (loginBusy) return;
+    setLoginBusy(true);
+    setLoginError(null);
+    void (async () => {
+      try {
+        const result = await login(nickname, studentId);
+        writeToken(result.token);
+        tokenRef.current = result.token;
+        try {
+          const progress = await fetchProgress(result.token);
+          if (progress.state) setState(restoreState(JSON.stringify(progress.state), matchMedia('(prefers-reduced-motion: reduce)').matches));
+          else await saveProgress(result.token, stateRef.current);
+        } catch { /* 网络异常时保留本机进度，登录态仍有效 */ }
+        setAccount(result.user);
+      }
+      catch (error) {
+        setLoginError(error instanceof ApiError ? `登录失败：${error.message}` : '无法连接账号服务，请检查网络后重试，或先以游客身份进入');
+      }
+      finally {
+        setLoginBusy(false);
+      }
+    })();
+  }, [loginBusy]);
+  const handleGuest = useCallback(() => { setLoginError(null); enter(); }, [enter]);
+  const handleLogout = useCallback(() => {
+    const token = tokenRef.current;
+    setAccount(null);
+    writeToken(null);
+    tokenRef.current = null;
+    setEntered(false);
+    setActivePanel(null);
+    setSelectedId(null);
+    setLoginError(null);
+    if (token) void logout(token).catch(() => { /* 离线退出：本地令牌已清，服务端会话到期后自动失效 */ });
+  }, []);
+  const handleLoginPrompt = useCallback(() => { setActivePanel(null); setEntered(false); setLoginError(null); }, []);
   useEffect(()=>{
     if(!qaMode)return;
     const api={getState:()=>stateRef.current,getCamera:()=>visual.current.camera,getEvent:()=>eventRef.current,flushSync,select,discover,setCamera,reset,freeze:(offset?:number)=>setFixedTime(offset===undefined?undefined:(event?.startedAt??0)+offset),showPanel:(panel:PanelId)=>{setSelectedId(null);setActivePanel(panel);},setPreset:(name:string)=>{setState(name==='explored'?createExploredState():createInitialState());setEvent(null);setFixedTime(undefined);setToast(null);clearTimeout(toastTimer.current);setSelectedId(null);setActivePanel(null);moveCamera(initialCamera(viewportRef.current));},setEntered};
@@ -116,7 +192,7 @@ export default function App() {
     <div className="scene-vignette"/>
     {art.pine&&<img className="border-art pine" src="/assets/art/pine-left.png" alt="" onError={()=>setArt(s=>({...s,pine:false}))}/>}
     {art.mountain&&<img className="border-art mountain" src="/assets/art/mountain-right.png" alt="" onError={()=>setArt(s=>({...s,mountain:false}))}/>}
-    <div className="hud-layer" inert={portrait}><Hud progress={progressOf(state)} collected={state.discoveredIds.length} activePanel={activePanel} selected={selected} discovered={Boolean(selected&&state.discoveredIds.includes(selected.id))} state={state} landmarks={LANDMARKS} entered={entered} toast={toast} isFullscreen={isFullscreen} audioBlocked={audio.blocked} onPanel={id=>{setActivePanel(id);setSelectedId(null);}} onSelect={select} onClose={close} onExplore={()=>selectedId&&discover(selectedId)} onSettings={settings} onReset={reset} onFullscreen={fullscreen} onCenter={center} onEnter={enter}/></div>
+    <div className="hud-layer" inert={portrait}><Hud progress={progressOf(state)} collected={state.discoveredIds.length} activePanel={activePanel} selected={selected} discovered={Boolean(selected&&state.discoveredIds.includes(selected.id))} state={state} landmarks={LANDMARKS} entered={entered} toast={toast} isFullscreen={isFullscreen} audioBlocked={audio.blocked} account={account} loginBusy={loginBusy} loginError={loginError} onPanel={id=>{setActivePanel(id);setSelectedId(null);}} onSelect={select} onClose={close} onExplore={()=>selectedId&&discover(selectedId)} onSettings={settings} onReset={reset} onFullscreen={fullscreen} onCenter={center} onEnter={enter} onLogin={handleLogin} onGuest={handleGuest} onLogout={handleLogout} onLoginPrompt={handleLoginPrompt}/></div>
     {portrait&&<div className="orientation-gate" role="dialog" aria-modal="true" aria-label="请横屏探索">
       <svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g className="rotate-line"><rect x="30" y="12" width="40" height="76" rx="7" stroke="currentColor" strokeWidth="2"/><path d="M43 20h14M46 80h8" stroke="currentColor" strokeWidth="2"/></g><path d="M83 32a38 38 0 0 0-56-15m-2-8 1 10 10-2M17 68a38 38 0 0 0 56 15m2 8-1-10-10 2" stroke="currentColor" strokeWidth="2"/></svg>
       <h1>展开一方天地</h1><p>{matchMedia('(pointer: coarse)').matches?'请手动旋转手机，横屏开启校园之旅':'请将浏览器窗口调整为横向，开启校园之旅'}<br/>你的探索进度会为你保留</p><small>理韵寻踪 · 北理校园探索</small>
