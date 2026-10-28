@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "upstream": "27f0a4a80ed4d603acc34ce3513d8ab0b278c01e",
+  "upstream": "85a8034840a33e6a47fef37db158771954723180",
   "method": "isolated owned Edge/CDP against existing loopback Vite; genuine canvas pixels and trusted UI; independent renderer fixtures are separate from app state",
   "checks": [
     {
@@ -12,8 +12,8 @@
       "pass": true,
       "detail": {
         "before": {
-          "hash": "58b17a2b",
-          "alpha": 27151894,
+          "hash": "4943cede",
+          "alpha": 32368832,
           "changedOverOne": 0,
           "width": 2160,
           "height": 1350,
@@ -21,9 +21,9 @@
           "known": 1
         },
         "after": {
-          "hash": "ad65e36b",
-          "alpha": 26994371,
-          "changedOverOne": 229714,
+          "hash": "b1e7f6c8",
+          "alpha": 30646500,
+          "changedOverOne": 308502,
           "width": 2160,
           "height": 1350,
           "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)",
@@ -40,75 +40,88 @@
       "pass": true
     },
     {
+      "name": "actual_reduced_motion_ui_stops_ambient_fog_loop",
+      "pass": true,
+      "detail": {
+        "hash": "5eeeeeba",
+        "alpha": 23538087,
+        "changedOverOne": 0,
+        "width": 2160,
+        "height": 1350,
+        "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)",
+        "known": 2
+      }
+    },
+    {
       "name": "fixed_time_pixels_match_within_one_channel_quantization_step",
       "pass": true,
       "detail": {
         "initial": {
-          "hash": "cfaa5224",
-          "centerAlpha": 207,
+          "hash": "5ef94e9e",
+          "centerAlpha": 147,
           "outsideAlpha": 0
         },
         "repeated": {
-          "hash": "62a56dd3",
-          "centerAlpha": 207,
+          "hash": "9ed8cc6c",
+          "centerAlpha": 147,
           "outsideAlpha": 0
         },
         "later": {
-          "hash": "5b99ca81",
-          "centerAlpha": 185,
+          "hash": "ec7e0527",
+          "centerAlpha": 142,
           "outsideAlpha": 0
         },
         "r1": {
-          "hash": "8781143e",
-          "centerAlpha": 209,
+          "hash": "823459ca",
+          "centerAlpha": 171,
           "outsideAlpha": 0
         },
         "r2": {
-          "hash": "8781143e",
-          "centerAlpha": 209,
+          "hash": "93e1a1f8",
+          "centerAlpha": 154,
           "outsideAlpha": 0
         },
         "before": {
-          "hash": "8781143e",
-          "centerAlpha": 209,
+          "hash": "90689a9d",
+          "centerAlpha": 171,
           "outsideAlpha": 0
         },
         "after": {
-          "hash": "ba3015db",
+          "hash": "10fc0ff5",
           "centerAlpha": 18,
           "outsideAlpha": 0
         },
         "movedImage": {
-          "hash": "52d4c8e0",
+          "hash": "7a1850f2",
           "centerAlpha": 18,
           "outsideAlpha": 0
         },
         "highDpr": {
-          "hash": "b0f73ad5",
+          "hash": "d37cb936",
           "centerAlpha": 18,
           "outsideAlpha": 0
         },
         "low": {
-          "hash": "dda0b61e",
+          "hash": "87523f04",
           "centerAlpha": 18,
           "outsideAlpha": 0
         },
         "restored": {
-          "hash": "62a56dd3",
-          "centerAlpha": 207,
+          "hash": "9ed8cc6c",
+          "centerAlpha": 147,
           "outsideAlpha": 0
         },
-        "coldMs": 342.40000000596046,
+        "coldMs": 580.6000000238419,
         "repeatDifference": {
           "max": 1,
-          "mean": 0.0007322530864197531,
-          "changed": 949,
+          "mean": 0.0016527777777777778,
+          "changed": 2142,
           "channels": 1296000
         },
         "recreateDifference": {
           "max": 1,
-          "mean": 0.0007322530864197531,
-          "changed": 949,
+          "mean": 0.0016527777777777778,
+          "changed": 2142,
           "channels": 1296000
         }
       }
@@ -118,7 +131,7 @@
       "pass": true
     },
     {
-      "name": "reduced_motion_settles_fog_without_ambient_loop",
+      "name": "reduced_motion_renderer_keeps_valid_transparent_bounds",
       "pass": true
     },
     {
@@ -151,6 +164,6 @@
       "detail": []
     }
   ],
-  "total": 14,
-  "passed": 14
+  "total": 15,
+  "passed": 15
 }
