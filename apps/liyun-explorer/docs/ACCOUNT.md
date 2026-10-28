@@ -96,3 +96,32 @@ CREATE TABLE progress (            -- 收集进度快照（每用户一行）
 ## 8. 运行与验证
 
 见 [`server/README.md`](../server/README.md)（起服务、环境变量、测试）与 [`deploy/pi-liyun/ACCOUNT-API.md`](../../deploy/pi-liyun/ACCOUNT-API.md)（nginx 反代、systemd）。
+
+## 9. 后续成员接入与修改指引
+
+**代码地图**（账号能力相关，改动前先看这一节）：
+
+| 关注点 | 位置 | 职责 |
+| --- | --- | --- |
+| 前端客户端 | `src/account.ts` | `fetch` 封装、令牌存取、`login/logout/me/progress` |
+| 前端状态与类型 | `src/types.ts`（`AccountUser`）、`src/App.tsx` | 账号态、会话恢复、进度同步、退出 |
+| 前端界面 | `src/hud/Hud.tsx`、`src/hud/hud.css` | 登录/入口、账号展示、设置页退出 |
+| 后端存储 | `server/store.mjs` | SQLite 四表 + 查询/事务 |
+| 后端接口 | `server/server.mjs` | 路由、鉴权、入参清洗 |
+| 测试 | `server/*.test.mjs`、`src/account.test.ts` | 后端存储/接口、前端客户端 |
+
+**接入一个新前端**：只需依赖 `src/account.ts` 的 5 个函数（`login/logout/fetchMe/fetchProgress/saveProgress`），令牌用 `readToken/writeToken` 管理，所有请求走同源 `/api/*`。不接后端也能跑（游客模式）。
+
+**常见改动 → 改哪里**：
+
+1. **加用户字段**（如头像、学院）：`src/types.ts` 的 `AccountUser` → `server/store.mjs`（表结构 + `PRAGMA user_version` 升版迁移 + 查询/返回）→ `server/server.mjs`（login/me 返回）→ `src/account.ts` 类型 → `Hud.tsx` 展示。旧库升级用 `user_version` 做迁移，别直接改既有列。
+2. **加接口**：`server/store.mjs` 加方法 → `server/server.mjs` 加路由（鉴权沿用 `resolveSession`）→ `src/account.ts` 加函数 → 两端各补一条测试。
+3. **改打卡/进度语义**：先改 `src/state.ts`/`src/types.ts`，并保持 `restoreState` 对旧存档向后兼容（新增可选字段、不删旧字段、不换 `SAVE_KEY` 键名）。
+
+**兼容红线（改动必须遵守）**：
+
+1. **后端永远是可选能力**：前端任何 `fetch` 失败都必须降级为游客 + localStorage，绝不能因后端不可达而白屏或抛错。`src/account.ts` 已把网络错误与业务错误分开，改动别破坏这一点。
+2. **别动既有存档结构**：`SAVE_KEY = 'liyun.exploration.v1'`、`ExplorationState.version` 与 `restoreState` 的校验规则是历史存档的契约；只能向后兼容地扩展。
+3. **别动既有路由语义**：`/api/auth/*`、`/api/progress` 已上线；新增能力用新路径，别改已有接口的字段含义。
+4. **登录语义**：学号唯一、昵称可覆盖、无密码；令牌只在服务端存哈希。
+5. **数据脱敏**：`server/data/` 已 gitignore；真实学号/昵称只进私有数据目录，**不进仓库**。
