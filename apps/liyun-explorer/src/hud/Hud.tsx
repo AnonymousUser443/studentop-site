@@ -55,22 +55,33 @@ function EntryGate({ account, loginBusy, loginError, onEnter, onLogin, onGuest, 
   const [nickname, setNickname] = useState('');
   const [studentId, setStudentId] = useState('');
   return <div className="entrance-overlay"><div className="entry-card">
-    <div className="entry-flourish">◇ <span/> 良乡 · 秋日 <span/> ◇</div>
-    <p>一纸山水，万般理韵</p>
-    {account ? <>
-      <div className="account-chip"><Icon name="people"/><div><strong>{account.nickname}</strong><small>UID {account.uid} · 学号 {account.studentId}</small></div></div>
-      <button className="enter-campus" onClick={onEnter}><span>继续旅程</span><Icon name="star"/></button>
-      <button className="entry-alt" onClick={onLogout} disabled={loginBusy}>退出登录 · 以游客身份进入</button>
-    </> : <>
-      <form className="entry-login" onSubmit={e => { e.preventDefault(); if (!loginBusy) onLogin(nickname.trim(), studentId.trim()); }}>
-        <label><span>昵称</span><input value={nickname} onChange={e => setNickname(e.target.value)} placeholder="你的昵称" maxLength={24} autoComplete="nickname" disabled={loginBusy}/></label>
-        <label><span>学号</span><input value={studentId} onChange={e => setStudentId(e.target.value)} placeholder="用于识别你的存档" maxLength={32} autoComplete="username" disabled={loginBusy}/></label>
-        <button className="enter-campus" type="submit" disabled={loginBusy}><span>{loginBusy ? '登录中…' : '登录并进入'}</span><Icon name="star"/></button>
-      </form>
-      <button className="entry-alt" onClick={onGuest} disabled={loginBusy}>游客模式 · 进度仅保存在本机</button>
-      {loginError && <p className="entry-error" role="alert">{loginError}</p>}
-    </>}
-    <small>轻触启程 · 开启声音与沉浸体验</small>
+    <span className="entry-frame" aria-hidden="true"/>
+    <div className="entry-scene" aria-hidden="true">
+      <span className="scene-cloud scene-cloud-1"/><span className="scene-cloud scene-cloud-2"/><span className="scene-cloud scene-cloud-3"/>
+      <svg className="scene-mountains" viewBox="0 0 420 150" preserveAspectRatio="none">
+        <path className="mountain-far" d="M0 150 0 95 55 58 110 98 165 52 225 100 280 62 340 102 385 70 420 96 420 150 Z"/>
+        <path className="mountain-near" d="M0 150 0 116 70 82 132 122 190 88 250 124 305 94 360 126 420 108 420 150 Z"/>
+      </svg>
+      <div className="scene-water"><span className="wave wave-a"/><span className="wave wave-b"/></div>
+    </div>
+    <div className="entry-content">
+      <div className="entry-flourish">◇ <span/> 良乡 · 秋日 <span/> ◇</div>
+      <p>一纸山水，万般理韵</p>
+      {account ? <>
+        <div className="account-chip"><Icon name="people"/><div><strong>{account.nickname}</strong><small>UID {account.uid} · 学号 {account.studentId}</small></div></div>
+        <button className="enter-campus" onClick={onEnter}><span>继续旅程</span><Icon name="star"/></button>
+        <button className="entry-alt" onClick={onLogout} disabled={loginBusy}>退出登录 · 以游客身份进入</button>
+      </> : <>
+        <form className="entry-login" onSubmit={e => { e.preventDefault(); if (!loginBusy) onLogin(nickname.trim(), studentId.trim()); }}>
+          <label><span>昵称</span><input value={nickname} onChange={e => setNickname(e.target.value)} placeholder="你的昵称" maxLength={24} autoComplete="nickname" disabled={loginBusy}/></label>
+          <label><span>学号</span><input value={studentId} onChange={e => setStudentId(e.target.value)} placeholder="用于识别你的存档" maxLength={32} autoComplete="username" disabled={loginBusy}/></label>
+          <button className="enter-campus" type="submit" disabled={loginBusy}><span>{loginBusy ? '登录中…' : '登录并进入'}</span><Icon name="star"/></button>
+        </form>
+        <button className="entry-alt" onClick={onGuest} disabled={loginBusy}>游客模式 · 进度仅保存在本机</button>
+        {loginError && <p className="entry-error" role="alert">{loginError}</p>}
+      </>}
+      <small>轻触启程 · 开启声音与沉浸体验</small>
+    </div>
   </div></div>;
 }
 
