@@ -24,7 +24,7 @@ const PALETTE = {
 /** Density knobs: `coverage` and `haze` are the two values worth touching. */
 export const FOG_TUNING = {
   coverage: 1,
-  haze: 0.44,
+  haze: 0.54,
   puffCount: 330,
   puffDriftX: 240,
   puffDriftY: 180,
@@ -117,16 +117,18 @@ function buildPuff(seed: number, tone: 0 | 1) {
       const dy = (y - half) / half;
       const d = Math.sqrt(dx * dx + dy * dy);
 
-      // Angular noise breaks the circle; radial noise adds wisps toward the rim.
+      // Angular noise breaks the circle into cauliflower lumps: three lobe scales
+      // (broad, medium, fine) so the silhouette never reads as a smooth disc.
       const angle = Math.atan2(dy, dx);
-      const ring = fbm(table, Math.cos(angle) * 1.6 + 5.2, Math.sin(angle) * 1.6 + 8.4, 3);
+      const lobes = (k: number, o1: number, o2: number) => fbm(table, Math.cos(angle) * k + o1, Math.sin(angle) * k + o2, 3);
+      const lumpy = 0.52 * lobes(1.6, 5.2, 8.4) + 0.3 * lobes(4.7, 1.3, 9.9) + 0.18 * lobes(11.0, 3.7, 2.2);
       const wisps = fbm(table, (x / size) * 3.4 + 2.1, (y / size) * 3.4 + 6.3, 4);
-      const rim = 0.88 + 0.24 * (ring - 0.5) + 0.16 * (wisps - 0.5);
-      const outer = Math.max(0, 1 - d / rim);
+      const rim = 1.04 + (lumpy - 0.5) * 1.45 + (wisps - 0.5) * 0.3;
+      const outer = Math.max(0, 1 - d / Math.max(0.22, rim));
 
       // Squared falloff reads as volume: dense core, long feathered edge.
       let alpha = Math.pow(clamp01(outer), 1.35);
-      alpha *= 0.86 + 0.14 * smoothstepRange(0.2, 0.8, wisps);
+      alpha *= 0.8 + 0.2 * smoothstepRange(0.08, 0.92, wisps);
 
       // Volume: a lit crown, a soft terminator around the middle, a shaded base.
       const height = -dy; // +1 at the top of the puff
@@ -171,6 +173,7 @@ type Puff = {
   spin: number;
   wave: number;
   highlight: boolean;
+  stretch: number;
 };
 
 type Reveal = { landmark: Landmark; progress: number; raw: number; x: number; y: number };
@@ -190,14 +193,9 @@ export class FogField {
     if (this.seed === seed && this.sprites.length) return;
     this.seed = seed;
     // Front (lit) sprites first, then the shaded set used for banks further back.
-    this.sprites = [
-      buildPuff(seed * 3 + 11, 0),
-      buildPuff(seed * 5 + 29, 0),
-      buildPuff(seed * 7 + 47, 0),
-      buildPuff(seed * 3 + 11, 1),
-      buildPuff(seed * 5 + 29, 1),
-      buildPuff(seed * 7 + 47, 1),
-    ];
+    // Five distinct silhouettes per tone, so neighbouring puffs don't share one outline.
+    const seeds = [3, 5, 7, 11, 13];
+    this.sprites = seeds.flatMap(s => [buildPuff(seed * s + 11, 0), buildPuff(seed * s + 29, 1)]);
     const random = seededRandom(seed * 13 + 5);
     const tuning = FOG_TUNING;
     this.puffs = Array.from({ length: tuning.puffCount }, () => {
@@ -207,13 +205,14 @@ export class FogField {
         x: random() * MAP_WIDTH,
         y: random() * MAP_HEIGHT,
         radius,
-        alpha: 0.76 + random() * 0.24,
+        alpha: 0.9 + random() * 0.1,
         phase: random() * TAU,
         speed: 0.35 + random() * 0.55,
         driftX: (random() - 0.5) * 2 * tuning.puffDriftX,
         driftY: (random() - 0.5) * 2 * tuning.puffDriftY,
         pulse: 0.24 + random() * 0.2,
-        variant: Math.floor(random() * 3),
+        variant: Math.floor(random() * 5),
+        stretch: 0.8 + random() * 0.2,
         highlight: random() > 0.55,
         depth,
         rotation: random() * TAU,
@@ -285,14 +284,14 @@ export class FogField {
       // Cull against the viewport in screen space before drawing the sprite.
       const screenX = (camera.x + x * camera.scale) * resolution;
       const screenY = (camera.y + y * camera.scale) * resolution;
-      const screenR = radius * camera.scale * resolution * 1.1;
+      const screenR = radius * camera.scale * resolution * 1.45;
       if (screenX + screenR < -margin || screenX - screenR > bufferWidth + margin) continue;
       if (screenY + screenR < -margin || screenY - screenR > bufferHeight + margin) continue;
 
       // Depth: far banks are dimmer, squatter and slightly bigger; front ones are crisp.
       const shade = 0.62 + 0.38 * puff.depth;
-      const squash = 0.82 + 0.1 * puff.depth;
-      const sprite = this.sprites[puff.depth < 0.5 ? puff.variant + 3 : puff.variant];
+      const squash = (0.82 + 0.1 * puff.depth) * puff.stretch;
+      const sprite = this.sprites[puff.depth < 0.5 ? puff.variant * 2 + 1 : puff.variant * 2];
       paint.globalAlpha = clamp01(alpha * tuning.coverage * shade);
       paint.save();
       paint.translate(x, y);
