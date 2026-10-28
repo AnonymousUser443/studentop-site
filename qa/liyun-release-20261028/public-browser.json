@@ -1,0 +1,431 @@
+{
+  "ok": true,
+  "environment": "production-public",
+  "target": "https://liyun.studentop.cn:14355",
+  "expectedCommit": "d42554f163dec8d6fd98f263d8afe5d6e58ad2a6",
+  "release": "liyun-20261028T125837Z-d42554f163",
+  "fixtureChecks": [],
+  "method": "owned isolated Edge/CDP; real UI and read-only fog pixels, not user profile",
+  "checks": [
+    {
+      "name": "real_final_url_and_no_dev_api",
+      "pass": true
+    },
+    {
+      "name": "exactly_one_fog_and_one_light",
+      "pass": true
+    },
+    {
+      "name": "expected_production_bundle_requested",
+      "pass": true
+    },
+    {
+      "name": "independent_fog_billows_without_camera_or_progress_change",
+      "pass": true,
+      "detail": {
+        "a": {
+          "alpha": 2023016,
+          "dimensions": [
+            2160,
+            1350
+          ],
+          "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)",
+          "progress": 3,
+          "known": [
+            "poi-wencui"
+          ],
+          "collected": 1,
+          "hidden": false,
+          "hash": "55ef3ce81ef57a3d9b4a9d58a7d0052eb6ae38b45b4bcdb7746f7f44ff7399b2"
+        },
+        "b": {
+          "alpha": 1950542,
+          "dimensions": [
+            2160,
+            1350
+          ],
+          "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)",
+          "progress": 3,
+          "known": [
+            "poi-wencui"
+          ],
+          "collected": 1,
+          "hidden": false,
+          "hash": "a4af347d69e583f14ac8f30f445ecf798db679be22d0cf3b2d95fb71305838ce"
+        },
+        "c": {
+          "alpha": 1913549,
+          "dimensions": [
+            2160,
+            1350
+          ],
+          "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)",
+          "progress": 3,
+          "known": [
+            "poi-wencui"
+          ],
+          "collected": 1,
+          "hidden": false,
+          "hash": "825c102880009cc26099111d6eb6144332ac5138bdd0bdf97608f9f1fe828274"
+        },
+        "differences": [
+          {
+            "changed": 39189,
+            "channels": 45564,
+            "ratio": 0.8600869107189887
+          },
+          {
+            "changed": 39976,
+            "channels": 45564,
+            "ratio": 0.8773593187604249
+          }
+        ]
+      }
+    },
+    {
+      "name": "desktop_enhanced_map_and_art_decoded",
+      "pass": true,
+      "detail": {
+        "imgs": [
+          {
+            "sel": ".map-base-image",
+            "exists": true,
+            "complete": true,
+            "width": 4000,
+            "src": "https://liyun.studentop.cn:14355/assets/maps/campus-enhanced.webp"
+          },
+          {
+            "sel": ".border-art.pine",
+            "exists": true,
+            "complete": true,
+            "width": 1536,
+            "src": "https://liyun.studentop.cn:14355/assets/art/pine-left.png"
+          },
+          {
+            "sel": ".border-art.mountain",
+            "exists": true,
+            "complete": true,
+            "width": 1672,
+            "src": "https://liyun.studentop.cn:14355/assets/art/mountain-right.png"
+          }
+        ],
+        "fonts": [
+          {
+            "family": "Noto Serif SC",
+            "status": "loaded"
+          },
+          {
+            "family": "Ma Shan Zheng",
+            "status": "loaded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "actual_custom_chinese_fonts_used",
+      "pass": true,
+      "detail": [
+        {
+          "selector": ".brand-copy strong",
+          "fonts": [
+            {
+              "familyName": "Ma Shan Zheng",
+              "postScriptName": "MaShanZheng-Regular",
+              "isCustomFont": true,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "selector": ".map-help .desktop-help",
+          "fonts": [
+            {
+              "familyName": "Noto Serif SC",
+              "postScriptName": "Noto-Serif-SC",
+              "isCustomFont": true,
+              "glyphCount": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reduced_motion_switch_true",
+      "pass": true
+    },
+    {
+      "name": "actual_reduced_motion_stops_idle_loop",
+      "pass": true,
+      "detail": {
+        "difference": {
+          "changed": 0,
+          "channels": 45564,
+          "ratio": 0
+        }
+      }
+    },
+    {
+      "name": "undiscovered_beihu_has_effective_fog_before",
+      "pass": true,
+      "detail": {
+        "meanAlpha": 171.87527777777777,
+        "anchor": [
+          518.701,
+          267.993
+        ],
+        "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)"
+      }
+    },
+    {
+      "name": "real_ui_discovery_clears_same_world_roi",
+      "pass": true,
+      "detail": {
+        "before": {
+          "meanAlpha": 171.87527777777777,
+          "anchor": [
+            518.701,
+            267.993
+          ],
+          "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)"
+        },
+        "after": {
+          "meanAlpha": 17.493333333333332,
+          "anchor": [
+            518.701,
+            267.993
+          ],
+          "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)"
+        },
+        "progress": 10,
+        "collected": 2
+      }
+    },
+    {
+      "name": "reduced_motion_switch_false",
+      "pass": true
+    },
+    {
+      "name": "turning_motion_back_on_resumes_real_fog",
+      "pass": true,
+      "detail": {
+        "changed": 38977,
+        "channels": 45564,
+        "ratio": 0.8554341146519182
+      }
+    },
+    {
+      "name": "mobile_landscape_map_and_controls_work",
+      "pass": true
+    },
+    {
+      "name": "portrait_is_original_rotation_gate_not_playable_map",
+      "pass": true
+    },
+    {
+      "name": "return_to_landscape_restores_state_and_layers",
+      "pass": true
+    },
+    {
+      "name": "real_final_url_and_no_dev_api",
+      "pass": true
+    },
+    {
+      "name": "normal_reload_keeps_discovery_without_storage_injection",
+      "pass": true,
+      "detail": {
+        "alpha": 1727672,
+        "dimensions": [
+          2160,
+          1350
+        ],
+        "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)",
+        "progress": 10,
+        "known": [
+          "poi-beihu",
+          "poi-wencui"
+        ],
+        "collected": 2,
+        "hidden": false,
+        "hash": "92c5c37f30adf318b28de7174f5cfd76205c4e8a9225042524654b71507c8c95"
+      }
+    },
+    {
+      "name": "no_unexpected_browser_or_network_errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "failures": []
+      }
+    }
+  ],
+  "resources": [
+    {
+      "url": "https://liyun.studentop.cn:14355/",
+      "status": 200,
+      "mime": "text/html",
+      "type": "Document"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/index-r_u_YNWD.css",
+      "status": 200,
+      "mime": "text/css",
+      "type": "Stylesheet"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/index-CaGXelMX.js",
+      "status": 200,
+      "mime": "application/javascript",
+      "type": "Script"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/maps/campus-enhanced.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "type": "Image"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/art/pine-left.png",
+      "status": 200,
+      "mime": "image/png",
+      "type": "Image"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/art/mountain-right.png",
+      "status": 200,
+      "mime": "image/png",
+      "type": "Image"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/favicon.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "type": "Other"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/fonts/NotoSerifSC-UI.woff2",
+      "status": 200,
+      "mime": "font/woff2",
+      "type": "Font"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/fonts/MaShanZheng-UI.woff2",
+      "status": 200,
+      "mime": "font/woff2",
+      "type": "Font"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/audio/bgm3.opus",
+      "status": 206,
+      "mime": "audio/ogg",
+      "type": "Media"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/favicon.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "type": "Other"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/",
+      "status": 200,
+      "mime": "text/html",
+      "type": "Other"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/index-r_u_YNWD.css",
+      "status": 200,
+      "mime": "text/css",
+      "type": "Stylesheet"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/maps/campus-enhanced-mobile.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "type": "Image"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/maps/campus-enhanced.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "type": "Image"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/",
+      "status": 200,
+      "mime": "text/html",
+      "type": "Document"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/index-CaGXelMX.js",
+      "status": 200,
+      "mime": "application/javascript",
+      "type": "Script"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/index-r_u_YNWD.css",
+      "status": 200,
+      "mime": "text/css",
+      "type": "Stylesheet"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/fonts/NotoSerifSC-UI.woff2",
+      "status": 200,
+      "mime": "font/woff2",
+      "type": "Font"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/fonts/MaShanZheng-UI.woff2",
+      "status": 200,
+      "mime": "font/woff2",
+      "type": "Font"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/maps/campus-enhanced.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "type": "Image"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/art/pine-left.png",
+      "status": 200,
+      "mime": "image/png",
+      "type": "Image"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/art/mountain-right.png",
+      "status": 200,
+      "mime": "image/png",
+      "type": "Image"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/audio/bgm1.opus",
+      "status": 206,
+      "mime": "audio/ogg",
+      "type": "Media"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/assets/audio/bgm1.opus",
+      "status": 206,
+      "mime": "audio/ogg",
+      "type": "Media"
+    },
+    {
+      "url": "https://liyun.studentop.cn:14355/favicon.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "type": "Other"
+    }
+  ],
+  "canceledRequests": [
+    {
+      "requestId": "22404.31",
+      "timestamp": 211561.100009,
+      "type": "Media",
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true,
+      "phase": "reload"
+    }
+  ],
+  "total": 18,
+  "passed": 18
+}
