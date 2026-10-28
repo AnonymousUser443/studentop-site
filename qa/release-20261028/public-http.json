@@ -1,0 +1,128 @@
+{
+  "ok": true,
+  "origin": "https://studentop.cn:14355",
+  "version": "4036dc9f22c3295680bc5100",
+  "realAnswerUsed": false,
+  "checks": [
+    {
+      "name": "public_tls_home_200_and_version",
+      "pass": true
+    },
+    {
+      "name": "public_version_and_revalidation",
+      "pass": true
+    },
+    {
+      "name": "native_resource_url_fingerprinted",
+      "pass": true
+    },
+    {
+      "name": "native_immutable_plus_security_headers",
+      "pass": true
+    },
+    {
+      "name": "mutable_compatibility_alias_revalidates",
+      "pass": true
+    },
+    {
+      "name": "internal_build_receipt_not_public",
+      "pass": true
+    },
+    {
+      "name": "project_index_has_voxel_and_campus_paths",
+      "pass": true
+    },
+    {
+      "name": "/voxel-campus/is_real_separate_app",
+      "pass": true
+    },
+    {
+      "name": "/voxel-campus/assets_under_correct_prefix",
+      "pass": true
+    },
+    {
+      "name": "/voxel-campus/index-CBe6J5f0.js_mime",
+      "pass": true
+    },
+    {
+      "name": "/voxel-campus/three-B36RJSNi.js_mime",
+      "pass": true
+    },
+    {
+      "name": "/voxel-campus/index-COjinGlL.css_mime",
+      "pass": true
+    },
+    {
+      "name": "/campus-entry/is_real_separate_app",
+      "pass": true
+    },
+    {
+      "name": "/campus-entry/assets_under_correct_prefix",
+      "pass": true
+    },
+    {
+      "name": "/campus-entry/index-6c3f5c33.js_mime",
+      "pass": true
+    },
+    {
+      "name": "/campus-entry/index-09b41690.css_mime",
+      "pass": true
+    },
+    {
+      "name": "slash_redirect_keeps_public_port_and_query",
+      "pass": true
+    },
+    {
+      "name": "app_missing_asset_is_404_not_home_html",
+      "pass": true
+    },
+    {
+      "name": "three_bgm_tracks_in_verified_artifact",
+      "pass": true
+    },
+    {
+      "name": "dawn_dusk-C7B5Ceg7.opus_audio_range_and_mime",
+      "pass": true
+    },
+    {
+      "name": "day-BEOsiWxv.opus_audio_range_and_mime",
+      "pass": true
+    },
+    {
+      "name": "night-BKuUmqmo.opus_audio_range_and_mime",
+      "pass": true
+    },
+    {
+      "name": "public_gate_configured_and_locked",
+      "pass": true
+    },
+    {
+      "name": "public_gate_private_no_store",
+      "pass": true
+    },
+    {
+      "name": "public_cookie_secure_httponly_samesite",
+      "pass": true
+    },
+    {
+      "name": "foreign_origin_rejected_without_real_answer",
+      "pass": true
+    },
+    {
+      "name": "same_origin_csrf_and_logout_proxy_work",
+      "pass": true
+    },
+    {
+      "name": "frost.studentop.cn_public_still_200",
+      "pass": true
+    },
+    {
+      "name": "liyun.studentop.cn_public_still_200",
+      "pass": true
+    },
+    {
+      "name": "genshin.studentop.cn_public_still_200",
+      "pass": true
+    }
+  ]
+}

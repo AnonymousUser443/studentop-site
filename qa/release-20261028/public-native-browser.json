@@ -1,0 +1,42 @@
+{
+  "ok": true,
+  "realAnswerUsed": false,
+  "checks": [
+    {
+      "name": "public_native_version",
+      "pass": true
+    },
+    {
+      "name": "public_desktop_stays_locked",
+      "pass": true
+    },
+    {
+      "name": "new_voxel_shortcut_present_even_while_inert",
+      "pass": true
+    },
+    {
+      "name": "private_question_is_empty_and_masked",
+      "pass": true
+    },
+    {
+      "name": "private_companion_enables_question_submission",
+      "pass": true
+    },
+    {
+      "name": "presentation_navigation_does_not_authorize",
+      "pass": true
+    },
+    {
+      "name": "real_same_origin_auth_is_configured_locked",
+      "pass": true
+    },
+    {
+      "name": "mobile_native_gate_still_locked",
+      "pass": true
+    },
+    {
+      "name": "no_public_native_browser_errors",
+      "pass": true
+    }
+  ]
+}
