@@ -12,6 +12,12 @@ const NAV: { id: PanelId; title: string; subtitle: string; icon: IconName; notic
   { id: 'party', title: '多人同行', subtitle: '与同学一起探索', icon: 'people' }
 ];
 
+/**
+ * Placeholder identity for the profile panel.
+ * TODO: replace with the signed-in student once the backend login is wired up.
+ */
+const PROFILE = { name: '未登录', studentId: '——' };
+
 function Modal({ title, eyebrow, icon, children, onClose, className = '' }: { title: string; eyebrow: string; icon: IconName; children: ReactNode; onClose: () => void; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -60,6 +66,23 @@ function Panels(p: HudProps) {
   if (!p.activePanel) return null;
   const common = { onClose: p.onClose };
   switch (p.activePanel) {
+    case 'profile': return <Modal title="个人主页" eyebrow="旅途中的你" icon="people" {...common} className="profile-modal">
+      <div className="profile-card">
+        <span className="profile-avatar"><Icon name="gate"/></span>
+        <div className="profile-identity">
+          <strong className="profile-name">{PROFILE.name}</strong>
+          <span className="profile-id">学号 · {PROFILE.studentId}</span>
+        </div>
+      </div>
+      <p className="profile-verse">一人一页，写进这座校园。</p>
+      <div className="profile-meta">
+        <div><span>已点亮地标</span><strong>{p.collected}<em>/{p.landmarks.length}</em></strong></div>
+        <div><span>探索度</span><strong>{Math.round(p.progress)}<em>%</em></strong></div>
+        <div><span>校园编号</span><strong>LY0611<em>2403</em></strong></div>
+      </div>
+      <p className="panel-footnote">学号与姓名在登录后显示，当前为界面占位</p>
+      <button className="parchment-button" onClick={p.onClose}>继续探索<Icon name="compass"/></button>
+    </Modal>;
     case 'settings': return <Modal title="设置" eyebrow="让旅途自在一些" icon="settings" {...common}>
       <Toggle label="校园配乐" description="与风同行，让旋律伴你漫游" checked={settings.music} onChange={music => p.onSettings({ music })}/>
       <div className="setting-row"><label htmlFor="music-volume">音乐音量</label><div className="range-wrap"><input id="music-volume" type="range" min="0" max="1" step=".05" value={settings.volume} onChange={e => p.onSettings({ volume: +e.target.value })}/><output>{Math.round(settings.volume * 100)}%</output></div></div>
@@ -105,7 +128,11 @@ export default function Hud(p: HudProps) {
   return <>
     <EdgeOrnaments/>
     <div className="game-hud" inert={!p.entered}>
-      <button className="brand" onClick={p.onCenter} aria-label="理韵寻踪，回到校园中心"><BrandGate/><span className="brand-copy"><strong>理韵寻踪</strong><span className="brand-subtitle">— 北理校园探索 —</span><span className="brand-rule"/></span><span className="brand-seal">理<br/>韵</span></button>
+      <div className="brand">
+        <button className="brand-gate" onClick={() => p.onPanel('profile')} aria-label="打开个人主页" title="个人主页"><BrandGate/></button>
+        <button className="brand-copy" onClick={p.onCenter} aria-label="理韵寻踪，回到校园中心"><strong>理韵寻踪</strong><span className="brand-subtitle">— 北理校园探索 —</span><span className="brand-rule"/></button>
+        <span className="brand-seal">理<br/>韵</span>
+      </div>
       <nav className="story-nav" aria-label="探索篇章"><span className="nav-timeline"/>{NAV.map(item => {
         const active = p.activePanel === item.id || (!p.activePanel && item.id === 'main'); const variant = item.id === 'festival' ? 'gold' : active ? 'light' : 'dark';
         return <button key={item.id} className={`story-button ${variant} ${active ? 'is-active' : ''}`} onClick={() => p.onPanel(item.id)} aria-pressed={active}><MenuShape variant={variant}/><span className="nav-medallion"><Icon name={item.icon}/></span><span className="nav-copy"><strong>{item.title}</strong><small>{item.subtitle}</small></span>{item.id === 'festival' && <Icon name="leaf" className="festival-leaf"/>}{item.notice && <span className="notice-dot"/>}</button>;
