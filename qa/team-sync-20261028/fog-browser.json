@@ -1,0 +1,154 @@
+{
+  "ok": true,
+  "upstream": "62ea0f00994061596e3714997f5f1bed7852c805",
+  "method": "isolated owned Edge/CDP against existing loopback Vite; genuine canvas pixels and trusted UI; independent renderer fixtures are separate from app state",
+  "checks": [
+    {
+      "name": "integrated_app_starts_without_duplicate_layers",
+      "pass": true
+    },
+    {
+      "name": "real_fog_billows_with_stationary_camera",
+      "pass": true,
+      "detail": {
+        "before": {
+          "hash": "4a01a2a4",
+          "alpha": 33218784,
+          "width": 2160,
+          "height": 1350,
+          "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)",
+          "known": 1
+        },
+        "after": {
+          "hash": "85db4b78",
+          "alpha": 33981692,
+          "width": 2160,
+          "height": 1350,
+          "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)",
+          "known": 1
+        }
+      }
+    },
+    {
+      "name": "target_starts_undiscovered",
+      "pass": true
+    },
+    {
+      "name": "real_poi_click_explores_and_updates_discovery",
+      "pass": true
+    },
+    {
+      "name": "fixed_time_pixels_match_within_one_channel_quantization_step",
+      "pass": true,
+      "detail": {
+        "initial": {
+          "hash": "1603c4e4",
+          "centerAlpha": 218,
+          "outsideAlpha": 0
+        },
+        "repeated": {
+          "hash": "5c3909bd",
+          "centerAlpha": 218,
+          "outsideAlpha": 0
+        },
+        "later": {
+          "hash": "53bedf7",
+          "centerAlpha": 217,
+          "outsideAlpha": 0
+        },
+        "r1": {
+          "hash": "30f5bd50",
+          "centerAlpha": 215,
+          "outsideAlpha": 0
+        },
+        "r2": {
+          "hash": "30f5bd50",
+          "centerAlpha": 215,
+          "outsideAlpha": 0
+        },
+        "before": {
+          "hash": "30f5bd50",
+          "centerAlpha": 215,
+          "outsideAlpha": 0
+        },
+        "after": {
+          "hash": "cb01d1a",
+          "centerAlpha": 18,
+          "outsideAlpha": 0
+        },
+        "movedImage": {
+          "hash": "8ba3a66c",
+          "centerAlpha": 18,
+          "outsideAlpha": 0
+        },
+        "highDpr": {
+          "hash": "2b5c8ee9",
+          "centerAlpha": 18,
+          "outsideAlpha": 0
+        },
+        "low": {
+          "hash": "c787d0f6",
+          "centerAlpha": 18,
+          "outsideAlpha": 0
+        },
+        "restored": {
+          "hash": "5c3909bd",
+          "centerAlpha": 218,
+          "outsideAlpha": 0
+        },
+        "coldMs": 277.2999999821186,
+        "repeatDifference": {
+          "max": 1,
+          "mean": 0.0017060185185185186,
+          "changed": 2211,
+          "channels": 1296000
+        },
+        "recreateDifference": {
+          "max": 1,
+          "mean": 0.0017060185185185186,
+          "changed": 2211,
+          "channels": 1296000
+        }
+      }
+    },
+    {
+      "name": "independent_noise_field_changes_over_time",
+      "pass": true
+    },
+    {
+      "name": "reduced_motion_settles_fog_without_ambient_loop",
+      "pass": true
+    },
+    {
+      "name": "discovered_landmark_clears_its_real_canvas_area",
+      "pass": true
+    },
+    {
+      "name": "reveal_tracks_pan_coordinates_and_dpr",
+      "pass": true
+    },
+    {
+      "name": "low_quality_keeps_clearings_and_transparent_outside",
+      "pass": true
+    },
+    {
+      "name": "dispose_allows_recreation_with_same_seed",
+      "pass": true
+    },
+    {
+      "name": "real_landscape_resize_updates_fog_backing_canvas",
+      "pass": true
+    },
+    {
+      "name": "portrait_uses_existing_rotation_gate",
+      "pass": true
+    },
+    {
+      "name": "no_unexpected_browser_errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "total": 14,
+  "passed": 14
+}

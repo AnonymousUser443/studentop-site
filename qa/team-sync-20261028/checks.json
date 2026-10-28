@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "upstream": "62ea0f00994061596e3714997f5f1bed7852c805",
+  "summary": [
+    " Test Files  3 passed (3)",
+    "      Tests  13 passed (13)",
+    "ℹ tests 75",
+    "ℹ pass 75",
+    "ℹ fail 0",
+    "ℹ duration_ms 1397.6251",
+    "{\"ok\":true,\"mode\":\"check\",\"id\":\"4036dc9f22c3295680bc5100\",\"releases\":[\"4036dc9f22c3295680bc5100\",\"e91669dc440ffa9eecda800a\"],\"assetCount\":76}"
+  ],
+  "appSourcePreservedByteForByte": true,
+  "websiteDeployed": false
+}
