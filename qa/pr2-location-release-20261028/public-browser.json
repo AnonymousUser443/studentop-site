@@ -1,0 +1,282 @@
+{
+  "ok": true,
+  "environment": "production-public",
+  "target": "https://liyun.studentop.cn:14355",
+  "expectedCommit": "f5059312f8fdeeedc76d477ed92dbabc08ea9877",
+  "release": "liyun-20261028T163300Z-f5059312f8",
+  "fixtureChecks": [],
+  "method": "owned isolated Edge/CDP; normal UI, real clicks, real fog pixels; geolocation overridden by CDP to a model-derived point",
+  "checks": [
+    {
+      "name": "real_final_url_without_dev_api",
+      "pass": true
+    },
+    {
+      "name": "expected_bundle_and_new_map_requested",
+      "pass": true,
+      "detail": {
+        "bundle": "assets/index-UIu1vle_.js"
+      }
+    },
+    {
+      "name": "account_registration_logs_in",
+      "pass": true
+    },
+    {
+      "name": "account_enters_site_with_visible_uid",
+      "pass": true,
+      "detail": {
+        "bottom": "QA-ad658531218f · UID LYD70505E5"
+      }
+    },
+    {
+      "name": "out_of_range_check_in_is_blocked",
+      "pass": true,
+      "detail": {
+        "reason": "out-of-range",
+        "disabled": true,
+        "label": "到达范围后可打卡",
+        "progress": 0
+      }
+    },
+    {
+      "name": "check_in_marks_discovered_and_adds_progress",
+      "pass": true,
+      "detail": {
+        "progress": 7
+      }
+    },
+    {
+      "name": "real_check_in_clears_fog_at_landmark",
+      "pass": true,
+      "detail": {
+        "before": {
+          "meanAlpha": 196.04899691358025,
+          "camera": "translate3d(0px, -464.713px, 0px) scale(0.508333)",
+          "anchor": [
+            728,
+            468
+          ]
+        },
+        "settledA": {
+          "meanAlpha": 13.636766975308642,
+          "camera": "translate3d(0px, -464.713px, 0px) scale(0.508333)",
+          "anchor": [
+            728,
+            468
+          ]
+        },
+        "settledB": {
+          "meanAlpha": 13.636766975308642,
+          "camera": "translate3d(0px, -464.713px, 0px) scale(0.508333)",
+          "anchor": [
+            728,
+            468
+          ]
+        },
+        "cameraChanged": false
+      }
+    },
+    {
+      "name": "reload_restores_logged_in_account",
+      "pass": true,
+      "detail": {
+        "nickname": "QA-ad658531218f",
+        "form": false
+      }
+    },
+    {
+      "name": "wrong_passphrase_cannot_enter_existing_account",
+      "pass": true,
+      "detail": {
+        "error": "登录失败：学号或访问口令不正确"
+      }
+    },
+    {
+      "name": "correct_passphrase_restores_same_cloud_progress",
+      "pass": true,
+      "detail": {
+        "progress": 7
+      }
+    },
+    {
+      "name": "independent_fog_billows_at_idle",
+      "pass": true,
+      "detail": {
+        "differences": [
+          {
+            "changed": 38652,
+            "channels": 45564,
+            "ratio": 0.848301290492494
+          },
+          {
+            "changed": 38447,
+            "channels": 45564,
+            "ratio": 0.843802124484242
+          }
+        ]
+      }
+    },
+    {
+      "name": "real_reduced_motion_switch_on",
+      "pass": true
+    },
+    {
+      "name": "reduced_motion_stops_idle_fog_loop",
+      "pass": true,
+      "detail": {
+        "difference": {
+          "changed": 0,
+          "channels": 45564,
+          "ratio": 0
+        }
+      }
+    },
+    {
+      "name": "motion_switch_off_resumes_fog",
+      "pass": true,
+      "detail": {
+        "changed": 38517,
+        "channels": 45564,
+        "ratio": 0.8453384250724256
+      }
+    },
+    {
+      "name": "enhanced_map_and_art_decoded",
+      "pass": true,
+      "detail": [
+        {
+          "sel": ".map-base-image",
+          "exists": true,
+          "complete": true,
+          "width": 4000,
+          "src": "https://liyun.studentop.cn:14355/assets/maps/calibrated/campus_no_labels.webp"
+        },
+        {
+          "sel": ".border-art.pine",
+          "exists": true,
+          "complete": true,
+          "width": 1536,
+          "src": "https://liyun.studentop.cn:14355/assets/art/pine-left.png"
+        },
+        {
+          "sel": ".border-art.mountain",
+          "exists": true,
+          "complete": true,
+          "width": 1672,
+          "src": "https://liyun.studentop.cn:14355/assets/art/mountain-right.png"
+        }
+      ]
+    },
+    {
+      "name": "actual_custom_chinese_fonts_used",
+      "pass": true,
+      "detail": [
+        {
+          "selector": ".brand-copy strong",
+          "fonts": [
+            {
+              "familyName": "Ma Shan Zheng",
+              "postScriptName": "MaShanZheng-Regular",
+              "isCustomFont": true,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "selector": ".map-help .desktop-help",
+          "fonts": [
+            {
+              "familyName": "Noto Serif SC",
+              "postScriptName": "Noto-Serif-SC",
+              "isCustomFont": true,
+              "glyphCount": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "landscape_mobile_stays_usable",
+      "pass": true
+    },
+    {
+      "name": "portrait_shows_original_rotation_gate",
+      "pass": true
+    },
+    {
+      "name": "no_unexpected_console_or_network_errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "failures": [],
+        "unexpectedHttp": [],
+        "intentionalUnauthorizedResponses": 1
+      }
+    }
+  ],
+  "intentionalNegativeTest": "One HTTP 401 from the deliberate wrong-passphrase attempt is expected; nothing else failed.",
+  "resourceSummary": {
+    "total": 49,
+    "api": [
+      {
+        "url": "/api/auth/login",
+        "status": 200
+      },
+      {
+        "url": "/api/progress",
+        "status": 200
+      },
+      {
+        "url": "/api/progress",
+        "status": 200
+      },
+      {
+        "url": "/api/progress",
+        "status": 200
+      },
+      {
+        "url": "/api/progress",
+        "status": 200
+      },
+      {
+        "url": "/api/auth/me",
+        "status": 200
+      },
+      {
+        "url": "/api/progress",
+        "status": 200
+      },
+      {
+        "url": "/api/auth/logout",
+        "status": 200
+      },
+      {
+        "url": "/api/auth/login",
+        "status": 401
+      },
+      {
+        "url": "/api/auth/login",
+        "status": 200
+      },
+      {
+        "url": "/api/progress",
+        "status": 200
+      },
+      {
+        "url": "/api/progress",
+        "status": 200
+      },
+      {
+        "url": "/api/progress",
+        "status": 200
+      },
+      {
+        "url": "/api/progress",
+        "status": 200
+      }
+    ]
+  },
+  "total": 19,
+  "passed": 19
+}

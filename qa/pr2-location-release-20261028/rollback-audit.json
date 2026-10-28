@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "current": "/opt/projects/liyun/releases/liyun-20261028T163300Z-f5059312f8",
+  "previous": "/opt/projects/liyun/releases/liyun-20261028T125837Z-d42554f163",
+  "currentResourcesVerified": 28,
+  "rollbackOriginalFilesVerified": 24,
+  "rollbackBridgedFiles": 24,
+  "apiCurrent": "/opt/projects/liyun-api/releases/liyun-20261028T163300Z-f5059312f8",
+  "apiSourcesVerified": 3,
+  "dataDirMode": "700",
+  "service": {
+    "MainPID": "3989",
+    "User": "liyun-account",
+    "ActiveState": "active"
+  },
+  "neighbors": {
+    "/opt/win11-home/current": "/opt/win11-home/releases/20261028T110253Z-e2bc44a0e3",
+    "/opt/projects/voxel-campus/current": "/opt/projects/voxel-campus/releases/20261028T110253Z-e2bc44a0e3",
+    "/opt/projects/campus-entry/current": "/opt/projects/campus-entry/releases/20261028T110253Z-e2bc44a0e3",
+    "/opt/projects/genshin/current": "/opt/projects/genshin/releases/20261027T0835Z"
+  },
+  "nginxConfigUnchanged": true,
+  "actualRollbackPerformed": false
+}

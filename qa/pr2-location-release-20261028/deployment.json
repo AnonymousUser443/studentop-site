@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "id": "liyun-20261028T163300Z-f5059312f8",
+  "appCommit": "f5059312f8fdeeedc76d477ed92dbabc08ea9877",
+  "current": "/opt/projects/liyun/releases/liyun-20261028T163300Z-f5059312f8",
+  "previous": "/opt/projects/liyun/releases/liyun-20261028T125837Z-d42554f163",
+  "files": 28,
+  "newDistFiles": 25,
+  "uploadedFiles": 5,
+  "compatibility": {
+    "oldToNew": [
+      "assets/index-BY2Dy2Ra.js",
+      "assets/index-CaGXelMX.js",
+      "assets/index-r_u_YNWD.css"
+    ],
+    "newToOld": [
+      "assets/index-BgH4UcU3.css",
+      "assets/index-UIu1vle_.js",
+      "assets/maps/calibrated/campus_no_labels.png",
+      "assets/maps/calibrated/campus_no_labels.webp"
+    ]
+  },
+  "neighborsUnchanged": true,
+  "servicesAndPIDsUnchanged": true,
+  "nginxConfigChanged": true,
+  "privateConfigTransferred": false,
+  "apiCurrent": "/opt/projects/liyun-api/releases/liyun-20261028T163300Z-f5059312f8",
+  "newApiService": "liyun-account",
+  "dataOutsideWebRoot": true,
+  "completedAt": "2026-10-28T16:34:38.027Z",
+  "archiveSHA256": "e6d5fe192d01ecbdb06e79ea51aa4838acbeb64cea1bc5110ac4bfffd0b38b3a"
+}

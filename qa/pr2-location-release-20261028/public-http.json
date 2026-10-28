@@ -1,0 +1,269 @@
+{
+  "ok": true,
+  "release": "liyun-20261028T163300Z-f5059312f8",
+  "sourceCommit": "f5059312f8fdeeedc76d477ed92dbabc08ea9877",
+  "checks": [
+    {
+      "name": "public_html_exact_frozen_bytes",
+      "pass": true
+    },
+    {
+      "name": "public_html_revalidates",
+      "pass": true
+    },
+    {
+      "name": "public_digest:assets/index-BgH4UcU3.css",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "mime": "text/css",
+        "cache": "max-age=2592000"
+      }
+    },
+    {
+      "name": "public_digest:assets/index-UIu1vle_.js",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "mime": "application/javascript; charset=utf-8",
+        "cache": "max-age=2592000"
+      }
+    },
+    {
+      "name": "public_digest:favicon.svg",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "mime": "image/svg+xml",
+        "cache": "max-age=2592000"
+      }
+    },
+    {
+      "name": "public_digest:assets/index-BY2Dy2Ra.js",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "mime": "application/javascript; charset=utf-8",
+        "cache": "max-age=2592000"
+      }
+    },
+    {
+      "name": "public_digest:assets/index-CaGXelMX.js",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "mime": "application/javascript; charset=utf-8",
+        "cache": "max-age=2592000"
+      }
+    },
+    {
+      "name": "public_digest:assets/index-r_u_YNWD.css",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "mime": "text/css",
+        "cache": "max-age=2592000"
+      }
+    },
+    {
+      "name": "public_head:assets/art/mountain-right.png",
+      "pass": true,
+      "detail": {
+        "mime": "image/png",
+        "bytes": 1283128
+      }
+    },
+    {
+      "name": "public_head:assets/art/pine-left.png",
+      "pass": true,
+      "detail": {
+        "mime": "image/png",
+        "bytes": 2097170
+      }
+    },
+    {
+      "name": "public_head:assets/audio/bgm1.mp3",
+      "pass": true,
+      "detail": {
+        "mime": "audio/mpeg",
+        "bytes": 4162484
+      }
+    },
+    {
+      "name": "public_head:assets/audio/bgm1.opus",
+      "pass": true,
+      "detail": {
+        "mime": "audio/ogg",
+        "bytes": 1474749
+      }
+    },
+    {
+      "name": "public_head:assets/audio/bgm2.mp3",
+      "pass": true,
+      "detail": {
+        "mime": "audio/mpeg",
+        "bytes": 2167124
+      }
+    },
+    {
+      "name": "public_head:assets/audio/bgm2.opus",
+      "pass": true,
+      "detail": {
+        "mime": "audio/ogg",
+        "bytes": 860478
+      }
+    },
+    {
+      "name": "public_head:assets/audio/bgm3.mp3",
+      "pass": true,
+      "detail": {
+        "mime": "audio/mpeg",
+        "bytes": 1904444
+      }
+    },
+    {
+      "name": "public_head:assets/audio/bgm3.opus",
+      "pass": true,
+      "detail": {
+        "mime": "audio/ogg",
+        "bytes": 836979
+      }
+    },
+    {
+      "name": "public_head:assets/audio/manifest.json",
+      "pass": true,
+      "detail": {
+        "mime": "application/json",
+        "bytes": 653
+      }
+    },
+    {
+      "name": "public_head:assets/fonts/MaShanZheng-Regular.ttf",
+      "pass": true,
+      "detail": {
+        "mime": "application/octet-stream",
+        "bytes": 5857936
+      }
+    },
+    {
+      "name": "public_head:assets/fonts/MaShanZheng-UI.woff2",
+      "pass": true,
+      "detail": {
+        "mime": "font/woff2",
+        "bytes": 187600
+      }
+    },
+    {
+      "name": "public_head:assets/fonts/NotoSerifSC-UI.woff2",
+      "pass": true,
+      "detail": {
+        "mime": "font/woff2",
+        "bytes": 222552
+      }
+    },
+    {
+      "name": "public_head:assets/maps/calibrated/campus_no_labels.png",
+      "pass": true,
+      "detail": {
+        "mime": "image/png",
+        "bytes": 1973144
+      }
+    },
+    {
+      "name": "public_head:assets/maps/calibrated/campus_no_labels.webp",
+      "pass": true,
+      "detail": {
+        "mime": "image/webp",
+        "bytes": 1070594
+      }
+    },
+    {
+      "name": "public_head:assets/maps/campus-enhanced-mobile.webp",
+      "pass": true,
+      "detail": {
+        "mime": "image/webp",
+        "bytes": 218434
+      }
+    },
+    {
+      "name": "public_head:assets/maps/campus-enhanced.webp",
+      "pass": true,
+      "detail": {
+        "mime": "image/webp",
+        "bytes": 573342
+      }
+    },
+    {
+      "name": "public_head:assets/maps/campus.png",
+      "pass": true,
+      "detail": {
+        "mime": "image/png",
+        "bytes": 1973144
+      }
+    },
+    {
+      "name": "public_head:assets/maps/campus.webp",
+      "pass": true,
+      "detail": {
+        "mime": "image/webp",
+        "bytes": 1070594
+      }
+    },
+    {
+      "name": "public_head:assets/maps/metadata.json",
+      "pass": true,
+      "detail": {
+        "mime": "application/json",
+        "bytes": 1492
+      }
+    },
+    {
+      "name": "public_missing_js_404",
+      "pass": true
+    },
+    {
+      "name": "account_api_health_via_public_tls",
+      "pass": true,
+      "detail": {
+        "cache": "no-store, no-store"
+      }
+    },
+    {
+      "name": "account_progress_requires_login_publicly",
+      "pass": true
+    },
+    {
+      "name": "api_path_traversal_does_not_leak_files",
+      "pass": true
+    },
+    {
+      "name": "unmodified_neighbor:https://studentop.cn:14355/",
+      "pass": true
+    },
+    {
+      "name": "unmodified_neighbor:https://studentop.cn:14355/voxel-campus/",
+      "pass": true
+    },
+    {
+      "name": "unmodified_neighbor:https://studentop.cn:14355/campus-entry/",
+      "pass": true
+    },
+    {
+      "name": "unmodified_neighbor:https://genshin.studentop.cn:14355/",
+      "pass": true
+    },
+    {
+      "name": "unmodified_neighbor:https://frost.studentop.cn:14355/",
+      "pass": true
+    },
+    {
+      "name": "private_desktop_auth_untouched_and_configured",
+      "pass": true,
+      "detail": {
+        "authenticated": false
+      }
+    }
+  ],
+  "total": 37,
+  "passed": 37
+}
