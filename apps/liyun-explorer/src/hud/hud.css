@@ -103,14 +103,6 @@
 .map-compass > span { display: block; margin-bottom: -8px; font-size: clamp(17px, 1.25vw, 23px); line-height: 1.5; }
 .map-compass > svg { width: 100%; display: block; }
 
-.utility-nav { position: absolute; left: calc(var(--hud-inset) + 9px); bottom: clamp(24px, 3.5vh, 42px); display: flex; align-items: flex-end; gap: clamp(29px, 2.7vw, 59px); color: #29483d; }
-.utility-nav > button { position: relative; display: flex; align-items: center; flex-direction: column; gap: 8px; min-width: 75px; padding: 0; border: 0; background: none; }
-.utility-disc { position: relative; display: grid; place-items: center; width: clamp(65px, 4.8vw, 90px); height: clamp(65px, 4.8vw, 90px); border: 2px solid #f1dfab; border-radius: 50%; background: #294e43; color: #f3e1b1; box-shadow: 0 0 0 2px #64725a, 0 0 0 4px #d6c28e, inset 0 0 0 4px #294e43, inset 0 0 0 5px #c9b77d; }
-.utility-disc::before, .utility-disc::after { content: ''; position: absolute; top: -7px; width: 9px; height: 9px; border: 1px solid #b3995a; background: #f4e3b7; transform: rotate(45deg); }
-.utility-disc::after { top: auto; bottom: -7px; }
-.utility-disc > .ly-icon { width: 52%; height: 52%; }
-.utility-disc .notice-dot { top: -3px; right: 1px; width: 12px; height: 12px; }
-.utility-nav strong { font-size: clamp(14px, 1.15vw, 21px); letter-spacing: .02em; font-weight: 650; text-shadow: 0 1px #fff2cb; white-space: nowrap; padding: 0 5px; background: #f4e8c5e8; border-radius: 2px; }
 .campus-progress { position: absolute; right: clamp(39px, 3.7vw, 80px); bottom: clamp(18px, 2.3vh, 28px); width: clamp(200px, 14vw, 290px); color: #f7eccb; text-shadow: 0 2px 2px #1c3a2e; text-align: center; }
 .campus-name { display: flex; align-items: center; justify-content: center; gap: 10px; font: 400 clamp(33px, 2.9vw, 57px)/1.25 'Ma Shan Zheng', 'KaiTi', serif; white-space: nowrap; }
 .campus-seal { padding: 3px 2px; border: 1px solid #d77745; border-radius: 4px; color: #e18a4d; font: 400 15px/1.1 'Ma Shan Zheng', serif; }
@@ -232,6 +224,8 @@
 .profile-name { font-size: clamp(22px, 2vw, 28px); font-weight: 650; letter-spacing: .1em; line-height: 1.2; }
 .profile-id { font-size: 12px; letter-spacing: .16em; color: #8b7b51; font-variant-numeric: tabular-nums; }
 .profile-verse { margin: 16px 0 18px; text-align: center; color: #7f6738; font-size: 15px; letter-spacing: .08em; }
+.profile-section { display: flex; align-items: baseline; gap: 10px; margin: 26px 0 4px; padding-bottom: 8px; border-bottom: 1px solid #c8b274; font-size: 16px; font-weight: 650; letter-spacing: .08em; }
+.profile-section > span { font-size: 11px; font-weight: 400; letter-spacing: .04em; color: #8b7b51; }
 .profile-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .profile-meta > div { padding: 12px 6px; text-align: center; background: #e9dfbb; border: 1px solid #c1ad74; }
 .profile-meta span { display: block; font-size: 11px; letter-spacing: .1em; color: #8a7a4e; }
@@ -243,62 +237,8 @@
   .profile-meta strong { font-size: 16px; }
 }
 .stamina-display { display: flex; align-items: center; justify-content: center; gap: 25px; margin: 34px 0; color: #526d55; }
-/* 个人主页：与其它面板同一套纸笺风格 */
-.profile-card { display: flex; align-items: center; gap: 20px; padding: 4px 0 20px; border-bottom: 1px solid #c8b274; }
-.profile-avatar { width: 72px; height: 72px; flex: none; display: grid; place-items: center; border: 1px solid #b39a5e; background: #2d5444; color: #f0dc9d; outline: 1px solid #b39a5e; outline-offset: 3px; transform: rotate(45deg); border-radius: 5px; }
-.profile-avatar .ly-icon { width: 42px; height: 42px; transform: rotate(-45deg); }
-.profile-identity { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
-.profile-name { font-size: clamp(22px, 2vw, 28px); font-weight: 650; letter-spacing: .1em; line-height: 1.2; }
-.profile-id { font-size: 12px; letter-spacing: .16em; color: #8b7b51; font-variant-numeric: tabular-nums; }
-.profile-verse { margin: 16px 0 18px; text-align: center; color: #7f6738; font-size: 15px; letter-spacing: .08em; }
-.profile-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.profile-meta > div { padding: 12px 6px; text-align: center; background: #e9dfbb; border: 1px solid #c1ad74; }
-.profile-meta span { display: block; font-size: 11px; letter-spacing: .1em; color: #8a7a4e; }
-.profile-meta strong { display: block; margin-top: 7px; font-size: 19px; font-weight: 600; color: #2f4b3b; font-variant-numeric: tabular-nums; }
-.profile-meta em { font-style: normal; font-size: .72em; font-weight: 400; color: #7c8a6d; margin-left: 2px; }
-@media (max-width: 720px) {
-  .profile-avatar { width: 56px; height: 56px; }
-  .profile-avatar .ly-icon { width: 32px; height: 32px; }
-  .profile-meta strong { font-size: 16px; }
-}
 .stamina-display > .ly-icon { width: 66px; height: 66px; color: #688d8d; }
-/* 个人主页：与其它面板同一套纸笺风格 */
-.profile-card { display: flex; align-items: center; gap: 20px; padding: 4px 0 20px; border-bottom: 1px solid #c8b274; }
-.profile-avatar { width: 72px; height: 72px; flex: none; display: grid; place-items: center; border: 1px solid #b39a5e; background: #2d5444; color: #f0dc9d; outline: 1px solid #b39a5e; outline-offset: 3px; transform: rotate(45deg); border-radius: 5px; }
-.profile-avatar .ly-icon { width: 42px; height: 42px; transform: rotate(-45deg); }
-.profile-identity { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
-.profile-name { font-size: clamp(22px, 2vw, 28px); font-weight: 650; letter-spacing: .1em; line-height: 1.2; }
-.profile-id { font-size: 12px; letter-spacing: .16em; color: #8b7b51; font-variant-numeric: tabular-nums; }
-.profile-verse { margin: 16px 0 18px; text-align: center; color: #7f6738; font-size: 15px; letter-spacing: .08em; }
-.profile-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.profile-meta > div { padding: 12px 6px; text-align: center; background: #e9dfbb; border: 1px solid #c1ad74; }
-.profile-meta span { display: block; font-size: 11px; letter-spacing: .1em; color: #8a7a4e; }
-.profile-meta strong { display: block; margin-top: 7px; font-size: 19px; font-weight: 600; color: #2f4b3b; font-variant-numeric: tabular-nums; }
-.profile-meta em { font-style: normal; font-size: .72em; font-weight: 400; color: #7c8a6d; margin-left: 2px; }
-@media (max-width: 720px) {
-  .profile-avatar { width: 56px; height: 56px; }
-  .profile-avatar .ly-icon { width: 32px; height: 32px; }
-  .profile-meta strong { font-size: 16px; }
-}
 .stamina-display strong { font-weight: 500; font-size: 43px; }
-/* 个人主页：与其它面板同一套纸笺风格 */
-.profile-card { display: flex; align-items: center; gap: 20px; padding: 4px 0 20px; border-bottom: 1px solid #c8b274; }
-.profile-avatar { width: 72px; height: 72px; flex: none; display: grid; place-items: center; border: 1px solid #b39a5e; background: #2d5444; color: #f0dc9d; outline: 1px solid #b39a5e; outline-offset: 3px; transform: rotate(45deg); border-radius: 5px; }
-.profile-avatar .ly-icon { width: 42px; height: 42px; transform: rotate(-45deg); }
-.profile-identity { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
-.profile-name { font-size: clamp(22px, 2vw, 28px); font-weight: 650; letter-spacing: .1em; line-height: 1.2; }
-.profile-id { font-size: 12px; letter-spacing: .16em; color: #8b7b51; font-variant-numeric: tabular-nums; }
-.profile-verse { margin: 16px 0 18px; text-align: center; color: #7f6738; font-size: 15px; letter-spacing: .08em; }
-.profile-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.profile-meta > div { padding: 12px 6px; text-align: center; background: #e9dfbb; border: 1px solid #c1ad74; }
-.profile-meta span { display: block; font-size: 11px; letter-spacing: .1em; color: #8a7a4e; }
-.profile-meta strong { display: block; margin-top: 7px; font-size: 19px; font-weight: 600; color: #2f4b3b; font-variant-numeric: tabular-nums; }
-.profile-meta em { font-style: normal; font-size: .72em; font-weight: 400; color: #7c8a6d; margin-left: 2px; }
-@media (max-width: 720px) {
-  .profile-avatar { width: 56px; height: 56px; }
-  .profile-avatar .ly-icon { width: 32px; height: 32px; }
-  .profile-meta strong { font-size: 16px; }
-}
 .stamina-display strong > span { margin-left: 9px; font-size: 19px; color: #9a916d; }
 
 .entrance-overlay { position: absolute; z-index: 40; inset: 0; display: grid; place-items: center; background: #0c2d2594; pointer-events: auto; touch-action: manipulation; }
@@ -352,13 +292,6 @@
   .fullscreen-control { top: max(10px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); width: 38px; height: 38px; min-height: 38px; padding: 8px; box-shadow: inset 0 0 0 3px #d1ba80, inset 0 0 0 4px #fff1c4; }
   .map-compass { top: 68px; right: max(15px, env(safe-area-inset-right)); width: 57px; min-height: 62px; }
   .map-compass > span { font-size: 12px; margin-bottom: -8px; }
-  .utility-nav { left: var(--hud-inset); bottom: max(9px, env(safe-area-inset-bottom)); gap: 12px; }
-  .utility-nav > button { width: 44px; min-width: 44px; min-height: 44px; gap: 5px; }
-  .utility-disc { width: 38px; height: 38px; border-width: 1px; box-shadow: 0 0 0 1px #64725a, 0 0 0 2px #d6c28e, inset 0 0 0 3px #294e43, inset 0 0 0 4px #c9b77d; }
-  .utility-disc::before, .utility-disc::after { width: 5px; height: 5px; top: -4px; }
-  .utility-disc::after { top: auto; bottom: -4px; }
-  .utility-disc .notice-dot { width: 8px; height: 8px; right: -2px; top: -1px; }
-  .utility-nav strong { font-size: 9px; line-height: 1.2; }
   .campus-progress { width: 137px; right: max(21px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); }
   .campus-name { gap: 6px; font-size: 28px; line-height: 1.1; }
   .campus-seal { font-size: 9px; padding: 2px 1px; }
@@ -416,62 +349,8 @@
   .companion-portraits { margin: 12px 0 22px; }
   .companion-portraits > span { width: 48px; height: 58px; }
   .companion-portraits .ly-icon { width: 28px; height: 28px; }
-  /* 个人主页：与其它面板同一套纸笺风格 */
-.profile-card { display: flex; align-items: center; gap: 20px; padding: 4px 0 20px; border-bottom: 1px solid #c8b274; }
-.profile-avatar { width: 72px; height: 72px; flex: none; display: grid; place-items: center; border: 1px solid #b39a5e; background: #2d5444; color: #f0dc9d; outline: 1px solid #b39a5e; outline-offset: 3px; transform: rotate(45deg); border-radius: 5px; }
-.profile-avatar .ly-icon { width: 42px; height: 42px; transform: rotate(-45deg); }
-.profile-identity { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
-.profile-name { font-size: clamp(22px, 2vw, 28px); font-weight: 650; letter-spacing: .1em; line-height: 1.2; }
-.profile-id { font-size: 12px; letter-spacing: .16em; color: #8b7b51; font-variant-numeric: tabular-nums; }
-.profile-verse { margin: 16px 0 18px; text-align: center; color: #7f6738; font-size: 15px; letter-spacing: .08em; }
-.profile-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.profile-meta > div { padding: 12px 6px; text-align: center; background: #e9dfbb; border: 1px solid #c1ad74; }
-.profile-meta span { display: block; font-size: 11px; letter-spacing: .1em; color: #8a7a4e; }
-.profile-meta strong { display: block; margin-top: 7px; font-size: 19px; font-weight: 600; color: #2f4b3b; font-variant-numeric: tabular-nums; }
-.profile-meta em { font-style: normal; font-size: .72em; font-weight: 400; color: #7c8a6d; margin-left: 2px; }
-@media (max-width: 720px) {
-  .profile-avatar { width: 56px; height: 56px; }
-  .profile-avatar .ly-icon { width: 32px; height: 32px; }
-  .profile-meta strong { font-size: 16px; }
-}
 .stamina-display { margin: 16px 0; gap: 18px; }
-  /* 个人主页：与其它面板同一套纸笺风格 */
-.profile-card { display: flex; align-items: center; gap: 20px; padding: 4px 0 20px; border-bottom: 1px solid #c8b274; }
-.profile-avatar { width: 72px; height: 72px; flex: none; display: grid; place-items: center; border: 1px solid #b39a5e; background: #2d5444; color: #f0dc9d; outline: 1px solid #b39a5e; outline-offset: 3px; transform: rotate(45deg); border-radius: 5px; }
-.profile-avatar .ly-icon { width: 42px; height: 42px; transform: rotate(-45deg); }
-.profile-identity { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
-.profile-name { font-size: clamp(22px, 2vw, 28px); font-weight: 650; letter-spacing: .1em; line-height: 1.2; }
-.profile-id { font-size: 12px; letter-spacing: .16em; color: #8b7b51; font-variant-numeric: tabular-nums; }
-.profile-verse { margin: 16px 0 18px; text-align: center; color: #7f6738; font-size: 15px; letter-spacing: .08em; }
-.profile-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.profile-meta > div { padding: 12px 6px; text-align: center; background: #e9dfbb; border: 1px solid #c1ad74; }
-.profile-meta span { display: block; font-size: 11px; letter-spacing: .1em; color: #8a7a4e; }
-.profile-meta strong { display: block; margin-top: 7px; font-size: 19px; font-weight: 600; color: #2f4b3b; font-variant-numeric: tabular-nums; }
-.profile-meta em { font-style: normal; font-size: .72em; font-weight: 400; color: #7c8a6d; margin-left: 2px; }
-@media (max-width: 720px) {
-  .profile-avatar { width: 56px; height: 56px; }
-  .profile-avatar .ly-icon { width: 32px; height: 32px; }
-  .profile-meta strong { font-size: 16px; }
-}
 .stamina-display > .ly-icon { width: 48px; height: 48px; }
-  /* 个人主页：与其它面板同一套纸笺风格 */
-.profile-card { display: flex; align-items: center; gap: 20px; padding: 4px 0 20px; border-bottom: 1px solid #c8b274; }
-.profile-avatar { width: 72px; height: 72px; flex: none; display: grid; place-items: center; border: 1px solid #b39a5e; background: #2d5444; color: #f0dc9d; outline: 1px solid #b39a5e; outline-offset: 3px; transform: rotate(45deg); border-radius: 5px; }
-.profile-avatar .ly-icon { width: 42px; height: 42px; transform: rotate(-45deg); }
-.profile-identity { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
-.profile-name { font-size: clamp(22px, 2vw, 28px); font-weight: 650; letter-spacing: .1em; line-height: 1.2; }
-.profile-id { font-size: 12px; letter-spacing: .16em; color: #8b7b51; font-variant-numeric: tabular-nums; }
-.profile-verse { margin: 16px 0 18px; text-align: center; color: #7f6738; font-size: 15px; letter-spacing: .08em; }
-.profile-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.profile-meta > div { padding: 12px 6px; text-align: center; background: #e9dfbb; border: 1px solid #c1ad74; }
-.profile-meta span { display: block; font-size: 11px; letter-spacing: .1em; color: #8a7a4e; }
-.profile-meta strong { display: block; margin-top: 7px; font-size: 19px; font-weight: 600; color: #2f4b3b; font-variant-numeric: tabular-nums; }
-.profile-meta em { font-style: normal; font-size: .72em; font-weight: 400; color: #7c8a6d; margin-left: 2px; }
-@media (max-width: 720px) {
-  .profile-avatar { width: 56px; height: 56px; }
-  .profile-avatar .ly-icon { width: 32px; height: 32px; }
-  .profile-meta strong { font-size: 16px; }
-}
 .stamina-display strong { font-size: 33px; }
   .entry-card { width: 332px; padding: 20px 28px; }
   .entry-card > p { font-size: 22px; margin: 17px 0; }
@@ -484,7 +363,6 @@
   .story-nav { top: 71px; gap: 3px; }
   .story-button { height: 44px; }
   .brand { height: 64px; }
-  .utility-nav { bottom: max(7px, env(safe-area-inset-bottom)); }
 }
 
 @media (max-width: 720px) and (orientation: landscape) {
@@ -502,8 +380,6 @@
   .resource-pill > .ly-icon { width: 18px; height: 18px; }
   .resource-plus { width: 16px; height: 16px; margin-left: 0; }
   .resource-plus .ly-icon { width: 12px; height: 12px; }
-  .utility-nav { gap: 8px; }
-  .utility-nav strong { font-size: 8px; }
   .campus-progress { width: 124px; right: 18px; }
   .campus-name { font-size: 25px; }
   .map-help { left: 49%; font-size: 7px; }
@@ -515,8 +391,6 @@
   .brand-copy > strong { font-size: 23px; }
   .brand-subtitle { margin-top: 2px; }
   .brand-rule { display: none; }
-  .utility-nav { left: 183px; bottom: 10px; gap: 12px; }
-  .utility-nav strong { display: none; }
   .resource-bar { top: 7px; }
   .fullscreen-control { top: 7px; }
   .map-help { display: none; }

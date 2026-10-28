@@ -81,9 +81,8 @@ function Panels(p: HudProps) {
         <div><span>校园编号</span><strong>LY0611<em>2403</em></strong></div>
       </div>
       <p className="panel-footnote">学号与姓名在登录后显示，当前为界面占位</p>
-      <button className="parchment-button" onClick={p.onClose}>继续探索<Icon name="compass"/></button>
-    </Modal>;
-    case 'settings': return <Modal title="设置" eyebrow="让旅途自在一些" icon="settings" {...common}>
+
+      <h3 className="profile-section">设置 <span>让旅途自在一些</span></h3>
       <Toggle label="校园配乐" description="与风同行，让旋律伴你漫游" checked={settings.music} onChange={music => p.onSettings({ music })}/>
       <div className="setting-row"><label htmlFor="music-volume">音乐音量</label><div className="range-wrap"><input id="music-volume" type="range" min="0" max="1" step=".05" value={settings.volume} onChange={e => p.onSettings({ volume: +e.target.value })}/><output>{Math.round(settings.volume * 100)}%</output></div></div>
       <div className="setting-row"><label htmlFor="music-track">当前曲目</label><select id="music-track" value={settings.track} onChange={e => p.onSettings({ track: +e.target.value })}><option value="0">校园配乐 · 壹</option><option value="1">校园配乐 · 贰</option><option value="2">校园配乐 · 叁</option></select></div>
@@ -92,10 +91,8 @@ function Panels(p: HudProps) {
       <Toggle label="减少动态效果" description="保留必要反馈，减少飘叶和镜头运动" checked={settings.reducedMotion} onChange={reducedMotion => p.onSettings({ reducedMotion })}/>
       <div className="settings-actions"><button className="outline-button" onClick={p.onFullscreen}><Icon name="fullscreen"/>{p.isFullscreen ? '退出全屏' : '进入全屏'}</button><button className={`outline-button ${resetArmed ? 'danger-button' : ''}`} onClick={() => { if (resetArmed) { p.onReset(); setResetArmed(false); } else setResetArmed(true); }}>{resetArmed ? '确认重新出发' : '重置探索进度'}</button></div>
       {resetArmed && <div className="reset-confirm" role="alert"><p>将清除已点亮的地标，回到初见校园时。</p><button onClick={() => setResetArmed(false)}>保留当前旅程</button></div>}
-    </Modal>;
-    case 'guide': return <Modal title="探索指引" eyebrow="循光而行 · 山水可期" icon="compass" {...common}>
-      <ol className="guide-steps"><li><span>壹</span><div><h3>展开校园</h3><p>拖动地图自在漫游。电脑滚轮、手机双指，都可以拉近眼前的风景。</p></div></li><li><span>贰</span><div><h3>寻找微光</h3><p>点击地图上的地标，阅读这一站的故事。金色信标会指引新的探索方向。</p></div></li><li><span>叁</span><div><h3>点亮记忆</h3><p>选择「前往探索」，看云雾散开。地标与旅程进度会自动保存。</p></div></li></ol>
-      <button className="parchment-button" onClick={() => p.onSelect(p.landmarks.find(x => !p.state.discoveredIds.includes(x.id) && x.isBeacon)?.id ?? p.landmarks.find(x => !p.state.discoveredIds.includes(x.id))?.id ?? p.landmarks[0].id)}>循光去看看<Icon name="star"/></button>
+
+      <button className="parchment-button" onClick={p.onClose}>继续探索<Icon name="compass"/></button>
     </Modal>;
     case 'collection': return <Modal title="收集图鉴" eyebrow={`校园记忆 · 已点亮 ${p.collected} 处`} icon="chest" {...common} className="collection-modal">
       <p className="collection-intro">把走过的风景，珍藏成一页页记忆。</p><div className="collection-grid">{p.landmarks.map(item => { const known = p.state.discoveredIds.includes(item.id); return <button key={item.id} className={`collection-item ${known ? 'is-known' : ''}`} onClick={() => p.onSelect(item.id)}><span className="collection-mark"><Icon name={known ? item.icon : 'lock'}/></span><strong>{item.name}</strong><small>{known ? '已收入图鉴' : '待发现'}</small></button>; })}</div>
@@ -143,7 +140,6 @@ export default function Hud(p: HudProps) {
       </div>
       <button className="fullscreen-control" onClick={p.onFullscreen} aria-label={p.isFullscreen ? '退出全屏' : '进入全屏'} title={p.isFullscreen ? '退出全屏' : '进入全屏'}><Icon name="fullscreen"/></button>
       <button className="map-compass" onClick={p.onCenter} aria-label="回到当前探索位置"><span>北</span><CompassRose/></button>
-      <nav className="utility-nav" aria-label="旅途工具">{([{ id: 'settings', icon: 'settings', title: '设置' }, { id: 'guide', icon: 'compass', title: '探索指引' }, { id: 'collection', icon: 'chest', title: '收集图鉴' }] as const).map(item => <button key={item.id} onClick={() => p.onPanel(item.id)}><span className="utility-disc"><Icon name={item.icon}/>{item.id === 'collection' && <span className="notice-dot"/>}</span><strong>{item.title}</strong></button>)}</nav>
       <div className="campus-progress" aria-label={`良乡校区，探索度 ${Math.round(p.progress)}%`}><div className="campus-name">良乡校区<span className="campus-seal">寻</span></div><p>探索度 <strong>{Math.round(p.progress)}<span>%</span></strong></p><div className="progress-track"><span style={{ width: `${Math.min(100, p.progress)}%` }}/><i/></div><small>UID: LY06112403</small></div>
       <div className="map-help"><span className="help-diamond">◇</span><span className="desktop-help">拖动地图 · 滚轮缩放</span><span className="touch-help">拖动地图 · 双指缩放</span></div>
     </div>
