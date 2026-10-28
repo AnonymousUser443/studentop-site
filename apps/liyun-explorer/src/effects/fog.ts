@@ -14,19 +14,20 @@ import { clamp01, eventTiming } from './timing';
 const TAU = Math.PI * 2;
 
 const PALETTE = {
-  edge: [186, 201, 191],
-  core: [247, 250, 244],
-  deep: [92, 116, 103],
+  edge: [188, 203, 188],
+  core: [247, 250, 239],
+  deep: [92, 116, 100],
   warm: [255, 220, 165],
   rim: [240, 245, 235],
 } as const;
 
 /** Density knobs: `coverage` and `haze` are the two values worth touching. */
 export const FOG_TUNING = {
-  coverage: 0.96,
-  haze: 0.34,
-  driftWorld: 9,
-  breath: 0.028,
+  coverage: 1,
+  haze: 0.42,
+  driftWorld: 16,
+  breath: 0.065,
+  morphSeconds: 15,
   wisps: 24,
   rays: 0.62,
   raysCount: 6,
@@ -89,7 +90,7 @@ function fbm(table: Float32Array, x: number, y: number, octaves: number) {
   return sum / norm;
 }
 
-/** One fog map: big shapes plus a sharp threshold, so masses and gaps stay readable. */
+/** One fog map: billowing banks with baked-in relief (lit tops, shaded undersides). */
 function buildFogTexture(seed: number) {
   const width = FOG_TUNING.grainWidth;
   const height = FOG_TUNING.grainHeight;
@@ -104,29 +105,49 @@ function buildFogTexture(seed: number) {
   const [coreR, coreG, coreB] = PALETTE.core;
   const [deepR, deepG, deepB] = PALETTE.deep;
 
+  // First pass: the density field, kept around so the shading pass can read neighbours.
+  const field = new Float32Array(width * height);
+  const body = new Float32Array(width * height);
   for (let y = 0; y < height; y++) {
     const v = y / height;
     for (let x = 0; x < width; x++) {
       const u = x / width;
-      const big = fbm(table, u * 1.55, v * 1.55, 4);
-      const mid = fbm(table, u * 4.1 + 13.7, v * 4.1 + 5.3, 3);
-      const fine = fbm(table, u * 13 + 41.1, v * 13 + 7.7, 2);
-      const raw = big * 0.72 + mid * 0.22 + fine * 0.06;
+      // Billowing banks: a wide base shape, a mid band that breaks the silhouette, fine wisps.
+      const big = fbm(table, u * 1.3, v * 1.3, 5);
+      const mid = fbm(table, u * 3.7 + 13.7, v * 3.7 + 5.3, 4);
+      const fine = fbm(table, u * 9.6 + 41.1, v * 9.6 + 7.7, 3);
+      const raw = big * 0.56 + mid * 0.3 + fine * 0.14;
+      const index = y * width + x;
+      field[index] = clamp01((raw - 0.5) * 3.1 + 0.5);
+      body[index] = fine;
+    }
+  }
 
-      // Contrast stretch, then a soft threshold: roughly half is dense fog, half is gap.
-      const n = clamp01((raw - 0.5) * 3.4 + 0.5);
-      let alpha = smoothstepRange(0.2, 0.45, n);
-      alpha = 0.5 + 0.5 * alpha;
-      alpha *= 0.82 + 0.18 * smoothstepRange(0.1, 0.9, mid);
+  // Second pass: alpha from the field, colour from a light coming in from the upper left.
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const index = y * width + x;
+      const n = field[index];
+      const fine = body[index];
 
-      const core = smoothstepRange(0.35, 0.95, alpha);
-      const rimInk = (1 - smoothstepRange(0.02, 0.3, alpha)) * 0.6;
+      let alpha = smoothstepRange(0.3, 0.56, n);
+      alpha = 0.58 + 0.42 * alpha;
+      alpha *= 0.8 + 0.2 * smoothstepRange(0.1, 0.9, fine);
 
-      const index = (y * width + x) * 4;
-      data[index] = lerp(lerp(edgeR, coreR, core), deepR, rimInk);
-      data[index + 1] = lerp(lerp(edgeG, coreG, core), deepG, rimInk);
-      data[index + 2] = lerp(lerp(edgeB, coreB, core), deepB, rimInk);
-      data[index + 3] = Math.round(clamp01(alpha) * 255);
+      // Surface normal approximation from the density gradient: uphill faces catch the light.
+      const nx = field[y * width + Math.min(width - 1, x + 2)];
+      const ny = field[Math.min(height - 1, y + 2) * width + x];
+      const lit = clamp01(0.52 + (n - (nx * 0.55 + ny * 0.45)) * 11);
+
+      // Thin wisps go slightly inky so the silhouette stays readable against the parchment map.
+      const rimInk = (1 - smoothstepRange(0.02, 0.26, alpha)) * 0.5;
+      const tone = smoothstepRange(0.12, 0.94, lit);
+
+      const index4 = index * 4;
+      data[index4] = lerp(lerp(deepR, coreR, tone), deepR, rimInk * 0.7);
+      data[index4 + 1] = lerp(lerp(deepG, coreG, tone), deepG, rimInk * 0.7);
+      data[index4 + 2] = lerp(lerp(deepB, coreB, tone), deepB, rimInk * 0.7);
+      data[index4 + 3] = Math.round(clamp01(alpha) * 255);
     }
   }
   ctx.putImageData(image, 0, 0);
@@ -168,7 +189,7 @@ export class FogField {
     paint.setTransform(1, 0, 0, 1, 0, 0);
     paint.clearRect(0, 0, bufferWidth, bufferHeight);
 
-    // 1. Fog body: a flat haze plus two drifted noise maps.
+    // 1. Fog body: a flat haze plus two noise fields that slowly melt into each other.
     paint.setTransform(
       resolution * camera.scale,
       0,
@@ -181,22 +202,29 @@ export class FogField {
     paint.fillRect(-2, -2, MAP_WIDTH + 4, MAP_HEIGHT + 4);
 
     const drift = reduced ? 0 : tuning.driftWorld;
-    const ax = Math.sin(t * 0.13) * drift;
-    const ay = Math.cos(t * 0.097) * drift * 0.8;
-    const bx = Math.cos(t * 0.081) * drift * 1.6;
-    const by = Math.sin(t * 0.067) * drift * 1.2;
+    // 0..1 over `morphSeconds`: the two banks trade off, so the silhouettes keep reshaping
+    // instead of the whole sheet sliding. This is the "churning" read at rest.
+    const morph = reduced ? 0.5 : 0.5 + 0.5 * Math.sin((t / tuning.morphSeconds) * TAU);
 
-    paint.globalAlpha = tuning.coverage * 0.9;
-    paint.drawImage(this.textures[0], ax - 40, ay - 40, MAP_WIDTH + 80, MAP_HEIGHT + 80);
+    const drawBank = (texture: HTMLCanvasElement, offsetX: number, offsetY: number, scale: number, alpha: number) => {
+      paint.save();
+      paint.translate(MAP_WIDTH / 2, MAP_HEIGHT / 2);
+      paint.scale(scale, scale);
+      paint.translate(-MAP_WIDTH / 2 + offsetX, -MAP_HEIGHT / 2 + offsetY);
+      paint.globalAlpha = alpha;
+      paint.drawImage(texture, -40, -40, MAP_WIDTH + 80, MAP_HEIGHT + 80);
+      paint.restore();
+    };
 
-    const breath = 1 + (reduced ? 0 : tuning.breath) * Math.sin(t * 0.052);
-    paint.save();
-    paint.translate(MAP_WIDTH / 2, MAP_HEIGHT / 2);
-    paint.scale(breath, breath);
-    paint.translate(-MAP_WIDTH / 2, -MAP_HEIGHT / 2);
-    paint.globalAlpha = tuning.coverage * 0.36;
-    paint.drawImage(this.textures[1], bx - 40, by - 40, MAP_WIDTH + 80, MAP_HEIGHT + 80);
-    paint.restore();
+    const bankA = Math.sin(t * 0.083) * drift;
+    const bankB = Math.cos(t * 0.061) * drift * 0.75;
+    const bankC = -Math.cos(t * 0.047) * drift * 1.25;
+    const bankD = Math.sin(t * 0.039) * drift * 1.05;
+    const breathA = 1 + (reduced ? 0 : tuning.breath) * Math.sin(t * 0.041);
+    const breathB = 1 + (reduced ? 0 : tuning.breath * 1.35) * Math.cos(t * 0.033);
+
+    drawBank(this.textures[0], bankA, bankB, breathA, tuning.coverage * (0.5 + 0.42 * (1 - morph)));
+    drawBank(this.textures[1], bankC, bankD, breathB, tuning.coverage * (0.5 + 0.42 * morph));
     paint.globalAlpha = 1;
 
     // 2. Reveal state, derived from props so QA's fixedTime stays reproducible.
