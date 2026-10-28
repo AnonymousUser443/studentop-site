@@ -30,3 +30,8 @@
 *.glb   binary
 *.gltf  binary
 *.svg   text
+
+# Keep audited upstream license prose byte-exact instead of rewriting its whitespace.
+site/assets/fonts/OFL-*.txt -whitespace
+apps/genshin-start/public/campus/fonts/OFL-*.txt -whitespace
+apps/genshin-start/scripts/licenses/Apache-2.0.txt -whitespace

@@ -1,0 +1,641 @@
+{
+  "method": "isolated Edge CDP mouse/key/touch input plus DOM geometry; emulated sizes, not physical devices",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900,
+      "ok": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "ok": true
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "ok": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "ok": true
+    }
+  ],
+  "checks": [
+    {
+      "viewport": "1440x900",
+      "name": "clean_first_desktop",
+      "pass": true
+    },
+    {
+      "viewport": "1440x900",
+      "name": "taskbar_regions_disjoint",
+      "pass": true,
+      "detail": {
+        "center": {
+          "x": 546,
+          "y": 849,
+          "right": 880,
+          "bottom": 900,
+          "w": 334,
+          "h": 51
+        },
+        "right": {
+          "x": 1208,
+          "y": 849,
+          "right": 1420,
+          "bottom": 900,
+          "w": 212,
+          "h": 51
+        },
+        "show": {
+          "x": 1424,
+          "y": 849,
+          "right": 1434,
+          "bottom": 900,
+          "w": 10,
+          "h": 51
+        },
+        "hits": {
+          "trayTray": true,
+          "trayClock": true,
+          "notifBtn": true,
+          "showDesktopBtn": true
+        }
+      }
+    },
+    {
+      "viewport": "1440x900",
+      "name": "taskbar_controls_hit_test",
+      "pass": true,
+      "detail": {
+        "trayTray": true,
+        "trayClock": true,
+        "notifBtn": true,
+        "showDesktopBtn": true
+      }
+    },
+    {
+      "viewport": "1440x900",
+      "name": "quick_settings_pointer_open",
+      "pass": true
+    },
+    {
+      "viewport": "1440x900",
+      "name": "calendar_pointer_open",
+      "pass": true
+    },
+    {
+      "viewport": "1440x900",
+      "name": "start_pointer_open",
+      "pass": true
+    },
+    {
+      "viewport": "1440x900",
+      "name": "double_click_opens",
+      "pass": true
+    },
+    {
+      "viewport": "1440x900",
+      "name": "titlebar_mouse_drag",
+      "pass": true,
+      "detail": {
+        "before": {
+          "x": 194,
+          "y": 28,
+          "w": 940,
+          "h": 712
+        },
+        "after": {
+          "x": 284,
+          "y": 108,
+          "w": 940,
+          "h": 712
+        }
+      }
+    },
+    {
+      "viewport": "1440x900",
+      "name": "resize_handle_hit_test",
+      "pass": true,
+      "detail": {
+        "x": 1219,
+        "y": 815,
+        "hit": "rs-handle rs-se",
+        "canResize": true
+      }
+    },
+    {
+      "viewport": "1440x900",
+      "name": "resize_handle_mouse_drag",
+      "pass": true,
+      "detail": {
+        "after": {
+          "x": 284,
+          "y": 108,
+          "w": 940,
+          "h": 712
+        },
+        "resized": {
+          "x": 284,
+          "y": 108,
+          "w": 985,
+          "h": 740
+        }
+      }
+    },
+    {
+      "viewport": "1440x900",
+      "name": "caption_maximize",
+      "pass": true
+    },
+    {
+      "viewport": "1440x900",
+      "name": "multi_app_stress_count",
+      "pass": true
+    },
+    {
+      "viewport": "1440x900",
+      "name": "multi_app_taskbar_no_overlap",
+      "pass": true
+    },
+    {
+      "viewport": "1440x900",
+      "name": "show_desktop_real_click",
+      "pass": true
+    },
+    {
+      "viewport": "1440x900",
+      "name": "show_desktop_restore_real_click",
+      "pass": true
+    },
+    {
+      "viewport": "1440x900",
+      "name": "dark_theme_applied",
+      "pass": true
+    },
+    {
+      "viewport": "1440x900",
+      "name": "system_reduced_motion",
+      "pass": true
+    },
+    {
+      "viewport": "1440x900",
+      "name": "no_runtime_or_network_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "clean_first_desktop",
+      "pass": true
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "taskbar_regions_disjoint",
+      "pass": true,
+      "detail": {
+        "center": {
+          "x": 786,
+          "y": 1029,
+          "right": 1120,
+          "bottom": 1080,
+          "w": 334,
+          "h": 51
+        },
+        "right": {
+          "x": 1688,
+          "y": 1029,
+          "right": 1900,
+          "bottom": 1080,
+          "w": 212,
+          "h": 51
+        },
+        "show": {
+          "x": 1904,
+          "y": 1029,
+          "right": 1914,
+          "bottom": 1080,
+          "w": 10,
+          "h": 51
+        },
+        "hits": {
+          "trayTray": true,
+          "trayClock": true,
+          "notifBtn": true,
+          "showDesktopBtn": true
+        }
+      }
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "taskbar_controls_hit_test",
+      "pass": true,
+      "detail": {
+        "trayTray": true,
+        "trayClock": true,
+        "notifBtn": true,
+        "showDesktopBtn": true
+      }
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "quick_settings_pointer_open",
+      "pass": true
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "calendar_pointer_open",
+      "pass": true
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "start_pointer_open",
+      "pass": true
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "double_click_opens",
+      "pass": true
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "titlebar_mouse_drag",
+      "pass": true,
+      "detail": {
+        "before": {
+          "x": 434,
+          "y": 118,
+          "w": 940,
+          "h": 712
+        },
+        "after": {
+          "x": 524,
+          "y": 198,
+          "w": 940,
+          "h": 712
+        }
+      }
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "resize_handle_hit_test",
+      "pass": true,
+      "detail": {
+        "x": 1459,
+        "y": 905,
+        "hit": "rs-handle rs-se",
+        "canResize": true
+      }
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "resize_handle_mouse_drag",
+      "pass": true,
+      "detail": {
+        "after": {
+          "x": 524,
+          "y": 198,
+          "w": 940,
+          "h": 712
+        },
+        "resized": {
+          "x": 524,
+          "y": 198,
+          "w": 985,
+          "h": 747
+        }
+      }
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "caption_maximize",
+      "pass": true
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "multi_app_stress_count",
+      "pass": true
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "multi_app_taskbar_no_overlap",
+      "pass": true
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "show_desktop_real_click",
+      "pass": true
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "show_desktop_restore_real_click",
+      "pass": true
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "dark_theme_applied",
+      "pass": true
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "system_reduced_motion",
+      "pass": true
+    },
+    {
+      "viewport": "1920x1080",
+      "name": "no_runtime_or_network_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "viewport": "1366x768",
+      "name": "clean_first_desktop",
+      "pass": true
+    },
+    {
+      "viewport": "1366x768",
+      "name": "taskbar_regions_disjoint",
+      "pass": true,
+      "detail": {
+        "center": {
+          "x": 509,
+          "y": 717,
+          "right": 843,
+          "bottom": 768,
+          "w": 334,
+          "h": 51
+        },
+        "right": {
+          "x": 1134,
+          "y": 717,
+          "right": 1346,
+          "bottom": 768,
+          "w": 212,
+          "h": 51
+        },
+        "show": {
+          "x": 1350,
+          "y": 717,
+          "right": 1360,
+          "bottom": 768,
+          "w": 10,
+          "h": 51
+        },
+        "hits": {
+          "trayTray": true,
+          "trayClock": true,
+          "notifBtn": true,
+          "showDesktopBtn": true
+        }
+      }
+    },
+    {
+      "viewport": "1366x768",
+      "name": "taskbar_controls_hit_test",
+      "pass": true,
+      "detail": {
+        "trayTray": true,
+        "trayClock": true,
+        "notifBtn": true,
+        "showDesktopBtn": true
+      }
+    },
+    {
+      "viewport": "1366x768",
+      "name": "quick_settings_pointer_open",
+      "pass": true
+    },
+    {
+      "viewport": "1366x768",
+      "name": "calendar_pointer_open",
+      "pass": true
+    },
+    {
+      "viewport": "1366x768",
+      "name": "start_pointer_open",
+      "pass": true
+    },
+    {
+      "viewport": "1366x768",
+      "name": "double_click_opens",
+      "pass": true
+    },
+    {
+      "viewport": "1366x768",
+      "name": "titlebar_mouse_drag",
+      "pass": true,
+      "detail": {
+        "before": {
+          "x": 157,
+          "y": 8,
+          "w": 940,
+          "h": 668
+        },
+        "after": {
+          "x": 247,
+          "y": 48,
+          "w": 940,
+          "h": 668
+        }
+      }
+    },
+    {
+      "viewport": "1366x768",
+      "name": "resize_handle_hit_test",
+      "pass": true,
+      "detail": {
+        "x": 1182,
+        "y": 711,
+        "hit": "rs-handle rs-se",
+        "canResize": true
+      }
+    },
+    {
+      "viewport": "1366x768",
+      "name": "resize_handle_mouse_drag",
+      "pass": true,
+      "detail": {
+        "after": {
+          "x": 247,
+          "y": 48,
+          "w": 940,
+          "h": 668
+        },
+        "resized": {
+          "x": 247,
+          "y": 48,
+          "w": 985,
+          "h": 668
+        }
+      }
+    },
+    {
+      "viewport": "1366x768",
+      "name": "caption_maximize",
+      "pass": true
+    },
+    {
+      "viewport": "1366x768",
+      "name": "multi_app_stress_count",
+      "pass": true
+    },
+    {
+      "viewport": "1366x768",
+      "name": "multi_app_taskbar_no_overlap",
+      "pass": true
+    },
+    {
+      "viewport": "1366x768",
+      "name": "show_desktop_real_click",
+      "pass": true
+    },
+    {
+      "viewport": "1366x768",
+      "name": "show_desktop_restore_real_click",
+      "pass": true
+    },
+    {
+      "viewport": "1366x768",
+      "name": "dark_theme_applied",
+      "pass": true
+    },
+    {
+      "viewport": "1366x768",
+      "name": "system_reduced_motion",
+      "pass": true
+    },
+    {
+      "viewport": "1366x768",
+      "name": "no_runtime_or_network_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "viewport": "390x844",
+      "name": "clean_first_desktop",
+      "pass": true
+    },
+    {
+      "viewport": "390x844",
+      "name": "taskbar_regions_disjoint",
+      "pass": true,
+      "detail": {
+        "center": {
+          "x": 4,
+          "y": 794.5,
+          "right": 248,
+          "bottom": 842.5,
+          "w": 244,
+          "h": 48
+        },
+        "right": {
+          "x": 252,
+          "y": 793,
+          "right": 374,
+          "bottom": 844,
+          "w": 122,
+          "h": 51
+        },
+        "show": {
+          "x": 378,
+          "y": 793,
+          "right": 386,
+          "bottom": 844,
+          "w": 8,
+          "h": 51
+        },
+        "hits": {
+          "trayTray": true,
+          "trayClock": true,
+          "notifBtn": true,
+          "showDesktopBtn": true
+        }
+      }
+    },
+    {
+      "viewport": "390x844",
+      "name": "taskbar_controls_hit_test",
+      "pass": true,
+      "detail": {
+        "trayTray": true,
+        "trayClock": true,
+        "notifBtn": true,
+        "showDesktopBtn": true
+      }
+    },
+    {
+      "viewport": "390x844",
+      "name": "quick_settings_pointer_open",
+      "pass": true
+    },
+    {
+      "viewport": "390x844",
+      "name": "calendar_pointer_open",
+      "pass": true
+    },
+    {
+      "viewport": "390x844",
+      "name": "start_pointer_open",
+      "pass": true
+    },
+    {
+      "viewport": "390x844",
+      "name": "touch_single_tap_opens",
+      "pass": true
+    },
+    {
+      "viewport": "390x844",
+      "name": "multi_app_stress_count",
+      "pass": true
+    },
+    {
+      "viewport": "390x844",
+      "name": "multi_app_taskbar_no_overlap",
+      "pass": true
+    },
+    {
+      "viewport": "390x844",
+      "name": "show_desktop_real_click",
+      "pass": true
+    },
+    {
+      "viewport": "390x844",
+      "name": "show_desktop_restore_real_click",
+      "pass": true
+    },
+    {
+      "viewport": "390x844",
+      "name": "dark_theme_applied",
+      "pass": true
+    },
+    {
+      "viewport": "390x844",
+      "name": "system_reduced_motion",
+      "pass": true
+    },
+    {
+      "viewport": "390x844",
+      "name": "no_runtime_or_network_errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "screenshots": [
+    "desktop-1440.png",
+    "desktop-start-1440.png",
+    "desktop-dark-1440.png",
+    "desktop-1920.png",
+    "desktop-start-1920.png",
+    "desktop-dark-1920.png",
+    "desktop-1366.png",
+    "desktop-start-1366.png",
+    "desktop-dark-1366.png",
+    "desktop-390.png",
+    "desktop-start-390.png",
+    "desktop-about-390.png",
+    "desktop-dark-390.png"
+  ],
+  "ok": true
+}

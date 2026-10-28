@@ -1,28 +1,50 @@
-# 主地图 HUD 验收记录
+# 迁移后的验收入口与历史记录
+
+> **证据状态：旧应用 qa 目录未迁入。** 下方保留迁移前的数字和描述供追溯，不是当前工作区的通过声明；引用的截图、构建日志和 JSON 均不可在此仓库复核。旧服务端口、会话 id 和性能值不得作为本轮证据。
+
+## 当前已记录的基线
+
+负责人在[本轮 baseline.json](../../../qa/upgrade-20261027/baseline.json)记录：2026-10-27 21:16（Asia/Shanghai）理韵3个测试文件、13项通过、0失败；TypeScript/Vite构建成功，仍有原p5大包提示。这是本轮真实基线记录，不是下方缺失的旧报告，也不是完整浏览器验收。
+
+## 当前复核方式
+
+从仓库根执行：
+
+~~~powershell
+npm --prefix apps/liyun-explorer test
+npm --prefix apps/liyun-explorer run build
+node apps/liyun-explorer/scripts/asset-manifest.mjs --check
+~~~
+
+开发服务固定回环 5174；构建预览固定回环 4174。浏览器验收必须先加载 opencli，由负责人统一启动和执行，记录实际命令、异常、断言、视口、版本和截图。新证据放入根 qa/upgrade-20261027，不与下列历史结果混用。固定预设仍使用 qa=1&preset=fog 或 explored；无 preset 的普通存档验证要隔离浏览器会话。脚本与严格失败约定见[根 QA 说明](../../../qa/README.md)。
+
+---
+
+## 历史原文（未经本轮复验）
 
 日期：2026-10-27，Asia/Shanghai。交付范围为本地前端首版：8 个地标、地图与探索反馈、存档、HUD、设置、指引和简版图鉴。全部首版地标为 45%，3% / 37% 为固定验收预设。
 
-本地构建预览：[localhost:4173](http://localhost:4173/)。开发预设及截图索引使用 [localhost:5173/qa/index.html](http://localhost:5173/qa/index.html)。启动命令见 [README](../README.md)。
+历史运行地址为 localhost:4173 / localhost:5173；当时的服务会话和 qa/index.html 不属于当前环境。现用 5174 / 4174，启动命令见 [README](../README.md)。
 
 ## 结果与证据
 
 | 检查 | 结果 | 证据 |
 | --- | --- | --- |
-| TypeScript 与生产构建 | 通过，生成 `dist/` | [构建日志](../qa/build.log) |
-| Vitest | 13 / 13，通过；0 失败 | [JSON 报告](../qa/vitest.json) |
-| 浏览器菜单与基本交互 | 25 / 25，通过 | [基本检查](../qa/browser-functional.json) |
-| 完整内容、曲目、键盘和重置 | 12 / 12，通过 | [内容检查](../qa/browser-content.json) |
-| 鼠标从地标开始拖动 | 镜头移动，抬起没有误开详情 | [原生拖动](../qa/browser-native-drag.json) |
-| 实际点击「前往探索」 | 详情关闭，发现塔，进度 3% → 8% | [原生探索](../qa/browser-native-explore.json) |
-| 双指缩放与抬一指续拖 | 两场景通过：1.5 倍、UV 锚点误差 0、续拖 20/20 | [合成触摸事件](../qa/browser-gestures.json) |
-| 不冻结的探索动效 | 行进、雾散与光效自然完成 | [逐帧取样](../qa/browser-live-timeline.json) |
-| 行进中切换目标 | 旧镜头停止；从当前画面位置衔接；两次发现保留 | [中断检查](../qa/browser-interruption.json) |
-| 普通模式 BGM | 入场手势启动所选 Opus；收到真实 `playing` 事件 | [入场与存档](../qa/browser-normal-before-refresh.json) |
-| 刷新恢复 | 进度 8%、玩家位置与设置和保存值一致 | [恢复检查](../qa/browser-normal-restored.json) |
-| 桌面全屏 | 原生点击进入成功，退出成功 | [全屏检查](../qa/browser-fullscreen.json) |
-| 全屏不支持回退 | 给出提示，横屏地图仍可操作 | [内容检查](../qa/browser-content.json) |
-| 构建预览 | 图片、字体、2 个 Canvas 正常；不开放 QA API | [生产检查](../qa/browser-production.json) |
-| 控制台 | 验收页与构建页均 0 条捕获消息 | [开发记录](../qa/browser-console.json)、[构建记录](../qa/browser-production-console.json) |
+| TypeScript 与生产构建 | 通过，生成 `dist/` | 构建日志（旧 qa/build.log，未迁入） |
+| Vitest | 13 / 13，通过；0 失败 | JSON 报告（旧 qa/vitest.json，未迁入） |
+| 浏览器菜单与基本交互 | 25 / 25，通过 | 基本检查（旧 qa/browser-functional.json，未迁入） |
+| 完整内容、曲目、键盘和重置 | 12 / 12，通过 | 内容检查（旧 qa/browser-content.json，未迁入） |
+| 鼠标从地标开始拖动 | 镜头移动，抬起没有误开详情 | 原生拖动（旧 qa/browser-native-drag.json，未迁入） |
+| 实际点击「前往探索」 | 详情关闭，发现塔，进度 3% → 8% | 原生探索（旧 qa/browser-native-explore.json，未迁入） |
+| 双指缩放与抬一指续拖 | 两场景通过：1.5 倍、UV 锚点误差 0、续拖 20/20 | 合成触摸事件（旧 qa/browser-gestures.json，未迁入） |
+| 不冻结的探索动效 | 行进、雾散与光效自然完成 | 逐帧取样（旧 qa/browser-live-timeline.json，未迁入） |
+| 行进中切换目标 | 旧镜头停止；从当前画面位置衔接；两次发现保留 | 中断检查（旧 qa/browser-interruption.json，未迁入） |
+| 普通模式 BGM | 入场手势启动所选 Opus；收到真实 `playing` 事件 | 入场与存档（旧 qa/browser-normal-before-refresh.json，未迁入） |
+| 刷新恢复 | 进度 8%、玩家位置与设置和保存值一致 | 恢复检查（旧 qa/browser-normal-restored.json，未迁入） |
+| 桌面全屏 | 原生点击进入成功，退出成功 | 全屏检查（旧 qa/browser-fullscreen.json，未迁入） |
+| 全屏不支持回退 | 给出提示，横屏地图仍可操作 | 内容检查（旧 qa/browser-content.json，未迁入） |
+| 构建预览 | 图片、字体、2 个 Canvas 正常；不开放 QA API | 生产检查（旧 qa/browser-production.json，未迁入） |
+| 控制台 | 验收页与构建页均 0 条捕获消息 | 开发记录（旧 qa/browser-console.json，未迁入）、构建记录（旧 qa/browser-production-console.json，未迁入） |
 
 双指场景通过真实 React 事件路径派发合成 PointerEvents，分别验证分步操作与“最后一次双指移动 → 第二指抬起 → 剩余一指移动”在同一任务中的快速切换；它不是物理触屏实测。鼠标拖动、探索确认与桌面全屏使用 OpenCLI 原生输入。
 
@@ -36,20 +58,20 @@
 
 | 尺寸 | 截图 |
 | --- | --- |
-| 1920×1080 | [初始迷雾](../qa/01-fog-1920x1080.png) |
-| 1366×768 | [常规笔记本](../qa/06-fog-1366x768.png) |
-| 2560×1080 | [宽屏](../qa/07-fog-2560x1080.png) |
-| 844×390 | [手机横屏](../qa/05-fog-844x390.png) |
-| 667×375 | [较小横屏](../qa/04-fog-667x375.png) |
-| 390×844 | [竖屏引导](../qa/08-portrait-390x844.png) |
+| 1920×1080 | 初始迷雾（旧 qa/01-fog-1920x1080.png，未迁入） |
+| 1366×768 | 常规笔记本（旧 qa/06-fog-1366x768.png，未迁入） |
+| 2560×1080 | 宽屏（旧 qa/07-fog-2560x1080.png，未迁入） |
+| 844×390 | 手机横屏（旧 qa/05-fog-844x390.png，未迁入） |
+| 667×375 | 较小横屏（旧 qa/04-fog-667x375.png，未迁入） |
+| 390×844 | 竖屏引导（旧 qa/08-portrait-390x844.png，未迁入） |
 
-布局数据见 [browser-layout.json](../qa/browser-layout.json)。390×844 时显示横屏提示、HUD inert、地图禁用、效果停止持续绘制；返回原横屏后相机与进度恢复。该截图由桌面视口模拟生成，显示电脑窗口提示；触控设备使用手动旋转手机的文案。
+布局数据见 browser-layout.json（旧 qa/browser-layout.json，未迁入）。390×844 时显示横屏提示、HUD inert、地图禁用、效果停止持续绘制；返回原横屏后相机与进度恢复。该截图由桌面视口模拟生成，显示电脑窗口提示；触控设备使用手动旋转手机的文案。
 
-手机设置面板支持独立滚动，底部全屏与重置操作可达。地图独占 `touch-action:none`，弹层的祖先均保留 `auto`。[设置首屏](../qa/09-settings-844x390.png)、[滚动到底部](../qa/11-settings-controls-844x390.png)、[滚动数据](../qa/browser-settings-scroll.json)。另存 [图鉴](../qa/10-collection-1366x768.png) 和 [构建入场](../qa/12-production-entry-1920x1080.png)。
+手机设置面板支持独立滚动，底部全屏与重置操作可达。地图独占 `touch-action:none`，弹层的祖先均保留 `auto`。设置首屏（旧 qa/09-settings-844x390.png，未迁入）、滚动到底部（旧 qa/11-settings-controls-844x390.png，未迁入）、滚动数据（旧 qa/browser-settings-scroll.json，未迁入）。另存 图鉴（旧 qa/10-collection-1366x768.png，未迁入） 和 构建入场（旧 qa/12-production-entry-1920x1080.png，未迁入）。
 
 ## 动态与性能
 
-固定种子 42；迷雾静帧固定在 8000ms，点亮静帧固定为发现事件后 1900ms。[点亮中](../qa/02-discovering-1920x1080.png) 与 [已探索 37%](../qa/03-explored-1920x1080.png) 可和初始画面重复比较。
+固定种子 42；迷雾静帧固定在 8000ms，点亮静帧固定为发现事件后 1900ms。点亮中（旧 qa/02-discovering-1920x1080.png，未迁入） 与 已探索 37%（旧 qa/03-explored-1920x1080.png，未迁入） 可和初始画面重复比较。
 
 未冻结的实际动画取样中，玩家在约 1.4 秒抵达目标；约 2.4 秒时目标点雾层 alpha 为 0；约 3.45 秒时事件已清除。切换远处目标的取样中，衔接前后指针差约 1.3 像素，旧镜头后续漂移为 0。
 
@@ -58,7 +80,7 @@
 | 1920×1080 | 60.2 FPS | 30.3 FPS | 60.2 FPS | 1.5 |
 | 844×390 | 60.0 FPS | 29.8 FPS | 29.8 FPS | 1 |
 
-数据来自可见桌面 Chromium，每档约 2.2 秒，直接读取 p5 实际帧数，不用配置值代替测量值。移动档是桌面浏览器上的相应画布尺寸，不能代表手机 GPU、温控或电池模式。[原始性能数据](../qa/browser-performance.json)。
+数据来自可见桌面 Chromium，每档约 2.2 秒，直接读取 p5 实际帧数，不用配置值代替测量值。移动档是桌面浏览器上的相应画布尺寸，不能代表手机 GPU、温控或电池模式。原始性能数据（旧 qa/browser-performance.json，未迁入）。
 
 ## 本轮修复与范围
 

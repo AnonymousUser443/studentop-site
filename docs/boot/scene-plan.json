@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "theme": "青玉纸境",
+  "scenes": [
+    {
+      "id": "bios",
+      "durationMs": 1500,
+      "reason": "诚实交代网页启动演示",
+      "background": "深玉色",
+      "subject": "等宽网页准备说明",
+      "foreground": "无",
+      "ui": [
+        "网页启动演示标签",
+        "跳过演示按钮"
+      ],
+      "motion": "仅文字轻微分段出现，无模拟硬件自检"
+    },
+    {
+      "id": "logo",
+      "durationMs": 2000,
+      "reason": "辨认Aiden原图窗格标志",
+      "background": "暖纸色",
+      "subject": "完整透明原图 boot-logo.webp",
+      "foreground": "无",
+      "ui": [
+        "AIDEN",
+        "网页启动演示",
+        "跳过演示按钮"
+      ],
+      "motion": "短淡入，保持人物与窗格不变形"
+    },
+    {
+      "id": "clock",
+      "durationMs": null,
+      "reason": "让访客明确选择登录",
+      "background": "偏好壁纸",
+      "subject": "当前时间与日期",
+      "foreground": "Aiden头像",
+      "ui": [
+        "登录按钮",
+        "重播启动演示",
+        "服务状态与重试"
+      ],
+      "motion": "静止；无背景循环"
+    },
+    {
+      "id": "question",
+      "durationMs": null,
+      "reason": "安全、可取消的服务端验证",
+      "background": "静止壁纸",
+      "subject": "暖纸问题表单",
+      "foreground": "无",
+      "ui": [
+        "密码型答案输入",
+        "显示/隐藏",
+        "提交",
+        "返回时钟",
+        "服务器重试与倒计时"
+      ],
+      "motion": "180ms纸页出现；减少动态立即呈现"
+    }
+  ],
+  "safeAreas": {
+    "desktop": "标题栏和底部按钮均留24px以上",
+    "mobile": "safe-area inset、滚动表单、44px目标、16px输入字号"
+  },
+  "sound": "无自动音频",
+  "reducedMotion": "短静帧或立即跳过演示；窗口授权不依赖动画"
+}

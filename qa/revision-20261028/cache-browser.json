@@ -1,0 +1,262 @@
+{
+  "method": "two genuine locally built releases, one warm Edge profile, browser HTTP cache enabled; synthetic authentication only",
+  "checks": [
+    {
+      "name": "release_a_uses_versioned_resource_urls",
+      "pass": true
+    },
+    {
+      "name": "release_a_meta_matches_manifest",
+      "pass": true
+    },
+    {
+      "name": "browser_cache_is_actually_warm",
+      "pass": true,
+      "detail": {
+        "servedFromCache": 25,
+        "diskResponses": 0
+      }
+    },
+    {
+      "name": "draft_is_dirty_before_update",
+      "pass": true
+    },
+    {
+      "name": "content_change_changes_release_id",
+      "pass": true
+    },
+    {
+      "name": "previous_namespace_retained",
+      "pass": true
+    },
+    {
+      "name": "update_never_reloads_automatically",
+      "pass": true
+    },
+    {
+      "name": "notice_does_not_steal_editing_focus",
+      "pass": true
+    },
+    {
+      "name": "draft_remains_unchanged",
+      "pass": true
+    },
+    {
+      "name": "cancel_preserves_unsaved_note",
+      "pass": true
+    },
+    {
+      "name": "dirty_update_requires_confirmation",
+      "pass": true
+    },
+    {
+      "name": "confirmed_reload_gets_new_content_not_cached_js",
+      "pass": true
+    },
+    {
+      "name": "refresh_url_has_new_version",
+      "pass": true
+    },
+    {
+      "name": "release_b_scripts_all_use_new_namespace",
+      "pass": true
+    },
+    {
+      "name": "no_stale_update_banner_after_reload",
+      "pass": true
+    },
+    {
+      "name": "cache_flow_no_unexpected_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "mobile_update_fits_viewport",
+      "pass": true,
+      "detail": {
+        "left": 12,
+        "right": 378,
+        "client": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "name": "mobile_start_footer_not_covered_by_notices",
+      "pass": true,
+      "detail": {
+        "found": true,
+        "hit": true,
+        "same": true,
+        "id": ""
+      }
+    },
+    {
+      "name": "mobile_cache_flow_no_errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "screenshots": [
+    "update-draft-desktop.png",
+    "update-mobile.png",
+    "update-mobile-start.png"
+  ],
+  "releaseA": "4036dc9f22c3295680bc5100",
+  "releaseB": "58c3bbbfa39a06f57d0a2830",
+  "cacheEvidence": {
+    "servedFromCache": 26,
+    "responses": [
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/4036dc9f22c3295680bc5100/js/update-check.js",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/4036dc9f22c3295680bc5100/fonts/noto-sans-sc.woff2",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/4036dc9f22c3295680bc5100/fonts/noto-serif-sc.woff2",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/4036dc9f22c3295680bc5100/img/avatar-aiden.jpg",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/img/wall-chenyu.webp",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/css/tokens.css",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/css/shell.css",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/css/boot-lock.css",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/js/icons.js",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/css/apps.css",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/css/paper.css",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/js/content.js",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/js/core.js",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/js/boot-lock.js",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/css/update.css",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/js/wm.js",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/js/shell.js",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/js/apps-about.js",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/js/apps.js",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/js/apps-system.js",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/img/boot-logo.webp",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/js/update-check.js",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/js/main.js",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/img/avatar-aiden.jpg",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      },
+      {
+        "url": "http://127.0.0.1:53800/assets/releases/58c3bbbfa39a06f57d0a2830/fonts/noto-sans-sc.woff2",
+        "disk": false,
+        "status": 200,
+        "cache": "public, max-age=31536000, immutable"
+      }
+    ]
+  },
+  "ok": true
+}

@@ -88,6 +88,10 @@ openssl x509 -in "$CERTS/studentop.cn.crt" -noout -subject -ext subjectAltName -
 
 log "5/8 nginx snippets + site config"
 sudo -n mkdir -p "$NGX_SNIPPETS"
+# Fresh bootstrap has no app artifacts yet. The reviewed release transaction installs real routes.
+if [ ! -f "$NGX_SNIPPETS/win11-home-projects.conf" ]; then
+  printf '# App routes are installed by deploy/apply-release.sh.\n' | sudo -n tee "$NGX_SNIPPETS/win11-home-projects.conf" >/dev/null
+fi
 sudo -n tee "$NGX_SNIPPETS/win11-home-headers.conf" >/dev/null <<'HDREOF'
 add_header X-Content-Type-Options "nosniff" always;
 add_header X-Frame-Options "SAMEORIGIN" always;
@@ -103,7 +107,11 @@ sudo -n tee "$NGX_SNIPPETS/win11-home-app.conf" >/dev/null <<'APPEOF'
 root /opt/win11-home/current;
 index index.html;
 autoindex off;
+# Public TLS arrives through :14355; relative redirects must not drop that port.
+absolute_redirect off;
 charset utf-8;
+# The private gate has one exact HTTPS origin; canonicalize the existing www alias.
+if ($host = www.studentop.cn) { return 308 https://studentop.cn:14355$request_uri; }
 
 gzip on;
 gzip_vary on;
@@ -120,27 +128,75 @@ location ^~ /.well-known/acme-challenge/ {
     try_files $uri =404;
 }
 
-# long-cache static assets (hashed filenames are expected from the frontend build)
-location ~* \.(?:css|js|mjs|json|map|jpg|jpeg|png|gif|webp|avif|svg|ico|bmp|woff|woff2|ttf|otf|eot|mp4|webm|ogg|mp3)$ {
-    try_files $uri =404;
-    expires 7d;
+include /etc/nginx/snippets/win11-home-projects.conf;
+
+# Exact same-origin desktop gate; answers stay in POST bodies and are never access-logged.
+# Production companion must trust only this loopback proxy and use the public HTTPS origin.
+location = /__desktop/auth {
+    proxy_pass http://127.0.0.1:8900;
+    proxy_http_version 1.1;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header Origin $http_origin;
+    proxy_set_header X-Desktop-CSRF $http_x_desktop_csrf;
+    proxy_set_header Connection "";
+    client_max_body_size 1k;
+    client_body_timeout 15s;
+    proxy_connect_timeout 3s;
+    proxy_read_timeout 20s;
+    proxy_send_timeout 15s;
+    proxy_cache off;
+    proxy_no_cache 1;
+    proxy_cache_bypass 1;
+    proxy_buffering off;
+    proxy_intercept_errors off;
+    proxy_hide_header Cache-Control;
+    add_header Cache-Control "no-store, private" always;
+    include /etc/nginx/snippets/win11-home-headers.conf;
     access_log off;
 }
 
-# index.html must never be cached (release switch must be visible immediately)
-location = /index.html {
+# Hidden files must be denied before extension/cache regex locations. ACME is handled above.
+location ~ /\.(?!well-known/) { deny all; }
+
+# All HTML routes (including /projects/index.html) are revalidated, never long cached.
+location ~* \.html$ {
+    try_files $uri =404;
     expires -1;
+    etag off;
+    if_modified_since off;
+}
+location = /version.json {
+    try_files $uri =404;
+    expires -1;
+    etag off;
+    if_modified_since off;
+}
+location = /site-build.json { deny all; }
+
+# Only the deterministic, immutable build namespace receives a long cache lifetime.
+location ~ "^/assets/releases/[a-f0-9]{24}/" {
+    # Append-only namespace store survives even a clean-checkout future release.
+    root /opt/win11-home/shared;
+    try_files $uri =404;
+    expires off;
+    add_header Cache-Control "public, max-age=31536000, immutable";
+    # A location-level add_header otherwise drops ALL inherited security headers.
+    include /etc/nginx/snippets/win11-home-headers.conf;
+    access_log off;
 }
 
-# SPA-style fallback
-location / {
-    try_files $uri $uri/ /index.html;
+# Compatibility URLs are mutable; no more seven-day cache on unversioned native files.
+location ~* \.(?:css|js|mjs|json|map|jpg|jpeg|png|gif|webp|avif|svg|ico|bmp|woff|woff2|ttf|otf|eot|mp4|webm|ogg|opus|mp3)$ {
+    try_files $uri =404;
+    expires -1;
+    access_log off;
 }
 
-# do not serve dotfiles (.git, .env, ...); /.well-known/ is handled above and unaffected
-location ~ /\.(?!well-known/) {
-    deny all;
-}
+# SPA-style fallback; directory indexes are internally redirected into the HTML rule above.
+location / { try_files $uri $uri/ /index.html; }
 APPEOF
 
 sudo -n tee "$NGX_SITE" >/dev/null <<'SITEEOF'

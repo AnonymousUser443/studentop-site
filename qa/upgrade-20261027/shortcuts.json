@@ -1,0 +1,1 @@
+{"url":"http://127.0.0.1:8899/?skipLock=1","opened":[{"appId":"liyun-explorer","url":"http://127.0.0.1:5174/"},{"appId":"genshin-start","url":"http://127.0.0.1:8081/"}],"errors":[],"checks":[{"name":"liyun-explorer","pass":true},{"name":"genshin-start","pass":true}],"ok":true}

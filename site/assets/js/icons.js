@@ -64,110 +64,30 @@
     windows: '<rect x="3" y="3" width="8.2" height="8.2" rx="1.1" fill="currentColor" stroke="none"/><rect x="12.8" y="3" width="8.2" height="8.2" rx="1.1" fill="currentColor" stroke="none"/><rect x="3" y="12.8" width="8.2" height="8.2" rx="1.1" fill="currentColor" stroke="none"/><rect x="12.8" y="12.8" width="8.2" height="8.2" rx="1.1" fill="currentColor" stroke="none"/>'
   };
 
-  /* ---------------- 彩色应用图标（48 × 48） ---------------- */
+  /* Paper-cut application icons (48 × 48). Flat cut layers, no duplicate SVG ids. */
   var A = {};
-
-  A.start = '<defs><linearGradient id="g-start" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#43b7ff"/><stop offset="1" stop-color="#0067c0"/></linearGradient></defs>' +
-    '<g fill="url(#g-start)"><rect x="5" y="5" width="17" height="17" rx="1.4"/><rect x="26" y="5" width="17" height="17" rx="1.4"/><rect x="5" y="26" width="17" height="17" rx="1.4"/><rect x="26" y="26" width="17" height="17" rx="1.4"/></g>';
-
-  A.thispc = '<defs><linearGradient id="g-pc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f3f46"/><stop offset="1" stop-color="#18181b"/></linearGradient><linearGradient id="g-pcscr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#67d6ff"/><stop offset="0.55" stop-color="#2f8ce8"/><stop offset="1" stop-color="#1455b8"/></linearGradient></defs>' +
-    '<rect x="3.5" y="7" width="41" height="27" rx="3" fill="url(#g-pc)"/>' +
-    '<rect x="6.2" y="9.6" width="35.6" height="19.6" rx="1.6" fill="url(#g-pcscr)"/>' +
-    '<path d="M6.2 27.4 41.8 11.4v16.2a1.6 1.6 0 0 1-1.6 1.6H7.8a1.6 1.6 0 0 1-1.6-1.8z" fill="#ffffff" opacity="0.10"/>' +
-    '<rect x="17.5" y="36.5" width="13" height="3" rx="1.2" fill="#52525b"/>' +
-    '<rect x="13" y="40.6" width="22" height="3.2" rx="1.6" fill="#a1a1aa"/>' +
-    '<circle cx="24" cy="19.4" r="4.6" fill="#ffffff" opacity="0.16"/>';
-
-  A.explorer = '<defs><linearGradient id="g-exp-back" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4cc2ff"/><stop offset="1" stop-color="#0b6bcb"/></linearGradient><linearGradient id="g-exp-front" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#ffd75e"/><stop offset="1" stop-color="#f2a20c"/></linearGradient></defs>' +
-    '<path d="M3.5 10.2A3.2 3.2 0 0 1 6.7 7h8.1l3.2 3.6h17.7a3.2 3.2 0 0 1 3.2 3.2v16.5a3.4 3.4 0 0 1-3.4 3.4H6.9a3.4 3.4 0 0 1-3.4-3.4z" fill="url(#g-exp-back)"/>' +
-    '<rect x="3.5" y="17.4" width="41" height="16.3" rx="3" fill="url(#g-exp-front)"/>' +
-    '<path d="M3.5 20.4h41v-0.2a3 3 0 0 0-3-3h-35a3 3 0 0 0-3 3z" fill="#ffe08a" opacity="0.75"/>' +
-    '<rect x="10.6" y="12.6" width="13.6" height="10.6" rx="1.4" fill="#ffffff" opacity="0.92"/>' +
-    '<path d="M12.6 15.8h9.6M12.6 18.2h7.4" stroke="#9aa7b4" stroke-width="1.2" stroke-linecap="round"/>';
-
-  A.projects = '<defs><linearGradient id="g-proj" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#6d28d9"/></linearGradient><linearGradient id="g-proj2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4b5fd"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>' +
-    '<path d="M3.5 10.4A3.2 3.2 0 0 1 6.7 7.2h8.2l3.1 3.5h17.8a3.2 3.2 0 0 1 3.2 3.2v16.4a3.3 3.3 0 0 1-3.3 3.3H6.8a3.3 3.3 0 0 1-3.3-3.3z" fill="url(#g-proj)"/>' +
-    '<rect x="3.5" y="17.6" width="41" height="16.2" rx="3" fill="url(#g-proj2)"/>' +
-    '<path d="m17.6 24.4-3.2 3.6 3.2 3.6M30.4 24.4l3.2 3.6-3.2 3.6M26 23.4l-4 9" stroke="#ffffff" stroke-width="2.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>';
-
-  A.about = '<defs><linearGradient id="g-about" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7cc7ff"/><stop offset="0.5" stop-color="#2f8ce8"/><stop offset="1" stop-color="#0b4ea2"/></linearGradient></defs>' +
-    '<circle cx="24" cy="24" r="20" fill="url(#g-about)"/>' +
-    '<circle cx="24" cy="24" r="20" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/>' +
-    '<circle cx="24" cy="18.6" r="6.4" fill="#ffffff"/>' +
-    '<path d="M11.4 39.4c1.4-7.4 6.5-11.6 12.6-11.6s11.2 4.2 12.6 11.6a20 20 0 0 1-25.2 0z" fill="#ffffff"/>';
-
-  A.skills = '<defs><linearGradient id="g-skill-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#dbeafe"/></linearGradient><linearGradient id="g-skill-bar" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#0b6bcb"/><stop offset="1" stop-color="#4cc2ff"/></linearGradient></defs>' +
-    '<rect x="4" y="4" width="40" height="40" rx="9" fill="url(#g-skill-bg)" stroke="#c7dff7" stroke-width="1"/>' +
-    '<rect x="12" y="25" width="5.4" height="11" rx="1.6" fill="url(#g-skill-bar)"/>' +
-    '<rect x="21.3" y="18" width="5.4" height="18" rx="1.6" fill="url(#g-skill-bar)"/>' +
-    '<rect x="30.6" y="11.6" width="5.4" height="24.4" rx="1.6" fill="url(#g-skill-bar)"/>' +
-    '<path d="M12 20.6 21.4 14l8.6 4.6 7.4-8.2" stroke="#0b6bcb" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>';
-
-  A.contact = '<defs><linearGradient id="g-mail" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8fd6ff"/><stop offset="1" stop-color="#1673d1"/></linearGradient><linearGradient id="g-mail-flap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e3effb"/></linearGradient></defs>' +
-    '<rect x="3.5" y="9.5" width="41" height="29" rx="5" fill="url(#g-mail)"/>' +
-    '<path d="M5.5 12.4 24 26.6l18.5-14.2A4.4 4.4 0 0 0 39.6 11H8.4a4.4 4.4 0 0 0-2.9 1.4z" fill="url(#g-mail-flap)"/>' +
-    '<path d="M4.4 15.2 24 29.6 43.6 15.2" stroke="#0b6bcb" stroke-width="1.4" fill="none" opacity="0.5"/>';
-
-  A.settings = '<defs><linearGradient id="g-gear" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9ee2ff"/><stop offset="0.5" stop-color="#3aa7f0"/><stop offset="1" stop-color="#0b5fae"/></linearGradient></defs>' +
-    '<path d="M24 3.6a20.4 20.4 0 1 0 0 40.8 20.4 20.4 0 0 0 0-40.8z" fill="url(#g-gear)"/>' +
-    '<path d="M24 13.4a10.6 10.6 0 1 0 0 21.2 10.6 10.6 0 0 0 0-21.2z" fill="#ffffff" opacity="0.94"/>' +
-    '<path d="M24 17.6a6.4 6.4 0 1 0 0 12.8 6.4 6.4 0 0 0 0-12.8z" fill="#1f6fb8"/>' +
-    '<g fill="#ffffff"><rect x="21.6" y="6.2" width="4.8" height="5.2" rx="1.2"/><rect x="21.6" y="36.6" width="4.8" height="5.2" rx="1.2"/><rect x="6.2" y="21.6" width="5.2" height="4.8" rx="1.2"/><rect x="36.6" y="21.6" width="5.2" height="4.8" rx="1.2"/><rect x="9.8" y="9.8" width="4.6" height="4.6" rx="1.1" transform="rotate(45 12.1 12.1)"/><rect x="33.6" y="33.6" width="4.6" height="4.6" rx="1.1" transform="rotate(45 35.9 35.9)"/><rect x="33.6" y="9.8" width="4.6" height="4.6" rx="1.1" transform="rotate(45 35.9 12.1)"/><rect x="9.8" y="33.6" width="4.6" height="4.6" rx="1.1" transform="rotate(45 12.1 35.9)"/></g>';
-
-  A.terminal = '<defs><linearGradient id="g-term" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3a3d"/><stop offset="1" stop-color="#161618"/></linearGradient></defs>' +
-    '<rect x="3.5" y="6" width="41" height="36" rx="5" fill="url(#g-term)"/>' +
-    '<rect x="3.5" y="6" width="41" height="9.4" rx="5" fill="#4a4a4f" opacity="0.85"/>' +
-    '<circle cx="11" cy="10.8" r="1.7" fill="#ff5f57"/><circle cx="17" cy="10.8" r="1.7" fill="#febc2e"/><circle cx="23" cy="10.8" r="1.7" fill="#28c840"/>' +
-    '<path d="m12.4 22.6 4.4 4.4-4.4 4.4" stroke="#4cc2ff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
-    '<path d="M20.4 31.4h8.6" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>';
-
-  A.notepad = '<defs><linearGradient id="g-note" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eef4fb"/></linearGradient></defs>' +
-    '<path d="M9 4.6h19.4l11 11v27.2a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V7.6a3 3 0 0 1 3-3z" fill="url(#g-note)" stroke="#c9d8e8" stroke-width="1"/>' +
-    '<path d="M28.4 4.6v11h11" fill="#dbeafe"/>' +
-    '<path d="M28.4 4.6v11h11" fill="none" stroke="#b9cde2" stroke-width="1"/>' +
-    '<path d="M13.4 22.4h21M13.4 28h21M13.4 33.6h14.6" stroke="#8aa7c2" stroke-width="1.8" stroke-linecap="round"/>';
-
-  A.photos = '<defs><linearGradient id="g-photo-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9ee7ff"/><stop offset="1" stop-color="#e8f7ff"/></linearGradient><linearGradient id="g-photo-m1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#3b1fa3"/></linearGradient><linearGradient id="g-photo-m2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9a9e"/><stop offset="1" stop-color="#c62b6b"/></linearGradient></defs>' +
-    '<rect x="3.5" y="6" width="41" height="36" rx="7" fill="url(#g-photo-sky)"/>' +
-    '<circle cx="34" cy="17" r="5.2" fill="#ffd166"/>' +
-    '<path d="M3.5 34.4 14.6 22l8.2 8 6.4-5.8 15.8 13.2v1.6a3 3 0 0 1-3 3h-35a3 3 0 0 1-3-3z" fill="url(#g-photo-m1)"/>' +
-    '<path d="M3.5 37.2 11.8 29l7 6.6 5.4-4.6 20 12.6v1a3 3 0 0 1-3 3H6.5a3 3 0 0 1-3-3z" fill="url(#g-photo-m2)" opacity="0.95"/>';
-
-  A.recycle = '<defs><linearGradient id="g-bin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c7ecff"/><stop offset="1" stop-color="#5aa9e0"/></linearGradient></defs>' +
-    '<path d="M12.6 8.6h22.8l-2.6 33.2a4 4 0 0 1-4 3.7H19.2a4 4 0 0 1-4-3.7z" fill="url(#g-bin)" opacity="0.9" stroke="#3f8fc8" stroke-width="1"/>' +
-    '<rect x="10" y="4.6" width="28" height="5.6" rx="2.8" fill="#8fd0f5" stroke="#3f8fc8" stroke-width="1"/>' +
-    '<path d="M24 20.2c-4.6 0-8.2 3.4-8.2 7.8 0 2.4 1.1 4.5 2.9 5.9l1.4-1.9a6 6 0 0 1-2-4c0-3.1 2.6-5.5 5.9-5.5s5.9 2.4 5.9 5.5c0 1.5-.6 2.9-1.6 3.9l1.5 1.8a8.1 8.1 0 0 0 2.8-5.7c0-4.4-3.6-7.8-8.2-7.8z" fill="#ffffff" opacity="0.85"/>' +
-    '<path d="m24 16.4 3.4 4.6h-6.8z" fill="#ffffff" opacity="0.9"/>';
-
-  /* 外部项目快捷方式图标：北湖霜降雅集（纸笺秋山） / 理韵寻踪（HUD 瞄准环） */
-  A.frost = '<defs><linearGradient id="g-frost" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fdf6e8"/><stop offset="1" stop-color="#efdfc2"/></linearGradient><linearGradient id="g-frost-mtn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#61796c"/><stop offset="1" stop-color="#2f4439"/></linearGradient></defs>' +
-    '<rect x="3" y="3" width="42" height="42" rx="10" fill="url(#g-frost)" stroke="#d9c6a3" stroke-width="1.2"/>' +
-    '<circle cx="33.4" cy="14.6" r="4.1" fill="#c2543f"/>' +
-    '<path d="M6.2 34.6 17.4 20.6l6.2 8.2 5.3-6.5 12.9 12.3z" fill="url(#g-frost-mtn)"/>' +
-    '<path d="m15 23.8 2.4-3.2 2.4 3.1" stroke="#fdf6e8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/>' +
-    '<path d="M6.6 34.6h34.8" stroke="#8a7150" stroke-width="1.7" stroke-linecap="round" opacity="0.75"/>';
-  A.liyun = '<defs><linearGradient id="g-liyun" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#29655b"/><stop offset="1" stop-color="#0f2724"/></linearGradient></defs>' +
-    '<rect x="3" y="3" width="42" height="42" rx="10" fill="url(#g-liyun)"/>' +
-    '<path d="M11.8 34.2c4.4-5.8 8.8-8.4 16.4-9.9" stroke="#7fd8c4" stroke-width="1.5" stroke-dasharray="3 3.4" stroke-linecap="round" opacity="0.85"/>' +
-    '<circle cx="24" cy="24" r="10.8" fill="none" stroke="#7fd8c4" stroke-width="1.5" opacity="0.45"/>' +
-    '<circle cx="24" cy="24" r="5.6" fill="none" stroke="#e9c37c" stroke-width="1.9"/>' +
-    '<path d="M24 8.4v5.1M24 34.5v5.1M8.4 24h5.1M34.5 24h5.1" stroke="#e9c37c" stroke-width="1.9" stroke-linecap="round"/>' +
-    '<circle cx="24" cy="24" r="1.75" fill="#f6e6bd"/>';
-
-  /* 原神启动：暗夜色 + 发光门洞 */
-  A.genshin = '<defs><linearGradient id="g-gs-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a4f7a"/><stop offset="1" stop-color="#0b1a2c"/></linearGradient><linearGradient id="g-gs-door" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6d8"/><stop offset="1" stop-color="#e6bd74"/></linearGradient></defs>' +
-    '<rect x="3" y="3" width="42" height="42" rx="10" fill="url(#g-gs-bg)"/>' +
-    '<circle cx="24" cy="24" r="15.5" fill="#ffe9b0" opacity="0.14"/>' +
-    '<path d="M15.6 34.4V20.6a8.4 8.4 0 0 1 16.8 0v13.8z" fill="url(#g-gs-door)"/>' +
-    '<path d="M19.8 34.4V21.6a4.2 4.2 0 0 1 8.4 0v12.8z" fill="#2a4f7a" opacity="0.55"/>' +
-    '<path d="M12 34.8h24" stroke="#f3d79a" stroke-width="1.9" stroke-linecap="round"/>' +
-    '<path d="M24 4.6v3.2M13.2 7.6l1.6 2.8M34.8 7.6l-1.6 2.8" stroke="#f7e3b4" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>';
-
-  A.cv = '<defs><linearGradient id="g-cv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eef4fb"/></linearGradient></defs>' +
-    '<rect x="9" y="4.5" width="30" height="39" rx="3.4" fill="url(#g-cv)" stroke="#c9d8e8" stroke-width="1"/>' +
-    '<circle cx="18.4" cy="15.4" r="4.2" fill="#8fd0f5"/>' +
-    '<path d="M25.4 12.6h9M25.4 16.4h6.6" stroke="#8aa7c2" stroke-width="1.8" stroke-linecap="round"/>' +
-    '<path d="M14 25.4h20M14 30h20M14 34.6h13" stroke="#b3c8dc" stroke-width="1.8" stroke-linecap="round"/>';
+  A.start = "<g fill=\"#173e31\" opacity=\".2\" transform=\"translate(1.5 2)\"><rect x=\"5\" y=\"5\" width=\"17\" height=\"17\" rx=\"1.5\"/><rect x=\"26\" y=\"5\" width=\"17\" height=\"17\" rx=\"1.5\"/><rect x=\"5\" y=\"26\" width=\"17\" height=\"17\" rx=\"1.5\"/><rect x=\"26\" y=\"26\" width=\"17\" height=\"17\" rx=\"1.5\"/></g><g stroke=\"#d9d8b3\" stroke-width=\".8\"><rect x=\"4\" y=\"4\" width=\"17\" height=\"17\" rx=\"1.5\" fill=\"#3d8974\"/><rect x=\"25\" y=\"4\" width=\"17\" height=\"17\" rx=\"1.5\" fill=\"#72aa8d\"/><rect x=\"4\" y=\"25\" width=\"17\" height=\"17\" rx=\"1.5\" fill=\"#246653\"/><rect x=\"25\" y=\"25\" width=\"17\" height=\"17\" rx=\"1.5\" fill=\"#43816b\"/></g>";
+  A.thispc = "<path d=\"M20 32h8v8h-8z\" fill=\"#8f9b7e\"/><rect x=\"12\" y=\"40\" width=\"24\" height=\"3\" rx=\"1.5\" fill=\"#c9b77e\"/><rect x=\"3\" y=\"6\" width=\"42\" height=\"29\" rx=\"4\" fill=\"#244d3d\" stroke=\"#b6c9a8\"/><rect x=\"6\" y=\"9\" width=\"36\" height=\"21\" rx=\"1\" fill=\"#dfe7c9\"/><circle cx=\"33\" cy=\"15\" r=\"4\" fill=\"#d7b667\"/><path d=\"M6 28l12-13 10 10 7-6 7 9v2H6z\" fill=\"#9cbea2\"/><path d=\"M6 30l9-7 9 5 7-7 11 9z\" fill=\"#47826b\"/><path d=\"M8 10h32\" stroke=\"#fffbea\" opacity=\".7\"/>";
+  A.explorer = "<path d=\"M4 12V8h14l4 5h18v25H4z\" fill=\"#987c48\"/><path d=\"M7 12h34v25H7z\" fill=\"#c5b785\"/><path d=\"M10 9h23v26H10z\" fill=\"#fff9e9\" stroke=\"#c0b58c\"/><path d=\"M14 15h15m-15 5h10\" stroke=\"#9bb4a0\" stroke-width=\"2\"/><path d=\"M3 22h42l-4 19H5z\" fill=\"#d7b66d\" stroke=\"#ad9056\"/><path d=\"M4 23h40\" stroke=\"#f5df9d\" stroke-width=\"2\"/>";
+  A.projects = "<path d=\"M4 10h13l5 5h19v25H4z\" fill=\"#255644\"/><path d=\"M9 10h26v26H9z\" fill=\"#f9f1d9\" stroke=\"#b7ad86\"/><path d=\"M14 14h16m-16 4h10\" stroke=\"#b3b894\"/><path d=\"M3 21h42l-4 20H5z\" fill=\"#5c9b7e\" stroke=\"#356d55\"/><path d=\"M4 22h40\" stroke=\"#c7d8b0\"/><path d=\"m17 27-4 4 4 4m14-8 4 4-4 4m-6-9-3 10\" fill=\"none\" stroke=\"#fff6db\" stroke-width=\"2\" stroke-linecap=\"round\"/>";
+  A.about = "<circle cx=\"25\" cy=\"26\" r=\"20\" fill=\"#173e30\" opacity=\".2\"/><circle cx=\"23\" cy=\"23\" r=\"20\" fill=\"#faf5e4\" stroke=\"#bba874\"/><circle cx=\"23\" cy=\"23\" r=\"16.5\" fill=\"#82ad8e\"/><circle cx=\"23\" cy=\"18\" r=\"6\" fill=\"#fff8e6\"/><path d=\"M11 35c1-7 6-11 12-11s11 4 12 11c-7 6-17 6-24 0z\" fill=\"#fff8e6\"/><path d=\"M9 11c5-7 16-9 24-3\" fill=\"none\" stroke=\"#dbbf7a\" stroke-width=\"1.3\"/>";
+  A.skills = "<rect x=\"5\" y=\"6\" width=\"38\" height=\"39\" rx=\"6\" fill=\"#183e30\" opacity=\".18\"/><rect x=\"3\" y=\"3\" width=\"40\" height=\"40\" rx=\"6\" fill=\"#faf5e4\" stroke=\"#b9ad86\"/><path d=\"M10 35h27\" stroke=\"#b9ad86\"/><path d=\"M12 35V25h5v10z\" fill=\"#8fb69c\"/><path d=\"M21 35V18h5v17z\" fill=\"#4c8e74\"/><path d=\"M30 35V11h5v24z\" fill=\"#285f4d\"/><path d=\"m12 20 10-8 8 3 6-7\" fill=\"none\" stroke=\"#ad8950\" stroke-width=\"1.8\" stroke-linecap=\"round\"/>";
+  A.contact = "<rect x=\"5\" y=\"12\" width=\"39\" height=\"28\" rx=\"3\" fill=\"#214b39\" opacity=\".2\"/><rect x=\"3\" y=\"9\" width=\"40\" height=\"28\" rx=\"3\" fill=\"#a8c4a7\" stroke=\"#678b6e\"/><path d=\"m4 35 15-12h9l14 12\" fill=\"#6f9c7b\"/><path d=\"M4 10h38L23 27z\" fill=\"#fff6de\" stroke=\"#c4b488\"/><circle cx=\"23\" cy=\"26\" r=\"4.5\" fill=\"#ae674e\"/><path d=\"M21 26h4m-2-2v4\" stroke=\"#f0d3a0\" stroke-width=\"1\"/>";
+  A.settings = "<path d=\"M20 3h8l2 6 5-1 5 5-2 6 6 2v8l-6 2 2 5-5 5-6-2-2 6h-8l-2-6-5 2-5-5 2-6-6-2v-8l6-2-2-5 5-5 6 2z\" fill=\"#71987e\" stroke=\"#ced5b3\"/><circle cx=\"24\" cy=\"24\" r=\"12\" fill=\"#254f3c\"/><circle cx=\"24\" cy=\"24\" r=\"9\" fill=\"#eadab0\"/><circle cx=\"24\" cy=\"24\" r=\"5\" fill=\"#426f55\"/><path d=\"M21 5h5\" stroke=\"#f1e7bd\" stroke-width=\"1.5\"/>";
+  A.terminal = "<rect x=\"5\" y=\"8\" width=\"40\" height=\"35\" rx=\"4\" fill=\"#153b29\" opacity=\".25\"/><rect x=\"3\" y=\"5\" width=\"40\" height=\"35\" rx=\"4\" fill=\"#183e2e\" stroke=\"#98af8c\"/><path d=\"M4 14h38\" stroke=\"#69866d\"/><rect x=\"8\" y=\"8\" width=\"12\" height=\"3\" rx=\"1\" fill=\"#a7ba91\"/><path d=\"M32 10h4m3 0h1\" stroke=\"#c0ba8e\"/><path d=\"m11 21 6 6-6 6\" fill=\"none\" stroke=\"#bee2ba\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M23 33h10\" stroke=\"#e3c68a\" stroke-width=\"2.4\" stroke-linecap=\"round\"/>";
+  A.notepad = "<path d=\"M10 6h20l10 10v29H10z\" fill=\"#193e2c\" opacity=\".18\"/><path d=\"M7 3h22l10 10v29l-4-1-4 1-4-1-4 1-4-1-4 1-4-1-4 1z\" fill=\"#fff9e9\" stroke=\"#c2b38c\"/><path d=\"M29 3v10h10\" fill=\"#dce4c6\" stroke=\"#b1b994\"/><path d=\"M12 9v27\" stroke=\"#bf8970\" opacity=\".5\"/><path d=\"M16 19h17M16 25h17M16 31h12\" stroke=\"#91aa8d\" stroke-width=\"1.5\"/><path d=\"M12 5h10\" stroke=\"#fffdf5\"/>";
+  A.photos = "<rect x=\"5\" y=\"6\" width=\"38\" height=\"39\" rx=\"6\" fill=\"#183e30\" opacity=\".18\"/><rect x=\"3\" y=\"3\" width=\"40\" height=\"40\" rx=\"6\" fill=\"#faf5e4\" stroke=\"#b9ad86\"/><path d=\"M8 8h30v25H8z\" fill=\"#d9e5c4\"/><circle cx=\"30\" cy=\"15\" r=\"4\" fill=\"#d6b66b\"/><path d=\"m8 30 9-13 10 10 6-6 5 6v6H8z\" fill=\"#a3bb98\"/><path d=\"m8 31 8-6 8 5 8-7 6 8v2H8z\" fill=\"#508166\"/><path d=\"M10 38h16\" stroke=\"#b9a36c\" stroke-width=\"1.5\"/>";
+  A.recycle = "<path d=\"M13 12h24l-3 28-5 4H20l-5-4z\" fill=\"#193e2c\" opacity=\".18\"/><path d=\"M11 10h24l-3 28-5 4H18l-5-4z\" fill=\"#bdcfad\" stroke=\"#7b9d79\"/><path d=\"M12 13h22\" stroke=\"#e8edce\"/><rect x=\"8\" y=\"5\" width=\"30\" height=\"6\" rx=\"2\" fill=\"#7fa784\" stroke=\"#bfd0ad\"/><path d=\"M18 5V3h10v2\" stroke=\"#5e896a\" fill=\"none\" stroke-width=\"2\"/><path d=\"m20 20 4-2 5 6m0-4v4h-4m1 9-4 2-5-6m0 4v-4h4\" fill=\"none\" stroke=\"#3d7957\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>";
+  A.frost = "<rect x=\"5\" y=\"6\" width=\"38\" height=\"39\" rx=\"6\" fill=\"#183e30\" opacity=\".18\"/><rect x=\"3\" y=\"3\" width=\"40\" height=\"40\" rx=\"6\" fill=\"#faf5e4\" stroke=\"#b9ad86\"/><circle cx=\"33\" cy=\"13\" r=\"4\" fill=\"#af6047\"/><path d=\"M7 33 18 16l9 12 5-6 8 11z\" fill=\"#a7b99a\"/><path d=\"M7 34 17 25l9 7 7-5 7 7z\" fill=\"#4e7158\"/><path d=\"m15 21 3-5 4 6\" fill=\"none\" stroke=\"#fff6e1\" stroke-width=\"1.5\"/><path d=\"M8 37h29\" stroke=\"#a98a50\"/>";
+  A.liyun = "<rect x=\"5\" y=\"6\" width=\"38\" height=\"39\" rx=\"6\" fill=\"#183e30\" opacity=\".18\"/><rect x=\"3\" y=\"3\" width=\"40\" height=\"40\" rx=\"6\" fill=\"#faf5e4\" stroke=\"#b9ad86\"/><path d=\"m9 11 9-3 12 4 9-2v26l-9 3-12-4-9 2z\" fill=\"#c1d0ad\" stroke=\"#809970\"/><path d=\"M18 8v27m12-23v27\" stroke=\"#f5edcf\"/><path d=\"m13 30 6-5 6 3 9-13\" fill=\"none\" stroke=\"#4c8562\" stroke-width=\"1.5\" stroke-dasharray=\"2 2\"/><circle cx=\"26\" cy=\"22\" r=\"9\" fill=\"#faf3dc\" stroke=\"#ac8d50\"/><path d=\"m26 15 4 9-4-2-4 2z\" fill=\"#2f7155\"/><path d=\"m26 29-4-5 4-2 4 2z\" fill=\"#c2ac6d\"/>";
+  A.genshin = "<rect x=\"5\" y=\"6\" width=\"38\" height=\"39\" rx=\"6\" fill=\"#183e30\" opacity=\".18\"/><rect x=\"3\" y=\"3\" width=\"40\" height=\"40\" rx=\"6\" fill=\"#faf5e4\" stroke=\"#b9ad86\"/><path d=\"M8 34V20h30v14\" fill=\"#e8d7a9\" stroke=\"#b79a60\"/><path d=\"M6 21 10 15h10l4-5 4 5h10l4 6z\" fill=\"#4c7a57\"/><path d=\"M8 22h32\" stroke=\"#fff6d9\"/><path d=\"M14 23v11m20-11v11\" stroke=\"#ae6e51\" stroke-width=\"3\"/><path d=\"M20 34v-9h8v9\" fill=\"#38684c\"/><path d=\"M6 36h36M9 39h30\" stroke=\"#ad965d\" stroke-width=\"1.5\"/><circle cx=\"34\" cy=\"9\" r=\"3\" fill=\"#d6b66b\"/>";
+  A.cv = "<rect x=\"11\" y=\"6\" width=\"29\" height=\"39\" rx=\"2\" fill=\"#173e2b\" opacity=\".18\"/><rect x=\"8\" y=\"3\" width=\"29\" height=\"39\" rx=\"2\" fill=\"#fff8e6\" stroke=\"#baa77c\"/><rect x=\"12\" y=\"8\" width=\"10\" height=\"12\" rx=\"1\" fill=\"#adc6a6\"/><circle cx=\"17\" cy=\"12\" r=\"2\" fill=\"#fff7e0\"/><path d=\"M13 18c0-4 8-4 8 0\" fill=\"#fff7e0\"/><path d=\"M26 10h7m-7 5h5M12 26h21m-21 5h21m-21 5h13\" stroke=\"#96a787\" stroke-width=\"1.5\"/><path d=\"M31 32h9v10h-9z\" fill=\"#ad684f\"/><path d=\"M33 35h5m-5 3h5\" stroke=\"#efdab3\"/>";
+  A['genshin-original'] = '<rect x="5" y="5" width="38" height="39" rx="6" fill="#26384c" opacity=".18"/><rect x="3" y="3" width="40" height="40" rx="6" fill="#eef1ee" stroke="#9ba7ad"/><path d="M13 36V12h22v24" fill="#fffdf1" stroke="#7c8992" stroke-width="2"/><path d="m17 14 12-4v30l-12-5z" fill="#bbc9ce" stroke="#596b78" stroke-width="1.4"/><path d="m29 10 6 3v23l-6 4z" fill="#f9f5df"/><circle cx="25" cy="25" r="1.3" fill="#596b78"/><path d="M8 39h32" stroke="#89979c" stroke-width="1.4"/>';
+  // An independent isometric voxel building and block trees; no external assets.
+  A['voxel-campus'] = '<rect x="5" y="6" width="38" height="39" rx="6" fill="#183e30" opacity=".18"/><rect x="3" y="3" width="40" height="40" rx="6" fill="#faf5e4" stroke="#b9ad86"/><polygon points="5,32 24,22 43,32 24,42" fill="#a9c3a0"/><path d="m5 32 19 10 19-10v3L24 45 5 35z" fill="#527d60"/><polygon points="12,15 24,9 36,15 24,21" fill="#f2e6c7" stroke="#b49b68" stroke-width=".8"/><polygon points="12,15 24,21 24,37 12,31" fill="#d8c49a"/><polygon points="24,21 36,15 36,31 24,37" fill="#769781"/><path d="m15 20 3 1.5v3L15 23zm5 2.5 2 1v3l-2-1zm7 2 3-1.5v3L27 27zm5-2.5 2-1v3l-2 1z" fill="#355b4c"/><path d="m28 30 4-2v5l-4 2z" fill="#294f40"/><path d="M24 9V4h8l-3 3h-5" fill="#b36449" stroke="#a6774c" stroke-width=".8"/><path d="M13 31v6m25-4v5" stroke="#8d7350" stroke-width="2"/><polygon points="8,25 13,22 18,25 13,28" fill="#9ab88b"/><path d="m8 25 5 3v6l-5-3z" fill="#3d765d"/><path d="m13 28 5-3v6l-5 3z" fill="#659b70"/><polygon points="34,31 38,29 42,31 38,33" fill="#a9c390"/><path d="m34 31 4 2v5l-4-2z" fill="#427b5e"/><path d="m38 33 4-2v5l-4 2z" fill="#77a77a"/>';
+  A.code = A.projects;
+  A.cpu = A.skills;
+  A.globe = A.liyun;
 
   var GLYPH_ATTRS = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"';
   var APP_ATTRS = 'viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"';

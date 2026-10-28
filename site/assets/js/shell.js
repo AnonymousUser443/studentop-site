@@ -8,68 +8,224 @@ window.Shell = (function () {
     startOpen: false,
     searchOpen: false,
     calOpen: false,
+    calTrigger: null,
     taskViewOpen: false,
     startFilter: '',
+    startAll: false,
+    quickOpen: false,
     calMonth: new Date()
   };
-  var flyoutHost;
+  var flyoutHost, initialized = false, previewTimer, previewCloseTimer;
 
   /* ================= 通用 ================= */
   function appDef(id) { return (window.Win.apps || {})[id] || null; }
 
-  function closeTarget(id) {
-    var node = (flyoutHost || document).querySelector('[data-flyout="' + id + '"]');
-    if (!node) return;
-    node.classList.add('is-closing');
-    setTimeout(function () { if (node.parentNode) node.parentNode.removeChild(node); }, 130);
+  function closeTarget(id, returnFocus) {
+    var nodes = Array.prototype.slice.call((flyoutHost || document).querySelectorAll('[data-flyout="' + id + '"]'));
+    nodes.forEach(function (node) {
+      // Escape/resize 只修复即将失去的面板内焦点，不抢夺页面其他区域的焦点。
+      if (returnFocus && node.contains(document.activeElement) && !Win.isLocked()) {
+        var target = node._returnFocus;
+        if (!target || !target.isConnected) target = taskbarTarget(node._returnFocusKey) || document.getElementById('startBtn');
+        if (target && !target.disabled && !target.closest('[inert]')) target.focus({ preventScroll: true });
+      }
+      node.removeAttribute('data-flyout');
+      node.inert = true;
+      node.style.pointerEvents = 'none';
+      node.setAttribute('aria-hidden', 'true');
+      node.querySelectorAll('[id]').forEach(function (n) { n.removeAttribute('id'); });
+      node.classList.add('is-closing');
+      setTimeout(function () { if (node.parentNode) node.parentNode.removeChild(node); }, Win.reduceMotion() ? 0 : 190);
+    });
   }
 
-  function closeFlyouts(except) {
-    ['start', 'search', 'calendar', 'context', 'taskview'].forEach(function (id) {
-      if (id !== except) closeTarget(id);
+  function closeFlyouts(except, returnFocus) {
+    clearTimeout(previewTimer);
+    clearTimeout(previewCloseTimer);
+    ['start', 'search', 'calendar', 'context', 'taskview', 'preview', 'quick'].forEach(function (id) {
+      if (id !== except) closeTarget(id, returnFocus);
     });
-    state.startOpen = false;
-    state.searchOpen = false;
-    state.calOpen = false;
-    state.taskViewOpen = false;
+    if (except !== 'snap' && window.WM && WM.closeSnapLayouts) WM.closeSnapLayouts(returnFocus);
+    state.startOpen = except === 'start' && state.startOpen;
+    state.searchOpen = except === 'search' && state.searchOpen;
+    state.calOpen = except === 'calendar' && state.calOpen;
+    if (!state.calOpen) state.calTrigger = null;
+    state.taskViewOpen = except === 'taskview' && state.taskViewOpen;
+    state.quickOpen = except === 'quick' && state.quickOpen;
+    syncPanelButtons();
+  }
+
+  function syncPanelButtons() {
+    [['startBtn', state.startOpen], ['searchBtn', state.searchOpen], ['taskViewBtn', state.taskViewOpen], ['trayClock', state.calOpen && state.calTrigger && state.calTrigger.id === 'trayClock'], ['notifBtn', state.calOpen && state.calTrigger && state.calTrigger.id === 'notifBtn'], ['trayTray', state.quickOpen]].forEach(function (item) {
+      var button = document.getElementById(item[0]);
+      if (button) { button.setAttribute('aria-expanded', String(!!item[1])); button.setAttribute('aria-haspopup', 'dialog'); }
+    });
+  }
+
+  function prepareFlyout(node, trigger, label) {
+    node._returnFocus = trigger || document.activeElement;
+    node._returnFocusKey = taskbarKey(node._returnFocus);
+    node.setAttribute('role', 'dialog');
+    node.setAttribute('aria-label', label);
+    node.tabIndex = -1;
+    node.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); closeFlyouts(null, true); return; }
+      if (e.key !== 'Tab') return;
+      var controls = Array.prototype.slice.call(node.querySelectorAll('button:not(:disabled),a[href],input,textarea,select,[tabindex="0"]')).filter(function (el) { return !el.hidden && el.getClientRects().length; });
+      if (!controls.length) { e.preventDefault(); node.focus(); return; }
+      var index = controls.indexOf(document.activeElement);
+      if (e.shiftKey && index <= 0) { e.preventDefault(); controls[controls.length - 1].focus(); }
+      else if (!e.shiftKey && index === controls.length - 1) { e.preventDefault(); controls[0].focus(); }
+    });
+  }
+
+  function keyboardResults(root, input, selector) {
+    root.addEventListener('keydown', function (e) {
+      if (e.isComposing || e.altKey || e.ctrlKey || e.metaKey) return;
+      var results = Array.prototype.slice.call(root.querySelectorAll(selector)).filter(function (n) { return !n.disabled; });
+      var current = results.indexOf(document.activeElement);
+      var isInput = document.activeElement === input;
+      if (e.key === 'Enter' && (isInput ? results[0] : results[current])) { e.preventDefault(); (isInput ? results[0] : results[current]).click(); }
+      else if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || (!isInput && (e.key === 'ArrowRight' || e.key === 'ArrowLeft' || e.key === 'Home' || e.key === 'End'))) {
+        if (!results.length) return;
+        e.preventDefault();
+        var previous = e.key === 'ArrowUp' || e.key === 'ArrowLeft';
+        var next = e.key === 'Home' ? 0 : e.key === 'End' ? results.length - 1 : current < 0 ? (previous ? results.length - 1 : 0) : (current + (previous ? -1 : 1) + results.length) % results.length;
+        results[next].focus();
+      }
+    });
   }
 
   /* ================= 桌面图标 ================= */
-  var selectedIcon = null;
-
+  var selectedIcons = [], selectionAnchor = null;
+  function desktopNodes() { return Array.prototype.slice.call(document.querySelectorAll('#desktopIcons .desktop-icon')); }
+  function selectIcon(node, opts) {
+    opts = opts || {};
+    var nodes = desktopNodes();
+    if (!node) { selectedIcons = []; selectionAnchor = null; }
+    else if (opts.range && selectionAnchor && nodes.indexOf(selectionAnchor) !== -1) {
+      var a = nodes.indexOf(selectionAnchor), b = nodes.indexOf(node);
+      var range = nodes.slice(Math.min(a, b), Math.max(a, b) + 1);
+      selectedIcons = opts.add ? selectedIcons.concat(range.filter(function (n) { return selectedIcons.indexOf(n) === -1; })) : range;
+    } else if (opts.toggle) {
+      var index = selectedIcons.indexOf(node);
+      if (index === -1) selectedIcons.push(node); else selectedIcons.splice(index, 1);
+      selectionAnchor = node;
+    } else { selectedIcons = [node]; selectionAnchor = node; }
+    paintSelection(node);
+  }
+  function paintSelection(focusNode) {
+    desktopNodes().forEach(function (n, i) {
+      var selected = selectedIcons.indexOf(n) !== -1;
+      n.classList.toggle('is-selected', selected);
+      n.setAttribute('aria-selected', String(selected));
+      n.tabIndex = focusNode ? (n === focusNode ? 0 : -1) : (i === 0 ? 0 : -1);
+    });
+  }
+  function openSelection(fallback) {
+    var list = selectedIcons.length ? selectedIcons.slice() : (fallback ? [fallback] : []);
+    list.forEach(function (node) { launchApp(node.dataset.app); });
+  }
   function renderDesktop() {
     var host = document.getElementById('desktopIcons');
     if (!host) return;
+    var ids = selectedIcons.map(function (node) { return node.dataset.app; });
     host.innerHTML = '';
-    (window.SITE.desktop || []).forEach(function (appId) {
+    host.setAttribute('role', 'listbox');
+    host.setAttribute('aria-multiselectable', 'true');
+    host.setAttribute('aria-label', '桌面应用，方向键选择，Enter打开，Ctrl或Shift多选');
+    var apps = (window.SITE.desktop || []).slice();
+    if (Win.store.get('desktopSort', 'default') === 'name') apps.sort(function (a, b) { return (appDef(a) || {}).title.localeCompare((appDef(b) || {}).title, 'zh-CN'); });
+    apps.forEach(function (appId) {
       var app = appDef(appId);
       if (!app) return;
       var node = document.createElement('button');
       node.className = 'desktop-icon' + (app.external ? ' is-shortcut' : '');
       node.type = 'button';
-      if (app.external) node.title = app.shortcutHint || app.external;
-      node.dataset.app = appId;
+      node.setAttribute('role', 'option');
       node.setAttribute('aria-label', app.title);
-      node.innerHTML = '<span class="di-icon">' + ICONS.app(app.icon) + '</span>' +
-        '<span class="di-label">' + Win.esc(app.desktopLabel || app.title) + '</span>';
-      node.addEventListener('click', function () {
-        selectIcon(node);
-        if (Win.isMobile()) launchApp(appId);
+      node.dataset.app = appId;
+      if (app.external) node.title = app.shortcutHint || app.external;
+      node.innerHTML = '<span class="di-icon">' + ICONS.app(app.icon) + '</span><span class="di-label">' + Win.esc(app.desktopLabel || app.title) + '</span>';
+      var pointerType = 'mouse';
+      node.addEventListener('pointerdown', function (e) { pointerType = e.pointerType; });
+      node.addEventListener('click', function (e) {
+        selectIcon(node, { toggle: e.ctrlKey || e.metaKey, range: e.shiftKey, add: e.ctrlKey || e.metaKey });
+        if (pointerType === 'touch' && !e.ctrlKey && !e.shiftKey) launchApp(appId);
       });
-      node.addEventListener('dblclick', function (e) { e.preventDefault(); launchApp(appId); });
+      node.addEventListener('dblclick', function (e) { if (pointerType !== 'touch') { e.preventDefault(); launchApp(appId); } });
       node.addEventListener('contextmenu', function (e) {
-        e.preventDefault();
-        selectIcon(node);
-        openIconMenu(appId, e.clientX, e.clientY);
+        e.preventDefault(); e.stopPropagation();
+        if (selectedIcons.indexOf(node) === -1) selectIcon(node);
+        var rect = node.getBoundingClientRect();
+        openIconMenu(appId, e.clientX || rect.left, e.clientY || rect.bottom);
       });
       host.appendChild(node);
     });
+    selectedIcons = desktopNodes().filter(function (n) { return ids.indexOf(n.dataset.app) !== -1; });
+    selectionAnchor = selectedIcons[0] || null;
+    paintSelection(selectionAnchor);
+    if (!host._keyboardBound) {
+      host._keyboardBound = true;
+      host.addEventListener('keydown', function (e) {
+        var node = e.target.closest('.desktop-icon');
+        if (!node || e.isComposing || e.altKey || (e.metaKey && e.key.toLowerCase() !== 'a')) return;
+        var nodes = desktopNodes();
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'a') { e.preventDefault(); selectedIcons = nodes.slice(); paintSelection(node); return; }
+        if (e.key === 'Enter') { e.preventDefault(); openSelection(node); return; }
+        if (e.key === ' ') { e.preventDefault(); selectIcon(node, { toggle: e.ctrlKey || e.metaKey, range: e.shiftKey }); return; }
+        if (e.key === 'Escape') { selectIcon(null); return; }
+        if (e.key === 'ContextMenu' || (e.shiftKey && e.key === 'F10')) {
+          e.preventDefault(); var rect = node.getBoundingClientRect(); openIconMenu(node.dataset.app, rect.left, rect.bottom); return;
+        }
+        var next = null;
+        if (e.key === 'Home') next = nodes[0];
+        if (e.key === 'End') next = nodes[nodes.length - 1];
+        if (/^Arrow/.test(e.key)) {
+          var origin = node.getBoundingClientRect(), vertical = e.key === 'ArrowUp' || e.key === 'ArrowDown';
+          var positive = e.key === 'ArrowDown' || e.key === 'ArrowRight';
+          var best = Infinity;
+          nodes.forEach(function (candidate) {
+            if (candidate === node) return;
+            var r = candidate.getBoundingClientRect(), dx = r.left - origin.left, dy = r.top - origin.top;
+            var major = vertical ? dy : dx, minor = vertical ? dx : dy;
+            if ((positive ? major > 4 : major < -4) && Math.abs(major) + Math.abs(minor) * 3 < best) { next = candidate; best = Math.abs(major) + Math.abs(minor) * 3; }
+          });
+        }
+        if (next) {
+          e.preventDefault();
+          if (!e.ctrlKey && !e.metaKey) selectIcon(next, { range: e.shiftKey }); else paintSelection(next);
+          next.focus({ preventScroll: true }); next.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        }
+      });
+    }
   }
 
-  function selectIcon(node) {
-    if (selectedIcon) selectedIcon.classList.remove('is-selected');
-    selectedIcon = node;
-    if (node) node.classList.add('is-selected');
+  function startMarquee(e) {
+    if (e.button !== 0 || e.isPrimary === false || e.pointerType === 'touch') return;
+    var x = e.clientX, y = e.clientY, id = e.pointerId, box = null;
+    var base = e.ctrlKey || e.metaKey || e.shiftKey ? selectedIcons.slice() : [];
+    if (!base.length) selectIcon(null);
+    function move(ev) {
+      if (ev.pointerId !== id) return;
+      if (!box && Math.abs(ev.clientX - x) + Math.abs(ev.clientY - y) < 4) return;
+      ev.preventDefault();
+      if (!box) { box = document.createElement('div'); box.className = 'desktop-selection'; box.setAttribute('aria-hidden', 'true'); document.body.appendChild(box); }
+      var left = Math.min(x, ev.clientX), top = Math.min(y, ev.clientY), right = Math.max(x, ev.clientX), bottom = Math.max(y, ev.clientY);
+      box.style.left = left + 'px'; box.style.top = top + 'px'; box.style.width = right - left + 'px'; box.style.height = bottom - top + 'px';
+      selectedIcons = base.slice();
+      desktopNodes().forEach(function (n) {
+        var r = n.getBoundingClientRect();
+        if (r.right > left && r.left < right && r.bottom > top && r.top < bottom && selectedIcons.indexOf(n) === -1) selectedIcons.push(n);
+      });
+      paintSelection(selectedIcons[0]);
+    }
+    function finish(ev) {
+      if (ev && ev.pointerId !== undefined && ev.pointerId !== id) return;
+      document.removeEventListener('pointermove', move); document.removeEventListener('pointerup', finish); document.removeEventListener('pointercancel', finish); window.removeEventListener('blur', finish);
+      if (box) { box.remove(); selectionAnchor = selectedIcons[0] || null; if (selectionAnchor) selectionAnchor.focus({ preventScroll: true }); }
+    }
+    document.addEventListener('pointermove', move, { passive: false }); document.addEventListener('pointerup', finish); document.addEventListener('pointercancel', finish); window.addEventListener('blur', finish);
   }
 
   function launchApp(appId) {
@@ -77,8 +233,8 @@ window.Shell = (function () {
       Win.notify({ icon: 'info', title: '这个应用还在建设中', body: '换个图标试试？' });
       return;
     }
-    WM.launch(appId);
     closeFlyouts();
+    WM.launch(appId);
   }
 
   /* ================= 任务栏 ================= */
@@ -86,31 +242,140 @@ window.Shell = (function () {
     var app = appDef(appId);
     if (!app) return null;
     var btn = document.createElement('button');
-    btn.className = 'tb-btn';
-    btn.type = 'button';
-    btn.dataset.taskbarApp = appId;
-    btn.setAttribute('aria-label', app.title);
-    btn.title = app.title;
+    btn.className = 'tb-btn'; btn.type = 'button'; btn.dataset.taskbarApp = appId;
+    btn.setAttribute('aria-label', app.title); btn.title = app.title + ' · 右键操作，↑ 预览';
     btn.innerHTML = ICONS.app(app.icon) + '<span class="indicator"></span>';
     btn.addEventListener('click', function () {
-      var running = WM.byApp(appId).filter(function (w) { return w.state !== 'closed'; });
+      closeFlyouts();
+      var running = WM.byApp(appId);
       if (!running.length) { WM.launch(appId); return; }
       var top = running[running.length - 1];
-      if (WM.isActiveApp(appId) && top.state !== 'min') {
-        WM.minimize(top);
-      } else if (top.state === 'min') {
-        WM.restore(top);
-        WM.focus(top);
-      } else {
-        WM.focus(top);
-      }
+      if (WM.isActiveApp(appId) && top.state !== 'min') WM.minimize(top);
+      else { if (top.state === 'min') WM.restore(top); WM.focus(top); }
+    });
+    btn.addEventListener('pointerenter', function (e) {
+      if (e.pointerType !== 'mouse' || state.startOpen || state.searchOpen || state.calOpen || state.taskViewOpen || state.quickOpen) return;
+      clearTimeout(previewCloseTimer); clearTimeout(previewTimer);
+      previewTimer = setTimeout(function () { openTaskbarPreview(appId, btn, false); }, 350);
+    });
+    btn.addEventListener('pointerleave', function () { clearTimeout(previewTimer); schedulePreviewClose(); });
+    btn.addEventListener('contextmenu', function (e) {
+      e.preventDefault(); e.stopPropagation();
+      var r = btn.getBoundingClientRect(); openTaskbarMenu(appId, e.clientX || r.left, e.clientY || r.top, btn);
+    });
+    btn.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowUp' && !e.altKey && !e.ctrlKey && !e.metaKey) { e.preventDefault(); openTaskbarPreview(appId, btn, true); }
+      if (e.key === 'ContextMenu' || (e.shiftKey && e.key === 'F10')) { e.preventDefault(); var r = btn.getBoundingClientRect(); openTaskbarMenu(appId, r.left, r.top, btn); }
     });
     return btn;
+  }
+
+  function schedulePreviewClose() {
+    clearTimeout(previewCloseTimer);
+    previewCloseTimer = setTimeout(function () {
+      var preview = document.querySelector('[data-flyout="preview"]');
+      if (preview && !preview.contains(document.activeElement)) closeTarget('preview');
+    }, 240);
+  }
+  function previewThumb(win) {
+    var holder = document.createElement('div');
+    holder.className = 'taskbar-preview-thumb'; holder.setAttribute('aria-hidden', 'true'); holder.inert = true;
+    var clone = win.bodyEl.cloneNode(true);
+    clone.removeAttribute('id');
+    clone.querySelectorAll('[id]').forEach(function (n) { n.removeAttribute('id'); });
+    clone.querySelectorAll('script,iframe,audio,video').forEach(function (n) { n.remove(); });
+    clone.querySelectorAll('input,textarea,button,a,[contenteditable],[tabindex]').forEach(function (n) { n.tabIndex = -1; n.removeAttribute('autofocus'); n.removeAttribute('name'); });
+    var originalInputs = win.bodyEl.querySelectorAll('input,textarea');
+    clone.querySelectorAll('input,textarea').forEach(function (n, i) { if (originalInputs[i]) n.value = originalInputs[i].value; });
+    var width = Math.max(1, win.rect.w), height = Math.max(1, win.rect.h - 36);
+    var scale = Math.min(232 / width, 128 / height);
+    clone.style.cssText = 'position:absolute;left:0;top:0;width:' + width + 'px;height:' + height + 'px;transform-origin:top left;transform:scale(' + scale + ');pointer-events:none;overflow:hidden';
+    holder.appendChild(clone);
+    return holder;
+  }
+  function openTaskbarPreview(appId, button, keyboard) {
+    var running = WM.byApp(appId);
+    if (!running.length || !button.isConnected || Win.isLocked()) return;
+    closeFlyouts();
+    var panel = document.createElement('div');
+    panel.className = 'taskbar-preview'; panel.dataset.flyout = 'preview'; panel.dataset.previewApp = appId;
+    prepareFlyout(panel, button, appDef(appId).title + ' 的窗口预览');
+    panel.addEventListener('pointerenter', function () { clearTimeout(previewCloseTimer); });
+    panel.addEventListener('pointerleave', schedulePreviewClose);
+    running.forEach(function (w) {
+      var row = document.createElement('div'); row.className = 'taskbar-preview-item'; row.dataset.win = w.id;
+      var open = document.createElement('button'); open.type = 'button'; open.className = 'taskbar-preview-open';
+      open.innerHTML = '<span class="taskbar-preview-title">' + Win.esc(w.title) + (w.state === 'min' ? ' · 已最小化' : '') + '</span>';
+      open.appendChild(previewThumb(w));
+      open.addEventListener('click', function () { closeFlyouts(); if (w.state === 'min') WM.restore(w); WM.focus(w); });
+      var close = document.createElement('button'); close.type = 'button'; close.className = 'taskbar-preview-close'; close.setAttribute('aria-label', '关闭 ' + w.title); close.innerHTML = ICONS.glyph('close');
+      close.addEventListener('click', function () {
+        if (WM.close(w)) { row.remove(); if (!panel.querySelector('.taskbar-preview-item')) closeFlyouts(null, true); else panel.querySelector('button').focus(); }
+      });
+      row.appendChild(open); row.appendChild(close); panel.appendChild(row);
+    });
+    flyoutHost.appendChild(panel);
+    var r = button.getBoundingClientRect(), pr = { width: panel.offsetWidth, height: panel.offsetHeight };
+    panel.style.left = Math.max(8, Math.min(r.left + r.width / 2 - pr.width / 2, window.innerWidth - pr.width - 8)) + 'px';
+    panel.style.top = Math.max(8, r.top - pr.height - 8) + 'px';
+    if (keyboard) panel.querySelector('button').focus();
+  }
+  function taskbarKey(button) {
+    if (!button) return '';
+    return button.dataset && button.dataset.taskbarApp ? 'app:' + button.dataset.taskbarApp : button.id ? 'id:' + button.id : '';
+  }
+  function taskbarTarget(key) {
+    if (!key) return null;
+    if (key.indexOf('id:') === 0) return document.getElementById(key.slice(3));
+    var host = document.getElementById('tbCenter');
+    return host && Array.prototype.slice.call(host.querySelectorAll('[data-taskbar-app]')).filter(function (button) { return taskbarKey(button) === key; })[0] || null;
+  }
+  function taskbarSnapshot(host) {
+    var buttons = Array.prototype.slice.call(host.querySelectorAll('.tb-btn'));
+    var active = document.activeElement;
+    return { active: active, hadFocus: host.contains(active), key: taskbarKey(active), index: buttons.indexOf(active),
+      keys: buttons.map(taskbarKey), left: host.scrollLeft, top: host.scrollTop };
+  }
+  function restoreTaskbarSnapshot(host, saved) {
+    // 同 app 优先；消失后按旧位置寻找最近存活的邻居，最后回开始按钮。
+    if (saved.hadFocus && !saved.active.isConnected && !Win.isLocked() &&
+        (!document.activeElement || document.activeElement === document.body || !document.activeElement.isConnected)) {
+      var target = taskbarTarget(saved.key);
+      for (var distance = 1; !target && distance < saved.keys.length; distance++) {
+        target = taskbarTarget(saved.keys[saved.index + distance]) || taskbarTarget(saved.keys[saved.index - distance]);
+      }
+      if (!target) target = document.getElementById('startBtn');
+      if (target) target.focus({ preventScroll: true });
+    }
+    host.scrollLeft = saved.left;
+    host.scrollTop = saved.top;
+  }
+
+  function togglePinned(appId) {
+    var index = pinnedApps.indexOf(appId);
+    if (index === -1) pinnedApps.push(appId); else pinnedApps.splice(index, 1);
+    Win.store.set('taskbarPinned', pinnedApps);
+    renderTaskbarCenter();
+  }
+  function openTaskbarMenu(appId, x, y, trigger) {
+    var running = WM.byApp(appId), top = running[running.length - 1];
+    var items = [{ icon: 'folder', label: '打开应用', action: function () { launchApp(appId); } }];
+    if (top) {
+      items.push({ icon: 'restore', label: '恢复 / 切换到窗口', action: function () { if (top.state === 'min') WM.restore(top); WM.focus(top); } });
+      items.push({ icon: 'display', label: '移回屏幕', action: function () { WM.moveIntoView(top); } });
+      items.push({ icon: 'minimize', label: '最小化', disabled: top.state === 'min', action: function () { WM.minimize(top); } });
+      items.push({ icon: 'maximize', label: top.state === 'max' ? '向下还原' : '最大化', action: function () { if (top.state === 'min') WM.restore(top); WM.toggleMaximize(top); } });
+      items.push({ icon: 'close', label: '关闭窗口', action: function () { WM.close(top); } });
+      items.push({ sep: true });
+    }
+    items.push({ icon: 'pin', label: pinnedApps.indexOf(appId) === -1 ? '固定到任务栏' : '从任务栏取消固定', action: function () { togglePinned(appId); } });
+    openContextMenu(items, x, y, { trigger: trigger || taskbarTarget('app:' + appId) });
   }
 
   function renderTaskbarCenter() {
     var host = document.getElementById('tbCenter');
     if (!host) return;
+    var saved = taskbarSnapshot(host);
     host.innerHTML = '';
 
     var startBtn = document.createElement('button');
@@ -143,22 +408,24 @@ window.Shell = (function () {
     viewBtn.addEventListener('click', function (e) { e.stopPropagation(); toggleTaskView(); });
     host.appendChild(viewBtn);
 
-    var pinned = (window.SITE.taskbarPinned || []).slice();
-    if (Window_PINNED_EXTRA.length) {
-      Window_PINNED_EXTRA.forEach(function (id) { if (pinned.indexOf(id) === -1) pinned.push(id); });
-    }
+    var pinned = pinnedApps.slice();
     pinned.forEach(function (appId) {
       var btn = tbButton(appId);
       if (btn) host.appendChild(btn);
     });
     syncTaskbar();
+    syncPanelButtons();
+    restoreTaskbarSnapshot(host, saved);
   }
 
-  var Window_PINNED_EXTRA = [];
+  var pinnedApps = Win.store.get('taskbarPinned', (window.SITE.taskbarPinned || []).slice());
+  if (!Array.isArray(pinnedApps)) pinnedApps = (window.SITE.taskbarPinned || []).slice();
+  pinnedApps = pinnedApps.filter(function (id, index, all) { return typeof id === 'string' && all.indexOf(id) === index; });
 
   function syncTaskbar() {
     var host = document.getElementById('tbCenter');
     if (!host) return;
+    var saved = taskbarSnapshot(host);
     var btns = Array.prototype.slice.call(host.querySelectorAll('[data-taskbar-app]'));
     var need = [];
 
@@ -178,8 +445,11 @@ window.Shell = (function () {
       var isActive = WM.isActiveApp(appId) && running.some(function (w) { return w.state !== 'min'; });
       btn.classList.toggle('is-running', isRunning);
       btn.classList.toggle('is-active', isActive);
-      if (running[0]) running[0].taskbarBtn = btn;
+      btn.setAttribute('aria-pressed', String(isActive));
+      running.forEach(function (w) { w.taskbarBtn = btn; });
+      if (!isRunning && pinnedApps.indexOf(appId) === -1) btn.remove();
     });
+    restoreTaskbarSnapshot(host, saved);
   }
 
   function renderTray() {
@@ -191,6 +461,15 @@ window.Shell = (function () {
     }
     var notifIcon = document.getElementById('notifIcon');
     if (notifIcon) notifIcon.innerHTML = ICONS.glyph('bell');
+    var tray = document.getElementById('trayTray');
+    if (tray) { tray.title = '网页快速设置（不控制系统网络或音量）'; tray.setAttribute('aria-label', '网页快速设置'); tray.addEventListener('click', toggleQuickSettings); }
+    var taskbar = document.getElementById('taskbar');
+    if (taskbar && !document.getElementById('showDesktopBtn')) {
+      var desktop = document.createElement('button'); desktop.type = 'button'; desktop.id = 'showDesktopBtn'; desktop.className = 'tb-show-desktop';
+      desktop.title = '显示桌面 / 恢复窗口 · Alt+Shift+D'; desktop.setAttribute('aria-label', '显示桌面或恢复窗口'); desktop.setAttribute('aria-pressed', 'false');
+      desktop.addEventListener('click', function () { closeFlyouts(); WM.showDesktop(); }); taskbar.appendChild(desktop);
+      Win.bus.on('wm:desktop', function (shown) { desktop.setAttribute('aria-pressed', String(shown)); });
+    }
   }
 
   function initClock() {
@@ -204,9 +483,9 @@ window.Shell = (function () {
     update();
     setInterval(update, 1000);
     var clockBtn = document.getElementById('trayClock');
-    if (clockBtn) clockBtn.addEventListener('click', function (e) { e.stopPropagation(); toggleCalendar(); });
+    if (clockBtn) clockBtn.addEventListener('click', function (e) { e.stopPropagation(); toggleCalendar(e.currentTarget); });
     var notifBtn = document.getElementById('notifBtn');
-    if (notifBtn) notifBtn.addEventListener('click', function (e) { e.stopPropagation(); toggleCalendar(); });
+    if (notifBtn) notifBtn.addEventListener('click', function (e) { e.stopPropagation(); toggleCalendar(e.currentTarget); });
   }
 
   /* ================= 开始菜单 ================= */
@@ -214,7 +493,7 @@ window.Shell = (function () {
     var menu = document.createElement('div');
     menu.className = 'start-menu';
     menu.dataset.flyout = 'start';
-    menu.setAttribute('role', 'menu');
+    prepareFlyout(menu, document.getElementById('startBtn'), '开始菜单');
     menu.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
 
     var search = document.createElement('div');
@@ -231,7 +510,7 @@ window.Shell = (function () {
     footer.className = 'start-footer';
     footer.innerHTML =
       '<button class="start-user" type="button">' +
-        '<span class="avatar">' + Win.esc(window.SITE.profile.avatarText || 'A') + '</span>' +
+        '<span class="avatar">' + Win.avatarMarkup() + '</span>' +
         '<span class="su-name">' + Win.esc(window.SITE.profile.name) + '</span>' +
       '</button>' +
       '<button class="start-power" type="button" aria-label="电源" title="电源">' + ICONS.glyph('power') + '</button>';
@@ -241,15 +520,11 @@ window.Shell = (function () {
     footer.querySelector('.start-power').addEventListener('click', function (e) {
       var r = e.currentTarget.getBoundingClientRect();
       openContextMenu([
-        { icon: 'lock', label: '锁定', action: function () { Win.showLock(); } },
-        { icon: 'moon', label: '睡眠', action: function () { Win.showLock(); } },
+        { icon: 'lock', label: '锁定本网页', action: function () { Win.showLock(); } },
+        { icon: 'refresh', label: '重新加载网页', action: function () { location.reload(); } },
         { sep: true },
-        { icon: 'refresh', label: '重新启动', action: function () { location.reload(); } },
-        { icon: 'power', label: '关机', action: function () {
-          Win.notify({ icon: 'power', title: '关不掉 :)', body: '这只是一张网页，刷新一下就在。' });
-          setTimeout(function () { Win.showLock(); }, 900);
-        } }
-      ], r.left - 120, r.top - 180, { up: true });
+        { icon: 'info', label: '网页不能关闭或休眠你的设备', disabled: true }
+      ], r.left - 160, r.top - 140);
     });
 
     var input = search.querySelector('input');
@@ -257,13 +532,7 @@ window.Shell = (function () {
       state.startFilter = input.value.trim();
       renderStartBody(body);
     });
-    input.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') { input.blur(); closeFlyouts(); }
-      if (e.key === 'Enter') {
-        var first = body.querySelector('[data-app-target]');
-        if (first) { e.preventDefault(); launchApp(first.dataset.appTarget); }
-      }
-    });
+    keyboardResults(menu, input, '[data-app-target]');
 
     renderStartBody(body);
     return menu;
@@ -274,13 +543,15 @@ window.Shell = (function () {
     var apps = window.Win.appList ? window.Win.appList() : [];
     body.innerHTML = '';
 
-    if (q) {
+    if (q || state.startAll) {
       var hits = apps.filter(function (a) {
         return (a.title + ' ' + (a.keywords || '')).toLowerCase().indexOf(q) > -1;
       });
       var head = document.createElement('div');
       head.className = 'start-section-head';
-      head.innerHTML = '<span>搜索结果</span>';
+      head.innerHTML = '<span>' + (q ? '搜索结果' : '所有应用') + '</span><button type="button" class="more" data-start-back>返回已固定</button>';
+      head.querySelector('button').addEventListener('click', function () { state.startAll = false; state.startFilter = ''; var input = body.parentElement.querySelector('input'); input.value = ''; renderStartBody(body); input.focus(); });
+      if (!q) hits.sort(function (a, b) { return a.title.localeCompare(b.title, 'zh-CN'); });
       body.appendChild(head);
       if (!hits.length) {
         var empty = document.createElement('div');
@@ -306,7 +577,8 @@ window.Shell = (function () {
 
     var head1 = document.createElement('div');
     head1.className = 'start-section-head';
-    head1.innerHTML = '<span>已固定</span>';
+    head1.innerHTML = '<span>已固定</span><button class="more" type="button" data-start-all>所有应用 ›</button>';
+    head1.querySelector('button').addEventListener('click', function () { state.startAll = true; renderStartBody(body); var first = body.querySelector('[data-app-target]'); if (first) first.focus(); });
     body.appendChild(head1);
 
     var grid = document.createElement('div');
@@ -351,13 +623,17 @@ window.Shell = (function () {
   }
 
   function toggleStart() {
-    if (state.startOpen) { closeFlyouts(); return; }
+    if (Win.isLocked()) return;
+    if (state.startOpen) { closeFlyouts(null, true); return; }
     closeFlyouts();
+    state.startFilter = '';
+    state.startAll = false;
     var menu = buildStartMenu();
     flyoutHost.appendChild(menu);
     state.startOpen = true;
+    syncPanelButtons();
     var input = menu.querySelector('#startSearchInput');
-    setTimeout(function () { if (input) input.focus(); }, 60);
+    setTimeout(function () { if (state.startOpen && menu.dataset.flyout && !Win.isLocked()) input.focus(); }, Win.reduceMotion() ? 0 : 60);
   }
 
   /* ================= 搜索面板 ================= */
@@ -365,6 +641,7 @@ window.Shell = (function () {
     var panel = document.createElement('div');
     panel.className = 'flyout search-panel';
     panel.dataset.flyout = 'search';
+    prepareFlyout(panel, document.getElementById('searchBtn'), '搜索应用与内容');
     panel.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
     panel.innerHTML =
       '<div class="search-input-wrap">' + ICONS.glyph('search') +
@@ -384,7 +661,7 @@ window.Shell = (function () {
         t1.className = 'search-group-title';
         t1.textContent = '应用';
         results.appendChild(t1);
-        matchedApps.slice(0, 6).forEach(function (a) {
+        matchedApps.forEach(function (a) {
           var row = document.createElement('button');
           row.className = 'search-item';
           row.type = 'button';
@@ -404,7 +681,7 @@ window.Shell = (function () {
         results.appendChild(t2);
         var found = 0;
         (window.SITE.projects || []).forEach(function (p) {
-          if ((p.title + p.desc + p.tags.join(' ')).toLowerCase().indexOf(q) === -1) return;
+          if ((p.title + p.desc + (p.tags || []).join(' ')).toLowerCase().indexOf(q) === -1) return;
           found++;
           var row = document.createElement('button');
           row.className = 'search-item';
@@ -423,7 +700,7 @@ window.Shell = (function () {
             row.className = 'search-item';
             row.type = 'button';
             row.innerHTML = '<span class="si-icon">' + ICONS.app(g.icon) + '</span>' +
-              '<span><span class="si-title">' + Win.esc(s.name) + '</span><br><span class="si-sub">' + Win.esc(g.group) + ' · ' + s.level + '%</span></span>' +
+              '<span><span class="si-title">' + Win.esc(s.name) + '</span><br><span class="si-sub">' + Win.esc(g.group) + ' · ' + Win.esc(s.level) + '%</span></span>' +
               '<span class="si-kind">技能</span>';
             row.addEventListener('click', function () { launchApp('skills'); });
             results.appendChild(row);
@@ -445,35 +722,33 @@ window.Shell = (function () {
       }
     }
     input.addEventListener('input', render);
-    input.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeFlyouts();
-      if (e.key === 'Enter') {
-        var first = results.querySelector('[data-app-target]');
-        if (first) launchApp(first.dataset.appTarget);
-      }
-    });
+    keyboardResults(panel, input, '.search-item,.search-web');
     render();
     return panel;
   }
 
   function toggleSearch() {
-    if (state.searchOpen) { closeFlyouts(); return; }
+    if (Win.isLocked()) return;
+    if (state.searchOpen) { closeFlyouts(null, true); return; }
     closeFlyouts();
     var panel = buildSearchPanel();
     flyoutHost.appendChild(panel);
     state.searchOpen = true;
-    setTimeout(function () { var i = panel.querySelector('input'); if (i) i.focus(); }, 60);
+    syncPanelButtons();
+    setTimeout(function () { var i = panel.querySelector('input'); if (state.searchOpen && panel.dataset.flyout && !Win.isLocked()) i.focus(); }, Win.reduceMotion() ? 0 : 60);
   }
 
   /* ================= 日历 + 通知 ================= */
-  function buildCalendarPanel() {
+  function buildCalendarPanel(trigger) {
     var panel = document.createElement('div');
     panel.className = 'flyout calendar-panel';
     panel.dataset.flyout = 'calendar';
+    prepareFlyout(panel, trigger || document.getElementById('trayClock'), '日历与通知');
     panel.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
     panel.innerHTML =
       '<div class="calendar-clock"><span class="cc-time" data-clock="time">--:--</span><span class="cc-date" data-clock="date-cn"></span></div>' +
       '<div class="cal-head"><span class="cal-month"></span><span class="cal-nav">' +
+        '<button type="button" data-cal="today" aria-label="回到今天">今天</button>' +
         '<button type="button" data-cal="prev" aria-label="上个月">' + ICONS.glyph('chevron-left') + '</button>' +
         '<button type="button" data-cal="next" aria-label="下个月">' + ICONS.glyph('chevron-right') + '</button>' +
       '</span></div>' +
@@ -481,6 +756,7 @@ window.Shell = (function () {
       '<div class="cal-section-title"><span>通知</span><button class="clear-all" type="button" id="clearAllNotifs">全部清除</button></div>' +
       '<div class="notif-list" id="notifList"></div>';
 
+    panel.querySelector('[data-cal="today"]').addEventListener('click', function () { state.calMonth = new Date(); renderCalendar(panel); });
     panel.querySelector('[data-cal="prev"]').addEventListener('click', function () {
       state.calMonth = new Date(state.calMonth.getFullYear(), state.calMonth.getMonth() - 1, 1);
       renderCalendar(panel);
@@ -490,13 +766,13 @@ window.Shell = (function () {
       renderCalendar(panel);
     });
     panel.querySelector('#clearAllNotifs').addEventListener('click', function () {
-      Win.notifications.length = 0;
-      Win.markAllRead();
+      Win.clearNotifications();
       renderNotifications(panel);
     });
     renderCalendar(panel);
     renderNotifications(panel);
-    setTimeout(function () { Win.markAllRead(); }, 800);
+    panel.querySelector('.cc-time').textContent = Win.fmtTime(new Date());
+    panel.querySelector('.cc-date').textContent = Win.fmtDateCN(new Date());
     return panel;
   }
 
@@ -525,8 +801,8 @@ window.Shell = (function () {
 
     cells.forEach(function (c) {
       var isToday = !c.muted && c.day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
-      html += '<button type="button" class="cal-day' + (c.muted ? ' is-muted' : '') + (isToday ? ' is-today' : '') +
-        (isToday ? ' has-dot' : '') + '">' + c.day + '</button>';
+      html += '<span class="cal-day' + (c.muted ? ' is-muted' : '') + (isToday ? ' is-today' : '') +
+        (isToday ? ' has-dot' : '') + '"' + (isToday ? ' aria-current="date"' : '') + '>' + c.day + '</span>';
     });
     grid.innerHTML = html;
   }
@@ -550,186 +826,187 @@ window.Shell = (function () {
     });
   }
 
-  function toggleCalendar() {
-    if (state.calOpen) { closeFlyouts(); return; }
+  function toggleCalendar(trigger) {
+    if (Win.isLocked()) return;
+    trigger = trigger || state.calTrigger || document.getElementById('trayClock');
+    if (state.calOpen) {
+      if (trigger === state.calTrigger) { closeFlyouts(null, true); return; }
+      var current = document.querySelector('[data-flyout="calendar"]');
+      if (current) {
+        state.calTrigger = trigger;
+        current._returnFocus = trigger;
+        current._returnFocusKey = taskbarKey(trigger);
+        syncPanelButtons();
+        current.querySelector('[data-cal="today"]').focus();
+        return;
+      }
+    }
     closeFlyouts();
-    var panel = buildCalendarPanel();
+    var panel = buildCalendarPanel(trigger);
     flyoutHost.appendChild(panel);
     state.calOpen = true;
+    state.calTrigger = trigger;
+    syncPanelButtons();
+    Win.markAllRead();
+    panel.querySelector('[data-cal="today"]').focus();
+  }
+
+  /* ================= 网页快速设置 / 快捷键说明 ================= */
+  function toggleQuickSettings() {
+    if (Win.isLocked()) return;
+    if (state.quickOpen) { closeFlyouts(null, true); return; }
+    closeFlyouts();
+    var panel = document.createElement('div'); panel.className = 'flyout quick-settings'; panel.dataset.flyout = 'quick';
+    prepareFlyout(panel, document.getElementById('trayTray'), '网页快速设置');
+    function render() {
+      var focused = document.activeElement && document.activeElement.dataset.quick;
+      panel.innerHTML = '<h2>网页快速设置</h2>' +
+        '<button type="button" class="quick-setting" data-quick="theme" aria-pressed="' + (Win.effectiveTheme() === 'dark') + '">' + ICONS.glyph('moon') + ' 深色外观</button>' +
+        '<button type="button" class="quick-setting" data-quick="motion" aria-pressed="' + Win.prefs.motion + '">' + ICONS.glyph('sparkle') + ' 窗口动效：' + (Win.prefs.motion ? '开启' : '关闭') + '</button>' +
+        '<button type="button" class="quick-setting" data-quick="align">任务栏：' + (Win.prefs.align === 'center' ? '居中' : '左对齐') + '</button>' +
+        '<button type="button" class="quick-setting" data-quick="settings">打开完整设置</button>' +
+        '<p class="app-hint">' + (navigator.onLine ? '浏览器报告在线（不代表外部服务可达）' : '浏览器报告离线') + '。本网页不控制设备的网络、音量、关机或睡眠。</p>' +
+        '<h3>网页快捷键</h3><p class="app-hint">焦点在本页时：Alt + Shift + S 开始；F 搜索；D 显示桌面 / 恢复；W 任务视图。窗口内非输入区：Alt + Shift + ← / → 左右贴靠，↑ 最大化，↓ 还原，M 最小化。最大化按钮按 ↓ 打开布局。输入法或系统可能占用组合键，所有功能均有按钮入口；不接管 Win、Alt+Tab、Ctrl+K、Ctrl+L。</p>' +
+        '<p class="app-hint">桌面方向键移动，Enter 打开，Ctrl / Shift 多选，Shift+F10 右键菜单。菜单 Esc 关闭并返回焦点。记事本编辑区 Ctrl+S 保存到本浏览器。</p>';
+      panel.querySelectorAll('[data-quick]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          var action = button.dataset.quick;
+          if (action === 'settings') { launchApp('settings'); return; }
+          if (action === 'theme') Win.setPref('themeMode', Win.effectiveTheme() === 'dark' ? 'light' : 'dark');
+          if (action === 'motion') Win.setPref('motion', !Win.prefs.motion);
+          if (action === 'align') Win.setPref('align', Win.prefs.align === 'center' ? 'left' : 'center');
+          render();
+        });
+      });
+      if (focused) { var next = panel.querySelector('[data-quick="' + focused + '"]'); if (next) next.focus(); }
+    }
+    render(); flyoutHost.appendChild(panel); state.quickOpen = true; syncPanelButtons(); panel.querySelector('button').focus();
   }
 
   /* ================= 任务视图 ================= */
   function buildTaskView() {
-    var overlay = document.createElement('div');
-    overlay.dataset.flyout = 'taskview';
-    overlay.style.cssText = 'position:absolute;inset:0;z-index:920;background:rgba(20,24,34,.55);' +
-      'backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);padding:48px 40px;' +
-      'display:flex;flex-direction:column;gap:20px;animation:fade-in 160ms ease both';
-    overlay.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
-    var head = document.createElement('div');
-    head.style.cssText = 'display:flex;align-items:center;justify-content:space-between;color:#fff';
-    head.innerHTML = '<div style="font-size:15px;font-weight:600">任务视图</div>' +
-      '<div style="font-size:12px;opacity:.7">点击卡片切换窗口 · 按 Esc 关闭</div>';
-    overlay.appendChild(head);
-
-    var grid = document.createElement('div');
-    grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;overflow:auto;padding-bottom:24px';
-    var list = WM.list().filter(function (w) { return w.state !== 'closed'; });
-    if (!list.length) {
-      var empty = document.createElement('div');
-      empty.style.cssText = 'grid-column:1/-1;color:rgba(255,255,255,.6);font-size:13px;padding:48px 0;text-align:center';
-      empty.textContent = '没有打开的窗口。双击桌面图标，或点开始菜单里的应用试试。';
-      grid.appendChild(empty);
-    }
+    var overlay = document.createElement('div'); overlay.className = 'taskview-overlay'; overlay.dataset.flyout = 'taskview';
+    prepareFlyout(overlay, document.getElementById('taskViewBtn'), '任务视图');
+    var head = document.createElement('div'); head.className = 'taskview-head';
+    head.innerHTML = '<h2>任务视图</h2><span>选择窗口切换 · Esc 返回</span><button type="button" class="btn" aria-label="关闭任务视图">关闭</button>';
+    head.querySelector('button').addEventListener('click', function () { closeFlyouts(null, true); }); overlay.appendChild(head);
+    var grid = document.createElement('div'); grid.className = 'taskview-grid';
+    var list = WM.list();
+    if (!list.length) { var empty = document.createElement('p'); empty.className = 'empty-state'; empty.textContent = '没有打开的窗口。双击桌面图标，或点开始菜单里的应用试试。'; grid.appendChild(empty); }
     list.forEach(function (w) {
-      var card = document.createElement('button');
-      card.type = 'button';
-      card.style.cssText = 'display:flex;align-items:center;gap:12px;padding:14px;border-radius:8px;' +
-        'background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);color:#fff;text-align:left;transition:background .15s';
-      card.innerHTML = '<span style="width:32px;height:32px;display:grid;place-items:center">' + ICONS.app(w.icon) + '</span>' +
-        '<span style="min-width:0"><span style="display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + Win.esc(w.title) + '</span>' +
-        '<span style="display:block;font-size:11px;opacity:.6">' + (w.state === 'min' ? '已最小化' : '已打开') + '</span></span>';
-      card.addEventListener('mouseenter', function () { card.style.background = 'rgba(255,255,255,.18)'; });
-      card.addEventListener('mouseleave', function () { card.style.background = 'rgba(255,255,255,.1)'; });
-      card.addEventListener('click', function () {
-        if (w.state === 'min') WM.restore(w); else WM.focus(w);
-        closeFlyouts();
-      });
-      grid.appendChild(card);
+      var card = document.createElement('button'); card.type = 'button'; card.className = 'taskview-card'; card.dataset.win = w.id;
+      card.innerHTML = '<span class="taskbar-preview-title">' + ICONS.app(w.icon) + Win.esc(w.title) + ' · ' + (w.state === 'min' ? '已最小化' : '已打开') + '</span>';
+      card.appendChild(previewThumb(w));
+      card.addEventListener('click', function () { closeFlyouts(); if (w.state === 'min') WM.restore(w); WM.focus(w); }); grid.appendChild(card);
     });
-    overlay.appendChild(grid);
-    return overlay;
+    overlay.appendChild(grid); keyboardResults(overlay, null, '.taskview-card'); return overlay;
   }
-
   function toggleTaskView() {
-    if (state.taskViewOpen) { closeFlyouts(); return; }
-    closeFlyouts();
-    flyoutHost.appendChild(buildTaskView());
-    state.taskViewOpen = true;
+    if (Win.isLocked()) return;
+    if (state.taskViewOpen) { closeFlyouts(null, true); return; }
+    closeFlyouts(); var panel = buildTaskView(); flyoutHost.appendChild(panel); state.taskViewOpen = true; syncPanelButtons();
+    (panel.querySelector('.taskview-card') || panel.querySelector('button')).focus();
   }
 
   /* ================= 右键菜单 ================= */
   function openContextMenu(items, x, y, opts) {
-    closeFlyouts('context');
-    var menu = document.createElement('div');
-    menu.className = 'context-menu';
-    menu.dataset.flyout = 'context';
+    var active = document.activeElement;
+    var parentPanel = active && active.closest('[data-flyout]');
+    var returnFocus = opts && opts.trigger ? opts.trigger : parentPanel && parentPanel._returnFocus ? parentPanel._returnFocus : active;
+    closeFlyouts();
+    var menu = document.createElement('div'); menu.className = 'context-menu'; menu.dataset.flyout = 'context';
+    prepareFlyout(menu, returnFocus, '操作菜单'); menu.setAttribute('role', 'menu');
     menu.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
     items.forEach(function (item) {
-      if (item.sep) {
-        var s = document.createElement('div');
-        s.className = 'ctx-sep';
-        menu.appendChild(s);
-        return;
-      }
-      var row = document.createElement('button');
-      row.className = 'ctx-item' + (item.disabled ? ' is-disabled' : '');
-      row.type = 'button';
-      row.innerHTML = '<span class="ctx-icon">' + (item.icon ? ICONS.glyph(item.icon) : '') + '</span>' +
-        '<span class="ctx-label">' + Win.esc(item.label) + '</span>' +
-        (item.shortcut ? '<span class="ctx-shortcut">' + Win.esc(item.shortcut) + '</span>' : '');
-      if (!item.disabled && item.action) {
-        row.addEventListener('click', function () {
-          closeTarget('context');
-          setTimeout(function () { item.action(); }, 10);
-        });
-      }
+      if (item.sep) { var sep = document.createElement('div'); sep.className = 'ctx-sep'; sep.setAttribute('role', 'separator'); menu.appendChild(sep); return; }
+      var row = document.createElement('button'); row.className = 'ctx-item' + (item.disabled ? ' is-disabled' : ''); row.type = 'button'; row.setAttribute('role', 'menuitem'); row.disabled = !!item.disabled;
+      row.innerHTML = '<span class="ctx-icon">' + (item.icon ? ICONS.glyph(item.icon) : '') + '</span><span class="ctx-label">' + Win.esc(item.label) + '</span>' + (item.shortcut ? '<span class="ctx-shortcut">' + Win.esc(item.shortcut) + '</span>' : '');
+      if (!item.disabled && item.action) row.addEventListener('click', function () {
+        // 同一次用户激活内执行，避免外链被延迟回调拦截或二次打开。
+        closeTarget('context', true); item.action();
+      });
       menu.appendChild(row);
     });
     (flyoutHost || document.body).appendChild(menu);
-    var rect = menu.getBoundingClientRect();
-    var vw = window.innerWidth, vh = window.innerHeight;
-    var left = Math.min(x, vw - rect.width - 8);
-    var top = Math.min(y, vh - rect.height - 8);
-    menu.style.left = Math.max(8, left) + 'px';
-    menu.style.top = Math.max(8, top) + 'px';
+    menu.style.maxWidth = Math.max(1, window.innerWidth - 16) + 'px'; menu.style.maxHeight = Math.max(1, window.innerHeight - 16) + 'px'; menu.style.overflowY = 'auto';
+    var rect = { width: menu.offsetWidth, height: menu.offsetHeight };
+    menu.style.left = Math.max(8, Math.min(x, window.innerWidth - rect.width - 8)) + 'px';
+    menu.style.top = Math.max(8, Math.min(y, window.innerHeight - rect.height - 8)) + 'px';
+    keyboardResults(menu, null, 'button:not(:disabled)');
+    var first = menu.querySelector('button:not(:disabled)'); if (first) first.focus(); else menu.focus();
   }
 
   function openIconMenu(appId, x, y) {
-    var app = appDef(appId);
-    if (!app) return;
+    var app = appDef(appId); if (!app) return;
+    var count = selectedIcons.length;
     openContextMenu([
-      { icon: 'folder', label: '打开', action: function () { launchApp(appId); } },
-      { icon: 'external', label: '在新窗口打开', disabled: true },
+      { icon: 'folder', label: count > 1 ? '打开所选 ' + count + ' 项' : '打开', action: function () { openSelection(); } },
+      { icon: 'pin', label: pinnedApps.indexOf(appId) === -1 ? '固定到任务栏' : '从任务栏取消固定', action: function () { togglePinned(appId); } },
       { sep: true },
-      { icon: 'pin', label: '固定到任务栏', action: function () {
-        if ((window.SITE.taskbarPinned || []).indexOf(appId) === -1) {
-          Window_PINNED_EXTRA.push(appId);
-          renderTaskbarCenter();
-          Win.notify({ icon: app.icon, title: '已固定到任务栏', body: app.title });
-        } else {
-          Win.notify({ icon: app.icon, title: '已经在任务栏上啦', body: app.title });
-        }
-      } },
-      { sep: true },
-      { icon: 'info', label: '属性', disabled: true, shortcut: 'Alt+Enter' }
+      { icon: 'info', label: app.external ? '网页快捷方式 · 在新标签页打开' : '本站应用 · 在网页窗口内打开', disabled: true }
     ], x, y);
   }
 
   function openDesktopMenu(x, y) {
     openContextMenu([
-      { icon: 'grid-view', label: '查看', shortcut: 'V', disabled: true },
-      { icon: 'sort', label: '排序方式', shortcut: 'O', disabled: true },
-      { icon: 'refresh', label: '刷新', action: function () {
-        var wall = document.getElementById('wallpaper');
-        wall.style.transition = 'opacity 160ms';
-        wall.style.opacity = '0.35';
-        setTimeout(function () { wall.style.opacity = ''; }, 170);
-        Win.notify({ icon: 'refresh', title: '已刷新', body: '桌面看起来还是原来的样子，对吧。' });
-      } },
+      { icon: 'grid-view', label: '全选桌面图标', shortcut: 'Ctrl+A（桌面内）', action: function () { selectedIcons = desktopNodes(); selectionAnchor = selectedIcons[0]; paintSelection(selectionAnchor); if (selectionAnchor) selectionAnchor.focus(); } },
+      { icon: 'sort', label: '按名称排序', action: function () { Win.store.set('desktopSort', 'name'); renderDesktop(); } },
+      { icon: 'sort', label: '恢复默认顺序', action: function () { Win.store.set('desktopSort', 'default'); renderDesktop(); } },
+      { icon: 'refresh', label: '刷新桌面图标', action: renderDesktop },
       { sep: true },
-      { icon: 'plus', label: '新建', disabled: true },
-      { sep: true },
-      { icon: 'display', label: '显示设置', action: function () { launchApp('settings'); } },
+      { icon: 'file', label: '新建便笺', action: function () { launchApp('notepad'); } },
+      { icon: 'display', label: '显示桌面 / 恢复窗口', action: function () { WM.showDesktop(); } },
       { icon: 'palette', label: '个性化', action: function () { launchApp('settings'); } },
-      { icon: 'terminal', label: '在终端中打开', action: function () { launchApp('terminal'); } }
+      { icon: 'info', label: '网页快捷键与快速设置', action: toggleQuickSettings },
+      { icon: 'terminal', label: '打开模拟终端', action: function () { launchApp('terminal'); } }
     ], x, y);
   }
 
   /* ================= 全局事件 ================= */
   function bindGlobal() {
     document.addEventListener('pointerdown', function (e) {
-      var inFlyout = e.target.closest('[data-flyout]');
-      var inTaskbar = e.target.closest('.taskbar');
-      var inWindow = e.target.closest('.window');
-      if (!inFlyout && !inTaskbar && !inWindow) {
-        closeFlyouts();
-        selectIcon(null);
-      }
-      if (inTaskbar) { /* 任务栏按钮自己处理 */ }
+      if (Win.isLocked()) return;
+      var inFlyout = e.target.closest('[data-flyout]'), inTaskbar = e.target.closest('.taskbar');
+      if (!inFlyout && !inTaskbar && !e.target.closest('.caption-max')) closeFlyouts();
+      var onDesktop = e.target.id === 'desktop' || e.target.id === 'wallpaper' || e.target.id === 'desktopIcons' || e.target.id === 'windowLayer';
+      if (onDesktop) { if (e.pointerType === 'touch') selectIcon(null); else startMarquee(e); }
     }, true);
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        if (state.startOpen || state.searchOpen || state.calOpen || state.taskViewOpen) { closeFlyouts(); return; }
-        var ctx = document.querySelector('[data-flyout="context"]');
-        if (ctx) closeTarget('context');
+      if (Win.isLocked() || e.defaultPrevented || e.isComposing || e.repeat) return;
+      if (e.key === 'Escape') { closeFlyouts(null, true); return; }
+      // 不拦截浏览器/OS的Win、Alt+Tab、Ctrl+K、Ctrl+L等全局快捷键。
+      if (!e.altKey || !e.shiftKey || e.ctrlKey || e.metaKey) return;
+      if (e.target.closest && e.target.closest('input,textarea,select,[contenteditable="true"]')) return;
+      var key = e.key.toLowerCase(), action = null;
+      if (key === 's') action = toggleStart;
+      if (key === 'f') action = toggleSearch;
+      if (key === 'd') action = function () { closeFlyouts(); WM.showDesktop(); };
+      if (key === 'w') action = toggleTaskView;
+      var win = WM.activeWin();
+      if (win && win.el.contains(e.target)) {
+        if (key === 'arrowleft') action = function () { WM.snap(win, 'left'); };
+        if (key === 'arrowright') action = function () { WM.snap(win, 'right'); };
+        if (key === 'arrowup') action = function () { WM.snap(win, 'max'); };
+        if (key === 'arrowdown') action = function () { WM.restoreLayout(win); };
+        if (key === 'm') action = function () { WM.minimize(win); };
       }
-      if (e.key === 'Meta' || (e.ctrlKey && e.key === 'Escape')) {
-        e.preventDefault();
-        toggleStart();
-      }
-      if (e.ctrlKey && (e.key === 'k' || e.key === 'K')) {
-        e.preventDefault();
-        toggleSearch();
-      }
+      if (action) { e.preventDefault(); action(); }
     });
 
     document.addEventListener('contextmenu', function (e) {
-      var onDesktop = e.target.id === 'desktop' || e.target.id === 'wallpaper' || e.target.closest('#desktopIcons');
-      if (e.target.closest('.window') || e.target.closest('[data-flyout]') || e.target.closest('.taskbar')) return;
-      if (onDesktop) {
-        e.preventDefault();
-        selectIcon(null);
-        openDesktopMenu(e.clientX, e.clientY);
-      }
+      if (Win.isLocked() || e.defaultPrevented || e.target.closest('.window,[data-flyout],.taskbar,.desktop-icon')) return;
+      var desktop = e.target.closest('#desktop');
+      if (desktop) { e.preventDefault(); selectIcon(null); openDesktopMenu(e.clientX, e.clientY); }
     });
-
     Win.bus.on('wm:change', function () { syncTaskbar(); });
+    window.addEventListener('resize', function () { closeFlyouts(null, true); });
   }
 
   /* ================= 初始化 ================= */
   function init() {
+    if (initialized) return;
+    initialized = true;
     flyoutHost = document.getElementById('flyoutHost');
     renderDesktop();
     renderTaskbarCenter();
@@ -742,7 +1019,7 @@ window.Shell = (function () {
       if (panel) renderNotifications(panel);
     });
     Win.bus.on('lock:request-close-all', function () { closeFlyouts(); });
-    Win.bus.on('prefs', function () { renderDesktop(); });
+    syncPanelButtons();
   }
 
   return {
@@ -754,6 +1031,9 @@ window.Shell = (function () {
     toggleStart: toggleStart,
     toggleSearch: toggleSearch,
     toggleCalendar: toggleCalendar,
-    toggleTaskView: toggleTaskView
+    toggleTaskView: toggleTaskView,
+    toggleQuickSettings: toggleQuickSettings,
+    openContextMenu: openContextMenu,
+    selectedApps: function () { return selectedIcons.map(function (node) { return node.dataset.app; }); }
   };
 })();

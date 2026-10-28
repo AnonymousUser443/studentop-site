@@ -1,22 +1,16 @@
 name: publish-site
 
 # 树莓派部署只能由仓库所有者发起（见 DEPLOYMENT-POLICY.md）。
-#  - 触发：push 到 main 且改动 site/ 或 deploy/；或手动 workflow_dispatch
+#  - 仅所有者手动 workflow_dispatch；main push 不隐式部署，避免与授权手工发布并发
 #  - 硬闸门：job 的 if 只允许 github.actor == 'AnonymousUser443'，别人触发不执行部署
 #  - 不监听 pull_request：本 workflow 跑在自托管 runner（所有者 Windows）上，
 #    监听 PR 会让 fork 的代码在所有者机器上执行
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'site/**'
-      - 'deploy/**'
-      - '.github/workflows/publish.yml'
   workflow_dispatch:
 
 concurrency:
   group: publish-site
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: read
@@ -31,6 +25,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # Owner must provision the private auth companion + nginx route separately before releasing.
+      - name: 本地构建并校验内容版本化资源
+        shell: powershell
+        run: |
+          node tools/build-site.mjs
+          if ($LASTEXITCODE -ne 0) { throw "Site release build failed" }
+          node tools/build-site.mjs --check dist-site
+          if ($LASTEXITCODE -ne 0) { throw "Site release verification failed" }
 
       - name: 准备 SSH 配置（secrets 写入 ssh_config）
         shell: powershell
@@ -71,7 +74,7 @@ jobs:
       - name: 发布主页（scp + 原子切换 + 失败自动回滚）
         shell: powershell
         run: |
-          & 'C:\Program Files\Git\bin\bash.exe' -c 'bash deploy/deploy-site.sh site'
+          & 'C:\Program Files\Git\bin\bash.exe' -c 'bash deploy/deploy-site.sh dist-site'
 
       - name: 公网 8 项体检
         shell: powershell

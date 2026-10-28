@@ -1,0 +1,1 @@
+{"url":"http://127.0.0.1:8899/?skipLock=1","errors":[],"evalResult":null,"assertions":0,"ok":false,"error":"Error: EVAL: Error: intentional QA negative probe\n    at <anonymous>:1:7\n    at Object.evaluate (D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\lib.js:173:42)\n    at async D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\cdp.js:18:34"}

@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "asset": "site/assets/img/boot-logo.webp",
+  "source": "用户指定的本地透明 PNG 原图（未改动）",
+  "sourceFormat": "PNG",
+  "outputFormat": "lossless WebP RGBA",
+  "width": 1046,
+  "height": 1049,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "bytes": 632452,
+  "sha256": "5750d5e56d49f4b33dd60023a1319a2a22cfd68d3919408bc5618b6f7bc9d2f2",
+  "pixelPreserved": true,
+  "transforms": [
+    "读取方向元数据",
+    "RGBA 无损封装",
+    "逐字节验证像素与透明度"
+  ],
+  "forbiddenTransforms": [
+    "AI重绘",
+    "裁切人物",
+    "改轮廓",
+    "拆散四窗",
+    "添加文字进原图"
+  ],
+  "usage": "仅用于用户要求的本地网页启动演示；不作第三方授权声明",
+  "preparation": "tools/prepare-boot-logo.py --source <用户指定原图>"
+}

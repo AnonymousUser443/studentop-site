@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.sites/
+.openai/
+.preview/
+*.log
+site-deploy.tar.gz
+.env
+.env.*
+!.env.example

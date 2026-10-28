@@ -1,0 +1,35 @@
+{
+  "recordedAt": "2026-10-27T21:23:52+08:00",
+  "baselineCommit": "fa9c7e2",
+  "initialWorktree": "clean",
+  "node": "v24.22.0",
+  "npm": "12.2.1",
+  "liyun": {
+    "dependencySetup": "npm ci --no-audit --no-fund",
+    "tests": {
+      "command": "npm test",
+      "files": 3,
+      "passed": 13,
+      "failed": 0,
+      "time": "2026-10-27T21:16:15+08:00"
+    },
+    "build": {
+      "command": "npm run build",
+      "ok": true,
+      "vite": "7.3.7",
+      "warning": "Existing p5 bundle >500kB; no tuning in migration scope.",
+      "mainJSBytes": 1358340,
+      "mainJSGzipBytes": 363860
+    }
+  },
+  "campus": {
+    "dependencySetup": "npm install --no-audit --no-fund",
+    "three": "0.170.0",
+    "typesThree": "0.170.0"
+  },
+  "notes": [
+    "npm's existing allowScripts policy blocked esbuild postinstall in both apps; no policy override. Liyun build succeeded using installed platform package.",
+    "Old 5173/4173 and existing SSH forwarding on 8080 left untouched.",
+    "This file records actual setup and baseline commands, not yet browser acceptance."
+  ]
+}

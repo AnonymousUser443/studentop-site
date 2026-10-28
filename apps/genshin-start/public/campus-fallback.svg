@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<title>北理校园意象 · 原创纸境插画</title><desc>暖白文博柱廊、青色玻璃、玉绿树冠与折纸远山；静态降级插画，非建筑照片。</desc>
+<defs>
+  <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#d9e6d9"/><stop offset="1" stop-color="#f3edd5"/></linearGradient>
+  <linearGradient id="path" x2="0" y2="1"><stop stop-color="#dadbcc"/><stop offset="1" stop-color="#eeead9"/></linearGradient>
+  <pattern id="windows" width="23" height="82" patternUnits="userSpaceOnUse"><rect width="23" height="82" fill="#668c80"/><path d="M1 0v82M0 41h23" stroke="#acbdb0" stroke-width="2"/></pattern>
+</defs>
+<rect width="1600" height="1000" fill="url(#sky)"/><circle cx="1220" cy="190" r="60" fill="#fff0c8" opacity=".65"/>
+<path d="M0 420 160 310 285 365 440 265 660 405 825 340 970 380 1190 255 1390 370 1600 300V740H0Z" fill="#cfdbcb"/>
+<path d="m0 485 170-110 200 120 170-110 200 150 180-115 160 75 180-150 180 100 160-60v390H0Z" fill="#b8ceba"/>
+<path d="M0 570 180 500 380 570 580 510 800 565 1060 490 1260 555 1450 460 1600 530V800H0Z" fill="#a9c0ab"/>
+<path d="M0 675H1600V1000H0Z" fill="#b8c5a6"/>
+<path d="M0 725 1600 680V790L0 830Z" fill="#cbd0b8"/>
+<g transform="translate(0 5)">
+<path d="M300 437H1320V684H300Z" fill="#deded0"/><path d="M302 436H1320L1348 455V684H1320V457H302Z" fill="#bdc7b9"/>
+<path d="M382 478H1236V665H382Z" fill="url(#windows)"/><path d="M699 477H919V672H699Z" fill="#365f53"/>
+<path d="M738 552Q811 510 882 552V665H738Z" fill="#dddccf"/><path d="M738 575Q811 536 882 575M738 599Q811 562 882 599M738 623Q811 588 882 623" fill="none" stroke="#bcc5b6"/>
+<path d="M705 476h208M705 496h208M724 476v42M761 476v42M798 476v42M835 476v42M872 476v42M909 476v42" stroke="#d2d6c6" stroke-width="7"/>
+<g fill="#f0ecdf"><path d="M390 469h14v201h-14Zm60 0h14v201h-14Zm60 0h14v201h-14Zm60 0h14v201h-14Zm60 0h14v201h-14Zm60 0h14v201h-14Zm229 0h14v201h-14Zm60 0h14v201h-14Zm60 0h14v201h-14Zm60 0h14v201h-14Zm60 0h14v201h-14Zm60 0h14v201h-14Z"/>
+<path d="M300 437H1320v30H300Z"/><path d="M300 437h80v247h-80Zm940 0h80v247h-80Z"/></g>
+<path d="M289 684H1330v9H289Zm-12 12H1340v9H277Zm-12 12H1352v9H265Z" fill="#e3dfcf"/>
+</g>
+<path d="M718 722H904L1160 1000H450Z" fill="url(#path)"/><path d="M735 722 510 1000M890 722 1108 1000" stroke="#c6b27d" fill="none"/>
+<path d="M695 753h235M660 792h306M613 844h400M559 906h510M485 985h660" stroke="#d1d0bb" fill="none"/>
+<path d="M594 748 677 748 484 1000H245Z" fill="#85aa96"/><path d="M951 748h74l330 252h-213Z" fill="#85aa96"/>
+<g fill="#87967b"><path d="M198 540h12v260h-12Zm1166-34h13v264h-13Z"/></g>
+<g><path d="m62 520 30-107 100-60 100 28 60 100-37 104-103 36-111-28Z" fill="#50856b"/><path d="m77 471 32-75 100-44 76 32 30 72-83 66-83-3Z" fill="#7fa180"/><path d="m200 360 86 25 61 94-32 104-102 31 35-102Z" fill="#42765c"/>
+<path d="m1242 530 15-117 100-67 124 40 72 107-46 121-110 37-105-42Z" fill="#477e64"/><path d="m1270 447 32-70 82-39 92 43 48 74-90 50-95 6Z" fill="#7ea083"/><path d="m1377 348 102 36 72 107-46 123-103 35 40-119Z" fill="#366b54"/></g>
+<g stroke="#a59161" stroke-width="5" fill="none"><path d="M601 819V623h38M1026 819V623h-38"/></g>
+<g fill="#f1dfb1" stroke="#ad9763" stroke-width="2"><path d="M626 638h23v44h-23Z"/><path d="M978 638h23v44h-23Z"/></g>
+<path d="M0 881 110 793 253 810 349 917 280 1000H0Z" fill="#5c8a6b"/><path d="M0 858 113 788 207 823 163 900 55 935 0 922Z" fill="#83a082"/>
+<path d="M1330 922 1422 801 1555 795 1600 828V1000H1300Z" fill="#608c6b"/><path d="M1391 898 1430 804 1532 789 1600 839V915l-118 37Z" fill="#8aa486"/>
+</svg>

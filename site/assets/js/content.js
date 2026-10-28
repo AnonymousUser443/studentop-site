@@ -9,7 +9,8 @@ window.SITE = {
     name: 'Aiden',
     display: 'Aiden',
     handle: '@AnonymousUser443',
-    avatarText: 'A',                 // 头像里的字（可用 emoji）
+    avatar: 'assets/img/avatar-aiden.jpg', // 公开头像；加载失败时保留文字回退
+    avatarText: 'A',
     role: '学生 · 全栈折腾者',
     tagline: '把生活折腾成自己喜欢的样子',
     school: '北京理工大学',
@@ -20,7 +21,7 @@ window.SITE = {
     // 关于我：可以多段，回车分段
     bio: [
       '你好，我是 Aiden，一名在北京读书的学生。喜欢把想法做成能跑起来的东西：写点前端，折腾树莓派，偶尔研究一下内网穿透，让宿舍里那块小板子也能被世界访问到。',
-      '这个页面本身就是一个作品——它看起来像 Windows 11 的桌面，其实是一张纯静态网页。你可以双击图标、拖动窗口、按 Win 键打开开始菜单，甚至可以打开终端敲几个命令。',
+      '这个页面也是我在慢慢打磨的作品。Windows 11 的操作习惯，配上一点青玉、纸张和山水。双击图标可以打开窗口，手机上轻点就好；终端里也藏了几条可试的模拟命令。',
       '如果你也对「用网页复刻真实系统」这件事感兴趣，欢迎随时找我聊聊。'
     ],
     // 快速信息卡片
@@ -62,6 +63,36 @@ window.SITE = {
       link: 'https://liyun.studentop.cn:14355/'
     },
     {
+      id: 'genshin-start',
+      title: '理韵 · 纸境入场',
+      subtitle: '循光走进北理校园',
+      desc: '以文博中心和北理校园意象为线索，用原创程序几何搭起一段轻量 3D 入场。纸色门庭、玉绿山层与晨光相接；这是校园意象的艺术化拼接，不是精确复刻。',
+      tags: ['Three.js', 'TypeScript', 'Vite', '交互设计'],
+      year: '2026',
+      icon: 'genshin',
+      link: 'https://studentop.cn:14355/campus-entry/'
+    },
+    {
+      id: 'genshin-original',
+      title: '原神启动 · 原版',
+      subtitle: '天空、柱路与开门动画 · 独立新标签页',
+      desc: '与纸境校园和体素校园分别保留。线上入口保持既有原版子域站点，不重新分发本地恢复包；恢复包涉及的第三方游戏素材与缺失上游许可仍需公开再分发审核。',
+      tags: ['Three.js', '原版恢复', '独立入口', '本地验收'],
+      year: '2026',
+      icon: 'genshin-original',
+      link: 'https://genshin.studentop.cn:14355/'
+    },
+    {
+      id: 'voxel-campus',
+      title: '体素校园',
+      subtitle: '以方块构成的校园空间 · 独立新标签页',
+      desc: '体素校园的独立入口。与「理韵 · 纸境入场」和「原神启动 · 原版」分别保留，点击后在新标签页打开，不替换既有入场体验。',
+      tags: ['体素', '校园', '独立入口'],
+      year: '2026',
+      icon: 'voxel-campus',
+      link: 'https://studentop.cn:14355/voxel-campus/'
+    },
+    {
       id: 'rpi-task-manager',
       title: '树莓派任务管理器',
       subtitle: '仿 Windows 11 的实时资源监控面板',
@@ -75,7 +106,7 @@ window.SITE = {
       id: 'win11-home',
       title: '仿 Windows 11 个人主页',
       subtitle: '你正在看的这个页面',
-      desc: '纯静态、零依赖的仿 Windows 11 桌面：窗口管理器支持拖动、缩放、贴边分屏，开始菜单、搜索、日历、通知、多应用一应俱全。',
+      desc: '原生桌面前端 + 私密 Node 问答服务：窗口管理器支持拖动、缩放、贴边分屏，配有开始菜单、搜索、日历和通知；登录校验由服务端处理。',
       tags: ['HTML', 'CSS', 'JavaScript', '设计'],
       year: '2026',
       icon: 'projects',
@@ -157,6 +188,7 @@ window.SITE = {
 
   /* ---------- 壁纸列表（设置里可切换） ---------- */
   wallpapers: [
+    { id: 'chenyu', name: '沉玉 · 山水之间', thumb: 'assets/img/thumb-chenyu.webp', src: 'assets/img/wall-chenyu.webp', dark: false },
     { id: 'bloom',  name: 'Bloom 蓝',   thumb: 'assets/img/thumb-bloom.jpg',  dark: false },
     { id: 'dusk',   name: 'Dusk 暮色',  thumb: 'assets/img/thumb-dusk.jpg',   dark: true },
     { id: 'aurora', name: 'Aurora 极光', thumb: 'assets/img/thumb-aurora.jpg', dark: true },
@@ -165,13 +197,13 @@ window.SITE = {
   ],
 
   /* ---------- 桌面图标（按顺序排两列） ---------- */
-  desktop: ['thispc', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'about', 'skills', 'contact', 'cv', 'notepad', 'terminal', 'settings', 'recycle'],
+  desktop: ['thispc', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'about', 'skills', 'contact', 'cv', 'notepad', 'terminal', 'settings', 'recycle'],
 
   /* ---------- 任务栏固定项 ---------- */
   taskbarPinned: ['thispc', 'projects', 'about', 'terminal', 'settings'],
 
   /* ---------- 开始菜单固定项 ---------- */
-  startPinned: ['about', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'skills', 'contact', 'thispc', 'terminal', 'settings', 'notepad', 'photos', 'cv', 'recycle'],
+  startPinned: ['about', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'skills', 'contact', 'thispc', 'terminal', 'settings', 'notepad', 'photos', 'cv', 'recycle'],
 
   /* ---------- 开始菜单「推荐的项目」 ---------- */
   recommended: [
@@ -186,7 +218,7 @@ window.SITE = {
     {
       icon: 'about',
       title: '欢迎来到我的主页',
-      body: '双击桌面图标打开应用，按 Win 键（或点左下角开始）打开开始菜单。',
+      body: '双击图标打开窗口，手机轻点即可。点击任务栏的开始图标，或按 Alt + Shift + S，看看案头都放了些什么。',
       time: '刚刚'
     },
     {
@@ -207,7 +239,7 @@ window.SITE = {
   terminalFiles: {
     'readme.txt': '这是 Aiden 的个人主页。\n它长得像 Windows 11，但其实是一张网页。\n输入 help 看看能做什么。',
     'contact.txt': 'email : aiden@studentop.cn\ngithub: @AnonymousUser443',
-    'todo.txt': '- 把相册页填满\n- 换一好的壁纸\n- 早点睡'
+    'todo.txt': '- 把相册页填满\n- 把新想法慢慢做出来\n- 早点睡'
   },
 
   /* ---------- 页脚 / 版权 ---------- */

@@ -1,0 +1,105 @@
+{
+  "checks": [
+    {
+      "name": "campus_output_has_no_legacy_resources",
+      "pass": true
+    },
+    {
+      "name": "campus_production_has_no_qa_global",
+      "pass": true
+    },
+    {
+      "name": "campus_network_has_no_game_or_decoder",
+      "pass": true,
+      "detail": [
+        "http://127.0.0.1:4281/?qa=1",
+        "http://127.0.0.1:4281/assets/index-02d143d7.js",
+        "http://127.0.0.1:4281/assets/index-ce1d716b.css",
+        "http://127.0.0.1:4281/campus-fallback.svg",
+        "http://127.0.0.1:4281/assets/scene-2370a951.js",
+        "http://127.0.0.1:4281/campus/fonts/noto-serif-sc.woff2",
+        "http://127.0.0.1:5174/",
+        "http://127.0.0.1:5174/@vite/client",
+        "http://127.0.0.1:5174/src/main.tsx",
+        "http://127.0.0.1:5174/@react-refresh",
+        "http://127.0.0.1:5174/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=2bf3ae4a",
+        "http://127.0.0.1:5174/node_modules/.vite/deps/react.js?v=2bf3ae4a",
+        "http://127.0.0.1:5174/node_modules/.vite/deps/react-dom_client.js?v=2bf3ae4a",
+        "http://127.0.0.1:5174/src/App.tsx",
+        "http://127.0.0.1:5174/src/global.css",
+        "http://127.0.0.1:5174/node_modules/vite/dist/client/env.mjs",
+        "http://127.0.0.1:5174/node_modules/.vite/deps/chunk-P3FYK7TP.js?v=2bf3ae4a",
+        "http://127.0.0.1:5174/node_modules/.vite/deps/chunk-E4AONNX5.js?v=2bf3ae4a",
+        "http://127.0.0.1:5174/node_modules/.vite/deps/react-dom.js?v=2bf3ae4a",
+        "http://127.0.0.1:5174/src/data.ts",
+        "http://127.0.0.1:5174/src/state.ts",
+        "http://127.0.0.1:5174/src/map/MapScene.tsx",
+        "http://127.0.0.1:5174/src/map/geometry.ts",
+        "http://127.0.0.1:5174/src/hud/Hud.tsx",
+        "http://127.0.0.1:5174/src/effects/Atmosphere.tsx",
+        "http://127.0.0.1:5174/src/audio/useAudio.ts",
+        "http://127.0.0.1:5174/node_modules/.vite/deps/chunk-V4A3QNEK.js?v=2bf3ae4a",
+        "http://127.0.0.1:5174/src/map/map.css",
+        "http://127.0.0.1:5174/node_modules/.vite/deps/p5.js?v=2bf3ae4a",
+        "http://127.0.0.1:5174/src/effects/timing.ts",
+        "http://127.0.0.1:5174/src/effects/effects.css",
+        "http://127.0.0.1:5174/src/hud/Icon.tsx",
+        "http://127.0.0.1:5174/src/hud/Ornaments.tsx",
+        "http://127.0.0.1:5174/src/hud/hud.css"
+      ]
+    },
+    {
+      "name": "campus_production_local_exit",
+      "pass": true
+    },
+    {
+      "name": "campus_production_no_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "original_production_has_no_qa_global",
+      "pass": true
+    },
+    {
+      "name": "original_production_real_models_loaded",
+      "pass": true
+    },
+    {
+      "name": "original_production_decoder_is_local",
+      "pass": true
+    },
+    {
+      "name": "original_production_no_autoplay",
+      "pass": true
+    },
+    {
+      "name": "original_production_no_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "liyun_production_no_qa_global",
+      "pass": true
+    },
+    {
+      "name": "liyun_production_no_horizontal_overflow",
+      "pass": true
+    },
+    {
+      "name": "liyun_production_no_errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "screenshots": [
+    "campus-production.png",
+    "original-production.png"
+  ],
+  "method": "local ephemeral previews of actual built outputs, isolated Edge/CDP; no production server or deployment",
+  "campusOutput": {
+    "files": 10,
+    "bytes": 1355773
+  },
+  "ok": true
+}

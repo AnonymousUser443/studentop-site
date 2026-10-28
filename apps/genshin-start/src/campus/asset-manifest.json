@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "legacy-genshin",
+      "path": "public/Genshin",
+      "usable": false,
+      "attribution": "Original repository assets; upstream MIT license retained separately.",
+      "rights": "Third-party game imagery/audio; not presumed licensed by repository MIT.",
+      "quality": "Legacy assets not visually revalidated; not loaded by new runtime.",
+      "sceneCandidates": [],
+      "limitations": "Retained unchanged for provenance; no use in active scene."
+    },
+    {
+      "id": "campus-procedural",
+      "path": "src/campus/geometry.ts",
+      "usable": true,
+      "attribution": "Original procedural geometry for this project.",
+      "rights": "original",
+      "quality": "Awaiting Lead visual review.",
+      "sceneCandidates": [
+        "welcome",
+        "journey",
+        "arrival"
+      ],
+      "limitations": "Artistic campus composition, not a digital twin or an actual site plan. Four external reference images visually reviewed by Lead and campus; no source image included in runtime."
+    },
+    {
+      "id": "campus-fallback",
+      "path": "public/campus-fallback.svg",
+      "usable": true,
+      "attribution": "Original vector illustration for this project.",
+      "rights": "original",
+      "quality": "Accessible fallback; awaiting visual QA.",
+      "sceneCandidates": [
+        "loading",
+        "fallback"
+      ],
+      "limitations": "Illustration, not a photograph."
+    }
+  ],
+  "runtimeExternalAssets": false,
+  "references": [
+    {
+      "id": "wenbo-exterior",
+      "source": "https://bucg.com/xwxx/qydt/20231123/27344.shtml",
+      "imageName": "picev102mgd_800x800.jpg",
+      "rights": "reference-only",
+      "review": "Visually inspected: broad pale frame, thin flat roof, deep glazing, square colonnade."
+    },
+    {
+      "id": "wenbo-drum",
+      "source": "https://english.bit.edu.cn/2025-06/24/c_1102601.htm",
+      "imageName": "1750750604422048995.jpg",
+      "rights": "reference-only",
+      "review": "Visually inspected: pale cylindrical interior wall and square coffer grid, flanking glazing. No people or emblem copied."
+    },
+    {
+      "id": "xuteli-library",
+      "source": "https://www.yunzhaokao.org.cn/bit/news/136",
+      "imageName": "img_1652174407000_8.jpeg",
+      "rights": "reference-only",
+      "review": "Visually inspected: grey-white stone grid, horizontal frame, narrow grouped windows, stepped-back roof."
+    },
+    {
+      "id": "teaching-building",
+      "source": "https://www.yunzhaokao.org.cn/bit/news/136",
+      "imageName": "img_1652174407000_2.jpeg",
+      "rights": "reference-only",
+      "review": "Visually inspected: brick-red framing, dark gridded curtain wall, pale stair tower."
+    }
+  ]
+}

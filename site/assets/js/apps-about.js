@@ -27,7 +27,7 @@
           '<div class="fact-text"><span class="fact-label">' + esc(f.label) + '</span>' +
           '<span class="fact-value">' + esc(f.value) + '</span></div></div>';
       }).join('');
-      var links = (p.links || []).filter(function (l) { return l.url; }).map(function (l) {
+      var links = (p.links || []).filter(function (l) { return Win.safeUrl(l.url, true); }).map(function (l) {
         var inner = '<span class="link-icon">' + ICONS.glyph(l.icon) + '</span>' +
           '<span class="link-text"><span class="link-label">' + esc(l.label) + '</span>' +
           '<span class="link-display">' + esc(l.display || l.url) + '</span></span>' +
@@ -35,14 +35,14 @@
         if (l.url.indexOf('mailto:') === 0) {
           return '<button type="button" class="link-row" data-copy="' + esc(l.display) + '">' + inner + '</button>';
         }
-        return '<a class="link-row" href="' + esc(l.url) + '" target="_blank" rel="noopener noreferrer">' + inner + '</a>';
+        return '<a class="link-row" href="' + esc(Win.safeUrl(l.url)) + '" target="_blank" rel="noopener noreferrer">' + inner + '</a>';
       }).join('');
 
       body.innerHTML =
         '<div class="app about-app">' +
           '<header class="about-hero">' +
             '<div class="about-hero-left">' +
-              '<span class="avatar xl">' + esc(p.avatarText || 'A') + '</span>' +
+              '<span class="avatar xl">' + Win.avatarMarkup() + '</span>' +
               '<div class="about-id">' +
                 '<h1>' + esc(p.name) + '<span class="about-handle">' + esc(p.handle) + '</span></h1>' +
                 '<p class="about-role">' + esc(p.role) + '</p>' +
@@ -82,13 +82,15 @@
       navigator.clipboard.writeText(text).then(done).catch(function () { fallback(); });
     } else { fallback(); }
     function fallback() {
+      var previous = document.activeElement;
       var ta = document.createElement('textarea');
       ta.value = text;
       ta.style.cssText = 'position:fixed;opacity:0';
       document.body.appendChild(ta);
       ta.select();
-      try { document.execCommand('copy'); done(); } catch (e) {}
+      try { if (document.execCommand('copy')) done(); else Win.notify({ icon: 'info', title: '未能复制', body: '请手动选择并复制：' + text }); } catch (e) { Win.notify({ icon: 'info', title: '未能复制', body: '请手动选择并复制：' + text }); }
       document.body.removeChild(ta);
+      if (previous && previous.isConnected) previous.focus({ preventScroll: true });
     }
   }
 
@@ -135,6 +137,7 @@
           return;
         }
         list.forEach(function (p) {
+          var href = Win.safeUrl(Win.resolveProjectUrl(p.id, p.link));
           var card = document.createElement('article');
           card.className = 'project-card';
           card.innerHTML =
@@ -148,7 +151,7 @@
             '<div class="pc-tags">' + (p.tags || []).map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('') + '</div>' +
             '<div class="pc-foot">' +
               '<span class="pc-id">#' + esc(p.id) + '</span>' +
-              (p.link ? '<a class="btn btn-small" href="' + esc(p.link) + '" target="_blank" rel="noopener noreferrer">' + linkIcon('external') + '打开</a>' : '<span class="pc-muted">私下维护</span>') +
+              (href ? '<a class="btn btn-small" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' + linkIcon('external') + '打开</a>' : '<span class="pc-muted">私下维护</span>') +
             '</div>';
           grid.appendChild(card);
         });
@@ -191,8 +194,8 @@
                 '<h3>' + esc(g.group) + '</h3></header>' +
                 '<ul class="skill-list">' +
                   (g.items || []).map(function (s) {
-                    return '<li><div class="sk-top"><span>' + esc(s.name) + '</span><span class="sk-num">' + s.level + '%</span></div>' +
-                      '<div class="sk-bar"><i data-level="' + s.level + '"></i></div></li>';
+                    return '<li><div class="sk-top"><span>' + esc(s.name) + '</span><span class="sk-num">' + esc(s.level) + '%</span></div>' +
+                      '<div class="sk-bar"><i data-level="' + esc(s.level) + '"></i></div></li>';
                   }).join('') +
                 '</ul>' +
               '</section>';
@@ -291,7 +294,7 @@
       body.innerHTML =
         '<div class="app cv-app">' +
           '<header class="cv-head">' +
-            '<div class="cv-id"><span class="avatar lg">' + esc(p.avatarText || 'A') + '</span>' +
+            '<div class="cv-id"><span class="avatar lg">' + Win.avatarMarkup() + '</span>' +
               '<div><h1>' + esc(p.name) + '</h1><p>' + esc(p.role) + '</p></div></div>' +
             '<div class="cv-contact">' +
               '<span>' + ICONS.glyph('mail') + esc(p.email) + '</span>' +
@@ -336,11 +339,11 @@
 
   defs.push({
     id: 'genshin-start',
-    title: '原神启动',
-    desktopLabel: '原神启动',
+    title: '理韵 · 纸境入场',
+    desktopLabel: '纸境入场',
     icon: 'genshin',
     external: 'https://genshin.studentop.cn:14355/',
-    shortcutHint: '3D 开场：点开始 → 沿路前行 → 点击开门 → 白光过场后进入理韵寻踪',
+    shortcutHint: '循光走进北理校园 · 轻国风 3D 入场，可随时跳过进入理韵寻踪',
     keywords: 'genshin 原神 启动 开场 开门 three.js webgl 理韵寻踪 快捷方式'
   });
 

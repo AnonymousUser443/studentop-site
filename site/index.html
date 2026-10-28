@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light" data-wall="bloom" data-align="center">
+<html lang="zh-CN" data-theme="light" data-wall="chenyu" data-align="center">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Aiden 的个人主页 · Windows 11</title>
+  <title>Aiden 的个人主页 · 青玉纸境</title>
   <meta name="description" content="一个伪装成 Windows 11 桌面的个人主页：关于我、项目、技能、联系方式，全都藏在桌面图标和开始菜单里。" />
   <meta name="author" content="Aiden" />
-  <meta name="theme-color" content="#0a2472" />
+  <meta name="theme-color" content="#28776b" />
   <meta name="color-scheme" content="light dark" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Aiden 的个人主页 · Windows 11" />
+  <meta property="og:title" content="Aiden 的个人主页 · 青玉纸境" />
   <meta property="og:description" content="双击桌面图标，打开我的数字客厅。" />
   <meta property="og:image" content="https://studentop.cn:14355/assets/img/og-cover.jpg" />
   <meta property="og:url" content="https://studentop.cn:14355/" />
@@ -18,32 +18,83 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
-  <link rel="preload" as="image" href="assets/img/wall-bloom.jpg" />
+  <link rel="preload" as="image" href="assets/img/wall-chenyu.webp" />
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/shell.css" />
   <link rel="stylesheet" href="assets/css/apps.css" />
+  <link rel="stylesheet" href="assets/css/paper.css" />
+  <link rel="stylesheet" href="assets/css/boot-lock.css" />
+  <link rel="stylesheet" href="assets/css/update.css" />
+  <link rel="preload" as="image" href="assets/img/boot-logo.webp" />
 </head>
-<body>
-  <!-- ============ 锁屏 ============ -->
-  <div class="lock-screen" id="lockScreen" role="button" tabindex="0" aria-label="点击进入桌面">
+<body class="is-locked">
+  <!-- Server-authorized gate. The startup sequence never grants authorization. -->
+  <div class="lock-screen desktop-gate" id="lockScreen" role="dialog" aria-modal="true" aria-label="Aiden 的桌面登录" tabindex="-1" data-gate-view="pending">
     <div class="lock-wall" id="lockWall" aria-hidden="true"></div>
-    <div class="lock-inner">
-      <div class="lock-clock" id="lockClock">--:--</div>
-      <div class="lock-date" id="lockDate"></div>
-      <div class="lock-weekday" id="lockWeekday"></div>
-    </div>
-    <div class="lock-tip" id="lockTip">
-      点击任意位置进入桌面<span class="lock-hint-keys">Enter</span>
-    </div>
-    <div class="lock-bar">
-      <span class="avatar" id="lockAvatar">A</span>
-      <span id="lockUser">Aiden</span>
-    </div>
+    <div class="gate-pending" id="gatePending" role="status">正在准备登录界面…</div>
+
+    <section class="gate-boot" id="gateBoot" aria-label="网页启动演示" hidden>
+      <div class="gate-bios" id="gateBios">
+        <header class="gate-bios-head"><span class="gate-bios-symbol" aria-hidden="true">▦</span><span>AIDEN WEB DESKTOP</span></header>
+        <p class="gate-demo-label">网页启动演示 · 非硬件自检</p>
+        <div class="gate-bios-lines" aria-hidden="true">
+          <p><span>INTERFACE</span> 原生网页界面</p>
+          <p><span>ARTWORK</span> 本地纸境素材</p>
+          <p><span>ACCESS</span> 同源服务端验证</p>
+          <p class="gate-bios-ready">准备进入青玉纸境…</p>
+        </div>
+        <p class="gate-bios-note">这是一段视觉开场，不读取设备硬件信息。</p>
+      </div>
+      <div class="gate-logo-stage" id="gateLogoStage" hidden>
+        <img class="gate-logo" src="assets/img/boot-logo.webp" alt="Aiden 的薄荷绿四窗人物标志" width="1046" height="1049" draggable="false">
+        <div class="gate-logo-wordmark">AIDEN</div>
+        <div class="gate-logo-caption">青玉纸境 · 网页启动演示</div>
+        <div class="gate-demo-track" aria-hidden="true"><span></span></div>
+      </div>
+      <button type="button" class="gate-skip" id="gateSkip">跳过启动演示 <span>Esc</span></button>
+    </section>
+
+    <section class="gate-clock-view" id="gateClockView" aria-label="锁屏时钟" hidden>
+      <div class="lock-inner">
+        <div class="lock-edition">青玉纸境 <span>·</span> AIDEN</div>
+        <div class="lock-clock" id="lockClock">--:--</div>
+        <div class="lock-date" id="lockDate"></div>
+        <div class="lock-weekday" id="lockWeekday"></div>
+      </div>
+      <div class="gate-clock-bottom">
+        <div class="gate-user"><span class="avatar" id="lockAvatar">A</span><span id="lockUser">Aiden</span></div>
+        <div class="gate-login-action" id="lockTip"><button type="button" class="gate-primary gate-login" id="gateLogin">登录桌面 <span aria-hidden="true">↗</span></button><span class="gate-key-hint">或按 Enter 打开登录</span></div>
+        <p class="gate-connection" id="gateClockStatus" role="status" aria-live="polite">正在确认服务状态…</p>
+        <button type="button" class="gate-text-button gate-clock-retry" id="gateClockRetry" hidden>重新连接</button>
+        <button type="button" class="gate-replay" id="gateReplay">重播启动演示</button>
+      </div>
+    </section>
+
+    <section class="gate-question-view" id="gateQuestionView" aria-label="问题登录" hidden>
+      <form class="gate-card" id="gateForm" autocomplete="off">
+        <button type="button" class="gate-back" id="gateBack"><span aria-hidden="true">←</span> 返回时钟</button>
+        <div class="gate-form-user"><span class="avatar lg" id="gateFormAvatar">A</span><div><span class="gate-eyebrow">青玉纸境 / PRIVATE DESKTOP</span><h1>Aiden</h1></div></div>
+        <div class="gate-question-copy"><span class="gate-paper-mark" aria-hidden="true">问</span><h2>回答一个问题，<br>再走进这张桌面。</h2></div>
+        <label class="gate-question-label" for="gateAnswer">这个网站的主人的全名是？</label>
+        <div class="gate-input-wrap"><input id="gateAnswer" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="120" enterkeyhint="go" aria-describedby="gateInputNote gateStatus gateAttempts" required><button type="button" class="gate-reveal" id="gateReveal" aria-label="显示答案" aria-controls="gateAnswer" aria-pressed="false">显示</button></div>
+        <p class="gate-input-note" id="gateInputNote">答案仅发送至本站验证，不保存在浏览器中。</p>
+        <div class="gate-status-box" aria-live="polite" aria-atomic="true"><p class="gate-status" id="gateStatus">正在确认服务状态…</p><p class="gate-attempts" id="gateAttempts"></p></div>
+        <p class="gate-countdown" id="gateCountdown" hidden></p>
+        <button type="submit" class="gate-primary gate-submit" id="gateSubmit" disabled>验证并进入 <span aria-hidden="true">→</span></button>
+        <button type="button" class="gate-text-button" id="gateRetry" hidden>重新检查服务状态</button>
+        <p class="gate-server-note">登录由服务端验证；无法连接时，桌面会保持锁定。</p>
+      </form>
+    </section>
   </div>
 
   <!-- ============ 桌面 ============ -->
-  <div class="desktop" id="desktop">
+  <div class="desktop" id="desktop" inert aria-hidden="true">
     <div class="wallpaper" id="wallpaper" aria-hidden="true"></div>
+    <div class="desktop-signature" aria-hidden="true">
+      <span class="signature-kicker">AIDEN / DIGITAL DESKTOP</span>
+      <span class="signature-title">山水在侧，想法在手。</span>
+      <span class="signature-foot"><span class="paper-seal">青玉</span> 纸境 · 数字案头</span>
+    </div>
 
     <!-- 桌面图标 -->
     <div class="desktop-icons" id="desktopIcons" aria-label="桌面图标"></div>
@@ -88,7 +139,11 @@
       <div>
         <h1 style="font-size:20px;margin:0 0 8px">Aiden 的个人主页</h1>
         <p style="margin:0;opacity:.75">这个页面是一个仿 Windows 11 桌面的交互式主页，需要启用 JavaScript 才能打开窗口。</p>
-        <p style="margin:12px 0 0;opacity:.6">你仍然可以通过下方链接访问内容：</p>
+        <p style="margin:12px 0 16px;opacity:.8">也可以直接翻阅项目，或写封邮件给我。</p>
+        <nav class="noscript-links" aria-label="静态内容入口">
+          <a href="projects/">翻阅项目</a>
+          <a href="mailto:aiden@studentop.cn">写封邮件</a>
+        </nav>
       </div>
     </div>
   </noscript>
@@ -99,6 +154,7 @@
   <script src="assets/js/content.js"></script>
   <!-- 内核 -->
   <script src="assets/js/core.js"></script>
+  <script src="assets/js/boot-lock.js"></script>
   <!-- 窗口管理器 -->
   <script src="assets/js/wm.js"></script>
   <!-- 外壳：任务栏 / 开始菜单 / 面板 / 桌面 -->
@@ -109,5 +165,6 @@
   <!-- 应用注册表 + 启动 -->
   <script src="assets/js/apps.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/update-check.js"></script>
 </body>
 </html>

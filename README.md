@@ -1,157 +1,113 @@
+# studentop.cn · 集中开发工作区
 
-# studentop.cn · 跑在树莓派上的个人站
+个人主页是原生 Windows 风格网页桌面，锁屏由同源私密 Node 服务校验；理韵寻踪、校园入场与体素校园是三个独立 Vite 应用，另在校园应用中保留原版开场独立入口。最新交互、安全与部署条件见 [10月28日修订](<docs/REVISION-20261028.md>)。本轮新增体素校园入口；用户已授权由 Lead 统一提交、推送与部署，其他成员不得执行。**授权与本地验收不等于已上线**，发布结果以 Lead 的本轮记录为准。升级范围与分工见 [本地升级计划](docs/UPGRADE-PLAN.md)。
 
-一个从零自建的个人站点：**仿 Windows 11 的桌面主页** + 三个部署在同一台 Raspberry Pi 4B 上的项目。
-没有框架、没有 CDN、没有第三方统计；nginx 只监听回环地址，公网通过 frp 隧道进来，TLS 在树莓派本地终止。
+## 本地启动（推荐入口）
 
-> 在线主页 <https://studentop.cn:14355/> ｜ 项目索引 <https://studentop.cn:14355/projects/>
->
-> 为什么地址带 \`:14355\`：当前唯一可用的隧道是普通 TCP 隧道，远程端口固定 14355。
-> 免端口的「建站隧道」节点长期宕机，取舍与排障过程见 [deploy/PUBLIC-ACCESS-STATUS.md](deploy/PUBLIC-ACCESS-STATUS.md)。
+需要 Node.js **22.12+**。以下命令从仓库根目录执行。三个应用有各自的依赖和锁文件，不是 npm workspace，也不是另一个 DeepSeek Harness 服务。
 
-## ⚠️ 部署权限（重要）
+依赖由负责人统一安装；已有依赖无需重装。体素源码导入完成后再安装该应用并检查完整四服务模式；导入期间可以使用 --site-only：
 
-**树莓派上的一切部署，只能由仓库所有者（AnonymousUser443）本人发起。**
-其他协作者、团队成员、CI 机器人、AI Agent 一律不要执行部署脚本、不要触发发布 workflow、不要连接这台服务器。
+~~~powershell
+npm --prefix apps/liyun-explorer ci
+npm --prefix apps/genshin-start ci
+npm --prefix apps/liangxiang-cloudwalk ci
+~~~
 
-- 完整约定：[DEPLOYMENT-POLICY.md](DEPLOYMENT-POLICY.md)
-- 想贡献代码：[CONTRIBUTING.md](CONTRIBUTING.md)（只提 PR，不要部署）
+~~~powershell
+# 只检查目录、Node 版本和各应用本地 Vite；不安装、不监听、不探测端口
+node tools/dev-workspace.mjs --check
+# 同时启动静态主页和三个独立 Vite 应用（共4个服务）
+node tools/dev-workspace.mjs
+# 只看主页时不要求任何Vite应用依赖已安装
+node tools/dev-workspace.mjs --site-only
+~~~
 
-## 站点一览
+| 服务 | 固定本地地址 | 内容 |
+| --- | --- | --- |
+| 个人主页 | <http://127.0.0.1:8899/> | 仅 [site](site/) 的公开 HTML 与静态资源 |
+| 理韵寻踪 | <http://127.0.0.1:5174/> | React / TypeScript / Vite / p5.js |
+| 校园入场（保留 genshin-start 目录与应用 id） | <http://127.0.0.1:8081/> | 北理工主题轻量 3D 入场，进入理韵 |
+| 体素校园 | <http://127.0.0.1:5180/> | 独立体素校园应用；runner id 为 voxel，桌面 id 为 voxel-campus |
+| 原神启动（原版独立入口） | <http://127.0.0.1:8081/legacy.html> | 原版天空/柱路/门模型，本地同源解码；未公开部署 |
 
-| 站点 | 地址 | 形态 | 技术栈 |
-| --- | --- | --- | --- |
-| 个人主页（Win11 桌面） | <https://studentop.cn:14355/> | 纯静态 | 手写 HTML / CSS / ES5 JS，零依赖零构建 |
-| 项目索引页 | <https://studentop.cn:14355/projects/> | 纯静态 | 同上，单文件 |
-| 北湖霜降雅集 | <https://frost.studentop.cn:14355/> | Node 24 服务 + SQLite，systemd 常驻 | 原生前端 + Node 内置 SQLite，无 npm 依赖 |
-| 理韵寻踪 · 校园探索 HUD | <https://liyun.studentop.cn:14355/> | 纯静态（Vite 产物） | React 19 + TypeScript + Vite 7 + p5.js + Web Audio |
-| 原神启动（3D 开场） | <https://genshin.studentop.cn:14355/> | 纯静态（Vite 产物） | three.js + xviewer（上游开源项目，见下） |
+- 四个服务（主页及三个 Vite）只绑定 **127.0.0.1**，端口占用直接失败，不自动换端口，不复用未知服务。**旧 5173、4173 服务与 8080 SSH 转发不可停止、复用或改写。**
+- <http://127.0.0.1:8899/__workspace/status> 返回工作区名称、路径指纹、启动实例与各服务状态；<http://127.0.0.1:8899/__workspace/health> 在本次创建的服务全部就绪时返回 200，否则为 503。同名目录用指纹区分。
+- 启动器不提供目录列表，不暴露仓库根、点文件、配置、源码映射或秘密文件；拒绝路径穿越及越界链接。三个 Vite 开发入口限定各自 app 根，不是公网服务器。
+- 在启动它的终端按 Ctrl+C，关闭**本次创建**的 Vite 子进程与主页 HTTP 服务；不会按端口或进程名清理外部服务。强制终止整个终端后的状态应由负责人检查。
+- 本地桌面中的理韵 / 校园 / 体素校园快捷方式分别使用 5174 / 8081 / 5180；原版开场复用 8081 的 legacy.html，不增加服务。校园本地出口仍为 5174。北湖霜降雅集不在这个工作区中运行，不映射到旧服务。理韵出口与原版既有子域不变；轻量校园/体素的生产路径见下表。
+- 不要从仓库根运行通用静态服务器；不要为本仓库另起 DSH Web。正常运行不需要重建已有地图、音乐或字体。
 
-主页桌面上有三个带小箭头的**快捷方式图标**，双击即在新标签页打开对应项目；「原神启动」播放 3D 登录开场，**开门白光过场后自动进入理韵寻踪**。
+单独启动仍由 Lead 统一管理：理韵执行 **npm run dev**；校园执行 **npm start**（**npm run dev** 是兼容别名）；体素校园执行 **npm run dev**。先退出统一启动器，避免占用相同端口。理韵构建预览固定回环 4174，体素预览固定回环 4180，而非旧 4173。**--site-only 只启动8899，不预检或启动任何app依赖**；--check不创建服务。
 
-## 集中开发（单仓库）
+## 目录
 
-本仓库现在是**唯一的源码与发布入口**，不再在各处散着改：
+~~~text
+site/                       静态主页发布源：HTML / CSS / JS / 本地资源
+apps/liyun-explorer/         理韵源码与自己的 package-lock
+apps/genshin-start/          校园入场源码与自己的 package-lock
+apps/liangxiang-cloudwalk/   体素校园源码与自己的 package-lock
+qa/                         验收脚本；根目录已有 PNG 均为历史截图
+qa/upgrade-20261027/         第一轮历史日志、截图与结果
+qa/revision-20261028/        体素接入前历史证据（服务数量为3，不改写）
+tools/dev-workspace.mjs      安全本地启动器
+deploy/                     部署脚本与配置；仅由获授权的Lead执行
+docs/UPGRADE-PLAN.md         V2 范围与验收矩阵
+~~~
 
-| 位置 | 内容 |
+详见 [应用目录说明](apps/README.md)、[主页说明](site/README.md)、[理韵说明](apps/liyun-explorer/README.md)、[校园入场说明](apps/genshin-start/README.md)。迁移前的工作副本不作为当前源码或服务的依据。
+
+## 内容版本发布与浏览器缓存
+
+正式主页产物不再直接上传原始静态目录：先运行 `node tools/build-site.mjs`，再运行 `node tools/build-site.mjs --check dist-site`。内容指纹资源绕开旧同名长缓存，HTML和版本元数据再验证；已打开的桌面只提示升级、不自动刷新，未保存便笺可取消更新。见 [缓存修复与迁移](<docs/CACHE-UPDATES.md>) 与 [本轮完整验收](<docs/REVISION-20261028.md>)。正式上线仍须先配置私密同源认证服务并审核nginx模板；本轮部署操作与发布证据由获授权的 Lead 独占，不能根据本地运行推断上线完成。
+
+## 检查与证据
+
+~~~powershell
+node --test qa/node-tests.cjs qa/desktop-node-tests.cjs
+node apps/liyun-explorer/scripts/asset-manifest.mjs --check
+npm --prefix apps/liyun-explorer test
+npm --prefix apps/liyun-explorer run build
+npm --prefix apps/genshin-start run build
+~~~
+
+前两条不打开浏览器、不启动服务；素材清单检查可从任意工作目录运行。浏览器验收由负责人先加载 **opencli** 技能后执行，详见 [QA 说明](qa/README.md)。兼容旧 CDP 文件名与主要参数，但默认改为回环；错误、异常、失败断言或空目标必须返回非零退出码，不能用“截图生成了”代替业务通过。
+
+体素接入前的 [10月28日修订记录](docs/REVISION-20261028.md) 及其 QA 脚本/JSON保留当时三服务快照；不把历史数量改成4来伪造新验收。当前四服务与体素入口由 Lead 新建验收记录。
+
+[理韵旧 QA 记录](apps/liyun-explorer/docs/QA.md) 引用的 app 内截图与 JSON **没有迁入本仓库**，历史数字不充当本轮证据。根 QA 目录的示例截图也属于旧版，不是当前青玉纸境和校园场景的最终效果：
+
+| 历史主页 | 历史项目窗口 |
 | --- | --- |
-| `site/` | 个人主页（发布源） |
-| `apps/liyun-explorer/` `apps/genshin-start/` | 两个前端项目 |
-| `deploy/` | 部署脚本、nginx 配置、各项目部署记录、维护手册 |
-| `qa/` | CDP 浏览器验收脚本 + 截图 |
-| `tools/` | 壁纸/OG 生成器、DNS 工具 |
+| ![历史桌面](qa/live-desktop-3.png) | ![历史项目窗口](qa/final-projects-window.png) |
 
-迁移前的旧工作副本（各项目原本散落的目录）已归档到本地 `_legacy-workspace/`（**不入库**，仅作备份/构建缓存参考）。
-以后改代码 → 在本仓库内改 → `git push`（本机钩子自动发布，或 Actions 发布）。
+## 线上地址（既有记录与本轮发布目标，非完成声明）
 
-## 截图
-
-| 主页桌面 | 项目作品窗口 |
+| 站点 | 已有地址 |
 | --- | --- |
-| ![桌面](qa/live-desktop-3.png) | ![项目作品](qa/final-projects-window.png) |
+| 主页 / 项目索引 | <https://studentop.cn:14355/> / <https://studentop.cn:14355/projects/> |
+| 北湖霜降雅集 | <https://frost.studentop.cn:14355/> |
+| 理韵寻踪 | <https://liyun.studentop.cn:14355/> |
+| 轻量校园 · 纸境入场（本轮拟发布新路径） | <https://studentop.cn:14355/campus-entry/> |
+| 原神启动原版（保留现有子域根release，不重新分发新legacy包） | <https://genshin.studentop.cn:14355/> |
+| 体素校园（本轮拟发布新路径） | <https://studentop.cn:14355/voxel-campus/> |
 
-| 原神启动 · 登录 | 原神启动 · 开门 |
-| --- | --- |
-| ![开场](qa/genshin-1-login.png) | ![开门](qa/genshin-2-door.png) |
+轻量校园本轮改为主域的 /campus-entry/，由 Lead 配置构建 base 与部署路由；体素校园使用相对 base 支持 /voxel-campus/。远端原神子域根目前承载原版，本轮保留其现有 release，不因本地恢复入口而重新分发许可待核实的新 legacy 包。本地8081根路径仍是轻量校园，/legacy.html 仍是原版，两者与生产路由不能混为一谈。
 
-| 理韵寻踪 | 北湖霜降雅集 |
-| --- | --- |
-| ![理韵寻踪](qa/live-liyun.png) | ![北湖霜降雅集](qa/live-frost.png) |
+既有架构为 Raspberry Pi 上 nginx + frp TCP 隧道、TLS SNI 分流；带端口原因见 [公网访问记录](deploy/PUBLIC-ACCESS-STATUS.md)。这些地址不是脚本的默认测试目标，也不表示本轮检查过其在线状态。
 
-## 架构
+## 部署权限
 
-    Internet
-      │  HTTPS（浏览器地址带 :14355）
-      ▼
-    浮居 frp 节点（北京1号）:14355  ── 纯 TCP 转发，不看域名
-      ▼
-    frpc（树莓派，type=tcp，local_port=443）
-      ▼
-    127.0.0.1:443  nginx（Let's Encrypt 证书在树莓派本地终止，按 TLS SNI 分流）
-      ├─ SNI studentop.cn / www        → /opt/win11-home/current        主页（静态，原子切 release）
-      ├─ SNI frost.studentop.cn        → 127.0.0.1:4173                 北湖霜降雅集（systemd frost-atlas）
-      ├─ SNI liyun.studentop.cn        → /opt/projects/liyun/current    理韵寻踪（静态）
-      └─ SNI genshin.studentop.cn      → /opt/projects/genshin/current  原神启动（静态）
+**树莓派的一切部署只能由仓库所有者 AnonymousUser443 本人明确发起。** 本轮用户已明确授权 Lead 统一提交、推送与部署；该权限不下放给其他成员。成员不得自行连接服务器、运行部署脚本、触发 workflow 或通过 push 间接发布。实际服务变更、发布命令及验收由 Lead 记录，不将“已授权”写成“已部署成功”。
 
-托管环境：Raspberry Pi 4B / 8GB、Debian 13 (aarch64)、nginx 1.26、Node v24.22（tar 包安装）；
-证书走 acme.sh + 阿里云 DNS-01 自动续期；一张证书覆盖 5 个域名（studentop.cn / www / frost / liyun / genshin）。
+- [部署权限约定](DEPLOYMENT-POLICY.md)
+- [贡献说明](CONTRIBUTING.md)
+- [项目维护手册](deploy/PROJECTS.md)
 
-## 仓库结构
+历史脚本与记录继续保留，不能将本地启动等同于上线；本地日志不得写入令牌、SSH 凭据、用户隐私或完整环境变量。
 
-    .
-    ├── site/                    仿 Windows 11 桌面主页（部署根目录就是这个目录）
-    ├── deploy/                  部署与运维：脚本、nginx 配置、状态文档、各项目部署记录
-    │   ├── nginx/               树莓派上实际的 nginx 站点配置与 snippet（含 4 个 server 块）
-    │   ├── pi-frost/  pi-liyun/  pi-genshin/   三个项目各自的部署报告与复现脚本
-    │   ├── deploy-site.sh       主页原子发布（打包→上传→切软链→自检→失败回滚）
-    │   ├── preflight-public.sh  公网入口 8 项自检（frpc / TCP / DNS / 证书 / 四个站点）
-    │   ├── PROJECTS.md          三个项目的维护手册（更新、回滚、排查）
-    │   └── PI-STATE.md          树莓派当前状态全记录
-    ├── qa/                      CDP（Chrome DevTools Protocol）浏览器验收：脚本 + 截图
-    ├── tools/                   壁纸/OG 生成器、阿里云 DNS 小工具
-    └── apps/
-        ├── liyun-explorer/      理韵寻踪源码（React + TS + Vite）
-        └── genshin-start/       原神启动源码（已按本部署需求改造，见 DEPLOY-NOTES.md）
+## 版权与素材
 
-## 各项目要点
-
-### 1. 主页 \`site/\`
-
-纯静态的 Win11 桌面复刻：真实可用的窗口管理器（拖动/缩放/贴边分屏/最小化到任务栏）、开始菜单、搜索、日历通知中心、任务视图、7 个内置应用、多壁纸与深浅色主题、URL 深链接（\`?skipLock=1&menu=start&open=about&theme=dark\`）。
-内容全在一个文件里改：\`site/assets/js/content.js\`（资料 / 项目 / 技能 / 桌面图标 / 通知）。
-
-### 2. 北湖霜降雅集
-
-协会霜降活动的网页游园图：姓名学号+三词牌登录、六艺打卡收照片、断网可收录后自动补传、双面明信片生成。
-服务端用 **Node 24 内置 SQLite** 与零 npm 依赖，数据只存在树莓派私有目录（0700），公网只暴露 HTTPS 前台，管理端只走 SSH 回环。
-本仓库只放**部署记录与服务端源码片段**（\`deploy/pi-frost/\`），完整项目与活动数据另处保存。
-
-### 3. 理韵寻踪（\`apps/liyun-explorer/\`）
-
-软件工程导论研究型课程的 HUD 前端：纸山水质感地图、手绘点位、p5.js 画面层、React 状态机与 Web Audio 氛围音。
-子域名根目录部署，\`base\` 保持默认 \`/\`；构建 \`npm ci && npm run build\`。
-
-### 4. 原神启动（\`apps/genshin-start/\`）
-
-上游开源项目 **www-genshin**（作者 TEAM.x.y.z，B 站 BV1E8411v7xy，MIT）复刻的《原神》登录开场，本仓库按「给理韵寻踪做一层入场动画」的需求做了改造：
-
-- 开门白光过场结束 → 跳转 <https://liyun.studentop.cn:14355/>（\`src/core/exit.ts\`，可用 \`window.__EXIT_URL__\` 覆盖）
-- 兜底：\`?skip=1\` 直跳、左上角「跳过开场」、无 WebGL 时降级页（按钮 + 9 秒自动跳转）
-- 修复上游这份副本跑不起来的问题：\`App.tsx\` 没有挂载 \`Menu\`/\`Preloader\`、\`ShaderTest.ts\` 的 import 路径错误
-
-完整改动清单见 [apps/genshin-start/DEPLOY-NOTES.md](apps/genshin-start/DEPLOY-NOTES.md)。
-
-## 本地跑起来
-
-**主页**（零构建，任选其一）：
-
-    cd site && python -m http.server 8080      # 或 npx serve .
-    # 打开 http://127.0.0.1:8080/?skipLock=1
-
-**理韵寻踪**：
-
-    cd apps/liyun-explorer && npm ci && npm run dev   # http://localhost:5173
-
-**原神启动**：
-
-    cd apps/genshin-start && npm ci && npm run dev    # http://localhost:8080
-
-**浏览器验收（QA）**：见 [qa/README.md](qa/README.md)，一条命令跑 29 项交互检查 / 快捷方式真实双击 / 开场端到端。
-
-## 部署
-
-完整流程写在 [deploy/PROJECTS.md](deploy/PROJECTS.md)，主页一条命令：
-
-    bash deploy/deploy-site.sh      # 打包→上传→原子切换→自检，失败自动回滚
-    bash deploy/preflight-public.sh # 公网 8 项体检
-
-> ⚠️ 本仓库已**脱敏**：frp token / 用户 ID / 学号 / 内网地址 / SSH 用户名都替换成了占位符（\`<FRP-TOKEN-已脱敏>\` 等）。
-> 想复刻的话，把 \`deploy/*.md\` 里的占位符换成你自己的，并把 \`PI_HOST\` 指向你的机器。
-
-## 版权与致谢
-
-- 本站原创部分（\`site/\`、\`deploy/\`、\`qa/\`、\`tools/\`）：MIT，见 [LICENSE](LICENSE)
-- \`apps/genshin-start/\`：上游 MIT 项目（Copyright © 2023 gamemcu），保留原 [LICENSE](apps/genshin-start/LICENSE) 与页面内的免责声明；《原神》相关素材版权归米哈游所有，本仓库仅作技术演示，不做商业用途
-- \`apps/liyun-explorer/\`：课程项目源码，保留原作者权利；其中音频/字体/美术素材的授权请在使用前自行确认
-- 感谢 Let's Encrypt、acme.sh、nginx、three.js、xviewer、p5.js、React 等开源项目
-
+- 本站原创部分遵循根 [LICENSE](LICENSE)。
+- 校园入场保留上游 www-genshin（TEAM.x.y.z / gamemcu）的 [MIT 许可](apps/genshin-start/LICENSE)。旧《原神》素材权利归原权利人；程序化校园造型并非官方数字孪生。差异见 [入场改造说明](apps/genshin-start/DEPLOY-NOTES.md)。
+- 理韵课程源码与用户地图 / 音频 / 美术素材应分别核对授权；字体许可及重建条件见 [素材说明](apps/liyun-explorer/docs/ASSETS.md)。
