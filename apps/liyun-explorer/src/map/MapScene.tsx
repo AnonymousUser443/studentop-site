@@ -141,6 +141,7 @@ export default function MapScene(props: MapSceneProps) {
     changeCamera(clampCamera(zoomAt(gestureCamera.current, 1.45, point.x, point.y, limits.min, limits.max), viewport));
   }}>
     <div className="map-world" style={worldStyle} aria-hidden="true">
+      <span className="map-paper-halo" />
       <img className="map-base-image" src={imageFailed ? '/assets/maps/campus.webp' : mobile ? '/assets/maps/campus-enhanced-mobile.webp' : '/assets/maps/campus-enhanced.webp'} onError={() => setImageFailed(true)} draggable={false} alt="" width={MAP_WIDTH} height={MAP_HEIGHT}/>
       <svg className="map-water-ribbons" viewBox="0 0 1000.56 1240.28003" fill="none">
         <path d="M277 450c18-3 27-2 38-1m12 7c16-4 30-3 41-1m-56-20c12-2 19-1 29 0m18 32c14-2 22-1 32 0" stroke="#e6ecd2" strokeWidth="1" opacity=".5"/>
