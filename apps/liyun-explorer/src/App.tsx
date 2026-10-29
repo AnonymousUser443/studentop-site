@@ -135,7 +135,7 @@ export default function App() {
     <div className="scene-paper" aria-hidden="true" />
     {/* 左右两侧的山水 */}
     <div className="scene-painting" aria-hidden="true">
-      <img src="/assets/paintings/north-lake.webp" alt="" decoding="async" />
+      <img src="/assets/paintings/frost-frame.webp" alt="" decoding="async" />
       <span className="scene-painting-haze" />
     </div>
     <div className="map-layer">

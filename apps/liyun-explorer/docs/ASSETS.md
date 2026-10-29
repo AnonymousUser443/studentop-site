@@ -78,7 +78,8 @@ powershell -ExecutionPolicy Bypass -File scripts/fonts-build.ps1
 
 | 文件或模块 | 来源与用途 |
 | --- | --- |
-| `public/assets/paintings/*.webp` | 取自本项目「霜降雅集」应用的手绘校园插画（frost.studentop.cn，1400×880），用作地图底图 |
+| `public/assets/paintings/*.webp` | 取自本项目「霜降雅集」应用的手绘校园插画（frost.studentop.cn，1400×880），用作备选底图 |
+| `public/assets/paintings/frost-frame.webp` | 霜降雅集主界面的边框原画截取（1920×1080），作为理韵寻踪的主背景 |
 | `src/hud/Scenery.tsx` | 程序内 SVG：地图四周的远山、雾带、湖面、坡岸、松枝、山亭与扁舟 |
 | `src/hud/Ornaments.tsx` | 程序内 SVG：品牌门景、菜单底形、罗盘、纸片云纹与边饰 |
 | `src/hud/Icon.tsx` | 程序内 SVG：书本、枫叶、图鉴、设置等 UI 图标 |

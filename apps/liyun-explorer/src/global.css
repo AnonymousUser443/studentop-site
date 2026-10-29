@@ -10,13 +10,13 @@
 
 
 /* 地图层：叠在纸浪背景之上，边缘渐隐融入纸面 */
-.map-layer{position:absolute;inset:0;z-index:1}
+.map-layer{position:absolute;inset:0;z-index:1;mask-image:radial-gradient(ellipse 54% 52% at 50% 48%,#000 70%,#000000d9 82%,#00000080 92%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 54% 52% at 50% 48%,#000 70%,#000000d9 82%,#00000080 92%,transparent 100%)}
 
 /* 插画底图（墨色调）+ 奶油雾池，让地图边缘化进画里 */
-.scene-painting{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;mask-image:linear-gradient(90deg,#000 0%,#000 7%,#000000cc 15%,#0000005c 23%,transparent 30%,transparent 70%,#0000005c 77%,#000000cc 85%,#000 93%,#000 100%);-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 7%,#000000cc 15%,#0000005c 23%,transparent 30%,transparent 70%,#0000005c 77%,#000000cc 85%,#000 93%,#000 100%)}
+.scene-painting{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .scene-painting img{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;filter:saturate(.92) contrast(1.18) brightness(.80) sepia(.08) hue-rotate(-3deg)}
 .scene-painting::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(18,44,36,.42) 0%,rgba(18,44,36,.16) 16%,transparent 36%),linear-gradient(0deg,rgba(23,52,42,.18) 0%,transparent 20%)}
-.scene-painting-haze{position:absolute;inset:0;background:radial-gradient(ellipse 42% 52% at 50% 48%,#e9e5ccf2 0%,#e9e5ccd9 34%,#e9e5cc99 58%,transparent 82%)}
+.scene-painting-haze{position:absolute;inset:0;background:radial-gradient(ellipse 50% 56% at 50% 47%,#efe5ccf2 0%,#efe5ccd1 36%,#efe5cc8c 60%,transparent 84%)}
 
 /* 纸底：颜色取自地图图片自身的纸边（236,230,211） */
-.scene-paper{position:absolute;inset:0;z-index:0;pointer-events:none;background:#ece6d3}
+.scene-paper{position:absolute;inset:0;z-index:0;pointer-events:none;background:#efe5cc}
