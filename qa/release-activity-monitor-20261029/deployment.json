@@ -1,0 +1,1041 @@
+{
+  "ok": true,
+  "id": "activity-monitor-20261029T154940Z-f320dadbb9",
+  "commit": "f320dadbb99130c53f3dafac97a72d83de1e3fac",
+  "homeVersion": "76b1376dbbf99a19cb3a2308",
+  "liyunVersion": "413a191099e1600e90e473b8",
+  "previous": {
+    "home": "/opt/win11-home/releases/20261029T072148Z",
+    "liyun": "/opt/projects/liyun/releases/liyun-20261028T163300Z-f5059312f8",
+    "auth": "/opt/projects/desktop-auth/releases/20261028T110253Z-e2bc44a0e3"
+  },
+  "current": {
+    "home": "/opt/win11-home/releases/activity-monitor-20261029T154940Z-f320dadbb9",
+    "liyun": "/opt/projects/liyun/releases/activity-monitor-20261029T154940Z-f320dadbb9",
+    "auth": "/opt/projects/desktop-auth/releases/activity-monitor-20261029T154940Z-f320dadbb9"
+  },
+  "checkedPublicFiles": 215,
+  "checks": [
+    {
+      "name": "real_monitor_proxy_probe",
+      "pass": true
+    },
+    {
+      "name": "new_auth_companion_configured",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/css/apps.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/css/boot-lock.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/css/paper.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/css/projects.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/css/shell.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/css/task-manager.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/css/tokens.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/css/update.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/fonts/noto-sans-sc.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/fonts/noto-serif-sc.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/fonts/OFL-NotoSansSC.txt",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/fonts/OFL-NotoSerifSC.txt",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/aidenos-landscape.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/avatar-aiden.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/boot-logo.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/favicon.svg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/og-cover.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/task-manager.svg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/thumb-aurora.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/thumb-bloom.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/thumb-chenyu.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/thumb-dusk.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/thumb-sakura.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/thumb-solid.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/wall-aurora.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/wall-bloom.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/wall-chenyu.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/wall-dusk.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/wall-sakura.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/img/wall-solid.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/apps-about.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/apps-system.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/apps-task-manager.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/apps.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/boot-lock.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/content.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/core.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/gate-effects.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/icons.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/main.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/shell.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/task-manager-client.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/update-check.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/js/wm.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/css/apps.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/css/boot-lock.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/css/paper.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/css/projects.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/css/shell.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/css/task-manager.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/css/tokens.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/css/update.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/fonts/noto-sans-sc.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/fonts/noto-serif-sc.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/fonts/OFL-NotoSansSC.txt",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/fonts/OFL-NotoSerifSC.txt",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/aidenos-landscape.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/avatar-aiden.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/boot-logo.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/favicon.svg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/og-cover.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/task-manager.svg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/thumb-aurora.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/thumb-bloom.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/thumb-chenyu.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/thumb-dusk.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/thumb-sakura.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/thumb-solid.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/wall-aurora.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/wall-bloom.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/wall-chenyu.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/wall-dusk.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/wall-sakura.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/img/wall-solid.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/apps-about.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/apps-system.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/apps-task-manager.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/apps.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/boot-lock.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/content.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/core.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/gate-effects.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/icons.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/main.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/shell.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/task-manager-client.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/update-check.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/js/wm.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/136c242b5dd0dd27cfa01c7f/manifest.json",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/css/apps.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/css/boot-lock.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/css/paper.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/css/projects.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/css/shell.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/css/tokens.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/css/update.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/fonts/noto-sans-sc.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/fonts/noto-serif-sc.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/fonts/OFL-NotoSansSC.txt",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/fonts/OFL-NotoSerifSC.txt",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/aidenos-landscape.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/avatar-aiden.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/boot-logo.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/favicon.svg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/og-cover.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/thumb-aurora.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/thumb-bloom.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/thumb-chenyu.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/thumb-dusk.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/thumb-sakura.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/thumb-solid.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/wall-aurora.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/wall-bloom.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/wall-chenyu.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/wall-dusk.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/wall-sakura.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/img/wall-solid.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/js/apps-about.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/js/apps-system.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/js/apps.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/js/boot-lock.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/js/content.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/js/core.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/js/gate-effects.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/js/icons.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/js/main.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/js/shell.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/js/update-check.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/js/wm.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/2897dae74f2ca40ce525c26e/manifest.json",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/css/apps.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/css/boot-lock.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/css/paper.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/css/projects.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/css/shell.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/css/task-manager.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/css/tokens.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/css/update.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/fonts/noto-sans-sc.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/fonts/noto-serif-sc.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/fonts/OFL-NotoSansSC.txt",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/fonts/OFL-NotoSerifSC.txt",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/aidenos-landscape.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/avatar-aiden.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/boot-logo.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/favicon.svg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/og-cover.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/task-manager.svg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/thumb-aurora.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/thumb-bloom.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/thumb-chenyu.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/thumb-dusk.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/thumb-sakura.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/thumb-solid.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/wall-aurora.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/wall-bloom.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/wall-chenyu.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/wall-dusk.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/wall-sakura.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/img/wall-solid.jpg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/apps-about.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/apps-system.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/apps-task-manager.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/apps.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/boot-lock.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/content.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/core.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/gate-effects.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/icons.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/main.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/shell.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/task-manager-client.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/update-check.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/wm.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/manifest.json",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/index.html",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/projects/index.html",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/task-manager/index.html",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/version.json",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/ambient-room-blur.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/ginkgo-bough.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/reward-ginkgo.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/reward-journal.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/reward-seal.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/reward-starlight.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/travel-journal.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/art/mountain-right.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/art/pine-left.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/audio/bgm1.mp3",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/audio/bgm1.opus",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/audio/bgm2.mp3",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/audio/bgm2.opus",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/audio/bgm3.mp3",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/audio/bgm3.opus",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/audio/manifest.json",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/favicon.svg",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/fonts/MaShanZheng-OFL.txt",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/fonts/MaShanZheng-Regular.ttf",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/fonts/MaShanZheng-UI.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/fonts/NotoSerifSC-OFL.txt",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/fonts/NotoSerifSC-UI.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/index-1_EDmlwn.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/index-CBfLmfd6.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/maps/calibrated/campus_no_labels.png",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/maps/calibrated/campus_no_labels.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/maps/campus-enhanced-mobile.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/maps/campus-enhanced.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/maps/campus.png",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/maps/campus.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/maps/metadata.json",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/paintings/frost-frame.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/paintings/library.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/paintings/north-lake.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/paintings/waterbirds.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/index.html",
+      "pass": true
+    },
+    {
+      "name": "internal_build_index_remains_private",
+      "pass": true
+    },
+    {
+      "name": "production_monitor_requires_desktop_session",
+      "pass": true
+    },
+    {
+      "name": "unchanged_liyun_api_healthy",
+      "pass": true
+    },
+    {
+      "name": "neighbor:studentop.cn/",
+      "pass": true
+    },
+    {
+      "name": "neighbor:studentop.cn/task-manager/",
+      "pass": true
+    },
+    {
+      "name": "neighbor:studentop.cn/campus-entry/",
+      "pass": true
+    },
+    {
+      "name": "neighbor:studentop.cn/voxel-campus/",
+      "pass": true
+    },
+    {
+      "name": "neighbor:frost.studentop.cn/",
+      "pass": true
+    },
+    {
+      "name": "neighbor:genshin.studentop.cn/",
+      "pass": true
+    },
+    {
+      "name": "untouched_pointer:/opt/projects/liyun-api",
+      "pass": true
+    },
+    {
+      "name": "untouched_pointer:/opt/projects/campus-entry",
+      "pass": true
+    },
+    {
+      "name": "untouched_pointer:/opt/projects/voxel-campus",
+      "pass": true
+    },
+    {
+      "name": "untouched_pointer:/opt/projects/frost",
+      "pass": true
+    },
+    {
+      "name": "untouched_pointer:/opt/projects/genshin",
+      "pass": true
+    },
+    {
+      "name": "untouched_pointer:/opt/rpi-task-manager",
+      "pass": true
+    },
+    {
+      "name": "active:nginx",
+      "pass": true
+    },
+    {
+      "name": "untouched_process:nginx",
+      "pass": true
+    },
+    {
+      "name": "active:desktop-auth",
+      "pass": true
+    },
+    {
+      "name": "active:liyun-account",
+      "pass": true
+    },
+    {
+      "name": "untouched_process:liyun-account",
+      "pass": true
+    },
+    {
+      "name": "active:rpi-task-manager",
+      "pass": true
+    },
+    {
+      "name": "untouched_process:rpi-task-manager",
+      "pass": true
+    },
+    {
+      "name": "active:frpc",
+      "pass": true
+    },
+    {
+      "name": "untouched_process:frpc",
+      "pass": true
+    },
+    {
+      "name": "active:frost-atlas",
+      "pass": true
+    },
+    {
+      "name": "untouched_process:frost-atlas",
+      "pass": true
+    }
+  ],
+  "realMonitorProbe": {
+    "ok": true,
+    "checks": [
+      {
+        "name": "isolated_synthetic_gate_authenticated",
+        "pass": true
+      },
+      {
+        "name": "real_monitor_ready",
+        "pass": true
+      },
+      {
+        "name": "real_cpu_memory_disk_network_temperature_schema",
+        "pass": true
+      },
+      {
+        "name": "real_processes_readable_without_commands_or_environment",
+        "pass": true
+      },
+      {
+        "name": "three_live_SSE_samples_advance",
+        "pass": true
+      },
+      {
+        "name": "isolated_logout_accepted",
+        "pass": true
+      },
+      {
+        "name": "logout_stops_real_SSE_delivery",
+        "pass": true
+      }
+    ],
+    "source": "Existing loopback rpi-task-manager, actual hardware; authenticated through identical staged proxy with a temporary synthetic gate",
+    "summary": {
+      "logicalCores": 4,
+      "memoryPresent": true,
+      "diskCount": 1,
+      "networkCount": 3,
+      "temperatureAvailable": true
+    },
+    "ownerConfigurationRead": false,
+    "productionGateSessionCreated": false,
+    "privateHostAndProcessDetailsPersisted": false
+  },
+  "ownerPrivateConfigurationTransferred": false,
+  "backendDatabaseModified": false,
+  "unrelatedServicesRestarted": false,
+  "backup": "/var/lib/aiden-release-history/activity-monitor-20261029T154940Z-f320dadbb9",
+  "completedAt": "2026-10-29T15:58:03.883Z"
+}

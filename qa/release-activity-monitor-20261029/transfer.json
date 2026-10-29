@@ -1,0 +1,8 @@
+{
+  "id": "activity-monitor-20261029T154940Z-f320dadbb9",
+  "archiveSHA256": "169bf26a21f3f8c0a119dacd02eb61e0211e4ebbcaf522e8f873d1811f0714f4",
+  "operatorSHA256": "12f6e403357671e2d35a1e181c2cc47923bf3ff7acd6c70f3b9beee993e7e9d2",
+  "probeSHA256": "cf523cd22d6a8b14d705072b05898c40ae3b2f5ea7ae08367b555ca56921b099",
+  "stage": "/var/tmp/aiden-upload-activity-monitor-20261029T154940Z-f320dadbb9",
+  "exitCode": 0
+}

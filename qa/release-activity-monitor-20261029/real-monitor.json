@@ -1,0 +1,44 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "name": "isolated_synthetic_gate_authenticated",
+      "pass": true
+    },
+    {
+      "name": "real_monitor_ready",
+      "pass": true
+    },
+    {
+      "name": "real_cpu_memory_disk_network_temperature_schema",
+      "pass": true
+    },
+    {
+      "name": "real_processes_readable_without_commands_or_environment",
+      "pass": true
+    },
+    {
+      "name": "three_live_SSE_samples_advance",
+      "pass": true
+    },
+    {
+      "name": "isolated_logout_accepted",
+      "pass": true
+    },
+    {
+      "name": "logout_stops_real_SSE_delivery",
+      "pass": true
+    }
+  ],
+  "source": "Existing loopback rpi-task-manager, actual hardware; authenticated through identical staged proxy with a temporary synthetic gate",
+  "summary": {
+    "logicalCores": 4,
+    "memoryPresent": true,
+    "diskCount": 1,
+    "networkCount": 3,
+    "temperatureAvailable": true
+  },
+  "ownerConfigurationRead": false,
+  "productionGateSessionCreated": false,
+  "privateHostAndProcessDetailsPersisted": false
+}

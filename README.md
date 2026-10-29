@@ -4,9 +4,9 @@
 
 ## 本地启动（推荐入口）
 
-最新本地开发加入[理韵活动一览](apps/liyun-explorer/docs/activity/QA.md)和[桌面任务管理器窗口](docs/TASK-MANAGER.md)。活动由左下入口打开；任务管理器复用既有回环监控，通过桌面会话保护的同源只读接口读取，不增加启动器服务或自动创建隧道。这些改动尚未部署到树莓派。
+最新本地开发加入[理韵活动一览](apps/liyun-explorer/docs/activity/QA.md)和[桌面任务管理器窗口](docs/TASK-MANAGER.md)。活动由左下入口打开；任务管理器复用既有回环监控，通过桌面会话保护的同源只读接口读取，不增加启动器服务或自动创建隧道。这些改动现已由所有者当次授权发布到树莓派，真实监控、缓存兼容与回滚记录见[本次生产发布](docs/ACTIVITY-MONITOR-RELEASE-20261029.md)。
 
-2026-10-29 的 AidenOS 主页已由所有者当次授权发布，实际版本、检查范围和回滚点见[发布收据说明](docs/AIDENOS-RELEASE-20261029.md)。其他应用继续沿用各自已有 release。
+2026-10-29 早前的 AidenOS 开场单独发布见[历史收据](docs/AIDENOS-RELEASE-20261029.md)。当前主页、理韵活动页和真实监控接入以[最新生产发布](docs/ACTIVITY-MONITOR-RELEASE-20261029.md)为准；校园入场、体素、霜降与原版站点沿用各自原 release。
 
 前端启动需要 Node.js **22.12+**；包含账号 API 的完整开发环境推荐统一使用 **Node.js 24**（本机已验证 v24.22.0）。以下命令从仓库根目录执行。三个应用有各自的依赖和锁文件，不是 npm workspace，也不是另一个 DeepSeek Harness 服务。
 

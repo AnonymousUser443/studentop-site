@@ -1,0 +1,133 @@
+{
+  "ok": true,
+  "release": "activity-monitor-20261029T154940Z-f320dadbb9",
+  "checkedAt": "2026-10-29T16:00:08.847Z",
+  "source": "Read-only SSH inventories before activation and after all release checks",
+  "pointerChecks": [
+    {
+      "root": "/opt/win11-home",
+      "intendedChange": true,
+      "matched": true
+    },
+    {
+      "root": "/opt/projects/liyun",
+      "intendedChange": true,
+      "matched": true
+    },
+    {
+      "root": "/opt/projects/desktop-auth",
+      "intendedChange": true,
+      "matched": true
+    },
+    {
+      "root": "/opt/projects/liyun-api",
+      "intendedChange": false,
+      "matched": true
+    },
+    {
+      "root": "/opt/projects/campus-entry",
+      "intendedChange": false,
+      "matched": true
+    },
+    {
+      "root": "/opt/projects/voxel-campus",
+      "intendedChange": false,
+      "matched": true
+    },
+    {
+      "root": "/opt/projects/frost",
+      "intendedChange": false,
+      "matched": true
+    },
+    {
+      "root": "/opt/projects/genshin",
+      "intendedChange": false,
+      "matched": true
+    },
+    {
+      "root": "/opt/rpi-task-manager",
+      "intendedChange": false,
+      "matched": true
+    }
+  ],
+  "serviceChecks": [
+    {
+      "name": "nginx",
+      "active": true,
+      "intendedRestart": false,
+      "sameProcess": true
+    },
+    {
+      "name": "desktop-auth",
+      "active": true,
+      "intendedRestart": true,
+      "sameProcess": false
+    },
+    {
+      "name": "liyun-account",
+      "active": true,
+      "intendedRestart": false,
+      "sameProcess": true
+    },
+    {
+      "name": "rpi-task-manager",
+      "active": true,
+      "intendedRestart": false,
+      "sameProcess": true
+    },
+    {
+      "name": "frpc",
+      "active": true,
+      "intendedRestart": false,
+      "sameProcess": true
+    },
+    {
+      "name": "frost-atlas",
+      "active": true,
+      "intendedRestart": false,
+      "sameProcess": true
+    }
+  ],
+  "configChecks": [
+    {
+      "file": "/etc/nginx/snippets/win11-home-app.conf",
+      "intendedChange": true,
+      "unchanged": false
+    },
+    {
+      "file": "/etc/nginx/snippets/win11-home-headers.conf",
+      "intendedChange": false,
+      "unchanged": true
+    },
+    {
+      "file": "/etc/nginx/snippets/win11-home-projects.conf",
+      "intendedChange": false,
+      "unchanged": true
+    },
+    {
+      "file": "/etc/nginx/sites-available/projects",
+      "intendedChange": false,
+      "unchanged": true
+    },
+    {
+      "file": "/etc/systemd/system/desktop-auth.service",
+      "intendedChange": true,
+      "unchanged": false
+    },
+    {
+      "file": "/etc/systemd/system/liyun-account.service",
+      "intendedChange": false,
+      "unchanged": true
+    },
+    {
+      "file": "/etc/systemd/system/rpi-task-manager.service",
+      "intendedChange": false,
+      "unchanged": true
+    }
+  ],
+  "listenersUnchangedAndLoopbackOnly": true,
+  "ownerGateConfigured": true,
+  "monitorReadyAndReadonly": true,
+  "deployedOperatorAndProbeMatchRepositorySHA256": true,
+  "freeBytesAfter": 21531197440
+}

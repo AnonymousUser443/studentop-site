@@ -1,0 +1,181 @@
+{
+  "ok": true,
+  "id": "activity-monitor-20261029T154940Z-f320dadbb9",
+  "homeVersion": "76b1376dbbf99a19cb3a2308",
+  "liyunVersion": "413a191099e1600e90e473b8",
+  "scope": "Real public HTTPS read-only requests, no owner answer or authenticated production session",
+  "checks": [
+    {
+      "name": "public_bytes:home/index.html",
+      "pass": true
+    },
+    {
+      "name": "html_revalidates:home/index.html",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/projects/index.html",
+      "pass": true
+    },
+    {
+      "name": "html_revalidates:home/projects/index.html",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/task-manager/index.html",
+      "pass": true
+    },
+    {
+      "name": "html_revalidates:home/task-manager/index.html",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/version.json",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/apps-task-manager.js",
+      "pass": true
+    },
+    {
+      "name": "native_asset_immutable:home/assets/releases/76b1376dbbf99a19cb3a2308/js/apps-task-manager.js",
+      "pass": true
+    },
+    {
+      "name": "javascript_mime:home/assets/releases/76b1376dbbf99a19cb3a2308/js/apps-task-manager.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/js/task-manager-client.js",
+      "pass": true
+    },
+    {
+      "name": "native_asset_immutable:home/assets/releases/76b1376dbbf99a19cb3a2308/js/task-manager-client.js",
+      "pass": true
+    },
+    {
+      "name": "javascript_mime:home/assets/releases/76b1376dbbf99a19cb3a2308/js/task-manager-client.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:home/assets/releases/76b1376dbbf99a19cb3a2308/css/task-manager.css",
+      "pass": true
+    },
+    {
+      "name": "native_asset_immutable:home/assets/releases/76b1376dbbf99a19cb3a2308/css/task-manager.css",
+      "pass": true
+    },
+    {
+      "name": "stylesheet_mime:home/assets/releases/76b1376dbbf99a19cb3a2308/css/task-manager.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/index.html",
+      "pass": true
+    },
+    {
+      "name": "html_revalidates:liyun/index.html",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/ambient-room-blur.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/ginkgo-bough.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/reward-ginkgo.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/reward-journal.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/reward-seal.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/reward-starlight.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/activity/travel-journal.webp",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/fonts/MaShanZheng-UI.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/fonts/NotoSerifSC-UI.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/index-1_EDmlwn.css",
+      "pass": true
+    },
+    {
+      "name": "stylesheet_mime:liyun/assets/releases/413a191099e1600e90e473b8/index-1_EDmlwn.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:liyun/assets/releases/413a191099e1600e90e473b8/index-CBfLmfd6.js",
+      "pass": true
+    },
+    {
+      "name": "javascript_mime:liyun/assets/releases/413a191099e1600e90e473b8/index-CBfLmfd6.js",
+      "pass": true
+    },
+    {
+      "name": "production_gate_configured",
+      "pass": true
+    },
+    {
+      "name": "gate_no_store",
+      "pass": true
+    },
+    {
+      "name": "anonymous_real_metrics_denied",
+      "pass": true
+    },
+    {
+      "name": "metrics_no_store",
+      "pass": true
+    },
+    {
+      "name": "foreign_origin_monitor_denied",
+      "pass": true
+    },
+    {
+      "name": "query_cannot_select_proxy_target",
+      "pass": true
+    },
+    {
+      "name": "internal_build_metadata_denied",
+      "pass": true
+    },
+    {
+      "name": "existing_account_api_healthy",
+      "pass": true
+    },
+    {
+      "name": "existing_site:studentop.cn/campus-entry/",
+      "pass": true
+    },
+    {
+      "name": "existing_site:studentop.cn/voxel-campus/",
+      "pass": true
+    },
+    {
+      "name": "existing_site:frost.studentop.cn/",
+      "pass": true
+    },
+    {
+      "name": "existing_site:genshin.studentop.cn/",
+      "pass": true
+    }
+  ]
+}

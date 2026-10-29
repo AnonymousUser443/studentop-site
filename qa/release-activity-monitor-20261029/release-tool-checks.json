@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "command": "node --test qa/liyun-release-tests.mjs",
+  "tests": 2,
+  "passed": 2,
+  "coverage": [
+    "Deterministic content namespace and changed-font version",
+    "Dynamic image prefixes and CSS font URL rewrite",
+    "API and external URLs remain unchanged",
+    "Refuse private or executable artifacts",
+    "Reject existing output and output nested inside source"
+  ],
+  "syntaxChecked": [
+    "tools/build-liyun-release.mjs",
+    "deploy/apply-activity-monitor.mjs",
+    "deploy/probe-real-monitor.mjs"
+  ],
+  "productionArtifactBrowser": "artifact-browser.json"
+}
