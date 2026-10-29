@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type { HudProps, IconName, PanelId } from '../types';
 import { Icon } from './Icon';
-import { BrandGate, CompassRose, MenuShape } from './Ornaments';
+import { BrandGate, CompassRose, EdgeOrnaments, MenuShape } from './Ornaments';
 import './hud.css';
 
 const NAV: { id: PanelId; title: string; subtitle: string; icon: IconName; notice?: boolean }[] = [
@@ -108,6 +108,7 @@ function Panels(p: HudProps) {
 
 export default function Hud(p: HudProps) {
   return <>
+    <EdgeOrnaments/>
     <div className="game-hud" inert={!p.entered}>
       <div className="brand">
         <button className="brand-gate" onClick={() => p.onPanel('profile')} aria-label="打开个人主页" title="个人主页"><BrandGate/></button>

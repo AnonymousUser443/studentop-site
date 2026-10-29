@@ -141,6 +141,8 @@ export default function App() {
       <Atmosphere camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} event={event} settings={state.settings} paused={hidden||portrait} seed={42} fixedTime={fixedTime}/>
     </div>
     <div className="scene-vignette"/>
+    <img className="border-art pine" src="/assets/art/pine-left.webp" alt="" />
+    <img className="border-art mountain" src="/assets/art/mountain-right.webp" alt="" />
     <div className="hud-layer" inert={portrait}><Hud progress={progressOf(state)} collected={state.discoveredIds.length} activePanel={activePanel} selected={selected} discovered={Boolean(selected&&state.discoveredIds.includes(selected.id))} state={state} landmarks={LANDMARKS} entered={entered} toast={toast} isFullscreen={isFullscreen} audioBlocked={audio.blocked} onPanel={id=>{setActivePanel(id);setSelectedId(null);}} onSelect={select} onClose={close} onExplore={()=>selectedId&&discover(selectedId)} onSettings={settings} onReset={reset} onFullscreen={fullscreen} onCenter={center} onEnter={enter}/></div>
     {portrait&&<div className="orientation-gate" role="dialog" aria-modal="true" aria-label="请横屏探索">
       <svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g className="rotate-line"><rect x="30" y="12" width="40" height="76" rx="7" stroke="currentColor" strokeWidth="2"/><path d="M43 20h14M46 80h8" stroke="currentColor" strokeWidth="2"/></g><path d="M83 32a38 38 0 0 0-56-15m-2-8 1 10 10-2M17 68a38 38 0 0 0 56 15m2 8-1-10-10 2" stroke="currentColor" strokeWidth="2"/></svg>
