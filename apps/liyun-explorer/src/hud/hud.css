@@ -835,3 +835,85 @@
   .pano-head { left: 16px; top: auto; bottom: 44%; max-width: 70%; }
   .pano-card { left: 12px; width: calc(100% - 24px); }
 }
+
+/* ===== 活动页 · 山河长卷 ===== */
+.events-modal { width: min(1000px, 96vw); }
+.event-body { display: flex; gap: 14px; align-items: stretch; }
+
+/* 左侧活动栏 */
+.event-rail { width: 126px; flex: none; display: flex; flex-direction: column; gap: 10px; padding-top: 4px; }
+.rail-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px 10px;
+  border: 1px solid #c8ae7488;
+  background: linear-gradient(180deg, #324f42 0%, #243d33 100%);
+  color: #efe2c1;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+}
+.rail-item:hover { transform: translateY(-2px); border-color: #e0c68c; }
+.rail-item.is-active {
+  background: linear-gradient(180deg, #fdf6e2 0%, #f0e2bd 100%);
+  color: #2f5342;
+  border-color: #b8933f;
+  box-shadow: inset 0 0 0 2px #fffdf2, inset 0 0 0 4px #d8c08a, 0 6px 16px #7d66304d;
+}
+.rail-item .sigil { width: 52px; height: 52px; display: block; }
+.rail-title { font-size: 13px; font-weight: 650; letter-spacing: .1em; }
+.rail-tag { font-size: 9.5px; letter-spacing: .18em; padding: 1px 7px; border: 1px solid currentColor; border-radius: 10px; opacity: .8; }
+.rail-item.is-active .rail-tag { background: #ffe9b8; border-color: #c98a3a; color: #7c4a1e; opacity: 1; }
+.rail-foot { margin: auto 0 2px; text-align: center; font-size: 9.5px; line-height: 1.9; letter-spacing: .18em; color: #a8905c; }
+
+/* 画卷舞台：非矩形画心 + 斜置木轴 + 流苏 */
+.event-pano { position: relative; flex: 1; min-width: 0; }
+.pano-stage { position: relative; width: 100%; aspect-ratio: 1200 / 470; padding: 18px 26px 26px; }
+.pano-clip-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.pano-stage .pano { position: absolute; inset: 18px 26px 26px; }
+.pano-svg { width: 100%; height: 100%; display: block; }
+.pano-rod {
+  position: absolute;
+  width: 116px;
+  height: 13px;
+  border-radius: 7px;
+  background: linear-gradient(90deg, #e6cd9c 0%, #b58c47 45%, #805f2c 72%, #dcc093 100%);
+  box-shadow: 0 3px 7px #3a2a1044;
+  z-index: 4;
+}
+.pano-rod::before,
+.pano-rod::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 11px;
+  height: 21px;
+  transform: translateY(-50%);
+  border-radius: 4px;
+  border: 1px solid #866631;
+  background: radial-gradient(circle at 45% 50%, #f4e0ae, #b18a45 72%);
+}
+.pano-rod::before { left: -7px; }
+.pano-rod::after { right: -7px; }
+.rod-top-right { right: -6px; top: 12px; transform: rotate(19deg); }
+.rod-bottom-left { left: -6px; bottom: 20px; transform: rotate(19deg); }
+.pano-tassel { position: absolute; left: -18px; bottom: -14px; width: 34px; height: 76px; z-index: 4; filter: drop-shadow(0 3px 5px #3a2a1040); }
+
+/* 画卷上的文字与卡片（避开左侧活动栏后仍在画内） */
+.pano-head { position: absolute; left: 30%; top: 26px; z-index: 3; max-width: 40%; }
+.pano-card { position: absolute; left: 30%; bottom: 30px; z-index: 3; width: min(320px, 38%); }
+
+@media (max-width: 860px) {
+  .event-body { flex-direction: column; }
+  .event-rail { width: 100%; flex-direction: row; overflow-x: auto; }
+  .rail-item { flex: 1 0 96px; padding: 8px 6px; }
+  .rail-item .sigil { width: 38px; height: 38px; }
+  .rail-foot { display: none; }
+  .pano-stage { aspect-ratio: 4 / 3; padding: 12px 14px 18px; }
+  .pano-stage .pano { inset: 12px 14px 18px; }
+  .pano-head { left: 8%; top: 18px; max-width: 70%; }
+  .pano-card { left: 8%; bottom: 20px; width: calc(84% - 10px); }
+  .pano-rod { width: 84px; }
+}

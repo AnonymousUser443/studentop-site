@@ -2,8 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type { HudProps, IconName, PanelId } from '../types';
 import { Icon } from './Icon';
 import { BrandGate, CompassRose, EdgeOrnaments, MenuShape } from './Ornaments';
-import { EVENT_ART, EventThumb } from './EventArt';
-import { EventScroll } from './EventScroll';
+import { EventScroll, EventSigil } from './EventScroll';
 import './hud.css';
 
 const NAV: { id: PanelId; title: string; subtitle: string; icon: IconName; notice?: boolean }[] = [
@@ -138,26 +137,30 @@ function Panels(p: HudProps) {
       const current = EVENTS.find(item => item.id === eventId) ?? EVENTS[0];
       const copy = EVENT_COPY[current.id];
       return <Modal title="活动" eyebrow="新章待启 · 共赴良乡" icon="leaf" {...common} className="events-modal" scroll>
-        <div className="event-pano">
-          <EventScroll kind={current.tone}/>
-          <div className="pano-head">
-            <p className="pano-eyebrow">{copy.eyebrow}</p>
-            <p className="pano-title">{copy.title}</p>
-            <p className="pano-sub">{current.subtitle}</p>
-          </div>
-          <div className="pano-card">
-            <p className="pano-verse">{copy.verse}</p>
-            <p className="pano-desc">{copy.desc}</p>
-            <div className="pano-date"><span>{copy.dateLabel}</span><strong>{copy.date}</strong></div>
-            <button className="parchment-button" onClick={() => p.onPanel(current.id)}>{copy.cta}<Icon name={current.icon}/></button>
-          </div>
-          <div className="pano-tabs" role="tablist" aria-label="活动列表">
+        <div className="event-body">
+          <aside className="event-rail" role="tablist" aria-label="活动列表">
             {EVENTS.map(item => (
-              <button key={item.id} role="tab" aria-selected={item.id === current.id} className={`pano-tab ${item.id === current.id ? 'is-active' : ''}`} onClick={() => setEventId(item.id)}>
-                <span className="pano-tab-icon"><EventThumb art={EVENT_ART[item.id]} alt="" side={item.id === 'festival' ? 'left' : 'right'}/></span>
-                <span className="pano-tab-text"><strong>{item.title}</strong><small>{item.tag}</small></span>
+              <button key={item.id} role="tab" aria-selected={item.id === current.id} className={`rail-item ${item.id === current.id ? 'is-active' : ''}`} onClick={() => setEventId(item.id)}>
+                <EventSigil kind={item.id}/>
+                <span className="rail-title">{item.title}</span>
+                <span className="rail-tag">{item.tag}</span>
               </button>
             ))}
+            <p className="rail-foot">◇ 更多篇章<br/>敬请期待 ◇</p>
+          </aside>
+          <div className="event-pano">
+            <EventScroll kind={current.tone}/>
+            <div className="pano-head">
+              <p className="pano-eyebrow">{copy.eyebrow}</p>
+              <p className="pano-title">{copy.title}</p>
+              <p className="pano-sub">{current.subtitle}</p>
+            </div>
+            <div className="pano-card">
+              <p className="pano-verse">{copy.verse}</p>
+              <p className="pano-desc">{copy.desc}</p>
+              <div className="pano-date"><span>{copy.dateLabel}</span><strong>{copy.date}</strong></div>
+              <button className="parchment-button" onClick={() => p.onPanel(current.id)}>{copy.cta}<Icon name={current.icon}/></button>
+            </div>
           </div>
         </div>
       </Modal>;

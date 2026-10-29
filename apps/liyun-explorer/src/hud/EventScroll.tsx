@@ -1,9 +1,10 @@
 /**
- * 活动页横向长卷：SVG 现场绘制山水（远山、湖面、银杏、红枫、雾、飘叶），
- * 人物用立绘图叠加在画面前景，并带轻微浮动与呼吸动效。
+ * 活动页横向山河长卷。
  *
- * - festival 霜降雅集：少女抱信坐在岸边（大立绘，左侧前景）
- * - party 多人同行：少年执扇 + 少女抱卷，两人一前一后
+ * - 画心不是矩形：用 objectBoundingBox 的 clipPath 让上下边缘顺着山脊起伏
+ * - 画卷两端有木轴（斜置）与流苏
+ * - 人物用羽化透明立绘叠在前景
+ * - 活动徽记（Sigil）按主题自绘，不用人物照片
  */
 import { useId } from 'react';
 
@@ -62,7 +63,15 @@ const TONES: Record<ScrollKind, Tone> = {
   }
 };
 
-/** 团扇形银杏叶。 */
+/** 山河轮廓：上缘山脊起伏，下缘滩涂错落，左右略收。 */
+const OUTLINE =
+  'M0.012 0.30 C0.05 0.22 0.09 0.24 0.13 0.17 C0.18 0.08 0.24 0.13 0.29 0.06 ' +
+  'C0.34 0 0.39 0.10 0.45 0.05 C0.51 0 0.56 0.11 0.62 0.06 C0.67 0.01 0.72 0.10 0.78 0.05 ' +
+  'C0.83 0.01 0.88 0.10 0.93 0.13 C0.96 0.15 0.985 0.17 0.995 0.20 ' +
+  'L0.995 0.84 C0.95 0.90 0.90 0.86 0.85 0.92 C0.79 0.98 0.73 0.90 0.67 0.95 ' +
+  'C0.60 1 0.54 0.92 0.47 0.96 C0.40 1 0.34 0.92 0.27 0.96 C0.20 1 0.14 0.93 0.09 0.95 ' +
+  'C0.05 0.96 0.02 0.94 0.008 0.90 Z';
+
 function FanLeaf({ x, y, r = 0, s = 1, color, stroke }: { x: number; y: number; r?: number; s?: number; color: string; stroke: string }) {
   return (
     <g transform={`translate(${x} ${y}) rotate(${r}) scale(${s})`}>
@@ -73,7 +82,6 @@ function FanLeaf({ x, y, r = 0, s = 1, color, stroke }: { x: number; y: number; 
   );
 }
 
-/** 五角枫叶。 */
 function MapleLeaf({ x, y, r = 0, s = 1, color }: { x: number; y: number; r?: number; s?: number; color: string }) {
   return (
     <path
@@ -125,14 +133,12 @@ function Scene({ kind }: { kind: ScrollKind }) {
 
       <rect width="1200" height="460" fill={`url(#${id}-sky)`} />
       <circle cx="760" cy="104" r="150" fill={`url(#${id}-sun)`} />
-      <circle cx="760" cy="104" r="32" fill={tone.sun} opacity="0.8" />
+      <circle cx="760" cy="104" r="30" fill={tone.sun} opacity="0.82" />
 
-      {/* 远山三层 */}
       <path d="M-20 300c90-70 170-96 260-70 70 20 130 8 200-24 90-42 180-30 260 18 60 36 130 44 220 24v190H-20Z" fill={tone.far} opacity="0.5" filter={`url(#${id}-blur)`} />
       <path d="M-20 322c110-58 190-64 280-34 74 24 148 12 224-20 84-36 168-20 250 26 48 26 108 32 186 18v168H-20Z" fill={tone.mid} opacity="0.72" />
       <path d="M-20 344c120-40 210-34 300-6 74 22 150 10 230-16 82-26 160-8 234 30 40 20 96 24 176 14v104H-20Z" fill={tone.near} opacity="0.9" />
 
-      {/* 湖面 */}
       <path d="M-20 336h1240v96H-20Z" fill={`url(#${id}-water)`} opacity="0.95" />
       <g className="pano-water" opacity="0.7">
         <ellipse cx="760" cy="368" rx="140" ry="5" fill="#ffffff" opacity="0.35" />
@@ -141,13 +147,10 @@ function Scene({ kind }: { kind: ScrollKind }) {
         <path d="M700 376h60M820 400h44M980 402h56" stroke="#ffffff" strokeWidth="2" opacity="0.35" strokeLinecap="round" />
       </g>
 
-      {/* 岸与石 */}
       <path d="M-20 404c120-18 220-6 320 10 96 16 200 12 300-4 110-18 220-12 340 14 60 12 120 14 180 8v50H-20Z" fill={`url(#${id}-rock)`} />
-      {/* 左下前景坡石：给人物一个坐处 */}
       <path d="M-20 460c40-58 120-86 200-92 54-4 96 8 120 30-40 26-80 44-140 52-70 10-140 12-180 10Z" fill={tone.rock} opacity="0.96" />
       <path d="M-20 452c52-40 118-62 182-66" fill="none" stroke={tone.mist} strokeWidth="3" opacity="0.25" />
 
-      {/* 左上银杏大枝 */}
       <g>
         <Branch d="M-30 26c120 26 214 76 268 150" width={13} color="#5c5343" />
         <Branch d="M60 40c56 30 92 66 112 106" width={7} color="#5c5343" />
@@ -161,7 +164,6 @@ function Scene({ kind }: { kind: ScrollKind }) {
         ))}
       </g>
 
-      {/* 右上红枫 */}
       <g>
         <Branch d="M1230 22c-96 18-168 58-206 108" width={9} color="#5c4a3e" />
         <Branch d="M1130 40c-46 26-76 56-92 92" width={5} color="#5c4a3e" />
@@ -170,13 +172,11 @@ function Scene({ kind }: { kind: ScrollKind }) {
         ))}
       </g>
 
-      {/* 雾气 */}
       <g className="pano-mist" opacity="0.75">
         <ellipse cx="640" cy="352" rx="240" ry="16" fill={tone.mist} filter={`url(#${id}-blurSoft)`} />
         <ellipse cx="960" cy="332" rx="200" ry="13" fill={tone.mist} filter={`url(#${id}-blurSoft)`} />
       </g>
 
-      {/* 飘落叶片 */}
       {[
         [300, 120, 0, 'a'], [430, 190, 2.4, 'b'], [560, 90, 4.2, 'a'], [700, 150, 1.2, 'b'],
         [880, 120, 3.4, 'a'], [1010, 200, 5.2, 'b'], [470, 260, 6.2, 'a'], [790, 240, 2.0, 'b']
@@ -188,7 +188,6 @@ function Scene({ kind }: { kind: ScrollKind }) {
         </g>
       ))}
 
-      {/* 光点 */}
       <g className="pano-motes" opacity="0.8">
         {[[620, 220], [780, 180], [1000, 240], [430, 250], [1120, 300]].map(([x, y], i) => (
           <circle key={i} cx={x} cy={y} r={i % 2 ? 2.4 : 3.2} fill={tone.sun} opacity="0.85" />
@@ -208,22 +207,78 @@ const CHARS: Record<ScrollKind, CharArt[]> = {
   ]
 };
 
-/** 横向长卷画心：山水 + 立绘人物。 */
-export function EventScroll({ kind }: { kind: ScrollKind }) {
+/** 活动徽记：按主题自绘的菱形纹章（不用人物照片）。 */
+export function EventSigil({ kind }: { kind: ScrollKind }) {
+  const festival = kind === 'festival';
   return (
-    <div className={`pano ${kind}`}>
-      <Scene kind={kind}/>
-      {CHARS[kind].map((item, index) => (
-        <img
-          key={index}
-          className={`pano-char ${item.className ?? ''}`}
-          src={item.src}
-          alt={item.alt}
-          loading="lazy"
-          decoding="async"
-          style={{ animationDelay: `${index * 1.6}s` }}
-        />
-      ))}
+    <svg className={`sigil ${kind}`} viewBox="0 0 64 64" aria-hidden="true">
+      <defs>
+        <linearGradient id={`sigil-${kind}`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor={festival ? '#2f5747' : '#2c4a56'} />
+          <stop offset="100%" stopColor={festival ? '#1c382e' : '#1b333c'} />
+        </linearGradient>
+      </defs>
+      <path d="M32 3 60 32 32 61 4 32Z" fill={`url(#sigil-${kind})`} stroke="#d9c188" strokeWidth="1.6" />
+      <path d="M32 8 55 32 32 56 9 32Z" fill="none" stroke="#e8d6a8" strokeOpacity="0.45" strokeWidth="0.9" />
+      {festival ? (
+        <g>
+          {/* 银杏叶 + 霜星 */}
+          <path d="M32 44c-8 0-14-5-14-11 0-7 7-12 14-12s14 5 14 12c0 6-6 11-14 11Z" fill="#e3bd63" stroke="#f3dfa6" strokeWidth="1" />
+          <path d="M32 21v23" stroke="#8a6a2f" strokeWidth="1" strokeOpacity="0.7" />
+          <path d="M25 27 32 42M39 27 32 42" stroke="#8a6a2f" strokeWidth="0.8" strokeOpacity="0.55" />
+          <path d="M32 12v5M27 16l3 3M37 16l-3 3" stroke="#f6eccb" strokeWidth="1.6" strokeLinecap="round" />
+        </g>
+      ) : (
+        <g>
+          {/* 双人同心 + 足迹 */}
+          <circle cx="26" cy="30" r="9" fill="none" stroke="#cfe1d2" strokeWidth="1.8" />
+          <circle cx="38" cy="30" r="9" fill="none" stroke="#e3bd63" strokeWidth="1.8" />
+          <circle cx="32" cy="30" r="2.6" fill="#f2e6c4" />
+          <path d="M22 44c4-3 8-4 10-4s6 1 10 4" fill="none" stroke="#cfe1d2" strokeWidth="1.4" strokeLinecap="round" opacity="0.85" />
+          <circle cx="24" cy="48" r="1.6" fill="#e3bd63" />
+          <circle cx="32" cy="50" r="1.6" fill="#e3bd63" />
+          <circle cx="40" cy="48" r="1.6" fill="#e3bd63" />
+        </g>
+      )}
+    </svg>
+  );
+}
+
+/** 山河长卷：非矩形画心 + 斜置木轴与流苏 + 立绘人物。 */
+export function EventScroll({ kind }: { kind: ScrollKind }) {
+  const id = useId();
+  return (
+    <div className="pano-stage">
+      <svg className="pano-clip-defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <defs>
+          <clipPath id={`${id}-outline`} clipPathUnits="objectBoundingBox">
+            <path d={OUTLINE} />
+          </clipPath>
+        </defs>
+      </svg>
+      <div className={`pano ${kind}`} style={{ clipPath: `url(#${id}-outline)`, WebkitClipPath: `url(#${id}-outline)` }}>
+        <Scene kind={kind}/>
+        {CHARS[kind].map((item, index) => (
+          <img
+            key={index}
+            className={`pano-char ${item.className ?? ''}`}
+            src={item.src}
+            alt={item.alt}
+            loading="lazy"
+            decoding="async"
+            style={{ animationDelay: `${index * 1.6}s` }}
+          />
+        ))}
+      </div>
+      <span className="pano-rod rod-top-right" aria-hidden="true" />
+      <span className="pano-rod rod-bottom-left" aria-hidden="true" />
+      <svg className="pano-tassel" viewBox="0 0 48 96" aria-hidden="true" focusable="false">
+        <circle cx="24" cy="12" r="7" fill="#c2693c" stroke="#8d4626" strokeWidth="1.2" />
+        <path d="M24 19v8" stroke="#8d4626" strokeWidth="2" />
+        <path d="M24 27c-7 18-10 36-9 54" fill="none" stroke="#c2693c" strokeWidth="5" strokeLinecap="round" />
+        <path d="M24 27c6 18 8 36 7 54" fill="none" stroke="#d98a55" strokeWidth="4" strokeLinecap="round" />
+        <path d="M20 30c-2 16-2 32 0 46" fill="none" stroke="#b05c34" strokeWidth="2" strokeLinecap="round" opacity="0.8" />
+      </svg>
     </div>
   );
 }
