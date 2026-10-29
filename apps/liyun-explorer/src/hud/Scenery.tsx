@@ -9,7 +9,7 @@
  *
  * 依旧只铺左右两条竖带，内侧用蒙版化开，不遮挡地图上下。
  */
-import { useId } from 'react';
+import { useId, useState } from 'react';
 
 const V = {
   ink: '#1d3b32',
@@ -270,6 +270,32 @@ function GoldCluster({ x, y, s = 1, flip = 1 }: { x: number; y: number; s?: numb
   );
 }
 
+/**
+ * 立绘式山水图：把 /assets/art/side-left.(webp|png|jpg) 盖在矢量山水之上。
+ * 有图就用图（画质直接拉满），没图就退回矢量版，不会白屏。
+ */
+const EXTENSIONS = ['webp', 'png', 'jpg'] as const;
+
+function SideImage({ side }: { side: 'left' | 'right' }) {
+  const [ext, setExt] = useState(0);
+  const [ready, setReady] = useState(false);
+  const [dead, setDead] = useState(false);
+  if (dead) return null;
+  return (
+    <img
+      className={`side-img ${ready ? 'is-ready' : ''}`}
+      src={`/assets/art/side-${side}.${EXTENSIONS[ext]}`}
+      alt=""
+      decoding="async"
+      onLoad={() => setReady(true)}
+      onError={() => {
+        if (ext < EXTENSIONS.length - 1) { setReady(false); setExt(ext + 1); }
+        else setDead(true);
+      }}
+    />
+  );
+}
+
 export function Scenery() {
   const id = useId().replace(/[^a-zA-Z0-9]/g, '');
   return (
@@ -278,11 +304,13 @@ export function Scenery() {
         <svg className="side-svg" viewBox="0 0 240 1080" preserveAspectRatio="xMidYMid slice">
           <LeftArt id={`l${id}`}/>
         </svg>
+        <SideImage side="left"/>
       </div>
       <div className="scenery-side side-right">
         <svg className="side-svg" viewBox="0 0 240 1080" preserveAspectRatio="xMidYMid slice">
           <RightArt id={`r${id}`}/>
         </svg>
+        <SideImage side="right"/>
       </div>
     </div>
   );
