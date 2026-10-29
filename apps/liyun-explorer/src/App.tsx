@@ -13,10 +13,12 @@ import { useCampusLocation } from './location/useCampusLocation';
 import LocationControls from './location/LocationControls';
 import { campusLandmarks, distanceMeters, GOOD_ACCURACY_M, nearestLandmark, headingOnMap } from './location/campus';
 import { checkInEligibility } from './location/checkIn';
+import ActivityScreen from './activity/ActivityScreen';
 
 const params = new URLSearchParams(location.search);
 const qaMode = import.meta.env.DEV && params.get('qa') === '1';
 const preset = qaMode ? params.get('preset') : null;
+type ActivityReturn = { kind: 'map'; landmarkId: string } | { kind: 'collection' } | null;
 
 /**
  * 启程卡只弹一次：模块级记号 + 跨实例事件。
@@ -49,7 +51,12 @@ export default function App() {
   const [loginError, setLoginError] = useState<string | null>(null);
   const [entered, setEntered] = useState(() => qaMode || enteredOnce);
   const [activePanel, setActivePanel] = useState<PanelId>(null);
+  const activePanelRef = useRef(activePanel); activePanelRef.current = activePanel;
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [activityReturn, setActivityReturn] = useState<ActivityReturn>(null);
+  const activityReturnRef = useRef(activityReturn); activityReturnRef.current = activityReturn;
+  const activityOpen = entered && activePanel === 'activities';
+  const activityOpenRef = useRef(activityOpen); activityOpenRef.current = activityOpen;
   const [event, setEvent] = useState<SceneEvent | null>(null);
   const eventRef=useRef(event);eventRef.current=event;
   const [toast, setToast] = useState<string | null>(null);
@@ -128,7 +135,7 @@ export default function App() {
   }, []);
   useEffect(() => {
     const visibility=()=>setHidden(document.hidden), full=()=>setFullscreen(Boolean(document.fullscreenElement));
-    const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){setActivePanel(null);setSelectedId(null);}};
+    const key=(e:KeyboardEvent)=>{if(e.key==='Escape' && !e.defaultPrevented && !activityOpenRef.current){setActivePanel(null);setSelectedId(null);}};
     document.addEventListener('visibilitychange',visibility);document.addEventListener('fullscreenchange',full);document.addEventListener('keydown',key);
     return()=>{document.removeEventListener('visibilitychange',visibility);document.removeEventListener('fullscreenchange',full);document.removeEventListener('keydown',key);clearTimeout(toastTimer.current);clearTimeout(unlockTimer.current);if(cameraFrame.current!==undefined)cancelAnimationFrame(cameraFrame.current);};
   }, []);
@@ -152,7 +159,66 @@ export default function App() {
     if(matchMedia('(pointer: coarse)').matches)fullscreen();
   };
   const select=useCallback((id:string)=>{if(!LANDMARKS.some(x=>x.id===id))return;setSelectedId(id);setActivePanel(null);},[]);
-  const close=useCallback(()=>{setActivePanel(null);setSelectedId(null);},[]);
+  const openActivities = useCallback(() => {
+    if (cameraFrame.current !== undefined) cancelAnimationFrame(cameraFrame.current);
+    setFollowingLocation(false);
+    setSelectedId(null);
+    setActivityReturn(null);
+    setActivePanel('activities');
+  }, []);
+  const showPanel = useCallback((id: PanelId) => {
+    if (id === 'activities') { openActivities(); return; }
+    setSelectedId(null);
+    setActivePanel(id);
+  }, [openActivities]);
+  const close = useCallback(() => {
+    setSelectedId(null);
+    if (activityReturnRef.current?.kind === 'collection') {
+      if (activePanelRef.current === 'collection') {
+        setActivityReturn(null);
+        setActivePanel('activities');
+      } else setActivePanel('collection');
+    } else setActivePanel(null);
+  }, []);
+  const closeActivities = useCallback(() => {
+    setActivePanel(current => current === 'activities' ? null : current);
+  }, []);
+  const visitActivityMap = useCallback((id: string) => {
+    if (!activityOpenRef.current) return;
+    const place = LANDMARKS.find(item => item.id === id);
+    if (!place) throw new Error('这处校园地图暂时无法打开，请返回活动一览重试');
+    if (cameraFrame.current !== undefined) cancelAnimationFrame(cameraFrame.current);
+    setFollowingLocation(false);
+    setSelectedId(null);
+    setActivityReturn({ kind: 'map', landmarkId: id });
+    setActivePanel(null);
+    // This is a camera preview only; real GPS check-in and saved progress are untouched.
+    setCamera(cameraAt(place.uv, viewportRef.current, visual.current.camera.scale));
+  }, []);
+  const viewActivityCollection = useCallback(() => {
+    if (!activityOpenRef.current) return;
+    setSelectedId(null);
+    setActivityReturn({ kind: 'collection' });
+    setActivePanel('collection');
+  }, []);
+  const wasActivityOpen = useRef(false);
+  useEffect(() => {
+    const leaving = wasActivityOpen.current && !activityOpen;
+    wasActivityOpen.current = activityOpen;
+    if (!leaving || !entered || portrait || activePanel || selectedId) return;
+    const frame = requestAnimationFrame(() => {
+      stage.current?.querySelector<HTMLButtonElement>(activityReturn?.kind === 'map' ? '[data-testid="activity-return"]' : '[data-testid="activity-entry"]')?.focus({ preventScroll: true });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [activityOpen, activityReturn, activePanel, entered, portrait, selectedId]);
+  const wasPortrait = useRef(portrait);
+  useEffect(() => {
+    const resuming = wasPortrait.current && !portrait;
+    wasPortrait.current = portrait;
+    if (!resuming || !activityOpen) return;
+    const frame = requestAnimationFrame(() => stage.current?.querySelector<HTMLButtonElement>('[data-testid="activity-screen"] [role="tab"][aria-selected="true"]')?.focus({ preventScroll: true }));
+    return () => cancelAnimationFrame(frame);
+  }, [portrait, activityOpen]);
   const moveCamera=useCallback((next:MapCamera)=>{if(cameraFrame.current!==undefined)cancelAnimationFrame(cameraFrame.current);setFollowingLocation(false);setCamera(next);},[]);
   const discover=useCallback((id:string)=>{
     const place=LANDMARKS.find(x=>x.id===id),before=stateRef.current;
@@ -213,7 +279,7 @@ export default function App() {
       distanceLabel = `${selected ? '所选点位' : '最近点位'}：${state.discoveredIds.includes(target.id) ? target.name : '未知地标'} · 直线约 ${distance >= 1000 ? `${(distance / 1000).toFixed(1)} 千米` : `${Math.round(distance)} 米`}`;
     } else if (target?.isBeacon) distanceLabel = '所选信标为虚构玩法点，不提供真实目的地距离';
   }
-  const reset=()=>{setState(s=>({...createInitialState(s.settings.reducedMotion),settings:s.settings}));setEvent(null);setSelectedId(null);setActivePanel(null);center();message('云雾归来，新的旅途已开启');};
+  const reset=()=>{setState(s=>({...createInitialState(s.settings.reducedMotion),settings:s.settings}));setEvent(null);setSelectedId(null);setActivePanel(null);setActivityReturn(null);center();message('云雾归来，新的旅途已开启');};
   const handleLogin = useCallback((nickname: string, studentId: string, password: string) => {
     if (loginBusy) return;
     setLoginBusy(true);
@@ -240,49 +306,58 @@ export default function App() {
   }, [loginBusy]);
   const handleGuest = useCallback(() => { setLoginError(null); enter(); }, [enter]);
   const handleLogout = useCallback(() => {
+    enteredOnce = false;
     const token = tokenRef.current;
     setAccount(null);
     writeToken(null);
     tokenRef.current = null;
     setEntered(false);
     setActivePanel(null);
+    setActivityReturn(null);
     setSelectedId(null);
     setLoginError(null);
     if (token) void logout(token).catch(() => { /* 离线退出：本地令牌已清，服务端会话到期后自动失效 */ });
   }, []);
-  const handleLoginPrompt = useCallback(() => { setActivePanel(null); setEntered(false); setLoginError(null); }, []);
+  const handleLoginPrompt = useCallback(() => { enteredOnce = false; setActivePanel(null); setActivityReturn(null); setEntered(false); setLoginError(null); }, []);
   useEffect(()=>{
     if(!qaMode)return;
-    const api={getState:()=>stateRef.current,getCamera:()=>visual.current.camera,getEvent:()=>eventRef.current,flushSync,select,discover,setCamera,reset,freeze:(offset?:number)=>setFixedTime(offset===undefined?undefined:(event?.startedAt??0)+offset),showPanel:(panel:PanelId)=>{setSelectedId(null);setActivePanel(panel);},setPreset:(name:string)=>{setState(name==='explored'?createExploredState():createInitialState());setEvent(null);setFixedTime(undefined);setToast(null);clearTimeout(toastTimer.current);setSelectedId(null);setActivePanel(null);moveCamera(initialCamera(viewportRef.current));},setEntered};
+    const api={getState:()=>stateRef.current,getCamera:()=>visual.current.camera,getEvent:()=>eventRef.current,flushSync,select,discover,setCamera,reset,freeze:(offset?:number)=>setFixedTime(offset===undefined?undefined:(event?.startedAt??0)+offset),showPanel,setPreset:(name:string)=>{setState(name==='explored'?createExploredState():createInitialState());setEvent(null);setFixedTime(undefined);setToast(null);clearTimeout(toastTimer.current);setSelectedId(null);setActivePanel(null);setActivityReturn(null);moveCamera(initialCamera(viewportRef.current));},setEntered};
     (window as unknown as {__LIYUN__:typeof api}).__LIYUN__=api;
-  },[camera,discover,select,event]);
-  return <div className="game-stage" ref={stage} data-testid="game-stage" data-entered={entered} data-progress={progressOf(state)}>
+  },[camera,discover,select,event,showPanel]);
+  return <div className="game-stage" ref={stage} data-testid="game-stage" data-entered={entered} data-progress={progressOf(state)} data-activity-open={activityOpen}>
     {/* 纸底 + 左右山水：纸色与地图图片一致，避免贴图分界 */}
     <div className="scene-paper" aria-hidden="true" />
     <div className="scene-painting" aria-hidden="true">
       <img src="/assets/paintings/frost-frame.webp" alt="" decoding="async" />
       <span className="scene-painting-haze" />
     </div>
-    <div className="map-layer">
-    <MapScene camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} selectedId={selectedId} playerUV={state.playerUV} liveLocation={reading} locationFresh={freshLocation} headingAngle={headingAngle} event={event} reducedMotion={state.settings.reducedMotion} onCameraChange={moveCamera} onSelect={select} onVisualPosition={rememberVisual} fixedTime={fixedTime} paused={hidden||portrait} disabled={portrait||!entered||Boolean(activePanel)||Boolean(selectedId)} />
-    <Atmosphere camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} event={event} settings={state.settings} paused={hidden||portrait} seed={42} fixedTime={fixedTime}/>
+    <div className="map-layer" inert={portrait||!entered||Boolean(activePanel)||Boolean(selectedId)}>
+    <MapScene camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} selectedId={selectedId} playerUV={state.playerUV} liveLocation={reading} locationFresh={freshLocation} headingAngle={headingAngle} event={event} reducedMotion={state.settings.reducedMotion} onCameraChange={moveCamera} onSelect={select} onVisualPosition={rememberVisual} fixedTime={fixedTime} paused={hidden||portrait||activityOpen} disabled={portrait||!entered||Boolean(activePanel)||Boolean(selectedId)} />
+    <Atmosphere camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} event={event} settings={state.settings} paused={hidden||portrait||activityOpen} seed={42} fixedTime={fixedTime}/>
     </div>
     <div className="scene-vignette"/>
-    {entered && !portrait && <LocationControls state={location.state} heading={location.heading} following={followingLocation} distance={distanceLabel} onLocate={locate} onStop={()=>{setFollowingLocation(false);location.stop();}}/>}
+    {entered && !portrait && <div className="location-controls-layer" inert={activityOpen}><LocationControls state={location.state} heading={location.heading} following={followingLocation} distance={distanceLabel} onLocate={locate} onStop={()=>{setFollowingLocation(false);location.stop();}}/></div>}
     {art.pine&&<img className="border-art pine" src="/assets/art/pine-left.webp" alt="" onError={()=>setArt(s=>({...s,pine:false}))}/>}
     {art.mountain&&<img className="border-art mountain" src="/assets/art/mountain-right.webp" alt="" onError={()=>setArt(s=>({...s,mountain:false}))}/>}
-    <div className="hud-layer" inert={portrait}><Hud
+    <div className="hud-layer" inert={portrait||activityOpen}><Hud
       progress={progressOf(state)} collected={state.discoveredIds.length} activePanel={activePanel}
       selected={selected} discovered={Boolean(selected&&state.discoveredIds.includes(selected.id))}
       checkIn={selected ? checkInEligibility(selected.id,location.state) : null}
-      state={state} landmarks={LANDMARKS} entered={entered} toast={toast}
+      state={state} landmarks={LANDMARKS} entered={entered} toast={toast} activityReturn={Boolean(activityReturn)}
       isFullscreen={isFullscreen} audioBlocked={audio.blocked}
       account={account} loginBusy={loginBusy} loginError={loginError}
-      onPanel={id=>{setActivePanel(id);setSelectedId(null);}} onSelect={select} onClose={close}
+      onPanel={showPanel} onSelect={select} onClose={close}
       onExplore={()=>selectedId&&discover(selectedId)} onLocate={locate} onSettings={settings}
       onReset={reset} onFullscreen={fullscreen} onCenter={center} onEnter={enter}
       onLogin={handleLogin} onGuest={handleGuest} onLogout={handleLogout} onLoginPrompt={handleLoginPrompt}
     /></div>
+    {entered && !portrait && activityReturn?.kind === 'map' && !activePanel && !selectedId && <section className="activity-map-return" aria-label="活动地图预览">
+      <small>{LANDMARKS.find(item => item.id === activityReturn.landmarkId)?.name} · 校园地图预览</small>
+      <button type="button" data-testid="activity-return" onClick={openActivities}><span aria-hidden="true">←</span>返回活动一览</button>
+    </section>}
+    <div className="activity-layer" inert={portrait}>
+      <ActivityScreen open={activityOpen} reducedMotion={state.settings.reducedMotion} quality={state.settings.quality} discoveredIds={state.discoveredIds} onClose={closeActivities} onVisitMap={visitActivityMap} onViewCollection={viewActivityCollection}/>
+    </div>
     {portrait&&<div className="orientation-gate" role="dialog" aria-modal="true" aria-label="请横屏探索">
       <svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g className="rotate-line"><rect x="30" y="12" width="40" height="76" rx="7" stroke="currentColor" strokeWidth="2"/><path d="M43 20h14M46 80h8" stroke="currentColor" strokeWidth="2"/></g><path d="M83 32a38 38 0 0 0-56-15m-2-8 1 10 10-2M17 68a38 38 0 0 0 56 15m2 8-1-10-10 2" stroke="currentColor" strokeWidth="2"/></svg>
       <h1>展开一方天地</h1><p>{matchMedia('(pointer: coarse)').matches?'请手动旋转手机，横屏开启校园之旅':'请将浏览器窗口调整为横向，开启校园之旅'}<br/>你的探索进度会为你保留</p><small>理韵寻踪 · 北理校园探索</small>

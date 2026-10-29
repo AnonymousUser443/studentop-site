@@ -8,6 +8,8 @@
 
 ## 当前复核方式
 
+2026-10-29 活动长卷的当前实现、截图和局部回归见 [activity/QA.md](activity/QA.md)，实际检查见 [feature-20261029/checks.json](../../../qa/feature-20261029/checks.json)。该轮证据放在根 `qa/liyun-activity-20261029/`，不混入早期迁移验收目录；下方历史描述保留其原语境。
+
 从仓库根执行：
 
 ~~~powershell

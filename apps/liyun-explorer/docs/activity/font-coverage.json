@@ -1,0 +1,84 @@
+{
+  "baseline": "230f80d",
+  "scope": "Current Liyun source Chinese code points, including all activity UI/data/TS/CSS source; no private account data",
+  "command": "pwsh -NoProfile -File apps/liyun-explorer/scripts/fonts-build.ps1 -SerifSource C:/Windows/Fonts/NotoSerifSC-VF.ttf -BrushSource apps/liyun-explorer/public/assets/fonts/MaShanZheng-Regular.ttf",
+  "method": "fontTools TTFont.getBestCmap() against actual saved WOFF2 and complete source fonts; CJK Unicode code points collected from UTF-8 source",
+  "sourceFileCount": 44,
+  "activitySourceFiles": [
+    "src/activity/activity.css",
+    "src/activity/ActivityScreen.tsx",
+    "src/activity/artwork.css",
+    "src/activity/events.test.ts",
+    "src/activity/events.ts",
+    "src/activity/ThemeArtwork.tsx"
+  ],
+  "sourceChineseCount": 721,
+  "activityChineseCount": 310,
+  "activityChineseCharacters": "一上下不与个中串为主之也书事交亮人仅仍代令以件任会你使供信偶先光入公关具再写冬准划则别到刻前加务动励北卷参发取叙可叶号后向启告响四回园图在地场境增墨声处备夏奇奖好妙字存季宇完实客对寻封将小尚就展己已布常序度开异式当录影往径待得循微徽忆念息悉想意成我或手打找把抵探接提收放故数新方旅无旧时明星春是显景暂更有期未本札机杏条来构林枚染查标校档楼模次正此段每沿法注活深清渐游湖漫点熟片物玩现理用画畔留登的目相看真眼着知短示秋程稍章等筹签篇系索纪线经给统绪续缕置翻能脚自节芒花荫获落藏虚行表规览角解计认让记许设访证识试话说请读谜账走起足路踪轨转轴载辉达过返这进迹途逢遇道邀都配里重量鉴银锁闭间闻阅际降随雅集雨雪霜韵页顾预领题风馆香",
+  "fonts": [
+    {
+      "path": "public/assets/fonts/NotoSerifSC-UI.woff2",
+      "bytes": 327384,
+      "sha256": "8a722a976a80cac5676b9e54feb65e3029ed65c18d64caa57064676308c16a05",
+      "previousCommittedBytes": 222552,
+      "previousCommittedSha256": "859a10a1fd5bc24e044ba5abe131cdccf6ee92dcbc1debc4f9bdec23566c5d0e",
+      "sourceFont": "NotoSerifSC-VF.ttf",
+      "sourceFontSha256": "a4aed9985a5916fbf6690456f8732a9fccd517938e353165d4142b4f11a39280",
+      "subsetCmapCodePointCount": 842,
+      "missingSourceChinese": "",
+      "missingActivityChinese": "",
+      "missingInCompleteSourceFont": "",
+      "lostDuringSubset": "",
+      "coversAllActivityChinese": true,
+      "coversAllSourceChinese": true
+    },
+    {
+      "path": "public/assets/fonts/MaShanZheng-UI.woff2",
+      "bytes": 316300,
+      "sha256": "7ee892d5c64057387b968bb915a87355209fa3ff31f798f171578fb6cf202cee",
+      "previousCommittedBytes": 187600,
+      "previousCommittedSha256": "0fb93e13b42a4166152d1e0a7978564ec5fff4fc317f3004d0c3439d5823d08d",
+      "sourceFont": "MaShanZheng-Regular.ttf",
+      "sourceFontSha256": "6d2546bb189c732a8ca29af9e22457b152387d158aa459e4ac2ce1e51788b7fb",
+      "subsetCmapCodePointCount": 831,
+      "missingSourceChinese": "",
+      "missingActivityChinese": "",
+      "missingInCompleteSourceFont": "",
+      "lostDuringSubset": "",
+      "coversAllActivityChinese": true,
+      "coversAllSourceChinese": true
+    }
+  ],
+  "sourceAndLicenseIntegrity": [
+    {
+      "path": "public/assets/fonts/MaShanZheng-Regular.ttf",
+      "unchangedFromHEAD": true,
+      "sha256": "6d2546bb189c732a8ca29af9e22457b152387d158aa459e4ac2ce1e51788b7fb"
+    },
+    {
+      "path": "public/assets/fonts/MaShanZheng-OFL.txt",
+      "unchangedFromHEAD": true,
+      "sha256": "d7bdb1cee215b689e23c2f95672a6084c790542170648267a55114103d756a08"
+    },
+    {
+      "path": "public/assets/fonts/NotoSerifSC-OFL.txt",
+      "unchangedFromHEAD": true,
+      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6"
+    }
+  ],
+  "characterFile": {
+    "path": "scripts/fonts-characters.txt",
+    "bytes": 2332,
+    "sha256": "8a89df16b87c38e2ef4e8603be5260bc8ee68e5f7a33204ca11addd833ba75b2",
+    "containsAllSourceChinese": true
+  },
+  "allActivityChineseCovered": true,
+  "allSourceChineseCovered": true,
+  "artworkReadOnlyReview": {
+    "hiddenAndPaused": "data-paused follows component paused prop OR document.hidden; CSS pauses all descendants, listeners removed on unmount",
+    "reducedMotion": "component flag and OS media query disable falling leaves/glints/branch/water loops; current photo remains visible",
+    "missingForegroundBitmap": "branch and journal onError set hidden=true; explicit CSS [hidden] display:none; no broken foreground icon persists",
+    "missingLandscape": "onError shows gradient/vector fallback and visible unavailable hint; loops currently are not paused solely by failed=true, reported to parent before any code change",
+    "reviewOnly": true
+  }
+}

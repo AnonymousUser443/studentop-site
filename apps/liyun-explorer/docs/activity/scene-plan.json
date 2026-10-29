@@ -1,0 +1,44 @@
+{
+  "baseline": "230f80d",
+  "medium": "interactive-react-game-menu",
+  "reference": "User supplied activity-page-concept.png, 1672x941",
+  "scenes": [
+    {
+      "id": "map-to-scroll",
+      "reason": "Keep the campus map spatially continuous while opening its activity journal.",
+      "durationMs": 950,
+      "layers": {
+        "background": "Existing campus map, input suspended only while the menu is visible",
+        "far": "Static soft warm backdrop above and below the central strip",
+        "middle": "Theme illustration: lake, campus-inspired buildings, bridge",
+        "subject": "Five-entry hanging scroll and right paper details",
+        "foreground": "Independent ginkgo branch and small leaf set",
+        "atmosphere": "Low opacity water highlights, reduced or paused when appropriate",
+        "ui": "Editable headings, status, reward explanations, CTA and close button"
+      },
+      "states": ["opening", "open", "switching", "navigating", "closing"],
+      "interruptions": "Last selection wins; closing cancels pending motion/navigation; no stale CTA may run.",
+      "safeAreas": "Landscape layout responds to height; 44px touch controls; portrait uses existing rotation guidance."
+    },
+    {
+      "id": "chapter-change",
+      "reason": "Show a new story while preserving the scroll as the player's navigation anchor.",
+      "durationMs": 560,
+      "motion": "Bookmark moves; old details leave; new theme and details crossfade with no full-screen flash.",
+      "themes": ["frost", "seasons", "mystery", "encounters", "archive"],
+      "contentTruth": "Unreleased activities remain previews; archive reads actual discovered landmark IDs."
+    },
+    {
+      "id": "map-preview-return",
+      "reason": "Connect the illustrated preview to an existing map location without inventing event participation.",
+      "durationMs": 450,
+      "motion": "Scroll recedes into the existing campus map; explicit return restores selection and list position.",
+      "constraints": "No GPS bypass, no automatic check-in, no reward grant, no new external window."
+    }
+  ],
+  "review": {
+    "static": "Two rounds inspected; crude branch/journal/rewards replaced with layered ImageGen bitmaps; desktop and five landscape viewports checked.",
+    "motion": "37 native browser checks plus 12 fault/lifecycle checks; opening, switching, map/collection return, closing, touch, keyboard and reduced motion.",
+    "limitations": "Owned headless Edge and emulated viewports; synthetic visibility signal, no physical mobile FPS claim."
+  }
+}
