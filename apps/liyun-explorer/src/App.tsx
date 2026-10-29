@@ -6,7 +6,6 @@ import { createExploredState, createInitialState, explore, progressOf, restoreSt
 import MapScene from './map/MapScene';
 import { cameraAt, clampCamera, initialCamera, uvToScreen } from './map/geometry';
 import Hud from './hud/Hud';
-import { Scenery } from './hud/Scenery';
 import Atmosphere from './effects/Atmosphere';
 import { useAudio } from './audio/useAudio';
 
@@ -132,7 +131,6 @@ export default function App() {
     (window as unknown as {__LIYUN__:typeof api}).__LIYUN__=api;
   },[camera,discover,select,event]);
   return <div className="game-stage" ref={stage} data-testid="game-stage" data-entered={entered} data-progress={progressOf(state)}>
-    <Scenery/>
     <MapScene camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} selectedId={selectedId} playerUV={state.playerUV} event={event} reducedMotion={state.settings.reducedMotion} onCameraChange={moveCamera} onSelect={select} onVisualPosition={rememberVisual} fixedTime={fixedTime} paused={hidden||portrait} disabled={portrait||!entered||Boolean(activePanel)||Boolean(selectedId)} />
     <Atmosphere camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} event={event} settings={state.settings} paused={hidden||portrait} seed={42} fixedTime={fixedTime}/>
     <div className="scene-vignette"/>
