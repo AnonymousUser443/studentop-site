@@ -5,11 +5,16 @@
 
 这台树莓派上跑着 4 个站点，全部由本目录的脚本与配置管理。
 
+主页、理韵活动页和桌面真实监控最近一次发布以[2026-10-29 生产收据](../docs/ACTIVITY-MONITOR-RELEASE-20261029.md)为准。该次同时更新桌面认证代理；下方历史单主页脚本不能代替这项联动发布。
+
 ## 文件地图
 
 | 文件 | 作用 |
 | --- | --- |
 | `deploy-site.sh` | **主页发布**：本地打包 → scp → 解到 `releases/<UTC时间戳>` → `nginx -t` → 原子切 `current` 软链 → 自检失败自动回滚 |
+| `apply-activity-monitor.mjs` | 本次所有者授权的主页、理韵静态与桌面代理事务；接收私有上传目录和归档 SHA-256，在共享发布锁下运行；检查失败恢复三个指针与两份配置，不是单独可用的打包器 |
+| `probe-real-monitor.mjs` | 以桌面服务账号和临时合成门禁验证真实回环采样及退出断流，不读取所有者问答或创建生产会话 |
+| `../tools/build-liyun-release.mjs` | 本地封装理韵 Vite 产物到内容版本路径，覆盖字体及动态图片前缀，避免长期缓存复用旧素材 |
 | `checksum-compare.sh` | 本地 vs 线上逐文件 sha256 对比（发布后确认一致） |
 | `verify.sh` | 站点可用性/响应头/关键文件检查 |
 | `preflight-public.sh` | **公网 8 项体检**：frpc 状态 / Pi→节点 TCP / 公网 DNS / 本地证书 / 主页 / frost / liyun / genshin |

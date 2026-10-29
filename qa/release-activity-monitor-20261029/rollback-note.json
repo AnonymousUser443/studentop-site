@@ -1,0 +1,7 @@
+{
+  "firstAttempt": "activity-monitor-20261029T154236Z-f320dadbb9",
+  "reason": "Deployment checker incorrectly expected the intentionally denied site-build.json to be publicly readable.",
+  "result": "Automatic rollback restored the previous home, Liyun, auth and proxy configuration; read-only inventory confirmed all services active.",
+  "fix": "Public self-check now skips internal metadata byte fetch and explicitly asserts its HTTP403, without changing access policy.",
+  "finalRelease": "activity-monitor-20261029T154940Z-f320dadbb9"
+}
