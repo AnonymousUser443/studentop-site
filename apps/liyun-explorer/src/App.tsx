@@ -134,7 +134,16 @@ export default function App() {
     {/* 底图：手绘校园山水，地图由此自然化开 */}
     <div className="scene-painting" aria-hidden="true">
       <img src="/assets/paintings/north-lake.webp" alt="" decoding="async" />
+      <span className="paper-tint" />
       <span className="scene-painting-haze" />
+      <span className="paper-waves" aria-hidden="true">
+        <svg viewBox="0 0 1920 1080" preserveAspectRatio="none">
+          <path d="M0 0h1920v120c-180 44-330 8-470-18-160-30-300 22-450 42-140 18-300 4-460-24-140-24-300-10-540 22V0Z" fill="#f7efd9" opacity="0.9" />
+          <path d="M0 0h1920v74c-200 34-360 0-520-24-150-22-300 26-450 40-150 14-320-6-480-30-120-18-260-8-470 18V0Z" fill="#fbf6e6" opacity="0.85" />
+          <path d="M0 1080v-150c160-52 300-30 430 4 130 34 290 30 430-8 140-38 300-42 440-6 120 32 300 46 620-10v170Z" fill="#f4e9c8" opacity="0.5" />
+          <path d="M0 1080v-70c190-30 340 6 470 26 130 20 300 6 440-18 140-24 300-18 430 8 130 26 340 26 580-6v60Z" fill="#faf4e0" opacity="0.55" />
+        </svg>
+      </span>
     </div>
     <div className="map-layer">
       <MapScene camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} selectedId={selectedId} playerUV={state.playerUV} event={event} reducedMotion={state.settings.reducedMotion} onCameraChange={moveCamera} onSelect={select} onVisualPosition={rememberVisual} fixedTime={fixedTime} paused={hidden||portrait} disabled={portrait||!entered||Boolean(activePanel)||Boolean(selectedId)} />
