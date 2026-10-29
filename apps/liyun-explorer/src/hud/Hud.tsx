@@ -2,40 +2,11 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type { HudProps, IconName, PanelId } from '../types';
 import { Icon } from './Icon';
 import { BrandGate, CompassRose, EdgeOrnaments, MenuShape } from './Ornaments';
-import { EventScroll, EventSigil } from './EventScroll';
 import './hud.css';
 
 const NAV: { id: PanelId; title: string; subtitle: string; icon: IconName; notice?: boolean }[] = [
-  { id: 'main', title: '校园主线', subtitle: '探寻北理的昨日与今朝', icon: 'book' },
-  { id: 'events', title: '活动', subtitle: '限时活动 · 与友同行', icon: 'leaf', notice: true }
+  { id: 'main', title: '校园主线', subtitle: '探寻北理的昨日与今朝', icon: 'book' }
 ];
-
-type EventId = 'festival' | 'party';
-const EVENTS: { id: EventId; title: string; subtitle: string; tag: string; status: string; icon: IconName; tone: EventId }[] = [
-  { id: 'festival', title: '霜降雅集', subtitle: '限时活动 · 秋意同游', tag: '限时', status: '10月24日 — 11月7日', icon: 'leaf', tone: 'festival' },
-  { id: 'party', title: '多人同行', subtitle: '同游有伴 · 山水有期', tag: '筹备中', status: '即将开启', icon: 'people', tone: 'party' }
-];
-
-const EVENT_COPY: Record<EventId, { eyebrow: string; title: string; verse: string; desc: string; dateLabel: string; date: string; cta: string }> = {
-  festival: {
-    eyebrow: '限时活动 · 秋意同游',
-    title: '霜降雅集',
-    verse: '把校园的秋，收进你的行囊。',
-    desc: '银杏渐黄，湖风微凉。沿着校园地图漫游，在熟悉的转角遇见这一季的风物。',
-    dateLabel: '霜降 · 校园同游',
-    date: '10月24日 — 11月7日',
-    cta: '进入活动'
-  },
-  party: {
-    eyebrow: '常驻 · 同游有伴',
-    title: '多人同行',
-    verse: '下一程，约上同行的人。',
-    desc: '组队探索与合作玩法即将启程。当前地图可独自漫游，顶部同行人数为界面演示数据。',
-    dateLabel: '同游有伴 · 山水有期',
-    date: '即将开启',
-    cta: '进入活动'
-  }
-};
 
 /**
  * Placeholder identity for the profile panel.
@@ -43,7 +14,7 @@ const EVENT_COPY: Record<EventId, { eyebrow: string; title: string; verse: strin
  */
 const PROFILE = { name: '未登录', studentId: '——' };
 
-function Modal({ title, eyebrow, icon, children, onClose, className = '', scroll = false }: { title: string; eyebrow: string; icon: IconName; children: ReactNode; onClose: () => void; className?: string; scroll?: boolean }) {
+function Modal({ title, eyebrow, icon, children, onClose, className = '' }: { title: string; eyebrow: string; icon: IconName; children: ReactNode; onClose: () => void; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
@@ -67,13 +38,7 @@ function Modal({ title, eyebrow, icon, children, onClose, className = '', scroll
     <span className="modal-corner corner-tl"/><span className="modal-corner corner-tr"/><span className="modal-corner corner-bl"/><span className="modal-corner corner-br"/>
   </>;
   return <div className="hud-modal-backdrop" onPointerDown={e => { if (e.target === e.currentTarget) onClose(); }}>
-    {scroll
-      ? <div className="scroll-wrap">
-          <span className="scroll-rod rod-left" aria-hidden="true"/>
-          <span className="scroll-rod rod-right" aria-hidden="true"/>
-          <div className={`hud-modal ${className} is-scroll`} role="dialog" aria-modal="true" aria-label={title} ref={ref}>{inner}</div>
-        </div>
-      : <div className={`hud-modal ${className}`} role="dialog" aria-modal="true" aria-label={title} ref={ref}>{inner}</div>}
+    <div className={`hud-modal ${className}`} role="dialog" aria-modal="true" aria-label={title} ref={ref}>{inner}</div>
   </div>;
 }
 
@@ -83,8 +48,7 @@ function Toggle({ checked, onChange, label, description }: { checked: boolean; o
 
 function Panels(p: HudProps) {
   const [resetArmed, setResetArmed] = useState(false);
-  const [eventId, setEventId] = useState<EventId>('festival');
-  useEffect(() => { setResetArmed(false); setEventId('festival'); }, [p.activePanel]);
+  useEffect(() => setResetArmed(false), [p.activePanel]);
   const settings = p.state.settings;
   if (p.selected) {
     const item = p.selected;
@@ -133,70 +97,6 @@ function Panels(p: HudProps) {
     case 'main': return <Modal title="校园主线" eyebrow="第一卷 · 初见良乡" icon="book" {...common}>
       <div className="chapter-art"><Icon name="gate"/><span>循光入境</span></div><p className="landmark-verse">校园的故事，从你的第一步开始。</p><p className="landmark-description">从文萃楼出发，跟随探索信标，点亮北湖、图书馆与更多熟悉的校园地标。</p><div className="chapter-progress"><span>校园探索</span><strong>{Math.round(p.progress)}%</strong><progress value={p.progress} max="100"/></div><button className="parchment-button" onClick={() => p.onSelect('tower')}>追寻金色信标<Icon name="tower"/></button>
     </Modal>;
-    case 'events': {
-      const current = EVENTS.find(item => item.id === eventId) ?? EVENTS[0];
-      const copy = EVENT_COPY[current.id];
-      return <Modal title="活动" eyebrow="新章待启 · 共赴良乡" icon="leaf" {...common} className="events-modal" scroll>
-        <div className="event-body">
-          <aside className="event-rail" role="tablist" aria-label="活动列表">
-            {EVENTS.map(item => (
-              <button key={item.id} role="tab" aria-selected={item.id === current.id} className={`rail-item ${item.id === current.id ? 'is-active' : ''}`} onClick={() => setEventId(item.id)}>
-                <EventSigil kind={item.id}/>
-                <span className="rail-title">{item.title}</span>
-                <span className="rail-tag">{item.tag}</span>
-              </button>
-            ))}
-            <p className="rail-foot">◇ 更多篇章<br/>敬请期待 ◇</p>
-          </aside>
-          <div className="event-pano">
-            <EventScroll kind={current.tone}/>
-            <div className="pano-head">
-              <p className="pano-eyebrow">{copy.eyebrow}</p>
-              <p className="pano-title">{copy.title}</p>
-              <p className="pano-sub">{current.subtitle}</p>
-            </div>
-            <div className="pano-card">
-              <p className="pano-verse">{copy.verse}</p>
-              <p className="pano-desc">{copy.desc}</p>
-              <div className="pano-date"><span>{copy.dateLabel}</span><strong>{copy.date}</strong></div>
-              <button className="parchment-button" onClick={() => p.onPanel(current.id)}>{copy.cta}<Icon name={current.icon}/></button>
-            </div>
-          </div>
-        </div>
-      </Modal>;
-    }
-    case 'festival': return <Modal title="霜降雅集" eyebrow="时令篇章 · 秋意同游" icon="leaf" {...common} className="festival-modal" scroll>
-      <div className="event-pano">
-        <EventScroll kind="festival"/>
-        <div className="pano-head">
-          <p className="pano-eyebrow">限时活动 · 秋意同游</p>
-          <p className="pano-title">霜降雅集</p>
-          <p className="pano-sub">一叶知秋 · 湖畔雅集</p>
-        </div>
-        <div className="pano-card">
-          <p className="pano-verse">把校园的秋，收进你的行囊。</p>
-          <p className="pano-desc">银杏渐黄，湖风微凉。沿着校园地图漫游，在熟悉的转角遇见这一季的风物。</p>
-          <div className="pano-date"><span>霜降 · 校园同游</span><strong>10月24日 — 11月7日</strong></div>
-          <button className="parchment-button" onClick={() => p.onSelect('beihu')}>去北湖赏秋<Icon name="leaf"/></button>
-        </div>
-      </div>
-    </Modal>;
-    case 'party': return <Modal title="多人同行" eyebrow="同游有伴 · 山水有期" icon="people" {...common} className="party-modal" scroll>
-      <div className="event-pano">
-        <EventScroll kind="party"/>
-        <div className="pano-head">
-          <p className="pano-eyebrow">常驻 · 同游有伴</p>
-          <p className="pano-title">多人同行</p>
-          <p className="pano-sub">并肩而行 · 山水有期</p>
-        </div>
-        <div className="pano-card">
-          <p className="pano-verse">下一程，约上同行的人。</p>
-          <p className="pano-desc">组队探索与合作玩法即将启程。当前地图可独自漫游，顶部同行人数为界面演示数据。</p>
-          <div className="pano-date"><span>同游有伴 · 山水有期</span><strong>即将开启</strong></div>
-          <button className="parchment-button" onClick={p.onClose}>继续我的旅程<Icon name="compass"/></button>
-        </div>
-      </div>
-    </Modal>;
     case 'stamina': return <Modal title="行旅体力" eyebrow="步履从容 · 随心探索" icon="moon" {...common}>
       <div className="stamina-display"><Icon name="moon"/><strong>164<span>/ 200</span></strong></div><p className="landmark-description">山水之间，留一点从容。当前探索体验不消耗体力，可以自在点亮校园的每一处微光。</p><button className="parchment-button" onClick={p.onClose}>继续探索<Icon name="compass"/></button>
     </Modal>;
@@ -216,12 +116,12 @@ export default function Hud(p: HudProps) {
         <span className="brand-seal">理<br/>韵</span>
       </div>
       <nav className="story-nav" aria-label="探索篇章"><span className="nav-timeline"/>{NAV.map(item => {
-        const active = p.activePanel === item.id || (!p.activePanel && item.id === 'main'); const variant = item.id === 'events' && !active ? 'gold' : active ? 'light' : 'dark';
-        return <button key={item.id} className={`story-button ${variant} ${active ? 'is-active' : ''}`} onClick={() => p.onPanel(item.id)} aria-pressed={active}><MenuShape variant={variant}/><span className="nav-medallion"><Icon name={item.icon}/></span><span className="nav-copy"><strong>{item.title}</strong><small>{item.subtitle}</small></span>{item.id === 'events' && <Icon name="leaf" className="festival-leaf"/>}{item.notice && <span className="notice-dot"/>}</button>;
+        const active = p.activePanel === item.id || (!p.activePanel && item.id === 'main'); const variant = active ? 'light' : 'dark';
+        return <button key={item.id} className={`story-button ${variant} ${active ? 'is-active' : ''}`} onClick={() => p.onPanel(item.id)} aria-pressed={active}><MenuShape variant={variant}/><span className="nav-medallion"><Icon name={item.icon}/></span><span className="nav-copy"><strong>{item.title}</strong><small>{item.subtitle}</small></span>{item.notice && <span className="notice-dot"/>}</button>;
       })}</nav>
       <div className="resource-bar" aria-label="旅途状态">
         <button className="resource-pill" onClick={() => p.onPanel('collection')} aria-label={`收录 ${p.collected}/36，打开图鉴`}><Icon name="book"/><span className="resource-label">收录</span><strong>{p.collected}<span>/36</span></strong></button>
-        <button className="resource-pill" onClick={() => p.onPanel('party')} aria-label="同行演示，打开多人同行"><Icon name="people"/><span className="resource-label">在线</span><strong>4<span>人</span></strong></button>
+        <span className="resource-pill" aria-label="在线 4 人"><Icon name="people"/><span className="resource-label">在线</span><strong>4<span>人</span></strong></span>
       </div>
       <button className="fullscreen-control" onClick={p.onFullscreen} aria-label={p.isFullscreen ? '退出全屏' : '进入全屏'} title={p.isFullscreen ? '退出全屏' : '进入全屏'}><Icon name="fullscreen"/></button>
       <button className="map-compass" onClick={p.onCenter} aria-label="回到当前探索位置"><span>北</span><CompassRose/></button>

@@ -12,6 +12,15 @@ import { useAudio } from './audio/useAudio';
 const params = new URLSearchParams(location.search);
 const qaMode = import.meta.env.DEV && params.get('qa') === '1';
 const preset = qaMode ? params.get('preset') : null;
+
+/**
+ * 启程卡只弹一次：模块级记号 + 跨实例事件。
+ * 开发模式的重复挂载、HMR 重挂载都会重新初始化组件状态，
+ * 靠这两样东西保证已经点过「进入校园」后不会再弹第二张卡。
+ */
+const ENTERED_EVENT = 'liyun:entered';
+let enteredOnce = false;
+
 function load(): ExplorationState {
   if (preset === 'explored') return createExploredState();
   if (preset === 'fog') return createInitialState();
@@ -29,7 +38,7 @@ export default function App() {
   const visual = useRef({uv:state.playerUV,camera});
   const rememberVisual=useCallback((uv:ExplorationState['playerUV'],view:MapCamera)=>{visual.current={uv,camera:view};},[]);
   const stateRef = useRef(state); stateRef.current = state;
-  const [entered, setEntered] = useState(qaMode);
+  const [entered, setEntered] = useState(() => qaMode || enteredOnce);
   const [activePanel, setActivePanel] = useState<PanelId>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [event, setEvent] = useState<SceneEvent | null>(null);
@@ -45,6 +54,11 @@ export default function App() {
   const selected = LANDMARKS.find(x => x.id === selectedId) ?? null;
   const message = useCallback((text:string) => { setToast(text); clearTimeout(toastTimer.current); toastTimer.current = setTimeout(() => setToast(null), 3600); }, []);
   useEffect(() => { if (preset) return; try { localStorage.setItem(SAVE_KEY, JSON.stringify(state)); } catch { /* Private mode keeps a usable in-memory session. */ } }, [state]);
+  useEffect(() => {
+    const dismiss = () => setEntered(true);
+    window.addEventListener(ENTERED_EVENT, dismiss);
+    return () => window.removeEventListener(ENTERED_EVENT, dismiss);
+  }, []);
   useEffect(() => {
     if (!stage.current) return;
     const observer = new ResizeObserver(([entry]) => {
@@ -81,7 +95,14 @@ export default function App() {
     }).catch(()=>message('未能进入全屏，仍可横屏继续探索'));
   },[message]);
   const settings=useCallback((patch:Partial<GameSettings>)=>setState(s=>({...s,settings:{...s.settings,...patch}})),[]);
-  const enter=()=>{const track=Math.floor(Math.random()*3);settings({track});audio.start(track);setEntered(true);if(matchMedia('(pointer: coarse)').matches)fullscreen();};
+  const enter=()=>{
+    enteredOnce = true;
+    const track=Math.floor(Math.random()*3);
+    settings({track});audio.start(track);setEntered(true);
+    // 同一次加载里若存在第二个 App 实例（开发模式重复挂载等），让它一起关闭启程卡
+    window.dispatchEvent(new Event(ENTERED_EVENT));
+    if(matchMedia('(pointer: coarse)').matches)fullscreen();
+  };
   const select=useCallback((id:string)=>{if(!LANDMARKS.some(x=>x.id===id))return;setSelectedId(id);setActivePanel(null);},[]);
   const close=useCallback(()=>{setActivePanel(null);setSelectedId(null);},[]);
   const moveCamera=useCallback((next:MapCamera)=>{if(cameraFrame.current!==undefined)cancelAnimationFrame(cameraFrame.current);setCamera(next);},[]);
