@@ -119,7 +119,7 @@
 
 /* Modal surfaces use crisp cut-paper edges and restrained ornament. */
 .hud-modal-backdrop { position: absolute; inset: 0; z-index: 30; display: grid; place-items: center; padding: 28px; background: #0d3029a8; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); pointer-events: auto; touch-action: auto; animation: veil-in .18s ease both; }
-.hud-modal { position: relative; width: min(540px, 100%); max-height: min(760px, calc(100dvh - 56px)); display: flex; flex-direction: column; padding: 30px 34px 28px; color: #28483c; background: #f3e8c8; border: 1px solid #e5d39b; outline: 1px solid #cab277; outline-offset: -7px; box-shadow: 0 22px 80px #08271f66, 0 0 0 3px #274a3b, 0 0 0 4px #c4ad70; animation: panel-in .25s var(--ease, ease) both; }
+.hud-modal { position: relative; width: min(540px, 100%); max-height: min(760px, calc(100dvh - 56px)); display: flex; flex-direction: column; padding: 30px 34px 28px; color: #28483c; background: #f3e8c8; border: 1px solid #e5d39b; outline: 1px solid #cab277; outline-offset: -7px; box-shadow: 0 22px 80px #08271f66, 0 0 0 3px #274a3b, 0 0 0 4px #c4ad70; animation: scroll-open .5s var(--ease, ease) both; }
 .hud-modal::before { content: ''; position: absolute; inset: 8px; border: 1px solid #c2aa6b66; pointer-events: none; }
 .modal-heading { position: relative; display: flex; align-items: center; gap: 17px; padding-bottom: 22px; border-bottom: 1px solid #c8b274; flex: none; }
 .modal-emblem { display: grid; place-items: center; width: 54px; height: 54px; flex: none; border: 1px solid #b39a5e; background: #2d5444; color: #f0dc9d; outline: 1px solid #b39a5e; outline-offset: 3px; transform: rotate(45deg); border-radius: 5px; }
@@ -310,7 +310,7 @@
 .stamina-display strong > span { margin-left: 9px; font-size: 19px; color: #9a916d; }
 
 .entrance-overlay { position: absolute; z-index: 40; inset: 0; display: grid; place-items: center; background: #0c2d2594; pointer-events: auto; touch-action: manipulation; }
-.entry-card { text-align: center; padding: 27px 36px 25px; width: min(420px, calc(100vw - 48px)); color: #f7e9bb; background: #1b4038ed; border: 1px solid #c2aa70; outline: 1px solid #c2aa7055; outline-offset: -7px; box-shadow: 0 16px 55px #10382d77; animation: panel-in .5s var(--ease, ease) both; }
+.entry-card { text-align: center; padding: 27px 36px 25px; width: min(420px, calc(100vw - 48px)); color: #f7e9bb; background: #1b4038ed; border: 1px solid #c2aa70; outline: 1px solid #c2aa7055; outline-offset: -7px; box-shadow: 0 16px 55px #10382d77; animation: scroll-open .6s var(--ease, ease) both; }
 .entry-flourish { display: flex; align-items: center; justify-content: center; gap: 9px; color: #c8b680; font-size: 10px; letter-spacing: .15em; white-space: nowrap; }
 .entry-flourish > span { width: 35px; height: 1px; background: #c8b68066; }
 .entry-card > p { margin: 22px 0 23px; font: 400 25px/1.4 'Ma Shan Zheng', serif; letter-spacing: .06em; }
@@ -321,6 +321,24 @@
 .game-toast { position: absolute; z-index: 35; left: 50%; top: 15%; display: flex; align-items: center; justify-content: center; gap: 12px; max-width: calc(100% - 36px); padding: 13px 29px; border: 1px solid #ccb577; background: #21493eee; color: #f7e8b9; box-shadow: 0 6px 18px #153e3144, inset 0 0 0 4px #21493e, inset 0 0 0 5px #ccb57744; transform: translateX(-50%); font-size: 14px; letter-spacing: .04em; pointer-events: none; text-align: center; animation: toast-in .3s ease both; }
 .game-toast .ly-icon { width: 24px; height: 24px; color: #e4c880; }
 @keyframes veil-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* 书卷展开：所有弹窗打开时自上而下铺开，标题与正文错开淡入 */
+@keyframes scroll-open {
+  0% { clip-path: inset(0 0 100% 0); transform: translateY(-8px); }
+  62% { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 0 0 0); transform: none; }
+}
+.hud-modal .modal-heading { animation: roll-in .3s var(--ease, ease) .12s both; }
+.hud-modal .modal-body { animation: roll-in .38s var(--ease, ease) .18s both; }
+@keyframes roll-in {
+  0% { opacity: 0; transform: translateY(-7px); }
+  100% { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hud-modal,
+  .hud-modal .modal-heading,
+  .hud-modal .modal-body { animation: none; }
+}
 @keyframes panel-in { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes toast-in { from { opacity: 0; margin-top: -8px; } to { opacity: 1; margin-top: 0; } }
 
