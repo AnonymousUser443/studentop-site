@@ -1,46 +1,50 @@
 /**
- * 活动页立绘：使用国风二次元插画，配以金框、题签与飘叶。
+ * 活动页卷中画：把人物立绘柔边合成进水墨山水，配合挂轴书卷版式。
  *
- * 人物插画放在 src/assets/events/，按活动配成双人立绘：
- * - 霜降雅集：庭中执笔的少年 + 亭下奉茶的少女（红柱金黄，最贴霜降主题）
- * - 多人同行：银杏下执扇的少年 + 雾中抱卷的少女
+ * 山水背景由脚本 _compose_scenes.py 生成（人物四周渐隐 + 罩色），
+ * 图片位于 src/assets/events/event-scene-*.jpg。
  */
 import boyFan from '../assets/events/boy-fan.jpg';
 import boyCalligraphy from '../assets/events/boy-calligraphy.jpg';
 import girlScroll from '../assets/events/girl-scroll.jpg';
 import girlTea from '../assets/events/girl-tea.jpg';
+import festivalScene from '../assets/events/event-scene-festival.jpg';
+import partyScene from '../assets/events/event-scene-party.jpg';
 
 export type EventArtKey = 'festival' | 'party';
 
 type Portrait = { src: string; alt: string; focus?: string };
 
-type EventArt = { left: Portrait; right: Portrait; banner: string; seal: string };
+export type EventArt = {
+  left: Portrait;
+  right: Portrait;
+  banner: string;
+  seal: string;
+  scene: { src: string; alt: string };
+};
 
 export const EVENT_ART: Record<EventArtKey, EventArt> = {
   festival: {
     left: { src: boyCalligraphy, alt: '少年在庭中执笔，于卷上写下霜降二字', focus: '58% 18%' },
     right: { src: girlTea, alt: '少女在亭下奉茶，身后是秋日红叶', focus: '52% 20%' },
     banner: '霜降雅集',
-    seal: '秋'
+    seal: '秋',
+    scene: { src: festivalScene, alt: '秋日湖山，银杏与少年少女同游的霜降雅集图卷' }
   },
   party: {
     left: { src: boyFan, alt: '少年立于银杏树下，手执折扇', focus: '58% 16%' },
     right: { src: girlScroll, alt: '少女抱着书卷，立于雾中楼阁前', focus: '50% 18%' },
     banner: '多人同行',
-    seal: '友'
+    seal: '友',
+    scene: { src: partyScene, alt: '青绿山水间，同学们结伴同行的图卷' }
   }
 };
 
-/** 双人立绘版：两张插画并置，边缘化进宣纸底色，右上挂题签。 */
-export function EventDuo({ art, large = false }: { art: EventArt; large?: boolean }) {
+/** 卷中画：整幅山水图铺满画心，右上挂题签，叶影飘落。 */
+export function EventScene({ art, large = false }: { art: EventArt; large?: boolean }) {
   return (
-    <div className={`event-duo ${large ? 'is-large' : ''}`}>
-      <figure className="event-portrait left">
-        <img src={art.left.src} alt={art.left.alt} style={{ objectPosition: art.left.focus }} loading="lazy" decoding="async" />
-      </figure>
-      <figure className="event-portrait right">
-        <img src={art.right.src} alt={art.right.alt} style={{ objectPosition: art.right.focus }} loading="lazy" decoding="async" />
-      </figure>
+    <div className={`event-scene-wrap ${large ? 'is-large' : ''}`}>
+      <img className="event-scene-img" src={art.scene.src} alt={art.scene.alt} loading="lazy" decoding="async" />
       <span className="event-banner" aria-hidden="true">
         <span className="event-banner-text">{art.banner}</span>
         <span className="event-banner-seal">{art.seal}</span>
