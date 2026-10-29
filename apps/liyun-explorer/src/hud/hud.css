@@ -607,3 +607,108 @@
   .event-entry.is-active .event-copy::after { animation: none; opacity: 0; }
   .event-entry { transition: none; }
 }
+
+/* ===== 活动页 · 立绘层 ===== */
+.event-duo {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0 2px;
+}
+.event-portrait {
+  position: relative;
+  margin: 0;
+  height: 232px;
+  overflow: hidden;
+  border: 1px solid #bda169;
+  background: #f4e8c8;
+  box-shadow: inset 0 0 0 2px #fffaf0, inset 0 0 34px #6d5a2e33, 0 3px 10px #8a703c33;
+}
+.event-duo.is-large .event-portrait { height: 268px; }
+.event-portrait img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  filter: saturate(1.02) contrast(1.02);
+}
+.event-portrait::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, transparent 58%, #f7ecd0 99%),
+    radial-gradient(120% 80% at 50% 30%, transparent 55%, #6d5a2e26 100%);
+}
+.event-portrait.left::before,
+.event-portrait.right::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid #d9c08a88;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* 题签 */
+.event-banner {
+  position: absolute;
+  top: -6px;
+  right: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 7px 10px;
+  background: linear-gradient(180deg, #fdf7e6 0%, #f3e4bd 70%, #eadaae 100%);
+  border: 1px solid #b8933f;
+  box-shadow: inset 0 0 0 2px #fffdf2, 0 4px 12px #7d66304d;
+}
+.event-banner-text {
+  writing-mode: vertical-rl;
+  font-family: 'Ma Shan Zheng', 'KaiTi', serif;
+  font-size: 21px;
+  letter-spacing: .3em;
+  color: #6b5227;
+  text-shadow: 0 1px 0 #fff8e0;
+}
+.event-banner-seal {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  background: #a8503a;
+  color: #fbeccd;
+  font-family: 'Ma Shan Zheng', serif;
+  font-size: 12px;
+  border: 1px solid #8b3f2c;
+}
+
+/* 飘叶 */
+.event-leaves { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.event-leaves i {
+  position: absolute;
+  top: -12px;
+  width: 7px;
+  height: 7px;
+  background: #d9b869;
+  border: 1px solid #b8933f;
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: leaf-drift 9s linear infinite;
+}
+@keyframes leaf-drift {
+  0% { opacity: 0; transform: translate3d(0, -10px, 0) rotate(20deg); }
+  12% { opacity: .85; }
+  100% { opacity: 0; transform: translate3d(-26px, 250px, 0) rotate(320deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .event-leaves { display: none; }
+}
+
+/* 列表小像 */
+.event-medallion { transform: none; border-radius: 4px; overflow: hidden; box-shadow: inset 0 0 0 2px #f0dc9d66, 0 2px 4px #17342855; }
+.event-thumb { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.03); }
+.event-entry.is-active .event-medallion { box-shadow: inset 0 0 0 2px #fffdf2, 0 2px 6px #8a703c55; }

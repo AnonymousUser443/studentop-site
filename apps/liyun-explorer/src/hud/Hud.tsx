@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type { HudProps, IconName, PanelId } from '../types';
 import { Icon } from './Icon';
 import { BrandGate, CompassRose, EdgeOrnaments, MenuShape } from './Ornaments';
-import { CompanyScene, FestivalScene } from './EventArt';
+import { EVENT_ART, EventDuo, EventThumb } from './EventArt';
 import './hud.css';
 
 const NAV: { id: PanelId; title: string; subtitle: string; icon: IconName; notice?: boolean }[] = [
@@ -113,7 +113,7 @@ function Panels(p: HudProps) {
             {EVENTS.map((item, index) => (
               <button key={item.id} className={`event-entry ${item.tone} ${item.id === current.id ? 'is-active' : ''}`} onClick={() => setEventId(item.id)} aria-pressed={item.id === current.id}>
                 <span className="event-index">{index === 0 ? '壹' : '贰'}</span>
-                <span className="event-medallion"><Icon name={item.icon}/></span>
+                <span className="event-medallion"><EventThumb art={EVENT_ART[item.id]} alt="" side={item.id === 'festival' ? 'left' : 'right'}/></span>
                 <span className="event-copy"><strong>{item.title}</strong><small>{item.subtitle}</small></span>
                 <span className="event-tag">{item.tag}</span>
               </button>
@@ -121,7 +121,7 @@ function Panels(p: HudProps) {
             <p className="event-list-foot">◇ 更多篇章 · 敬请期待 ◇</p>
           </aside>
           <div className={`event-hero ${current.tone}`}>
-            <div className="event-stage">{current.id === 'festival' ? <FestivalScene/> : <CompanyScene/>}</div>
+            <div className="event-stage"><EventDuo art={EVENT_ART[current.id]}/></div>
             <p className="event-motto">延安根 · 军工魂 · 良乡秋</p>
             {current.id === 'festival' ? <>
               <p className="landmark-verse">把校园的秋，收进你的行囊。</p>
@@ -140,11 +140,11 @@ function Panels(p: HudProps) {
       </Modal>;
     }
     case 'festival': return <Modal title="霜降雅集" eyebrow="时令篇章 · 秋意同游" icon="leaf" {...common} className="festival-modal" scroll>
-      <div className="event-stage event-stage-large"><FestivalScene/></div>
+      <div className="event-stage event-stage-large"><EventDuo art={EVENT_ART.festival} large/></div>
       <p className="event-motto">霜降水返壑 · 风落木归山</p><p className="landmark-verse">把校园的秋，收进你的行囊。</p><p className="landmark-description">银杏渐黄，湖风微凉。沿着校园地图漫游，在熟悉的转角遇见这一季的风物。</p><div className="festival-date"><span>霜降 · 校园同游</span><strong>10月24日 — 11月7日</strong></div><button className="parchment-button" onClick={() => p.onSelect('beihu')}>去北湖赏秋<Icon name="leaf"/></button><p className="panel-footnote">当前为秋日活动主题展示</p>
     </Modal>;
     case 'party': return <Modal title="多人同行" eyebrow="同游有伴 · 山水有期" icon="people" {...common} className="party-modal" scroll>
-      <div className="event-stage event-stage-large"><CompanyScene/></div>
+      <div className="event-stage event-stage-large"><EventDuo art={EVENT_ART.party} large/></div>
       <p className="event-motto">同行的路，比远方更远</p><p className="landmark-verse">下一程，约上同行的人。</p><p className="landmark-description">组队探索与合作玩法即将启程。当前地图可独自漫游，顶部同行人数为界面演示数据。</p><button className="parchment-button" onClick={p.onClose}>继续我的旅程<Icon name="compass"/></button>
     </Modal>;
     case 'stamina': return <Modal title="行旅体力" eyebrow="步履从容 · 随心探索" icon="moon" {...common}>
