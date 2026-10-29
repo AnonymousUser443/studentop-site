@@ -464,3 +464,146 @@
 @media (prefers-reduced-motion: reduce) {
   .game-hud *, .hud-modal-backdrop, .hud-modal, .entry-card, .game-toast { animation: none!important; transition: none!important; }
 }
+
+/* ===== 活动页 · 华丽层 ===== */
+.events-modal,
+.festival-modal,
+.party-modal {
+  background:
+    radial-gradient(130% 100% at 16% 0%, #fdf7e0 0%, #f6ead0 40%, #ecddb4 100%);
+  border-color: #b08f4b;
+  box-shadow:
+    inset 0 0 0 2px #fffcef,
+    inset 0 0 0 5px #d9c188,
+    inset 0 0 70px #d9c48b66,
+    0 22px 48px #10241c66;
+}
+.events-modal::before,
+.festival-modal::before,
+.party-modal::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  pointer-events: none;
+  border: 1px solid #c9ae74;
+  background-image:
+    repeating-linear-gradient(45deg, transparent 0 9px, #c8ae7414 9px 10px),
+    repeating-linear-gradient(-45deg, transparent 0 9px, #c8ae7414 9px 10px);
+}
+.events-modal .modal-heading h2,
+.festival-modal .modal-heading h2,
+.party-modal .modal-heading h2 { letter-spacing: .16em; }
+.events-modal .modal-heading::after,
+.festival-modal .modal-heading::after,
+.party-modal .modal-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 6px;
+  background:
+    radial-gradient(closest-side, #b8933f 0 2px, transparent 2px) center / 8px 6px repeat-x,
+    linear-gradient(90deg, transparent, #c3a865 20%, #e3ca8b 50%, #c3a865 80%, transparent);
+  opacity: .55;
+}
+
+/* 场景画框：双线金框 + 内发光 */
+.event-stage {
+  position: relative;
+  padding: 7px 7px 5px;
+  border: 1px solid #b99f63;
+  background:
+    radial-gradient(120% 120% at 50% 30%, #fff9e6 0%, #f3e6c0 55%, #e8d5a4 100%);
+  box-shadow:
+    inset 0 0 0 3px #fffbee,
+    inset 0 0 0 4px #d7bf88,
+    0 3px 12px #8f744233;
+}
+.event-stage::after {
+  content: '';
+  position: absolute;
+  inset: 7px 7px 5px;
+  pointer-events: none;
+  background: radial-gradient(80% 70% at 50% 45%, #fff6d755 0%, transparent 70%);
+}
+.event-stage-large { padding: 9px 9px 6px; }
+
+/* 活动列表：深青卡片 + 金线，选中转宣纸 */
+.events-list { padding-right: 18px; border-right: 1px solid #bda169; }
+.event-entry {
+  position: relative;
+  overflow: hidden;
+  padding: 11px 12px;
+  border: 1px solid #b3935455;
+  background: linear-gradient(135deg, #325c4b 0%, #26483b 55%, #1f3c31 100%);
+  color: #f3e7c6;
+  box-shadow: inset 0 0 0 1px #f0dc9d22, 0 2px 5px #17342844;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.event-entry:hover { transform: translateX(2px); border-color: #d8bc7c99; box-shadow: inset 0 0 0 1px #f7e6b055, 0 4px 10px #17342866; }
+.event-entry.is-active {
+  background: linear-gradient(135deg, #fdf6df 0%, #f2e4bd 60%, #ead9a9 100%);
+  color: #33513f;
+  border-color: #b8933f;
+  box-shadow: inset 0 0 0 2px #fffdf2, inset 0 0 0 4px #d8c08a, 0 5px 14px #8a703c44;
+  transform: none;
+}
+.event-entry.is-active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  background: linear-gradient(#e0c078, #b8933f);
+}
+.event-entry .event-copy small { color: #cfc19a; }
+.event-entry.is-active .event-copy small { color: #8b7b51; }
+.event-entry .event-tag { background: #ffffff14; border-color: #e2c88a66; color: #f0dfae; }
+.event-entry.is-active .event-tag { background: #ffe9b8; border-color: #c98a3a; color: #7c4a1e; }
+.event-index { color: #e3cb92; }
+.event-entry.is-active .event-index { color: #a4762c; }
+
+/* 列表底部的卷尾装饰 */
+.event-list-foot { position: relative; }
+.event-list-foot::before,
+.event-list-foot::after { content: '❖'; margin: 0 6px; color: #c0a568; }
+
+/* 题记与正文 */
+.event-motto {
+  margin: 10px 0 12px;
+  padding: 3px 0;
+  font-size: 11px;
+  letter-spacing: .34em;
+  color: #8f7a48;
+  border-top: 1px solid #c8ae7466;
+  border-bottom: 1px solid #c8ae7466;
+}
+.event-hero .landmark-verse { font-size: 17px; letter-spacing: .14em; }
+.event-hero .festival-date {
+  padding: 12px 14px;
+  border: 1px solid #c8ae74;
+  background: #fff8e3;
+  box-shadow: inset 0 0 0 2px #fffdf5;
+  font-size: 12.5px;
+}
+.event-hero .parchment-button { letter-spacing: .22em; }
+
+/* 缓速金光扫过选中的卡片 */
+@keyframes event-sheen {
+  0% { transform: translateX(-120%); }
+  55%, 100% { transform: translateX(120%); }
+}
+.event-entry.is-active .event-copy::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 35%, #ffeab755 50%, transparent 65%);
+  animation: event-sheen 6.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .event-entry.is-active .event-copy::after { animation: none; opacity: 0; }
+  .event-entry { transition: none; }
+}
