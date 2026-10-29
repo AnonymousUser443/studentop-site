@@ -1,0 +1,401 @@
+{
+  "ok": true,
+  "baseline": "230f80d",
+  "node": "v24.22.0",
+  "scope": "Only affected Liyun, native desktop, local auth/monitor proxy and launcher contracts; all credentials/monitor data synthetic. No production connection.",
+  "checks": [
+    {
+      "name": "syntax-apps-about.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/apps-about.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 70,
+      "log": null
+    },
+    {
+      "name": "syntax-apps-system.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/apps-system.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 66,
+      "log": null
+    },
+    {
+      "name": "syntax-apps-task-manager.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/apps-task-manager.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 64,
+      "log": null
+    },
+    {
+      "name": "syntax-apps.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/apps.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 63,
+      "log": null
+    },
+    {
+      "name": "syntax-boot-lock.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/boot-lock.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 66,
+      "log": null
+    },
+    {
+      "name": "syntax-content.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/content.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 62,
+      "log": null
+    },
+    {
+      "name": "syntax-core.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/core.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 61,
+      "log": null
+    },
+    {
+      "name": "syntax-gate-effects.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/gate-effects.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 61,
+      "log": null
+    },
+    {
+      "name": "syntax-icons.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/icons.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 54,
+      "log": null
+    },
+    {
+      "name": "syntax-main.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/main.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 66,
+      "log": null
+    },
+    {
+      "name": "syntax-shell.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/shell.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 65,
+      "log": null
+    },
+    {
+      "name": "syntax-task-manager-client.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/task-manager-client.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 65,
+      "log": null
+    },
+    {
+      "name": "syntax-update-check.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/update-check.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 60,
+      "log": null
+    },
+    {
+      "name": "syntax-wm.js",
+      "command": [
+        "node",
+        "--check",
+        "site/assets/js/wm.js"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 70,
+      "log": null
+    },
+    {
+      "name": "syntax-desktop-auth.mjs",
+      "command": [
+        "node",
+        "--check",
+        "tools/desktop-auth.mjs"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 58,
+      "log": null
+    },
+    {
+      "name": "syntax-task-manager-proxy.mjs",
+      "command": [
+        "node",
+        "--check",
+        "tools/task-manager-proxy.mjs"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 61,
+      "log": null
+    },
+    {
+      "name": "syntax-dev-workspace.mjs",
+      "command": [
+        "node",
+        "--check",
+        "tools/dev-workspace.mjs"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 70,
+      "log": null
+    },
+    {
+      "name": "syntax-serve-desktop-auth.mjs",
+      "command": [
+        "node",
+        "--check",
+        "tools/serve-desktop-auth.mjs"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 70,
+      "log": null
+    },
+    {
+      "name": "syntax-site-release.mjs",
+      "command": [
+        "node",
+        "--check",
+        "tools/site-release.mjs"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 67,
+      "log": null
+    },
+    {
+      "name": "syntax-prepare-release.mjs",
+      "command": [
+        "node",
+        "--check",
+        "tools/prepare-release.mjs"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 76,
+      "log": null
+    },
+    {
+      "name": "liyun-unit",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run"
+      ],
+      "cwd": "apps/liyun-explorer",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 870,
+      "log": "liyun-unit.txt"
+    },
+    {
+      "name": "liyun-types",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "-b"
+      ],
+      "cwd": "apps/liyun-explorer",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 1941,
+      "log": null
+    },
+    {
+      "name": "liyun-build",
+      "command": [
+        "node",
+        "node_modules/vite/bin/vite.js",
+        "build"
+      ],
+      "cwd": "apps/liyun-explorer",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 3976,
+      "log": "liyun-build.txt"
+    },
+    {
+      "name": "liyun-map",
+      "command": [
+        "node",
+        "apps/liyun-explorer/scripts/verify-calibrated-map.mjs"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 81,
+      "log": "liyun-map.txt"
+    },
+    {
+      "name": "liyun-assets",
+      "command": [
+        "node",
+        "apps/liyun-explorer/scripts/asset-manifest.mjs",
+        "--check"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 124,
+      "log": "liyun-assets.txt"
+    },
+    {
+      "name": "desktop-contracts",
+      "command": [
+        "node",
+        "--test",
+        "qa/node-tests.cjs",
+        "qa/desktop-node-tests.cjs",
+        "qa/revision-20261028/auth-tests.mjs",
+        "docs/boot/gate-contract-tests.cjs"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 1617,
+      "log": "desktop-contracts.txt"
+    },
+    {
+      "name": "monitor-proxy",
+      "command": [
+        "node",
+        "--test",
+        "qa/task-manager-proxy-tests.mjs"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 38686,
+      "log": "monitor-proxy.txt"
+    },
+    {
+      "name": "workspace-api",
+      "command": [
+        "node",
+        "--test",
+        "qa/workspace-api-tests.mjs"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 6792,
+      "log": "workspace-api.txt"
+    },
+    {
+      "name": "native-build",
+      "command": [
+        "node",
+        "tools/build-site.mjs"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 1840,
+      "log": "native-build.txt"
+    },
+    {
+      "name": "native-build-check",
+      "command": [
+        "node",
+        "tools/build-site.mjs",
+        "--check",
+        "dist-site"
+      ],
+      "cwd": ".",
+      "pass": true,
+      "exitCode": 0,
+      "durationMs": 251,
+      "log": "native-build-check.txt"
+    }
+  ],
+  "outputNote": "Trailing whitespace trimmed in logs; silent successful checks use log:null. Exit codes and results are unchanged."
+}

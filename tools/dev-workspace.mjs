@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Local-only runner: no install, deployment, browser, proxy or external process killing. */
+/** Local-only runner: no install, deployment, browser launch or external process killing. */
 import http from 'node:http';
 import { createReadStream } from 'node:fs';
 import { readFile, realpath, stat } from 'node:fs/promises';
@@ -8,6 +8,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createHash, randomUUID } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import { createDesktopAuth, acquireAuthLease } from './desktop-auth.mjs';
+import { createTaskManagerProxy } from './task-manager-proxy.mjs';
 import { siteRevision } from './site-release.mjs';
 
 const SELF = fileURLToPath(import.meta.url);
@@ -47,6 +48,7 @@ export function publicPath(raw) {
   if (pathname === '/') return 'index.html';
   if (pathname === '/projects' || pathname === '/projects/') return 'projects/index.html';
   if (pathname === '/index.html' || pathname === '/projects/index.html') return pathname.slice(1);
+  if (pathname === '/task-manager' || pathname === '/task-manager/' || pathname === '/task-manager/index.html') return 'task-manager/index.html';
   if (['/assets/fonts/OFL-NotoSansSC.txt', '/assets/fonts/OFL-NotoSerifSC.txt'].includes(pathname)) return pathname.slice(1);
   // Public asset subtrees only: never workspace files, manifests, source maps or README.
   if (!/^\/assets\/(?:css|js|img|fonts|audio)\//.test(pathname)) return null;
@@ -245,14 +247,18 @@ export async function run(argv = process.argv.slice(2), { ports = {}, cacheRoot 
     return status();
   };
   const releaseAuthLease = await acquireAuthLease(ROOT);
-  let auth;
-  try { auth = await createDesktopAuth({ root: ROOT, origin: req => 'http://' + req.headers.host }); }
+  let auth, taskManager;
+  try {
+    auth = await createDesktopAuth({ root: ROOT, origin: req => 'http://' + req.headers.host });
+    taskManager = createTaskManagerProxy({ auth });
+  }
   catch (error) { await releaseAuthLease(); throw error; }
   const server = http.createServer((req, res) => {
     void (async () => {
       const head = req.method === 'HEAD';
       if (!validHost(req.headers.host, sitePort)) return json(res, 403, { error: 'Invalid Host' }, head);
       if (await auth.handle(req, res)) return;
+      if (await taskManager.handle(req, res)) return;
       if (req.method !== 'GET' && !head) { res.setHeader('Allow', 'GET, HEAD'); return json(res, 405, {error:'Method not allowed'}); }
       const rawPath = req.url?.split('?')[0];
       if (rawPath === '/version.json') return json(res, 200, {id:siteRevision(checked.site)}, head);
@@ -288,6 +294,7 @@ export async function run(argv = process.argv.slice(2), { ports = {}, cacheRoot 
     process.exitCode = code;
     for (const state of states) state.status = 'stopping';
     server.close();
+    await taskManager.drain();
     server.closeAllConnections();
     await auth.drain();
     await Promise.all(children.map(child => new Promise(resolve => {

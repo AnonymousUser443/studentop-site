@@ -1,5 +1,5 @@
 [Unit]
-Description=Aiden Desktop private visitor gate
+Description=Aiden Desktop private visitor gate and read-only monitor bridge
 After=network.target
 
 [Service]
@@ -12,6 +12,7 @@ Environment=DESKTOP_AUTH_CONFIG=/var/lib/desktop-auth/data/auth.json
 Environment=DESKTOP_AUTH_ORIGIN=https://studentop.cn:14355
 Environment=DESKTOP_AUTH_PORT=8900
 Environment=DESKTOP_AUTH_TRUST_PROXY=127.0.0.1
+Environment=DESKTOP_TASK_MANAGER_PORT=8765
 ExecStart=/opt/node24/bin/node tools/serve-desktop-auth.mjs
 Restart=on-failure
 RestartSec=3

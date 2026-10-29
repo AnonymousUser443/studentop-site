@@ -1,0 +1,1 @@
+{"passed":true,"unchanged_files":6,"map_id":"campus-v04-eaa124716c51375f","canvas":[4000,4958],"coordinate_system":"WGS84"}

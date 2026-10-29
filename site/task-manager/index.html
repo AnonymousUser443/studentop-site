@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="color-scheme" content="dark light"><meta name="description" content="树莓派实时任务管理器，只读监测 CPU、内存、磁盘、网络和进程。">
+<title>任务管理器 · Raspberry Pi</title>
+<link rel="icon" href="/assets/img/task-manager.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/css/task-manager.css"><script src="/assets/js/task-manager-client.js" defer></script>
+</head>
+<body>
+<svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0"><defs>
+<symbol id="i-logo" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3" fill="currentColor" opacity=".2"/><path d="M3 14h4l2-6 4 11 3-8 2 3h3"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="i-performance" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M5 13h4l2-6 3 11 2-6h3"/></symbol>
+<symbol id="i-processes" viewBox="0 0 24 24"><rect x="3" y="3" width="13" height="13" rx="2"/><path d="M8 8h13v13H8zM8 3v13M3 8h13"/></symbol>
+<symbol id="i-system" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M8 21h8M12 16v5M7 7h10M7 11h5"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><path d="m9 3-1 3-3 1-2 4 2 2v3l3 2 1 3h5l1-3 3-1 2-4-2-2V8l-3-2-1-3z"/><circle cx="11.5" cy="12" r="3"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 10a8 8 0 1 0-1 8M20 4v6h-6"/></symbol>
+<symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8z"/></symbol>
+<symbol id="i-fullscreen" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6zM8 12l3 3 5-6"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></symbol>
+<symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/><rect x="9" y="9" width="6" height="6"/></symbol>
+<symbol id="i-memory" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M5 18v3M9 18v3M15 18v3M19 18v3M6 9v6M10 9v6M14 9v6M18 9v6"/></symbol>
+<symbol id="i-disk" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="11" r="5"/><path d="m12 11 6 6M6 18h2"/></symbol>
+<symbol id="i-network" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="6" rx="1"/><path d="M12 8v5M4 17v-4h16v4"/><rect x="1" y="17" width="6" height="5" rx="1"/><rect x="9" y="17" width="6" height="5" rx="1"/><rect x="17" y="17" width="6" height="5" rx="1"/></symbol>
+<symbol id="i-temp" viewBox="0 0 24 24"><path d="M9 14V5a3 3 0 0 1 6 0v9a5 5 0 1 1-6 0ZM12 7v10"/></symbol>
+<symbol id="i-gpu" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="2"/><circle cx="10" cy="11.5" r="4"/><path d="M17 9h2M17 13h2M7 18v3M11 18v3M15 18v3"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M12 4v16M6 10l6-6 6 6"/></symbol>
+</defs></svg>
+<div class="app-window">
+<header class="titlebar"><div class="brand"><svg class="icon brand-icon"><use href="#i-logo"/></svg><span>任务管理器</span><span class="brand-suffix">Raspberry Pi</span></div><div class="window-actions"><span class="readonly-badge"><svg class="icon"><use href="#i-shield"/></svg>只读监测</span><span id="connectionState" class="connection-state"><i class="status-dot"></i><span>等待桌面连接</span></span><button id="fullscreenButton" class="icon-button" type="button" title="全屏 / 退出全屏" aria-label="切换全屏"><svg class="icon"><use href="#i-fullscreen"/></svg></button></div></header>
+<div class="main-shell">
+<nav class="nav-rail" aria-label="主导航"><button id="menuButton" class="nav-button menu-button" type="button" title="展开导航" aria-label="展开导航" aria-pressed="false"><svg class="icon"><use href="#i-menu"/></svg><span class="nav-label">导航</span></button>
+<button class="nav-button" type="button" data-view="processes" title="进程" aria-label="进程"><svg class="icon"><use href="#i-processes"/></svg><span class="nav-label">进程</span></button>
+<button class="nav-button is-active" type="button" data-view="performance" title="性能" aria-label="性能" aria-current="page"><svg class="icon"><use href="#i-performance"/></svg><span class="nav-label">性能</span></button>
+<button class="nav-button" type="button" data-view="system" title="系统信息" aria-label="系统信息"><svg class="icon"><use href="#i-system"/></svg><span class="nav-label">系统信息</span></button>
+<div class="rail-bottom"><button class="nav-button" type="button" data-view="settings" title="设置" aria-label="设置"><svg class="icon"><use href="#i-settings"/></svg><span class="nav-label">设置</span></button></div></nav>
+<main class="workspace">
+<header class="toolbar"><h2 id="viewTitle" class="toolbar-title">性能</h2><div class="toolbar-actions"><span id="hostTag" class="host-tag">等待实时数据</span><button id="pauseButton" class="tool-button" type="button" title="暂停界面刷新"><svg class="icon"><use href="#i-pause"/></svg><span>暂停</span></button><button id="refreshButton" class="tool-button" type="button" title="立即获取最新数据"><svg class="icon"><use href="#i-refresh"/></svg><span>刷新</span></button></div></header>
+<section id="view-performance" class="view performance-view" aria-labelledby="viewTitle"><div class="performance-layout"><aside id="resourceList" class="resource-list" role="tablist" aria-label="硬件资源"><div class="resource-placeholder">正在读取硬件…</div></aside><section class="resource-panel" aria-label="性能详情"><header class="panel-header"><div class="panel-heading"><h1 id="resourceTitle">CPU</h1><p id="resourceSubtitle" class="panel-subtitle">正在连接树莓派</p></div><div class="panel-header-right"><div id="resourceHardware" class="panel-hardware">—</div><select id="cpuGraphMode" class="compact-select" aria-label="CPU 图表视图"><option value="cores">逻辑处理器</option><option value="total">总体利用率</option></select></div></header><div id="resourceBody" class="resource-body"><div class="empty-state"><svg class="icon"><use href="#i-performance"/></svg><h3>等待第一次采样</h3><p>显示真实数据，不生成演示曲线。</p></div></div></section></div></section>
+<section id="view-processes" class="view processes-view" hidden><div class="processes-header"><div><h1>进程</h1><p class="muted">只读进程列表 · 每 3 秒采样 · CPU 按整机容量计</p></div><label class="searchbox"><svg class="icon"><use href="#i-search"/></svg><input id="processSearch" type="search" placeholder="搜索名称、PID 或用户" autocomplete="off" aria-label="搜索进程"></label></div><div id="processSummary" class="process-summary"></div><div class="table-scroll"><table class="process-table"><thead><tr><th><button type="button" data-sort="name">名称</button></th><th><button type="button" data-sort="pid">PID</button></th><th><button type="button" data-sort="cpu_percent">CPU <span id="processCpuTotal">—</span></button></th><th><button type="button" data-sort="memory_bytes">内存 (RSS) <span id="processMemoryTotal">—</span></button></th><th><button type="button" data-sort="user">用户</button></th><th><button type="button" data-sort="threads">线程</button></th><th><button type="button" data-sort="status">状态</button></th></tr></thead><tbody id="processTableBody"><tr><td colspan="7" class="table-empty">等待进程数据…</td></tr></tbody></table></div><p id="processCount" class="section-note">不采集命令行参数、环境变量或进程内容。</p></section>
+<section id="view-system" class="view system-view" hidden><div class="page-heading"><div><h1>系统信息</h1><p class="muted">这台树莓派的实时状态与硬件信息</p></div></div><div id="systemCards" class="system-grid"></div></section>
+<section id="view-settings" class="view settings-view" hidden><div class="page-heading"><div><h1>设置</h1><p class="muted">仅调整当前浏览器的显示，不修改树莓派系统。</p></div></div><div class="settings-section"><h3>外观</h3><div class="settings-row"><div><strong>应用主题</strong><p>默认采用参考图中的 Windows 11 深色风格。</p></div><select id="themeSelect"><option value="dark">深色</option><option value="light">浅色</option><option value="auto">跟随系统</option></select></div><div class="settings-row"><div><strong>界面刷新间隔</strong><p>后端每秒采样，历史图表保留最近 60 秒的真实数据。</p></div><select id="refreshInterval"><option value="1">1 秒</option><option value="2">2 秒</option><option value="5">5 秒</option></select></div><div class="settings-row"><div><strong>CPU 默认视图</strong><p>可切换整机总利用率与每个逻辑处理器。</p></div><select id="settingsCpuMode"><option value="cores">逻辑处理器</option><option value="total">总体利用率</option></select></div></div><div class="settings-section"><h3>安全与数据</h3><div class="settings-row"><div><strong>只读监测</strong><p>没有终止进程、远程执行命令或修改系统的接口。</p></div><span class="pill">已启用</span></div><div class="settings-row"><div><strong>桌面会话保护</strong><p>解锁桌面后，通过本站同源只读接口连接监控服务；退出登录即停止读取。</p></div><svg class="icon safety-icon"><use href="#i-shield"/></svg></div><div class="settings-row"><div><strong>隐私</strong><p>无第三方脚本、在线字体、遥测或外部 CDN；不采集进程命令行。</p></div><span class="pill neutral">本地资源</span></div></div><p class="section-note">Raspberry Pi Task Manager · 1.0.0<br>界面参考 Windows 11 任务管理器，指标由 Linux / psutil 提供。GPU 无可靠计数器时会明确标为不可用。</p></section>
+<footer class="bottom-status"><span id="footerStatus"><i class="status-dot"></i>等待实时采样</span><span id="footerTime">—</span></footer>
+</main></div></div><div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body></html>

@@ -215,7 +215,31 @@ export async function createDesktopAuth({root, configFile, stateFile, origin, se
     const request=handle(req,res);inflight.add(request);
     const done=()=>inflight.delete(request);request.then(done,done);return request;
   }
-  return {handle:guardedHandle, configured:!!config && healthy, async drain(){closing=true;await Promise.allSettled([...inflight]);await queue;}};
+  /** Read-only consumers share the current desktop lease; they cannot create or refresh it.
+   * The HTTP host must already have been checked by the calling server.
+   */
+  function authorizeRead(req) {
+    if (closing || !config || !healthy) return {ok:false,status:503,error:'auth_unavailable'};
+    if (!['GET','HEAD'].includes(req.method)) return {ok:false,status:405,error:'read_only'};
+    const expected = typeof origin === 'function' ? origin(req) : origin;
+    const supplied = req.headers.origin;
+    const fetchSite = req.headers['sec-fetch-site'];
+    if (!expected || (supplied !== undefined && supplied !== expected)
+      || (fetchSite !== undefined && !['same-origin','none'].includes(fetchSite))) {
+      return {ok:false,status:403,error:'request_rejected'};
+    }
+    // Ambiguous cookies are not accepted by the read-only bridge.
+    const matching = String(req.headers.cookie || '').split(';').map(value => value.trim()).filter(value => value.startsWith(COOKIE + '='));
+    if (matching.length !== 1) return {ok:false,status:401,error:'authentication_required'};
+    const session = sessionFor(req);
+    if (!session || !session.value.authenticated || session.value.revoked) return {ok:false,status:401,error:'authentication_required'};
+    const id = session.id, value = session.value;
+    const isValid = () => !closing && !!config && healthy && !value.revoked && value.authenticated
+      && value.expires > now() && value.id === id && sessions.get(id) === value;
+    if (!isValid()) return {ok:false,status:401,error:'authentication_required'};
+    return Object.freeze({ok:true,sessionId:id,isValid});
+  }
+  return {handle:guardedHandle, authorizeRead, configured:!!config && healthy, async drain(){closing=true;await Promise.allSettled([...inflight]);await queue;}};
 }
 /** OS-owned loopback listener is an exclusive lease, released automatically on process death.
  * A deterministic port collision fails closed; never kills or attaches to another listener.

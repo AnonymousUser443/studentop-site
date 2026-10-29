@@ -94,12 +94,13 @@ window.SITE = {
     },
     {
       id: 'rpi-task-manager',
+      appId: 'rpi-task-manager',
       title: '树莓派任务管理器',
       subtitle: '仿 Windows 11 的实时资源监控面板',
       desc: '一个跑在树莓派上的 Web 任务管理器：真实读取 CPU 分核、内存、磁盘、网络和温度，60 秒历史曲线，接口只读且只监听回环地址。',
       tags: ['Python', 'aiohttp', '原生前端', '树莓派'],
       year: '2026',
-      icon: 'terminal',
+      icon: 'task-manager',
       link: ''
     },
     {
@@ -197,13 +198,13 @@ window.SITE = {
   ],
 
   /* ---------- 桌面图标（按顺序排两列） ---------- */
-  desktop: ['thispc', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'about', 'skills', 'contact', 'cv', 'notepad', 'terminal', 'settings', 'recycle'],
+  desktop: ['thispc', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'rpi-task-manager', 'about', 'skills', 'contact', 'cv', 'notepad', 'terminal', 'settings', 'recycle'],
 
   /* ---------- 任务栏固定项 ---------- */
   taskbarPinned: ['thispc', 'projects', 'about', 'terminal', 'settings'],
 
   /* ---------- 开始菜单固定项 ---------- */
-  startPinned: ['about', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'skills', 'contact', 'thispc', 'terminal', 'settings', 'notepad', 'photos', 'cv', 'recycle'],
+  startPinned: ['about', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'rpi-task-manager', 'skills', 'contact', 'thispc', 'terminal', 'settings', 'notepad', 'photos', 'cv', 'recycle'],
 
   /* ---------- 开始菜单「推荐的项目」 ---------- */
   recommended: [
