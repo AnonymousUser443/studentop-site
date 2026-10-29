@@ -6,9 +6,8 @@
 /* MapScene owns gesture suppression; dialogs retain native touch scrolling. */
 .game-stage{height:100vh;height:100dvh;touch-action:auto}
 
-/* 地图外的山水边框：1920×1080 设计画心 + 居中取景窗 */
-.frame-layer{position:absolute;inset:0;z-index:8;pointer-events:none;overflow:hidden}
-.frame-design{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center;will-change:transform}
-.frame-art{position:absolute;inset:0;width:100%;height:100%;display:block}
-.frame-light{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 62% 44%,#fdf8e016,transparent 62%)}
-.frame-grain{position:absolute;inset:0;pointer-events:none;opacity:.1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.74' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.45' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* 底图：绘制的校园山水，地图边缘化开融入 */
+.scene-painting{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.scene-painting img{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;filter:saturate(1.02) brightness(1.01)}
+.scene-painting-haze{position:absolute;inset:0;background:radial-gradient(ellipse 56% 52% at 50% 48%,#fdf8e6cc 0%,#fdf8e694 32%,#fdf8e628 58%,transparent 74%)}
+.map-layer{position:absolute;inset:0;z-index:1;mask-image:radial-gradient(ellipse 82% 78% at 50% 48%,#000 60%,#000000e0 73%,#0000005c 86%,transparent 98%);-webkit-mask-image:radial-gradient(ellipse 82% 78% at 50% 48%,#000 60%,#000000e0 73%,#0000005c 86%,transparent 98%)}
