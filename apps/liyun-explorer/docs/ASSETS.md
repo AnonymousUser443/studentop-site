@@ -1,6 +1,6 @@
 # 素材来源与维护
 
-本清单依据工程实际文件整理。素材均从本地 `public/assets/` 加载；开发和预览不依赖外部字体、图片或音频服务。本版用于用户提供素材的本地项目，未进行线上发布。
+本清单依据工程实际文件整理。素材均从本地 `public/assets/` 加载；开发和预览不依赖外部字体、图片或音频服务。已记录的版本发布见[融合发布记录](../../../docs/PR2-LOCATION-RELEASE-20261028.md)；发布记录不改变用户素材的权利归属。
 
 ## 校园地图
 
@@ -10,9 +10,11 @@
 
 | 本地文件 | 用途 |
 | --- | --- |
-| `public/assets/maps/campus-enhanced.webp` | 桌面主地图，4000×4958，约 560 KiB |
-| `public/assets/maps/campus-enhanced-mobile.webp` | 移动横屏主地图，2000×2479，约 213 KiB |
-| `public/assets/maps/campus.webp` | 完整无字原图，4000×4958；增强图加载失败时回退 |
+| `public/assets/maps/calibrated/campus_no_labels.webp` | 当前运行底图，4000×4958；保留标定包原始字节 |
+| `public/assets/maps/calibrated/campus_no_labels.png` | 当前运行底图的 PNG 回退，4000×4958 |
+| `public/assets/maps/campus-enhanced.webp` | 历史增强桌面图，4000×4958，约 560 KiB；当前不作为运行底图 |
+| `public/assets/maps/campus-enhanced-mobile.webp` | 历史增强移动图，2000×2479，约 213 KiB；当前不作为运行底图 |
+| `public/assets/maps/campus.webp` | 历史完整无字原图，4000×4958；保留用于追溯 |
 | `public/assets/maps/campus.png` | 原始无损 PNG 留档 |
 | `public/assets/maps/metadata.json` | 原地图包的来源、尺寸、哈希与坐标约定 |
 | `scripts/map-enhanced-source.svg` | 补充树冠、统一色彩与建筑分级阴影后的可编辑地图 |
@@ -68,6 +70,8 @@ pwsh -File scripts/audio-assets.ps1 -SourceDir "X:\实际原始BGM目录" -Check
 | Ma Shan Zheng | 工程保留 `MaShanZheng-Regular.ttf`；品牌与书法标题 | `MaShanZheng-UI.woff2`，187,600 字节 | `MaShanZheng-OFL.txt` |
 
 文件均位于 `public/assets/fonts/`。两份许可文件均声明 SIL Open Font License 1.1；交付时应保留许可。CSS 使用本地 WOFF2 子集，不发起在线字体请求。
+
+许可文本同样参与 `docs/asset-manifest.json` 的字节数和 SHA-256 校验；`.gitattributes` 固定这两份文件使用 LF，避免 Windows/Linux 检出换行不同造成误报。素材有意变更后先审核，再运行 `node scripts/asset-manifest.mjs` 更新清单，并用 `--check` 复核。
 
 `scripts/fonts-build.ps1` 扫描 `src/` 下的 TS、TSX、CSS 与 JSON 文本，生成 `fonts-characters.txt` 并调用 fontTools 的 `pyftsubset`。新增中文文案后运行：
 

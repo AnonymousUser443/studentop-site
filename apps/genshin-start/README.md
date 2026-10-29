@@ -6,7 +6,7 @@
 
 ## 本地启动
 
-工作区统一使用 Node.js 22.12+。推荐由负责人从仓库根执行 [本地启动器](../../tools/dev-workspace.mjs)，同时提供主页 8899、理韵 5174、校园 8081；完整说明见 [根 README](../../README.md)。
+前端使用 Node.js 22.12+，完整工作区推荐 Node.js 24。推荐从仓库根执行[本地启动器](../../tools/dev-workspace.mjs)，同时提供主页 8899、理韵 5174、校园 8081、体素校园 5180；完整说明见[根 README](../../README.md)。
 
 单独在本应用目录操作时：
 
@@ -19,7 +19,7 @@ npm run build
 npm run preview
 ~~~
 
-开发与构建预览均严格监听 <http://127.0.0.1:8081/>，端口占用立即失败；不会退到 8080 或其他端口。已有依赖无需重装，成员不自行安装或启动；旧 5173 / 4173 / 8080 SSH 转发不动。
+开发与构建预览均严格监听 <http://127.0.0.1:8081/>，端口占用立即失败；不会退到 8080 或其他端口。已有依赖无需重装；单独启动前先退出自己启动的统一启动器。旧 5173 / 4173 / 8080 SSH 转发不动。
 
 **出口约定：** 开发模式或回环页面（有 JavaScript）默认进入 <http://127.0.0.1:5174/>；生产非回环页面仍进入 <https://liyun.studentop.cn:14355/>。没有对应理韵服务时，校园本身启动不等于出口验收通过。
 
@@ -62,4 +62,4 @@ npm run preview
 - [改造记录](DEPLOY-NOTES.md) 区分旧版复刻和本轮实际入口；[程序化场景素材清单](src/campus/asset-manifest.json) 记录运行资产边界。
 - 原上游 www-genshin，作者 TEAM.x.y.z / gamemcu；保留 [MIT LICENSE](LICENSE) 与 [上游介绍](https://www.bilibili.com/video/BV1E8411v7xy)。游戏素材权利归原权利人，不因源码开源而允许商用。
 - 旧 public/Genshin 目录与历史源码**仍完整保留**，没有删除。当前 [Vite 配置](vite.config.ts) 关闭 build.copyPublicDir，由仅 build 生效的插件精确输出校园静态 SVG、两份 Noto WOFF2、两份 OFL 许可及根 LICENSE.txt；旧游戏 public 资源不在这份发布白名单中。必需资产缺失会使构建失败。该说明描述配置边界，最终产物文件清单、体积和实际构建结果由 Lead 核验；开发服务仍可访问保留的 public 文件。
-- 本轮只进行本地开发与验收，不代表部署完成；发布权限见 [仓库政策](../../DEPLOYMENT-POLICY.md)。
+- 纸境入场已记录的发布路径为主域 /campus-entry/，详见[发布记录](../../docs/RELEASE-20261028.md)。历史记录不代表后续修改已上线；新发布遵守[仓库政策](../../DEPLOYMENT-POLICY.md)。

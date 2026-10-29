@@ -26,13 +26,13 @@
 - 公网：[理韵寻踪](https://liyun.studentop.cn:14355/)。
 - 新 release：`liyun-20261028T163300Z-f5059312f8`，应用源 `f5059312f8fdeeedc76d477ed92dbabc08ea9877`（含上面的 merge）。
 - 回滚目标保留：`/opt/projects/liyun/releases/liyun-20261028T125837Z-d42554f163`。静态 `current` 与新 `/opt/projects/liyun-api/current` 都用同目录临时链接 + `mv -Tf` 原子切换。
-- 归档 undefined 字节，SHA256 `e6d5fe192d01ecbdb06e79ea51aa4838acbeb64cea1bc5110ac4bfffd0b38b3a`；复用与旧站逐字节相同的 20 个资源，只上传新主包、CSS、两张标定地图与入口。
+- 归档 SHA256 `e6d5fe192d01ecbdb06e79ea51aa4838acbeb64cea1bc5110ac4bfffd0b38b3a`；原收据未记录归档字节数。复用与旧站逐字节相同的 20 个资源，只上传新主包、CSS、两张标定地图与入口，共 5 项。
 - 新增独立 `liyun-account.service`（`User=liyun-account`，数据 `/var/lib/liyun-account` 权限 700，位于 webroot 之外），nginx 只新增 `location ^~ /api/` 反代；证书、DNS、frp 未动。
 - 发布前备份 nginx 配置；事务失败会恢复旧 `current`、旧配置并停用新服务。
 
 ## 公网证据
 
-- 服务器收据 undefined 项检查：[deployment.json](<../qa/pr2-location-release-20261028/deployment.json>)。
+- [服务器收据](<../qa/pr2-location-release-20261028/deployment.json>)记录成功发布、28 项公开文件与新账号服务等状态；具体检查项数以各 HTTP、浏览器报告为准。
 - 公网 HTTP 37/37：[public-http.json](<../qa/pr2-location-release-20261028/public-http.json>)，含新旧三代哈希资源、入口字节、缓存头、缺失资源 404、`/api/health`、未登录 401、路径穿越不泄露文件、邻站（主站/体素/纸境/原神/霜降）未变。
 - 公网真实浏览器 19/19：[public-browser.json](<../qa/pr2-location-release-20261028/public-browser.json>)，自有隔离 Edge、正常入口、真实点击、无 DEV 接口/无注入存档：
   - 注册新号 → 继续旅程 → 底部显示昵称与 UID；刷新后会话恢复。

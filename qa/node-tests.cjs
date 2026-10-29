@@ -5,11 +5,12 @@ const path = require('node:path');
 const {evaluation,targetURL,matchesTarget,args} = require('./lib.js');
 
 test('launcher exposes only public site assets and fixed entrypoints', async () => {
-  const {publicPath,validHost,APPS,SITE_PORT,HOST} = await import('../tools/dev-workspace.mjs');
+  const {publicPath,validHost,APPS,ACCOUNT_API,SITE_PORT,HOST} = await import('../tools/dev-workspace.mjs');
   assert.equal(HOST,'127.0.0.1'); assert.equal(SITE_PORT,8899);
   assert.deepEqual(APPS.map(x=>x.id),['liyun','campus','voxel']);
   assert.deepEqual(APPS.map(x=>x.port),[5174,8081,5180]);
-  assert.equal(new Set([SITE_PORT,...APPS.map(x=>x.port)]).size,4);
+  assert.equal(ACCOUNT_API.id,'liyun-api'); assert.equal(ACCOUNT_API.port,8787);
+  assert.equal(new Set([SITE_PORT,ACCOUNT_API.port,...APPS.map(x=>x.port)]).size,5);
   assert.equal(path.basename(APPS.find(x=>x.id==='voxel').root),'liangxiang-cloudwalk');
   for (const [url,result] of [['/','index.html'],['/projects/','projects/index.html'],['/assets/js/core.js?v=1','assets/js/core.js'],['/assets/img/wall-chenyu.webp','assets/img/wall-chenyu.webp'],['/assets/fonts/OFL-NotoSansSC.txt','assets/fonts/OFL-NotoSansSC.txt'],['/assets/fonts/OFL-NotoSerifSC.txt','assets/fonts/OFL-NotoSerifSC.txt']]) assert.equal(publicPath(url),result);
   for (const url of ['/../README.md','/%2e%2e/README.md','/assets/js/../../.env','/assets/js/%252e%252e/.env','/assets/js/..%5csecrets.js','/assets/js/a.js:secret','//assets/js/core.js','/apps/liyun-explorer/src/App.tsx','/.git/config','/.env','/README.md','/assets/js/core.js.map','/assets/js/private-key.js','/assets/js/token.js','/assets/fonts/.env','/assets/fonts/secret.txt','/assets/fonts/anything.txt','/assets/img/x.','/%00','/%ZZ']) assert.equal(publicPath(url),null,url);
@@ -20,6 +21,7 @@ test('site-only preflight skips all application dependency entries', async () =>
   const {preflight,ROOT} = await import('../tools/dev-workspace.mjs');
   const result = await preflight(true);
   assert.deepEqual(result.apps,[]);
+  assert.equal(result.api,null);
   assert.equal(path.basename(result.site),'site');
   assert.equal(path.relative(result.workspace,ROOT),'');
 });

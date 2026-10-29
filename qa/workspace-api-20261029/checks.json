@@ -1,0 +1,52 @@
+{
+  "ok": true,
+  "date": "2026-10-29",
+  "timezone": "Asia/Shanghai",
+  "baseline": "77826ca",
+  "branch": "codex/liyun-api-workspace",
+  "scope": "Working-tree five-service launcher and collaboration/asset cleanup",
+  "environment": { "platform": "Windows", "node": "v24.22.0", "npm": "12.2.1" },
+  "testedSourceSHA256": {
+    "tools/dev-workspace.mjs": "45f1e8cf427f8b20968703fabb76cb4aaab670b83fed69b546960553b4cb1def",
+    "qa/workspace-api-tests.mjs": "cce67135aa64794051019d7330fa5e2f3267b7a15e0510d51bc2ce8661186eac"
+  },
+  "nodeRegression": {
+    "command": "node --test qa/node-tests.cjs qa/desktop-node-tests.cjs qa/cache-tests.mjs qa/update-check-tests.cjs qa/window-overflow-tests.cjs qa/voxel-shortcut-tests.cjs qa/ports-tests.cjs docs/boot/gate-contract-tests.cjs qa/revision-20261028/auth-tests.mjs apps/liyun-explorer/server/store.test.mjs apps/liyun-explorer/server/server.test.mjs qa/workspace-api-tests.mjs",
+    "total": 100, "passed": 100, "failed": 0, "skipped": 0,
+    "gateContractsWithinOneRunnerEntry": 15
+  },
+  "launcherIntegration": {
+    "total": 7, "passed": 7,
+    "cases": [
+      "Health probe requires JSON ok:true and rejects failures, redirects, invalid JSON, oversized responses and timeouts",
+      "Five owned services start; Vite proxies account login, identity and persisted progress using synthetic data",
+      "Site-only starts only the homepage, ignores an occupied API port and never opens the account database",
+      "Occupied API port fails startup without reusing or closing the unrelated fixture",
+      "Later Vite port conflict rolls back the owned API and earlier frontend, preserving the unrelated fixture",
+      "Parent IPC disconnect releases every owned listener",
+      "Owned account process unexpected exit fails the workspace and closes its sibling services"
+    ],
+    "isolation": "Temporary synthetic desktop config, temporary SQLite, temporary Vite caches and dynamically reserved loopback ports. Fixed-port existing development services were not stopped, reused or modified.",
+    "normalCliPorts": { "site": 8899, "liyun-api": 8787, "liyun": 5174, "campus": 8081, "voxel": 5180 },
+    "normalPortsVerifiedBy": "node tools/dev-workspace.mjs --check; qa/node-tests.cjs",
+    "siteOnlyPreflight": "node tools/dev-workspace.mjs --site-only --check"
+  },
+  "liyunFrontend": {
+    "command": "npm --prefix apps/liyun-explorer test",
+    "files": 8, "total": 71, "passed": 71, "failed": 0
+  },
+  "additionalChecks": [
+    { "command": "node --check tools/dev-workspace.mjs", "passed": true },
+    { "command": "node --check qa/workspace-api-tests.mjs", "passed": true },
+    { "command": "node apps/liyun-explorer/scripts/asset-manifest.mjs --check", "passed": true },
+    { "command": "node apps/liyun-explorer/scripts/verify-calibrated-map.mjs", "passed": true, "unchangedFiles": 6 },
+    { "command": "node tools/build-site.mjs", "passed": true, "version": "4036dc9f22c3295680bc5100" },
+    { "command": "node tools/build-site.mjs --check dist-site", "passed": true },
+    { "command": "git diff --check", "passed": true }
+  ],
+  "limits": [
+    "No public-facing port, production service, nginx configuration or account API contract was changed.",
+    "No new browser, physical-device or production acceptance was performed; new integration coverage uses real HTTP and Vite with synthetic data.",
+    "Prior three/four-service evidence and initial maintenance receipts were preserved."
+  ]
+}

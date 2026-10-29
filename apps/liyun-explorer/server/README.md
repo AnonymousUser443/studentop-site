@@ -4,7 +4,9 @@ Node 24 内置 HTTP、SQLite 与 crypto，零 npm 依赖。游客入口独立于
 
 ## 运行配置
 
-由发布负责人运行；本轮账号安全实现未自行启动服务或执行测试。
+从仓库根执行 `node tools/dev-workspace.mjs`，完整模式自动托管本 API、主页和三个前端，统一启动、健康检查与退出清理。API 固定监听 127.0.0.1:8787，前端仍通过同源 `/api` 访问；无需额外终端。启动失败或子进程异常退出会清理本次服务，保留外部服务。
+
+单独调试 API 时，可在退出自己启动的完整模式后运行 `npm --prefix apps/liyun-explorer run server`。下表的 Host、Port 和生产 Origin 设置用于独立运行；统一开发启动器固定使用回环开发契约，不受这些独立服务的网络覆盖值影响，仍遵循 `LIYUN_DATA_DIR`。生产变更须遵守[部署政策](../../../DEPLOYMENT-POLICY.md)。
 
 | 变量 | 说明 |
 | --- | --- |
@@ -39,7 +41,7 @@ playerUV 只允许起点或已发现地标的固定 UV，任意坐标回落起�
 
 ## 回归交接
 
-以下命令由 Lead 统一执行；此文不是通过记录：
+在应用目录执行以下回归；具体通过结果应记录对应提交和测试环境：
 
 ```sh
 node --test server/store.test.mjs server/server.test.mjs
