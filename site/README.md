@@ -1,6 +1,6 @@
 # 青玉纸境 · Windows 风格网页桌面
 
-原生 HTML / CSS / JavaScript 前端，零 npm 前端依赖，开发无需打包；正式发布需先做确定性资源版本化构建；私密问答由 Node 服务同源校验，不能再以纯静态服务器绕过运行。最新变更见 [10月28日修订](<../docs/REVISION-20261028.md>)。这里只是网页桌面，不控制操作系统电源、网络或真实磁盘。V2 的设计和验收矩阵见 [升级计划](../docs/UPGRADE-PLAN.md)；本轮截图与浏览器结果由负责人另行留证，旧截图不代表新版通过。
+原生 HTML / CSS / JavaScript 前端，零 npm 前端依赖，开发无需打包；正式发布需先做确定性资源版本化构建；私密问答由 Node 服务同源校验，不能再以纯静态服务器绕过运行。交互与安全设计见[10月28日修订](<../docs/REVISION-20261028.md>)。这里只是网页桌面，不控制操作系统电源、网络或真实磁盘。V2 的设计和验收矩阵见[升级计划](../docs/UPGRADE-PLAN.md)，后续发布证据见[发布记录](../docs/RELEASE-20261028.md)；新改动需另行验收，旧截图不代表新版通过。
 
 ## 本地查看
 
@@ -11,7 +11,7 @@ node tools/dev-workspace.mjs --site-only --check
 node tools/dev-workspace.mjs --site-only
 ~~~
 
-主页为 <http://127.0.0.1:8899/>；锁屏必须经过服务端问答，旧 skipLock 参数不再授权；项目索引为 <http://127.0.0.1:8899/projects/>。完整联调去掉 --site-only，启动理韵 5174 和校园 8081。仅静态模式不会启动这两个目标，不能据此判定跨项目跳转已可用。
+主页为 <http://127.0.0.1:8899/>；锁屏必须经过服务端问答，旧 skipLock 参数不再授权；项目索引为 <http://127.0.0.1:8899/projects/>。完整联调去掉 --site-only，同时启动理韵账号 API 8787、理韵前端 5174、校园 8081 和体素校园 5180。--site-only 不启动这些服务，不能据此判定跨项目跳转或账号联调已可用，详见[应用说明](../apps/README.md)。
 
 启动器仅服务本目录的公开入口和资源，不暴露仓库根；端口占用直接失败。**不要动旧 5173、4173 或 8080 SSH 转发。** 不需要 SSH、线上服务、Python 静态服务或另一套 DSH。状态入口 <http://127.0.0.1:8899/__workspace/status> 可以辨认当前工作区。
 
@@ -29,7 +29,7 @@ node tools/dev-workspace.mjs --site-only
 
 头像使用内容配置中的 profile.avatar，图片路径相对于主页；默认沉玉谷壁纸与缩略图由负责人准备。新增文字后需由字体负责人补齐本地子集，不把任意在线字体当作默认依赖。两份 Noto 许可在字体资源目录保留。
 
-原有应用 id 保留：about、projects、skills、contact、cv、thispc、terminal、notepad、photos、settings、recycle。快捷方式 id 为 frost-atlas、liyun-explorer、genshin-start、genshin-original。回环开发时理韵和校园映射 5174 / 8081，生产地址不变；北湖霜降没有本地副本，不能把它指向其他旧端口冒充服务。
+原有应用 id 保留：about、projects、skills、contact、cv、thispc、terminal、notepad、photos、settings、recycle。快捷方式 id 为 frost-atlas、liyun-explorer、genshin-start、genshin-original、voxel-campus。回环开发时理韵、校园、体素映射 5174 / 8081 / 5180；原版开场共用 8081/legacy.html。北湖霜降没有本地副本，不能把它指向其他旧端口冒充服务。
 
 ## 操作与限制
 
@@ -49,4 +49,4 @@ node tools/dev-workspace.mjs --site-only
 
 [QA 说明](../qa/README.md) 提供保留的交互脚本、新版回归入口与严格失败约定。浏览器操作由负责人先加载 opencli 后执行；合成事件检查不等于物理触屏或真实拖动实测。
 
-线上既有主页为 <https://studentop.cn:14355/>，本轮未部署。发布须遵守 [仓库部署权限](../DEPLOYMENT-POLICY.md)，不得以本地预览为由连接或修改生产 SSH 转发。
+主页地址为 <https://studentop.cn:14355/>，已记录的正式发布与验收见[发布记录](../docs/RELEASE-20261028.md)。后续修改需重新验收；发布遵守[仓库部署权限](../DEPLOYMENT-POLICY.md)，历史授权不作为后续上线许可。

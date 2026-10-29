@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-28T13:16:28.294Z",
+  "generatedAt": "2026-10-29T02:47:26.242Z",
   "mapId": "campus-v04-eaa124716c51375f",
   "logicalCanvas": [
     4000,
     4958
   ],
-  "totalBytes": 27944975,
+  "totalBytes": 27944788,
   "files": [
     {
       "path": "public/assets/art/mountain-right.png",
@@ -54,8 +54,8 @@
     },
     {
       "path": "public/assets/fonts/MaShanZheng-OFL.txt",
-      "bytes": 4490,
-      "sha256": "8989e84e52586916204640b31620dd2d12a4dddfb4aec87cbf04ba7acad1e6b6"
+      "bytes": 4397,
+      "sha256": "d7bdb1cee215b689e23c2f95672a6084c790542170648267a55114103d756a08"
     },
     {
       "path": "public/assets/fonts/MaShanZheng-Regular.ttf",
@@ -69,8 +69,8 @@
     },
     {
       "path": "public/assets/fonts/NotoSerifSC-OFL.txt",
-      "bytes": 4444,
-      "sha256": "64538aaa923b7e75559725ecf64eff7b18f623857b8e6d31a7347743ab27e907"
+      "bytes": 4350,
+      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6"
     },
     {
       "path": "public/assets/fonts/NotoSerifSC-UI.woff2",

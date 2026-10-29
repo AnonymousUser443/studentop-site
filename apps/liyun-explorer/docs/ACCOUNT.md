@@ -73,6 +73,6 @@ NODE_ENV=production 时必须显式设置 LIYUN_PUBLIC_ORIGIN 为精确公开 HT
 
 ## 验证与运行
 
-[服务端说明](<../server/README.md>)列出负责人应执行的回归命令；新增用例包括正确/错误口令、同 ID 接管拒绝、schema1 锁定/受控迁移、敏感字段不落盘、v1不升级、v2正常恢复、HTTPS/Origin/JSON/节流边界。本成员仅编写并静态阅读，未执行测试或服务；最终结果由 Lead 记录。
+[服务端说明](<../server/README.md>)列出回归命令；用例包括正确/错误口令、同 ID 接管拒绝、schema1 锁定/受控迁移、敏感字段不落盘、v1不升级、v2正常恢复、HTTPS/Origin/JSON/节流边界。合并后的历史验收见[融合发布记录](../../../docs/PR2-LOCATION-RELEASE-20261028.md)，后续修改须由提交者重新运行受影响测试并记录结果。
 
 生产私库、反代、独立服务见[部署说明](<../../../deploy/pi-liyun/ACCOUNT-API.md>)。
