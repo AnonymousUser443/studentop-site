@@ -1,35 +1,65 @@
-# 原神启动
+# 理韵 · 纸境入场
 
-> 免责声明：
-本网站是一个纯粹的技术示例，旨在展示和分享我们的技术能力。网站的设计和内容受到《原神》的启发，并尽可能地复制了《原神》的登录界面。我们对此表示敬意，并强调这个项目不是官方的《原神》产品，也没有与《原神》或其母公司miHoYo有任何关联。我们没有，也无意从这个项目中获得任何经济利益。这个网站的所有内容仅供学习和研究目的，以便让更多的人了解和熟悉webgl开发技术。
-如果miHoYo或任何有关方面认为这个项目侵犯了他们的权益，请联系我们，我们会立即采取行动。
+本目录保留历史名称 genshin-start 与桌面应用 id。当前入口已改成**北理工校园意象的原创程序化三维场景**：沿晨光步道靠近文博中心门庭，再进入理韵寻踪。不是《原神》官方产品，也不是北京理工大学官方数字孪生；建筑、纸山、植栽和路径是有参考依据的艺术化编排。
 
-## 简介
-视频介绍：[【超还原！three.js复刻原神启动，网页就能玩】](https://www.bilibili.com/video/BV1E8411v7xy/?share_source=copy_web&vd_source=a8feede4d26d2a3cfa4e68803fdd2c94)
+新入口使用 React + TypeScript + Three.js 0.170.0。旧 xviewer / 游戏模型和音频保留作历史材料，不进入新入口的运行依赖图；本版本**静音**，不自动播放任何声音。旧资源的保留不授予第三方美术的使用权。
 
-《原神启动》是一个基于xviewer.js开发的在线网站，本仓库包含了此项目的所有源码。前端开发我们也在摸索学习，不规范的地方欢迎大家指正。由于本网站与《原神》比较接近，大家切勿将本源码用于不正当用途！
+## 本地启动
 
-由于网站访问量比较大，免费的托管服务都不让用，我自己的服务器也因为被攻击暂时没有对外了，如果有云服务商愿意赞助将不胜感激。我们也会制作更多有趣的项目开源给大家。
+前端使用 Node.js 22.12+，完整工作区推荐 Node.js 24。推荐从仓库根执行[本地启动器](../../tools/dev-workspace.mjs)，同时提供主页 8899、理韵 5174、校园 8081、体素校园 5180；完整说明见[根 README](../../README.md)。
 
-启动代码
+单独在本应用目录操作时：
 
-```js
-npm i
+~~~powershell
+npm ci
 npm start
-```
-如果npm比较慢，可使用cnpm
+# npm run dev 是等价的兼容别名
+npm run build
+# 先退出开发服务，再预览构建（同样占用8081）
+npm run preview
+~~~
 
-## xviewer.js是什么
-xviewer.js是一个基于three.js的插件式渲染框架，它对three.js做了一层简洁优雅的封装，包含了大量实用的组件和插件，目标是让前端开发者能更简单地应用webgl技术。xviewer.js也会在近期开源，我们也在制作更多有趣的演示案例，欢迎大家关注我的b站账号。[【three.js实现水墨杭州迎亚运】](https://www.bilibili.com/video/BV1yG411Z7sw/?share_source=copy_web&vd_source=a8feede4d26d2a3cfa4e68803fdd2c94)也是基于xviewer.js开发的。
+开发与构建预览均严格监听 <http://127.0.0.1:8081/>，端口占用立即失败；不会退到 8080 或其他端口。已有依赖无需重装；单独启动前先退出自己启动的统一启动器。旧 5173 / 4173 / 8080 SSH 转发不动。
 
-## three.js教程
-制作教程是一件非常费时费力的事，所以我对所有愿意制作教程的博主给予敬意，以下是我比较推荐的内容
+**出口约定：** 开发模式或回环页面（有 JavaScript）默认进入 <http://127.0.0.1:5174/>；生产非回环页面仍进入 <https://liyun.studentop.cn:14355/>。没有对应理韵服务时，校园本身启动不等于出口验收通过。
 
-官网手册：[Three.js Fundamentals](https://threejs.org/manual/#en/fundamentals)
+## 操作与状态
 
-视频教程：[Three.js Journey](https://threejs-journey.com/)（b站有搬运）
+| 阶段 | 行为 |
+| --- | --- |
+| loading | 静态底图与跳过链接先显示；不伪造加载百分比 |
+| welcome | 等待选择“循光入校”，开始后进入行进 |
+| journey | 正常约 10 秒；可以暂停、继续或直接抵达 |
+| arrival | 门庭停驻，等待再次选择“进入理韵寻踪” |
+| entering | 正常约 2.8 秒过渡后真实导航 |
+| fallback | 初始化失败、12 秒加载超时或图形上下文丢失时保留静态入口，不倒计时强制跳转 |
 
-shader教程：[The Book of Shaders by Patricio Gonzalez Vivo & Jen Lowe](https://thebookofshaders.com/?lan=ch)
+- 右上角跳过链接常驻，包括脚本尚未准备好时；地址带 ?skip=1 或 #skip 可直接进入目标。?skip=0 不请求跳过。
+- 原生按钮/链接支持鼠标、触摸与键盘；Enter / 空格在页面空白区域控制开始、进入或行进暂停；Esc 跳过。输入控件内不抢占其默认操作。
+- 减少动态时开始直接抵达门庭，进入过渡约 180ms。页面转后台暂停绘制，回到前台再继续；卸载移除监听、计时与 GPU 资源。
+- 质量自动判档：低档帧率上限 30、DPR 上限 1.25；高档上限 60、DPR 上限 1.75。持续慢帧可降档。这些是**配置上限，不是测得帧率或流畅度保证**。
 
-## 交流群
-暂无计划
+## 开发验收接口
+
+仅 DEV + 回环地址 + ?qa=1 暴露 window.__CAMPUS_QA__；生产构建不提供测试控制。
+
+- 观测：phase、camera、performance、snapshot()。
+- 操作：start()、arrive()、enter()、advance(seconds)、resume()、loseContext()。
+- advance 只接受 0–60 的有限秒数，切换到手动时钟；resume 恢复自然推进。手动推进不能充当真实播放帧率证据。
+- 稳定 DOM：main[data-phase]，开始 [data-testid="campus-start"]，进入 [data-testid="campus-enter"]，常驻 #campus-skip。
+
+由负责人先加载 opencli 再运行浏览器。保留的 [流程脚本](../../qa/genshin-flow-test.js) 默认为本地 8081 → 5174，可参数化 --url / --target / --mode；[QA 说明](../../qa/README.md) 解释错误与断言如何使进程失败。完整视觉、键盘、上下文丢失、前后台与真实时序测试以负责人保存的实际证据为准，不以 TypeScript 通过替代。
+
+## 无脚本与覆盖出口的边界
+
+[index.html](index.html) 中的常驻链接和 noscript 使用 Vite HTML 占位符：开发服务写入 5174，生产 build 写入原生产地址。**生产构建在本地 preview 且禁用所有 JavaScript 时，noscript 仍是生产链接**；验证本地无脚本入口应使用开发服务，不点击生产目标。开启 JavaScript 时，HTML 启动兜底和应用都会按当前回环 hostname 改用 5174。
+
+需要预注入 window.__EXIT_URL__ 时，只接受无凭据的绝对 HTTP(S) 地址；本地页面仅接受回环目标。不合法值回退到上述默认，不能使用相对路径、javascript/data URL 或带账号密码的 URL。由 [出口模块](src/core/exit.ts) 统一验证并防重复导航；返回浏览器页面时重置防重标记。
+
+## 来源与历史
+
+- 建筑观察与照片使用边界见 [建筑参考](../../docs/BUILDING-REFERENCES.md)。照片只作观察，不作为发布纹理；场景比例不是测绘参数。
+- [改造记录](DEPLOY-NOTES.md) 区分旧版复刻和本轮实际入口；[程序化场景素材清单](src/campus/asset-manifest.json) 记录运行资产边界。
+- 原上游 www-genshin，作者 TEAM.x.y.z / gamemcu；保留 [MIT LICENSE](LICENSE) 与 [上游介绍](https://www.bilibili.com/video/BV1E8411v7xy)。游戏素材权利归原权利人，不因源码开源而允许商用。
+- 旧 public/Genshin 目录与历史源码**仍完整保留**，没有删除。当前 [Vite 配置](vite.config.ts) 关闭 build.copyPublicDir，由仅 build 生效的插件精确输出校园静态 SVG、两份 Noto WOFF2、两份 OFL 许可及根 LICENSE.txt；旧游戏 public 资源不在这份发布白名单中。必需资产缺失会使构建失败。该说明描述配置边界，最终产物文件清单、体积和实际构建结果由 Lead 核验；开发服务仍可访问保留的 public 文件。
+- 纸境入场已记录的发布路径为主域 /campus-entry/，详见[发布记录](../../docs/RELEASE-20261028.md)。历史记录不代表后续修改已上线；新发布遵守[仓库政策](../../DEPLOYMENT-POLICY.md)。

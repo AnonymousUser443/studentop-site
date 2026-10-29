@@ -1,0 +1,5 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),http=require('node:http'),{randomInt}=require('node:crypto');
+const {listenBrowserSafe}=require('./ports.cjs');
+test('temporary HTTP fixture binds only browser-safe loopback ports without changing OS settings',async t=>{const s=http.createServer((q,r)=>r.end('safe'));await listenBrowserSafe(s);t.after(()=>new Promise(r=>s.close(r)));assert.equal(s.address().address,'127.0.0.1');assert(s.address().port>=20000&&s.address().port<40000);assert.equal(await fetch('http://127.0.0.1:'+s.address().port).then(r=>r.text()),'safe');});
+test('occupied temporary port retries without disturbing the existing listener',async t=>{const occupied=http.createServer();await listenBrowserSafe(occupied);t.after(()=>new Promise(r=>occupied.close(r)));const s=http.createServer();let calls=0;await listenBrowserSafe(s,()=>calls++===0?occupied.address().port:randomInt(20000,40000));t.after(()=>new Promise(r=>s.close(r)));assert(calls>=2);assert(occupied.listening);assert.notEqual(s.address().port,occupied.address().port);});

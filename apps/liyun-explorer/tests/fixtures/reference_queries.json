@@ -1,0 +1,2903 @@
+{
+  "points_sha256": "0b26f1841b40654801cad74f3c354420e3bdf086df00541eb3a9272e98c1f957",
+  "forward": [
+    {
+      "u": 0.0,
+      "v": 0.0,
+      "expected": {
+        "latitude": 39.739969961689326,
+        "longitude": 116.15760340576506,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 738.0592906575212,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.0,
+      "v": 0.07692307692307693,
+      "expected": {
+        "latitude": 39.738608133852175,
+        "longitude": 116.15762043226243,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 642.5447940570027,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.0,
+      "v": 0.15384615384615385,
+      "expected": {
+        "latitude": 39.737246306015024,
+        "longitude": 116.1576374587598,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 571.8078816607149,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.0,
+      "v": 0.23076923076923078,
+      "expected": {
+        "latitude": 39.73588447817787,
+        "longitude": 116.15765448525717,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 520.2533956232107,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.0,
+      "v": 0.3076923076923077,
+      "expected": {
+        "latitude": 39.73452265034073,
+        "longitude": 116.15767151175453,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 468.8877866582291,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.0,
+      "v": 0.38461538461538464,
+      "expected": {
+        "latitude": 39.73316082250358,
+        "longitude": 116.1576885382519,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 417.52217769324756,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.0,
+      "v": 0.46153846153846156,
+      "expected": {
+        "latitude": 39.73179899466643,
+        "longitude": 116.15770556474928,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 366.156568728266,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.0,
+      "v": 0.5384615384615384,
+      "expected": {
+        "latitude": 39.730437166829276,
+        "longitude": 116.15772259124664,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 314.79095976328443,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.0,
+      "v": 0.6153846153846154,
+      "expected": {
+        "latitude": 39.72907533899213,
+        "longitude": 116.15773961774401,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 285.5843061586175,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.0,
+      "v": 0.6923076923076923,
+      "expected": {
+        "latitude": 39.72771351115498,
+        "longitude": 116.15775664424137,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 287.52376179474425,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.0,
+      "v": 0.7692307692307693,
+      "expected": {
+        "latitude": 39.72635168331783,
+        "longitude": 116.15777367073875,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 302.04939429911974,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.0,
+      "v": 0.8461538461538461,
+      "expected": {
+        "latitude": 39.72498985548068,
+        "longitude": 116.15779069723612,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 376.1657332506702,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.0,
+      "v": 0.9230769230769231,
+      "expected": {
+        "latitude": 39.72362802764353,
+        "longitude": 116.15780772373348,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 487.58140496049384,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.0,
+      "v": 1.0,
+      "expected": {
+        "latitude": 39.722266199806384,
+        "longitude": 116.15782475023086,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 616.3917093619683,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 0.0,
+      "expected": {
+        "latitude": 39.7399988421529,
+        "longitude": 116.15932775125376,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 641.1147443493925,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 0.07692307692307693,
+      "expected": {
+        "latitude": 39.73863701431575,
+        "longitude": 116.15934477775112,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 527.8408883897804,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 0.15384615384615385,
+      "expected": {
+        "latitude": 39.737275186478605,
+        "longitude": 116.15936180424849,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 438.3743112976897,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 0.23076923076923078,
+      "expected": {
+        "latitude": 39.735913358641454,
+        "longitude": 116.15937883074587,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 381.94938154942196,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 0.3076923076923077,
+      "expected": {
+        "latitude": 39.7345515308043,
+        "longitude": 116.15939585724323,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 330.58377258444045,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 0.38461538461538464,
+      "expected": {
+        "latitude": 39.73318970296715,
+        "longitude": 116.1594128837406,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 279.21816361945884,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 0.46153846153846156,
+      "expected": {
+        "latitude": 39.73182787513001,
+        "longitude": 116.15942991023796,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 227.85255465447713,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 0.5384615384615384,
+      "expected": {
+        "latitude": 39.73046604729286,
+        "longitude": 116.15944693673534,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 176.48694568949557,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 0.6153846153846154,
+      "expected": {
+        "latitude": 39.72910357192876,
+        "longitude": 116.15946484689375,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 137.9284733116828,
+          "local_weight": 0.01838714735307545,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 0.6923076923076923,
+      "expected": {
+        "latitude": 39.72774214619667,
+        "longitude": 116.15948205873516,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 139.8679289478096,
+          "local_weight": 0.013071465158083884,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 0.7692307692307693,
+      "expected": {
+        "latitude": 39.72638056378141,
+        "longitude": 116.15949801622745,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 166.04322864654827,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 0.8461538461538461,
+      "expected": {
+        "latitude": 39.72501873594426,
+        "longitude": 116.1595150427248,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 278.0157697774934,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 0.9230769230769231,
+      "expected": {
+        "latitude": 39.72365690810711,
+        "longitude": 116.15953206922218,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 415.91264470590454,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.09090909090909091,
+      "v": 1.0,
+      "expected": {
+        "latitude": 39.72229508026996,
+        "longitude": 116.15954909571954,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 560.9296151240662,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 0.0,
+      "expected": {
+        "latitude": 39.74002772261648,
+        "longitude": 116.16105209674245,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 566.5061533081035,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 0.07692307692307693,
+      "expected": {
+        "latitude": 39.73866589477933,
+        "longitude": 116.16106912323981,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 433.5581875134217,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 0.15384615384615385,
+      "expected": {
+        "latitude": 39.73730406694218,
+        "longitude": 116.16108614973719,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 317.78031326623676,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 0.23076923076923078,
+      "expected": {
+        "latitude": 39.73594223910503,
+        "longitude": 116.16110317623455,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 243.64536747563307,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 0.3076923076923077,
+      "expected": {
+        "latitude": 39.734580411267885,
+        "longitude": 116.16112020273192,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 192.27975851065153,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 0.38461538461538464,
+      "expected": {
+        "latitude": 39.73321831618964,
+        "longitude": 116.1611371157298,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 140.91414954566986,
+          "local_weight": 0.010562543031935823,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 0.46153846153846156,
+      "expected": {
+        "latitude": 39.73185258254519,
+        "longitude": 116.16114458353663,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 89.54854058068827,
+          "local_weight": 0.35633939098115697,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 0.5384615384615384,
+      "expected": {
+        "latitude": 39.730486167210245,
+        "longitude": 116.16115784649226,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 38.18293161570672,
+          "local_weight": 0.8385971085931478,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 0.6153846153846154,
+      "expected": {
+        "latitude": 39.72911571866152,
+        "longitude": 116.16121248560992,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 0.6923076923076923,
+      "expected": {
+        "latitude": 39.72776245272621,
+        "longitude": 116.16127012820935,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 0.7692307692307693,
+      "expected": {
+        "latitude": 39.726404736476354,
+        "longitude": 116.16126007504648,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 86.55498638163573,
+          "local_weight": 0.38536438526452577,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 0.8461538461538461,
+      "expected": {
+        "latitude": 39.725047616407835,
+        "longitude": 116.1612393882135,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 238.095327615823,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 0.9230769230769231,
+      "expected": {
+        "latitude": 39.72368578857069,
+        "longitude": 116.16125641471088,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 389.66079736961615,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.18181818181818182,
+      "v": 1.0,
+      "expected": {
+        "latitude": 39.72232396073354,
+        "longitude": 116.16127344120824,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 541.2484035022655,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 0.0,
+      "expected": {
+        "latitude": 39.740056603080056,
+        "longitude": 116.16277644223113,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 523.8652837010261,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 0.07692307692307693,
+      "expected": {
+        "latitude": 39.738694775242905,
+        "longitude": 116.16279346872851,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 375.41165123260157,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 0.15384615384615385,
+      "expected": {
+        "latitude": 39.73733294740576,
+        "longitude": 116.16281049522588,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 231.0868356503799,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 0.23076923076923078,
+      "expected": {
+        "latitude": 39.735970651587884,
+        "longitude": 116.16283386636279,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 108.7956279282776,
+          "local_weight": 0.18491749224274878,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 0.3076923076923077,
+      "expected": {
+        "latitude": 39.734591534622375,
+        "longitude": 116.1628533389419,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 53.97574443686262,
+          "local_weight": 0.7047355172970101,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 0.38461538461538464,
+      "expected": {
+        "latitude": 39.73323777661509,
+        "longitude": 116.16284341082937,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 2.610135471881012,
+          "local_weight": 0.9991021633978276,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 0.46153846153846156,
+      "expected": {
+        "latitude": 39.73190198771977,
+        "longitude": 116.16282029776721,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 0.5384615384615384,
+      "expected": {
+        "latitude": 39.73054460021565,
+        "longitude": 116.16283354204646,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 0.6153846153846154,
+      "expected": {
+        "latitude": 39.729181753486124,
+        "longitude": 116.16290070856519,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 0.6923076923076923,
+      "expected": {
+        "latitude": 39.72779271499299,
+        "longitude": 116.16296690780875,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 17.311623461539185,
+          "local_weight": 0.9631154911551106,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 0.7692307692307693,
+      "expected": {
+        "latitude": 39.726433819333806,
+        "longitude": 116.16296077042355,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 109.32918543030033,
+          "local_weight": 0.18068248867457615,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 0.8461538461538461,
+      "expected": {
+        "latitude": 39.72507649687142,
+        "longitude": 116.1629637337022,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 247.7327359353638,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 0.9230769230769231,
+      "expected": {
+        "latitude": 39.723714669034266,
+        "longitude": 116.16298076019956,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 395.92712894783284,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.2727272727272727,
+      "v": 1.0,
+      "expected": {
+        "latitude": 39.722352841197115,
+        "longitude": 116.16299778669693,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 545.9974539642217,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 0.0,
+      "expected": {
+        "latitude": 39.74008548354364,
+        "longitude": 116.16450078771983,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 517.3857009506128,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 0.07692307692307693,
+      "expected": {
+        "latitude": 39.73872365570649,
+        "longitude": 116.1645178142172,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 365.78607951325404,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 0.15384615384615385,
+      "expected": {
+        "latitude": 39.737361827869336,
+        "longitude": 116.16453484071457,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 214.18645807589533,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 0.23076923076923078,
+      "expected": {
+        "latitude": 39.73602181609363,
+        "longitude": 116.16457060815962,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 62.586836638536546,
+          "local_weight": 0.6229981803148107,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 0.3076923076923077,
+      "expected": {
+        "latitude": 39.73463873244671,
+        "longitude": 116.16458831047683,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 0.38461538461538464,
+      "expected": {
+        "latitude": 39.73327661680873,
+        "longitude": 116.16458490513912,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 0.46153846153846156,
+      "expected": {
+        "latitude": 39.731933537925734,
+        "longitude": 116.16453583701228,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 0.5384615384615384,
+      "expected": {
+        "latitude": 39.730573289133545,
+        "longitude": 116.16453068457513,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 0.6153846153846154,
+      "expected": {
+        "latitude": 39.72920399101777,
+        "longitude": 116.16460295492779,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 50.78622112733952,
+          "local_weight": 0.7337249234447007,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 0.6923076923076923,
+      "expected": {
+        "latitude": 39.727828911788954,
+        "longitude": 116.16465418155647,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 137.4372176973192,
+          "local_weight": 0.019868198550530902,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 0.7692307692307693,
+      "expected": {
+        "latitude": 39.72646720517214,
+        "longitude": 116.16467105269352,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 224.08821426729907,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 0.8461538461538461,
+      "expected": {
+        "latitude": 39.72510537733499,
+        "longitude": 116.1646880791909,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 319.05595583681253,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 0.9230769230769231,
+      "expected": {
+        "latitude": 39.72374354949785,
+        "longitude": 116.16470510568826,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 443.44005020729486,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.36363636363636365,
+      "v": 1.0,
+      "expected": {
+        "latitude": 39.722381721660696,
+        "longitude": 116.16472213218563,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 580.9041217072227,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 0.0,
+      "expected": {
+        "latitude": 39.74011436400721,
+        "longitude": 116.16622513320853,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 517.9426036470838,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 0.07692307692307693,
+      "expected": {
+        "latitude": 39.73875253617007,
+        "longitude": 116.16624215970589,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 366.3398310133546,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 0.15384615384615385,
+      "expected": {
+        "latitude": 39.73739070833292,
+        "longitude": 116.16625918620326,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 214.7394875350596,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 0.23076923076923078,
+      "expected": {
+        "latitude": 39.736073940779605,
+        "longitude": 116.16628658621997,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 63.13986609770092,
+          "local_weight": 0.6176127290315423,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 0.3076923076923077,
+      "expected": {
+        "latitude": 39.73468845224271,
+        "longitude": 116.16631226805164,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 0.38461538461538464,
+      "expected": {
+        "latitude": 39.73328861329242,
+        "longitude": 116.16632239017011,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 0.46153846153846156,
+      "expected": {
+        "latitude": 39.73193083098959,
+        "longitude": 116.16629320483716,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 0.5384615384615384,
+      "expected": {
+        "latitude": 39.73057937394586,
+        "longitude": 116.1663191327785,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 84.26081879313969,
+          "local_weight": 0.4078624689120192,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 0.6153846153846154,
+      "expected": {
+        "latitude": 39.72921974131002,
+        "longitude": 116.16636134518748,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 170.9118153631195,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 0.6923076923076923,
+      "expected": {
+        "latitude": 39.72785791347287,
+        "longitude": 116.16637837168484,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 257.5628119330993,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 0.7692307692307693,
+      "expected": {
+        "latitude": 39.72649608563572,
+        "longitude": 116.16639539818222,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 344.2138085030791,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 0.8461538461538461,
+      "expected": {
+        "latitude": 39.72513425779857,
+        "longitude": 116.16641242467958,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 430.86480507305885,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 0.9230769230769231,
+      "expected": {
+        "latitude": 39.72377242996142,
+        "longitude": 116.16642945117695,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 529.2677698823885,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.45454545454545453,
+      "v": 1.0,
+      "expected": {
+        "latitude": 39.72241060212427,
+        "longitude": 116.16644647767431,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 648.3752655021023,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 0.0,
+      "expected": {
+        "latitude": 39.740143244470794,
+        "longitude": 116.16794947869722,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 539.6583970420518,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 0.07692307692307693,
+      "expected": {
+        "latitude": 39.73878141663364,
+        "longitude": 116.16796650519458,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 395.761429149207,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 0.15384615384615385,
+      "expected": {
+        "latitude": 39.73741958879649,
+        "longitude": 116.16798353169196,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 260.7511791385308,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 0.23076923076923078,
+      "expected": {
+        "latitude": 39.73605784803395,
+        "longitude": 116.16800058844485,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 146.50654720506122,
+          "local_weight": 0.0016019632336767842,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 0.3076923076923077,
+      "expected": {
+        "latitude": 39.734689931215314,
+        "longitude": 116.1680400987663,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 35.62917280533933,
+          "local_weight": 0.857543990772505,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 0.38461538461538464,
+      "expected": {
+        "latitude": 39.733290724722835,
+        "longitude": 116.16806400925638,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 31.162007868918774,
+          "local_weight": 0.888456058442831,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 0.46153846153846156,
+      "expected": {
+        "latitude": 39.731966711175254,
+        "longitude": 116.16805172723322,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 117.73541645894005,
+          "local_weight": 0.11889671964751247,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 0.5384615384615384,
+      "expected": {
+        "latitude": 39.730610449610744,
+        "longitude": 116.1680686641788,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 204.38641302891975,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 0.6153846153846154,
+      "expected": {
+        "latitude": 39.7292486217736,
+        "longitude": 116.16808569067616,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 291.03740959889956,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 0.6923076923076923,
+      "expected": {
+        "latitude": 39.72788679393645,
+        "longitude": 116.16810271717354,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 377.68840616887934,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 0.7692307692307693,
+      "expected": {
+        "latitude": 39.7265249660993,
+        "longitude": 116.1681197436709,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 464.3394027388591,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 0.8461538461538461,
+      "expected": {
+        "latitude": 39.72516313826215,
+        "longitude": 116.16813677016827,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 550.9903993088387,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 0.9230769230769231,
+      "expected": {
+        "latitude": 39.723801310425,
+        "longitude": 116.16815379666565,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 638.1333510812296,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.5454545454545454,
+      "v": 1.0,
+      "expected": {
+        "latitude": 39.72243948258785,
+        "longitude": 116.16817082316301,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 739.5511332090955,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 0.0,
+      "expected": {
+        "latitude": 39.74017212493437,
+        "longitude": 116.1696738241859,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 598.1658112436113,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 0.07692307692307693,
+      "expected": {
+        "latitude": 39.738810297097224,
+        "longitude": 116.16969085068328,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 471.8621125233586,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 0.15384615384615385,
+      "expected": {
+        "latitude": 39.73744846926007,
+        "longitude": 116.16970787718066,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 359.38689077732965,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 0.23076923076923078,
+      "expected": {
+        "latitude": 39.73608664142292,
+        "longitude": 116.16972490367802,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 248.4895872384456,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 0.3076923076923077,
+      "expected": {
+        "latitude": 39.73472481358577,
+        "longitude": 116.16974193017539,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 175.71340173995242,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 0.38461538461538464,
+      "expected": {
+        "latitude": 39.73336298574863,
+        "longitude": 116.16975895667275,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 174.9822109684352,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 0.46153846153846156,
+      "expected": {
+        "latitude": 39.732001157911476,
+        "longitude": 116.16977598317013,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 237.86101069472008,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 0.5384615384615384,
+      "expected": {
+        "latitude": 39.730639330074325,
+        "longitude": 116.16979300966749,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 324.5120072646998,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 0.6153846153846154,
+      "expected": {
+        "latitude": 39.729277502237174,
+        "longitude": 116.16981003616486,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 411.1630038346796,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 0.6923076923076923,
+      "expected": {
+        "latitude": 39.72791567440002,
+        "longitude": 116.16982706266224,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 497.81400040465934,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 0.7692307692307693,
+      "expected": {
+        "latitude": 39.72655384656288,
+        "longitude": 116.1698440891596,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 584.4649969746391,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 0.8461538461538461,
+      "expected": {
+        "latitude": 39.72519201872573,
+        "longitude": 116.16986111565697,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 671.1159935446188,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 0.9230769230769231,
+      "expected": {
+        "latitude": 39.72383019088858,
+        "longitude": 116.16987814215433,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 757.7669901145987,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.6363636363636364,
+      "v": 1.0,
+      "expected": {
+        "latitude": 39.722468363051426,
+        "longitude": 116.1698951686517,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 846.8091755314463,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 0.0,
+      "expected": {
+        "latitude": 39.74020100539795,
+        "longitude": 116.1713981696746,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 684.0891735738204,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 0.07692307692307693,
+      "expected": {
+        "latitude": 39.7388391775608,
+        "longitude": 116.17141519617198,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 572.267234349598,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 0.15384615384615385,
+      "expected": {
+        "latitude": 39.73747734972365,
+        "longitude": 116.17143222266934,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 461.39590411067473,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 0.23076923076923078,
+      "expected": {
+        "latitude": 39.736115521886504,
+        "longitude": 116.17144924916671,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 368.1056258597083,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 0.3076923076923077,
+      "expected": {
+        "latitude": 39.73475369404935,
+        "longitude": 116.17146627566407,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 322.62279610206315,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 0.38461538461538464,
+      "expected": {
+        "latitude": 39.7333918662122,
+        "longitude": 116.17148330216145,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 322.2902185823139,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 0.46153846153846156,
+      "expected": {
+        "latitude": 39.73203003837505,
+        "longitude": 116.17150032865882,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 361.3951551605345,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 0.5384615384615384,
+      "expected": {
+        "latitude": 39.73066821053791,
+        "longitude": 116.17151735515618,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 444.63760150047983,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 0.6153846153846154,
+      "expected": {
+        "latitude": 39.729306382700756,
+        "longitude": 116.17153438165356,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 531.2885980704597,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 0.6923076923076923,
+      "expected": {
+        "latitude": 39.727944554863605,
+        "longitude": 116.17155140815092,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 617.9395946404394,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 0.7692307692307693,
+      "expected": {
+        "latitude": 39.726582727026454,
+        "longitude": 116.1715684346483,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 704.5905912104192,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 0.8461538461538461,
+      "expected": {
+        "latitude": 39.7252208991893,
+        "longitude": 116.17158546114567,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 791.2415877803988,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 0.9230769230769231,
+      "expected": {
+        "latitude": 39.72385907135216,
+        "longitude": 116.17160248764303,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 877.8925843503787,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.7272727272727273,
+      "v": 1.0,
+      "expected": {
+        "latitude": 39.72249724351501,
+        "longitude": 116.1716195141404,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 964.5435809203586,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 0.0,
+      "expected": {
+        "latitude": 39.740229885861524,
+        "longitude": 116.1731225151633,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 785.1475779218664,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 0.07692307692307693,
+      "expected": {
+        "latitude": 39.73886805802438,
+        "longitude": 116.17313954166066,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 674.3046448359335,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 0.15384615384615385,
+      "expected": {
+        "latitude": 39.73750623018723,
+        "longitude": 116.17315656815803,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 575.1432624843507,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 0.23076923076923078,
+      "expected": {
+        "latitude": 39.73614440235008,
+        "longitude": 116.17317359465541,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 502.852797576643,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 0.3076923076923077,
+      "expected": {
+        "latitude": 39.73478257451293,
+        "longitude": 116.17319062115277,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 470.00026063381625,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 0.38461538461538464,
+      "expected": {
+        "latitude": 39.73342074667578,
+        "longitude": 116.17320764765014,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 469.81666982954505,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 0.46153846153846156,
+      "expected": {
+        "latitude": 39.73205891883863,
+        "longitude": 116.1732246741475,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 496.90921567168374,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 0.5384615384615384,
+      "expected": {
+        "latitude": 39.73069709100148,
+        "longitude": 116.17324170064488,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 564.8698782063506,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 0.6153846153846154,
+      "expected": {
+        "latitude": 39.72933526316433,
+        "longitude": 116.17325872714225,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 651.4141923062398,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 0.6923076923076923,
+      "expected": {
+        "latitude": 39.727973435327186,
+        "longitude": 116.17327575363962,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 738.0651888762194,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 0.7692307692307693,
+      "expected": {
+        "latitude": 39.726611607490035,
+        "longitude": 116.17329278013699,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 824.7161854461993,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 0.8461538461538461,
+      "expected": {
+        "latitude": 39.725249779652884,
+        "longitude": 116.17330980663435,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 911.367182016179,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 0.9230769230769231,
+      "expected": {
+        "latitude": 39.72388795181573,
+        "longitude": 116.17332683313172,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 998.0181785861589,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.8181818181818182,
+      "v": 1.0,
+      "expected": {
+        "latitude": 39.72252612397858,
+        "longitude": 116.17334385962909,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 1084.6691751561386,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 0.0,
+      "expected": {
+        "latitude": 39.740258766325105,
+        "longitude": 116.174846860652,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 887.2140644272696,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 0.07692307692307693,
+      "expected": {
+        "latitude": 39.738896938487954,
+        "longitude": 116.17486388714936,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 785.3274866740315,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 0.15384615384615385,
+      "expected": {
+        "latitude": 39.7375351106508,
+        "longitude": 116.17488091364673,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 701.6394172576341,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 0.23076923076923078,
+      "expected": {
+        "latitude": 39.73617328281366,
+        "longitude": 116.17489794014409,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 643.2920236480468,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 0.3076923076923077,
+      "expected": {
+        "latitude": 39.73481145497651,
+        "longitude": 116.17491496664147,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 617.5107520071624,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 0.38461538461538464,
+      "expected": {
+        "latitude": 39.73344962713936,
+        "longitude": 116.17493199313884,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 617.4049958682435,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 0.46153846153846156,
+      "expected": {
+        "latitude": 39.73208779930221,
+        "longitude": 116.1749490196362,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 637.836645609864,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 0.5384615384615384,
+      "expected": {
+        "latitude": 39.73072597146506,
+        "longitude": 116.17496604613358,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 691.7010838203925,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 0.6153846153846154,
+      "expected": {
+        "latitude": 39.72936414362791,
+        "longitude": 116.17498307263094,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 771.5397865420198,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 0.6923076923076923,
+      "expected": {
+        "latitude": 39.72800231579076,
+        "longitude": 116.17500009912831,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 858.1907831119994,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 0.7692307692307693,
+      "expected": {
+        "latitude": 39.72664048795361,
+        "longitude": 116.17501712562567,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 944.8417796819793,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 0.8461538461538461,
+      "expected": {
+        "latitude": 39.725278660116466,
+        "longitude": 116.17503415212305,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 1031.492776251959,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 0.9230769230769231,
+      "expected": {
+        "latitude": 39.723916832279315,
+        "longitude": 116.17505117862042,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 1118.143772821939,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 0.9090909090909091,
+      "v": 1.0,
+      "expected": {
+        "latitude": 39.722555004442164,
+        "longitude": 116.17506820511778,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 1204.7947693919186,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 0.0,
+      "expected": {
+        "latitude": 39.74028764678868,
+        "longitude": 116.17657120614068,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 996.6695634077489,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 0.07692307692307693,
+      "expected": {
+        "latitude": 39.738925818951536,
+        "longitude": 116.17658823263805,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 906.8606706774983,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 0.15384615384615385,
+      "expected": {
+        "latitude": 39.737563991114385,
+        "longitude": 116.17660525913543,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 835.1110577256035,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 0.23076923076923078,
+      "expected": {
+        "latitude": 39.736202163277234,
+        "longitude": 116.17662228563279,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 786.3795691427874,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 0.3076923076923077,
+      "expected": {
+        "latitude": 39.73484033544008,
+        "longitude": 116.17663931213016,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 765.0773294971567,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 0.38461538461538464,
+      "expected": {
+        "latitude": 39.73347850760294,
+        "longitude": 116.17665633862752,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 765.0193866915151,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 0.46153846153846156,
+      "expected": {
+        "latitude": 39.73211667976579,
+        "longitude": 116.1766733651249,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 781.2534235212618,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 0.5384615384615384,
+      "expected": {
+        "latitude": 39.73075485192864,
+        "longitude": 116.17669039162226,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 825.4861033531744,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 0.6153846153846154,
+      "expected": {
+        "latitude": 39.729393024091486,
+        "longitude": 116.17670741811963,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 893.5691619625246,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 0.6923076923076923,
+      "expected": {
+        "latitude": 39.72803119625434,
+        "longitude": 116.17672444461701,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 978.3163773477793,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 0.7692307692307693,
+      "expected": {
+        "latitude": 39.72666936841719,
+        "longitude": 116.17674147111437,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 1064.9673739177592,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 0.8461538461538461,
+      "expected": {
+        "latitude": 39.72530754058004,
+        "longitude": 116.17675849761174,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 1151.618370487739,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 0.9230769230769231,
+      "expected": {
+        "latitude": 39.72394571274289,
+        "longitude": 116.1767755241091,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 1238.2693670577187,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    },
+    {
+      "u": 1.0,
+      "v": 1.0,
+      "expected": {
+        "latitude": 39.72258388490574,
+        "longitude": 116.17679255060648,
+        "support": {
+          "mode": "extrapolated",
+          "inside_control_hull": false,
+          "distance_outside_m": 1324.9203636276984,
+          "local_weight": 0.0,
+          "independent_accuracy_verified": false
+        },
+        "method": "hybrid_thin_plate_spline_affine"
+      }
+    }
+  ],
+  "inverse": [
+    {
+      "latitude": 39.7271828,
+      "longitude": 116.1622406,
+      "expected": {
+        "u": 0.23230891419450114,
+        "v": 0.7254246269297905,
+        "inverse_residual_m": 1.3895462623231322e-06,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 1.6769024454727937,
+          "local_weight": 0.999627860767465,
+          "independent_accuracy_verified": false
+        }
+      }
+    },
+    {
+      "latitude": 39.7271944,
+      "longitude": 116.1612103,
+      "expected": {
+        "u": 0.17747016484718087,
+        "v": 0.7244941827778607,
+        "inverse_residual_m": 5.036331605603614e-08,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 0.08572235336167706,
+          "local_weight": 0.9999990205970344,
+          "independent_accuracy_verified": false
+        }
+      }
+    },
+    {
+      "latitude": 39.7292028,
+      "longitude": 116.1610923,
+      "expected": {
+        "u": 0.17561264919509895,
+        "v": 0.6101766429242396,
+        "inverse_residual_m": 2.3773350825548486e-09,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 0.22044621963557737,
+          "local_weight": 0.9999935268102984,
+          "independent_accuracy_verified": false
+        }
+      }
+    },
+    {
+      "latitude": 39.7292933,
+      "longitude": 116.1621175,
+      "expected": {
+        "u": 0.23065602656168938,
+        "v": 0.6077789786930393,
+        "inverse_residual_m": 5.764396348179914e-11,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        }
+      }
+    },
+    {
+      "latitude": 39.7293292,
+      "longitude": 116.1639018,
+      "expected": {
+        "u": 0.327211992403699,
+        "v": 0.6082913171556817,
+        "inverse_residual_m": 2.4216208033196644e-09,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        }
+      }
+    },
+    {
+      "latitude": 39.7313507,
+      "longitude": 116.1641061,
+      "expected": {
+        "u": 0.3420349110036541,
+        "v": 0.4942107071500817,
+        "inverse_residual_m": 2.459881757918416e-07,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        }
+      }
+    },
+    {
+      "latitude": 39.7327816,
+      "longitude": 116.1639248,
+      "expected": {
+        "u": 0.3296877700570122,
+        "v": 0.41295729065564357,
+        "inverse_residual_m": 9.493965450693105e-09,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        }
+      }
+    },
+    {
+      "latitude": 39.7334862,
+      "longitude": 116.1640778,
+      "expected": {
+        "u": 0.33698445139830957,
+        "v": 0.3717827652928574,
+        "inverse_residual_m": 1.523938229987993e-10,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        }
+      }
+    },
+    {
+      "latitude": 39.7336432,
+      "longitude": 116.1636537,
+      "expected": {
+        "u": 0.31503304937621684,
+        "v": 0.3620651141643756,
+        "inverse_residual_m": 2.014167765481627e-09,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        }
+      }
+    },
+    {
+      "latitude": 39.7354247,
+      "longitude": 116.1639205,
+      "expected": {
+        "u": 0.3283585641990403,
+        "v": 0.26272991033889953,
+        "inverse_residual_m": 5.447964241844696e-10,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        }
+      }
+    },
+    {
+      "latitude": 39.7355385,
+      "longitude": 116.1663208,
+      "expected": {
+        "u": 0.45574516222044226,
+        "v": 0.26193756177210226,
+        "inverse_residual_m": 4.537291215206314e-06,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 1.7207709569492682,
+          "local_weight": 0.9996082124083269,
+          "independent_accuracy_verified": false
+        }
+      }
+    },
+    {
+      "latitude": 39.7344608,
+      "longitude": 116.1677405,
+      "expected": {
+        "u": 0.52930498481143,
+        "v": 0.319958647063716,
+        "inverse_residual_m": 3.421779802482353e-09,
+        "support": {
+          "mode": "calibrated",
+          "inside_control_hull": true,
+          "distance_outside_m": 0.0,
+          "local_weight": 1.0,
+          "independent_accuracy_verified": false
+        }
+      }
+    },
+    {
+      "latitude": 39.7334251,
+      "longitude": 116.1677638,
+      "expected": {
+        "u": 0.5295357451784748,
+        "v": 0.3767423912838925,
+        "inverse_residual_m": 6.328836171690416e-07,
+        "support": {
+          "mode": "transition",
+          "inside_control_hull": false,
+          "distance_outside_m": 1.1809757833259258,
+          "local_weight": 0.9998150155592492,
+          "independent_accuracy_verified": false
+        }
+      }
+    }
+  ]
+}

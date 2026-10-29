@@ -1,0 +1,36 @@
+{
+  "checks": [
+    {
+      "name": "genshin-original",
+      "pass": true
+    },
+    {
+      "name": "genshin-start",
+      "pass": true
+    },
+    {
+      "name": "liyun-explorer",
+      "pass": true
+    },
+    {
+      "name": "no_unapproved_destination",
+      "pass": true
+    }
+  ],
+  "opened": [
+    {
+      "id": "genshin-original",
+      "url": "http://127.0.0.1:8081/legacy.html"
+    },
+    {
+      "id": "genshin-start",
+      "url": "http://127.0.0.1:8081/"
+    },
+    {
+      "id": "liyun-explorer",
+      "url": "http://127.0.0.1:5174/"
+    }
+  ],
+  "method": "real double-clicks on server-authenticated synthetic desktop; only exact loopback destinations permitted",
+  "ok": true
+}

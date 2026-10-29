@@ -5,6 +5,7 @@
 *.md        text eol=lf
 *.js        text eol=lf
 *.mjs       text eol=lf
+*.cjs       text eol=lf
 *.ts        text eol=lf
 *.tsx       text eol=lf
 *.py        text eol=lf
@@ -30,3 +31,14 @@
 *.glb   binary
 *.gltf  binary
 *.svg   text
+
+# Keep audited upstream license prose byte-exact instead of rewriting its whitespace.
+site/assets/fonts/OFL-*.txt -whitespace
+apps/genshin-start/public/campus/fonts/OFL-*.txt -whitespace
+apps/genshin-start/scripts/licenses/Apache-2.0.txt -whitespace
+# Asset manifests hash license bytes too; make Windows/Linux checkouts identical.
+apps/liyun-explorer/public/assets/fonts/*-OFL.txt text eol=lf -whitespace
+
+# Preserve the audited campus calibration bytes and SHA-256 on all platforms.
+apps/liyun-explorer/src/location/data/*.json -text whitespace=cr-at-eol
+apps/liyun-explorer/src/location/vendor/*.mjs -text

@@ -1,0 +1,66 @@
+{
+  "version": 2,
+  "assets": [
+    {
+      "asset": "site/assets/img/aidenos-landscape.webp",
+      "source": "用户参考图 1 经内置 ImageGen 精确编辑；去除所有烘焙文字与加载 UI，保留月环、山水、亭阁及倒影",
+      "method": "image_gen.imagegen / precise edit",
+      "prompt": "Preserve the exact landscape composition, dark jade and warm gold palette, crescent moon, mountains, pavilion, birds and water reflections. Remove all typography and UI: central AidenOS, Chinese tagline, bottom loading ring and caption. Reconstruct clean dark sky and water in those areas. Add no text, logos, buttons or loading marks.",
+      "sourceFormat": "PNG",
+      "outputFormat": "WebP RGB, quality 93",
+      "width": 1672,
+      "height": 941,
+      "bytes": 134950,
+      "sha256": "710ff7c41583442fa51c6304e85aef9e7a3fe561d6aee059f7ca3c6ccd68b436",
+      "layers": [
+        "月环",
+        "山水",
+        "倒影"
+      ],
+      "runtime": "三个遮罩区域复用同一素材；字标、加载环和粒子由网页实时绘制",
+      "usage": "用户提供设计的项目内演绎，不作第三方授权声明"
+    },
+    {
+      "asset": "site/assets/img/boot-logo.webp",
+      "source": "上一版用户指定的透明 PNG 原图；本次保留未修改",
+      "outputFormat": "lossless WebP RGBA",
+      "width": 1046,
+      "height": 1049,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 632452,
+      "sha256": "5750d5e56d49f4b33dd60023a1319a2a22cfd68d3919408bc5618b6f7bc9d2f2",
+      "pixelPreserved": true,
+      "preparation": "tools/prepare-boot-logo.py --source <用户指定原图>",
+      "status": "legacy; 原始透明图完整保留"
+    },
+    {
+      "asset": "site/assets/img/wall-chenyu.webp",
+      "source": "站点已有公开壁纸；实际锁屏遵循用户当前偏好",
+      "usage": "时钟与登录共用，不新增壁纸偏好"
+    },
+    {
+      "asset": "site/assets/img/avatar-aiden.jpg",
+      "source": "站点已有公开头像",
+      "usage": "登录中央头像"
+    }
+  ],
+  "fonts": [
+    {
+      "asset": "site/assets/fonts/noto-sans-sc.woff2",
+      "bytes": 283780,
+      "sha256": "abea0aa5aa43e7873c0f0fdf3c14547764bda6cda933fe687b09fc355c7b0916",
+      "license": "site/assets/fonts/OFL-NotoSansSC.txt"
+    },
+    {
+      "asset": "site/assets/fonts/noto-serif-sc.woff2",
+      "bytes": 368900,
+      "sha256": "604d7193d6801b9cd867b0c1a064ff292e39261bdfc55f3db29e79eddaf54565",
+      "license": "site/assets/fonts/OFL-NotoSerifSC.txt"
+    }
+  ],
+  "fontPreparation": "tools/build-theme-fonts.py --sans <Noto Sans SC source> --serif <Noto Serif SC source> --site-only; 977 characters across 81 source files, campus outputs unchanged",
+  "privacy": "参考照片仅用于布局参考，不纳入素材；输入与真实答案不采样、不存入素材或文档"
+}

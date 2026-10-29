@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "current": "/opt/projects/liyun/releases/liyun-20261028T125837Z-d42554f163",
+  "previous": "/opt/projects/liyun/releases/20261027T0656Z",
+  "rollbackFilesVerified": 24,
+  "previousHtmlOriginal": true,
+  "bothGenerationResourcesVerified": true,
+  "nginxConfigUnchanged": true,
+  "configSHA256": "88a36503e1381a8ddc838a6f73b64aaf8bf11e0c3fc8e5095b4cd73af5ec0fd5",
+  "actualRollbackPerformed": false
+}

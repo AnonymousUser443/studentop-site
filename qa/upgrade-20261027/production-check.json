@@ -1,0 +1,126 @@
+{
+  "checks": [
+    {
+      "name": "campus_fits_viewport",
+      "pass": true
+    },
+    {
+      "name": "production_campus_no_QA",
+      "pass": true
+    },
+    {
+      "name": "production_scene_really_ready",
+      "pass": true
+    },
+    {
+      "name": "production_local_exit",
+      "pass": true
+    },
+    {
+      "name": "no_legacy_game_asset_requests",
+      "pass": true,
+      "detail": [
+        "http://127.0.0.1:8082/?qa=1",
+        "http://127.0.0.1:8082/assets/index-02d143d7.js",
+        "http://127.0.0.1:8082/assets/index-ce1d716b.css",
+        "http://127.0.0.1:8082/campus-fallback.svg",
+        "http://127.0.0.1:8082/assets/scene-2370a951.js",
+        "http://127.0.0.1:8082/campus/fonts/noto-serif-sc.woff2"
+      ]
+    },
+    {
+      "name": "campus_no_console_or_network_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "liyun_fits_viewport",
+      "pass": true
+    },
+    {
+      "name": "production_liyun_no_QA",
+      "pass": true
+    },
+    {
+      "name": "production_liyun_root_present",
+      "pass": true
+    },
+    {
+      "name": "liyun_no_console_or_network_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "projects_fits_viewport",
+      "pass": true
+    },
+    {
+      "name": "projects_local_campus_link",
+      "pass": true
+    },
+    {
+      "name": "projects_no_console_or_network_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "projects-mobile_fits_viewport",
+      "pass": true
+    },
+    {
+      "name": "projects-mobile_local_campus_link",
+      "pass": true
+    },
+    {
+      "name": "projects_mobile_footer_in_bounds",
+      "pass": true,
+      "detail": {
+        "clientWidth": 375,
+        "scrollWidth": 375,
+        "entryRight": 355,
+        "actionRight": 155.703125
+      }
+    },
+    {
+      "name": "projects-mobile_no_console_or_network_errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "pages": [
+    {
+      "id": "campus",
+      "url": "http://127.0.0.1:8082/?qa=1",
+      "size": "1440x900",
+      "ok": true,
+      "requests": 6
+    },
+    {
+      "id": "liyun",
+      "url": "http://127.0.0.1:4174/?qa=1&preset=fog",
+      "size": "1440x900",
+      "ok": true,
+      "requests": 9
+    },
+    {
+      "id": "projects",
+      "url": "http://127.0.0.1:8899/projects/",
+      "size": "1440x900",
+      "ok": true,
+      "requests": 7
+    },
+    {
+      "id": "projects-mobile",
+      "url": "http://127.0.0.1:8899/projects/",
+      "size": "390x844",
+      "ok": true,
+      "requests": 7
+    }
+  ],
+  "screenshots": [
+    "campus-production.png",
+    "projects.png",
+    "projects-mobile.png"
+  ],
+  "ok": true
+}

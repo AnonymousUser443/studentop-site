@@ -1,0 +1,63 @@
+/* Independent, non-modal update notice. Inherits the existing bundled Noto UI stack. */
+.site-update {
+  --update-bg: #fffaf0;
+  --update-text: #233d34;
+  --update-muted: #52685d;
+  position: fixed;
+  /* Stay below menus/flyouts so a persistent notice cannot cover Start controls. */
+  z-index: calc(var(--z-flyout, 1100) - 1);
+  inset-inline-end: max(12px, env(safe-area-inset-right));
+  bottom: calc(var(--taskbar-h, 52px) + 14px);
+  width: min(430px, calc(100vw - 24px));
+  max-height: calc(100dvh - var(--taskbar-h, 52px) - 40px);
+  box-sizing: border-box;
+  overflow: auto;
+  overscroll-behavior: contain;
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--gold-line, #bdac7d);
+  border-radius: var(--radius-card, 8px);
+  /* Opaque paper keeps the small update copy legible over detailed wallpapers. */
+  background: var(--update-bg);
+  color: var(--text-primary, var(--update-text));
+  box-shadow: var(--shadow-flyout, 0 12px 32px #172f2526);
+  font-family: var(--font-ui, "Noto Sans SC", "HarmonyOS Sans SC", sans-serif);
+  font-size: 13px;
+  line-height: 1.65;
+  pointer-events: auto;
+  animation: site-update-appear 160ms ease-out both;
+}
+.site-update[hidden] { display: none !important; }
+.site-update__copy { min-width: 0; }
+.site-update__title { margin: 0 0 5px; font: 600 15px/1.5 var(--font-ui, "Noto Sans SC", sans-serif); }
+.site-update__description { margin: 0; color: var(--text-secondary, var(--update-muted)); overflow-wrap: anywhere; }
+.site-update__actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; }
+.site-update__button {
+  appearance: none;
+  min-height: 40px;
+  max-width: 100%;
+  padding: 8px 15px;
+  border: 1px solid var(--stroke-2, #a7b9ad);
+  border-radius: var(--radius-control, 5px);
+  font: inherit;
+  font-weight: 500;
+  line-height: 1.4;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.site-update__button--primary { background: var(--accent, #28776b); color: var(--accent-fg, #fff); border-color: transparent; }
+.site-update__button--primary:hover { background: var(--accent-hover, #23685e); }
+.site-update__button--secondary { background: transparent; color: inherit; }
+.site-update__button--secondary:hover { background: var(--hover, #28776b12); }
+.site-update__button:focus-visible { outline: 2px solid var(--accent-ink, #28776b); outline-offset: 3px; }
+:root[data-theme="dark"] .site-update { --update-bg: #1e342b; --update-text: #f0efe3; --update-muted: #c0ccbb; }
+@media (max-width: 520px) {
+  .site-update { inset-inline: 12px; width: auto; padding: 15px; gap: 12px; }
+  .site-update__actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .site-update__button { width: 100%; min-height: 44px; }
+}
+@media (forced-colors: active) { .site-update, .site-update__button { border-color: ButtonText; } }
+@keyframes site-update-appear { from { opacity: 0; } to { opacity: 1; } }
+:root[data-motion="off"] .site-update { animation: none; }
+@media (prefers-reduced-motion: reduce) { .site-update { animation: none; } }

@@ -1,0 +1,169 @@
+{
+  "ok": true,
+  "upstream": "85a8034840a33e6a47fef37db158771954723180",
+  "method": "isolated owned Edge/CDP against existing loopback Vite; genuine canvas pixels and trusted UI; independent renderer fixtures are separate from app state",
+  "checks": [
+    {
+      "name": "integrated_app_starts_without_duplicate_layers",
+      "pass": true
+    },
+    {
+      "name": "real_fog_billows_with_stationary_camera",
+      "pass": true,
+      "detail": {
+        "before": {
+          "hash": "4943cede",
+          "alpha": 32368832,
+          "changedOverOne": 0,
+          "width": 2160,
+          "height": 1350,
+          "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)",
+          "known": 1
+        },
+        "after": {
+          "hash": "b1e7f6c8",
+          "alpha": 30646500,
+          "changedOverOne": 308502,
+          "width": 2160,
+          "height": 1350,
+          "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)",
+          "known": 1
+        }
+      }
+    },
+    {
+      "name": "target_starts_undiscovered",
+      "pass": true
+    },
+    {
+      "name": "real_poi_click_explores_and_updates_discovery",
+      "pass": true
+    },
+    {
+      "name": "actual_reduced_motion_ui_stops_ambient_fog_loop",
+      "pass": true,
+      "detail": {
+        "hash": "5eeeeeba",
+        "alpha": 23538087,
+        "changedOverOne": 0,
+        "width": 2160,
+        "height": 1350,
+        "camera": "translate3d(-208.824px, -664.72px, 0px) scale(0.508333)",
+        "known": 2
+      }
+    },
+    {
+      "name": "fixed_time_pixels_match_within_one_channel_quantization_step",
+      "pass": true,
+      "detail": {
+        "initial": {
+          "hash": "5ef94e9e",
+          "centerAlpha": 147,
+          "outsideAlpha": 0
+        },
+        "repeated": {
+          "hash": "9ed8cc6c",
+          "centerAlpha": 147,
+          "outsideAlpha": 0
+        },
+        "later": {
+          "hash": "ec7e0527",
+          "centerAlpha": 142,
+          "outsideAlpha": 0
+        },
+        "r1": {
+          "hash": "823459ca",
+          "centerAlpha": 171,
+          "outsideAlpha": 0
+        },
+        "r2": {
+          "hash": "93e1a1f8",
+          "centerAlpha": 154,
+          "outsideAlpha": 0
+        },
+        "before": {
+          "hash": "90689a9d",
+          "centerAlpha": 171,
+          "outsideAlpha": 0
+        },
+        "after": {
+          "hash": "10fc0ff5",
+          "centerAlpha": 18,
+          "outsideAlpha": 0
+        },
+        "movedImage": {
+          "hash": "7a1850f2",
+          "centerAlpha": 18,
+          "outsideAlpha": 0
+        },
+        "highDpr": {
+          "hash": "d37cb936",
+          "centerAlpha": 18,
+          "outsideAlpha": 0
+        },
+        "low": {
+          "hash": "87523f04",
+          "centerAlpha": 18,
+          "outsideAlpha": 0
+        },
+        "restored": {
+          "hash": "9ed8cc6c",
+          "centerAlpha": 147,
+          "outsideAlpha": 0
+        },
+        "coldMs": 580.6000000238419,
+        "repeatDifference": {
+          "max": 1,
+          "mean": 0.0016527777777777778,
+          "changed": 2142,
+          "channels": 1296000
+        },
+        "recreateDifference": {
+          "max": 1,
+          "mean": 0.0016527777777777778,
+          "changed": 2142,
+          "channels": 1296000
+        }
+      }
+    },
+    {
+      "name": "independent_noise_field_changes_over_time",
+      "pass": true
+    },
+    {
+      "name": "reduced_motion_renderer_keeps_valid_transparent_bounds",
+      "pass": true
+    },
+    {
+      "name": "discovered_landmark_clears_its_real_canvas_area",
+      "pass": true
+    },
+    {
+      "name": "reveal_tracks_pan_coordinates_and_dpr",
+      "pass": true
+    },
+    {
+      "name": "low_quality_keeps_clearings_and_transparent_outside",
+      "pass": true
+    },
+    {
+      "name": "dispose_allows_recreation_with_same_seed",
+      "pass": true
+    },
+    {
+      "name": "real_landscape_resize_updates_fog_backing_canvas",
+      "pass": true
+    },
+    {
+      "name": "portrait_uses_existing_rotation_gate",
+      "pass": true
+    },
+    {
+      "name": "no_unexpected_browser_errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "total": 15,
+  "passed": 15
+}

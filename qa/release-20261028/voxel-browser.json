@@ -1,0 +1,924 @@
+{
+  "ok": true,
+  "target": "https://studentop.cn:14355/voxel-campus/",
+  "mode": "public",
+  "startedAt": "2026-10-28T11:07:02.251Z",
+  "driver": "owned isolated Edge/CDP via qa/lib.js",
+  "opencliDecision": "Lead doctor: bridge disconnected/profiles=[]; no environment repair",
+  "physicalAudioMutedByHarness": true,
+  "softwareRendererDeviceScaleFactor": 0.5,
+  "checks": [
+    {
+      "name": "startup completes into the actual campus UI without startup-error",
+      "pass": true,
+      "url": "https://studentop.cn:14355/voxel-campus/",
+      "title": "云上良乡 · 北京理工大学",
+      "error": false,
+      "heading": "云上良乡",
+      "active": false,
+      "count": 8
+    },
+    {
+      "name": "existing WebGL renderer and nonblank canvas are independently observed",
+      "pass": true,
+      "contexts": [
+        {
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "renderer": "WebKit WebGL",
+          "lost": false,
+          "width": 720,
+          "height": 450,
+          "attributes": {
+            "alpha": true,
+            "antialias": true,
+            "depth": true,
+            "desynchronized": false,
+            "failIfMajorPerformanceCaveat": false,
+            "powerPreference": "high-performance",
+            "premultipliedAlpha": true,
+            "preserveDrawingBuffer": true,
+            "stencil": false,
+            "xrCompatible": false
+          }
+        }
+      ],
+      "pixels": {
+        "hash": "91be4ed6",
+        "meanLuma": 57.07826416666684,
+        "range": 216.48939999999996,
+        "colorBins": 83,
+        "opaqueFraction": 1,
+        "bufferWidth": 720,
+        "bufferHeight": 450,
+        "timeMode": "auto",
+        "period": "night"
+      }
+    },
+    {
+      "name": "arrival is silent before any explicit user gesture",
+      "pass": true,
+      "pressed": "false",
+      "busy": "false"
+    },
+    {
+      "name": "real start click enters journey and starts intended user-initiated music",
+      "pass": true,
+      "movement": {
+        "start": 3,
+        "end": 13,
+        "delta": 10,
+        "simulatedSeconds": 1.8000000000000012,
+        "frames": 30,
+        "wallMs": 12727.599999999999
+      },
+      "nativePlayEvents": 2,
+      "audioContextRunning": true
+    },
+    {
+      "name": "pause stops real distance accumulation and resume continues it",
+      "pass": true,
+      "stopped": {
+        "start": 15,
+        "end": 15,
+        "delta": 0,
+        "simulatedSeconds": 1.1500000000000006,
+        "frames": 20,
+        "wallMs": 8463.299999994037
+      },
+      "moving": {
+        "start": 15,
+        "end": 21,
+        "delta": 6,
+        "simulatedSeconds": 1.2000000000000006,
+        "frames": 20,
+        "wallMs": 8461.499999982116
+      }
+    },
+    {
+      "name": "speed controls change selected state and observed movement rate",
+      "pass": true,
+      "slow": {
+        "start": 21,
+        "end": 28,
+        "delta": 7,
+        "simulatedSeconds": 2.110000000000001,
+        "frames": 36,
+        "wallMs": 16024.700000005963
+      },
+      "fast": {
+        "start": 28,
+        "end": 47,
+        "delta": 19,
+        "simulatedSeconds": 2.1600000000000015,
+        "frames": 36,
+        "wallMs": 16145.700000005963
+      },
+      "slowRate": 3.317535545023695,
+      "fastRate": 8.79629629629629
+    },
+    {
+      "name": "explicit mute pauses the native media player",
+      "pass": true,
+      "nativePauseEvents": 1
+    },
+    {
+      "name": "all eight real landmark buttons select matching content and camera travel",
+      "pass": true,
+      "landmarks": [
+        {
+          "index": 0,
+          "id": "library",
+          "title": "徐特立图书馆",
+          "distance": "47",
+          "frame": "b7499165"
+        },
+        {
+          "index": 1,
+          "id": "gate",
+          "title": "双塔校门",
+          "distance": "51",
+          "frame": "2b441ec5"
+        },
+        {
+          "index": 2,
+          "id": "round",
+          "title": "圆厅 · I ♥ BIT",
+          "distance": "156",
+          "frame": "b62d5ea4"
+        },
+        {
+          "index": 3,
+          "id": "wing",
+          "title": "翼形展馆 · 飞机陈列",
+          "distance": "243",
+          "frame": "21592047"
+        },
+        {
+          "index": 4,
+          "id": "heritage",
+          "title": "白石主楼 · 校名石",
+          "distance": "342",
+          "frame": "399657cd"
+        },
+        {
+          "index": 5,
+          "id": "motto",
+          "title": "校训石 · 德以明理",
+          "distance": "399",
+          "frame": "469f62f2"
+        },
+        {
+          "index": 6,
+          "id": "lake",
+          "title": "北湖 · 初心亭",
+          "distance": "504",
+          "frame": "1fa55d63"
+        },
+        {
+          "index": 7,
+          "id": "main",
+          "title": "文博中心",
+          "distance": "591",
+          "frame": "f74c05ac"
+        }
+      ]
+    },
+    {
+      "name": "real light selection morning updates UI and rendered pixels",
+      "pass": true,
+      "pixels": {
+        "hash": "ac210c0e",
+        "meanLuma": 184.2367422222216,
+        "range": 180.7954,
+        "colorBins": 66,
+        "opaqueFraction": 1,
+        "bufferWidth": 720,
+        "bufferHeight": 450,
+        "timeMode": "morning",
+        "period": "morning"
+      }
+    },
+    {
+      "name": "real light selection day updates UI and rendered pixels",
+      "pass": true,
+      "pixels": {
+        "hash": "23ed67fa",
+        "meanLuma": 187.9725994444442,
+        "range": 162.18099999999998,
+        "colorBins": 67,
+        "opaqueFraction": 1,
+        "bufferWidth": 720,
+        "bufferHeight": 450,
+        "timeMode": "day",
+        "period": "day"
+      }
+    },
+    {
+      "name": "real light selection evening updates UI and rendered pixels",
+      "pass": true,
+      "pixels": {
+        "hash": "33d25a6e",
+        "meanLuma": 151.28600055555577,
+        "range": 199.7216,
+        "colorBins": 65,
+        "opaqueFraction": 1,
+        "bufferWidth": 720,
+        "bufferHeight": 450,
+        "timeMode": "evening",
+        "period": "evening"
+      }
+    },
+    {
+      "name": "real light selection night updates UI and rendered pixels",
+      "pass": true,
+      "pixels": {
+        "hash": "8b156c8e",
+        "meanLuma": 64.11976722222255,
+        "range": 213.643,
+        "colorBins": 74,
+        "opaqueFraction": 1,
+        "bufferWidth": 720,
+        "bufferHeight": 450,
+        "timeMode": "night",
+        "period": "night"
+      }
+    },
+    {
+      "name": "four light renders differ and night is visibly darker than day",
+      "pass": true,
+      "luminance": {
+        "morning": 184.2367422222216,
+        "day": 187.9725994444442,
+        "evening": 151.28600055555577,
+        "night": 64.11976722222255
+      }
+    },
+    {
+      "name": "music can be explicitly re-enabled and muted after the night switch",
+      "pass": true,
+      "playEvents": 4,
+      "pauseEvents": 2,
+      "tracksRequested": [
+        "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus"
+      ]
+    },
+    {
+      "name": "time menu keyboard escape and auto-time controls remain real",
+      "pass": true,
+      "displayedTime": "19:09"
+    },
+    {
+      "name": "about dialog opens, exposes safe reference links, and closes by Escape",
+      "pass": true,
+      "referencesInspectedNotOpened": 4
+    },
+    {
+      "name": "H hides and restores the original interface without touching app state",
+      "pass": true
+    },
+    {
+      "name": "home and re-entry preserve a prior explicit mute preference",
+      "pass": true
+    },
+    {
+      "name": "desktop landscape 1920x1080 stays in viewport and clickable",
+      "pass": true,
+      "clientWidth": 1920,
+      "scrollWidth": 1920,
+      "bodyScrollWidth": 1920,
+      "boxes": [
+        {
+          "selector": "#scene",
+          "x": 0,
+          "y": 0,
+          "right": 1440,
+          "bottom": 900,
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "selector": ".masthead",
+          "x": 58,
+          "y": 43,
+          "right": 1862,
+          "bottom": 84,
+          "width": 1804,
+          "height": 41
+        },
+        {
+          "selector": ".journey-footer",
+          "x": 62,
+          "y": 906,
+          "right": 1858,
+          "bottom": 1017,
+          "width": 1796,
+          "height": 111
+        },
+        {
+          "selector": "#time-button",
+          "x": 1557.265625,
+          "y": 47,
+          "right": 1694,
+          "bottom": 80,
+          "width": 136.734375,
+          "height": 33
+        },
+        {
+          "selector": "#sound-button",
+          "x": 1716,
+          "y": 47,
+          "right": 1749,
+          "bottom": 80,
+          "width": 33,
+          "height": 33
+        },
+        {
+          "selector": "#pause-button",
+          "x": 1831,
+          "y": 965,
+          "right": 1858,
+          "bottom": 992,
+          "width": 27,
+          "height": 27
+        },
+        {
+          "selector": ".chapter-dots",
+          "x": 64,
+          "y": 1010,
+          "right": 327,
+          "bottom": 1016,
+          "width": 263,
+          "height": 6
+        }
+      ]
+    },
+    {
+      "name": "desktop landscape 1366x768 stays in viewport and clickable",
+      "pass": true,
+      "clientWidth": 1366,
+      "scrollWidth": 1366,
+      "bodyScrollWidth": 1366,
+      "boxes": [
+        {
+          "selector": "#scene",
+          "x": 0,
+          "y": 0,
+          "right": 1366,
+          "bottom": 768,
+          "width": 1366,
+          "height": 768
+        },
+        {
+          "selector": ".masthead",
+          "x": 42,
+          "y": 32,
+          "right": 1324,
+          "bottom": 73,
+          "width": 1282,
+          "height": 41
+        },
+        {
+          "selector": ".journey-footer",
+          "x": 46,
+          "y": 610,
+          "right": 1320,
+          "bottom": 721,
+          "width": 1274,
+          "height": 111
+        },
+        {
+          "selector": "#time-button",
+          "x": 1019.265625,
+          "y": 36,
+          "right": 1156,
+          "bottom": 69,
+          "width": 136.734375,
+          "height": 33
+        },
+        {
+          "selector": "#sound-button",
+          "x": 1178,
+          "y": 36,
+          "right": 1211,
+          "bottom": 69,
+          "width": 33,
+          "height": 33
+        },
+        {
+          "selector": "#pause-button",
+          "x": 1293,
+          "y": 669,
+          "right": 1320,
+          "bottom": 696,
+          "width": 27,
+          "height": 27
+        },
+        {
+          "selector": ".chapter-dots",
+          "x": 48,
+          "y": 714,
+          "right": 311,
+          "bottom": 720,
+          "width": 263,
+          "height": 6
+        }
+      ]
+    },
+    {
+      "name": "844x390 touch landscape preserves the supplied design and working controls",
+      "pass": true,
+      "geometry": {
+        "clientWidth": 844,
+        "scrollWidth": 844,
+        "bodyScrollWidth": 844,
+        "boxes": [
+          {
+            "selector": "#scene",
+            "x": 0,
+            "y": 0,
+            "right": 844,
+            "bottom": 390,
+            "width": 844,
+            "height": 390
+          },
+          {
+            "selector": ".masthead",
+            "x": 25,
+            "y": 14,
+            "right": 819,
+            "bottom": 47,
+            "width": 794,
+            "height": 33
+          },
+          {
+            "selector": ".journey-footer",
+            "x": 27,
+            "y": 301,
+            "right": 817,
+            "bottom": 362,
+            "width": 790,
+            "height": 61
+          },
+          {
+            "selector": "#time-button",
+            "x": 572.375,
+            "y": 16,
+            "right": 686,
+            "bottom": 45,
+            "width": 113.625,
+            "height": 29
+          },
+          {
+            "selector": "#sound-button",
+            "x": 694,
+            "y": 14,
+            "right": 727,
+            "bottom": 47,
+            "width": 33,
+            "height": 33
+          },
+          {
+            "selector": "#pause-button",
+            "x": 793,
+            "y": 337,
+            "right": 817,
+            "bottom": 361,
+            "width": 24,
+            "height": 24
+          },
+          {
+            "selector": ".chapter-dots",
+            "x": 29,
+            "y": 355,
+            "right": 227,
+            "bottom": 361,
+            "width": 198,
+            "height": 6
+          }
+        ]
+      },
+      "movement": {
+        "start": 592,
+        "end": 596,
+        "delta": 4,
+        "simulatedSeconds": 1.2000000000000006,
+        "frames": 20,
+        "wallMs": 6681.399999994028
+      }
+    },
+    {
+      "name": "390x844 intentionally shows the original rotation notice instead of the canvas",
+      "pass": true,
+      "state": {
+        "portrait": "flex",
+        "canvas": "none",
+        "ui": "none",
+        "message": "ABOVE LIANGXIANG风景，需要宽一点的视野。请将设备旋转至横屏再一起出发，去云上的良乡。✧"
+      },
+      "geometry": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "boxes": [
+          {
+            "selector": ".portrait-notice",
+            "x": 0,
+            "y": 0,
+            "right": 390,
+            "bottom": 844,
+            "width": 390,
+            "height": 844
+          },
+          {
+            "selector": ".portrait-notice h2",
+            "x": 71.390625,
+            "y": 416.90625,
+            "right": 318.59375,
+            "bottom": 445.90625,
+            "width": 247.203125,
+            "height": 29
+          },
+          {
+            "selector": ".rotate-device",
+            "x": 152.5,
+            "y": 262.90625,
+            "right": 237.5,
+            "bottom": 347.90625,
+            "width": 85,
+            "height": 85
+          }
+        ]
+      }
+    },
+    {
+      "name": "rotation back to landscape restores real canvas and input",
+      "pass": true,
+      "movement": {
+        "start": 596,
+        "end": 603,
+        "delta": 7,
+        "simulatedSeconds": 1.2000000000000006,
+        "frames": 20,
+        "wallMs": 5869.199999982113
+      }
+    },
+    {
+      "name": "no source debug global is required for acceptance",
+      "pass": true,
+      "productionGlobalRead": false,
+      "localOptionalDiagnostics": false
+    },
+    {
+      "name": "final navigation, console, shader, media and network audit",
+      "pass": true,
+      "navigations": 1,
+      "resourceResponses": 10,
+      "mediaObserved": 24,
+      "webAudioObserved": 2
+    }
+  ],
+  "screenshots": [
+    "voxel-public-arrival-1440.png",
+    "voxel-public-journey-1440.png",
+    "voxel-public-landmark-last.png",
+    "voxel-public-light-morning.png",
+    "voxel-public-light-day.png",
+    "voxel-public-light-evening.png",
+    "voxel-public-light-night.png",
+    "voxel-public-about.png",
+    "voxel-public-canvas-only.png",
+    "voxel-public-landscape-1920.png",
+    "voxel-public-landscape-1366.png",
+    "voxel-public-landscape-844-touch.png",
+    "voxel-public-portrait-390.png"
+  ],
+  "canvas": [
+    {
+      "label": "arrival",
+      "hash": "91be4ed6",
+      "meanLuma": 57.07826416666684,
+      "range": 216.48939999999996,
+      "colorBins": 83,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "auto",
+      "period": "night"
+    },
+    {
+      "label": "journey-start",
+      "hash": "23b7b044",
+      "meanLuma": 58.13457208333353,
+      "range": 239.13239999999996,
+      "colorBins": 88,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "auto",
+      "period": "night"
+    },
+    {
+      "label": "morning",
+      "hash": "ac210c0e",
+      "meanLuma": 184.2367422222216,
+      "range": 180.7954,
+      "colorBins": 66,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "morning",
+      "period": "morning"
+    },
+    {
+      "label": "day",
+      "hash": "23ed67fa",
+      "meanLuma": 187.9725994444442,
+      "range": 162.18099999999998,
+      "colorBins": 67,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "day",
+      "period": "day"
+    },
+    {
+      "label": "evening",
+      "hash": "33d25a6e",
+      "meanLuma": 151.28600055555577,
+      "range": 199.7216,
+      "colorBins": 65,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "evening",
+      "period": "evening"
+    },
+    {
+      "label": "night",
+      "hash": "8b156c8e",
+      "meanLuma": 64.11976722222255,
+      "range": 213.643,
+      "colorBins": 74,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "night",
+      "period": "night"
+    },
+    {
+      "label": "1920",
+      "hash": "ba8b6e1a",
+      "meanLuma": 58.98430763888895,
+      "range": 230.34499999999997,
+      "colorBins": 83,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "auto",
+      "period": "night"
+    },
+    {
+      "label": "1366",
+      "hash": "62f22bef",
+      "meanLuma": 57.62660513888913,
+      "range": 218.1404,
+      "colorBins": 79,
+      "opaqueFraction": 1,
+      "bufferWidth": 683,
+      "bufferHeight": 384,
+      "timeMode": "auto",
+      "period": "night"
+    },
+    {
+      "label": "rotation-restored",
+      "hash": "a39e7609",
+      "meanLuma": 184.37019055555527,
+      "range": 137.21120000000002,
+      "colorBins": 68,
+      "opaqueFraction": 1,
+      "bufferWidth": 422,
+      "bufferHeight": 195,
+      "timeMode": "day",
+      "period": "day"
+    }
+  ],
+  "media": {
+    "mediaSupported": true,
+    "audioSupported": true,
+    "playEvents": 4,
+    "pauseEvents": 2,
+    "mediaURLs": [
+      "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus"
+    ],
+    "contexts": [
+      {
+        "contextId": "ea190990-8a9d-43b6-aa07-ecbe54efa99b",
+        "contextType": "realtime",
+        "contextState": "suspended",
+        "callbackBufferSize": 480,
+        "maxOutputChannelCount": 2,
+        "sampleRate": 48000,
+        "renderQuantumSize": 128
+      },
+      {
+        "contextId": "ea190990-8a9d-43b6-aa07-ecbe54efa99b",
+        "contextType": "realtime",
+        "contextState": "running",
+        "callbackBufferSize": 480,
+        "maxOutputChannelCount": 2,
+        "sampleRate": 48000,
+        "renderQuantumSize": 128
+      }
+    ],
+    "events": [
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202406.018679,
+        "value": "{\"created\":\"2026-10-28 11:07:15.115149 UTC\",\"event\":\"kMediaLogCreated\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202406.019089,
+        "value": "{\"event\":\"kWebMediaPlayerCreated\",\"origin_url\":\"https://studentop.cn:14355/\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202406.019236,
+        "value": "{\"event\":\"kLoad\",\"url\":\"https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202406.094841,
+        "value": "{\"event\":\"kRendererCreated\",\"renderer_created\":{\"renderer_engine\":\"Default\",\"renderer_type\":\"RendererImpl\"}}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202406.254842,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kStarting\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202406.290632,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kPlaying\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202406.290283,
+        "value": "{\"duration\":98.752583,\"event\":\"kDurationChanged\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202406.292294,
+        "value": "{\"audio_buffering_state\":{\"state\":\"BUFFERING_HAVE_ENOUGH\"},\"event\":\"kBufferingStateChanged\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202406.292313,
+        "value": "{\"event\":\"kBufferingStateChanged\",\"pipeline_buffering_state\":{\"for_suspended_start\":false,\"state\":\"BUFFERING_HAVE_ENOUGH\"}}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202406.290678,
+        "value": "{\"event\":\"kPlay\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202472.685474,
+        "value": "{\"event\":\"kPause\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202489.577765,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kSuspending\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202489.577953,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kSuspended\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202489.57799,
+        "value": "{\"event\":\"kSuspended\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202564.480585,
+        "value": "{\"event\":\"kPlay\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202564.480674,
+        "value": "{\"event\":\"kRendererCreated\",\"renderer_created\":{\"renderer_engine\":\"Default\",\"renderer_type\":\"RendererImpl\"}}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202564.480715,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kResuming\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202564.481026,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kPlaying\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202564.584757,
+        "value": "{\"audio_buffering_state\":{\"state\":\"BUFFERING_HAVE_ENOUGH\"},\"event\":\"kBufferingStateChanged\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202564.584785,
+        "value": "{\"event\":\"kBufferingStateChanged\",\"pipeline_buffering_state\":{\"for_suspended_start\":false,\"state\":\"BUFFERING_HAVE_ENOUGH\"}}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202565.085855,
+        "value": "{\"event\":\"kPause\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202580.121938,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kSuspending\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202580.122266,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kSuspended\"}"
+      },
+      {
+        "playerId": "F8965685C773FAEB3188D254558AE323",
+        "timestamp": 202580.123738,
+        "value": "{\"event\":\"kSuspended\"}"
+      }
+    ]
+  },
+  "network": [
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/",
+      "type": "Document",
+      "status": 200,
+      "mimeType": "text/html"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/index-COjinGlL.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "mimeType": "text/css"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/three-B36RJSNi.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "application/javascript"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/index-CBe6J5f0.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "application/javascript"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/fonts/campus-serif.woff2",
+      "type": "Font",
+      "status": 200,
+      "mimeType": "font/woff2"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/fonts/campus-sans.woff2",
+      "type": "Font",
+      "status": 200,
+      "mimeType": "font/woff2"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+      "type": "Media",
+      "status": 206,
+      "mimeType": "audio/ogg"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+      "type": "Media",
+      "status": 206,
+      "mimeType": "audio/ogg"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+      "type": "Media",
+      "status": 206,
+      "mimeType": "audio/ogg"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+      "type": "Media",
+      "status": 206,
+      "mimeType": "audio/ogg"
+    }
+  ],
+  "warnings": [],
+  "unexpectedErrors": [],
+  "optionalDevelopmentStats": null,
+  "finishedAt": "2026-10-28T11:10:50.951Z",
+  "total": 25,
+  "passed": 25
+}

@@ -1,0 +1,363 @@
+{
+  "schemaVersion": 1,
+  "sourceProject": "liangxiang-cloudwalk",
+  "sourceCommit": "5c43b09",
+  "sourceTrackedFiles": 39,
+  "exclusions": [
+    ".git",
+    "node_modules",
+    "dist",
+    ".openai",
+    ".preview",
+    "credentials",
+    "external original photographs"
+  ],
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sourceSha256": "31d887da70d82d9b70c35f36353c344688d1b7e24c5e44c567778f32beb6ece9",
+      "importedSha256": "31d887da70d82d9b70c35f36353c344688d1b7e24c5e44c567778f32beb6ece9",
+      "modified": false,
+      "sourceBytes": 48,
+      "importedBytes": 48
+    },
+    {
+      "path": ".gitignore",
+      "sourceSha256": "42e413c484b7a2a938f7c17f2127c03a94e8ec447f670b3543affa11cd30f6b2",
+      "importedSha256": "42e413c484b7a2a938f7c17f2127c03a94e8ec447f670b3543affa11cd30f6b2",
+      "modified": false,
+      "sourceBytes": 98,
+      "importedBytes": 98
+    },
+    {
+      "path": "PHOTO-ASSETS.md",
+      "sourceSha256": "e2bc555ab23da51cd948801e9b2e577250346e760a4dc388b5a5c80152313410",
+      "importedSha256": "e2bc555ab23da51cd948801e9b2e577250346e760a4dc388b5a5c80152313410",
+      "modified": false,
+      "sourceBytes": 1877,
+      "importedBytes": 1877
+    },
+    {
+      "path": "README.md",
+      "sourceSha256": "951532085a793e1fe0bf9250fa98c268aa4076294f4e00d8fd165aafe713286c",
+      "importedSha256": "5f23a1eb2b84a5e84a39921184daf7dee6d5a94e10ce3b442483d980f71790eb",
+      "modified": true,
+      "sourceBytes": 5737,
+      "importedBytes": 7026
+    },
+    {
+      "path": "REFERENCE-NOTES.md",
+      "sourceSha256": "d8e2c2dab38ae7a294315036c9e1a946340aa98ecde6d61f593f7d3d09116753",
+      "importedSha256": "d8e2c2dab38ae7a294315036c9e1a946340aa98ecde6d61f593f7d3d09116753",
+      "modified": false,
+      "sourceBytes": 2481,
+      "importedBytes": 2481
+    },
+    {
+      "path": "RESEARCH.md",
+      "sourceSha256": "5cfd33438a0506b328196100b07bddcfcd60529badccd880873e3f53586eb2ee",
+      "importedSha256": "5cfd33438a0506b328196100b07bddcfcd60529badccd880873e3f53586eb2ee",
+      "modified": false,
+      "sourceBytes": 6004,
+      "importedBytes": 6004
+    },
+    {
+      "path": "bgm/dawn_dusk.opus",
+      "sourceSha256": "03fb6661ac0ea0a7f914aef1e309f677fcb7d8aa14f0f31043ceaf9db6bd6645",
+      "importedSha256": "03fb6661ac0ea0a7f914aef1e309f677fcb7d8aa14f0f31043ceaf9db6bd6645",
+      "modified": false,
+      "sourceBytes": 743790,
+      "importedBytes": 743790
+    },
+    {
+      "path": "bgm/day.opus",
+      "sourceSha256": "6ee662575c93a6268c4bdd408c31e3c6cf230b86314bb87fbcfbbe5999720587",
+      "importedSha256": "6ee662575c93a6268c4bdd408c31e3c6cf230b86314bb87fbcfbbe5999720587",
+      "modified": false,
+      "sourceBytes": 743661,
+      "importedBytes": 743661
+    },
+    {
+      "path": "bgm/night.opus",
+      "sourceSha256": "900ea0e8c4c18461ce5ccad8a39023226c14e49f3c9dddb72e2bb77a07264156",
+      "importedSha256": "900ea0e8c4c18461ce5ccad8a39023226c14e49f3c9dddb72e2bb77a07264156",
+      "modified": false,
+      "sourceBytes": 606888,
+      "importedBytes": 606888
+    },
+    {
+      "path": "index.html",
+      "sourceSha256": "569c37bc450fdaff6bc1c73b7caeed86d0c3f846058ab3d5e9f11c97e37eca2a",
+      "importedSha256": "569c37bc450fdaff6bc1c73b7caeed86d0c3f846058ab3d5e9f11c97e37eca2a",
+      "modified": false,
+      "sourceBytes": 11900,
+      "importedBytes": 11900
+    },
+    {
+      "path": "package-lock.json",
+      "sourceSha256": "f82d9696575686b075b4ceb7490c8dc4863cbbec52721d6cc581238ba910136f",
+      "importedSha256": "f82d9696575686b075b4ceb7490c8dc4863cbbec52721d6cc581238ba910136f",
+      "modified": false,
+      "sourceBytes": 35701,
+      "importedBytes": 35701
+    },
+    {
+      "path": "package.json",
+      "sourceSha256": "5ca001f4ec447418cfbda380d5bef3b107d24b4851699fd36248e66e41664d49",
+      "importedSha256": "5ca001f4ec447418cfbda380d5bef3b107d24b4851699fd36248e66e41664d49",
+      "modified": false,
+      "sourceBytes": 314,
+      "importedBytes": 314
+    },
+    {
+      "path": "public/fonts/OFL.txt",
+      "sourceSha256": "19b3f96fb7627c6d36fd7fbce06692820f1a148112b0d4378455230cc528b940",
+      "importedSha256": "19b3f96fb7627c6d36fd7fbce06692820f1a148112b0d4378455230cc528b940",
+      "modified": false,
+      "sourceBytes": 4685,
+      "importedBytes": 4685
+    },
+    {
+      "path": "public/fonts/campus-sans.woff2",
+      "sourceSha256": "90945d35444da8ffbda2a4dd9bb2df23399e54269b5425385d25db70d3d7bd70",
+      "importedSha256": "90945d35444da8ffbda2a4dd9bb2df23399e54269b5425385d25db70d3d7bd70",
+      "modified": false,
+      "sourceBytes": 57580,
+      "importedBytes": 57580
+    },
+    {
+      "path": "public/fonts/campus-serif.woff2",
+      "sourceSha256": "4bb9abc763e5a2e14a5ba39d2600b5092f4cb05ad04d58054837d0f3e1bade05",
+      "importedSha256": "4bb9abc763e5a2e14a5ba39d2600b5092f4cb05ad04d58054837d0f3e1bade05",
+      "modified": false,
+      "sourceBytes": 75576,
+      "importedBytes": 75576
+    },
+    {
+      "path": "scripts/check-assets.mjs",
+      "sourceSha256": "0d6328e37b33079f444634baf5cc1f2339a1e1671ee5ef441e047efdd68de4e5",
+      "importedSha256": "c4ed4972d9c13d7635589d867d55f9033364a0176991cb7fca624bb5742eb77a",
+      "modified": true,
+      "sourceBytes": 3552,
+      "importedBytes": 3291
+    },
+    {
+      "path": "scripts/check-bgm.mjs",
+      "sourceSha256": "fc4508f7d160bc078e0164b4c509a1a802659ce4f88f3ec6be563a4cc488a952",
+      "importedSha256": "06b0b16535899e2d7e276263fd7a496ee1242459fd795b27051f4edb28bd0bd4",
+      "modified": true,
+      "sourceBytes": 11543,
+      "importedBytes": 11281
+    },
+    {
+      "path": "scripts/check-portal.mjs",
+      "sourceSha256": "50a2f7419a659acb30e6b115e678243e635ce4aa632ebcf2c7ed3c662ef295a8",
+      "importedSha256": "c1426cc14395afdd100846ff827bfd085b5390c960d19ba92e3dd2b32a0a79b6",
+      "modified": true,
+      "sourceBytes": 5341,
+      "importedBytes": 5069
+    },
+    {
+      "path": "scripts/check-road.mjs",
+      "sourceSha256": "9991fa38ece02d756ace71a39d79d3a848d5c9002d43957ff69dee60c2ce4c4c",
+      "importedSha256": "9991fa38ece02d756ace71a39d79d3a848d5c9002d43957ff69dee60c2ce4c4c",
+      "modified": false,
+      "sourceBytes": 1883,
+      "importedBytes": 1883
+    },
+    {
+      "path": "scripts/snapshot.mjs",
+      "sourceSha256": "66497183a7c5dc28f65217d8da6783dc78702d941199715e1c920cffdd0409af",
+      "importedSha256": "5945995dab4731e644ca298f82199cc8593cb87a9c7831b96cec8ad02260b383",
+      "modified": true,
+      "sourceBytes": 3541,
+      "importedBytes": 3279
+    },
+    {
+      "path": "scripts/subset-fonts.py",
+      "sourceSha256": "450438d43e96e0cfb71d374a7db8726bca88a97bc7bcebb2f2cbcec71010e5f4",
+      "importedSha256": "450438d43e96e0cfb71d374a7db8726bca88a97bc7bcebb2f2cbcec71010e5f4",
+      "modified": false,
+      "sourceBytes": 1204,
+      "importedBytes": 1204
+    },
+    {
+      "path": "scripts/verify.mjs",
+      "sourceSha256": "a875d9ec7b64475c7c8aa962596fb71b785eae666a10e11152759f81d9338925",
+      "importedSha256": "24c86add270a9cbafd9fea07c4999a9f7f0ce4c35988b50739912d701c34dc1e",
+      "modified": true,
+      "sourceBytes": 8061,
+      "importedBytes": 7797
+    },
+    {
+      "path": "src/atmosphere.js",
+      "sourceSha256": "f13066148bd81a43b18024f7befb2f6fcf65dd12c5efb1a23233f27549639661",
+      "importedSha256": "f13066148bd81a43b18024f7befb2f6fcf65dd12c5efb1a23233f27549639661",
+      "modified": false,
+      "sourceBytes": 13942,
+      "importedBytes": 13942
+    },
+    {
+      "path": "src/audio.js",
+      "sourceSha256": "a2d2d0f7fef9a7d69d40039b2276528c8e4bc967581201fd5dc274c4a6726ee3",
+      "importedSha256": "a2d2d0f7fef9a7d69d40039b2276528c8e4bc967581201fd5dc274c4a6726ee3",
+      "modified": false,
+      "sourceBytes": 6883,
+      "importedBytes": 6883
+    },
+    {
+      "path": "src/cloud-sea.js",
+      "sourceSha256": "009cce3b3a2fdec483fb6348a164b4d0f880456421209866fc7f9ca94bc281c4",
+      "importedSha256": "009cce3b3a2fdec483fb6348a164b4d0f880456421209866fc7f9ca94bc281c4",
+      "modified": false,
+      "sourceBytes": 2314,
+      "importedBytes": 2314
+    },
+    {
+      "path": "src/effects.js",
+      "sourceSha256": "a734e03988d7604bf3c22c060f1d731e41210fc5b2a3ee07af2dd70cd392af94",
+      "importedSha256": "a734e03988d7604bf3c22c060f1d731e41210fc5b2a3ee07af2dd70cd392af94",
+      "modified": false,
+      "sourceBytes": 4809,
+      "importedBytes": 4809
+    },
+    {
+      "path": "src/engine.js",
+      "sourceSha256": "5a0f04ee86aa3d4a5c64a36011a7e706678d32b605713d8b1df43e6443fc94d0",
+      "importedSha256": "5a0f04ee86aa3d4a5c64a36011a7e706678d32b605713d8b1df43e6443fc94d0",
+      "modified": false,
+      "sourceBytes": 15742,
+      "importedBytes": 15742
+    },
+    {
+      "path": "src/landmarks.js",
+      "sourceSha256": "50ffa1398b89b3ba447b5dd9c69b800e99a776b57f11824c7de02e97d52a21e0",
+      "importedSha256": "50ffa1398b89b3ba447b5dd9c69b800e99a776b57f11824c7de02e97d52a21e0",
+      "modified": false,
+      "sourceBytes": 16693,
+      "importedBytes": 16693
+    },
+    {
+      "path": "src/main.js",
+      "sourceSha256": "aa8a3de9b3ab5401ca2563b968fa34fed8ed04917e46460c5cc538eb5a0801d4",
+      "importedSha256": "0ad74f7d8dc4b18b516266648de9aad944597497230c03ae2c79fe70159243c8",
+      "modified": true,
+      "sourceBytes": 4117,
+      "importedBytes": 4174
+    },
+    {
+      "path": "src/photo-gate.js",
+      "sourceSha256": "cf0f08499d6535280bca18e5d336b0506e05331e7e82384c7368fdb53f7805d8",
+      "importedSha256": "cf0f08499d6535280bca18e5d336b0506e05331e7e82384c7368fdb53f7805d8",
+      "modified": false,
+      "sourceBytes": 2428,
+      "importedBytes": 2428
+    },
+    {
+      "path": "src/photo-helpers.js",
+      "sourceSha256": "ce6044523eb8d957144e4bf6b593e1b27c8b88c9ff2cf904c2007fee131a978d",
+      "importedSha256": "ce6044523eb8d957144e4bf6b593e1b27c8b88c9ff2cf904c2007fee131a978d",
+      "modified": false,
+      "sourceBytes": 5227,
+      "importedBytes": 5227
+    },
+    {
+      "path": "src/photo-heritage.js",
+      "sourceSha256": "99c0ff513b7d70ff49568c9d98686fd7c5898ae5fa050330dcae5e8082d7ba34",
+      "importedSha256": "99c0ff513b7d70ff49568c9d98686fd7c5898ae5fa050330dcae5e8082d7ba34",
+      "modified": false,
+      "sourceBytes": 7790,
+      "importedBytes": 7790
+    },
+    {
+      "path": "src/photo-modern.js",
+      "sourceSha256": "f7f0a39e0e793058b78a20dc9359792be14f151a68487f445f673dcee768aa0b",
+      "importedSha256": "f7f0a39e0e793058b78a20dc9359792be14f151a68487f445f673dcee768aa0b",
+      "modified": false,
+      "sourceBytes": 11100,
+      "importedBytes": 11100
+    },
+    {
+      "path": "src/portal.js",
+      "sourceSha256": "3fbaecaf9f3f88700ce89d96e007f88ae0b790746792f81d6b9037d35d7df545",
+      "importedSha256": "3fbaecaf9f3f88700ce89d96e007f88ae0b790746792f81d6b9037d35d7df545",
+      "modified": false,
+      "sourceBytes": 5395,
+      "importedBytes": 5395
+    },
+    {
+      "path": "src/road.js",
+      "sourceSha256": "5f6278723d4b9d735e61e15e7a9b518e11759c6eb768745ff8811f5728cd9b5f",
+      "importedSha256": "5f6278723d4b9d735e61e15e7a9b518e11759c6eb768745ff8811f5728cd9b5f",
+      "modified": false,
+      "sourceBytes": 9059,
+      "importedBytes": 9059
+    },
+    {
+      "path": "src/style.css",
+      "sourceSha256": "5c790072ce4e4259202ef365215c5a7ffdbbd130e79be18b780801b600d79607",
+      "importedSha256": "5c790072ce4e4259202ef365215c5a7ffdbbd130e79be18b780801b600d79607",
+      "modified": false,
+      "sourceBytes": 28705,
+      "importedBytes": 28705
+    },
+    {
+      "path": "src/ui.js",
+      "sourceSha256": "2425c193629ad1b9bb636e2ddf30e528fca9963b75d0e3403f635818d5f8bd1c",
+      "importedSha256": "2425c193629ad1b9bb636e2ddf30e528fca9963b75d0e3403f635818d5f8bd1c",
+      "modified": false,
+      "sourceBytes": 10172,
+      "importedBytes": 10172
+    },
+    {
+      "path": "src/voxel.js",
+      "sourceSha256": "18e17cb59a9d60e1c91f81e578cfb735b2de90b00e5e3825d9ee7fe6ef8d9f9e",
+      "importedSha256": "18e17cb59a9d60e1c91f81e578cfb735b2de90b00e5e3825d9ee7fe6ef8d9f9e",
+      "modified": false,
+      "sourceBytes": 3125,
+      "importedBytes": 3125
+    },
+    {
+      "path": "vite.config.js",
+      "sourceSha256": "a173030eb7fc18f384848e292187101e4a67b39954711e903e1fe1ffe64e88d5",
+      "importedSha256": "cd6b34abc1d58d1d2c252d4efaab0cd2582567906d2e66ca459923812972116c",
+      "modified": true,
+      "sourceBytes": 300,
+      "importedBytes": 435
+    }
+  ],
+  "integrationAddedFiles": [
+    {
+      "path": "IMPORT-NOTES.md",
+      "bytes": 4457,
+      "sha256": "7988b7920a02c794a5da16578ca2898bd01c58209f130fc4a3f16259f6169876"
+    },
+    {
+      "path": "scripts/browser-tools.mjs",
+      "bytes": 2182,
+      "sha256": "20c7d0c180240e32846edceedce45587ad2d7ed2d4df0d2d838c169d3377353f"
+    },
+    {
+      "path": "public/licenses/three-MIT.txt",
+      "bytes": 1081,
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    }
+  ],
+  "manifestFile": "IMPORT-MANIFEST.json",
+  "verification": {
+    "sourceFilesUnchanged": 39,
+    "importedFilesIdentical": 31,
+    "modifiedFiles": [
+      "README.md",
+      "scripts/check-assets.mjs",
+      "scripts/check-bgm.mjs",
+      "scripts/check-portal.mjs",
+      "scripts/snapshot.mjs",
+      "scripts/verify.mjs",
+      "src/main.js",
+      "vite.config.js"
+    ],
+    "sourceMusicAndFontBytesPreserved": true,
+    "forbiddenDirectoriesCopied": false
+  }
+}

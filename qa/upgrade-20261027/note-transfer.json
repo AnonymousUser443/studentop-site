@@ -1,0 +1,39 @@
+{
+  "checks": [
+    {
+      "name": "real_typing_changes_editor",
+      "pass": true
+    },
+    {
+      "name": "save_persists_exact_text",
+      "pass": true
+    },
+    {
+      "name": "actual_download_bytes_match",
+      "pass": true
+    },
+    {
+      "name": "selected_local_file_imports",
+      "pass": true
+    },
+    {
+      "name": "import_does_not_execute_HTML",
+      "pass": true
+    },
+    {
+      "name": "import_can_save",
+      "pass": true
+    },
+    {
+      "name": "no_runtime_errors",
+      "pass": true
+    }
+  ],
+  "method": "CDP browser input + actual filesystem download + explicit fixture file selection",
+  "download": {
+    "name": "写给访客.txt",
+    "bytes": 101
+  },
+  "ok": true,
+  "errors": []
+}

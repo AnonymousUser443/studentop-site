@@ -1,0 +1,1264 @@
+{
+  "ok": true,
+  "target": "http://127.0.0.1:5180/",
+  "mode": "local",
+  "startedAt": "2026-10-28T10:44:47.436Z",
+  "driver": "owned isolated Edge/CDP via qa/lib.js",
+  "opencliDecision": "Lead doctor: bridge disconnected/profiles=[]; no environment repair",
+  "physicalAudioMutedByHarness": true,
+  "softwareRendererDeviceScaleFactor": 0.5,
+  "checks": [
+    {
+      "name": "startup completes into the actual campus UI without startup-error",
+      "pass": true,
+      "url": "http://127.0.0.1:5180/",
+      "title": "云上良乡 · 北京理工大学",
+      "error": false,
+      "heading": "云上良乡",
+      "active": false,
+      "count": 8
+    },
+    {
+      "name": "existing WebGL renderer and nonblank canvas are independently observed",
+      "pass": true,
+      "contexts": [
+        {
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "renderer": "WebKit WebGL",
+          "lost": false,
+          "width": 720,
+          "height": 450,
+          "attributes": {
+            "alpha": true,
+            "antialias": true,
+            "depth": true,
+            "desynchronized": false,
+            "failIfMajorPerformanceCaveat": false,
+            "powerPreference": "high-performance",
+            "premultipliedAlpha": true,
+            "preserveDrawingBuffer": true,
+            "stencil": false,
+            "xrCompatible": false
+          }
+        }
+      ],
+      "pixels": {
+        "hash": "96c600ee",
+        "meanLuma": 144.66759236111122,
+        "range": 196.9622,
+        "colorBins": 74,
+        "opaqueFraction": 1,
+        "bufferWidth": 720,
+        "bufferHeight": 450,
+        "timeMode": "auto",
+        "period": "evening"
+      }
+    },
+    {
+      "name": "arrival is silent before any explicit user gesture",
+      "pass": true,
+      "pressed": "false",
+      "busy": "false"
+    },
+    {
+      "name": "real start click enters journey and starts intended user-initiated music",
+      "pass": true,
+      "movement": {
+        "start": 3,
+        "end": 12,
+        "delta": 9,
+        "simulatedSeconds": 1.8000000000000012,
+        "frames": 30,
+        "wallMs": 12887.5
+      },
+      "nativePlayEvents": 2,
+      "audioContextRunning": true
+    },
+    {
+      "name": "pause stops real distance accumulation and resume continues it",
+      "pass": true,
+      "stopped": {
+        "start": 14,
+        "end": 14,
+        "delta": 0,
+        "simulatedSeconds": 1.1001999999999974,
+        "frames": 20,
+        "wallMs": 7870.199999994038
+      },
+      "moving": {
+        "start": 14,
+        "end": 21,
+        "delta": 7,
+        "simulatedSeconds": 1.1500000000000006,
+        "frames": 20,
+        "wallMs": 9639.699999994038
+      }
+    },
+    {
+      "name": "speed controls change selected state and observed movement rate",
+      "pass": true,
+      "slow": {
+        "start": 21,
+        "end": 28,
+        "delta": 7,
+        "simulatedSeconds": 2.1600000000000015,
+        "frames": 36,
+        "wallMs": 14997.899999988076
+      },
+      "fast": {
+        "start": 28,
+        "end": 46,
+        "delta": 18,
+        "simulatedSeconds": 2.1600000000000015,
+        "frames": 36,
+        "wallMs": 15926.299999994037
+      },
+      "slowRate": 3.2407407407407387,
+      "fastRate": 8.333333333333327
+    },
+    {
+      "name": "explicit mute pauses the native media player",
+      "pass": true,
+      "nativePauseEvents": 1
+    },
+    {
+      "name": "all eight real landmark buttons select matching content and camera travel",
+      "pass": true,
+      "landmarks": [
+        {
+          "index": 0,
+          "id": "library",
+          "title": "徐特立图书馆",
+          "distance": "46",
+          "frame": "fef0164b"
+        },
+        {
+          "index": 1,
+          "id": "gate",
+          "title": "双塔校门",
+          "distance": "51",
+          "frame": "37d728b6"
+        },
+        {
+          "index": 2,
+          "id": "round",
+          "title": "圆厅 · I ♥ BIT",
+          "distance": "156",
+          "frame": "e9390857"
+        },
+        {
+          "index": 3,
+          "id": "wing",
+          "title": "翼形展馆 · 飞机陈列",
+          "distance": "243",
+          "frame": "6920f9c1"
+        },
+        {
+          "index": 4,
+          "id": "heritage",
+          "title": "白石主楼 · 校名石",
+          "distance": "342",
+          "frame": "2fd0ac28"
+        },
+        {
+          "index": 5,
+          "id": "motto",
+          "title": "校训石 · 德以明理",
+          "distance": "399",
+          "frame": "93b0ba56"
+        },
+        {
+          "index": 6,
+          "id": "lake",
+          "title": "北湖 · 初心亭",
+          "distance": "504",
+          "frame": "8c0f7454"
+        },
+        {
+          "index": 7,
+          "id": "main",
+          "title": "文博中心",
+          "distance": "591",
+          "frame": "2d2c7750"
+        }
+      ]
+    },
+    {
+      "name": "real light selection morning updates UI and rendered pixels",
+      "pass": true,
+      "pixels": {
+        "hash": "1f11d4b5",
+        "meanLuma": 185.15875416666665,
+        "range": 183.9398,
+        "colorBins": 64,
+        "opaqueFraction": 1,
+        "bufferWidth": 720,
+        "bufferHeight": 450,
+        "timeMode": "morning",
+        "period": "morning"
+      }
+    },
+    {
+      "name": "real light selection day updates UI and rendered pixels",
+      "pass": true,
+      "pixels": {
+        "hash": "2668f116",
+        "meanLuma": 187.91951611111097,
+        "range": 169.6744,
+        "colorBins": 67,
+        "opaqueFraction": 1,
+        "bufferWidth": 720,
+        "bufferHeight": 450,
+        "timeMode": "day",
+        "period": "day"
+      }
+    },
+    {
+      "name": "real light selection evening updates UI and rendered pixels",
+      "pass": true,
+      "pixels": {
+        "hash": "eec6a742",
+        "meanLuma": 151.21180708333355,
+        "range": 200.4408,
+        "colorBins": 64,
+        "opaqueFraction": 1,
+        "bufferWidth": 720,
+        "bufferHeight": 450,
+        "timeMode": "evening",
+        "period": "evening"
+      }
+    },
+    {
+      "name": "real light selection night updates UI and rendered pixels",
+      "pass": true,
+      "pixels": {
+        "hash": "d69249bb",
+        "meanLuma": 63.97346305555597,
+        "range": 212.71120000000002,
+        "colorBins": 70,
+        "opaqueFraction": 1,
+        "bufferWidth": 720,
+        "bufferHeight": 450,
+        "timeMode": "night",
+        "period": "night"
+      }
+    },
+    {
+      "name": "four light renders differ and night is visibly darker than day",
+      "pass": true,
+      "luminance": {
+        "morning": 185.15875416666665,
+        "day": 187.91951611111097,
+        "evening": 151.21180708333355,
+        "night": 63.97346305555597
+      }
+    },
+    {
+      "name": "music can be explicitly re-enabled and muted after the night switch",
+      "pass": true,
+      "playEvents": 4,
+      "pauseEvents": 2,
+      "tracksRequested": [
+        "http://127.0.0.1:5180/bgm/dawn_dusk.opus",
+        "http://127.0.0.1:5180/bgm/night.opus"
+      ]
+    },
+    {
+      "name": "time menu keyboard escape and auto-time controls remain real",
+      "pass": true,
+      "displayedTime": "18:47"
+    },
+    {
+      "name": "about dialog opens, exposes safe reference links, and closes by Escape",
+      "pass": true,
+      "referencesInspectedNotOpened": 4
+    },
+    {
+      "name": "H hides and restores the original interface without touching app state",
+      "pass": true
+    },
+    {
+      "name": "home and re-entry preserve a prior explicit mute preference",
+      "pass": true
+    },
+    {
+      "name": "desktop landscape 1920x1080 stays in viewport and clickable",
+      "pass": true,
+      "clientWidth": 1920,
+      "scrollWidth": 1920,
+      "bodyScrollWidth": 1920,
+      "boxes": [
+        {
+          "selector": "#scene",
+          "x": 0,
+          "y": 0,
+          "right": 1440,
+          "bottom": 900,
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "selector": ".masthead",
+          "x": 58,
+          "y": 43,
+          "right": 1862,
+          "bottom": 84,
+          "width": 1804,
+          "height": 41
+        },
+        {
+          "selector": ".journey-footer",
+          "x": 62,
+          "y": 906,
+          "right": 1858,
+          "bottom": 1017,
+          "width": 1796,
+          "height": 111
+        },
+        {
+          "selector": "#time-button",
+          "x": 1556.5625,
+          "y": 47,
+          "right": 1694,
+          "bottom": 80,
+          "width": 137.4375,
+          "height": 33
+        },
+        {
+          "selector": "#sound-button",
+          "x": 1716,
+          "y": 47,
+          "right": 1749,
+          "bottom": 80,
+          "width": 33,
+          "height": 33
+        },
+        {
+          "selector": "#pause-button",
+          "x": 1831,
+          "y": 965,
+          "right": 1858,
+          "bottom": 992,
+          "width": 27,
+          "height": 27
+        },
+        {
+          "selector": ".chapter-dots",
+          "x": 64,
+          "y": 1010,
+          "right": 327,
+          "bottom": 1016,
+          "width": 263,
+          "height": 6
+        }
+      ]
+    },
+    {
+      "name": "desktop landscape 1366x768 stays in viewport and clickable",
+      "pass": true,
+      "clientWidth": 1366,
+      "scrollWidth": 1366,
+      "bodyScrollWidth": 1366,
+      "boxes": [
+        {
+          "selector": "#scene",
+          "x": 0,
+          "y": 0,
+          "right": 1366,
+          "bottom": 768,
+          "width": 1366,
+          "height": 768
+        },
+        {
+          "selector": ".masthead",
+          "x": 42,
+          "y": 32,
+          "right": 1324,
+          "bottom": 73,
+          "width": 1282,
+          "height": 41
+        },
+        {
+          "selector": ".journey-footer",
+          "x": 46,
+          "y": 610,
+          "right": 1320,
+          "bottom": 721,
+          "width": 1274,
+          "height": 111
+        },
+        {
+          "selector": "#time-button",
+          "x": 1018.5625,
+          "y": 36,
+          "right": 1156,
+          "bottom": 69,
+          "width": 137.4375,
+          "height": 33
+        },
+        {
+          "selector": "#sound-button",
+          "x": 1178,
+          "y": 36,
+          "right": 1211,
+          "bottom": 69,
+          "width": 33,
+          "height": 33
+        },
+        {
+          "selector": "#pause-button",
+          "x": 1293,
+          "y": 669,
+          "right": 1320,
+          "bottom": 696,
+          "width": 27,
+          "height": 27
+        },
+        {
+          "selector": ".chapter-dots",
+          "x": 48,
+          "y": 714,
+          "right": 311,
+          "bottom": 720,
+          "width": 263,
+          "height": 6
+        }
+      ]
+    },
+    {
+      "name": "844x390 touch landscape preserves the supplied design and working controls",
+      "pass": true,
+      "geometry": {
+        "clientWidth": 844,
+        "scrollWidth": 844,
+        "bodyScrollWidth": 844,
+        "boxes": [
+          {
+            "selector": "#scene",
+            "x": 0,
+            "y": 0,
+            "right": 844,
+            "bottom": 390,
+            "width": 844,
+            "height": 390
+          },
+          {
+            "selector": ".masthead",
+            "x": 25,
+            "y": 14,
+            "right": 819,
+            "bottom": 47,
+            "width": 794,
+            "height": 33
+          },
+          {
+            "selector": ".journey-footer",
+            "x": 27,
+            "y": 301,
+            "right": 817,
+            "bottom": 362,
+            "width": 790,
+            "height": 61
+          },
+          {
+            "selector": "#time-button",
+            "x": 570.75,
+            "y": 16,
+            "right": 686,
+            "bottom": 45,
+            "width": 115.25,
+            "height": 29
+          },
+          {
+            "selector": "#sound-button",
+            "x": 694,
+            "y": 14,
+            "right": 727,
+            "bottom": 47,
+            "width": 33,
+            "height": 33
+          },
+          {
+            "selector": "#pause-button",
+            "x": 793,
+            "y": 337,
+            "right": 817,
+            "bottom": 361,
+            "width": 24,
+            "height": 24
+          },
+          {
+            "selector": ".chapter-dots",
+            "x": 29,
+            "y": 355,
+            "right": 227,
+            "bottom": 361,
+            "width": 198,
+            "height": 6
+          }
+        ]
+      },
+      "movement": {
+        "start": 592,
+        "end": 596,
+        "delta": 4,
+        "simulatedSeconds": 1.2000000000000006,
+        "frames": 20,
+        "wallMs": 5721.799999994051
+      }
+    },
+    {
+      "name": "390x844 intentionally shows the original rotation notice instead of the canvas",
+      "pass": true,
+      "state": {
+        "portrait": "flex",
+        "canvas": "none",
+        "ui": "none",
+        "message": "ABOVE LIANGXIANG风景，需要宽一点的视野。请将设备旋转至横屏再一起出发，去云上的良乡。✧"
+      },
+      "geometry": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "boxes": [
+          {
+            "selector": ".portrait-notice",
+            "x": 0,
+            "y": 0,
+            "right": 390,
+            "bottom": 844,
+            "width": 390,
+            "height": 844
+          },
+          {
+            "selector": ".portrait-notice h2",
+            "x": 71.390625,
+            "y": 416.90625,
+            "right": 318.59375,
+            "bottom": 445.90625,
+            "width": 247.203125,
+            "height": 29
+          },
+          {
+            "selector": ".rotate-device",
+            "x": 152.5,
+            "y": 262.90625,
+            "right": 237.5,
+            "bottom": 347.90625,
+            "width": 85,
+            "height": 85
+          }
+        ]
+      }
+    },
+    {
+      "name": "rotation back to landscape restores real canvas and input",
+      "pass": true,
+      "movement": {
+        "start": 596,
+        "end": 603,
+        "delta": 7,
+        "simulatedSeconds": 1.2000000000000006,
+        "frames": 20,
+        "wallMs": 5441.200000000012
+      }
+    },
+    {
+      "name": "no source debug global is required for acceptance",
+      "pass": true,
+      "productionGlobalRead": false,
+      "localOptionalDiagnostics": true
+    },
+    {
+      "name": "final navigation, console, shader, media and network audit",
+      "pass": true,
+      "navigations": 1,
+      "resourceResponses": 38,
+      "mediaObserved": 29,
+      "webAudioObserved": 2
+    }
+  ],
+  "screenshots": [
+    "voxel-local-arrival-1440.png",
+    "voxel-local-journey-1440.png",
+    "voxel-local-landmark-last.png",
+    "voxel-local-light-morning.png",
+    "voxel-local-light-day.png",
+    "voxel-local-light-evening.png",
+    "voxel-local-light-night.png",
+    "voxel-local-about.png",
+    "voxel-local-canvas-only.png",
+    "voxel-local-landscape-1920.png",
+    "voxel-local-landscape-1366.png",
+    "voxel-local-landscape-844-touch.png",
+    "voxel-local-portrait-390.png"
+  ],
+  "canvas": [
+    {
+      "label": "arrival",
+      "hash": "96c600ee",
+      "meanLuma": 144.66759236111122,
+      "range": 196.9622,
+      "colorBins": 74,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "auto",
+      "period": "evening"
+    },
+    {
+      "label": "journey-start",
+      "hash": "c441d203",
+      "meanLuma": 144.57869347222203,
+      "range": 214.49579999999997,
+      "colorBins": 77,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "auto",
+      "period": "evening"
+    },
+    {
+      "label": "morning",
+      "hash": "1f11d4b5",
+      "meanLuma": 185.15875416666665,
+      "range": 183.9398,
+      "colorBins": 64,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "morning",
+      "period": "morning"
+    },
+    {
+      "label": "day",
+      "hash": "2668f116",
+      "meanLuma": 187.91951611111097,
+      "range": 169.6744,
+      "colorBins": 67,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "day",
+      "period": "day"
+    },
+    {
+      "label": "evening",
+      "hash": "eec6a742",
+      "meanLuma": 151.21180708333355,
+      "range": 200.4408,
+      "colorBins": 64,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "evening",
+      "period": "evening"
+    },
+    {
+      "label": "night",
+      "hash": "d69249bb",
+      "meanLuma": 63.97346305555597,
+      "range": 212.71120000000002,
+      "colorBins": 70,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "night",
+      "period": "night"
+    },
+    {
+      "label": "1920",
+      "hash": "2637768f",
+      "meanLuma": 140.59980069444543,
+      "range": 216.20579999999998,
+      "colorBins": 62,
+      "opaqueFraction": 1,
+      "bufferWidth": 720,
+      "bufferHeight": 450,
+      "timeMode": "auto",
+      "period": "evening"
+    },
+    {
+      "label": "1366",
+      "hash": "74d4f3f1",
+      "meanLuma": 146.06731402777618,
+      "range": 201.9434,
+      "colorBins": 57,
+      "opaqueFraction": 1,
+      "bufferWidth": 683,
+      "bufferHeight": 384,
+      "timeMode": "auto",
+      "period": "evening"
+    },
+    {
+      "label": "rotation-restored",
+      "hash": "24ab6720",
+      "meanLuma": 184.72771736111136,
+      "range": 136.9264,
+      "colorBins": 63,
+      "opaqueFraction": 1,
+      "bufferWidth": 422,
+      "bufferHeight": 195,
+      "timeMode": "day",
+      "period": "day"
+    }
+  ],
+  "media": {
+    "mediaSupported": true,
+    "audioSupported": true,
+    "playEvents": 4,
+    "pauseEvents": 3,
+    "mediaURLs": [
+      "http://127.0.0.1:5180/bgm/dawn_dusk.opus",
+      "http://127.0.0.1:5180/bgm/night.opus"
+    ],
+    "contexts": [
+      {
+        "contextId": "5975059a-d1f4-4dfe-a4e6-ae7988bc9ea7",
+        "contextType": "realtime",
+        "contextState": "suspended",
+        "callbackBufferSize": 480,
+        "maxOutputChannelCount": 2,
+        "sampleRate": 48000,
+        "renderQuantumSize": 128
+      },
+      {
+        "contextId": "5975059a-d1f4-4dfe-a4e6-ae7988bc9ea7",
+        "contextType": "realtime",
+        "contextState": "running",
+        "callbackBufferSize": 480,
+        "maxOutputChannelCount": 2,
+        "sampleRate": 48000,
+        "renderQuantumSize": 128
+      }
+    ],
+    "events": [
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201069.281573,
+        "value": "{\"created\":\"2026-10-28 10:44:58.378040 UTC\",\"event\":\"kMediaLogCreated\"}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201069.28196,
+        "value": "{\"event\":\"kWebMediaPlayerCreated\",\"origin_url\":\"http://127.0.0.1:5180/\"}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201069.282099,
+        "value": "{\"event\":\"kLoad\",\"url\":\"http://127.0.0.1:5180/bgm/dawn_dusk.opus\"}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201069.291539,
+        "value": "{\"event\":\"kRendererCreated\",\"renderer_created\":{\"renderer_engine\":\"Default\",\"renderer_type\":\"RendererImpl\"}}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201069.550616,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kStarting\"}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201069.571148,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kPlaying\"}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201069.570711,
+        "value": "{\"duration\":101.561063,\"event\":\"kDurationChanged\"}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201069.57411,
+        "value": "{\"audio_buffering_state\":{\"state\":\"BUFFERING_HAVE_ENOUGH\"},\"event\":\"kBufferingStateChanged\"}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201069.574152,
+        "value": "{\"event\":\"kBufferingStateChanged\",\"pipeline_buffering_state\":{\"for_suspended_start\":false,\"state\":\"BUFFERING_HAVE_ENOUGH\"}}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201069.571227,
+        "value": "{\"event\":\"kPlay\"}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201135.926135,
+        "value": "{\"event\":\"kPause\"}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201151.699548,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kSuspending\"}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201151.700012,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kSuspended\"}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201151.700058,
+        "value": "{\"event\":\"kSuspended\"}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201231.562557,
+        "value": "{\"created\":\"2026-10-28 10:47:40.659025 UTC\",\"event\":\"kMediaLogCreated\"}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201231.5629,
+        "value": "{\"event\":\"kWebMediaPlayerCreated\",\"origin_url\":\"http://127.0.0.1:5180/\"}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201231.563041,
+        "value": "{\"event\":\"kLoad\",\"url\":\"http://127.0.0.1:5180/bgm/night.opus\"}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201231.571682,
+        "value": "{\"event\":\"kRendererCreated\",\"renderer_created\":{\"renderer_engine\":\"Default\",\"renderer_type\":\"RendererImpl\"}}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201231.571709,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kStarting\"}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201231.583455,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kPlaying\"}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201231.583099,
+        "value": "{\"duration\":98.752583,\"event\":\"kDurationChanged\"}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201231.585437,
+        "value": "{\"audio_buffering_state\":{\"state\":\"BUFFERING_HAVE_ENOUGH\"},\"event\":\"kBufferingStateChanged\"}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201231.585474,
+        "value": "{\"event\":\"kBufferingStateChanged\",\"pipeline_buffering_state\":{\"for_suspended_start\":false,\"state\":\"BUFFERING_HAVE_ENOUGH\"}}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201231.583628,
+        "value": "{\"event\":\"kPlay\"}"
+      },
+      {
+        "playerId": "F5760A7991A77CC3584436CB79E113EC",
+        "timestamp": 201233.085799,
+        "value": "{\"event\":\"kPause\"}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201233.086225,
+        "value": "{\"event\":\"kPause\"}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201248.10145,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kSuspending\"}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201248.101759,
+        "value": "{\"event\":\"kPipelineStateChange\",\"pipeline_state\":\"kSuspended\"}"
+      },
+      {
+        "playerId": "D7A6978A474736BFC6561014C090521C",
+        "timestamp": 201248.101837,
+        "value": "{\"event\":\"kSuspended\"}"
+      }
+    ]
+  },
+  "network": [
+    {
+      "url": "http://127.0.0.1:5180/",
+      "type": "Document",
+      "status": 200,
+      "mimeType": "text/html"
+    },
+    {
+      "url": "http://127.0.0.1:5180/@vite/client",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/main.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/node_modules/vite/dist/client/env.mjs",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/engine.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/audio.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/ui.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/landmarks.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/voxel.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/node_modules/.vite/deps/three.js?v=d65ca5ab",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/effects.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/road.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/atmosphere.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/cloud-sea.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/portal.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/style.css",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/photo-gate.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/photo-heritage.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/photo-modern.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/node_modules/.vite/deps/three_addons_postprocessing_EffectComposer__js.js?v=644689fc",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/node_modules/.vite/deps/three_addons_postprocessing_ShaderPass__js.js?v=ebc7a39d",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/node_modules/.vite/deps/three_addons_postprocessing_RenderPass__js.js?v=9e09324e",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/node_modules/.vite/deps/three_addons_postprocessing_OutputPass__js.js?v=83ffac63",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/node_modules/.vite/deps/three_addons_shaders_FXAAShader__js.js?v=ba880ed6",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/node_modules/.vite/deps/three_addons_postprocessing_UnrealBloomPass__js.js?v=7adf0177",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/node_modules/.vite/deps/chunk-NY4Z4LNU.js?v=0a0c6cac",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/src/photo-helpers.js",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/node_modules/.vite/deps/chunk-WYHAABFN.js?v=0a0c6cac",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/node_modules/.vite/deps/chunk-IEZS3O2Z.js?v=0a0c6cac",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/node_modules/.vite/deps/chunk-IT3TP6RZ.js?v=0a0c6cac",
+      "type": "Script",
+      "status": 200,
+      "mimeType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5180/fonts/campus-serif.woff2",
+      "type": "Font",
+      "status": 200,
+      "mimeType": "font/woff2"
+    },
+    {
+      "url": "http://127.0.0.1:5180/fonts/campus-sans.woff2",
+      "type": "Font",
+      "status": 200,
+      "mimeType": "font/woff2"
+    },
+    {
+      "url": "http://127.0.0.1:5180/bgm/dawn_dusk.opus",
+      "type": "Media",
+      "status": 206,
+      "mimeType": "audio/ogg"
+    },
+    {
+      "url": "http://127.0.0.1:5180/bgm/dawn_dusk.opus",
+      "type": "Media",
+      "status": 206,
+      "mimeType": "audio/ogg"
+    },
+    {
+      "url": "http://127.0.0.1:5180/bgm/dawn_dusk.opus",
+      "type": "Media",
+      "status": 206,
+      "mimeType": "audio/ogg"
+    },
+    {
+      "url": "http://127.0.0.1:5180/bgm/night.opus",
+      "type": "Media",
+      "status": 206,
+      "mimeType": "audio/ogg"
+    },
+    {
+      "url": "http://127.0.0.1:5180/bgm/night.opus",
+      "type": "Media",
+      "status": 206,
+      "mimeType": "audio/ogg"
+    },
+    {
+      "url": "http://127.0.0.1:5180/bgm/night.opus",
+      "type": "Media",
+      "status": 206,
+      "mimeType": "audio/ogg"
+    }
+  ],
+  "warnings": [],
+  "unexpectedErrors": [],
+  "optionalDevelopmentStats": {
+    "distance": 604.7375999999981,
+    "paused": true,
+    "speed": 1,
+    "roadRows": 92,
+    "roadChunks": 92,
+    "formingRows": 14,
+    "totalInstances": 1380,
+    "frontDistance": 18,
+    "farVisibleDistance": 62,
+    "visibleRows": 31,
+    "elapsed": 12.100400000000022,
+    "islandCount": 8,
+    "portals": [
+      {
+        "anchor": 923,
+        "progress": 0,
+        "supported": false,
+        "visibleVoxels": 0,
+        "completedVoxels": 0,
+        "flyingVoxels": 0,
+        "totalVoxels": 834,
+        "builtHeight": 0,
+        "startTravel": 905.65
+      },
+      {
+        "anchor": 1158,
+        "progress": 0,
+        "supported": false,
+        "visibleVoxels": 0,
+        "completedVoxels": 0,
+        "flyingVoxels": 0,
+        "totalVoxels": 834,
+        "builtHeight": 0,
+        "startTravel": 1140.55
+      },
+      {
+        "anchor": 688,
+        "progress": 0,
+        "supported": false,
+        "visibleVoxels": 0,
+        "completedVoxels": 0,
+        "flyingVoxels": 0,
+        "totalVoxels": 834,
+        "builtHeight": 0,
+        "startTravel": 670.75
+      }
+    ],
+    "landmarks": [
+      {
+        "id": "library",
+        "index": 0,
+        "anchor": 750
+      },
+      {
+        "id": "gate",
+        "index": 1,
+        "anchor": 807
+      },
+      {
+        "id": "round",
+        "index": 2,
+        "anchor": 912
+      },
+      {
+        "id": "wing",
+        "index": 3,
+        "anchor": 999
+      },
+      {
+        "id": "heritage",
+        "index": 4,
+        "anchor": 1098
+      },
+      {
+        "id": "motto",
+        "index": 5,
+        "anchor": 1155
+      },
+      {
+        "id": "lake",
+        "index": 6,
+        "anchor": 564
+      },
+      {
+        "id": "main",
+        "index": 7,
+        "anchor": 651
+      }
+    ],
+    "cameraHeight": 2.5,
+    "timeMode": "day",
+    "hour": 12,
+    "period": "day",
+    "transitionError": 0.018556361877696805,
+    "nightFactor": 0.000027276249864519155,
+    "rayStrength": 0.14362595547612259,
+    "effects": [
+      "procedural-sky",
+      "cloud-noise",
+      "moon-craters",
+      "stars",
+      "height-haze",
+      "depth-light-shafts",
+      "bloom",
+      "FXAA"
+    ],
+    "drawCalls": 134,
+    "triangles": 294952,
+    "geometries": 14,
+    "textures": 24,
+    "renderer": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "audio": {
+      "enabled": false,
+      "loading": false,
+      "period": "day",
+      "track": "day",
+      "activeTrack": "night",
+      "label": "白昼音乐",
+      "error": null,
+      "contextState": "running",
+      "masterGain": 0,
+      "players": [
+        {
+          "key": "dawn_dusk",
+          "src": "http://127.0.0.1:5180/bgm/dawn_dusk.opus",
+          "paused": true,
+          "loop": true,
+          "currentTime": 66.349333,
+          "duration": 101.561063,
+          "readyState": 4,
+          "gain": 0
+        },
+        {
+          "key": "night",
+          "src": "http://127.0.0.1:5180/bgm/night.opus",
+          "paused": true,
+          "loop": true,
+          "currentTime": 1.376692,
+          "duration": 98.752583,
+          "readyState": 4,
+          "gain": 1
+        }
+      ]
+    }
+  },
+  "finishedAt": "2026-10-28T10:48:25.791Z",
+  "total": 25,
+  "passed": 25
+}

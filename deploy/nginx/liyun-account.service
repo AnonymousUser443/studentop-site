@@ -1,0 +1,35 @@
+[Unit]
+Description=Liyun game account API (SQLite)
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=liyun-account
+Group=liyun-account
+WorkingDirectory=/opt/projects/liyun-api/current
+ExecStart=/opt/node24/bin/node server.mjs
+Environment=NODE_ENV=production
+Environment=LIYUN_API_HOST=127.0.0.1
+Environment=LIYUN_API_PORT=8787
+Environment=LIYUN_DATA_DIR=/var/lib/liyun-account
+Environment=LIYUN_PUBLIC_ORIGIN=https://liyun.studentop.cn:14355
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=15
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+ReadWritePaths=/var/lib/liyun-account
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+[Install]
+WantedBy=multi-user.target

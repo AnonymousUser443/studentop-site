@@ -1,0 +1,213 @@
+{
+  "ok": true,
+  "checkedAt": "2026-10-29T07:23:17.060Z",
+  "commit": "e2323827d2e344ffc393707608c2ee448a6512e4",
+  "expectedVersion": "2897dae74f2ca40ce525c26e",
+  "origin": "https://studentop.cn:14355",
+  "scope": "read-only release smoke check; no answer submission or full-flow acceptance",
+  "checks": [
+    {
+      "name": "public_bytes:/",
+      "pass": true,
+      "status": 200,
+      "sha256": "521c18422150a493a5b08e3e1498d50e0d690dc4c52d479451bae2bf601e1d18",
+      "bytes": 11023
+    },
+    {
+      "name": "cache_policy:/",
+      "pass": true,
+      "cache": "no-cache"
+    },
+    {
+      "name": "HTML_MIME:/",
+      "pass": true,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "new_boot_and_plain_text_input_are_public",
+      "pass": true
+    },
+    {
+      "name": "nosniff_header_present",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:/projects/",
+      "pass": true,
+      "status": 200,
+      "sha256": "7d51fd450d89d52ad308373bb70248f1bc4cc69ad5e6a857b953efda67ca970a",
+      "bytes": 7243
+    },
+    {
+      "name": "cache_policy:/projects/",
+      "pass": true,
+      "cache": "no-cache"
+    },
+    {
+      "name": "HTML_MIME:/projects/",
+      "pass": true,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "public_bytes:/version.json",
+      "pass": true,
+      "status": 200,
+      "sha256": "84a0108848feea2575ae35b58464f300bc744d8e68344efce406e599e95de75d",
+      "bytes": 34
+    },
+    {
+      "name": "cache_policy:/version.json",
+      "pass": true,
+      "cache": "no-cache"
+    },
+    {
+      "name": "public_version_matches_release",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:/assets/releases/2897dae74f2ca40ce525c26e/manifest.json",
+      "pass": true,
+      "status": 200,
+      "sha256": "8e66c7e0604a586959ea433722450bd2d911adcfefaa85fcc6198352286391c4",
+      "bytes": 12913
+    },
+    {
+      "name": "cache_policy:/assets/releases/2897dae74f2ca40ce525c26e/manifest.json",
+      "pass": true,
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "name": "public_bytes:/assets/releases/2897dae74f2ca40ce525c26e/css/boot-lock.css",
+      "pass": true,
+      "status": 200,
+      "sha256": "10c1a45dc75eda272d9bc1d6919c4c73dbf4af11bb75880573140fa9a239f788",
+      "bytes": 16238
+    },
+    {
+      "name": "cache_policy:/assets/releases/2897dae74f2ca40ce525c26e/css/boot-lock.css",
+      "pass": true,
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "name": "CSS_MIME:/assets/releases/2897dae74f2ca40ce525c26e/css/boot-lock.css",
+      "pass": true,
+      "contentType": "text/css"
+    },
+    {
+      "name": "public_bytes:/assets/releases/2897dae74f2ca40ce525c26e/js/boot-lock.js",
+      "pass": true,
+      "status": 200,
+      "sha256": "5c0fae0a8d69c2b3f1a21060c7d385b86e79d18b312f16fb755be69d82a6ef83",
+      "bytes": 25863
+    },
+    {
+      "name": "cache_policy:/assets/releases/2897dae74f2ca40ce525c26e/js/boot-lock.js",
+      "pass": true,
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "name": "JS_MIME:/assets/releases/2897dae74f2ca40ce525c26e/js/boot-lock.js",
+      "pass": true,
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "public_bytes:/assets/releases/2897dae74f2ca40ce525c26e/js/gate-effects.js",
+      "pass": true,
+      "status": 200,
+      "sha256": "3f056108c6c25cbe83aa982d308f8ade4b6ae5533ccbf51610ebaab39a0ba11c",
+      "bytes": 10822
+    },
+    {
+      "name": "cache_policy:/assets/releases/2897dae74f2ca40ce525c26e/js/gate-effects.js",
+      "pass": true,
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "name": "JS_MIME:/assets/releases/2897dae74f2ca40ce525c26e/js/gate-effects.js",
+      "pass": true,
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "public_bytes:/assets/releases/2897dae74f2ca40ce525c26e/img/aidenos-landscape.webp",
+      "pass": true,
+      "status": 200,
+      "sha256": "710ff7c41583442fa51c6304e85aef9e7a3fe561d6aee059f7ca3c6ccd68b436",
+      "bytes": 134950
+    },
+    {
+      "name": "cache_policy:/assets/releases/2897dae74f2ca40ce525c26e/img/aidenos-landscape.webp",
+      "pass": true,
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "name": "image_MIME:/assets/releases/2897dae74f2ca40ce525c26e/img/aidenos-landscape.webp",
+      "pass": true,
+      "contentType": "image/webp"
+    },
+    {
+      "name": "public_bytes:/assets/releases/2897dae74f2ca40ce525c26e/fonts/noto-sans-sc.woff2",
+      "pass": true,
+      "status": 200,
+      "sha256": "abea0aa5aa43e7873c0f0fdf3c14547764bda6cda933fe687b09fc355c7b0916",
+      "bytes": 283780
+    },
+    {
+      "name": "cache_policy:/assets/releases/2897dae74f2ca40ce525c26e/fonts/noto-sans-sc.woff2",
+      "pass": true,
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "name": "font_MIME:/assets/releases/2897dae74f2ca40ce525c26e/fonts/noto-sans-sc.woff2",
+      "pass": true,
+      "contentType": "font/woff2"
+    },
+    {
+      "name": "public_bytes:/assets/releases/2897dae74f2ca40ce525c26e/fonts/noto-serif-sc.woff2",
+      "pass": true,
+      "status": 200,
+      "sha256": "604d7193d6801b9cd867b0c1a064ff292e39261bdfc55f3db29e79eddaf54565",
+      "bytes": 368900
+    },
+    {
+      "name": "cache_policy:/assets/releases/2897dae74f2ca40ce525c26e/fonts/noto-serif-sc.woff2",
+      "pass": true,
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "name": "font_MIME:/assets/releases/2897dae74f2ca40ce525c26e/fonts/noto-serif-sc.woff2",
+      "pass": true,
+      "contentType": "font/woff2"
+    },
+    {
+      "name": "public_bytes:/assets/releases/4036dc9f22c3295680bc5100/js/core.js",
+      "pass": true,
+      "status": 200,
+      "sha256": "b8546e7b68c152ca69fa69bd694855db0d954e0c725b7e7009ecefe5c908a028",
+      "bytes": 16733
+    },
+    {
+      "name": "cache_policy:/assets/releases/4036dc9f22c3295680bc5100/js/core.js",
+      "pass": true,
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "name": "JS_MIME:/assets/releases/4036dc9f22c3295680bc5100/js/core.js",
+      "pass": true,
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "existing_auth_is_configured_without_sign_in",
+      "pass": true,
+      "status": 200,
+      "configured": true,
+      "authenticated": false
+    },
+    {
+      "name": "auth_response_not_cacheable",
+      "pass": true,
+      "cache": "no-store, private"
+    }
+  ],
+  "total": 36,
+  "passed": 36
+}

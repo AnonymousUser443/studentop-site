@@ -1,0 +1,15 @@
+'use strict';
+const fs=require('node:fs');const path=require('node:path');const {newSession,until,sleep}=require('../lib.js');
+(async()=>{const s=await newSession({size:'1440x900'});const report={renderer:'isolated Edge / SwiftShader; screenshots and draw counts, not hardware FPS',checks:[],snapshots:{},screenshots:[]};
+ const capture=async name=>{await s.evaluate('document.fonts.ready.then(()=>true)');await sleep(1400);await s.screenshot(path.join(__dirname,name+'.png'));report.screenshots.push(name+'.png');};
+ try{await s.navigate('http://127.0.0.1:8081/?qa=1');await until(()=>s.evaluate('window.__CAMPUS_QA__ && ["welcome","fallback"].includes(window.__CAMPUS_QA__.phase)'),16000,'Campus ready');
+ report.snapshots.welcome=await s.evaluate('__CAMPUS_QA__.advance(0)');await capture('campus-welcome-first');
+ if(report.snapshots.welcome.phase!=='welcome')throw new Error('3D renderer fell back: '+JSON.stringify(report.snapshots.welcome));
+ await s.click('[data-testid="campus-start"]');await until(()=>s.evaluate('__CAMPUS_QA__.phase==="journey" || __CAMPUS_QA__.phase==="arrival"'),4000,'Start');
+ report.snapshots.mid=await s.evaluate('__CAMPUS_QA__.advance(5)');await capture('campus-mid-first');
+ report.snapshots.arrival=await s.evaluate('__CAMPUS_QA__.advance(8)');await capture('campus-arrival-first');
+ if(report.snapshots.arrival.phase!=='arrival')throw new Error('Arrival not reached');
+ await s.call('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});await sleep(400);await s.evaluate('__CAMPUS_QA__.advance(0)');await capture('campus-mobile-first');
+ report.checks.push({name:'mobile_no_horizontal_overflow',pass:await s.evaluate('document.documentElement.scrollWidth<=innerWidth+1')});
+ if(report.checks.some(x=>!x.pass)||s.errors.length)throw new Error('Browser errors or layout failure '+JSON.stringify(s.errors));report.ok=true;
+ }catch(e){report.ok=false;report.error=String(e.stack||e);process.exitCode=1;}finally{report.errors=s.errors;fs.writeFileSync(path.join(__dirname,'campus-first-review.json'),JSON.stringify(report,null,2));await s.close();console.log(JSON.stringify(report));}})().catch(e=>{console.error(e);process.exitCode=1;});

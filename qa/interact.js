@@ -111,5 +111,6 @@
   // 12 无横向溢出
   ok('no_horizontal_overflow', document.documentElement.scrollWidth <= window.innerWidth, [document.documentElement.scrollWidth, window.innerWidth]);
 
-  return JSON.stringify({ checks, passed: checks.filter(c => c.pass).length, total: checks.length });
+  if (!checks.length || checks.some(c => !c.pass)) throw new Error(JSON.stringify({ checks }));
+  return { ok: true, checks, passed: checks.length, total: checks.length };
 })()

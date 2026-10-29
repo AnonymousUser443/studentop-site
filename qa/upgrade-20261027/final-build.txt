@@ -1,0 +1,66 @@
+{
+  "characters": 943,
+  "sourceFiles": 73,
+  "fonts": [
+    {
+      "name": "noto-sans-sc.woff2",
+      "bytes": 275044,
+      "sha256": "45455e4c83c5496a00cfd5a7c4222bf5805dc387fd983654eb359b978f3a1a84"
+    },
+    {
+      "name": "noto-serif-sc.woff2",
+      "bytes": 357340,
+      "sha256": "202aa8432598a0c3bacc2b7146c131e7e3061e3f90447bde2184536cbfa4316a"
+    }
+  ]
+}
+
+ RUN  v5.0.5 D:/Users/Desktop/北理的文件夹/学习相关/软件工程导论研究型课程/V2版本集中开发文件夹/apps/liyun-explorer
+
+ ✓ src/effects/timing.test.ts (3 tests) 4ms
+ ✓ src/map/geometry.test.ts (5 tests) 5ms
+ ✓ src/state.test.ts (5 tests) 5ms
+
+ Test Files  3 passed (3)
+      Tests  13 passed (13)
+   Start at  22:27:24
+   Duration  255ms (transform 64%, import 20%, worker 10%, tests 5%)
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 47 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.61 kB │ gzip:   0.44 kB
+dist/assets/index-r_u_YNWD.css     37.81 kB │ gzip:   9.60 kB
+dist/assets/index-BY2Dy2Ra.js   1,358.34 kB │ gzip: 363.86 kB
+✓ built in 3.99s
+vite v4.5.14 building for production...
+transforming...
+✓ 39 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/LICENSE.txt                         1.06 kB │ gzip:   0.65 kB
+dist/campus-fallback.svg                 3.66 kB │ gzip:   1.66 kB
+dist/index.html                          3.88 kB │ gzip:   2.18 kB
+dist/campus/fonts/OFL-NotoSerifSC.txt    4.35 kB │ gzip:   1.95 kB
+dist/campus/fonts/OFL-NotoSansSC.txt     4.39 kB │ gzip:   1.97 kB
+dist/campus/fonts/noto-sans-sc.woff2   275.04 kB
+dist/campus/fonts/noto-serif-sc.woff2  357.34 kB
+dist/assets/index-ce1d716b.css           9.85 kB │ gzip:   2.96 kB
+dist/assets/index-02d143d7.js          150.88 kB │ gzip:  49.73 kB
+dist/assets/scene-2370a951.js          523.18 kB │ gzip: 136.26 kB
+✓ built in 1.62s
+PASS: production default, DEV/local restrictions, override validation, duplicate navigation, BFCache return
+[stderr]
+npm notice run liyun-campus-explorer@1.0.0 test
+npm notice run vitest run
+npm notice run liyun-campus-explorer@1.0.0 build
+npm notice run tsc -b && vite build
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+npm notice run xviewer-react-template@1.0.0 build
+npm notice run tsc && vite build

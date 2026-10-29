@@ -19,15 +19,25 @@ window.Win = (function () {
   };
 
   /* ---------------- 本地存储 ---------------- */
+  // 内存镜像保证禁用存储/配额不足时，本次访问仍能使用偏好和草稿。
+  var memory = Object.create(null);
   var store = {
     get: function (key, fallback) {
-      try { var v = localStorage.getItem(PREFIX + key); return v === null ? fallback : JSON.parse(v); }
-      catch (e) { return fallback; }
+      try {
+        var v = Object.prototype.hasOwnProperty.call(memory, key) ? memory[key] : localStorage.getItem(PREFIX + key);
+        return v === null || v === undefined ? fallback : JSON.parse(v);
+      } catch (e) { return fallback; }
     },
     set: function (key, value) {
-      try { localStorage.setItem(PREFIX + key, JSON.stringify(value)); } catch (e) { /* 隐私模式忽略 */ }
+      var json;
+      try { json = JSON.stringify(value); if (json === undefined) return false; } catch (e) { return false; }
+      memory[key] = json;
+      try { localStorage.setItem(PREFIX + key, json); return true; } catch (e) { return false; }
     },
-    del: function (key) { try { localStorage.removeItem(PREFIX + key); } catch (e) {} }
+    del: function (key) {
+      memory[key] = null;
+      try { localStorage.removeItem(PREFIX + key); return true; } catch (e) { return false; }
+    }
   };
 
   /* ---------------- 颜色工具 ---------------- */
@@ -53,12 +63,24 @@ window.Win = (function () {
   /* ---------------- 偏好 ---------------- */
   var defaults = {
     themeMode: 'light',   // light | dark | auto
-    wall: 'bloom',
+    wall: 'chenyu',
     align: 'center',
-    accent: '#0067c0',
+    accent: '#28776b',
     motion: true
   };
-  var prefs = Object.assign({}, defaults, store.get('prefs', {}));
+  function validPref(key, value) {
+    if (key === 'themeMode') return ['light', 'dark', 'auto'].indexOf(value) !== -1;
+    if (key === 'align') return ['center', 'left'].indexOf(value) !== -1;
+    if (key === 'motion') return typeof value === 'boolean';
+    if (key === 'accent') return typeof value === 'string' && /^#[0-9a-f]{6}$/i.test(value);
+    if (key === 'wall') return typeof value === 'string' && (['chenyu', 'bloom', 'dusk', 'aurora', 'sakura', 'solid'].indexOf(value) !== -1 || ((window.SITE || {}).wallpapers || []).some(function (w) { return w.id === value; }));
+    return false;
+  }
+  var prefs = Object.assign({}, defaults);
+  var savedPrefs = store.get('prefs', {});
+  if (savedPrefs && typeof savedPrefs === 'object' && !Array.isArray(savedPrefs)) {
+    Object.keys(defaults).forEach(function (key) { if (validPref(key, savedPrefs[key])) prefs[key] = savedPrefs[key]; });
+  }
 
   function effectiveTheme() {
     if (prefs.themeMode === 'auto') return darkMQ.matches ? 'dark' : 'light';
@@ -82,13 +104,21 @@ window.Win = (function () {
     applyAccent(prefs.accent);
     html.dataset.motion = prefs.motion ? 'on' : 'off';
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', effectiveTheme() === 'dark' ? '#0b1220' : '#0a2472');
+    if (meta) meta.setAttribute('content', effectiveTheme() === 'dark' ? '#152c29' : '#e8efdf');
   }
 
-  function savePrefs() { store.set('prefs', prefs); }
+  var prefsStorageWarned = false;
+  function savePrefs() {
+    var ok = store.set('prefs', prefs);
+    if (!ok && !prefsStorageWarned) {
+      prefsStorageWarned = true;
+      notify({ icon: 'info', title: '浏览器存储不可用', body: '外观设置在本次访问中仍有效，刷新后可能恢复默认。' });
+    }
+    return ok;
+  }
 
   function setPref(key, value) {
-    if (prefs[key] === value) return;
+    if (!validPref(key, value) || prefs[key] === value) return false;
     prefs[key] = value;
     savePrefs();
     applyPrefs();
@@ -139,7 +169,7 @@ window.Win = (function () {
   }
 
   function clearNotifications() {
-    notifications.forEach(function (n) { n.unread = false; });
+    notifications.length = 0;
     renderNotificationBadge();
     bus.emit('notifications', notifications);
   }
@@ -197,91 +227,11 @@ window.Win = (function () {
     clockTimer = setInterval(tick, 1000);
   }
 
-  /* ---------------- 锁屏 ---------------- */
-  var lockEl, locked = false;
-
-  function showLock() {
-    if (!lockEl) lockEl = $('#lockScreen');
-    if (!lockEl) return;
-    locked = true;
-    lockEl.hidden = false;
-    lockEl.classList.remove('is-unlocking');
-    updateLockClock();
-    document.body.classList.add('is-locked');
-    closeAllPopupsForLock();
-  }
-
-  function hideLock(instant) {
-    if (!lockEl) lockEl = $('#lockScreen');
-    if (!lockEl || !locked) return;
-    locked = false;
-    document.body.classList.remove('is-locked');
-    if (instant) {
-      lockEl.hidden = true;
-      try { sessionStorage.setItem('win11home.unlocked', '1'); } catch (e) {}
-      bus.emit('unlock', { instant: true });
-      return;
-    }
-    lockEl.classList.add('is-unlocking');
-    setTimeout(function () {
-      lockEl.hidden = true;
-      try { sessionStorage.setItem('win11home.unlocked', '1'); } catch (e) {}
-      bus.emit('unlock', { instant: false });
-    }, 460);
-  }
-
-  function updateLockClock() {
-    var now = new Date();
-    var t = $('#lockClock'), d = $('#lockDate'), w = $('#lockWeekday');
-    if (t) t.textContent = fmtTime(now);
-    if (d) d.textContent = fmtDateCN(now);
-    if (w) w.textContent = WEEK[now.getDay()];
-  }
-
-  function closeAllPopupsForLock() {
-    bus.emit('lock:request-close-all');
-  }
-
-  function initLock() {
-    lockEl = $('#lockScreen');
-    if (!lockEl) return;
-    updateLockClock();
-    startClock();
-    setInterval(function () { if (locked) updateLockClock(); }, 1000);
-    var avatar = $('#lockAvatar'), user = $('#lockUser');
-    if (avatar) avatar.textContent = SITE.profile.avatarText || 'A';
-    if (user) user.textContent = SITE.profile.name;
-    var lockWall = $('#lockWall');
-    if (lockWall) {
-      var wallCss = getComputedStyle(document.documentElement).getPropertyValue('--wall-lock');
-      // 用与桌面相同的壁纸
-      var wallMap = {
-        bloom: 'assets/img/wall-bloom.jpg',
-        dusk: 'assets/img/wall-dusk.jpg',
-        aurora: 'assets/img/wall-aurora.jpg',
-        sakura: 'assets/img/wall-sakura.jpg',
-        solid: 'assets/img/wall-solid.jpg'
-      };
-      var url = wallMap[prefs.wall] || wallMap.bloom;
-      lockWall.style.backgroundImage = 'url("' + url + '"), ' + lockWallGradient(prefs.wall);
-    }
-
-    function unlockNow() {
-      if (!locked) return;
-      hideLock(false);
-    }
-    lockEl.addEventListener('pointerdown', unlockNow);
-    lockEl.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape' || e.key.length === 1) unlockNow();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (locked) { unlockNow(); }
-    });
-
-    var already = false;
-    try { already = sessionStorage.getItem('win11home.unlocked') === '1'; } catch (e) {}
-    if (already) hideLock(true); else showLock();
-  }
+  /* ---------------- 服务端门禁桥接 ---------------- */
+  // No browser storage flag or URL parameter grants authorization.
+  function showLock() { return window.DesktopGate ? window.DesktopGate.lock() : Promise.resolve(false); }
+  function hideLock(instant) { return window.DesktopGate ? window.DesktopGate.unlock(instant) : Promise.resolve(false); }
+  function initLock() { return window.DesktopGate ? window.DesktopGate.init() : Promise.resolve(false); }
 
   function lockWallGradient(id) {
     var map = {
@@ -293,6 +243,71 @@ window.Win = (function () {
     };
     return map[id] || map.bloom;
   }
+
+  function wallpaperUrl(id) {
+    var item = ((window.SITE || {}).wallpapers || []).filter(function (w) { return w.id === id; })[0];
+    if (item && item.src && safeUrl(item.src)) return item.src;
+    var map = { chenyu: 'assets/img/wall-chenyu.webp', bloom: 'assets/img/wall-bloom.jpg', dusk: 'assets/img/wall-dusk.jpg', aurora: 'assets/img/wall-aurora.jpg', sakura: 'assets/img/wall-sakura.jpg', solid: 'assets/img/wall-solid.jpg' };
+    return map[id] || map.chenyu;
+  }
+  function syncLockWallpaper() {
+    var wall = $('#lockWall');
+    if (wall) wall.style.backgroundImage = 'url(' + JSON.stringify(wallpaperUrl(prefs.wall)) + ')';
+  }
+
+  /* ---------------- 安全 URL / 统一头像 ---------------- */
+  function safeUrl(raw, allowMail) {
+    if (typeof raw !== 'string' || !raw.trim() || /[\u0000-\u001f\u007f]/.test(raw)) return '';
+    try {
+      var url = new URL(raw, window.location.href);
+      if (url.username || url.password) return '';
+      return url.protocol === 'https:' || url.protocol === 'http:' || (allowMail && url.protocol === 'mailto:') ? url.href : '';
+    } catch (e) { return ''; }
+  }
+  function resolveProjectUrl(appId, productionURL, hostname) {
+    var host = hostname === undefined ? window.location.hostname : hostname;
+    if (host === 'localhost' || host === '127.0.0.1') {
+      if (appId === 'liyun-explorer') return 'http://127.0.0.1:5174/';
+      if (appId === 'genshin-start') return 'http://127.0.0.1:8081/';
+      if (appId === 'genshin-original') return 'http://127.0.0.1:8081/legacy.html';
+      if (appId === 'voxel-campus') return 'http://127.0.0.1:5180/';
+    }
+    return productionURL;
+  }
+  function openExternal(raw) {
+    var url = safeUrl(raw);
+    if (!url) { notify({ icon: 'info', title: '链接不可用', body: '仅支持有效的 HTTP 或 HTTPS 地址。' }); return false; }
+    try {
+      // noopener 下返回 null 并不能证明被拦截；绝不再开第二次、不回退当前页。
+      window.open(url, '_blank', 'noopener,noreferrer');
+      return true;
+    } catch (e) {
+      notify({ icon: 'info', title: '浏览器未能打开链接', body: '请检查浏览器的弹出窗口权限。' });
+      return false;
+    }
+  }
+  function localizeProjectLinks() {
+    $$('a[data-project-link]').forEach(function (a) {
+      var url = resolveProjectUrl(a.dataset.projectLink, a.getAttribute('href'));
+      if (safeUrl(url)) a.href = url;
+      a.rel = 'noopener noreferrer';
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', localizeProjectLinks);
+  else localizeProjectLinks();
+  function avatarMarkup() {
+    var p = (window.SITE || {}).profile || {};
+    var url = safeUrl(p.avatar);
+    var fallback = esc(p.avatarText || 'A');
+    return url ? '<img class="profile-avatar" src="' + esc(url) + '" alt="' + esc((p.name || '用户') + ' 的头像') + '" draggable="false"><span class="avatar-fallback" hidden>' + fallback + '</span>' : fallback;
+  }
+  document.addEventListener('error', function (e) {
+    var img = e.target;
+    if (img && img.classList && img.classList.contains('profile-avatar')) {
+      img.hidden = true;
+      if (img.nextElementSibling) img.nextElementSibling.hidden = false;
+    }
+  }, true);
 
   /* ---------------- 小工具 ---------------- */
   function el(tag, className, html) {
@@ -315,7 +330,9 @@ window.Win = (function () {
   /* ---------------- 对外接口 ---------------- */
   var api = {
     $: $, $$: $$, el: el, esc: esc, clamp: clamp, debounce: debounce, uid: uid,
-    bus: bus, store: store,
+    bus: bus, store: store, validPref: validPref,
+    safeUrl: safeUrl, resolveProjectUrl: resolveProjectUrl, openExternal: openExternal,
+    avatarMarkup: avatarMarkup, wallpaperUrl: wallpaperUrl,
     prefs: prefs, defaults: defaults,
     applyPrefs: applyPrefs, setPref: setPref, savePrefs: savePrefs,
     effectiveTheme: effectiveTheme,
@@ -324,7 +341,7 @@ window.Win = (function () {
     notify: notify, toast: toast, notifications: notifications,
     clearNotifications: clearNotifications, markAllRead: markAllRead, renderNotificationBadge: renderNotificationBadge,
     initLock: initLock, showLock: showLock, hideLock: hideLock,
-    isLocked: function () { return locked; },
+    isLocked: function () { return !window.DesktopGate || window.DesktopGate.isLocked(); },
     reduceMotion: function () { return !prefs.motion || reduceMotionMQ.matches; },
     shade: shade, rgba: rgba,
     isMobile: function () { return window.matchMedia('(max-width: 900px)').matches; }

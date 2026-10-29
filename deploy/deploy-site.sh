@@ -5,8 +5,8 @@
 # Usage (from Windows Git Bash, run at the repo root):
 #   bash deploy/deploy-site.sh [SOURCE_DIR]
 #
-#   SOURCE_DIR  default: win11-homepage   (auto-descends into ./dist when it
-#               contains index.html, so both "build at root" and "dist/" work)
+#   SOURCE_DIR  default: dist-site (verified output of node tools/build-site.mjs)
+#               Raw site/ source and unrelated app builds are rejected locally.
 #
 # Environment overrides:
 #   PI_HOST=pi      ssh alias of the Pi
@@ -20,6 +20,9 @@
 # /tmp/win11-home-*.tar.gz is touched. Idempotent (every run = new release).
 # ==============================================================================
 set -euo pipefail
+
+# 约定：树莓派部署只能由仓库所有者发起（见 DEPLOYMENT-POLICY.md）
+printf '\n!! 部署权限：树莓派只能由仓库所有者发起部署（见 DEPLOYMENT-POLICY.md）\n\n'
 
 PI_HOST="${PI_HOST:-pi}"
 
@@ -39,7 +42,7 @@ if [ -n "$SSH_OPTS" ]; then
   SCP_CMD+=("${__SSH_OPTS_ARR[@]}")
 fi
 REMOTE_ROOT="${REMOTE_ROOT:-/opt/win11-home}"
-SRC="${1:-win11-homepage}"
+SRC="${1:-dist-site}"
 FORCE_FAIL_AFTER_SWITCH="${FORCE_FAIL_AFTER_SWITCH:-0}"
 
 die() { printf 'ERROR: %s\n' "$*" >&2; exit 1; }
@@ -47,12 +50,14 @@ say() { printf '== %s\n' "$*"; }
 
 # ---- 0. resolve source -------------------------------------------------------
 [ -d "$SRC" ] || die "source directory not found: $SRC (run from the repo root, or pass a path)"
-if [ -f "$SRC/dist/index.html" ]; then
-  SRC="$SRC/dist"
-  say "source build dir: $SRC (auto-descended into dist/)"
-fi
-[ -f "$SRC/index.html" ] || die "no index.html in $SRC - is the frontend built?"
+[ -f "$SRC/index.html" ] || die "no index.html in $SRC - run node tools/build-site.mjs first"
+[ -f "$SRC/version.json" ] && [ -f "$SRC/site-build.json" ] || die "not a versioned site build: $SRC"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+command -v node >/dev/null 2>&1 || die "Node.js is required for the local release integrity guard"
+# This guard performs only local reads/checksums, before tar, SSH, SCP or any remote operation.
+node "$SCRIPT_DIR/../tools/build-site.mjs" --check "$SRC" || die "local site release verification failed"
 
+EXPECTED_VERSION="$(node -e 'console.log(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).id)' "$SRC/version.json")"
 TS="$(date -u +%Y%m%dT%H%M%SZ)"
 TMP_DIR="$(mktemp -d)"
 ARCHIVE="$TMP_DIR/site.tar.gz"
@@ -92,8 +97,13 @@ say "uploading to $PI_HOST:$REMOTE_ARCH"
 # ---- 4. remote activate + self-check (rollback on failure) -------------------
 say "activating release $TS on $PI_HOST"
 set +e
-"${SSH_CMD[@]}" -o ConnectTimeout=10 "$PI_HOST" "TS='$TS' PREV='$PREV' REMOTE_ROOT='$REMOTE_ROOT' REMOTE_ARCH='$REMOTE_ARCH' FORCE_FAIL_AFTER_SWITCH='$FORCE_FAIL_AFTER_SWITCH' bash -s" <<'REMOTE_SCRIPT'
+"${SSH_CMD[@]}" -o ConnectTimeout=10 "$PI_HOST" "sudo -n env EXPECTED_VERSION='$EXPECTED_VERSION' TS='$TS' PREV='$PREV' REMOTE_ROOT='$REMOTE_ROOT' REMOTE_ARCH='$REMOTE_ARCH' FORCE_FAIL_AFTER_SWITCH='$FORCE_FAIL_AFTER_SWITCH' bash -s" <<'REMOTE_SCRIPT'
 set -euo pipefail
+exec 9>/run/lock/aiden-desktop-release.lock
+flock -n 9 || { echo 'Another desktop release is active' >&2; exit 1; }
+# Do not put a fail-closed frontend online until its private companion is really reachable.
+curl -fsS --resolve studentop.cn:443:127.0.0.1 -H 'Host: studentop.cn:14355' https://studentop.cn/__desktop/auth | /opt/node24/bin/node -e 'let s="";process.stdin.on("data",x=>s+=x);process.stdin.on("end",()=>{try{if(JSON.parse(s).configured!==true)process.exitCode=1;}catch{process.exitCode=1;}});'
+
 ROOT="${REMOTE_ROOT}"
 REL="$ROOT/releases/$TS"
 ARCH="${REMOTE_ARCH}"
@@ -117,6 +127,10 @@ $S chown -R root:root "$REL"
 $S find "$REL" -type d -exec chmod 755 {} +
 $S find "$REL" -type f -exec chmod 644 {} +
 
+# Preserve immutable namespaces outside current, including clean-checkout CI releases.
+$S mkdir -p "$ROOT/shared/assets/releases"
+$S cp -an "$REL/assets/releases/." "$ROOT/shared/assets/releases/"
+
 # nginx config is unchanged by a release, but test before switching anyway
 if ! $S nginx -t >/dev/null 2>&1; then
   echo "[remote] ERROR: nginx -t failed, current release left untouched" >&2
@@ -136,7 +150,8 @@ code_https=$(curl -sk -o /dev/null -w '%{http_code}' --max-time 8 --resolve stud
 title=$(curl -sk --max-time 8 --resolve studentop.cn:443:127.0.0.1 https://studentop.cn/ 2>/dev/null | tr -d '\n' | grep -o '<title>[^<]*</title>' | head -1 || true)
 log "self-check: http=$code_http https=$code_https title=${title:-<none>}"
 
-if [ "$code_http" != "200" ] || [ "$code_https" != "200" ] || [ "${FORCE_FAIL_AFTER_SWITCH:-0}" = "1" ]; then
+actual_version=$(curl -fsS --max-time 8 --resolve studentop.cn:443:127.0.0.1 https://studentop.cn/version.json | /opt/node24/bin/node -e 'let s="";process.stdin.on("data",x=>s+=x);process.stdin.on("end",()=>{try{console.log(JSON.parse(s).id)}catch{process.exitCode=1}});' || true)
+if [ "$code_http" != "200" ] || [ "$code_https" != "200" ] || [ "$actual_version" != "$EXPECTED_VERSION" ] || [ "${FORCE_FAIL_AFTER_SWITCH:-0}" = "1" ]; then
   if [ "${FORCE_FAIL_AFTER_SWITCH:-0}" = "1" ]; then
     echo "[remote] TEST HOOK: forcing failure to exercise the rollback path" >&2
   fi

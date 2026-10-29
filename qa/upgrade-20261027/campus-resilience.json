@@ -1,0 +1,142 @@
+{
+  "method": "isolated Edge CDP with explicit fault injection; no physical-device performance claims",
+  "checks": [
+    {
+      "name": "ready_has_no_fallback_layer",
+      "pass": true
+    },
+    {
+      "name": "pause_stops_camera",
+      "pass": true
+    },
+    {
+      "name": "resume_moves_camera",
+      "pass": true
+    },
+    {
+      "name": "hidden_tab_stops_frames",
+      "pass": true
+    },
+    {
+      "name": "contextloss_preserves_static_entry",
+      "pass": true
+    },
+    {
+      "name": "contextloss_no_unexpected_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "reduced_motion_quality_cap",
+      "pass": true,
+      "detail": {
+        "phase": "welcome",
+        "progress": 0,
+        "reducedMotion": true,
+        "paused": false,
+        "quality": "low",
+        "camera": {
+          "position": [
+            4,
+            8,
+            128.50533980147708
+          ],
+          "target": [
+            0,
+            6.5,
+            -24
+          ],
+          "fov": 52
+        },
+        "performance": {
+          "frames": 3,
+          "drawCalls": 82,
+          "triangles": 22062,
+          "geometries": 37,
+          "textures": 1,
+          "fps": 60,
+          "dpr": 1.25,
+          "fpsLimit": 30,
+          "backgroundPaused": false,
+          "manualClock": false,
+          "contextLost": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          }
+        }
+      }
+    },
+    {
+      "name": "reduced_motion_skips_long_walk",
+      "pass": true
+    },
+    {
+      "name": "mobile_error_free",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "webgl_failure_not_blank",
+      "pass": true
+    },
+    {
+      "name": "no_unexpected_errors_beyond_injected_webgl",
+      "pass": true,
+      "detail": [
+        "CONSOLE: THREE.WebGLRenderer: Error creating WebGL context."
+      ]
+    },
+    {
+      "name": "fallback_link_goes_local",
+      "pass": true
+    },
+    {
+      "name": "fast_refresh_1_keeps_3d",
+      "pass": true
+    },
+    {
+      "name": "fast_refresh_2_keeps_3d",
+      "pass": true
+    },
+    {
+      "name": "hmr_content_unchanged",
+      "pass": true
+    },
+    {
+      "name": "hmr_error_free",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "cases": [
+    {
+      "name": "pause-background-contextloss",
+      "ok": true,
+      "errors": [],
+      "expectedFaultDiagnostics": []
+    },
+    {
+      "name": "reduced-motion-mobile",
+      "ok": true,
+      "errors": [],
+      "expectedFaultDiagnostics": []
+    },
+    {
+      "name": "webgl-unavailable",
+      "ok": true,
+      "errors": [],
+      "expectedFaultDiagnostics": [
+        "CONSOLE: THREE.WebGLRenderer: Error creating WebGL context."
+      ]
+    },
+    {
+      "name": "fast-refresh-twice",
+      "ok": true,
+      "errors": [],
+      "expectedFaultDiagnostics": []
+    }
+  ],
+  "notes": [],
+  "ok": true
+}

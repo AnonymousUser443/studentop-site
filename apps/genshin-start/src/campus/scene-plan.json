@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "1.0",
+  "project": {
+    "title": "理韵 · 入境",
+    "format": "interactive-h5",
+    "fps": 60,
+    "durationSeconds": 13,
+    "emotionalThesis": "沿晨光中的校园步道，把进入应用变成一次安静的到校。"
+  },
+  "world": {
+    "audienceRole": "初到校园的访客",
+    "narrativeObject": "阶段纸签",
+    "motifs": [
+      "玉绿树冠",
+      "浅金晨光",
+      "折纸山层"
+    ],
+    "palette": [
+      "#f3f0e7",
+      "#dbd9d0",
+      "#4c8073",
+      "#c5a66b",
+      "#244b42"
+    ],
+    "materialRules": "现代校园保持灰白石材、玻璃和水平屋顶；纸层与灯笼只在环境中克制使用。"
+  },
+  "assetsReviewed": [
+    {
+      "id": "legacy",
+      "path": "public/Genshin",
+      "sourceType": "other",
+      "usable": false,
+      "rights": "unknown",
+      "note": "旧资源保留，不加载；原许可证保留。"
+    },
+    {
+      "id": "procedural",
+      "path": "src/campus/geometry.ts",
+      "sourceType": "illustration",
+      "usable": true,
+      "rights": "original",
+      "note": "原创程序几何，参考已由Lead和campus目视冻结：文博中心为主景，图书馆与教学楼为意象侧景。"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "courtyard",
+      "startSeconds": 0,
+      "endSeconds": 10,
+      "reasonToExist": "建立真实校园纵深并让观众主动走入",
+      "viewerGains": "从树影到玻璃门庭的空间认知",
+      "emotionBefore": 20,
+      "emotionAfter": 58,
+      "layers": [
+        {
+          "id": "sky",
+          "depth": "background",
+          "role": "晨光天空",
+          "assetId": null,
+          "origin": "effect",
+          "moving": false
+        },
+        {
+          "id": "mountains",
+          "depth": "far",
+          "role": "青色折纸山层",
+          "assetId": "procedural",
+          "origin": "generated-abstract",
+          "moving": false
+        },
+        {
+          "id": "lawn",
+          "depth": "middle",
+          "role": "步道与植栽组织视线",
+          "assetId": "procedural",
+          "origin": "original-illustration",
+          "moving": false
+        },
+        {
+          "id": "wenbo-center",
+          "depth": "subject",
+          "role": "文博中心宽体量白框、细方柱、深青玻璃与圆鼓内庭",
+          "assetId": "procedural",
+          "origin": "original-illustration",
+          "moving": false
+        },
+        {
+          "id": "trees",
+          "depth": "foreground",
+          "role": "相机行进形成真实遮挡与视差",
+          "assetId": "procedural",
+          "origin": "original-illustration",
+          "moving": true
+        },
+        {
+          "id": "dust",
+          "depth": "atmosphere",
+          "role": "稀疏晨光微尘",
+          "assetId": "procedural",
+          "origin": "effect",
+          "moving": true
+        },
+        {
+          "id": "paper-label",
+          "depth": "ui",
+          "role": "阶段进度与可访问操作",
+          "assetId": null,
+          "origin": "text",
+          "moving": false
+        }
+      ],
+      "motions": [
+        {
+          "actor": "camera",
+          "trigger": "点击循光入校",
+          "purpose": "穿过近景并显露门庭",
+          "startSeconds": 0,
+          "endSeconds": 10,
+          "motion": "缓起缓停的三维曲线路径；减小动态时瞬时抵达",
+          "settleState": "arrival"
+        }
+      ],
+      "sound": "静音，不加载或自动播放音频",
+      "transitionOut": "门庭停驻，等待第二次主动操作",
+      "interaction": "开始 / 暂停 / 直接抵达 / 常驻跳过",
+      "evidence": null
+    },
+    {
+      "id": "threshold",
+      "startSeconds": 10,
+      "endSeconds": 13,
+      "reasonToExist": "让应用切换具有门庭的物理隐喻",
+      "viewerGains": "抵达后的安静与明确目的地",
+      "emotionBefore": 34,
+      "emotionAfter": 52,
+      "layers": [
+        {
+          "id": "glass",
+          "depth": "subject",
+          "role": "玻璃门扇与温暖内庭",
+          "assetId": "procedural",
+          "origin": "original-illustration",
+          "moving": true
+        },
+        {
+          "id": "enter-ui",
+          "depth": "ui",
+          "role": "明确进入理韵",
+          "assetId": null,
+          "origin": "text",
+          "moving": false
+        }
+      ],
+      "motions": [
+        {
+          "actor": "door",
+          "trigger": "点击进入理韵",
+          "purpose": "回应用户的进入意图",
+          "startSeconds": 10,
+          "endSeconds": 13,
+          "motion": "门扇先滑开，相机随后短推进",
+          "settleState": "真实页面导航"
+        }
+      ],
+      "sound": "静音",
+      "transitionOut": "导航到经校验的出口",
+      "interaction": "进入 / 常驻跳过",
+      "evidence": null
+    }
+  ]
+}

@@ -1,0 +1,569 @@
+{
+  "method": "isolated Edge/CDP, actual browser input with synthetic private verifier; emulated sizes, no physical-device claim",
+  "checks": [
+    {
+      "name": "first_visit_bios_is_presentation",
+      "pass": true
+    },
+    {
+      "name": "specified_logo_loaded",
+      "pass": true
+    },
+    {
+      "name": "startup_does_not_authorize",
+      "pass": true
+    },
+    {
+      "name": "old_flag_and_skip_parameter_cannot_unlock",
+      "pass": true
+    },
+    {
+      "name": "enter_opens_question_only",
+      "pass": true
+    },
+    {
+      "name": "password_input_has_accessible_label",
+      "pass": true
+    },
+    {
+      "name": "reveal_is_explicit",
+      "pass": true
+    },
+    {
+      "name": "escape_returns_without_unlock",
+      "pass": true
+    },
+    {
+      "name": "attempt_1_clears_secret_field",
+      "pass": true
+    },
+    {
+      "name": "attempt_1_keeps_locked",
+      "pass": true
+    },
+    {
+      "name": "attempt_2_clears_secret_field",
+      "pass": true
+    },
+    {
+      "name": "attempt_2_keeps_locked",
+      "pass": true
+    },
+    {
+      "name": "attempt_3_clears_secret_field",
+      "pass": true
+    },
+    {
+      "name": "attempt_3_keeps_locked",
+      "pass": true
+    },
+    {
+      "name": "third_failure_disables_form",
+      "pass": true
+    },
+    {
+      "name": "refresh_retains_cooldown",
+      "pass": true
+    },
+    {
+      "name": "cookie_reset_retains_server_cooldown",
+      "pass": true
+    },
+    {
+      "name": "cooldown_expiry_allows_real_server_verification",
+      "pass": true
+    },
+    {
+      "name": "valid_session_restore_and_deeplink",
+      "pass": true
+    },
+    {
+      "name": "explicit_lock_revokes_session_after_refresh",
+      "pass": true
+    },
+    {
+      "name": "previous_desktop_regression",
+      "pass": true,
+      "detail": 36
+    },
+    {
+      "name": "flow_has_no_unexpected_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "1440x900_taskbar_hit_targets",
+      "pass": true
+    },
+    {
+      "name": "1440x900_both_opening_entries",
+      "pass": true
+    },
+    {
+      "name": "1440x900_notification_focus_return",
+      "pass": true
+    },
+    {
+      "name": "1440x900_actual_left_overflow",
+      "pass": true,
+      "detail": {
+        "x": -678,
+        "y": 108,
+        "w": 940,
+        "h": 712
+      }
+    },
+    {
+      "name": "1440x900_restore_preserves_overflow",
+      "pass": true,
+      "detail": {
+        "x": -678,
+        "y": 108,
+        "w": 940,
+        "h": 712
+      }
+    },
+    {
+      "name": "1440x900_explicit_recover_to_screen",
+      "pass": true,
+      "detail": {
+        "x": 8,
+        "y": 108,
+        "w": 940,
+        "h": 712
+      }
+    },
+    {
+      "name": "1440x900_actual_right_and_bottom_overflow",
+      "pass": true,
+      "detail": {
+        "x": 1276,
+        "y": 784,
+        "w": 940,
+        "h": 712
+      }
+    },
+    {
+      "name": "1440x900_maximize_restore_works",
+      "pass": true
+    },
+    {
+      "name": "1440x900_eleven_apps_stress",
+      "pass": true
+    },
+    {
+      "name": "1440x900_show_desktop",
+      "pass": true
+    },
+    {
+      "name": "1440x900_restore_desktop",
+      "pass": true
+    },
+    {
+      "name": "1440x900_reduced_motion",
+      "pass": true
+    },
+    {
+      "name": "1440x900_no_unexpected_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "1920x1080_taskbar_hit_targets",
+      "pass": true
+    },
+    {
+      "name": "1920x1080_both_opening_entries",
+      "pass": true
+    },
+    {
+      "name": "1920x1080_notification_focus_return",
+      "pass": true
+    },
+    {
+      "name": "1920x1080_actual_left_overflow",
+      "pass": true,
+      "detail": {
+        "x": -466,
+        "y": 198,
+        "w": 940,
+        "h": 712
+      }
+    },
+    {
+      "name": "1920x1080_restore_preserves_overflow",
+      "pass": true,
+      "detail": {
+        "x": -466,
+        "y": 198,
+        "w": 940,
+        "h": 712
+      }
+    },
+    {
+      "name": "1920x1080_explicit_recover_to_screen",
+      "pass": true,
+      "detail": {
+        "x": 8,
+        "y": 198,
+        "w": 940,
+        "h": 712
+      }
+    },
+    {
+      "name": "1920x1080_actual_right_and_bottom_overflow",
+      "pass": true,
+      "detail": {
+        "x": 1756,
+        "y": 964,
+        "w": 940,
+        "h": 712
+      }
+    },
+    {
+      "name": "1920x1080_maximize_restore_works",
+      "pass": true
+    },
+    {
+      "name": "1920x1080_eleven_apps_stress",
+      "pass": true
+    },
+    {
+      "name": "1920x1080_show_desktop",
+      "pass": true
+    },
+    {
+      "name": "1920x1080_restore_desktop",
+      "pass": true
+    },
+    {
+      "name": "1920x1080_reduced_motion",
+      "pass": true
+    },
+    {
+      "name": "1920x1080_no_unexpected_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "1366x768_taskbar_hit_targets",
+      "pass": true
+    },
+    {
+      "name": "1366x768_both_opening_entries",
+      "pass": true
+    },
+    {
+      "name": "1366x768_notification_focus_return",
+      "pass": true
+    },
+    {
+      "name": "1366x768_actual_left_overflow",
+      "pass": true,
+      "detail": {
+        "x": -678,
+        "y": 88,
+        "w": 940,
+        "h": 668
+      }
+    },
+    {
+      "name": "1366x768_restore_preserves_overflow",
+      "pass": true,
+      "detail": {
+        "x": -678,
+        "y": 88,
+        "w": 940,
+        "h": 668
+      }
+    },
+    {
+      "name": "1366x768_explicit_recover_to_screen",
+      "pass": true,
+      "detail": {
+        "x": 8,
+        "y": 40,
+        "w": 940,
+        "h": 668
+      }
+    },
+    {
+      "name": "1366x768_actual_right_and_bottom_overflow",
+      "pass": true,
+      "detail": {
+        "x": 1202,
+        "y": 652,
+        "w": 940,
+        "h": 668
+      }
+    },
+    {
+      "name": "1366x768_maximize_restore_works",
+      "pass": true
+    },
+    {
+      "name": "1366x768_eleven_apps_stress",
+      "pass": true
+    },
+    {
+      "name": "1366x768_show_desktop",
+      "pass": true
+    },
+    {
+      "name": "1366x768_restore_desktop",
+      "pass": true
+    },
+    {
+      "name": "1366x768_reduced_motion",
+      "pass": true
+    },
+    {
+      "name": "1366x768_no_unexpected_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "390x844_taskbar_hit_targets",
+      "pass": true
+    },
+    {
+      "name": "390x844_both_opening_entries",
+      "pass": true
+    },
+    {
+      "name": "390x844_notification_focus_return",
+      "pass": true
+    },
+    {
+      "name": "390x844_touch_open",
+      "pass": true
+    },
+    {
+      "name": "390x844_eleven_apps_stress",
+      "pass": true
+    },
+    {
+      "name": "390x844_show_desktop",
+      "pass": true
+    },
+    {
+      "name": "390x844_restore_desktop",
+      "pass": true
+    },
+    {
+      "name": "390x844_reduced_motion",
+      "pass": true
+    },
+    {
+      "name": "390x844_no_unexpected_errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "reduced_motion_first_visit_skips_wait",
+      "pass": true
+    },
+    {
+      "name": "mobile_question_fits_viewport",
+      "pass": true,
+      "detail": {
+        "left": 12,
+        "right": 378,
+        "client": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "name": "mobile_no_unexpected_errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "screenshots": [
+    "boot-bios.png",
+    "boot-logo.png",
+    "lock-clock.png",
+    "lock-cooldown.png",
+    "desktop-start-1440.png",
+    "window-overflow-1440.png",
+    "desktop-dark-1440.png",
+    "desktop-start-1920.png",
+    "window-overflow-1920.png",
+    "desktop-dark-1920.png",
+    "desktop-start-1366.png",
+    "window-overflow-1366.png",
+    "desktop-dark-1366.png",
+    "desktop-start-390.png",
+    "desktop-mobile-about.png",
+    "desktop-dark-390.png",
+    "lock-mobile.png"
+  ],
+  "previousRegression": {
+    "ok": true,
+    "checks": [
+      {
+        "name": "public_APIs",
+        "pass": true
+      },
+      {
+        "name": "unsafe_URL_blocked",
+        "pass": true
+      },
+      {
+        "name": "local_project_destinations",
+        "pass": true
+      },
+      {
+        "name": "invalid_pref_blocked",
+        "pass": true
+      },
+      {
+        "name": "store_roundtrip",
+        "pass": true
+      },
+      {
+        "name": "store_delete",
+        "pass": true
+      },
+      {
+        "name": "dark_and_motion_pref",
+        "pass": true
+      },
+      {
+        "name": "prefs_stored",
+        "pass": true
+      },
+      {
+        "name": "start_open",
+        "pass": true
+      },
+      {
+        "name": "all_apps_keeps_accessible_menu",
+        "pass": true
+      },
+      {
+        "name": "start_keyboard_launch",
+        "pass": true
+      },
+      {
+        "name": "notepad_textarea",
+        "pass": true
+      },
+      {
+        "name": "unsaved_close_cancelled",
+        "pass": true
+      },
+      {
+        "name": "notepad_persisted_text",
+        "pass": true
+      },
+      {
+        "name": "text_not_HTML",
+        "pass": true
+      },
+      {
+        "name": "notepad_reopen",
+        "pass": true
+      },
+      {
+        "name": "eight_resize_handles",
+        "pass": true
+      },
+      {
+        "name": "rapid_min_restore",
+        "pass": true
+      },
+      {
+        "name": "snap_left",
+        "pass": true
+      },
+      {
+        "name": "snap_right",
+        "pass": true
+      },
+      {
+        "name": "snap_tl",
+        "pass": true
+      },
+      {
+        "name": "snap_tr",
+        "pass": true
+      },
+      {
+        "name": "snap_bl",
+        "pass": true
+      },
+      {
+        "name": "snap_br",
+        "pass": true
+      },
+      {
+        "name": "invalid_snap_rejected",
+        "pass": true
+      },
+      {
+        "name": "maximize_toggle_consistent",
+        "pass": true
+      },
+      {
+        "name": "show_desktop_minimizes_visible",
+        "pass": true
+      },
+      {
+        "name": "show_desktop_preserves_prior_minimized",
+        "pass": true
+      },
+      {
+        "name": "escape_returns_start_focus",
+        "pass": true
+      },
+      {
+        "name": "unread_badge_visible",
+        "pass": true
+      },
+      {
+        "name": "calendar_next_month",
+        "pass": true
+      },
+      {
+        "name": "calendar_today",
+        "pass": true
+      },
+      {
+        "name": "opening_calendar_marks_read",
+        "pass": true
+      },
+      {
+        "name": "notifications_clear",
+        "pass": true
+      },
+      {
+        "name": "window_in_viewport_notepad",
+        "pass": true,
+        "detail": {
+          "x": 284,
+          "y": 104,
+          "w": 760,
+          "h": 560
+        }
+      },
+      {
+        "name": "no_horizontal_overflow",
+        "pass": true
+      }
+    ],
+    "total": 36,
+    "passed": 36,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "input": "synthetic DOM/API"
+  },
+  "expectedAuthenticationRejections": [
+    "HTTP 401: http://127.0.0.1:4282/__desktop/auth",
+    "HTTP 401: http://127.0.0.1:4282/__desktop/auth",
+    "HTTP 429: http://127.0.0.1:4282/__desktop/auth"
+  ],
+  "ok": true
+}

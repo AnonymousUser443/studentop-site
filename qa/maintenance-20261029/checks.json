@@ -1,0 +1,93 @@
+{
+  "ok": true,
+  "date": "2026-10-29",
+  "timezone": "Asia/Shanghai",
+  "baseline": "77826ca",
+  "scope": "Working-tree documentation, Git license checkout attributes and reviewed asset-manifest corrections",
+  "environment": {
+    "platform": "Windows",
+    "node": "v24.22.0",
+    "npm": "12.2.1"
+  },
+  "nodeRegression": {
+    "command": "node --test qa/node-tests.cjs qa/desktop-node-tests.cjs qa/cache-tests.mjs qa/update-check-tests.cjs qa/window-overflow-tests.cjs qa/voxel-shortcut-tests.cjs qa/ports-tests.cjs docs/boot/gate-contract-tests.cjs qa/revision-20261028/auth-tests.mjs apps/liyun-explorer/server/store.test.mjs apps/liyun-explorer/server/server.test.mjs",
+    "total": 93,
+    "passed": 93,
+    "failed": 0,
+    "skipped": 0,
+    "gateContractsWithinOneRunnerEntry": 15,
+    "environmentNote": "Initial sandbox EPERM rename and EACCES loopback failures were reproduced as environment restrictions. The unchanged test command passed with permission for local temporary fixtures and loopback HTTP. Only synthetic auth and temporary SQLite data were used."
+  },
+  "liyunFrontend": {
+    "command": "npm --prefix apps/liyun-explorer test",
+    "files": 8,
+    "total": 71,
+    "passed": 71,
+    "failed": 0
+  },
+  "applicationBuilds": [
+    {
+      "command": "npm --prefix apps/liyun-explorer run build",
+      "passed": true,
+      "warning": "Existing main JS chunk exceeds 500 kB; not suppressed or presented as a performance guarantee."
+    },
+    {
+      "command": "npm --prefix apps/genshin-start run build",
+      "passed": true
+    },
+    {
+      "command": "npm --prefix apps/liangxiang-cloudwalk run build",
+      "passed": true
+    }
+  ],
+  "nativeSite": {
+    "commands": [
+      "node tools/build-site.mjs",
+      "node tools/build-site.mjs --check dist-site"
+    ],
+    "passed": true,
+    "version": "4036dc9f22c3295680bc5100",
+    "htmlCount": 2,
+    "assetCount": 76
+  },
+  "sourceChecks": {
+    "siteJavaScriptSyntax": {
+      "method": "Run node --check separately for every site/assets/js/*.js file and require each exit code to be zero",
+      "files": 11,
+      "passed": true
+    },
+    "assetManifest": {
+      "command": "node apps/liyun-explorer/scripts/asset-manifest.mjs --check",
+      "passed": true,
+      "files": 21,
+      "reviewedChanges": [
+        "public/assets/fonts/MaShanZheng-OFL.txt: manifest now matches LF bytes; Git checkout fixed to LF",
+        "public/assets/fonts/NotoSerifSC-OFL.txt: manifest now matches LF bytes; Git checkout fixed to LF"
+      ],
+      "otherAssetHashesChanged": false
+    },
+    "calibratedMap": {
+      "command": "node apps/liyun-explorer/scripts/verify-calibrated-map.mjs",
+      "passed": true,
+      "unchangedFiles": 6
+    },
+    "workspacePreflight": {
+      "command": "node tools/dev-workspace.mjs --check",
+      "passed": true,
+      "plannedPorts": [8899, 5174, 8081, 5180],
+      "portsProbed": false,
+      "accountApiProbed": false
+    },
+    "negativeAssetPreflight": {
+      "command": "pwsh -NoProfile -File qa/preflight-tests.ps1",
+      "passed": true,
+      "cases": 2,
+      "existingAssetAndCharacterFilesUnchanged": 13
+    }
+  },
+  "limits": [
+    "No game runtime, API port or process architecture was changed.",
+    "No new browser, physical-device or public-production acceptance was performed for these documentation and manifest corrections.",
+    "No commits, pushes, pull requests, merges or deployments were performed."
+  ]
+}

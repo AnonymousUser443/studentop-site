@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-29T07:09:45.003Z",
+  "scope": "AidenOS boot / lock / login only; no full-site acceptance",
+  "baseline": "c80f946",
+  "commands": [
+    {
+      "command": "node --check site/assets/js/boot-lock.js",
+      "pass": true,
+      "output": ""
+    },
+    {
+      "command": "node --check site/assets/js/gate-effects.js",
+      "pass": true,
+      "output": ""
+    },
+    {
+      "command": "node --check qa/lib.js",
+      "pass": true,
+      "output": ""
+    },
+    {
+      "command": "node --check qa/boot-20261029/browser.cjs",
+      "pass": true,
+      "output": ""
+    },
+    {
+      "command": "node --check qa/boot-20261029/capture-frame.cjs",
+      "pass": true,
+      "output": ""
+    },
+    {
+      "command": "node docs/boot/gate-contract-tests.cjs",
+      "pass": true,
+      "output": "PASS missing API and public unlock fail closed\nPASS unconfigured service cannot unlock\nPASS malformed authenticated response and HTML fail closed\nPASS background click is inert; explicit login and Escape only change views\nPASS wrong answer clears input, updates attempts, and is never reflected\nPASS server cooldown cannot be cleared by local timer expiry\nPASS success authorizes, manual lock adopts rotated DELETE token\nPASS POST/lock race serializes revocation and ignores stale success\nPASS Escape during POST cancels entry and revokes possible session\nPASS failed logout survives refresh as denial-only history state\nPASS visibility return revalidates expired sessions without replay\nPASS 403 never automatically resends an answer\nPASS IME composition cannot submit or unlock\nPASS Chinese text survives IME confirmation and remains readable\nPASS swipe needs a deliberate upward gesture and changes only the view\nPASS wheel and loading button cannot authorize the desktop\nPASS authorized desktop stays inert until the particle exit completes\nPASS Escape during particle exit revokes and prevents stale animation completion\nPASS boot skip and replay never grant access; init is idempotent\nPASS bootstrap has no legacy authorization bypass and retains DOM ids\nPASS 20 isolated gate contracts"
+    },
+    {
+      "command": "node --test --test-name-pattern=QA|URLs|legacy positional qa/node-tests.cjs",
+      "pass": true,
+      "output": "✔ QA fails closed on false, missing, empty and malformed assertions (0.8586ms)\n✔ URLs default to loopback and exact origins cannot be spoofed (0.6213ms)\n✔ legacy positional URLs and explicit options parse (0.4995ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 74.7292"
+    },
+    {
+      "command": "node tools/build-site.mjs --check dist-site",
+      "pass": true,
+      "output": "{\"ok\":true,\"mode\":\"check\",\"id\":\"94e2c0a496003d6f79431339\",\"releases\":[\"94e2c0a496003d6f79431339\",\"4036dc9f22c3295680bc5100\",\"e91669dc440ffa9eecda800a\"],\"assetCount\":116}"
+    }
+  ],
+  "assets": [
+    {
+      "path": "site/assets/img/aidenos-landscape.webp",
+      "bytes": 134950,
+      "sha256": "710ff7c41583442fa51c6304e85aef9e7a3fe561d6aee059f7ca3c6ccd68b436",
+      "pass": true
+    },
+    {
+      "path": "site/assets/img/boot-logo.webp",
+      "bytes": 632452,
+      "sha256": "5750d5e56d49f4b33dd60023a1319a2a22cfd68d3919408bc5618b6f7bc9d2f2",
+      "pass": true
+    },
+    {
+      "path": "site/assets/fonts/noto-sans-sc.woff2",
+      "bytes": 283780,
+      "sha256": "abea0aa5aa43e7873c0f0fdf3c14547764bda6cda933fe687b09fc355c7b0916",
+      "pass": true
+    },
+    {
+      "path": "site/assets/fonts/noto-serif-sc.woff2",
+      "bytes": 368900,
+      "sha256": "604d7193d6801b9cd867b0c1a064ff292e39261bdfc55f3db29e79eddaf54565",
+      "pass": true
+    }
+  ],
+  "ok": true
+}

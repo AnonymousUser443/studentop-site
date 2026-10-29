@@ -1,0 +1,95 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "name": "workspace_three_services_ready",
+      "pass": true
+    },
+    {
+      "name": "real_verifier_configured_without_signin",
+      "pass": true
+    },
+    {
+      "name": "no_verifier_or_identity_in_status",
+      "pass": true
+    },
+    {
+      "name": "http_only_same_site_cookie",
+      "pass": true
+    },
+    {
+      "name": "status_never_cached",
+      "pass": true
+    },
+    {
+      "name": "csrf_rejected_before_answer_verification",
+      "pass": true
+    },
+    {
+      "name": "invalid_request_does_not_use_real_attempts",
+      "pass": true
+    },
+    {
+      "name": "private_path_rejected_/.env",
+      "pass": true
+    },
+    {
+      "name": "private_path_rejected_/.private/auth.json",
+      "pass": true
+    },
+    {
+      "name": "private_path_rejected_/tools/desktop-auth.mjs",
+      "pass": true
+    },
+    {
+      "name": "private_path_rejected_/../auth.json",
+      "pass": true
+    },
+    {
+      "name": "private_path_rejected_/assets/js/../../auth.json",
+      "pass": true
+    },
+    {
+      "name": "private_path_rejected_/assets/js/auth.local.json",
+      "pass": true
+    },
+    {
+      "name": "non_api_post_still_denied",
+      "pass": true
+    },
+    {
+      "name": "desktop_initially_inert",
+      "pass": true
+    },
+    {
+      "name": "gate_script_is_loaded",
+      "pass": true
+    },
+    {
+      "name": "input_has_no_embedded_answer",
+      "pass": true
+    },
+    {
+      "name": "version_metadata_is_public_and_minimal",
+      "pass": true
+    },
+    {
+      "name": "live_version_matches_verified_build",
+      "pass": true
+    },
+    {
+      "name": "version_metadata_never_cached",
+      "pass": true
+    },
+    {
+      "name": "version_head_has_no_body",
+      "pass": true
+    },
+    {
+      "name": "version_write_methods_denied",
+      "pass": true
+    }
+  ],
+  "checked": 22,
+  "realAnswerUsed": false
+}

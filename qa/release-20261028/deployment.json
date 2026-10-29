@@ -1,0 +1,33 @@
+{
+  "ok": true,
+  "id": "20261028T110253Z-e2bc44a0e3",
+  "commit": "e2bc44a0e34d63308fe6fac680799b97397e7903",
+  "nativeVersion": "4036dc9f22c3295680bc5100",
+  "files": 148,
+  "previous": {
+    "home": "/opt/win11-home/releases/20261027T113206Z",
+    "voxel": null,
+    "campus": null,
+    "auth": null
+  },
+  "backup": "/var/lib/aiden-release-history/20261028T110253Z-e2bc44a0e3",
+  "completedAt": "2026-10-28T11:06:05.595Z",
+  "publicURLs": {
+    "home": "https://studentop.cn:14355/",
+    "voxel": "https://studentop.cn:14355/voxel-campus/",
+    "campus": "https://studentop.cn:14355/campus-entry/"
+  },
+  "publicVerification": {
+    "http": 30,
+    "voxelBrowser": 25,
+    "nativeGateBrowser": 9,
+    "campusJourneyBrowser": 6
+  },
+  "privateAnswerUsed": false,
+  "privateConfigInGit": false,
+  "privateUploadRemoved": true,
+  "authStorageModes": {
+    "directory": "0700",
+    "file": "0600"
+  }
+}

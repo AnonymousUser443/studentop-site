@@ -1,0 +1,135 @@
+{
+  "ok": true,
+  "date": "2026-10-29T07:09:47.326Z",
+  "baseline": "c80f946 + codex/aidenos-particle-gate working tree",
+  "scope": "boot, lock and synthetic desktop login only",
+  "browser": "owned headless Edge; OpenCLI disconnected",
+  "checks": [
+    {
+      "name": "particles_are_drawn_before_artwork",
+      "pass": true
+    },
+    {
+      "name": "loading_ring_really_rotates",
+      "pass": true
+    },
+    {
+      "name": "artwork_is_loaded_without_baked_text",
+      "pass": true
+    },
+    {
+      "name": "clock_has_simple_layout_and_desktop_is_inert",
+      "pass": true
+    },
+    {
+      "name": "login_wallpaper_dims_and_blurs",
+      "pass": true
+    },
+    {
+      "name": "plain_text_input_without_password_styling",
+      "pass": true
+    },
+    {
+      "name": "clock_is_inert_after_upward_transition",
+      "pass": true
+    },
+    {
+      "name": "Chinese_text_is_visible_and_editable",
+      "pass": true
+    },
+    {
+      "name": "composing_cannot_submit",
+      "pass": true
+    },
+    {
+      "name": "clear_preserves_plain_text_and_focus",
+      "pass": true
+    },
+    {
+      "name": "wrong_answer_cleared_and_cannot_unlock",
+      "pass": true
+    },
+    {
+      "name": "desktop_still_inert_during_particle_exit",
+      "pass": true
+    },
+    {
+      "name": "particle_exit_keeps_keyboard_focus_on_gate",
+      "pass": true
+    },
+    {
+      "name": "edge_mask_progresses_and_particles_visible",
+      "pass": true
+    },
+    {
+      "name": "authorized_exit_releases_actual_desktop",
+      "pass": true
+    },
+    {
+      "name": "Escape_during_dissolve_revokes_without_stale_release",
+      "pass": true
+    },
+    {
+      "name": "native_touch_swipe_opens_mobile_login",
+      "pass": true
+    },
+    {
+      "name": "mobile_login_fits_without_horizontal_overflow",
+      "pass": true
+    },
+    {
+      "name": "loading_button_is_an_actual_skip_action",
+      "pass": true
+    },
+    {
+      "name": "reduced_motion_skips_long_opening",
+      "pass": true
+    },
+    {
+      "name": "reduced_motion_authorizes_without_particle_animation",
+      "pass": true
+    },
+    {
+      "name": "no_unexpected_browser_errors",
+      "pass": true
+    }
+  ],
+  "screenshots": [
+    "boot-gather.png",
+    "boot-word-particles.png",
+    "boot-landscape.png",
+    "lock-clock.png",
+    "lock-login.png",
+    "login-dissolve.png",
+    "desktop-revealed.png",
+    "lock-mobile-clock.png",
+    "lock-mobile-login.png",
+    "boot-mobile.png"
+  ],
+  "browserVersion": "Edg/156.0.4314.50",
+  "revealStart": {
+    "now": 7859,
+    "hidden": false,
+    "mask": "110%",
+    "view": "question",
+    "classes": "lock-screen desktop-gate is-boot-formed is-unlocking is-dissolving"
+  },
+  "revealDuring": {
+    "now": 8846.899999976158,
+    "hidden": false,
+    "mask": "5.240642873925168%",
+    "view": "question",
+    "classes": "lock-screen desktop-gate is-boot-formed is-unlocking is-dissolving"
+  },
+  "relock": {
+    "locked": true,
+    "view": "clock",
+    "status": "revoking"
+  },
+  "errors": [],
+  "observedErrors": [
+    "HTTP 401: http://127.0.0.1:39032/__desktop/auth"
+  ],
+  "total": 22,
+  "passed": 22
+}

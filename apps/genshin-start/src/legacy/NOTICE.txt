@@ -1,0 +1,15 @@
+Independent original-opening restoration — LOCAL REVIEW ONLY
+
+The original scene components, xviewer bundle and Genshin assets are retained from the existing repository; the new campus scene remains a separate entry and build.
+Repository MIT: LICENSE (Copyright (c) 2023 gamemcu), copied into this build as licenses/UPSTREAM-MIT.txt.
+
+PUBLIC REDISTRIBUTION IS NOT CLEARED.
+The preserved xviewer.module.min.js names xviewer.module.min.js.LICENSE.txt in its header, but that companion file is absent from this checkout. Do not represent this local restoration as having a complete upstream license bundle. Obtain and review that notice before public redistribution.
+Game logos, artwork, models, textures and audio are third-party material. The repository MIT license is not presumed to license those assets or the game's trademarks. This is an unofficial learning demonstration, not an official game release. No deployment is performed by this task.
+
+Offline Draco:
+The three decoder files are copied without modification from the already-installed three@0.170.0 examples/jsm/libs/draco/gltf directory. Its parent README identifies the Draco license as Apache License 2.0 and states that the glTF and default variants may be used with DRACOLoader. That README and standard Apache-2.0 terms are included under _legacy-draco. The standard license text was sourced locally from the installed TypeScript package; it is not a claim that TypeScript owns Draco. Review any additional binary notices before publication.
+The installed Three.js package's MIT license is included as licenses/three-MIT.txt.
+
+Local modification:
+Only Vite's served/bundled xviewer code replaces the external gstatic Draco decoder base URL with /_legacy-draco/. The preserved shared minified source is not edited. The new entry adds explicit error handling, local-only development navigation and accessible controls. It does not import third-party analytics, network tests or the old startup scripts.

@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "name": "public_campus_renders_from_subpath",
+      "pass": true
+    },
+    {
+      "name": "no_production_qa_instance",
+      "pass": true
+    },
+    {
+      "name": "no_legacy_or_root_font_requests",
+      "pass": true
+    },
+    {
+      "name": "real_campus_journey_reaches_arrival",
+      "pass": true
+    },
+    {
+      "name": "actual_public_exit_opens_existing_liyun",
+      "pass": true
+    },
+    {
+      "name": "no_unexpected_public_campus_errors",
+      "pass": true
+    }
+  ]
+}

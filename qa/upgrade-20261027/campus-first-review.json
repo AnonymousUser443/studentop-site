@@ -1,0 +1,130 @@
+{
+  "renderer": "isolated Edge / SwiftShader; screenshots and draw counts, not hardware FPS",
+  "checks": [
+    {
+      "name": "mobile_no_horizontal_overflow",
+      "pass": true
+    }
+  ],
+  "snapshots": {
+    "welcome": {
+      "phase": "welcome",
+      "progress": 0,
+      "reducedMotion": false,
+      "paused": false,
+      "quality": "high",
+      "camera": {
+        "position": [
+          9,
+          8,
+          52
+        ],
+        "target": [
+          0,
+          6.5,
+          -24
+        ],
+        "fov": 48
+      },
+      "performance": {
+        "frames": 6,
+        "drawCalls": 78,
+        "triangles": 22014,
+        "geometries": 38,
+        "textures": 2,
+        "fps": 57,
+        "dpr": 1,
+        "fpsLimit": 60,
+        "backgroundPaused": false,
+        "manualClock": true,
+        "contextLost": false,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    "mid": {
+      "phase": "journey",
+      "progress": 0.5,
+      "reducedMotion": false,
+      "paused": false,
+      "quality": "high",
+      "camera": {
+        "position": [
+          4.5,
+          5.199999999999999,
+          19
+        ],
+        "target": [
+          0,
+          6.85,
+          -26.5
+        ],
+        "fov": 48
+      },
+      "performance": {
+        "frames": 8,
+        "drawCalls": 59,
+        "triangles": 20686,
+        "geometries": 38,
+        "textures": 2,
+        "fps": 57,
+        "dpr": 1,
+        "fpsLimit": 60,
+        "backgroundPaused": false,
+        "manualClock": true,
+        "contextLost": false,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    "arrival": {
+      "phase": "arrival",
+      "progress": 0,
+      "reducedMotion": false,
+      "paused": false,
+      "quality": "high",
+      "camera": {
+        "position": [
+          0,
+          3.4,
+          -4
+        ],
+        "target": [
+          0,
+          7.2,
+          -29
+        ],
+        "fov": 48
+      },
+      "performance": {
+        "frames": 10,
+        "drawCalls": 46,
+        "triangles": 20404,
+        "geometries": 38,
+        "textures": 2,
+        "fps": 57,
+        "dpr": 1,
+        "fpsLimit": 60,
+        "backgroundPaused": false,
+        "manualClock": true,
+        "contextLost": false,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      }
+    }
+  },
+  "screenshots": [
+    "campus-welcome-first.png",
+    "campus-mid-first.png",
+    "campus-arrival-first.png",
+    "campus-mobile-first.png"
+  ],
+  "ok": true,
+  "errors": []
+}

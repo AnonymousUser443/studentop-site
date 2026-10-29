@@ -1,0 +1,82 @@
+{
+  "version": 2,
+  "theme": "AidenOS · 聚光入境",
+  "scenes": [
+    {
+      "id": "gather",
+      "durationMs": 1900,
+      "reason": "先让名字从四方微光中形成",
+      "background": "深墨绿静底",
+      "subject": "Canvas 按实际字形采样的 AidenOS 粒子",
+      "foreground": "无",
+      "ui": [
+        "跳过开场"
+      ],
+      "motion": "固定种子、绝对时间、四边弧线汇聚，约 1700ms 接入实体标题"
+    },
+    {
+      "id": "landscape",
+      "durationMs": 3300,
+      "reason": "在名字之后展开参考图的山水",
+      "background": "月环与夜色",
+      "subject": "山峦、云雾与亭阁",
+      "foreground": "倒影",
+      "ui": [
+        "AidenOS",
+        "山水在侧，想法在手。",
+        "持续旋转的加载按钮",
+        "跳过开场"
+      ],
+      "motion": "月环、山峦、倒影依次显现；加载环真实旋转，可点击进入锁屏"
+    },
+    {
+      "id": "clock",
+      "durationMs": null,
+      "reason": "简单布局，等待明确的登录动作",
+      "background": "用户当前偏好壁纸",
+      "subject": "上方居中的当前时间和日期",
+      "foreground": "无",
+      "ui": [
+        "上滑提示",
+        "Enter / 点击入口",
+        "重播开场",
+        "异常时显示服务重试"
+      ],
+      "motion": "向上拖动跟手上移、壁纸变暗；短滑动、横滑、取消不进入登录"
+    },
+    {
+      "id": "question",
+      "durationMs": null,
+      "reason": "支持中文输入的服务端问答验证",
+      "background": "同一壁纸变暗并模糊",
+      "subject": "中央头像、Aiden 和普通文本输入",
+      "foreground": "无",
+      "ui": [
+        "返回锁屏",
+        "公开问题",
+        "type=text 输入框",
+        "清除输入",
+        "箭头提交",
+        "错误与冷却反馈"
+      ],
+      "motion": "时钟上移消退，中央表单进入；中文选字确认回车不提交"
+    },
+    {
+      "id": "release",
+      "durationMs": 1200,
+      "reason": "确认授权后让登录界面从四周散去",
+      "background": "正式桌面",
+      "subject": "从四周向中心收缩的登录层",
+      "foreground": "向外飞散的粒子",
+      "ui": [],
+      "motion": "同源后端确认后才开始；动画结束前桌面 inert；取消与过期响应遵守撤销状态"
+    }
+  ],
+  "safeAreas": {
+    "desktop": "四角操作留 20px 以上；背景 cover，中心主体居中",
+    "mobile": "safe-area、可滚动表单、16px 普通输入；竖屏保留完整中心月环"
+  },
+  "sound": "无自动音频",
+  "reducedMotion": "短静帧开场；上滑直接呈现；已授权离场不播放粒子",
+  "fallback": "Canvas、图片、动画不可用时保留可操作的锁屏；授权始终由原同源接口决定"
+}

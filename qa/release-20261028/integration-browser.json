@@ -1,0 +1,64 @@
+{
+  "checks": [
+    {
+      "name": "four_owned_services_ready",
+      "pass": true
+    },
+    {
+      "name": "voxel_desktop_name_exact",
+      "pass": true
+    },
+    {
+      "name": "real_shortcut_voxel-campus",
+      "pass": true
+    },
+    {
+      "name": "real_shortcut_genshin-start",
+      "pass": true
+    },
+    {
+      "name": "real_shortcut_genshin-original",
+      "pass": true
+    },
+    {
+      "name": "real_shortcut_liyun-explorer",
+      "pass": true
+    },
+    {
+      "name": "no_unapproved_destination",
+      "pass": true
+    },
+    {
+      "name": "voxel_start_entry_present",
+      "pass": true
+    },
+    {
+      "name": "static_project_index_resolves_voxel_locally",
+      "pass": true
+    },
+    {
+      "name": "no_unexpected_browser_errors",
+      "pass": true
+    }
+  ],
+  "opened": [
+    {
+      "id": "voxel-campus",
+      "url": "http://127.0.0.1:5180/"
+    },
+    {
+      "id": "genshin-start",
+      "url": "http://127.0.0.1:8081/"
+    },
+    {
+      "id": "genshin-original",
+      "url": "http://127.0.0.1:8081/legacy.html"
+    },
+    {
+      "id": "liyun-explorer",
+      "url": "http://127.0.0.1:5174/"
+    }
+  ],
+  "realAnswerUsed": false,
+  "ok": true
+}

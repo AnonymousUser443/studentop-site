@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import type { HudProps, IconName, PanelId } from '../types';
+import type { AccountUser, HudProps, IconName, PanelId } from '../types';
 import { Icon } from './Icon';
 import { BrandGate, CompassRose, EdgeOrnaments, MenuShape } from './Ornaments';
 import './hud.css';
@@ -46,6 +46,52 @@ function Toggle({ checked, onChange, label, description }: { checked: boolean; o
   return <div className="setting-row"><div><label>{label}</label>{description && <small>{description}</small>}</div><button type="button" className={`ornate-toggle ${checked ? 'is-on' : ''}`} role="switch" aria-checked={checked} aria-label={label} onClick={() => onChange(!checked)}><span/></button></div>;
 }
 
+function EntryGate({ account, loginBusy, loginError, onEnter, onLogin, onGuest, onLogout }: {
+  account: AccountUser | null;
+  loginBusy: boolean;
+  loginError: string | null;
+  onEnter: () => void;
+  onLogin: (nickname: string, studentId: string, password: string) => void;
+  onGuest: () => void;
+  onLogout: () => void;
+}) {
+  const [nickname, setNickname] = useState('');
+  const [studentId, setStudentId] = useState('');
+  const [password, setPassword] = useState('');
+  useEffect(() => setPassword(''), [account]);
+  return <div className="entrance-overlay"><div className="entry-card">
+    <span className="entry-frame" aria-hidden="true"/>
+    <div className="entry-scene" aria-hidden="true">
+      <span className="scene-cloud scene-cloud-1"/><span className="scene-cloud scene-cloud-2"/><span className="scene-cloud scene-cloud-3"/>
+      <svg className="scene-mountains" viewBox="0 0 420 150" preserveAspectRatio="none">
+        <path className="mountain-far" d="M0 150 0 95 55 58 110 98 165 52 225 100 280 62 340 102 385 70 420 96 420 150 Z"/>
+        <path className="mountain-near" d="M0 150 0 116 70 82 132 122 190 88 250 124 305 94 360 126 420 108 420 150 Z"/>
+      </svg>
+      <div className="scene-water"><span className="wave wave-a"/><span className="wave wave-b"/></div>
+    </div>
+    <div className="entry-content">
+      <div className="entry-flourish">◇ <span/> 良乡 · 秋日 <span/> ◇</div>
+      <p>一纸山水，万般理韵</p>
+      {account ? <>
+        <div className="account-chip"><Icon name="people"/><div><strong>{account.nickname}</strong><small>UID {account.uid} · 学号 {account.studentId}</small></div></div>
+        <button className="enter-campus" onClick={onEnter}><span>继续旅程</span><Icon name="star"/></button>
+        <button className="entry-alt" onClick={onLogout} disabled={loginBusy}>退出登录 · 以游客身份进入</button>
+      </> : <>
+        <form className="entry-login" autoComplete="off" onSubmit={e => { e.preventDefault(); if (!loginBusy) { const submitted = password; setPassword(''); onLogin(nickname.trim(), studentId.trim(), submitted); } }}>
+          <label><span>昵称</span><input value={nickname} onChange={e => setNickname(e.target.value)} placeholder="游戏昵称，请勿用真实姓名" required maxLength={24} autoComplete="off" disabled={loginBusy}/></label>
+          <label><span>学号 / ID</span><input value={studentId} onChange={e => setStudentId(e.target.value)} placeholder="可用测试游戏 ID，不作实名核验" required maxLength={32} autoComplete="off" spellCheck={false} disabled={loginBusy}/></label>
+          <label><span>访问口令</span><input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="8–128 个字符，请勿复用学校密码" required minLength={8} maxLength={128} autoComplete="off" spellCheck={false} aria-describedby="entry-account-help" disabled={loginBusy}/></label>
+          <div id="entry-account-help" className="entry-login-help">首次使用该 ID 会创建存档与访问口令；下次须用相同口令。旧版无口令存档请联系管理员核验迁移。口令提交后即清空，不写入本机存档。</div>
+          <button className="enter-campus" type="submit" disabled={loginBusy}><span>{loginBusy ? '登录中…' : '登录并进入'}</span><Icon name="star"/></button>
+        </form>
+        <button className="entry-alt" onClick={() => { setPassword(''); onGuest(); }} disabled={loginBusy}>游客模式 · 进度仅保存在本机</button>
+        {loginError && <p className="entry-error" role="alert">{loginError}</p>}
+      </>}
+      <small>轻触启程 · 开启声音与沉浸体验</small>
+    </div>
+  </div></div>;
+}
+
 function Panels(p: HudProps) {
   const [resetArmed, setResetArmed] = useState(false);
   useEffect(() => setResetArmed(false), [p.activePanel]);
@@ -56,14 +102,32 @@ function Panels(p: HudProps) {
       <div className={`landmark-seal ${item.isBeacon ? 'beacon-seal' : ''}`}><div className="seal-orbit"/><Icon name={item.icon}/><span>{p.discovered ? '已 点 亮' : '待 发 现'}</span></div>
       <p className="landmark-verse">{item.verse}</p><div className="ornament-divider"><span>◆</span></div><p className="landmark-description">{item.description}</p>
       <div className="landmark-reward"><span><Icon name="star"/>{p.discovered ? '这段旅途已收入记忆' : `探索度 +${item.progress}%`}</span><span><Icon name="book"/>{p.discovered ? '地标已收录' : '收录校园地标'}</span></div>
-      {p.discovered ? <button className="parchment-button" onClick={() => { p.onClose(); p.onCenter(); }}>返回地图<Icon name="compass"/></button> : <button className="parchment-button" onClick={p.onExplore}>前往探索<Icon name="star"/></button>}
-      {!p.discovered && <p className="panel-footnote">循着指引，点亮此处的校园记忆</p>}
+      {!p.discovered && <div className={`check-in-status ${p.checkIn?.allowed ? 'is-ready' : ''}`} data-testid="check-in-status" data-reason={p.checkIn?.reason} role="status">
+        <p>{p.checkIn?.message}</p>
+        <small>{item.isBeacon ? '虚构信标按地图标记位置判定，无实体塔楼。' : ''}打卡范围：{item.checkInRadius}米{p.checkIn?.distance !== null && p.checkIn?.distance !== undefined ? ` · 当前直线距离约${Math.ceil(p.checkIn.distance)}米` : ''}</small>
+      </div>}
+      {p.discovered ? <button className="parchment-button" onClick={() => { p.onClose(); p.onCenter(); }}>返回地图<Icon name="compass"/></button> : <>
+        <button className="parchment-button" data-testid="check-in-button" disabled={!p.checkIn?.allowed} onClick={p.onExplore}>{p.checkIn?.allowed ? '确认打卡' : '到达范围后可打卡'}<Icon name="star"/></button>
+        {!p.checkIn?.allowed && <button className="outline-button check-in-locate" onClick={p.onLocate}>定位并显示朝向<Icon name="compass"/></button>}
+      </>}
+      {!p.discovered && <p className="panel-footnote">到达地图点位附近，使用有效定位完成打卡</p>}
     </Modal>;
   }
   if (!p.activePanel) return null;
   const common = { onClose: p.onClose };
   switch (p.activePanel) {
     case 'profile': return <Modal title="个人主页" eyebrow="旅途中的你" icon="people" {...common} className="profile-modal">
+      <div className="account-card">
+        {p.account ? <>
+          <span className="account-avatar"><Icon name="people"/></span>
+          <div className="account-meta"><strong>{p.account.nickname}</strong><small>{p.account.studentId} · {p.account.uid}</small></div>
+          <button className="outline-button" onClick={p.onLogout}>退出登录</button>
+        </> : <>
+          <span className="account-avatar"><Icon name="people"/></span>
+          <div className="account-meta"><strong>游客模式</strong><small>进度仅保存在本机</small></div>
+          <button className="outline-button" onClick={p.onLoginPrompt}>登录账号</button>
+        </>}
+      </div>
       <div className="profile-card">
         <span className="profile-avatar"><Icon name="gate"/></span>
         <div className="profile-identity">
@@ -130,6 +194,6 @@ export default function Hud(p: HudProps) {
     </div>
     {p.entered && <Panels {...p}/>}
     {p.toast && p.entered && <div className="game-toast" role="status"><Icon name="star"/><span>{p.toast}</span></div>}
-    {!p.entered && <div className="entrance-overlay"><div className="entry-card"><div className="entry-flourish">◇ <span/> 良乡 · 秋日 <span/> ◇</div><p>一纸山水，万般理韵</p><button className="enter-campus" onClick={p.onEnter}><span>进入校园</span><Icon name="star"/></button><small>轻触启程 · 开启声音与沉浸体验</small></div></div>}
+    {!p.entered && <EntryGate account={p.account} loginBusy={p.loginBusy} loginError={p.loginError} onEnter={p.onEnter} onLogin={p.onLogin} onGuest={p.onGuest} onLogout={p.onLogout}/>}
   </>;
 }

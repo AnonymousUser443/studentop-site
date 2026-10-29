@@ -1,0 +1,66 @@
+{
+  "phase": "early-visual-review",
+  "renderer": "isolated Edge / SwiftShader; not physical-device performance evidence",
+  "checks": [
+    {
+      "name": "new wallpaper default",
+      "pass": true
+    },
+    {
+      "name": "desktop width fits",
+      "pass": true
+    },
+    {
+      "name": "mobile no horizontal overflow",
+      "pass": true
+    }
+  ],
+  "screenshots": [
+    "desktop-lock-first.png",
+    "desktop-first.png",
+    "start-first.png",
+    "about-first.png",
+    "mobile-about-first.png"
+  ],
+  "desktop": {
+    "viewport": [
+      1440,
+      900
+    ],
+    "wall": "chenyu",
+    "windows": [
+      {
+        "app": "about",
+        "state": "normal",
+        "rect": {
+          "x": 194,
+          "y": 28,
+          "w": 940,
+          "h": 712
+        }
+      }
+    ],
+    "images": [
+      {
+        "src": "http://127.0.0.1:8899/assets/img/avatar-aiden.jpg",
+        "loaded": true
+      },
+      {
+        "src": "http://127.0.0.1:8899/assets/img/avatar-aiden.jpg",
+        "loaded": true
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "scroll": [
+      390,
+      844
+    ]
+  },
+  "ok": true,
+  "errors": []
+}

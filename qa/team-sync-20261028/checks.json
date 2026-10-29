@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "base": "3b792f60fc69b07953fe21bfebeb637573702d93",
+  "mainPR": "62ea0f00994061596e3714997f5f1bed7852c805",
+  "finalFeatureSnapshot": "85a8034840a33e6a47fef37db158771954723180",
+  "featureCommits": [
+    "347fa1d",
+    "128428d",
+    "578a32c",
+    "4e71a4d",
+    "aa29d59",
+    "27f0a4a",
+    "4d87e3b",
+    "732ef11",
+    "85a8034"
+  ],
+  "liyunProductionBuild": true,
+  "liyunTests": {
+    "files": 3,
+    "passed": 13
+  },
+  "repositoryTests": {
+    "passed": 75,
+    "failed": 0
+  },
+  "realBrowser": {
+    "passed": 15,
+    "failed": 0
+  },
+  "nativeVersion": "4036dc9f22c3295680bc5100",
+  "finalFogSourcePreservedByteForByte": true,
+  "otherAppsAndDeploymentCodeUnchanged": true,
+  "websiteDeployed": false
+}

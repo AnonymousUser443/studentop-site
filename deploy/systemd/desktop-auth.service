@@ -1,0 +1,31 @@
+[Unit]
+Description=Aiden Desktop private visitor gate
+After=network.target
+
+[Service]
+Type=simple
+User=desktop-auth
+Group=desktop-auth
+WorkingDirectory=/opt/projects/desktop-auth/current
+Environment=NODE_ENV=production
+Environment=DESKTOP_AUTH_CONFIG=/var/lib/desktop-auth/data/auth.json
+Environment=DESKTOP_AUTH_ORIGIN=https://studentop.cn:14355
+Environment=DESKTOP_AUTH_PORT=8900
+Environment=DESKTOP_AUTH_TRUST_PROXY=127.0.0.1
+ExecStart=/opt/node24/bin/node tools/serve-desktop-auth.mjs
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=20
+UMask=0077
+StateDirectory=desktop-auth/data
+StateDirectoryMode=0700
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+ReadWritePaths=/var/lib/desktop-auth/data
+
+[Install]
+WantedBy=multi-user.target
