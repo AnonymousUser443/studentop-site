@@ -9,5 +9,7 @@
 /* 底图：绘制的校园山水，地图边缘化开融入 */
 .scene-painting{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .scene-painting img{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;filter:saturate(1.02) brightness(1.01)}
-.scene-painting-haze{position:absolute;inset:0;background:radial-gradient(ellipse 56% 52% at 50% 48%,#fdf8e6cc 0%,#fdf8e694 32%,#fdf8e628 58%,transparent 74%)}
-.map-layer{position:absolute;inset:0;z-index:1;mask-image:radial-gradient(ellipse 82% 78% at 50% 48%,#000 60%,#000000e0 73%,#0000005c 86%,transparent 98%);-webkit-mask-image:radial-gradient(ellipse 82% 78% at 50% 48%,#000 60%,#000000e0 73%,#0000005c 86%,transparent 98%)}
+.scene-painting-haze{position:absolute;inset:0;background:radial-gradient(ellipse 80% 72% at 50% 48%,#f9f2dcfa 0%,#f9f2dce8 26%,#f9f2dcc4 44%,#f9f2dc8c 60%,#f9f2dc44 76%,transparent 92%)}
+.map-layer{position:absolute;inset:0;z-index:1;mask-image:radial-gradient(ellipse 50% 47% at 50% 48%,#000 52%,#000000e6 66%,#0000008c 82%,#00000038 92%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 50% 47% at 50% 48%,#000 52%,#000000e6 66%,#0000008c 82%,#00000038 92%,transparent 100%)}
+
+
