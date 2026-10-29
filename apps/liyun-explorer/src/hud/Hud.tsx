@@ -2,7 +2,8 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type { HudProps, IconName, PanelId } from '../types';
 import { Icon } from './Icon';
 import { BrandGate, CompassRose, EdgeOrnaments, MenuShape } from './Ornaments';
-import { EVENT_ART, EventScene, EventThumb } from './EventArt';
+import { EVENT_ART, EventThumb } from './EventArt';
+import { EventScroll } from './EventScroll';
 import './hud.css';
 
 const NAV: { id: PanelId; title: string; subtitle: string; icon: IconName; notice?: boolean }[] = [
@@ -15,6 +16,27 @@ const EVENTS: { id: EventId; title: string; subtitle: string; tag: string; statu
   { id: 'festival', title: '霜降雅集', subtitle: '限时活动 · 秋意同游', tag: '限时', status: '10月24日 — 11月7日', icon: 'leaf', tone: 'festival' },
   { id: 'party', title: '多人同行', subtitle: '同游有伴 · 山水有期', tag: '筹备中', status: '即将开启', icon: 'people', tone: 'party' }
 ];
+
+const EVENT_COPY: Record<EventId, { eyebrow: string; title: string; verse: string; desc: string; dateLabel: string; date: string; cta: string }> = {
+  festival: {
+    eyebrow: '限时活动 · 秋意同游',
+    title: '霜降雅集',
+    verse: '把校园的秋，收进你的行囊。',
+    desc: '银杏渐黄，湖风微凉。沿着校园地图漫游，在熟悉的转角遇见这一季的风物。',
+    dateLabel: '霜降 · 校园同游',
+    date: '10月24日 — 11月7日',
+    cta: '进入活动'
+  },
+  party: {
+    eyebrow: '常驻 · 同游有伴',
+    title: '多人同行',
+    verse: '下一程，约上同行的人。',
+    desc: '组队探索与合作玩法即将启程。当前地图可独自漫游，顶部同行人数为界面演示数据。',
+    dateLabel: '同游有伴 · 山水有期',
+    date: '即将开启',
+    cta: '进入活动'
+  }
+};
 
 /**
  * Placeholder identity for the profile panel.
@@ -48,8 +70,8 @@ function Modal({ title, eyebrow, icon, children, onClose, className = '', scroll
   return <div className="hud-modal-backdrop" onPointerDown={e => { if (e.target === e.currentTarget) onClose(); }}>
     {scroll
       ? <div className="scroll-wrap">
-          <span className="scroll-rod rod-top" aria-hidden="true"/>
-          <span className="scroll-rod rod-bottom" aria-hidden="true"/>
+          <span className="scroll-rod rod-left" aria-hidden="true"/>
+          <span className="scroll-rod rod-right" aria-hidden="true"/>
           <div className={`hud-modal ${className} is-scroll`} role="dialog" aria-modal="true" aria-label={title} ref={ref}>{inner}</div>
         </div>
       : <div className={`hud-modal ${className}`} role="dialog" aria-modal="true" aria-label={title} ref={ref}>{inner}</div>}
@@ -114,45 +136,63 @@ function Panels(p: HudProps) {
     </Modal>;
     case 'events': {
       const current = EVENTS.find(item => item.id === eventId) ?? EVENTS[0];
+      const copy = EVENT_COPY[current.id];
       return <Modal title="活动" eyebrow="新章待启 · 共赴良乡" icon="leaf" {...common} className="events-modal" scroll>
-        <div className="events-layout">
-          <aside className="events-list" aria-label="活动列表">
-            {EVENTS.map((item, index) => (
-              <button key={item.id} className={`event-entry ${item.tone} ${item.id === current.id ? 'is-active' : ''}`} onClick={() => setEventId(item.id)} aria-pressed={item.id === current.id}>
-                <span className="event-index">{index === 0 ? '壹' : '贰'}</span>
-                <span className="event-medallion"><EventThumb art={EVENT_ART[item.id]} alt="" side={item.id === 'festival' ? 'left' : 'right'}/></span>
-                <span className="event-copy"><strong>{item.title}</strong><small>{item.subtitle}</small></span>
-                <span className="event-tag">{item.tag}</span>
+        <div className="event-pano">
+          <EventScroll kind={current.tone}/>
+          <div className="pano-head">
+            <p className="pano-eyebrow">{copy.eyebrow}</p>
+            <p className="pano-title">{copy.title}</p>
+            <p className="pano-sub">{current.subtitle}</p>
+          </div>
+          <div className="pano-card">
+            <p className="pano-verse">{copy.verse}</p>
+            <p className="pano-desc">{copy.desc}</p>
+            <div className="pano-date"><span>{copy.dateLabel}</span><strong>{copy.date}</strong></div>
+            <button className="parchment-button" onClick={() => p.onPanel(current.id)}>{copy.cta}<Icon name={current.icon}/></button>
+          </div>
+          <div className="pano-tabs" role="tablist" aria-label="活动列表">
+            {EVENTS.map(item => (
+              <button key={item.id} role="tab" aria-selected={item.id === current.id} className={`pano-tab ${item.id === current.id ? 'is-active' : ''}`} onClick={() => setEventId(item.id)}>
+                <span className="pano-tab-icon"><EventThumb art={EVENT_ART[item.id]} alt="" side={item.id === 'festival' ? 'left' : 'right'}/></span>
+                <span className="pano-tab-text"><strong>{item.title}</strong><small>{item.tag}</small></span>
               </button>
             ))}
-            <p className="event-list-foot">◇ 更多篇章 · 敬请期待 ◇</p>
-          </aside>
-          <div className={`event-hero ${current.tone}`}>
-            <div className="event-stage"><EventScene art={EVENT_ART[current.id]}/></div>
-            <p className="event-motto">延安根 · 军工魂 · 良乡秋</p>
-            {current.id === 'festival' ? <>
-              <p className="landmark-verse">把校园的秋，收进你的行囊。</p>
-              <p className="landmark-description">银杏渐黄，湖风微凉。沿着校园地图漫游，在熟悉的转角遇见这一季的风物。</p>
-              <div className="festival-date"><span>霜降 · 校园同游</span><strong>10月24日 — 11月7日</strong></div>
-              <button className="parchment-button" onClick={() => p.onPanel('festival')}>进入活动<Icon name="leaf"/></button>
-            </> : <>
-              <p className="landmark-verse">下一程，约上同行的人。</p>
-              <p className="landmark-description">组队探索与合作玩法即将启程。当前地图可独自漫游，顶部同行人数为界面演示数据。</p>
-              <div className="festival-date"><span>同游有伴 · 山水有期</span><strong>即将开启</strong></div>
-              <button className="parchment-button" onClick={() => p.onPanel('party')}>进入活动<Icon name="people"/></button>
-            </>}
-            <p className="panel-footnote">活动奖励与日程以游戏内公告为准</p>
           </div>
         </div>
       </Modal>;
     }
     case 'festival': return <Modal title="霜降雅集" eyebrow="时令篇章 · 秋意同游" icon="leaf" {...common} className="festival-modal" scroll>
-      <div className="event-stage event-stage-large"><EventScene art={EVENT_ART.festival} large/></div>
-      <p className="event-motto">霜降水返壑 · 风落木归山</p><p className="landmark-verse">把校园的秋，收进你的行囊。</p><p className="landmark-description">银杏渐黄，湖风微凉。沿着校园地图漫游，在熟悉的转角遇见这一季的风物。</p><div className="festival-date"><span>霜降 · 校园同游</span><strong>10月24日 — 11月7日</strong></div><button className="parchment-button" onClick={() => p.onSelect('beihu')}>去北湖赏秋<Icon name="leaf"/></button><p className="panel-footnote">当前为秋日活动主题展示</p>
+      <div className="event-pano">
+        <EventScroll kind="festival"/>
+        <div className="pano-head">
+          <p className="pano-eyebrow">限时活动 · 秋意同游</p>
+          <p className="pano-title">霜降雅集</p>
+          <p className="pano-sub">一叶知秋 · 湖畔雅集</p>
+        </div>
+        <div className="pano-card">
+          <p className="pano-verse">把校园的秋，收进你的行囊。</p>
+          <p className="pano-desc">银杏渐黄，湖风微凉。沿着校园地图漫游，在熟悉的转角遇见这一季的风物。</p>
+          <div className="pano-date"><span>霜降 · 校园同游</span><strong>10月24日 — 11月7日</strong></div>
+          <button className="parchment-button" onClick={() => p.onSelect('beihu')}>去北湖赏秋<Icon name="leaf"/></button>
+        </div>
+      </div>
     </Modal>;
     case 'party': return <Modal title="多人同行" eyebrow="同游有伴 · 山水有期" icon="people" {...common} className="party-modal" scroll>
-      <div className="event-stage event-stage-large"><EventScene art={EVENT_ART.party} large/></div>
-      <p className="event-motto">同行的路，比远方更远</p><p className="landmark-verse">下一程，约上同行的人。</p><p className="landmark-description">组队探索与合作玩法即将启程。当前地图可独自漫游，顶部同行人数为界面演示数据。</p><button className="parchment-button" onClick={p.onClose}>继续我的旅程<Icon name="compass"/></button>
+      <div className="event-pano">
+        <EventScroll kind="party"/>
+        <div className="pano-head">
+          <p className="pano-eyebrow">常驻 · 同游有伴</p>
+          <p className="pano-title">多人同行</p>
+          <p className="pano-sub">并肩而行 · 山水有期</p>
+        </div>
+        <div className="pano-card">
+          <p className="pano-verse">下一程，约上同行的人。</p>
+          <p className="pano-desc">组队探索与合作玩法即将启程。当前地图可独自漫游，顶部同行人数为界面演示数据。</p>
+          <div className="pano-date"><span>同游有伴 · 山水有期</span><strong>即将开启</strong></div>
+          <button className="parchment-button" onClick={p.onClose}>继续我的旅程<Icon name="compass"/></button>
+        </div>
+      </div>
     </Modal>;
     case 'stamina': return <Modal title="行旅体力" eyebrow="步履从容 · 随心探索" icon="moon" {...common}>
       <div className="stamina-display"><Icon name="moon"/><strong>164<span>/ 200</span></strong></div><p className="landmark-description">山水之间，留一点从容。当前探索体验不消耗体力，可以自在点亮校园的每一处微光。</p><button className="parchment-button" onClick={p.onClose}>继续探索<Icon name="compass"/></button>
