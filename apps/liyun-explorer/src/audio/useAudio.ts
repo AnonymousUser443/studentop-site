@@ -119,7 +119,8 @@ export function useAudio(settings: GameSettings, entered: boolean) {
 
   const playChime = useCallback(() => {
     const { settings: sound } = config.current;
-    if (!sound.music || normalVolume(sound.volume) === 0 || document.hidden) return;
+    // 解锁音效是反馈音，不跟随配乐开关，只看音量与页面可见性
+    if (normalVolume(sound.volume) === 0 || document.hidden) return;
     unlockChime();
     const context = audioContext.current;
     if (!context || context.state !== 'running') return;
@@ -136,6 +137,45 @@ export function useAudio(settings: GameSettings, entered: boolean) {
       oscillator.start(at); oscillator.stop(at + 0.72);
       oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
     });
+  }, [unlockChime]);
+
+  /**
+   * 解锁音效：低音铺底 + 五声音阶上行 + 泛音尾音，
+   * 和雾散开的那一下对齐，比普通提示音更"厚"。
+   */
+  const playUnlock = useCallback(() => {
+    const { settings: sound } = config.current;
+    if (!sound.music || normalVolume(sound.volume) === 0 || document.hidden) return;
+    unlockChime();
+    const context = audioContext.current;
+    if (!context || context.state !== 'running') return;
+    const level = normalVolume(sound.volume);
+    const now = context.currentTime;
+
+    const tone = (frequency: number, startAt: number, peak: number, decay: number, type: OscillatorType = 'sine') => {
+      const oscillator = context.createOscillator();
+      const gain = context.createGain();
+      oscillator.type = type;
+      oscillator.frequency.value = frequency;
+      gain.gain.setValueAtTime(0, startAt);
+      gain.gain.linearRampToValueAtTime(level * peak, startAt + 0.012);
+      gain.gain.exponentialRampToValueAtTime(0.0001, startAt + decay);
+      oscillator.connect(gain); gain.connect(context.destination);
+      oscillator.start(startAt); oscillator.stop(startAt + decay + 0.02);
+      oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
+    };
+
+    // 低音铺底，给"解锁"一点体量
+    tone(130.81, now, 0.075, 1.05, 'sine');
+    tone(196.0, now + 0.02, 0.05, 0.9, 'sine');
+    // 五声音阶上行
+    tone(392.0, now, 0.085, 1.1, 'triangle');
+    tone(523.25, now + 0.06, 0.11, 1.15, 'sine');
+    tone(659.25, now + 0.14, 0.105, 1.1, 'sine');
+    tone(783.99, now + 0.23, 0.1, 1.15, 'sine');
+    // 高音泛音收尾
+    tone(1046.5, now + 0.34, 0.105, 1.35, 'sine');
+    tone(1567.98, now + 0.36, 0.045, 0.6, 'sine');
   }, [unlockChime]);
 
   useEffect(() => {
@@ -176,7 +216,7 @@ export function useAudio(settings: GameSettings, entered: boolean) {
     else fadeTo(normalVolume(settings.volume), 200);
   }, [settings.track, settings.volume, settings.music, entered, fadeTo, loadTrack, play]);
 
-  return { blocked, start, playChime };
+  return { blocked, start, playChime, playUnlock };
 }
 
 export default useAudio;

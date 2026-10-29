@@ -20,14 +20,15 @@
     check('Menu: ' + title, dialog()?.getAttribute('aria-label') === title);
     await close();
   }
-  const resourceTitles = ['收集图鉴', '行旅体力', '多人同行', '第3章 · 理韵悠长'];
+  const resourceTitles = ['收集图鉴', '多人同行'];
   for (const [index, element] of [...document.querySelectorAll('.resource-pill')].entries()) {
     element.click(); await frames();
     check('Resource: ' + resourceTitles[index], dialog()?.getAttribute('aria-label') === resourceTitles[index]);
     await close();
   }
-  button(document.querySelector('.utility-nav'), '设置').click(); await frames();
-  check('Settings opens', dialog()?.getAttribute('aria-label') === '设置');
+  document.querySelector('.brand-gate').click(); await frames();
+  check('Profile opens from the gate badge', dialog()?.getAttribute('aria-label') === '个人主页');
+  check('Profile shows the student fields', Boolean(dialog()?.querySelector('.profile-name')) && Boolean(dialog()?.querySelector('.profile-id')));
   const quality = document.querySelector('#scene-quality');
   quality.value = 'low'; quality.dispatchEvent(new Event('change',{bubbles:true})); await frames();
   check('Quality setting updates', qa().getState().settings.quality === 'low');
@@ -45,12 +46,7 @@
   button(dialog(),'保留当前旅程').click(); await frames();
   check('Reset can be cancelled', !document.querySelector('.reset-confirm'));
   await close();
-  button(document.querySelector('.utility-nav'),'探索指引').click(); await frames();
-  check('Guide opens', dialog()?.getAttribute('aria-label') === '探索指引');
-  button(dialog(),'循光去看看').click(); await frames();
-  check('Guide selects current beacon', dialog()?.getAttribute('aria-label') === '真理之塔');
-  await close();
-  button(document.querySelector('.utility-nav'),'收集图鉴').click(); await frames();
+  document.querySelector('.resource-pill').click(); await frames();
   check('Collection content and discovery state', document.querySelectorAll('.collection-item').length === 8 && document.querySelectorAll('.collection-item.is-known').length === 1);
   await close();
   const surface = document.querySelector('[data-testid="map-scene"]');

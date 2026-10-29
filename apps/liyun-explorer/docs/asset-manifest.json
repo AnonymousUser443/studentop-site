@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-10-29T02:47:26.242Z",
+  "generatedAt": "2026-10-29T12:46:29.531Z",
   "mapId": "campus-v04-eaa124716c51375f",
   "logicalCanvas": [
     4000,
     4958
   ],
-  "totalBytes": 27944788,
+  "totalBytes": 26401119,
   "files": [
     {
-      "path": "public/assets/art/mountain-right.png",
-      "bytes": 1283128,
-      "sha256": "7d0e4cde0de0974ba8ce1b3bea98a4fb0d587ebe1e2c5bb7c04689114bba5b27"
+      "path": "public/assets/art/mountain-right.webp",
+      "bytes": 201018,
+      "sha256": "c8be5db153e8ed8d97462af4117e0d48d71e09444c38ed18b8200e7c749072e5"
     },
     {
-      "path": "public/assets/art/pine-left.png",
-      "bytes": 2097170,
-      "sha256": "c0c4c62f621438050d43290c50c6c6dba6df9c54533a572dcae4dbc81f644e81"
+      "path": "public/assets/art/pine-left.webp",
+      "bytes": 292888,
+      "sha256": "f28790bfd15e01a31ea85a8243c4da644b721d0762672914c81c020b14d9c670"
     },
     {
       "path": "public/assets/audio/bgm1.mp3",
@@ -54,8 +54,8 @@
     },
     {
       "path": "public/assets/fonts/MaShanZheng-OFL.txt",
-      "bytes": 4397,
-      "sha256": "d7bdb1cee215b689e23c2f95672a6084c790542170648267a55114103d756a08"
+      "bytes": 4490,
+      "sha256": "8989e84e52586916204640b31620dd2d12a4dddfb4aec87cbf04ba7acad1e6b6"
     },
     {
       "path": "public/assets/fonts/MaShanZheng-Regular.ttf",
@@ -69,8 +69,8 @@
     },
     {
       "path": "public/assets/fonts/NotoSerifSC-OFL.txt",
-      "bytes": 4350,
-      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6"
+      "bytes": 4444,
+      "sha256": "64538aaa923b7e75559725ecf64eff7b18f623857b8e6d31a7347743ab27e907"
     },
     {
       "path": "public/assets/fonts/NotoSerifSC-UI.woff2",
@@ -111,6 +111,26 @@
       "path": "public/assets/maps/metadata.json",
       "bytes": 1492,
       "sha256": "2998857bea6918e6b4bc8ca6a54f7c58f9be22012fa3e5e576962e9ae5014907"
+    },
+    {
+      "path": "public/assets/paintings/frost-frame.webp",
+      "bytes": 194266,
+      "sha256": "555143850816eed4fa95101afebcc2c3165fa1d68d71ac4facd1ac46ec5d445a"
+    },
+    {
+      "path": "public/assets/paintings/library.webp",
+      "bytes": 394090,
+      "sha256": "f5b3d99a2301c1e71aa49b83f93950fc48ff5dfbf206f53ac2054813d0022000"
+    },
+    {
+      "path": "public/assets/paintings/north-lake.webp",
+      "bytes": 385102,
+      "sha256": "f3ac850551daf051b75b5cca48b4c7a92d8d5ed3e2cc012bac43aee8b3c55268"
+    },
+    {
+      "path": "public/assets/paintings/waterbirds.webp",
+      "bytes": 369078,
+      "sha256": "6b813d1088107eedb43fafbbc6cd3e22f3ef109745c888e1f7bf476d557528bb"
     }
   ]
 }

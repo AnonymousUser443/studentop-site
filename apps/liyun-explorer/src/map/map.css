@@ -39,3 +39,8 @@
 @keyframes map-found{0%,30%{filter:brightness(.85)}60%{filter:brightness(1.8);box-shadow:0 0 32px #ffe6a9}100%{filter:brightness(1)}}
 .map-reduced-motion *{animation:none!important}
 @media(max-height:540px),(max-width:900px){.map-marker{height:44px;max-width:225px;transform:translate(-22px,-22px)}.map-marker-gem{width:44px;height:44px}.map-marker-glyph svg{width:31px;height:31px}.map-marker-name{padding:2px 16px 3px 9px;min-height:27px}.map-marker-name strong{font-size:13px}.map-marker-name small{font-size:10px;letter-spacing:0}.map-marker.is-beacon .map-marker-gem{width:48px;height:48px}.map-marker.is-beacon .map-marker-name{min-height:38px}.map-marker.is-beacon .map-marker-name strong{font-size:15px}.map-marker.is-beacon .map-marker-glyph svg{width:34px;height:34px}.map-beacon-tower{width:80px;height:112px;left:-16px;bottom:20px}.map-marker.label-left{transform:translate(calc(-100% + 22px),-22px)}.map-marker.label-left .map-beacon-tower{right:-15px}.map-player>svg{width:45px;height:52px;left:-22px;top:-30px}.map-player-light{width:80px;height:95px;left:-40px}}
+
+/* 地图纸色雾晕：跟着地图一起缩放，把纸边收进雾里，不再看出是贴图 */
+.map-paper-halo{position:absolute;inset:-13% -11%;pointer-events:none;
+  background:radial-gradient(closest-side,#efe5cc 0%,#efe5cc 56%,#efe5ccf0 70%,#efe5ccb8 82%,#efe5cc66 91%,transparent 100%);
+  filter:blur(6px)}

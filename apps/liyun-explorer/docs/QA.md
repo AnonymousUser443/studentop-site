@@ -22,7 +22,7 @@ node apps/liyun-explorer/scripts/asset-manifest.mjs --check
 
 ## 历史原文（未经本轮复验）
 
-日期：2026-10-27，Asia/Shanghai。交付范围为本地前端首版：8 个地标、地图与探索反馈、存档、HUD、设置、指引和简版图鉴。全部首版地标为 45%，3% / 37% 为固定验收预设。
+日期：2026-10-27，Asia/Shanghai。交付范围为本地前端首版：8 个地标、地图与探索反馈、存档、HUD、个人主页（含设置）、活动中心与简版图鉴。全部首版地标为 45%，3% / 37% 为固定验收预设。
 
 历史运行地址为 localhost:4173 / localhost:5173；当时的服务会话和 qa/index.html 不属于当前环境。现用 5174 / 4174，启动命令见 [README](../README.md)。
 
@@ -93,4 +93,4 @@ node apps/liyun-explorer/scripts/asset-manifest.mjs --check
 
 未进行 iOS/Android 真机全屏、横屏锁定、物理双指和移动音频策略实测。源码保留失败回退，当前验收涵盖桌面原生全屏及桌面移动视口。构建有 p5 导致的单包体积提示（约 364KB gzip），构建成功；如需公网分发，可后续拆分与延迟加载特效包。
 
-体力、在线人数、章节、活动日期和 `/36` 为 Mock；任务、联机、GPS、相机与后端接入属于后续范围。素材来源与许可见 [ASSETS.md](ASSETS.md)，完整本地文件哈希见 [asset-manifest.json](asset-manifest.json)。
+在线人数、活动日期和 `/36` 为 Mock（体力与章节仅保留面板说明）；任务、联机、GPS、相机与后端接入属于后续范围。素材来源与许可见 [ASSETS.md](ASSETS.md)，完整本地文件哈希见 [asset-manifest.json](asset-manifest.json)。

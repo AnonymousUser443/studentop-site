@@ -11,7 +11,7 @@ export type GameSettings = { music: boolean; volume: number; quality: 'high' | '
 export type ExplorationState = { version: 2; discoveredIds: string[]; unlockedRegionIds: string[]; playerUV: UV; settings: GameSettings };
 export type AccountUser = { id: string; nickname: string; studentId: string; uid: string };
 export type SceneEvent = { id: number; type: 'discover'; landmarkId: string; from: UV; to: UV; startedAt: number; duration: number };
-export type PanelId = 'main' | 'season' | 'festival' | 'stories' | 'party' | 'settings' | 'guide' | 'collection' | 'stamina' | 'chapter' | null;
+export type PanelId = 'profile' | 'main' | 'collection' | 'stamina' | 'chapter' | null;
 export type MapSceneProps = { camera: MapCamera; viewport: Viewport; landmarks: Landmark[]; discoveredIds: string[]; selectedId: string | null; playerUV: UV; liveLocation?: CampusReading | null; locationFresh?: boolean; headingAngle?: number | null; event: SceneEvent | null; reducedMotion: boolean; onCameraChange: (camera: MapCamera) => void; onSelect: (id: string) => void; onVisualPosition?: (uv:UV,camera:MapCamera)=>void; disabled?: boolean; fixedTime?: number; paused?: boolean };
 export type EffectsProps = { camera: MapCamera; viewport: Viewport; landmarks: Landmark[]; discoveredIds: string[]; event: SceneEvent | null; settings: GameSettings; paused: boolean; seed?: number; fixedTime?: number };
 export type HudProps = {

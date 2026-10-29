@@ -17,6 +17,15 @@ import { checkInEligibility } from './location/checkIn';
 const params = new URLSearchParams(location.search);
 const qaMode = import.meta.env.DEV && params.get('qa') === '1';
 const preset = qaMode ? params.get('preset') : null;
+
+/**
+ * 启程卡只弹一次：模块级记号 + 跨实例事件。
+ * 开发模式的重复挂载、HMR 重挂载都会重新初始化组件状态，
+ * 靠这两样东西保证已经点过「进入校园」后不会再弹第二张卡。
+ */
+const ENTERED_EVENT = 'liyun:entered';
+let enteredOnce = false;
+
 function load(): ExplorationState {
   if (preset === 'explored') return createExploredState();
   if (preset === 'fog') return createInitialState();
@@ -38,7 +47,7 @@ export default function App() {
   const [account, setAccount] = useState<AccountUser | null>(null);
   const [loginBusy, setLoginBusy] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
-  const [entered, setEntered] = useState(qaMode);
+  const [entered, setEntered] = useState(() => qaMode || enteredOnce);
   const [activePanel, setActivePanel] = useState<PanelId>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [event, setEvent] = useState<SceneEvent | null>(null);
@@ -53,6 +62,7 @@ export default function App() {
   const locationRef = useRef(location.state);locationRef.current = location.state;
   const [followingLocation, setFollowingLocation] = useState(false);
   const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const unlockTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const audio = useAudio(state.settings, entered && !qaMode);
   const portrait = viewport.width <= viewport.height;
   const selected = LANDMARKS.find(x => x.id === selectedId) ?? null;
@@ -93,6 +103,11 @@ export default function App() {
     return () => clearTimeout(timer);
   }, [state, account]);
   useEffect(() => {
+    const dismiss = () => setEntered(true);
+    window.addEventListener(ENTERED_EVENT, dismiss);
+    return () => window.removeEventListener(ENTERED_EVENT, dismiss);
+  }, []);
+  useEffect(() => {
     if (!stage.current) return;
     const observer = new ResizeObserver(([entry]) => {
       const next = {width:entry.contentRect.width,height:entry.contentRect.height};
@@ -115,7 +130,7 @@ export default function App() {
     const visibility=()=>setHidden(document.hidden), full=()=>setFullscreen(Boolean(document.fullscreenElement));
     const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){setActivePanel(null);setSelectedId(null);}};
     document.addEventListener('visibilitychange',visibility);document.addEventListener('fullscreenchange',full);document.addEventListener('keydown',key);
-    return()=>{document.removeEventListener('visibilitychange',visibility);document.removeEventListener('fullscreenchange',full);document.removeEventListener('keydown',key);clearTimeout(toastTimer.current);if(cameraFrame.current!==undefined)cancelAnimationFrame(cameraFrame.current);};
+    return()=>{document.removeEventListener('visibilitychange',visibility);document.removeEventListener('fullscreenchange',full);document.removeEventListener('keydown',key);clearTimeout(toastTimer.current);clearTimeout(unlockTimer.current);if(cameraFrame.current!==undefined)cancelAnimationFrame(cameraFrame.current);};
   }, []);
   useEffect(() => { if(!event || fixedTime!==undefined) return; const timer=setTimeout(()=>setEvent(null),Math.max(0,event.startedAt+event.duration-performance.now())+100);return()=>clearTimeout(timer); }, [event,fixedTime]);
   const fullscreen=useCallback(()=>{
@@ -128,7 +143,14 @@ export default function App() {
     }).catch(()=>message('未能进入全屏，仍可横屏继续探索'));
   },[message]);
   const settings=useCallback((patch:Partial<GameSettings>)=>setState(s=>({...s,settings:{...s.settings,...patch}})),[]);
-  const enter=()=>{const track=Math.floor(Math.random()*3);settings({track});audio.start(track);setEntered(true);if(matchMedia('(pointer: coarse)').matches)fullscreen();};
+  const enter=()=>{
+    enteredOnce = true;
+    const track=Math.floor(Math.random()*3);
+    settings({track});audio.start(track);setEntered(true);
+    // 同一次加载里若存在第二个 App 实例（开发模式重复挂载等），让它一起关闭启程卡
+    window.dispatchEvent(new Event(ENTERED_EVENT));
+    if(matchMedia('(pointer: coarse)').matches)fullscreen();
+  };
   const select=useCallback((id:string)=>{if(!LANDMARKS.some(x=>x.id===id))return;setSelectedId(id);setActivePanel(null);},[]);
   const close=useCallback(()=>{setActivePanel(null);setSelectedId(null);},[]);
   const moveCamera=useCallback((next:MapCamera)=>{if(cameraFrame.current!==undefined)cancelAnimationFrame(cameraFrame.current);setFollowingLocation(false);setCamera(next);},[]);
@@ -151,8 +173,15 @@ export default function App() {
     }
     stateRef.current=next;setState(next);
     setEvent({id:Date.now(),type:'discover',landmarkId:id,from,to:place.uv,startedAt,duration:before.settings.reducedMotion?400:3200});
-    setSelectedId(null);if(!qaMode)audio.playChime();message(`打卡成功 · ${place.name}`);
-  },[audio.playChime,message]);
+    setSelectedId(null);
+    if(!qaMode){
+      const cueDuration = before.settings.reducedMotion ? 400 : 3200;
+      const cueAt = before.settings.reducedMotion ? 40 : Math.round(cueDuration * 0.39);
+      clearTimeout(unlockTimer.current);
+      unlockTimer.current = setTimeout(() => audio.playUnlock(), cueAt);
+    }
+    message(`打卡成功 · ${place.name}`);
+  },[audio.playUnlock,message]);
   useEffect(() => {
     const reading = location.state.reading;
     if (!followingLocation || location.state.status !== 'tracking' || !reading?.insideImage) return;
@@ -228,12 +257,20 @@ export default function App() {
     (window as unknown as {__LIYUN__:typeof api}).__LIYUN__=api;
   },[camera,discover,select,event]);
   return <div className="game-stage" ref={stage} data-testid="game-stage" data-entered={entered} data-progress={progressOf(state)}>
+    {/* 纸底 + 左右山水：纸色与地图图片一致，避免贴图分界 */}
+    <div className="scene-paper" aria-hidden="true" />
+    <div className="scene-painting" aria-hidden="true">
+      <img src="/assets/paintings/frost-frame.webp" alt="" decoding="async" />
+      <span className="scene-painting-haze" />
+    </div>
+    <div className="map-layer">
     <MapScene camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} selectedId={selectedId} playerUV={state.playerUV} liveLocation={reading} locationFresh={freshLocation} headingAngle={headingAngle} event={event} reducedMotion={state.settings.reducedMotion} onCameraChange={moveCamera} onSelect={select} onVisualPosition={rememberVisual} fixedTime={fixedTime} paused={hidden||portrait} disabled={portrait||!entered||Boolean(activePanel)||Boolean(selectedId)} />
     <Atmosphere camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} event={event} settings={state.settings} paused={hidden||portrait} seed={42} fixedTime={fixedTime}/>
+    </div>
     <div className="scene-vignette"/>
     {entered && !portrait && <LocationControls state={location.state} heading={location.heading} following={followingLocation} distance={distanceLabel} onLocate={locate} onStop={()=>{setFollowingLocation(false);location.stop();}}/>}
-    {art.pine&&<img className="border-art pine" src="/assets/art/pine-left.png" alt="" onError={()=>setArt(s=>({...s,pine:false}))}/>}
-    {art.mountain&&<img className="border-art mountain" src="/assets/art/mountain-right.png" alt="" onError={()=>setArt(s=>({...s,mountain:false}))}/>}
+    {art.pine&&<img className="border-art pine" src="/assets/art/pine-left.webp" alt="" onError={()=>setArt(s=>({...s,pine:false}))}/>}
+    {art.mountain&&<img className="border-art mountain" src="/assets/art/mountain-right.webp" alt="" onError={()=>setArt(s=>({...s,mountain:false}))}/>}
     <div className="hud-layer" inert={portrait}><Hud
       progress={progressOf(state)} collected={state.discoveredIds.length} activePanel={activePanel}
       selected={selected} discovered={Boolean(selected&&state.discoveredIds.includes(selected.id))}

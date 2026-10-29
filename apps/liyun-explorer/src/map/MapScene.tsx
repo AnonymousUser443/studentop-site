@@ -143,6 +143,7 @@ export default function MapScene(props: MapSceneProps) {
     changeCamera(clampCamera(zoomAt(gestureCamera.current, 1.45, point.x, point.y, limits.min, limits.max), viewport));
   }}>
     <div className="map-world" style={worldStyle} aria-hidden="true">
+      <span className="map-paper-halo" />
       <img className="map-base-image" src={imageFailed ? CAMPUS_MAP_FALLBACK : CAMPUS_MAP_IMAGE} onError={() => setImageFailed(true)} draggable={false} alt="" width={MAP_WIDTH} height={MAP_HEIGHT}/>
     </div>
     <div className="map-ground-vignette" aria-hidden="true"/>
