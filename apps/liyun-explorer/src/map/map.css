@@ -1,9 +1,9 @@
-.map-scene{position:absolute;inset:0;touch-action:none;overflow:hidden;cursor:grab;user-select:none;-webkit-user-select:none;background:radial-gradient(ellipse 80% 76% at 50% 47%,#ece7d1 0%,#e9e5cc 42%,#e3e5cf 68%,#dae1ce 88%,#d4ddca 100%)}
+.map-scene{position:absolute;inset:0;touch-action:none;overflow:hidden;cursor:grab;user-select:none;-webkit-user-select:none;background:transparent}
 .map-scene.is-dragging{cursor:grabbing}
 .map-world{position:absolute;left:0;top:0;transform-origin:0 0;z-index:1;pointer-events:none;will-change:transform}
-.map-base-image{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;object-fit:fill;mask-image:radial-gradient(ellipse 86% 86% at 50% 50%,#000 58%,#000000e6 74%,#00000088 88%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 86% 86% at 50% 50%,#000 58%,#000000e6 74%,#00000088 88%,transparent 100%)}
+.map-base-image{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;object-fit:fill}
 .map-water-ribbons{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mask-image:radial-gradient(ellipse 86% 86% at 50% 50%,#000 58%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 86% 86% at 50% 50%,#000 58%,transparent 100%)}
-.map-ground-vignette{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(21,53,43,.34),transparent 30%,transparent 83%,rgba(26,52,43,.2)),linear-gradient(0deg,rgba(28,49,39,.18),transparent 18%,transparent 77%,rgba(23,52,41,.22))}
+.map-ground-vignette{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(21,53,43,.10),transparent 26%,transparent 86%,rgba(26,52,43,.07)),linear-gradient(0deg,rgba(28,49,39,.06),transparent 16%,transparent 80%,rgba(23,52,41,.08))}
 .map-markers{position:absolute;inset:0;z-index:4;pointer-events:none}
 .map-marker{position:absolute;display:flex;align-items:center;gap:0;height:54px;max-width:280px;padding:0;border:0;background:transparent;color:#fff4d4;transform:translate(-25px,-27px);pointer-events:auto;cursor:pointer;text-align:left;white-space:nowrap;font-family:inherit;filter:drop-shadow(0 3px 3px #19332855);-webkit-tap-highlight-color:transparent;isolation:isolate;transition:filter .2s}
 .map-marker-gem{display:block;position:relative;width:51px;height:51px;flex:none;border:2px solid #e4cf95;background:#27453f;transform:rotate(45deg) scale(.72);box-shadow:inset 0 0 0 2px #33574b,inset 0 0 0 3px #bda77366;z-index:2;border-radius:5px}
