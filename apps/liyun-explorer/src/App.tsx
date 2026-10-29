@@ -48,6 +48,7 @@ export default function App() {
   const [isFullscreen, setFullscreen] = useState(Boolean(document.fullscreenElement));
   const [fixedTime, setFixedTime] = useState<number | undefined>();
     const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const unlockTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const audio = useAudio(state.settings, entered && !qaMode);
   const portrait = viewport.width <= viewport.height;
   const selected = LANDMARKS.find(x => x.id === selectedId) ?? null;
@@ -81,7 +82,7 @@ export default function App() {
     const visibility=()=>setHidden(document.hidden), full=()=>setFullscreen(Boolean(document.fullscreenElement));
     const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){setActivePanel(null);setSelectedId(null);}};
     document.addEventListener('visibilitychange',visibility);document.addEventListener('fullscreenchange',full);document.addEventListener('keydown',key);
-    return()=>{document.removeEventListener('visibilitychange',visibility);document.removeEventListener('fullscreenchange',full);document.removeEventListener('keydown',key);clearTimeout(toastTimer.current);if(cameraFrame.current!==undefined)cancelAnimationFrame(cameraFrame.current);};
+    return()=>{document.removeEventListener('visibilitychange',visibility);document.removeEventListener('fullscreenchange',full);document.removeEventListener('keydown',key);clearTimeout(toastTimer.current);clearTimeout(unlockTimer.current);if(cameraFrame.current!==undefined)cancelAnimationFrame(cameraFrame.current);};
   }, []);
   useEffect(() => { if(!event || fixedTime!==undefined) return; const timer=setTimeout(()=>setEvent(null),Math.max(0,event.startedAt+event.duration-performance.now())+100);return()=>clearTimeout(timer); }, [event,fixedTime]);
   const fullscreen=useCallback(()=>{
@@ -121,8 +122,15 @@ export default function App() {
     }
     setState(s=>explore(s,id));
     setEvent({id:Date.now(),type:'discover',landmarkId:id,from,to:place.uv,startedAt,duration:before.settings.reducedMotion?400:3200});
-    setSelectedId(null);if(!qaMode)audio.playChime();message(`已发现 · ${place.name}`);
-  },[audio.playChime,message]);
+    setSelectedId(null);
+    if(!qaMode){
+      const duration = before.settings.reducedMotion ? 400 : 3200;
+      const cueAt = before.settings.reducedMotion ? 40 : Math.round(duration * 0.39);
+      clearTimeout(unlockTimer.current);
+      unlockTimer.current = setTimeout(() => audio.playUnlock(), cueAt);
+    }
+    message(`已发现 · ${place.name}`);
+  },[audio.playUnlock,message]);
   const center=useCallback(()=>moveCamera(initialCamera(viewportRef.current)),[moveCamera]);
   const reset=()=>{setState(s=>({...createInitialState(s.settings.reducedMotion),settings:s.settings}));setEvent(null);setSelectedId(null);setActivePanel(null);center();message('云雾归来，新的旅途已开启');};
   useEffect(()=>{
