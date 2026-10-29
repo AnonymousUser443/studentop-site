@@ -4,7 +4,7 @@
 (function () {
   'use strict';
   var API = '/__desktop/auth';
-  var BOOT_KEY = 'aiden.desktop.bootSeen';
+  var BOOT_KEY = 'aiden.desktop.bootSeen.v2';
   var REVOKE_KEY = '__desktopGateRevokePending';
   var refs = {}, wired = false, initPromise = null;
   var locked = true, epoch = 0, view = 'pending', busy = false, composing = false;
@@ -13,6 +13,8 @@
   var postPending = false, revokePromise = null, syncPromise = null, syncEpoch = -1;
   var queue = Promise.resolve(), bootActive = false, finishBoot = null;
   var returnFocus = null, suspended = false;
+  var motion = null, revealing = false, viewTimer = null, gesture = null;
+  var wheelTravel = 0, wheelTime = 0;
   var needsRevoke = readRevokeIntent();
 
   function readRevokeIntent() {
@@ -42,18 +44,29 @@
     composing = false;
     if (!refs.gateAnswer) return;
     refs.gateAnswer.value = '';
-    refs.gateAnswer.type = 'password';
-    refs.gateReveal.setAttribute('aria-pressed', 'false');
-    refs.gateReveal.setAttribute('aria-label', '显示答案');
-    setText(refs.gateReveal, '显示');
+    refs.gateAnswer.type = 'text';
+    refs.gateReveal.setAttribute('aria-label', '清除输入');
+    setText(refs.gateReveal, '×');
   }
   function setView(next) {
+    var previous = view;
+    clearTimeout(viewTimer);
     view = next;
     refs.lockScreen.dataset.gateView = next;
     refs.lockScreen.dataset.gatePhase = next;
     refs.gatePending.hidden = next !== 'pending';
     refs.gateBoot.hidden = next !== 'boot';
-    refs.gateClockView.hidden = next !== 'clock';
+    var leavingClock = previous === 'clock' && next === 'question' && !reduced();
+    refs.gateClockView.hidden = next !== 'clock' && !leavingClock;
+    refs.gateClockView.inert = next !== 'clock';
+    refs.gateClockView.classList.remove('gate-clock-out');
+    if (leavingClock) {
+      refs.gateClockView.classList.add('gate-clock-out');
+      viewTimer = setTimeout(function () {
+        if (view !== 'clock') refs.gateClockView.hidden = true;
+        resetGesture();
+      }, 430);
+    } else resetGesture();
     refs.gateQuestionView.hidden = next !== 'question';
   }
   function focusPrimary() {
@@ -65,6 +78,9 @@
   function maskDesktop() {
     if (!locked) returnFocus = document.activeElement;
     locked = true;
+    revealing = false;
+    if (motion) motion.cancelReveal();
+    document.body.classList.remove('is-gate-revealing');
     refs.desktop.inert = true;
     refs.desktop.setAttribute('aria-hidden', 'true');
     document.body.classList.add('is-locked');
@@ -79,20 +95,26 @@
     var sec = secondsLeft();
     var ready = (kind === 'ready' || kind === 'denied') && !needsRevoke && !!csrf && remaining > 0;
     refs.lockScreen.dataset.gateStatus = kind;
-    refs.gateForm.setAttribute('aria-busy', String(busy));
-    refs.gateSubmit.disabled = busy || !ready;
-    refs.gateAnswer.disabled = busy || !ready;
-    refs.gateReveal.disabled = busy || !ready;
-    refs.gateLogin.disabled = busy || needsRevoke;
-    refs.gateReplay.disabled = busy || needsRevoke;
+    refs.gateForm.setAttribute('aria-busy', String(busy || revealing));
+    refs.gateSubmit.disabled = busy || revealing || !ready;
+    refs.gateAnswer.disabled = busy || revealing || !ready;
+    refs.gateReveal.disabled = busy || revealing || !ready;
+    refs.gateLogin.disabled = busy || revealing || needsRevoke;
+    refs.gateReplay.disabled = busy || revealing || needsRevoke;
     refs.gateRetry.disabled = busy;
     refs.gateClockRetry.disabled = busy;
+    // Disabling the active input/button can send focus to body in a real browser.
+    // Keep Escape and the focus trap on the gate while POST / particles are pending.
+    if ((postPending || revealing) && locked && !suspended && document.visibilityState !== 'hidden' && (!refs.lockScreen.contains(document.activeElement) || document.activeElement.disabled)) {
+      refs.lockScreen.focus({ preventScroll: true });
+    }
     var retry = needsRevoke || kind === 'unavailable' || kind === 'unconfigured' || cooling;
     refs.gateRetry.hidden = !retry;
     refs.gateClockRetry.hidden = !retry;
     setText(refs.gateRetry, needsRevoke ? '重新注销并检查状态' : '重新检查服务状态');
     setText(refs.gateClockRetry, needsRevoke ? '重试安全锁定' : '重新连接');
-    setText(refs.gateSubmit, postPending ? '正在验证…' : '验证并进入 →');
+    setText(refs.gateSubmit, postPending ? '…' : '→');
+    refs.gateSubmit.setAttribute('aria-label', postPending ? '正在验证' : '验证并进入');
     setText(refs.gateStatus, message);
     setText(refs.gateClockStatus, message);
     setText(refs.gateAttempts, remaining !== null && (ready || cooling) ? '服务端剩余尝试：' + remaining + ' 次' : '');
@@ -113,6 +135,7 @@
   function updateAppearance() {
     var url = Win.safeUrl(Win.wallpaperUrl(Win.prefs.wall));
     if (url) refs.lockWall.style.backgroundImage = 'url(' + JSON.stringify(url) + ')';
+    if (motion) motion.setWallpaper(url);
   }
   function snapshot(raw) {
     if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new Error('Invalid auth response');
@@ -162,14 +185,26 @@
     setStatus('unavailable', '验证状态无法确认，请重新检查。桌面保持锁定。');
   }
   async function release(myEpoch, instant) {
-    if (myEpoch !== epoch || needsRevoke || suspended || bootActive) return false;
+    if (myEpoch !== epoch || needsRevoke || suspended || bootActive || revealing) return false;
+    clearInput();
+    revealing = true;
+    setStatus('entering', '');
     refs.lockScreen.classList.add('is-unlocking');
-    if (!instant && !reduced()) await new Promise(function (resolve) { setTimeout(resolve, 180); });
+    document.body.classList.add('is-gate-revealing');
+    if (!instant && !reduced()) {
+      if (motion) {
+        try { await motion.reveal(function () { return myEpoch === epoch && !needsRevoke && !suspended && !bootActive; }); }
+        catch (_) { /* A visual failure cannot grant or block authorization. */ }
+      } else await new Promise(function (resolve) { setTimeout(resolve, 180); });
+    }
     if (myEpoch !== epoch || needsRevoke || suspended || bootActive) return false;
     clearInput();
     setView('desktop');
     locked = false;
     refs.lockScreen.hidden = true;
+    revealing = false;
+    if (motion) motion.cancelReveal();
+    document.body.classList.remove('is-gate-revealing');
     refs.lockScreen.classList.remove('is-unlocking');
     document.body.classList.remove('is-locked');
     refs.desktop.inert = false;
@@ -249,7 +284,7 @@
   }
   async function submit(event) {
     event.preventDefault();
-    if (composing || busy || needsRevoke || (kind !== 'ready' && kind !== 'denied') || !csrf || remaining <= 0) return;
+    if (composing || busy || revealing || needsRevoke || (kind !== 'ready' && kind !== 'denied') || !csrf || remaining <= 0) return;
     var answer = refs.gateAnswer.value;
     clearInput();
     if (!answer.trim()) { setStatus('ready', '请先输入答案。'); focusPrimary(); return; }
@@ -280,7 +315,7 @@
     });
   }
   function showQuestion() {
-    if (!locked || busy || needsRevoke || bootActive) return;
+    if (!locked || busy || revealing || needsRevoke || bootActive) return;
     clearInput();
     setView('question');
     render();
@@ -288,7 +323,7 @@
   }
   function backToClock() {
     clearInput();
-    if (postPending) { void lock(); return; }
+    if (postPending || revealing) { void lock(); return; }
     setView('clock');
     render();
     focusPrimary();
@@ -301,12 +336,14 @@
     } catch (_) { return false; }
   }
   function playBoot() {
-    if (!locked || bootActive) return Promise.resolve();
+    if (!locked || bootActive || revealing) return Promise.resolve();
     clearInput();
     bootActive = true;
     setView('boot');
-    refs.gateBios.hidden = reduced();
-    refs.gateLogoStage.hidden = !reduced();
+    refs.gateBios.hidden = false;
+    refs.gateLogoStage.hidden = false;
+    if (motion) motion.playBoot(reduced());
+    else refs.lockScreen.classList.add('is-boot-formed');
     refs.lockScreen.dataset.gatePhase = reduced() ? 'logo' : 'bios';
     return new Promise(function (resolve) {
       var timer = null, settled = false;
@@ -314,6 +351,7 @@
         if (settled) return;
         settled = true;
         clearTimeout(timer);
+        if (motion) motion.stopBoot();
         finishBoot = null;
         bootActive = false;
         setView('clock');
@@ -325,16 +363,14 @@
       focusPrimary();
       if (reduced()) { timer = setTimeout(finish, 160); return; }
       timer = setTimeout(function () {
-        refs.gateBios.hidden = true;
-        refs.gateLogoStage.hidden = false;
         refs.lockScreen.dataset.gatePhase = 'logo';
-        timer = setTimeout(finish, 2000);
-      }, 1500);
+        timer = setTimeout(finish, 3300);
+      }, 1900);
     });
   }
   function visibleFocusables() {
     return Array.prototype.slice.call(refs.lockScreen.querySelectorAll('button,input,[tabindex="0"]')).filter(function (node) {
-      return !node.disabled && !node.closest('[hidden]') && node.getClientRects().length > 0;
+      return !node.disabled && !node.closest('[hidden]') && !node.closest('[inert]') && node.getClientRects().length > 0;
     });
   }
   function keydown(event) {
@@ -355,12 +391,53 @@
     if (event.key === 'Escape') {
       event.preventDefault(); event.stopPropagation();
       if (bootActive && finishBoot) finishBoot();
+      else if (revealing) void lock();
       else if (view === 'question') backToClock();
       return;
     }
     if (event.key === 'Enter' && view === 'clock' && !event.target.closest('button')) {
       event.preventDefault(); event.stopPropagation(); showQuestion();
     }
+  }
+  function resetGesture() {
+    gesture = null;
+    if (!refs.lockScreen) return;
+    refs.lockScreen.classList.remove('is-swiping');
+    if (refs.lockScreen.style.setProperty) refs.lockScreen.style.setProperty('--gate-swipe', '0');
+  }
+  function gestureStart(event) {
+    if (view !== 'clock' || !locked || busy || revealing || needsRevoke || bootActive || (event.button !== undefined && event.button !== 0)) return;
+    if (event.target.closest('button') || event.target.closest('input') || event.target.closest('a')) return;
+    gesture = { id: event.pointerId, x: event.clientX, y: event.clientY, travel: 0 };
+    if (refs.gateClockView.setPointerCapture) { try { refs.gateClockView.setPointerCapture(event.pointerId); } catch (_) {} }
+  }
+  function gestureMove(event) {
+    if (!gesture || event.pointerId !== gesture.id) return;
+    var distance = gesture.y - event.clientY;
+    if (Math.abs(event.clientX - gesture.x) > Math.max(40, Math.abs(distance) * 1.3)) { resetGesture(); return; }
+    gesture.travel = Math.max(0, distance);
+    if (gesture.travel > 5) {
+      event.preventDefault();
+      refs.lockScreen.classList.add('is-swiping');
+      if (refs.lockScreen.style.setProperty) refs.lockScreen.style.setProperty('--gate-swipe', String(Math.min(1, gesture.travel / 140)));
+    }
+  }
+  function gestureEnd(event) {
+    if (!gesture || event.pointerId !== gesture.id) return;
+    var travel = gesture.travel;
+    gesture = null;
+    refs.lockScreen.classList.remove('is-swiping');
+    if (event.type !== 'pointercancel' && travel >= 70) showQuestion();
+    else resetGesture();
+  }
+  function wheel(event) {
+    if (view !== 'clock' || busy || revealing || needsRevoke || bootActive || !locked) return;
+    if (event.deltaY <= 0) { wheelTravel = 0; return; }
+    event.preventDefault();
+    var now = nowMono();
+    if (now - wheelTime > 350) wheelTravel = 0;
+    wheelTime = now; wheelTravel += event.deltaY;
+    if (wheelTravel >= 45) { wheelTravel = 0; showQuestion(); }
   }
   function suspend() {
     if (!wired) return;
@@ -388,6 +465,7 @@
     var names = ['lockScreen','lockWall','lockClock','lockDate','lockWeekday','lockAvatar','lockUser','desktop','gatePending','gateBoot','gateBios','gateLogoStage','gateSkip','gateClockView','gateLogin','gateReplay','gateClockRetry','gateClockStatus','gateQuestionView','gateForm','gateFormAvatar','gateAnswer','gateReveal','gateSubmit','gateStatus','gateAttempts','gateCountdown','gateBack','gateRetry'];
     names.forEach(function (id) { refs[id] = document.getElementById(id); if (!refs[id]) throw new Error('Gate markup unavailable'); });
     wired = true;
+    if (window.AidenGateMotion) { try { motion = window.AidenGateMotion.create(refs.lockScreen); } catch (_) { motion = null; } }
     refs.lockAvatar.innerHTML = Win.avatarMarkup();
     refs.gateFormAvatar.innerHTML = Win.avatarMarkup();
     refs.lockScreen.querySelectorAll('.profile-avatar').forEach(function (image) { image.alt = 'Aiden 的头像'; });
@@ -396,29 +474,33 @@
     updateClock(new Date());
     updateAppearance();
     Win.bus.on('clock', updateClock);
-    Win.bus.on('prefs', function () { updateAppearance(); if (reduced() && finishBoot) finishBoot(); });
+    Win.bus.on('prefs', function () { updateAppearance(); if (reduced() && finishBoot) finishBoot(); if (reduced() && motion && revealing) motion.cancelReveal(); });
     var reduceQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (reduceQuery.addEventListener) reduceQuery.addEventListener('change', function () { if (reduced() && finishBoot) finishBoot(); });
+    if (reduceQuery.addEventListener) reduceQuery.addEventListener('change', function () { if (reduced() && finishBoot) finishBoot(); if (reduced() && motion && revealing) motion.cancelReveal(); });
     Win.startClock();
     refs.gateLogin.addEventListener('click', showQuestion);
     refs.gateBack.addEventListener('click', backToClock);
     refs.gateSkip.addEventListener('click', function () { if (finishBoot) finishBoot(); });
+    var loader = document.getElementById('gateLoader');
+    if (loader) loader.addEventListener('click', function () { if (finishBoot) finishBoot(); });
     refs.gateReplay.addEventListener('click', function () { if (!busy && !needsRevoke) void playBoot(); });
     refs.gateForm.addEventListener('submit', function (event) { void submit(event); });
     refs.gateAnswer.addEventListener('compositionstart', function () { composing = true; });
     refs.gateAnswer.addEventListener('compositionend', function () { composing = false; });
     refs.gateReveal.addEventListener('click', function () {
-      var show = refs.gateAnswer.type === 'password';
-      refs.gateAnswer.type = show ? 'text' : 'password';
-      refs.gateReveal.setAttribute('aria-pressed', String(show));
-      refs.gateReveal.setAttribute('aria-label', show ? '隐藏答案' : '显示答案');
-      setText(refs.gateReveal, show ? '隐藏' : '显示');
+      if (composing || busy || revealing) return;
+      clearInput();
       refs.gateAnswer.focus({ preventScroll: true });
     });
     [refs.gateRetry, refs.gateClockRetry].forEach(function (button) {
       button.addEventListener('click', function () { if (!busy) { if (needsRevoke) void lock(); else void synchronize(false); } });
     });
     refs.lockScreen.addEventListener('keydown', keydown, true);
+    refs.gateClockView.addEventListener('pointerdown', gestureStart);
+    refs.gateClockView.addEventListener('pointermove', gestureMove, { passive: false });
+    refs.gateClockView.addEventListener('pointerup', gestureEnd);
+    refs.gateClockView.addEventListener('pointercancel', gestureEnd);
+    refs.lockScreen.addEventListener('wheel', wheel, { passive: false });
     document.addEventListener('focusin', function (event) { if (locked && !suspended && !refs.lockScreen.contains(event.target)) focusPrimary(); });
     document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') suspend(); else resume(); });
     window.addEventListener('pagehide', suspend);
@@ -440,7 +522,7 @@
   }
   async function unlock(instant) {
     if (!initPromise) await init();
-    if (needsRevoke || bootActive || postPending || suspended) return false;
+    if (needsRevoke || bootActive || postPending || revealing || suspended) return false;
     return synchronize(!!instant);
   }
   window.DesktopGate = Object.freeze({ init: init, lock: lock, unlock: unlock, isLocked: function () { return locked || needsRevoke; } });

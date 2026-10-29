@@ -4,6 +4,8 @@
 
 ## 本地查看
 
+当前开场为 AidenOS：四方粒子聚字后展开月环山水，加载环持续转动；时钟锁屏支持上滑、滚轮、点击与 Enter。登录使用普通文本输入以支持中文输入法，服务端确认后从四周散为粒子、进入桌面。减少动态可跳过长动画，重播开场不授予访问。[设计与素材](../docs/boot/creative-brief.md)、[本次局部验证](../docs/boot/QA.md)记录实现与边界。
+
 从仓库根目录执行：
 
 ~~~powershell
@@ -22,6 +24,7 @@ node tools/dev-workspace.mjs --site-only
 | [入口](index.html)、[项目页](projects/index.html) | 锁屏、桌面挂载点、项目索引 |
 | [内容配置](assets/js/content.js) | 个人资料、头像、项目、通知、壁纸与固定应用 |
 | [内核](assets/js/core.js) | 偏好、主题、存储、通知、锁屏与安全链接 |
+| [门禁](assets/js/boot-lock.js)、[粒子呈现](assets/js/gate-effects.js) | 同源授权状态与视觉效果；粒子不读取输入或会话 |
 | [窗口管理](assets/js/wm.js) | 窗口生命周期、拖动、缩放、贴靠、任务栏状态 |
 | [桌面外壳](assets/js/shell.js) | 菜单、搜索、任务栏、通知和日历 |
 | [系统应用](assets/js/apps-system.js)、[个人应用](assets/js/apps-about.js) | 前端应用与项目快捷方式 |

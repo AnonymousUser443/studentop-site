@@ -14,6 +14,7 @@ p = argparse.ArgumentParser()
 p.add_argument('--sans', type=Path, required=True)
 p.add_argument('--serif', type=Path, required=True)
 p.add_argument('--subsetter', default='pyftsubset')
+p.add_argument('--site-only', action='store_true', help='Update only homepage font files; keep campus assets unchanged.')
 a = p.parse_args()
 root = Path(__file__).resolve().parents[1]
 exe = shutil.which(a.subsetter)
@@ -35,6 +36,8 @@ for path in paths:
         chars.update(path.read_text(encoding='utf-8'))
 text = ''.join(sorted(chars))
 destinations = [root / 'site/assets/fonts', root / 'apps/genshin-start/public/campus/fonts']
+if a.site_only:
+    destinations = destinations[:1]
 results = []
 with tempfile.TemporaryDirectory(prefix='paper-theme-fonts-') as td:
     temp = Path(td)
