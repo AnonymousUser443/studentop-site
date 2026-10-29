@@ -1,0 +1,87 @@
+{
+  "ok": true,
+  "verifiedAt": "2026-10-29T07:23:23.904Z",
+  "authorization": "Owner explicitly requested deployment in this session.",
+  "commit": "e2323827d2e344ffc393707608c2ee448a6512e4",
+  "release": "20261029T072148Z",
+  "current": "/opt/win11-home/releases/20261029T072148Z",
+  "nativeVersion": "2897dae74f2ca40ce525c26e",
+  "previous": {
+    "home": "/opt/win11-home/releases/20261028T110253Z-e2bc44a0e3",
+    "nativeVersion": "4036dc9f22c3295680bc5100"
+  },
+  "homepageFilesIdentical": 162,
+  "homeEntrySHA256": "521c18422150a493a5b08e3e1498d50e0d690dc4c52d479451bae2bf601e1d18",
+  "publicVerification": {
+    "checks": 36,
+    "passed": 36,
+    "origin": "https://studentop.cn:14355"
+  },
+  "auth": {
+    "configured": true,
+    "privateAnswerUsed": false,
+    "privateConfigurationChanged": false
+  },
+  "unchanged": {
+    "projectPointers": {
+      "campus-entry": "/opt/projects/campus-entry/releases/20261028T110253Z-e2bc44a0e3",
+      "desktop-auth": "/opt/projects/desktop-auth/releases/20261028T110253Z-e2bc44a0e3",
+      "frost": "/opt/projects/frost/releases/v4.0.8",
+      "genshin": "/opt/projects/genshin/releases/20261027T0835Z",
+      "liyun": "/opt/projects/liyun/releases/liyun-20261028T163300Z-f5059312f8",
+      "liyun-api": "/opt/projects/liyun-api/releases/liyun-20261028T163300Z-f5059312f8",
+      "voxel-campus": "/opt/projects/voxel-campus/releases/20261028T110253Z-e2bc44a0e3"
+    },
+    "serviceStates": {
+      "nginx": {
+        "MainPID": "1036",
+        "ExecMainStartTimestampMonotonic": "17610000",
+        "ActiveState": "active"
+      },
+      "desktop-auth": {
+        "MainPID": "992",
+        "ExecMainStartTimestampMonotonic": "15217577",
+        "ActiveState": "active"
+      },
+      "frpc": {
+        "MainPID": "1042",
+        "ExecMainStartTimestampMonotonic": "17625409",
+        "ActiveState": "active"
+      },
+      "liyun-account": {
+        "MainPID": "3989",
+        "ExecMainStartTimestampMonotonic": "17573619465",
+        "ActiveState": "active"
+      },
+      "frost-atlas": {
+        "MainPID": "993",
+        "ExecMainStartTimestampMonotonic": "15223317",
+        "ActiveState": "active"
+      }
+    },
+    "configurationSHA256": {
+      "/etc/nginx/snippets/win11-home-app.conf": "fb1495b6da6cbb80bf19f375f6cc084077aa2297e1e0393fbb0385e253559d5b",
+      "/etc/nginx/snippets/win11-home-headers.conf": "eb0ba11d664d8ebb2843b2dfa48cc64d8cf4219e53f5e521d1875fa52e0b9a71",
+      "/etc/nginx/snippets/win11-home-projects.conf": "53f61ccef358eefdae628f020e497e04127ee0d28635a511c4fff410587826d9",
+      "/etc/systemd/system/desktop-auth.service": "edb170eb64555afb881e41d3ed21db76dd3e23dcbc4e33985d09c8b07f0d3a73",
+      "/etc/systemd/system/liyun-account.service": "02c84eaa291c12bbecb567b2e3553c9a148ca60da555455e23180063c9c1c2cb"
+    }
+  },
+  "localBuild": {
+    "testedVersion": "94e2c0a496003d6f79431339",
+    "publishedVersion": "2897dae74f2ca40ce525c26e",
+    "checkoutEOLOnlyDifferences": [
+      "site/assets/css/boot-lock.css",
+      "site/index.html"
+    ],
+    "note": "Content fingerprints include raw bytes. The Windows main checkout changed CRLF only in these tracked text files; canonical Git content is unchanged. Deployment was rebuilt and verified from that checkout."
+  },
+  "rollback": {
+    "target": "/opt/win11-home/releases/20261028T110253Z-e2bc44a0e3",
+    "retainedEntrySHA256": "f3b0f201f5471dae82c8547cb3f696a9287abf951de8b0439ace6040a210c155",
+    "retainedEntryVerified": true,
+    "automaticSelfCheckRollbackAvailable": true,
+    "exercisedThisRelease": false
+  },
+  "scope": "Homepage static release only. nginx reload; no account service deployment, credential change, answer submission or full-flow acceptance."
+}
