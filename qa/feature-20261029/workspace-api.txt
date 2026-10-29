@@ -1,0 +1,15 @@
+✔ account health requires actual JSON success and bounds failures and timeouts (139.8278ms)
+✔ full launcher owns five healthy services and proxies persisted account progress through Vite (2039.5333ms)
+✔ site-only ignores the account API and its occupied port without opening a database (203.8871ms)
+✔ occupied API port fails startup and never reuses or closes the existing service (320.1705ms)
+✔ later Vite startup failure closes the owned API and earlier frontend, preserving the conflicting service (1099.3965ms)
+✔ IPC loss stops the full workspace and releases every owned listener (1481.1549ms)
+✔ an owned account process exiting after startup fails the workspace and closes its siblings (1332.0458ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6726.5105

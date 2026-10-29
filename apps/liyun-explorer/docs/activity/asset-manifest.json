@@ -1,0 +1,183 @@
+{
+  "baseline": "230f80d",
+  "scope": "Activity menu decorative layers; no account, location or participant data",
+  "assets": [
+    {
+      "path": "public/assets/activity/ambient-room-blur.webp",
+      "usable": true,
+      "dimensions": [
+        1672,
+        941
+      ],
+      "bytes": 22716,
+      "sha256": "39aa710566f2428480793cc869699ec1a20f68d26e33ad10daed671bf4d92532",
+      "source": "New image generated with the built-in image_gen tool; original preserved in the tool's generated_images directory",
+      "attribution": "AI-generated imagined reading-room ambience for this project",
+      "rights": "Project-generated asset; not a photograph or a claim of a real campus interior",
+      "quality": "Already defocused in the generated image; WebP quality 76, method 6, no runtime blur needed",
+      "sceneCandidates": [
+        "ambient-backdrop"
+      ],
+      "limitations": "Decorative soft-focus backdrop only; no text, UI, people or real location information",
+      "generation": {
+        "mode": "built-in image_gen, new image, opaque background",
+        "prompt": "Use case: stylized-concept. Asset type: one understated raster ambient backdrop for a Chinese campus exploration game's full-screen activities menu. Primary request: a softly defocused warm grey-brown library reading room interior, autumn afternoon light through tall windows, distant wooden shelves and desks only suggested by broad forms, delicate painterly texture, muted taupe shadows and faded cream highlights. Wide horizontal 16:9 composition. The image must be uniformly heavily out of focus already, no crisp objects, no text anywhere, no letters or numerals, no signboards, no people, no book-cover lettering, no symbols, no UI, no buttons, no borders, no decorations. Top and bottom will be visible behind a sharp central activity scroll. Keep contrast low and the center calm; no bright white windows or strong focal point. Warm grey-brown and olive-neutral mood matching paper and jade materials.",
+        "postprocessing": "Converted RGB PNG to WebP without cropping, resizing or drawing changes"
+      }
+    },
+    {
+      "path": "public/assets/paintings/waterbirds.webp",
+      "usable": true,
+      "dimensions": [
+        1400,
+        881
+      ],
+      "bytes": 369078,
+      "sha256": "6b813d1088107eedb43fafbbc6cd3e22f3ef109745c888e1f7bf476d557528bb",
+      "source": "Existing team artwork introduced by PR #7, documented in docs/ASSETS.md; reused with original bytes",
+      "attribution": "Existing frost-festival project campus-inspired illustration",
+      "rights": "Existing project asset; original rights are unchanged and were not independently expanded or verified here",
+      "quality": "No baked UI text, buildings and lake visible, suitable for the horizontal artwork panel",
+      "sceneCandidates": [
+        "frost",
+        "encounters"
+      ],
+      "limitations": "One flat illustration for landscape depth; independent branch, leaves, water highlights and journal animate above it. Not a documentary photograph."
+    },
+    {
+      "path": "public/assets/paintings/north-lake.webp",
+      "usable": true,
+      "dimensions": [
+        1400,
+        880
+      ],
+      "bytes": 385102,
+      "sha256": "f3ac850551daf051b75b5cca48b4c7a92d8d5ed3e2cc012bac43aee8b3c55268",
+      "source": "Existing team artwork introduced by PR #7, documented in docs/ASSETS.md; reused with original bytes",
+      "attribution": "Existing frost-festival project campus-inspired illustration",
+      "rights": "Existing project asset; original rights are unchanged and were not independently expanded or verified here",
+      "quality": "No baked UI text, lake and arched bridge readable",
+      "sceneCandidates": [
+        "seasons"
+      ],
+      "limitations": "Illustrated seasonal preview, not a physical-site survey or proof of a scheduled activity"
+    },
+    {
+      "path": "public/assets/paintings/library.webp",
+      "usable": true,
+      "dimensions": [
+        1400,
+        880
+      ],
+      "bytes": 394090,
+      "sha256": "f5b3d99a2301c1e71aa49b83f93950fc48ff5dfbf206f53ac2054813d0022000",
+      "source": "Existing team artwork introduced by PR #7, documented in docs/ASSETS.md; reused with original bytes",
+      "attribution": "Existing frost-festival project campus-inspired illustration",
+      "rights": "Existing project asset; original rights are unchanged and were not independently expanded or verified here",
+      "quality": "No baked UI text; restrained static saturation/sepia treatment differentiates theme states",
+      "sceneCandidates": [
+        "mystery",
+        "archive"
+      ],
+      "limitations": "Illustrated preview; archive theme does not imply previously held activities or rewards"
+    },
+    {
+      "path": "src/activity/ThemeArtwork.tsx",
+      "usable": true,
+      "source": "Original project-local SVG geometry and native React decorative layers",
+      "attribution": "Created for this activity menu; no third-party icon download",
+      "rights": "Project-local code-native vector assets",
+      "quality": "Only small fixed-phase falling-leaf vectors, subtle water highlights/clouds and an error fallback landscape remain; large branch, journal and large flat motif SVGs have been removed.",
+      "sceneCandidates": [
+        "foreground",
+        "atmosphere",
+        "image-error-fallback"
+      ],
+      "limitations": "Small native decorative paths only; no public or private calibrated map data, selectable UI, letters or reward logic."
+    },
+    {
+      "path": "public/assets/activity/ginkgo-bough.webp",
+      "usable": true,
+      "dimensions": [
+        1671,
+        941
+      ],
+      "bytes": 446344,
+      "sha256": "aaa1fc0e319d75a6acaa21eed3804ff1fdff781404f316bb6769bff13ddaf9fd",
+      "source": "Built-in image_gen; user-supplied concept image used only as a style/material reference",
+      "attribution": "AI-generated illustrated foreground prop created for this project",
+      "rights": "Project-generated decorative illustration; not a photograph or a real survey",
+      "quality": "Independent naturally curved fine-painted golden ginkgo bough; replaces the large crude branch SVG",
+      "sceneCandidates": [
+        "foreground",
+        "frost",
+        "seasons",
+        "mystery",
+        "encounters",
+        "archive"
+      ],
+      "limitations": "Decorative painted prop only, not a calibrated campus map or documentary location. Text, interactions and activity state remain separate DOM.",
+      "generation": {
+        "mode": "built-in image_gen, transparent background",
+        "prompt": "Use case: illustration-story. Asset type: a single isolated transparent foreground ginkgo bough for a refined 2D Chinese campus autumn game illustration. The supplied reference image is ONLY a style reference for painted gold ginkgo leaves, fine paper grain and restrained jade-and-gold art direction; do not reproduce the UI, words, campus, lake or composition. Generate only one exquisitely hand-painted autumn ginkgo branch as a separate cutout on a genuinely transparent background. Composition: wide horizontal, enter at the upper left, natural gently curved slender dark-brown woody branch tapering into graceful hairline twigs extending toward the middle right, fan-shaped golden leaves hang irregularly below and around it, light asymmetry and several open gaps between small clusters. The main branch must be organically curved with knots and fine bark and never look like a straight pole or railing. Delicate scalloped bilobed fan leaves with many fine radiating veins, subtle ochre and sunlit pale-gold variations, meticulous gouache/ink-wash on fine fibrous paper, gold-edged papercut-like paint treatment, rich 2D illustrative detail, warm autumn afternoon. Need the whole visible branch and leaves contained within the image with generous transparent space below and around, no hard rectangular edge, no shadows cast on a background. No text, no letters, no symbols, no UI, no frame, no separate icons, no collage, no people, no mountains, no sky, no background color, no white background, no photorealistic 3D plastic. Beautiful fine art matching a high-quality Chinese illustrated scroll menu.",
+        "original": "exec-5b0d1dd4-429e-42ec-b841-c100ba8b6b74.png",
+        "postprocessing": "RGBA PNG converted to WebP quality 88/method 6; no drawing, cropping, resizing or geometry edits",
+        "alphaPreservedExactly": true,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "fullyTransparentPixels": 961747
+      }
+    },
+    {
+      "path": "public/assets/activity/travel-journal.webp",
+      "usable": true,
+      "dimensions": [
+        1672,
+        941
+      ],
+      "bytes": 452158,
+      "sha256": "845743499fc46ef2cb6723d52e70da0fdcc40571237f2cb9b94ae82f622a0583",
+      "source": "Built-in image_gen; user-supplied concept image used only as a style/material reference",
+      "attribution": "AI-generated illustrated foreground prop created for this project",
+      "rights": "Project-generated decorative illustration; not a photograph or a real survey",
+      "quality": "Independent detailed open travel journal with paper fibres, jade cloth cover and imagined map illustration; replaces the large crude journal SVG",
+      "sceneCandidates": [
+        "foreground",
+        "frost",
+        "seasons",
+        "mystery",
+        "encounters",
+        "archive"
+      ],
+      "limitations": "Decorative painted prop only, not a calibrated campus map or documentary location. Text, interactions and activity state remain separate DOM.",
+      "generation": {
+        "mode": "built-in image_gen, transparent background",
+        "prompt": "Use case: illustration-story. Asset type: a single isolated transparent foreground travel journal prop for a refined Chinese campus autumn game illustration. The supplied reference image is ONLY a style and material reference; generate no UI, labels, campus scene or background. One open campus travel journal, viewed in graceful three-quarter perspective from above, the right page slightly farther away, lying with the book's bottom edge slanting up gently to the right, wide horizontal silhouette. Cream aged xuan paper with intricate fine fibres and soft curled page edges, layered pages, muted jade-green cloth cover, thin antique-gold corner trim and a small faded-red ribbon bookmark. Its two open pages have a detailed hand-painted imaginary campus map: delicate lake shapes, tiny top-down building blocks, winding pale paths and small tree dots, meticulous fine linework and softly painted jade-and-gold details. This is an evocative illustrated prop and not any real calibrated map. One small graceful golden ginkgo leaf rests near the outer corner. Match fine 2D gouache/paper-cut national-style autumn art, rich painterly material and natural perspective, refined and plausible, not an icon, not a crude flat SVG, not a toy, not a photorealistic 3D render. Entire book must fit with comfortable transparent margin. Genuinely transparent background, no table, no scene, no floor, no cast shadow on a background, no UI, no frame. Absolutely no text, no numbers, no visible letters, no invented writing or glyphs anywhere.",
+        "original": "exec-b2313bf4-2989-47af-8312-2b2d81e09432.png",
+        "postprocessing": "RGBA PNG converted to WebP quality 88/method 6; no drawing, cropping, resizing or geometry edits",
+        "alphaPreservedExactly": true,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "fullyTransparentPixels": 576902
+      }
+    }
+  ],
+  "motion": {
+    "implementation": "CSS transform/opacity only for loops; no per-frame JavaScript, Canvas or new animation dependency",
+    "leafCountHigh": 8,
+    "leafCountLow": 4,
+    "shortLandscapeLeafMaximum": 4,
+    "lifecycle": "Visibility listener removed on unmount; image load callbacks cancelled on change/unmount; no timers or requestAnimationFrame loops",
+    "reducedMotion": "No falling leaves, glints, branch or water loops; image remains visible without animation",
+    "hiddenOrPaused": "All decorative animations pause; assets remain static",
+    "failure": "Current landscape stays while the next image decodes; failed image yields the code-native gradient/landscape fallback, while interactive text remains separate"
+  },
+  "reference": {
+    "name": "User-provided activity-page-concept.png, 1672x941",
+    "usage": "Layout and materials reference only. The full concept is never used as a clickable runtime background; branch/journal generation used it only as a style reference."
+  }
+}

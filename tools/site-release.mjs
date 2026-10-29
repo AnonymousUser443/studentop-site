@@ -5,7 +5,7 @@ import { existsSync, realpathSync, lstatSync, readdirSync, readFileSync, mkdirSy
 const FORMAT = 1;
 const SCHEMA = 'aiden-public-site-release-v2';
 const ID = /^[a-f0-9]{24}$/;
-const HTML = ['index.html', 'projects/index.html'];
+const HTML = ['index.html', 'projects/index.html', 'task-manager/index.html'];
 const ASSET = /^assets\/(?:css|js|img|fonts|audio)\//;
 const EXT = new Set(['.css','.js','.mjs','.svg','.png','.jpg','.jpeg','.webp','.avif','.gif','.ico','.bmp','.woff','.woff2','.ttf','.otf','.opus','.mp3','.ogg','.wav','.m4a','.mp4','.webm']);
 const LICENSES = new Set(['assets/fonts/OFL-NotoSansSC.txt','assets/fonts/OFL-NotoSerifSC.txt']);

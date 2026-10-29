@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Assemble only reviewed public builds and the two public auth code files. No secrets, SSH or install. */
+/** Assemble reviewed public builds and companion code. No secrets, SSH or install. */
 import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
@@ -25,7 +25,7 @@ export function prepareRelease(commit){
  const voxel=fs.readFileSync(path.join(out,'voxel/index.html'),'utf8'),campus=fs.readFileSync(path.join(out,'campus/index.html'),'utf8');
  if(!voxel.includes('./assets/')||!campus.includes('/campus-entry/assets/'))throw new Error('Wrong application production base.');
  if(!fs.existsSync(path.join(out,'voxel/licenses/three-MIT.txt')))throw new Error('Missing Three.js copyright notice.');
- for(const name of ['desktop-auth.mjs','serve-desktop-auth.mjs'])copy(path.join(root,'tools',name),'auth/tools/'+name);
+ for(const name of ['desktop-auth.mjs','serve-desktop-auth.mjs','task-manager-proxy.mjs'])copy(path.join(root,'tools',name),'auth/tools/'+name);
  for(const name of ['win11-home-app.conf','win11-home-headers.conf','win11-home-projects.conf'])copy(path.join(root,'deploy/nginx',name),'nginx/'+name);
  copy(path.join(root,'deploy/systemd/desktop-auth.service'),'systemd/desktop-auth.service');
  copy(path.join(root,'deploy/check-release.mjs'),'checks/check-live.mjs');

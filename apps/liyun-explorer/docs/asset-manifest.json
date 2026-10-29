@@ -1,12 +1,47 @@
 {
-  "generatedAt": "2026-10-29T12:46:29.531Z",
+  "generatedAt": "2026-10-29T15:13:52.863Z",
   "mapId": "campus-v04-eaa124716c51375f",
   "logicalCanvas": [
     4000,
     4958
   ],
-  "totalBytes": 26401119,
+  "totalBytes": 27895258,
   "files": [
+    {
+      "path": "public/assets/activity/ambient-room-blur.webp",
+      "bytes": 22716,
+      "sha256": "39aa710566f2428480793cc869699ec1a20f68d26e33ad10daed671bf4d92532"
+    },
+    {
+      "path": "public/assets/activity/ginkgo-bough.webp",
+      "bytes": 446344,
+      "sha256": "aaa1fc0e319d75a6acaa21eed3804ff1fdff781404f316bb6769bff13ddaf9fd"
+    },
+    {
+      "path": "public/assets/activity/reward-ginkgo.webp",
+      "bytes": 84430,
+      "sha256": "da99fefc9f27f9374e9fb87691f927e3a8f55579ed0019703f548adb6463d1fa"
+    },
+    {
+      "path": "public/assets/activity/reward-journal.webp",
+      "bytes": 86874,
+      "sha256": "b5baa9ab987616b6f48439acf34786bfde3a601265c5d0df1ef47856f9679ae3"
+    },
+    {
+      "path": "public/assets/activity/reward-seal.webp",
+      "bytes": 115740,
+      "sha256": "cfca26d29b666ddbb31325647a91d79556a594525b7fb1ee0006e94442c9dfac"
+    },
+    {
+      "path": "public/assets/activity/reward-starlight.webp",
+      "bytes": 52532,
+      "sha256": "309dca3730d5b94e945c885e486d60e1bd522bd57fcb680e16175c783ce1d774"
+    },
+    {
+      "path": "public/assets/activity/travel-journal.webp",
+      "bytes": 452158,
+      "sha256": "845743499fc46ef2cb6723d52e70da0fdcc40571237f2cb9b94ae82f622a0583"
+    },
     {
       "path": "public/assets/art/mountain-right.webp",
       "bytes": 201018,
@@ -54,8 +89,8 @@
     },
     {
       "path": "public/assets/fonts/MaShanZheng-OFL.txt",
-      "bytes": 4490,
-      "sha256": "8989e84e52586916204640b31620dd2d12a4dddfb4aec87cbf04ba7acad1e6b6"
+      "bytes": 4397,
+      "sha256": "d7bdb1cee215b689e23c2f95672a6084c790542170648267a55114103d756a08"
     },
     {
       "path": "public/assets/fonts/MaShanZheng-Regular.ttf",
@@ -64,18 +99,18 @@
     },
     {
       "path": "public/assets/fonts/MaShanZheng-UI.woff2",
-      "bytes": 187600,
-      "sha256": "0fb93e13b42a4166152d1e0a7978564ec5fff4fc317f3004d0c3439d5823d08d"
+      "bytes": 316300,
+      "sha256": "7ee892d5c64057387b968bb915a87355209fa3ff31f798f171578fb6cf202cee"
     },
     {
       "path": "public/assets/fonts/NotoSerifSC-OFL.txt",
-      "bytes": 4444,
-      "sha256": "64538aaa923b7e75559725ecf64eff7b18f623857b8e6d31a7347743ab27e907"
+      "bytes": 4350,
+      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6"
     },
     {
       "path": "public/assets/fonts/NotoSerifSC-UI.woff2",
-      "bytes": 222552,
-      "sha256": "859a10a1fd5bc24e044ba5abe131cdccf6ee92dcbc1debc4f9bdec23566c5d0e"
+      "bytes": 327384,
+      "sha256": "8a722a976a80cac5676b9e54feb65e3029ed65c18d64caa57064676308c16a05"
     },
     {
       "path": "public/assets/maps/calibrated/campus_no_labels.png",

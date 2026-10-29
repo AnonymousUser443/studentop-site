@@ -1,0 +1,8 @@
+
+ RUN  v5.0.5 D:/Users/Desktop/北理的文件夹/学习相关/软件工程导论研究型课程/V2版本集中开发文件夹/apps/liyun-explorer
+
+
+ Test Files  9 passed (9)
+      Tests  85 passed (85)
+   Start at  23:16:10
+   Duration  393ms (import 40%, tests 27%, transform 23%, worker 10%, environment 1%)

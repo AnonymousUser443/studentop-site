@@ -138,6 +138,7 @@
         }
         list.forEach(function (p) {
           var href = Win.safeUrl(Win.resolveProjectUrl(p.id, p.link));
+          var nativeApp = p.appId && Win.apps[p.appId] && !Win.apps[p.appId].external ? p.appId : '';
           var card = document.createElement('article');
           card.className = 'project-card';
           card.innerHTML =
@@ -151,9 +152,10 @@
             '<div class="pc-tags">' + (p.tags || []).map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('') + '</div>' +
             '<div class="pc-foot">' +
               '<span class="pc-id">#' + esc(p.id) + '</span>' +
-              (href ? '<a class="btn btn-small" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' + linkIcon('external') + '打开</a>' : '<span class="pc-muted">私下维护</span>') +
+              (nativeApp ? '<button type="button" class="btn btn-small" data-native-project="' + esc(nativeApp) + '">窗口内打开</button>' : href ? '<a class="btn btn-small" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' + linkIcon('external') + '打开</a>' : '<span class="pc-muted">私下维护</span>') +
             '</div>';
           grid.appendChild(card);
+          if (nativeApp) card.querySelector('[data-native-project]').addEventListener('click', function () { WM.launch(nativeApp); });
         });
       }
       render('全部');

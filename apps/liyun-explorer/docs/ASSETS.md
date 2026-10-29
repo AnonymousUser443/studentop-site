@@ -100,4 +100,6 @@ pwsh -File scripts/fonts-build.ps1 -SerifSource "C:/Windows/Fonts/NotoSerifSC-VF
 
 ## 素材哈希校验
 
+2026-10-29 活动页复用团队已有的 `paintings/waterbirds.webp`、`north-lake.webp` 和 `library.webp`，新增 `public/assets/activity/` 独立位图：柔焦环境、透明银杏枝、旅行手札和四枚奖励。关键资产使用 ImageGen，UI文字与命中区保持DOM；小叶/线饰可用矢量。提示词、图像尺寸、透明度、来源和限制分别记录在 [activity/asset-manifest.json](activity/asset-manifest.json) 与 [activity/reward-assets.json](activity/reward-assets.json)。本轮补字沿用现有公开字体，最终cmap检查见 [activity/font-coverage.json](activity/font-coverage.json)，未修改原TTF或OFL许可。上面的历史场景构件说明不作为活动页素材来源。
+
 从仓库根执行 `node apps/liyun-explorer/scripts/asset-manifest.mjs --check`，只比较当前素材与已提交清单，不改文件。脚本通过 import.meta.url 定位应用根，不受执行 cwd 影响；主动更新素材后去掉 --check 才重建 [清单](asset-manifest.json)。文件缺失、符号链接或哈希差异都会失败，不把异常当作通过。

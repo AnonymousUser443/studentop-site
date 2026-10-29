@@ -1,0 +1,25 @@
+✔ monitor configuration only accepts a fixed loopback integer port (0.7693ms)
+✔ anonymous, forged, duplicate and pre-login cookies cannot read metrics or allocate monitor streams (105.0501ms)
+✔ same-origin reads share the existing lease and never forward visitor identity or upstream headers (77.3032ms)
+✔ cross-origin, cross-site and ambiguous routes or write methods are rejected before upstream access (85.5973ms)
+✔ JSON contract keeps real nullable metrics while dropping unknown fields and internal errors (73.8456ms)
+✔ wrong monitor, HTML, redirects, invalid UTF-8, schemas, compressed and oversized bodies fail closed (89.7031ms)
+✔ read authorization does not refresh TTL and is rechecked before delayed JSON delivery (97.7753ms)
+✔ SSE proxies validated samples and strips untrusted SSE fields and cookies (91.053ms)
+✔ logout revokes an open stream and destroys its upstream connection (250.4438ms)
+✔ expiry and auth drain revoke idle streams within the one-second lease check (2162.5747ms)
+✔ stream quotas bound each session and the entire proxy and are released on disconnect (294.176ms)
+✔ concurrent JSON requests are bounded and upstream timeout is finite (4122.3932ms)
+✔ invalid and oversized SSE frames end the stream without forwarding an error body (140.3358ms)
+✔ bridge drain closes active streams and pending reads without affecting authentication (111.3766ms)
+✔ an absent loopback monitor produces a redacted unavailable response (87.1734ms)
+✔ SSE heartbeat does not hide a stalled upstream and the read deadline releases the slot (25322.5554ms)
+✔ a client that stops reading cannot retain an unbounded upstream stream (5406.1989ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 38612.759

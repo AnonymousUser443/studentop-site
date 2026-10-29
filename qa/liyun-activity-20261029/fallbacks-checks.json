@@ -1,0 +1,67 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "name": "failed landscape leaves interactive title and preview",
+      "pass": true
+    },
+    {
+      "name": "failed landscape pauses decorative loops",
+      "pass": true
+    },
+    {
+      "name": "image failure cannot trap the menu",
+      "pass": true
+    },
+    {
+      "name": "missing reward images fall back to real icons",
+      "pass": true
+    },
+    {
+      "name": "fallback reward still explains availability",
+      "pass": true
+    },
+    {
+      "name": "missing foreground art hides broken images",
+      "pass": true
+    },
+    {
+      "name": "closing during opening cancels its timeline",
+      "pass": true
+    },
+    {
+      "name": "Escape cancels pending map navigation",
+      "pass": true
+    },
+    {
+      "name": "synthetic hidden signal pauses visible menu effects",
+      "pass": true
+    },
+    {
+      "name": "synthetic foreground signal resumes effects",
+      "pass": true
+    },
+    {
+      "name": "Shift Tab stays inside the activity dialog",
+      "pass": true
+    },
+    {
+      "name": "no JavaScript exceptions in failure scenarios",
+      "pass": true,
+      "evidence": []
+    }
+  ],
+  "expectedNetworkFaults": [
+    "NETWORK: ",
+    "NETWORK: ",
+    "NETWORK: ",
+    "NETWORK: ",
+    "NETWORK: ",
+    "NETWORK: ",
+    "NETWORK: ",
+    "NETWORK: ",
+    "NETWORK: ",
+    "NETWORK: "
+  ],
+  "limitations": "Hidden state was an explicitly synthetic visibility signal; image failures used real browser URL blocking. No physical performance or mobile hardware claim."
+}

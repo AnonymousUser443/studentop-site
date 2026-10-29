@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "purpose": "理韵寻踪活动页四枚奖励构想图标；仅展示，不发放道具或证明参与。",
+  "generator": "OpenAI 内置 image_gen",
+  "generationMode": "four independent image generations",
+  "transparentBackground": true,
+  "generatedOn": "2026-10-29",
+  "references": [
+    {
+      "path": ".tmp/liyun-activity-guide/references/activity-page-concept.png",
+      "role": "User-supplied visual reference; not copied as a UI background."
+    }
+  ],
+  "rights": "AI-generated original game props. Campus architecture is a fictional decorative engraving, not a survey or real award.",
+  "conversion": "Source PNG -> 512x512 WebP, Pillow Lanczos resize and WebP quality=94 method=6 alpha_quality=100; no drawing or synthetic reconstruction.",
+  "prompts": {
+    "starlight": "Use case: stylized-concept. Asset type: one premium collectible reward icon for a refined Chinese campus exploration game. Single isolated object, front-facing, centered in a square composition occupying 80 percent of the canvas, generous clean transparent margin. Exquisite hand-painted game inventory art with softly shaded volume, believable delicate material texture, fine crafted details and restrained jade-green, parchment-ivory and antique-gold palette. Gentle warm upper-left light, crisp readable silhouette at small sizes. Actual transparent background with alpha. No solid background, no checkerboard drawn into the image, no square plaque, no UI frame, no button, no caption, no letters, no Chinese characters, no numbers, no watermark, no ground plane or rectangular cast shadow. Avoid flat vector icons, simplified SVG shapes, low-poly facets, plastic gloss, neon glow, photoreal studio background. Subject: a single elegant four-point guiding star jewel, the vertical points slightly longer than the horizontal ones, with narrow polished antique-gold beveled rims and softly translucent white-jade and pale sky-blue cloisonne enamel faces. Subtle fine engraved flourishes on the gold edging, a tiny pearlescent central highlight. It should feel like a precious scholarly keepsake, richly painted rather than a geometric placeholder. Keep the four-point silhouette simple and distinct.",
+    "journal": "Use case: stylized-concept. Asset type: one premium collectible reward icon for a refined Chinese campus exploration game. Single isolated object, front-facing, centered in a square composition occupying 80 percent of the canvas, generous clean transparent margin. Exquisite hand-painted game inventory art with softly shaded volume, believable delicate material texture, fine crafted details and restrained jade-green, parchment-ivory and antique-gold palette. Gentle warm upper-left light, crisp readable silhouette at small sizes. Actual transparent background with alpha. No solid background, no checkerboard drawn into the image, no square plaque, no UI frame, no button, no caption, no letters, no Chinese characters, no numbers, no watermark, no ground plane or rectangular cast shadow. Avoid flat vector icons, simplified SVG shapes, low-poly facets, plastic gloss, neon glow, photoreal studio background. Subject: one small closed campus travel journal, upright front cover seen with just a hint of cream paper page edges and turned about 10 degrees counterclockwise. Deep bamboo-green clothbound cover with subtly woven texture, delicate antique-gold spine fillets and decorative gold corner protectors. A fine gold architectural engraving of a dignified university teaching building on the cover, with central entrance, rectilinear windows and a modest tower. There is absolutely no cover title or text anywhere. A narrow warm ivory page ribbon peeks below. Rich painterly embossed details, not a generic flat book symbol.",
+    "ginkgo": "Use case: stylized-concept. Asset type: one premium collectible reward icon for a refined Chinese campus exploration game. Single isolated object, front-facing, centered in a square composition occupying 80 percent of the canvas, generous clean transparent margin. Exquisite hand-painted game inventory art with softly shaded volume, believable delicate material texture, fine crafted details and restrained jade-green, parchment-ivory and antique-gold palette. Gentle warm upper-left light, crisp readable silhouette at small sizes. Actual transparent background with alpha. No solid background, no checkerboard drawn into the image, no square plaque, no UI frame, no button, no caption, no letters, no Chinese characters, no numbers, no watermark, no ground plane or rectangular cast shadow. Avoid flat vector icons, simplified SVG shapes, low-poly facets, plastic gloss, neon glow, photoreal studio background. Subject: a single finely crafted golden ginkgo-leaf bookmark ornament with a broad fan-shaped leaf, delicately scalloped natural edge, many extremely fine radiating gold veins and soft amber-gold tonal variation. A slim curved stem connects to a tasteful short ivory-and-muted-jade silk tassel ribbon loop, gently curved below the leaf. The leaf looks like thin engraved gilded metal or lacquered autumn leaf, softly luminous but not glowing. Rich hand-painted texture and natural elegant asymmetry, not a polygon leaf.",
+    "seal": "Use case: stylized-concept. Asset type: one premium collectible reward icon for a refined Chinese campus exploration game. Single isolated object, front-facing, centered in a square composition occupying 80 percent of the canvas, generous clean transparent margin. Exquisite hand-painted game inventory art with softly shaded volume, believable delicate material texture, fine crafted details and restrained jade-green, parchment-ivory and antique-gold palette. Gentle warm upper-left light, crisp readable silhouette at small sizes. Actual transparent background with alpha. No solid background, no checkerboard drawn into the image, no square plaque, no UI frame, no button, no caption, no letters, no Chinese characters, no numbers, no watermark, no ground plane or rectangular cast shadow. Avoid flat vector icons, simplified SVG shapes, low-poly facets, plastic gloss, neon glow, photoreal studio background. Subject: a single round antique-bronze campus commemorative medallion seen nearly straight on. Finely milled beaded bronze rim, warm muted gold highlights, olive-brown patina in the recesses, believable softly worn metal texture. The central relief depicts a dignified campus academic building with a central tower, clear windows and entrance, framed by a tiny elegant laurel-and-cloud flourish. No lettering, numbers or symbolic pseudo-writing anywhere; architectural relief only. It is a collectible scholarly badge, not real currency. Richly hand-painted dimensional engraving, not a simple outline circle."
+  },
+  "assets": [
+    {
+      "id": "starlight",
+      "path": "apps/liyun-explorer/public/assets/activity/reward-starlight.webp",
+      "url": "/assets/activity/reward-starlight.webp",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 52532,
+      "sha256": "309dca3730d5b94e945c885e486d60e1bd522bd57fcb680e16175c783ce1d774",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "fullyTransparentPixels": 195318,
+      "sourceArtifact": "exec-5229d7bb-f8b4-4a65-8d43-9e4e1d6379dd.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "0f57a97491142e2e220052cb73984524f68da0af8992f73c49e411dc8057f080",
+      "review": "Inspected generated result: single object, no raster text, no UI frame; alpha validated."
+    },
+    {
+      "id": "journal",
+      "path": "apps/liyun-explorer/public/assets/activity/reward-journal.webp",
+      "url": "/assets/activity/reward-journal.webp",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 86874,
+      "sha256": "b5baa9ab987616b6f48439acf34786bfde3a601265c5d0df1ef47856f9679ae3",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "fullyTransparentPixels": 135586,
+      "sourceArtifact": "exec-ed2936d6-17fb-4b63-a6d5-a3fdf462e624.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "899f4534e9f9af9e7e5b1dd7c8569f59f3e51af6af97753358c4939238036cc6",
+      "review": "Inspected generated result: single object, no raster text, no UI frame; alpha validated."
+    },
+    {
+      "id": "ginkgo",
+      "path": "apps/liyun-explorer/public/assets/activity/reward-ginkgo.webp",
+      "url": "/assets/activity/reward-ginkgo.webp",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 84430,
+      "sha256": "da99fefc9f27f9374e9fb87691f927e3a8f55579ed0019703f548adb6463d1fa",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "fullyTransparentPixels": 166935,
+      "sourceArtifact": "exec-995e78da-0f37-4065-98ee-847cd7e93835.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "45407d86245f6569f4e58f3bdaad2330bbad85e53653dd518f05a2a01f3cf795",
+      "review": "Inspected generated result: single object, no raster text, no UI frame; alpha validated."
+    },
+    {
+      "id": "seal",
+      "path": "apps/liyun-explorer/public/assets/activity/reward-seal.webp",
+      "url": "/assets/activity/reward-seal.webp",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 115740,
+      "sha256": "cfca26d29b666ddbb31325647a91d79556a594525b7fb1ee0006e94442c9dfac",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "fullyTransparentPixels": 91271,
+      "sourceArtifact": "exec-000f35b3-c843-4f7e-aad2-cf38b24aa63e.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "a5d406d490903bb7623fc92587a2768cfe427c169c7882659d5442cf2779c53e",
+      "review": "Inspected generated result: single object, no raster text, no UI frame; alpha validated."
+    }
+  ]
+}

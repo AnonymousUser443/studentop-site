@@ -1,0 +1,96 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "name": "desktop and start list register native monitor",
+      "pass": true
+    },
+    {
+      "name": "monitor runs inside desktop window",
+      "pass": true
+    },
+    {
+      "name": "project card launches the native monitor",
+      "pass": true
+    },
+    {
+      "name": "relaunch focuses single existing window",
+      "pass": true
+    },
+    {
+      "name": "four synthetic logical cores and real fixture identity",
+      "pass": true
+    },
+    {
+      "name": "processes are returned by authenticated proxy",
+      "pass": true
+    },
+    {
+      "name": "process search filters by supplied data",
+      "pass": true
+    },
+    {
+      "name": "process sorting reports accessible state",
+      "pass": true
+    },
+    {
+      "name": "local theme setting works inside isolated document",
+      "pass": true
+    },
+    {
+      "name": "system view uses fixture OS and removes SSH action",
+      "pass": true
+    },
+    {
+      "name": "manual pause closes upstream data stream",
+      "pass": true
+    },
+    {
+      "name": "window restore respects manual pause",
+      "pass": true
+    },
+    {
+      "name": "minimize suspends real upstream stream",
+      "pass": true
+    },
+    {
+      "name": "restore reconnects one stream",
+      "pass": true
+    },
+    {
+      "name": "monitor supports phone window without document overflow",
+      "pass": true
+    },
+    {
+      "name": "offline keeps last sample with explicit unavailable status",
+      "pass": true
+    },
+    {
+      "name": "service recovery and refresh restore continuous stream",
+      "pass": true
+    },
+    {
+      "name": "no JavaScript exceptions",
+      "pass": true,
+      "evidence": []
+    },
+    {
+      "name": "close destroys document and streams",
+      "pass": true
+    },
+    {
+      "name": "initial unavailable service does not fabricate graphs",
+      "pass": true
+    },
+    {
+      "name": "initial failed EventSource recovers after service and refresh",
+      "pass": true
+    },
+    {
+      "name": "desktop lock disposes monitor document",
+      "pass": true
+    }
+  ],
+  "scope": "Only native monitor window with synthetic local sampler; no Pi access, no private host data",
+  "environment": "Owned headless Microsoft Edge, 1600x1000 and emulated390x844"
+}

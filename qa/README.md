@@ -4,6 +4,17 @@
 
 ## 当前五服务契约（账号 API 纳入统一启动器）
 
+新增活动页与任务管理器的局部回归见[活动说明](../apps/liyun-explorer/docs/activity/QA.md)、[监控说明](../docs/TASK-MANAGER.md)和[本轮检查收据](feature-20261029/checks.json)。入口分别是左下活动一览和桌面任务管理器。新脚本只使用隔离的合成状态，不替代旧全流程或真实云端验收：
+
+```powershell
+node qa/liyun-activity-20261029/browser.cjs
+node qa/liyun-activity-20261029/fallbacks.cjs
+node --test qa/task-manager-proxy-tests.mjs
+node qa/task-manager-20261029/browser.cjs
+```
+
+任务管理器不计入新服务：它通过桌面会话保护的同源接口读取已有回环采样器，离线时诚实提示，原五服务health不受影响。素材故障注入和初始离线恢复必须单独检查；物理手机帧率、真实Pi数据和正式部署不能用本地合成结果冒充。
+
 | runner id | 本地地址 | 用途 |
 | --- | --- | --- |
 | site | <http://127.0.0.1:8899/> | 原生主站及同源门禁 |

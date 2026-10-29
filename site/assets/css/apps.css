@@ -1007,3 +1007,6 @@ a.link-row { text-decoration: none; }
   .set-nav-item::before { display: none; }
   .folder-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
 }
+/* Dedicated document keeps the existing monitor's dense UI isolated from desktop styles. */
+.window-body.task-manager-host { overflow: hidden; padding: 0; }
+.task-manager-frame { display: block; width: 100%; height: 100%; border: 0; background: #1c1c1c; }

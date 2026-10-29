@@ -1,0 +1,741 @@
+{
+  "ok": true,
+  "baseline": "230f80d",
+  "scope": "Local activity menu only; no real credentials, GPS, cloud data or production service",
+  "checks": [
+    {
+      "name": "map HUD removes old ribbons stamina and fabricated identity",
+      "pass": true
+    },
+    {
+      "name": "opening uses native animations while background is inert",
+      "pass": true,
+      "evidence": {
+        "phase": "opening",
+        "animations": 30,
+        "backgroundInert": true
+      }
+    },
+    {
+      "name": "five real directory tabs",
+      "pass": true
+    },
+    {
+      "name": "frost is an honest preview",
+      "pass": true
+    },
+    {
+      "name": "controls inside 1920x1080",
+      "pass": true,
+      "evidence": {
+        "width": 1920,
+        "height": 1080,
+        "rects": [
+          {
+            "selector": ".activity-close",
+            "x": 1783.6875,
+            "y": 73.4375,
+            "width": 63.359375,
+            "height": 63.359375,
+            "right": 1847.046875,
+            "bottom": 136.796875
+          },
+          {
+            "selector": ".activity-primary",
+            "x": 1277.953125,
+            "y": 741.875,
+            "width": 584.453125,
+            "height": 57,
+            "right": 1862.40625,
+            "bottom": 798.875
+          },
+          {
+            "selector": ".activity-scroll",
+            "x": 76.796875,
+            "y": 168.46875,
+            "width": 347.515625,
+            "height": 741.953125,
+            "right": 424.3125,
+            "bottom": 910.421875
+          }
+        ],
+        "tabs": [
+          {
+            "height": 101.515625,
+            "width": 313.515625
+          },
+          {
+            "height": 101.515625,
+            "width": 313.515625
+          },
+          {
+            "height": 101.515625,
+            "width": 313.515625
+          },
+          {
+            "height": 101.515625,
+            "width": 313.515625
+          },
+          {
+            "height": 101.515625,
+            "width": 313.515625
+          }
+        ],
+        "stripFraction": 0.639988425925926,
+        "scrollWidth": 1920
+      }
+    },
+    {
+      "name": "touch targets 1920x1080",
+      "pass": true
+    },
+    {
+      "name": "no document horizontal overflow 1920x1080",
+      "pass": true
+    },
+    {
+      "name": "reward click explains concept without granting items",
+      "pass": true
+    },
+    {
+      "name": "upcoming CTA shows preview notice",
+      "pass": true
+    },
+    {
+      "name": "theme changes to seasons",
+      "pass": true
+    },
+    {
+      "name": "rapid switching presents only final archive",
+      "pass": true
+    },
+    {
+      "name": "archive opens actual collection without fake completions",
+      "pass": true
+    },
+    {
+      "name": "collection return retains selection",
+      "pass": true
+    },
+    {
+      "name": "directory wheel cannot zoom background map",
+      "pass": true
+    },
+    {
+      "name": "map preview preserves exploration state",
+      "pass": true
+    },
+    {
+      "name": "map preview restores background input",
+      "pass": true
+    },
+    {
+      "name": "map return retains frost selection",
+      "pass": true
+    },
+    {
+      "name": "keyboard changes directory and moves focus",
+      "pass": true
+    },
+    {
+      "name": "Escape restores entry focus and map input",
+      "pass": true
+    },
+    {
+      "name": "controls inside 1366x768",
+      "pass": true,
+      "evidence": {
+        "width": 1366,
+        "height": 768,
+        "rects": [
+          {
+            "selector": ".activity-close",
+            "x": 1268.09375,
+            "y": 52.21875,
+            "width": 46,
+            "height": 46,
+            "right": 1314.09375,
+            "bottom": 98.21875
+          },
+          {
+            "selector": ".activity-primary",
+            "x": 909.203125,
+            "y": 503.640625,
+            "width": 415.828125,
+            "height": 50,
+            "right": 1325.03125,
+            "bottom": 553.640625
+          },
+          {
+            "selector": ".activity-scroll",
+            "x": 54.625,
+            "y": 119.796875,
+            "width": 247.234375,
+            "height": 527.609375,
+            "right": 301.859375,
+            "bottom": 647.40625
+          }
+        ],
+        "tabs": [
+          {
+            "height": 72.1875,
+            "width": 213.234375
+          },
+          {
+            "height": 72.1875,
+            "width": 213.234375
+          },
+          {
+            "height": 72.1875,
+            "width": 213.234375
+          },
+          {
+            "height": 72.1875,
+            "width": 213.234375
+          },
+          {
+            "height": 72.1875,
+            "width": 213.234375
+          }
+        ],
+        "stripFraction": 0.6399943033854166,
+        "scrollWidth": 1366
+      }
+    },
+    {
+      "name": "touch targets 1366x768",
+      "pass": true
+    },
+    {
+      "name": "no document horizontal overflow 1366x768",
+      "pass": true
+    },
+    {
+      "name": "controls inside 915x412",
+      "pass": true,
+      "evidence": {
+        "width": 915,
+        "height": 412,
+        "rects": [
+          {
+            "selector": ".activity-close",
+            "x": 843.5625,
+            "y": 4.9375,
+            "width": 44,
+            "height": 44,
+            "right": 887.5625,
+            "bottom": 48.9375
+          },
+          {
+            "selector": ".activity-primary",
+            "x": 589.25,
+            "y": 311.796875,
+            "width": 215.796875,
+            "height": 44,
+            "right": 805.046875,
+            "bottom": 355.796875
+          },
+          {
+            "selector": ".activity-scroll",
+            "x": 27.4375,
+            "y": 42.015625,
+            "width": 192.140625,
+            "height": 337.828125,
+            "right": 219.578125,
+            "bottom": 379.84375
+          }
+        ],
+        "tabs": [
+          {
+            "height": 48,
+            "width": 170.140625
+          },
+          {
+            "height": 48,
+            "width": 170.140625
+          },
+          {
+            "height": 48,
+            "width": 170.140625
+          },
+          {
+            "height": 48,
+            "width": 170.140625
+          },
+          {
+            "height": 48,
+            "width": 170.140625
+          }
+        ],
+        "stripFraction": 0.7799984830097088,
+        "scrollWidth": 915
+      }
+    },
+    {
+      "name": "touch targets 915x412",
+      "pass": true
+    },
+    {
+      "name": "no document horizontal overflow 915x412",
+      "pass": true
+    },
+    {
+      "name": "controls inside 844x390",
+      "pass": true,
+      "evidence": {
+        "width": 844,
+        "height": 390,
+        "rects": [
+          {
+            "selector": ".activity-close",
+            "x": 774.6875,
+            "y": 4.671875,
+            "width": 44,
+            "height": 44,
+            "right": 818.6875,
+            "bottom": 48.671875
+          },
+          {
+            "selector": ".activity-primary",
+            "x": 543.53125,
+            "y": 291.984375,
+            "width": 192.21875,
+            "height": 44,
+            "right": 735.75,
+            "bottom": 335.984375
+          },
+          {
+            "selector": ".activity-scroll",
+            "x": 25.3125,
+            "y": 39.765625,
+            "width": 177.234375,
+            "height": 319.796875,
+            "right": 202.546875,
+            "bottom": 359.5625
+          }
+        ],
+        "tabs": [
+          {
+            "height": 48,
+            "width": 145.234375
+          },
+          {
+            "height": 48,
+            "width": 145.234375
+          },
+          {
+            "height": 48,
+            "width": 145.234375
+          },
+          {
+            "height": 48,
+            "width": 145.234375
+          },
+          {
+            "height": 48,
+            "width": 145.234375
+          }
+        ],
+        "stripFraction": 0.7799679487179487,
+        "scrollWidth": 844
+      }
+    },
+    {
+      "name": "touch targets 844x390",
+      "pass": true
+    },
+    {
+      "name": "no document horizontal overflow 844x390",
+      "pass": true
+    },
+    {
+      "name": "controls inside 740x320",
+      "pass": true,
+      "evidence": {
+        "width": 740,
+        "height": 320,
+        "rects": [
+          {
+            "selector": ".activity-close",
+            "x": 673.8125,
+            "y": 3.828125,
+            "width": 44,
+            "height": 44,
+            "right": 717.8125,
+            "bottom": 47.828125
+          },
+          {
+            "selector": ".activity-primary",
+            "x": 476.546875,
+            "y": 234.1875,
+            "width": 157.703125,
+            "height": 44,
+            "right": 634.25,
+            "bottom": 278.1875
+          },
+          {
+            "selector": ".activity-scroll",
+            "x": 22.1875,
+            "y": 35.1875,
+            "width": 155.390625,
+            "height": 262.390625,
+            "right": 177.578125,
+            "bottom": 297.578125
+          }
+        ],
+        "tabs": [
+          {
+            "height": 44,
+            "width": 123.390625
+          },
+          {
+            "height": 44,
+            "width": 123.390625
+          },
+          {
+            "height": 44,
+            "width": 123.390625
+          },
+          {
+            "height": 44,
+            "width": 123.390625
+          },
+          {
+            "height": 44,
+            "width": 123.390625
+          }
+        ],
+        "stripFraction": 0.77998046875,
+        "scrollWidth": 740
+      }
+    },
+    {
+      "name": "touch targets 740x320",
+      "pass": true
+    },
+    {
+      "name": "no document horizontal overflow 740x320",
+      "pass": true
+    },
+    {
+      "name": "portrait has usable rotation guidance over menu",
+      "pass": true
+    },
+    {
+      "name": "landscape touch selects a chapter",
+      "pass": true
+    },
+    {
+      "name": "Reduced Motion stops infinite effects",
+      "pass": true,
+      "evidence": {
+        "leaves": 8,
+        "animated": 0
+      }
+    },
+    {
+      "name": "ten reopens do not duplicate scene or tabs",
+      "pass": true
+    },
+    {
+      "name": "closed menu has no running effects",
+      "pass": true
+    },
+    {
+      "name": "no browser errors",
+      "pass": true,
+      "evidence": []
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "rects": [
+        {
+          "selector": ".activity-close",
+          "x": 1783.6875,
+          "y": 73.4375,
+          "width": 63.359375,
+          "height": 63.359375,
+          "right": 1847.046875,
+          "bottom": 136.796875
+        },
+        {
+          "selector": ".activity-primary",
+          "x": 1277.953125,
+          "y": 741.875,
+          "width": 584.453125,
+          "height": 57,
+          "right": 1862.40625,
+          "bottom": 798.875
+        },
+        {
+          "selector": ".activity-scroll",
+          "x": 76.796875,
+          "y": 168.46875,
+          "width": 347.515625,
+          "height": 741.953125,
+          "right": 424.3125,
+          "bottom": 910.421875
+        }
+      ],
+      "tabs": [
+        {
+          "height": 101.515625,
+          "width": 313.515625
+        },
+        {
+          "height": 101.515625,
+          "width": 313.515625
+        },
+        {
+          "height": 101.515625,
+          "width": 313.515625
+        },
+        {
+          "height": 101.515625,
+          "width": 313.515625
+        },
+        {
+          "height": 101.515625,
+          "width": 313.515625
+        }
+      ],
+      "stripFraction": 0.639988425925926,
+      "scrollWidth": 1920
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "rects": [
+        {
+          "selector": ".activity-close",
+          "x": 1268.09375,
+          "y": 52.21875,
+          "width": 46,
+          "height": 46,
+          "right": 1314.09375,
+          "bottom": 98.21875
+        },
+        {
+          "selector": ".activity-primary",
+          "x": 909.203125,
+          "y": 503.640625,
+          "width": 415.828125,
+          "height": 50,
+          "right": 1325.03125,
+          "bottom": 553.640625
+        },
+        {
+          "selector": ".activity-scroll",
+          "x": 54.625,
+          "y": 119.796875,
+          "width": 247.234375,
+          "height": 527.609375,
+          "right": 301.859375,
+          "bottom": 647.40625
+        }
+      ],
+      "tabs": [
+        {
+          "height": 72.1875,
+          "width": 213.234375
+        },
+        {
+          "height": 72.1875,
+          "width": 213.234375
+        },
+        {
+          "height": 72.1875,
+          "width": 213.234375
+        },
+        {
+          "height": 72.1875,
+          "width": 213.234375
+        },
+        {
+          "height": 72.1875,
+          "width": 213.234375
+        }
+      ],
+      "stripFraction": 0.6399943033854166,
+      "scrollWidth": 1366
+    },
+    {
+      "width": 915,
+      "height": 412,
+      "rects": [
+        {
+          "selector": ".activity-close",
+          "x": 843.5625,
+          "y": 4.9375,
+          "width": 44,
+          "height": 44,
+          "right": 887.5625,
+          "bottom": 48.9375
+        },
+        {
+          "selector": ".activity-primary",
+          "x": 589.25,
+          "y": 311.796875,
+          "width": 215.796875,
+          "height": 44,
+          "right": 805.046875,
+          "bottom": 355.796875
+        },
+        {
+          "selector": ".activity-scroll",
+          "x": 27.4375,
+          "y": 42.015625,
+          "width": 192.140625,
+          "height": 337.828125,
+          "right": 219.578125,
+          "bottom": 379.84375
+        }
+      ],
+      "tabs": [
+        {
+          "height": 48,
+          "width": 170.140625
+        },
+        {
+          "height": 48,
+          "width": 170.140625
+        },
+        {
+          "height": 48,
+          "width": 170.140625
+        },
+        {
+          "height": 48,
+          "width": 170.140625
+        },
+        {
+          "height": 48,
+          "width": 170.140625
+        }
+      ],
+      "stripFraction": 0.7799984830097088,
+      "scrollWidth": 915
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "rects": [
+        {
+          "selector": ".activity-close",
+          "x": 774.6875,
+          "y": 4.671875,
+          "width": 44,
+          "height": 44,
+          "right": 818.6875,
+          "bottom": 48.671875
+        },
+        {
+          "selector": ".activity-primary",
+          "x": 543.53125,
+          "y": 291.984375,
+          "width": 192.21875,
+          "height": 44,
+          "right": 735.75,
+          "bottom": 335.984375
+        },
+        {
+          "selector": ".activity-scroll",
+          "x": 25.3125,
+          "y": 39.765625,
+          "width": 177.234375,
+          "height": 319.796875,
+          "right": 202.546875,
+          "bottom": 359.5625
+        }
+      ],
+      "tabs": [
+        {
+          "height": 48,
+          "width": 145.234375
+        },
+        {
+          "height": 48,
+          "width": 145.234375
+        },
+        {
+          "height": 48,
+          "width": 145.234375
+        },
+        {
+          "height": 48,
+          "width": 145.234375
+        },
+        {
+          "height": 48,
+          "width": 145.234375
+        }
+      ],
+      "stripFraction": 0.7799679487179487,
+      "scrollWidth": 844
+    },
+    {
+      "width": 740,
+      "height": 320,
+      "rects": [
+        {
+          "selector": ".activity-close",
+          "x": 673.8125,
+          "y": 3.828125,
+          "width": 44,
+          "height": 44,
+          "right": 717.8125,
+          "bottom": 47.828125
+        },
+        {
+          "selector": ".activity-primary",
+          "x": 476.546875,
+          "y": 234.1875,
+          "width": 157.703125,
+          "height": 44,
+          "right": 634.25,
+          "bottom": 278.1875
+        },
+        {
+          "selector": ".activity-scroll",
+          "x": 22.1875,
+          "y": 35.1875,
+          "width": 155.390625,
+          "height": 262.390625,
+          "right": 177.578125,
+          "bottom": 297.578125
+        }
+      ],
+      "tabs": [
+        {
+          "height": 44,
+          "width": 123.390625
+        },
+        {
+          "height": 44,
+          "width": 123.390625
+        },
+        {
+          "height": 44,
+          "width": 123.390625
+        },
+        {
+          "height": 44,
+          "width": 123.390625
+        },
+        {
+          "height": 44,
+          "width": 123.390625
+        }
+      ],
+      "stripFraction": 0.77998046875,
+      "scrollWidth": 740
+    }
+  ],
+  "environment": {
+    "browser": "Owned headless Microsoft Edge, software rendering",
+    "devices": "Emulated CSS viewports and CDP touch; not physical mobile benchmarks"
+  }
+}

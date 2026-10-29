@@ -1,0 +1,132 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "path": "site/assets/fonts/noto-sans-sc.woff2",
+      "chineseCodePoints": 800,
+      "missing": "",
+      "bytes": 291584,
+      "sha256": "16189714d223f93e75feae1e87fd714d611d4cd7be854690ab881f8e561eb9a2",
+      "pass": true
+    },
+    {
+      "path": "site/assets/fonts/noto-serif-sc.woff2",
+      "chineseCodePoints": 800,
+      "missing": "",
+      "bytes": 379156,
+      "sha256": "3dccdf0c10c6ff3d7b9be73c262d7a75f4cb58132b7b8763dbef5c6d3e9fe2c1",
+      "pass": true
+    },
+    {
+      "path": "apps/liyun-explorer/public/assets/fonts/NotoSerifSC-UI.woff2",
+      "chineseCodePoints": 699,
+      "missing": "",
+      "bytes": 327384,
+      "sha256": "8a722a976a80cac5676b9e54feb65e3029ed65c18d64caa57064676308c16a05",
+      "pass": true
+    },
+    {
+      "path": "apps/liyun-explorer/public/assets/fonts/MaShanZheng-UI.woff2",
+      "chineseCodePoints": 699,
+      "missing": "",
+      "bytes": 316300,
+      "sha256": "7ee892d5c64057387b968bb915a87355209fa3ff31f798f171578fb6cf202cee",
+      "pass": true
+    },
+    {
+      "path": "apps/liyun-explorer/public/assets/activity/ambient-room-blur.webp",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "alphaRange": null,
+      "bytes": 22716,
+      "sha256": "39aa710566f2428480793cc869699ec1a20f68d26e33ad10daed671bf4d92532",
+      "pass": true
+    },
+    {
+      "path": "apps/liyun-explorer/public/assets/activity/ginkgo-bough.webp",
+      "dimensions": [
+        1671,
+        941
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 446344,
+      "sha256": "aaa1fc0e319d75a6acaa21eed3804ff1fdff781404f316bb6769bff13ddaf9fd",
+      "pass": true
+    },
+    {
+      "path": "apps/liyun-explorer/public/assets/activity/reward-ginkgo.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 84430,
+      "sha256": "da99fefc9f27f9374e9fb87691f927e3a8f55579ed0019703f548adb6463d1fa",
+      "pass": true
+    },
+    {
+      "path": "apps/liyun-explorer/public/assets/activity/reward-journal.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 86874,
+      "sha256": "b5baa9ab987616b6f48439acf34786bfde3a601265c5d0df1ef47856f9679ae3",
+      "pass": true
+    },
+    {
+      "path": "apps/liyun-explorer/public/assets/activity/reward-seal.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 115740,
+      "sha256": "cfca26d29b666ddbb31325647a91d79556a594525b7fb1ee0006e94442c9dfac",
+      "pass": true
+    },
+    {
+      "path": "apps/liyun-explorer/public/assets/activity/reward-starlight.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 52532,
+      "sha256": "309dca3730d5b94e945c885e486d60e1bd522bd57fcb680e16175c783ce1d774",
+      "pass": true
+    },
+    {
+      "path": "apps/liyun-explorer/public/assets/activity/travel-journal.webp",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 452158,
+      "sha256": "845743499fc46ef2cb6723d52e70da0fdcc40571237f2cb9b94ae82f622a0583",
+      "pass": true
+    }
+  ]
+}

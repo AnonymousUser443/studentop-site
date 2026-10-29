@@ -1,0 +1,55 @@
+PASS missing API and public unlock fail closed
+PASS unconfigured service cannot unlock
+PASS malformed authenticated response and HTML fail closed
+PASS background click is inert; explicit login and Escape only change views
+PASS wrong answer clears input, updates attempts, and is never reflected
+PASS server cooldown cannot be cleared by local timer expiry
+PASS success authorizes, manual lock adopts rotated DELETE token
+PASS POST/lock race serializes revocation and ignores stale success
+PASS Escape during POST cancels entry and revokes possible session
+PASS failed logout survives refresh as denial-only history state
+PASS visibility return revalidates expired sessions without replay
+PASS 403 never automatically resends an answer
+PASS IME composition cannot submit or unlock
+PASS Chinese text survives IME confirmation and remains readable
+PASS swipe needs a deliberate upward gesture and changes only the view
+PASS wheel and loading button cannot authorize the desktop
+PASS authorized desktop stays inert until the particle exit completes
+PASS Escape during particle exit revokes and prevents stale animation completion
+PASS boot skip and replay never grant access; init is idempotent
+PASS bootstrap has no legacy authorization bypass and retains DOM ids
+PASS 20 isolated gate contracts
+✔ docs\boot\gate-contract-tests.cjs (336.0223ms)
+✔ desktop safeUrl rejects executable schemes credentials and controls (3.63ms)
+✔ desktop project mapping is restricted to exact loopback hosts (1.9406ms)
+✔ desktop store reports persistence failure but preserves in-memory values (1.5883ms)
+✔ desktop preferences reject corrupt values and external open is never retried (1.8248ms)
+✔ launcher exposes only public site assets and fixed entrypoints (39.0041ms)
+✔ site-only preflight skips all application dependency entries (4.2326ms)
+✔ containment rejects sibling prefix and parent paths (0.458ms)
+✔ QA fails closed on false, missing, empty and malformed assertions (0.7379ms)
+✔ URLs default to loopback and exact origins cannot be spoofed (0.3487ms)
+✔ legacy positional URLs and explicit options parse (0.3888ms)
+✔ private verifier has no answer; answer normalization is bounded (61.2925ms)
+✔ correct answer rotates HttpOnly SameSite session; DELETE revokes it (113.0836ms)
+✔ three errors lock for exactly 300 seconds across cookie reset and process reload (199.5249ms)
+✔ parallel errors cannot race the third failure or extend cooldown (143.8672ms)
+✔ foreign or missing origin and CSRF rejected without consuming an attempt (44.4167ms)
+✔ invalid or oversized input rejected; private state has no raw IP or answer (87.0521ms)
+✔ missing or corrupt private configuration/state fail closed (48.1981ms)
+✔ proxy headers ignored by default; trusted proxy requires one valid address (0.3459ms)
+✔ production cookie is Secure and unsupported methods cannot verify answers (51.232ms)
+✔ UTF-8 answers split between every byte are verified without corrupting Chinese input (77.4533ms)
+✔ anonymous session spray is bounded, and existing sessions remain usable (112.1958ms)
+✔ one private state cannot be owned by two services and normal release allows restart (38.7284ms)
+✔ logout invalidates a correct POST whose body was still in flight (34.0455ms)
+✔ private configuration CLI handles synthetic UTF-8 input without echo or overwrite (332.1308ms)
+✔ outside alias pointing into public source cannot hold private configuration (38.219ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1542.065
