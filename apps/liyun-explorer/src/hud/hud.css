@@ -792,3 +792,46 @@
   .pano-tabs { right: 16px; top: 14px; bottom: auto; flex-direction: column; }
   .pano-svg { object-fit: cover; }
 }
+
+/* ===== 活动页 · 立绘前景层 ===== */
+.pano-char {
+  position: absolute;
+  left: -3%;
+  bottom: -3%;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 16px 28px #2a3a2c5c);
+  transform-origin: 50% 94%;
+  animation: char-idle 6.5s ease-in-out infinite alternate;
+}
+.pano-char.secondary {
+  left: 16%;
+  bottom: -2%;
+  height: 76%;
+  z-index: 1;
+  opacity: 0.94;
+  filter: drop-shadow(0 10px 20px #2a3a2c44);
+  animation-delay: 1.6s;
+}
+@keyframes char-idle {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-7px) scale(1.009); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pano-char { animation: none; }
+}
+
+/* 版面让位：题名与说明卡右移，避开立绘 */
+.pano-head { left: 35%; max-width: 42%; }
+.pano-card { left: 35%; width: min(330px, 40%); }
+.pano-tabs { right: 20px; }
+
+@media (max-width: 780px) {
+  .pano-char { left: -8%; bottom: -6%; height: 88%; }
+  .pano-char.secondary { left: 6%; height: 62%; }
+  .pano-head { left: 16px; top: auto; bottom: 44%; max-width: 70%; }
+  .pano-card { left: 12px; width: calc(100% - 24px); }
+}
