@@ -140,7 +140,9 @@ async function newSession(options = {}) {
     const deadline = Date.now() + 25000;
     while (Date.now() < deadline) {
       if (childError) throw childError;
-      if (child.exitCode !== null || child.signalCode !== null) throw new Error('Owned browser exited before connection.');
+      // Windows Edge may hand off to its browser process and exit with code 0.
+      // Only the unique owned profile's DevToolsActivePort can identify that process.
+      if ((child.exitCode !== null && child.exitCode !== 0) || child.signalCode !== null) throw new Error('Owned browser exited before connection.');
       try {
         if (!actualPort) actualPort = Number(fs.readFileSync(path.join(profile, 'DevToolsActivePort'), 'utf8').split('\n')[0]);
         if (actualPort) { version = await getJSON('http://127.0.0.1:' + actualPort + '/json/version'); if (version.webSocketDebuggerUrl) break; }

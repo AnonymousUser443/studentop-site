@@ -44,6 +44,17 @@ node --test qa/workspace-api-tests.mjs
 
 ## 保留的浏览器入口
 
+2026-10-29 的 AidenOS 开场 / 上滑 / 普通文本登录改动使用单独的局部回归，不需要重跑整站流程：
+
+~~~powershell
+node docs/boot/gate-contract-tests.cjs
+node qa/boot-20261029/browser.cjs
+# 可选：固定动画帧的视觉诊断，不能用作原生时序或性能结论
+node qa/boot-20261029/capture-frame.cjs
+~~~
+
+浏览器回归只启动临时合成问答服务及自有无界面 Edge，覆盖原生时序的聚字、加载环、CDP 上滑、中文文本、授权离场、Esc 中止和减少动态；不启动其他应用，不读取真实答案。证据与限制见[本次记录](../docs/boot/QA.md)。Windows Edge 启动器可以交接后以 0 退出；运行器继续等待本次唯一临时 profile 的 DevToolsActivePort，不连接已有用户浏览器。
+
 旧文件名和主要命令行参数保留，共用 [隔离运行器](lib.js)。当前版本使用 Node 22.12+ 原生 WebSocket/CDP，无需安装 chrome-remote-interface；已有全局包也不影响运行。默认 Edge 路径可通过 EDGE_PATH 环境变量指定。每次创建唯一临时 profile，调试端口默认由浏览器分配（0），结束只关闭本次浏览器。显式 --port 仍支持，但被占用时失败，不连接已有调试服务。
 
 | 入口 | 当前范围 |
@@ -64,7 +75,7 @@ node --test qa/workspace-api-tests.mjs
 ~~~powershell
 # 使用临时合成配置，不修改真人答案或其限流记录
 node --test qa/revision-20261028/auth-tests.mjs
-# 当前门禁、启动与多尺寸交互：负责人使用隔离浏览器执行
+# 10月28日历史交互脚本：保留原貌，旧密码框断言不适用于10月29日的普通文本输入
 node qa/revision-20261028/desktop-browser.cjs
 # 校园流程仍独立适用，无需桌面问答
 node qa/genshin-flow-test.js --mode both --url "http://127.0.0.1:8081/" --target "http://127.0.0.1:5174/"
