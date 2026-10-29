@@ -8,15 +8,15 @@
 
 /* 底图：绘制的校园山水，地图边缘化开融入 */
 .scene-painting{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.scene-painting img{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;filter:saturate(.62) contrast(.94) brightness(1.10) sepia(.22) hue-rotate(-6deg)}
-.scene-painting-haze{position:absolute;inset:0;background:radial-gradient(ellipse 70% 62% at 50% 48%,#f9f2dce8 0%,#f9f2dcd0 26%,#f9f2dc9c 46%,#f9f2dc48 66%,transparent 86%)}
+.scene-painting img{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;filter:saturate(.94) contrast(1.26) brightness(.74) sepia(.06) hue-rotate(-3deg)}
+.scene-painting-haze{position:absolute;inset:0;background:radial-gradient(ellipse 66% 58% at 50% 48%,#f9f2dcc4 0%,#f9f2dca8 24%,#f9f2dc6e 44%,#f9f2dc30 64%,transparent 84%)}
 .map-layer{position:absolute;inset:0;z-index:1;mask-image:radial-gradient(ellipse 50% 47% at 50% 48%,#000 52%,#000000e6 66%,#0000008c 82%,#00000038 92%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 50% 47% at 50% 48%,#000 52%,#000000e6 66%,#0000008c 82%,#00000038 92%,transparent 100%)}
 
 /* 底图顶部压暗一道，做出前后层次 */
-.scene-painting::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(23,52,42,.28) 0%,rgba(23,52,42,.10) 12%,transparent 30%),linear-gradient(0deg,rgba(23,52,42,.16) 0%,transparent 18%)}
+.scene-painting::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(18,44,36,.46) 0%,rgba(18,44,36,.20) 16%,transparent 38%),linear-gradient(0deg,rgba(23,52,42,.16) 0%,transparent 18%)}
 
 /* 纸层波浪：把底图收进同一套剪纸语言里 */
-.scene-painting::before{content:'';position:absolute;inset:0;pointer-events:none;mix-blend-mode:color;background:linear-gradient(150deg,#2f5747 0%,#7c9078 38%,#d8cba4 68%,#f3e7c4 100%);opacity:.5}
-.paper-tint{position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;background:radial-gradient(ellipse 70% 64% at 50% 46%,#fff8e0 0%,#efe6c8 46%,#cfd9c4 78%,#a9bda4 100%);opacity:.75}
-.paper-waves{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;opacity:.9}
+.scene-painting::before{content:'';position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;background:linear-gradient(158deg,#1d3b31 0%,#31564a 34%,#6f8570 60%,#cbbf98 84%,#e9dcb8 100%);opacity:.74}
+.paper-tint{position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;background:radial-gradient(ellipse 74% 66% at 50% 46%,#fdf6df 0%,#d9cfae 42%,#8fa78f 74%,#4a6b57 100%);opacity:.8}
+.paper-waves{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;opacity:1}
 .paper-waves svg{position:absolute;inset:0;width:100%;height:100%}
