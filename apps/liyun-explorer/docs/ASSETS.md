@@ -78,13 +78,12 @@ powershell -ExecutionPolicy Bypass -File scripts/fonts-build.ps1
 
 | 文件或模块 | 来源与用途 |
 | --- | --- |
-| `public/assets/art/pine-left.png` | 本轮 ImageGen 生成的透明背景松枝构件；左下前景，层级 9 |
-| `public/assets/art/mountain-right.png` | 本轮 ImageGen 生成的透明背景山石构件；右下前景，层级 9 |
+| `src/hud/Scenery.tsx` | 程序内 SVG：地图四周的远山、雾带、湖面、坡岸、松枝、山亭与扁舟 |
 | `src/hud/Ornaments.tsx` | 程序内 SVG：品牌门景、菜单底形、罗盘、纸片云纹与边饰 |
 | `src/hud/Icon.tsx` | 程序内 SVG：书本、枫叶、图鉴、设置等 UI 图标 |
 | `src/map/MapScene.tsx` | 程序内 SVG：地标菱形、真理之塔、玩家箭头与水纹 |
 | `src/effects/Atmosphere.tsx` | p5/Canvas 绘制云片、落叶、微光和发现光效 |
 
-两张 ImageGen 素材作为独立前景构件叠加，失败时由应用隐藏该图像。构图与艺术方向参考上层 `参考图/游戏HUD设计参考图底图/` 和 `参考图/整体风格基调的参考图/原神参考图1.png`。参考图用于布局、色块层次与剪纸语汇，运行时地图与界面来自上述实际资源。
+角落前景由 Scenery 组件矢量绘制（松枝、山亭、芦苇与坡岸），不再依赖 ImageGen 位图构件。构图与艺术方向参考上层 `参考图/游戏HUD设计参考图底图/` 和 `参考图/整体风格基调的参考图/原神参考图1.png`。参考图用于布局、色块层次与剪纸语汇，运行时地图与界面来自上述实际资源。
 
 所有新增构件遵循利落剪影、平涂色块、分级阴影、玉绿与奶油金。后续替换图像时保持透明边界、图层位置及中央地图可读区域，并记录新来源。

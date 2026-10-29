@@ -6,6 +6,7 @@ import { createExploredState, createInitialState, explore, progressOf, restoreSt
 import MapScene from './map/MapScene';
 import { cameraAt, clampCamera, initialCamera, uvToScreen } from './map/geometry';
 import Hud from './hud/Hud';
+import { Scenery } from './hud/Scenery';
 import Atmosphere from './effects/Atmosphere';
 import { useAudio } from './audio/useAudio';
 
@@ -47,8 +48,7 @@ export default function App() {
   const [hidden, setHidden] = useState(document.hidden);
   const [isFullscreen, setFullscreen] = useState(Boolean(document.fullscreenElement));
   const [fixedTime, setFixedTime] = useState<number | undefined>();
-  const [art, setArt] = useState({pine:true,mountain:true});
-  const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+    const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const audio = useAudio(state.settings, entered && !qaMode);
   const portrait = viewport.width <= viewport.height;
   const selected = LANDMARKS.find(x => x.id === selectedId) ?? null;
@@ -132,11 +132,10 @@ export default function App() {
     (window as unknown as {__LIYUN__:typeof api}).__LIYUN__=api;
   },[camera,discover,select,event]);
   return <div className="game-stage" ref={stage} data-testid="game-stage" data-entered={entered} data-progress={progressOf(state)}>
+    <Scenery/>
     <MapScene camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} selectedId={selectedId} playerUV={state.playerUV} event={event} reducedMotion={state.settings.reducedMotion} onCameraChange={moveCamera} onSelect={select} onVisualPosition={rememberVisual} fixedTime={fixedTime} paused={hidden||portrait} disabled={portrait||!entered||Boolean(activePanel)||Boolean(selectedId)} />
     <Atmosphere camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} event={event} settings={state.settings} paused={hidden||portrait} seed={42} fixedTime={fixedTime}/>
     <div className="scene-vignette"/>
-    {art.pine&&<img className="border-art pine" src="/assets/art/pine-left.png" alt="" onError={()=>setArt(s=>({...s,pine:false}))}/>}
-    {art.mountain&&<img className="border-art mountain" src="/assets/art/mountain-right.png" alt="" onError={()=>setArt(s=>({...s,mountain:false}))}/>}
     <div className="hud-layer" inert={portrait}><Hud progress={progressOf(state)} collected={state.discoveredIds.length} activePanel={activePanel} selected={selected} discovered={Boolean(selected&&state.discoveredIds.includes(selected.id))} state={state} landmarks={LANDMARKS} entered={entered} toast={toast} isFullscreen={isFullscreen} audioBlocked={audio.blocked} onPanel={id=>{setActivePanel(id);setSelectedId(null);}} onSelect={select} onClose={close} onExplore={()=>selectedId&&discover(selectedId)} onSettings={settings} onReset={reset} onFullscreen={fullscreen} onCenter={center} onEnter={enter}/></div>
     {portrait&&<div className="orientation-gate" role="dialog" aria-modal="true" aria-label="请横屏探索">
       <svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g className="rotate-line"><rect x="30" y="12" width="40" height="76" rx="7" stroke="currentColor" strokeWidth="2"/><path d="M43 20h14M46 80h8" stroke="currentColor" strokeWidth="2"/></g><path d="M83 32a38 38 0 0 0-56-15m-2-8 1 10 10-2M17 68a38 38 0 0 0 56 15m2 8-1-10-10 2" stroke="currentColor" strokeWidth="2"/></svg>
