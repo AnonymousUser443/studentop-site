@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "scope": "Read-only decode of original recordings; -50dB quiet threshold does not mean absolute silence. No music files changed.",
+  "recordings": [
+    {
+      "name": "dawn_dusk",
+      "duration": "101.561063",
+      "size": "743790",
+      "bit_rate": "58588",
+      "quietPrefixSecondsAtMinus50dB": 0.351292
+    },
+    {
+      "name": "day",
+      "duration": "106.506500",
+      "size": "743661",
+      "bit_rate": "55858",
+      "quietPrefixSecondsAtMinus50dB": 2.142708
+    },
+    {
+      "name": "night",
+      "duration": "98.752583",
+      "size": "606888",
+      "bit_rate": "49164",
+      "quietPrefixSecondsAtMinus50dB": 1.763396
+    }
+  ]
+}

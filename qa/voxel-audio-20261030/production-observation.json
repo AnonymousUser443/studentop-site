@@ -1,0 +1,48 @@
+{
+  "ok": true,
+  "source": "OpenCLI owned production Chrome tab; read-only UI playback probe",
+  "url": "https://studentop.cn:14355/voxel-campus/?time=day",
+  "scope": "Existing Chrome cache was not cleared; this is not a cold-load timing claim. No deployment or account activity.",
+  "playingAfterClickMs": 223,
+  "bufferedWhenPlaying": [
+    [
+      0,
+      56.315
+    ],
+    [
+      93.859,
+      106.5065
+    ]
+  ],
+  "wholeBufferReachedAtPlaybackSecond": 33.808,
+  "mediaRequests": [
+    {
+      "bytes": 300,
+      "duration": 63.19999998807907,
+      "file": "day-BEOsiWxv.opus",
+      "startAfterClickMs": 102
+    },
+    {
+      "bytes": 73241,
+      "duration": 40.19999998807907,
+      "file": "day-BEOsiWxv.opus",
+      "startAfterClickMs": 164
+    },
+    {
+      "bytes": 350745,
+      "duration": 38.80000001192093,
+      "file": "day-BEOsiWxv.opus",
+      "startAfterClickMs": 33989
+    }
+  ],
+  "checks": [
+    {
+      "name": "production playback starts while the middle of the song is not buffered",
+      "pass": true
+    },
+    {
+      "name": "the rest of the song arrives after playback has already advanced over 30 seconds",
+      "pass": true
+    }
+  ]
+}

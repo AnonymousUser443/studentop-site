@@ -78,13 +78,26 @@ export class CampusAudio {
     gain.gain.value = 0;
     source.connect(gain);
     gain.connect(this.master);
-    const track = { key, media, source, gain };
+    const track = { key, media, source, gain, pendingRequest: null };
     this.tracks.set(key, track);
     // Also surface a network/decoder failure occurring after play() has resolved.
     media.addEventListener('error', () => {
       if (this.enabled && PERIOD_BGM[this.period] === key) this.fail(this.request);
     });
     return track;
+  }
+
+  cancelPendingTracks(nextKey) {
+    for (const [key, track] of this.tracks) {
+      // Keep the audible track for its crossfade. A superseded, never-audible
+      // play() must release the network request, not just ignore its promise.
+      const playingPrevious = key === this.activeKey && !track.media.paused && track.media.readyState >= 2;
+      if (track.pendingRequest === null || key === nextKey || playingPrevious) continue;
+      track.pendingRequest = null;
+      track.media.pause();
+      track.media.removeAttribute('src');
+      track.media.load();
+    }
   }
 
   fade(param, target, duration) {
@@ -113,6 +126,8 @@ export class CampusAudio {
   async syncPlayback() {
     const request = ++this.request;
     clearTimeout(this.cleanupTimer);
+    const key = this.enabled ? PERIOD_BGM[this.period] : null;
+    this.cancelPendingTracks(key);
     if (!this.enabled) {
       this.loading = false;
       if (this.context) {
@@ -127,13 +142,20 @@ export class CampusAudio {
     this.notify();
     try {
       this.ensureContext();
-      const key = PERIOD_BGM[this.period];
       const track = this.getTrack(key);
+      // A cancelled pending request keeps its reusable MediaElementSource;
+      // restore the URL only if the user selects that recording again.
+      if (!track.media.getAttribute('src')) track.media.src = BGM_TRACKS[key];
       if (track.media.error) track.media.load();
       // Both calls happen synchronously inside the initiating user gesture.
-      const resumed = this.context.resume();
-      const playing = track.media.play();
-      await Promise.all([resumed, playing]);
+      track.pendingRequest = request;
+      try {
+        const resumed = this.context.resume();
+        const playing = track.media.play();
+        await Promise.all([resumed, playing]);
+      } finally {
+        if (track.pendingRequest === request) track.pendingRequest = null;
+      }
       if (request !== this.request || this.disposed) return this.enabled;
 
       const duration = this.activeKey ? CROSSFADE : 1.2;

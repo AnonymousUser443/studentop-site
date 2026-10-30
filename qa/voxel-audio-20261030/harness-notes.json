@@ -1,0 +1,18 @@
+{
+  "scope": "Local regression harness corrections, not product failures",
+  "attemptsBeforeFinalPass": [
+    {
+      "reason": "Top-level const in repeated Runtime.evaluate calls shared a global lexical binding",
+      "correction": "Scope temporary loop inspection variables inside an IIFE"
+    },
+    {
+      "reason": "Fixture directory index was served as application/octet-stream and triggered a download",
+      "correction": "Choose the MIME type from the resolved index.html filename"
+    }
+  ],
+  "final": {
+    "ok": true,
+    "checks": 21,
+    "productAssertionsRemovedOrRelaxed": false
+  }
+}
