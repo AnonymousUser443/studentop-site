@@ -1,0 +1,107 @@
+{
+  "ok": true,
+  "release": "20261030T092022Z-c6f57c8998",
+  "pointerChecks": [
+    {
+      "root": "/opt/win11-home",
+      "intendedChange": false,
+      "unchanged": true
+    },
+    {
+      "root": "/opt/projects/liyun",
+      "intendedChange": false,
+      "unchanged": true
+    },
+    {
+      "root": "/opt/projects/desktop-auth",
+      "intendedChange": false,
+      "unchanged": true
+    },
+    {
+      "root": "/opt/projects/liyun-api",
+      "intendedChange": false,
+      "unchanged": true
+    },
+    {
+      "root": "/opt/projects/campus-entry",
+      "intendedChange": false,
+      "unchanged": true
+    },
+    {
+      "root": "/opt/projects/voxel-campus",
+      "intendedChange": true,
+      "unchanged": false
+    },
+    {
+      "root": "/opt/projects/frost",
+      "intendedChange": false,
+      "unchanged": true
+    },
+    {
+      "root": "/opt/projects/genshin",
+      "intendedChange": false,
+      "unchanged": true
+    },
+    {
+      "root": "/opt/rpi-task-manager",
+      "intendedChange": false,
+      "unchanged": true
+    }
+  ],
+  "serviceChecks": [
+    {
+      "name": "nginx",
+      "unchanged": true
+    },
+    {
+      "name": "desktop-auth",
+      "unchanged": true
+    },
+    {
+      "name": "liyun-account",
+      "unchanged": true
+    },
+    {
+      "name": "rpi-task-manager",
+      "unchanged": true
+    },
+    {
+      "name": "frpc",
+      "unchanged": true
+    },
+    {
+      "name": "frost-atlas",
+      "unchanged": true
+    }
+  ],
+  "configChecks": [
+    {
+      "file": "/etc/nginx/snippets/win11-home-app.conf",
+      "unchanged": true
+    },
+    {
+      "file": "/etc/nginx/snippets/win11-home-headers.conf",
+      "unchanged": true
+    },
+    {
+      "file": "/etc/nginx/snippets/win11-home-projects.conf",
+      "unchanged": true
+    },
+    {
+      "file": "/etc/nginx/sites-available/projects",
+      "unchanged": true
+    },
+    {
+      "file": "/etc/systemd/system/desktop-auth.service",
+      "unchanged": true
+    },
+    {
+      "file": "/etc/systemd/system/liyun-account.service",
+      "unchanged": true
+    },
+    {
+      "file": "/etc/systemd/system/rpi-task-manager.service",
+      "unchanged": true
+    }
+  ]
+}

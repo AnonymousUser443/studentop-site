@@ -1,0 +1,177 @@
+{
+  "ok": true,
+  "id": "20261030T092022Z-c6f57c8998",
+  "commit": "c6f57c8998e6be003cbca4b1055e489206a872df",
+  "manifestSHA256": "80e98429da309f023650d136734c358471a255b9234d660339ac035cfb8cb7e0",
+  "previous": "/opt/projects/voxel-campus/releases/20261028T110253Z-e2bc44a0e3",
+  "current": "/opt/projects/voxel-campus/releases/20261030T092022Z-c6f57c8998",
+  "homeVersion": "76b1376dbbf99a19cb3a2308",
+  "checkedPublicFiles": 11,
+  "checks": [
+    {
+      "name": "public_bytes:assets/dawn_dusk-C7B5Ceg7.opus",
+      "pass": true
+    },
+    {
+      "name": "mime:assets/dawn_dusk-C7B5Ceg7.opus",
+      "pass": true
+    },
+    {
+      "name": "range_first:assets/dawn_dusk-C7B5Ceg7.opus",
+      "pass": true
+    },
+    {
+      "name": "range_tail:assets/dawn_dusk-C7B5Ceg7.opus",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:assets/day-BEOsiWxv.opus",
+      "pass": true
+    },
+    {
+      "name": "mime:assets/day-BEOsiWxv.opus",
+      "pass": true
+    },
+    {
+      "name": "range_first:assets/day-BEOsiWxv.opus",
+      "pass": true
+    },
+    {
+      "name": "range_tail:assets/day-BEOsiWxv.opus",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:assets/index-COjinGlL.css",
+      "pass": true
+    },
+    {
+      "name": "mime:assets/index-COjinGlL.css",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:assets/index-sx_2Yh8w.js",
+      "pass": true
+    },
+    {
+      "name": "mime:assets/index-sx_2Yh8w.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:assets/night-BKuUmqmo.opus",
+      "pass": true
+    },
+    {
+      "name": "mime:assets/night-BKuUmqmo.opus",
+      "pass": true
+    },
+    {
+      "name": "range_first:assets/night-BKuUmqmo.opus",
+      "pass": true
+    },
+    {
+      "name": "range_tail:assets/night-BKuUmqmo.opus",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:assets/three-B36RJSNi.js",
+      "pass": true
+    },
+    {
+      "name": "mime:assets/three-B36RJSNi.js",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:fonts/campus-sans.woff2",
+      "pass": true
+    },
+    {
+      "name": "mime:fonts/campus-sans.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:fonts/campus-serif.woff2",
+      "pass": true
+    },
+    {
+      "name": "mime:fonts/campus-serif.woff2",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:fonts/OFL.txt",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:index.html",
+      "pass": true
+    },
+    {
+      "name": "html_revalidates",
+      "pass": true
+    },
+    {
+      "name": "public_bytes:licenses/three-MIT.txt",
+      "pass": true
+    },
+    {
+      "name": "directory_entry_matches",
+      "pass": true
+    },
+    {
+      "name": "slash_redirect",
+      "pass": true
+    },
+    {
+      "name": "missing_file_404",
+      "pass": true
+    },
+    {
+      "name": "monitor_still_requires_session",
+      "pass": true
+    },
+    {
+      "name": "home_version_unchanged",
+      "pass": true
+    },
+    {
+      "name": "neighbor:studentop.cn/",
+      "pass": true
+    },
+    {
+      "name": "neighbor:studentop.cn/task-manager/",
+      "pass": true
+    },
+    {
+      "name": "neighbor:studentop.cn/campus-entry/",
+      "pass": true
+    },
+    {
+      "name": "neighbor:liyun.studentop.cn/",
+      "pass": true
+    },
+    {
+      "name": "neighbor:liyun.studentop.cn/api/health",
+      "pass": true
+    },
+    {
+      "name": "neighbor:frost.studentop.cn/",
+      "pass": true
+    },
+    {
+      "name": "neighbor:genshin.studentop.cn/",
+      "pass": true
+    },
+    {
+      "name": "unrelated_state_unchanged",
+      "pass": true
+    },
+    {
+      "name": "voxel_pointer_matches",
+      "pass": true
+    }
+  ],
+  "configurationChanged": false,
+  "servicesRestarted": false,
+  "privateConfigurationRead": false,
+  "backup": "/var/lib/aiden-release-history/voxel-20261030T092022Z-c6f57c8998",
+  "completedAt": "2026-10-30T09:22:19.638Z"
+}

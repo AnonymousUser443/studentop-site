@@ -1,0 +1,484 @@
+{
+  "ok": true,
+  "target": "https://studentop.cn:14355/voxel-campus/",
+  "expectedScript": "https://studentop.cn:14355/voxel-campus/assets/index-sx_2Yh8w.js",
+  "startedAt": "2026-10-30T09:24:24.803Z",
+  "scope": "Read-only public static page; actual UI clicks and native media observations; no authentication or application state injection.",
+  "environment": "Owned headless Microsoft Edge, fresh isolated profile, extensions disabled, cache disabled, software rendering, 1440x900. Browser output is muted; this is playback/event evidence, not a physical listening or device performance test.",
+  "checks": [
+    {
+      "name": "exact public target without authentication navigation",
+      "pass": true
+    },
+    {
+      "name": "expected new bundle is referenced and successfully fetched",
+      "pass": true,
+      "evidence": {
+        "expected": "https://studentop.cn:14355/voxel-campus/assets/index-sx_2Yh8w.js",
+        "scripts": [
+          "https://studentop.cn:14355/voxel-campus/assets/index-sx_2Yh8w.js"
+        ]
+      }
+    },
+    {
+      "name": "production exposes no development campus global",
+      "pass": true
+    },
+    {
+      "name": "entry is silent without media downloads before a user gesture",
+      "pass": true
+    },
+    {
+      "name": "changing the daylight preview before starting stays silent",
+      "pass": true
+    },
+    {
+      "name": "day recording advances and has a successful public media response",
+      "pass": true,
+      "evidence": {
+        "src": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus"
+      }
+    },
+    {
+      "name": "night control plays the real night recording and stops the outgoing day",
+      "pass": true,
+      "evidence": {
+        "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus"
+      }
+    },
+    {
+      "name": "mute updates the real UI and pauses every observed player",
+      "pass": true
+    },
+    {
+      "name": "unmute restores night using the same native player",
+      "pass": true
+    },
+    {
+      "name": "native playing and pause events substantiate the interactions",
+      "pass": true
+    },
+    {
+      "name": "no native media decoding or playback errors",
+      "pass": true
+    },
+    {
+      "name": "all requests stay within read-only public voxel assets",
+      "pass": true,
+      "evidence": []
+    },
+    {
+      "name": "no JavaScript, console, HTTP or network errors",
+      "pass": true,
+      "evidence": []
+    }
+  ],
+  "snapshots": [
+    {
+      "label": "before-intent",
+      "tracks": [],
+      "ui": {
+        "pressed": "false",
+        "busy": "false",
+        "track": "dawn_dusk"
+      }
+    },
+    {
+      "label": "day-playing",
+      "tracks": [
+        {
+          "id": 0,
+          "src": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+          "paused": false,
+          "currentTime": 0.108361,
+          "duration": 106.5065,
+          "readyState": 4,
+          "networkState": 2,
+          "contextState": "running",
+          "error": null
+        }
+      ],
+      "ui": {
+        "pressed": "true",
+        "busy": "false",
+        "track": "day"
+      }
+    },
+    {
+      "label": "night-playing",
+      "tracks": [
+        {
+          "id": 0,
+          "src": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+          "paused": true,
+          "currentTime": 12.438334,
+          "duration": 106.5065,
+          "readyState": 4,
+          "networkState": 1,
+          "contextState": "running",
+          "error": null
+        },
+        {
+          "id": 1,
+          "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+          "paused": false,
+          "currentTime": 2.52,
+          "duration": 98.752583,
+          "readyState": 4,
+          "networkState": 2,
+          "contextState": "running",
+          "error": null
+        }
+      ],
+      "ui": {
+        "pressed": "true",
+        "busy": "false",
+        "track": "night"
+      }
+    },
+    {
+      "label": "muted",
+      "tracks": [
+        {
+          "id": 0,
+          "src": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+          "paused": true,
+          "currentTime": 12.438334,
+          "duration": 106.5065,
+          "readyState": 4,
+          "networkState": 1,
+          "contextState": "running",
+          "error": null
+        },
+        {
+          "id": 1,
+          "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+          "paused": true,
+          "currentTime": 3.008,
+          "duration": 98.752583,
+          "readyState": 4,
+          "networkState": 1,
+          "contextState": "running",
+          "error": null
+        }
+      ],
+      "ui": {
+        "pressed": "false",
+        "busy": "false",
+        "track": "night"
+      }
+    },
+    {
+      "label": "night-restored",
+      "tracks": [
+        {
+          "id": 0,
+          "src": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+          "paused": true,
+          "currentTime": 12.438334,
+          "duration": 106.5065,
+          "readyState": 4,
+          "networkState": 1,
+          "contextState": "running",
+          "error": null
+        },
+        {
+          "id": 1,
+          "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+          "paused": false,
+          "currentTime": 3.106667,
+          "duration": 98.752583,
+          "readyState": 4,
+          "networkState": 1,
+          "contextState": "running",
+          "error": null
+        }
+      ],
+      "ui": {
+        "pressed": "true",
+        "busy": "false",
+        "track": "night"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/",
+      "status": 200,
+      "mimeType": "text/html",
+      "type": "Document",
+      "fromDiskCache": false,
+      "fromServiceWorker": false
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/index-sx_2Yh8w.js",
+      "status": 200,
+      "mimeType": "application/javascript",
+      "type": "Script",
+      "fromDiskCache": false,
+      "fromServiceWorker": false
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/three-B36RJSNi.js",
+      "status": 200,
+      "mimeType": "application/javascript",
+      "type": "Script",
+      "fromDiskCache": false,
+      "fromServiceWorker": false
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+      "status": 206,
+      "mimeType": "audio/ogg",
+      "type": "Media",
+      "fromDiskCache": false,
+      "fromServiceWorker": false
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+      "status": 206,
+      "mimeType": "audio/ogg",
+      "type": "Media",
+      "fromDiskCache": false,
+      "fromServiceWorker": false
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+      "status": 206,
+      "mimeType": "audio/ogg",
+      "type": "Media",
+      "fromDiskCache": false,
+      "fromServiceWorker": false
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+      "status": 206,
+      "mimeType": "audio/ogg",
+      "type": "Media",
+      "fromDiskCache": false,
+      "fromServiceWorker": false
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+      "status": 206,
+      "mimeType": "audio/ogg",
+      "type": "Media",
+      "fromDiskCache": false,
+      "fromServiceWorker": false
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+      "status": 206,
+      "mimeType": "audio/ogg",
+      "type": "Media",
+      "fromDiskCache": false,
+      "fromServiceWorker": false
+    }
+  ],
+  "mediaRequests": [
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+      "method": "GET"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+      "method": "GET"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+      "method": "GET"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+      "method": "GET"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+      "method": "GET"
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+      "method": "GET"
+    }
+  ],
+  "blockedRequests": [],
+  "diagnostics": [],
+  "dayPlayingAfterClickMs": 8385,
+  "audio": {
+    "tracks": [
+      {
+        "id": 0,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+        "paused": true,
+        "currentTime": 12.438334,
+        "duration": 106.5065,
+        "readyState": 4,
+        "networkState": 1,
+        "contextState": "running",
+        "error": null
+      },
+      {
+        "id": 1,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+        "paused": false,
+        "currentTime": 3.374757,
+        "duration": 98.752583,
+        "readyState": 4,
+        "networkState": 1,
+        "contextState": "running",
+        "error": null
+      }
+    ],
+    "events": [
+      {
+        "id": 0,
+        "type": "waiting",
+        "atMs": 4741.800000011921,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+        "currentTime": 0,
+        "readyState": 0,
+        "errorCode": null
+      },
+      {
+        "id": 0,
+        "type": "loadstart",
+        "atMs": 4741.800000011921,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+        "currentTime": 0,
+        "readyState": 0,
+        "errorCode": null
+      },
+      {
+        "id": 0,
+        "type": "stalled",
+        "atMs": 11233.300000011921,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+        "currentTime": 0,
+        "readyState": 0,
+        "errorCode": null
+      },
+      {
+        "id": 0,
+        "type": "loadedmetadata",
+        "atMs": 12850.5,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+        "currentTime": 0,
+        "readyState": 1,
+        "errorCode": null
+      },
+      {
+        "id": 0,
+        "type": "canplay",
+        "atMs": 12852.099999964237,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+        "currentTime": 0,
+        "readyState": 4,
+        "errorCode": null
+      },
+      {
+        "id": 0,
+        "type": "playing",
+        "atMs": 12852.199999988079,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+        "currentTime": 0,
+        "readyState": 4,
+        "errorCode": null
+      },
+      {
+        "id": 1,
+        "type": "waiting",
+        "atMs": 13143.199999988079,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+        "currentTime": 0,
+        "readyState": 0,
+        "errorCode": null
+      },
+      {
+        "id": 1,
+        "type": "loadstart",
+        "atMs": 13143.300000011921,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+        "currentTime": 0,
+        "readyState": 0,
+        "errorCode": null
+      },
+      {
+        "id": 1,
+        "type": "stalled",
+        "atMs": 16436.599999964237,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+        "currentTime": 0,
+        "readyState": 0,
+        "errorCode": null
+      },
+      {
+        "id": 1,
+        "type": "stalled",
+        "atMs": 21940.5,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+        "currentTime": 0,
+        "readyState": 0,
+        "errorCode": null
+      },
+      {
+        "id": 1,
+        "type": "loadedmetadata",
+        "atMs": 22790.69999998808,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+        "currentTime": 0,
+        "readyState": 1,
+        "errorCode": null
+      },
+      {
+        "id": 1,
+        "type": "canplay",
+        "atMs": 22792.099999964237,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+        "currentTime": 0,
+        "readyState": 4,
+        "errorCode": null
+      },
+      {
+        "id": 1,
+        "type": "playing",
+        "atMs": 22792.19999998808,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+        "currentTime": 0,
+        "readyState": 4,
+        "errorCode": null
+      },
+      {
+        "id": 0,
+        "type": "pause",
+        "atMs": 25287.399999976158,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/day-BEOsiWxv.opus",
+        "currentTime": 12.438334,
+        "readyState": 4,
+        "errorCode": null
+      },
+      {
+        "id": 1,
+        "type": "pause",
+        "atMs": 25800,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+        "currentTime": 3.008,
+        "readyState": 4,
+        "errorCode": null
+      },
+      {
+        "id": 1,
+        "type": "playing",
+        "atMs": 25923.599999964237,
+        "src": "https://studentop.cn:14355/voxel-campus/assets/night-BKuUmqmo.opus",
+        "currentTime": 3.056,
+        "readyState": 4,
+        "errorCode": null
+      }
+    ]
+  },
+  "errors": [],
+  "navigations": [
+    "https://studentop.cn:14355/voxel-campus/"
+  ],
+  "finishedAt": "2026-10-30T09:24:52.433Z"
+}
