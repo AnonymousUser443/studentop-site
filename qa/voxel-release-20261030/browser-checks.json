@@ -1,0 +1,114 @@
+{
+  "ok": true,
+  "baseCommit": "0cee85c7d9da3e08b68342f882f9a88e078ae811",
+  "source": "actual supplied Opus recordings with a local Range server; no production writes",
+  "environment": "Owned headless Microsoft Edge, empty isolated profile, extensions disabled, cache disabled, 960x600; real Web Audio analyser",
+  "sourceSHA256": {
+    "before": "a2d2d0f7fef9a7d69d40039b2276528c8e4bc967581201fd5dc274c4a6726ee3",
+    "after": "4f362618e75e463bba0d4965c7510268e63cf3f2123bd8299e726276a076ba5b"
+  },
+  "streamBytesPerSecond": 54613,
+  "timings": {
+    "coldStreamPlayingMs": 2129,
+    "coldStreamSignalMs": 2892
+  },
+  "checks": [
+    {
+      "name": "baseline reproduces two competing pending songs before either can play",
+      "pass": true,
+      "evidence": {
+        "pendingUnpaused": 2,
+        "oldRequestClosed": false
+      }
+    },
+    {
+      "name": "entry stays silent and downloads no recording before intent",
+      "pass": true
+    },
+    {
+      "name": "cold throttled play starts with an incomplete recording",
+      "pass": true,
+      "evidence": {
+        "elapsedMs": 2129,
+        "fullBytes": 743661,
+        "transferredBytes": 129261
+      }
+    },
+    {
+      "name": "real Opus produces nonzero master output before full buffering",
+      "pass": true,
+      "evidence": {
+        "elapsedMs": 2892
+      }
+    },
+    {
+      "name": "switching an unready song aborts its actual HTTP request immediately",
+      "pass": true
+    },
+    {
+      "name": "expected cancellation leaves the selected song loading without an error",
+      "pass": true
+    },
+    {
+      "name": "mute before first sample cancels every pending download and playback",
+      "pass": true
+    },
+    {
+      "name": "explicit mute survives reentering the journey without new downloads",
+      "pass": true
+    },
+    {
+      "name": "reselecting a cancelled recording restores its URL and reuses its player",
+      "pass": true
+    },
+    {
+      "name": "already audible music continues while the next recording buffers",
+      "pass": true
+    },
+    {
+      "name": "crossfade ends on the selected song and pauses the outgoing one",
+      "pass": true
+    },
+    {
+      "name": "morning and evening keep the shared recording without reloading",
+      "pass": true
+    },
+    {
+      "name": "the original real recording still loops at its end",
+      "pass": true
+    },
+    {
+      "name": "network failure has an explicit error and resets loading",
+      "pass": true
+    },
+    {
+      "name": "retry after a real failed response restores playback",
+      "pass": true
+    },
+    {
+      "name": "a previously audible but now unready song also releases its pending request",
+      "pass": true
+    },
+    {
+      "name": "dispose aborts an unready request and closes its AudioContext",
+      "pass": true
+    },
+    {
+      "name": "production keeps development globals private",
+      "pass": true
+    },
+    {
+      "name": "real production UI plays its relative-path Opus asset",
+      "pass": true
+    },
+    {
+      "name": "production period control selects its night recording",
+      "pass": true
+    },
+    {
+      "name": "no JavaScript exceptions in cold, failure, cancellation or production cases",
+      "pass": true,
+      "evidence": []
+    }
+  ]
+}

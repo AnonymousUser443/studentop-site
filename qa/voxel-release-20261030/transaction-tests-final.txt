@@ -1,0 +1,19 @@
+✔ manifest rejects digest mismatch, traversal, duplicates and missing recordings (23.200107ms)
+✔ upload rejects extra files, empty directories, corrupt bytes and hard links (32.833451ms)
+✔ upload rejects linked directories and unexpected stage members (12.34844ms)
+✔ successful transaction publishes verified buffers, preserves old assets and checks all six ranges (47.611628ms)
+✔ changed baseline is rejected before creating a release or history (15.907564ms)
+✔ immutable shared asset conflict keeps old pointer and existing bytes (16.729314ms)
+✔ public byte mismatch rolls back only voxel and keeps newly issued assets readable (22.794796ms)
+✔ incorrect Range response rolls back even when full files are correct (26.935749ms)
+✔ unrelated state changes before activation stop publication (22.497919ms)
+✔ Linux flock remains held by Node until explicit close (24.150474ms)
+✔ new public files remain nginx-readable under a restrictive umask (23.105375ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 526.44466

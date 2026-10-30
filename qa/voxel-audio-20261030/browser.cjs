@@ -2,8 +2,16 @@
 const fs = require('node:fs'), path = require('node:path'), assert = require('node:assert/strict');
 const { execFileSync } = require('node:child_process');
 const { createHash } = require('node:crypto');
-const { newSession, until, sleep } = require('../lib.js');
+const { args, newSession, until, sleep } = require('../lib.js');
 const { startFixture } = require('./fixture.cjs');
+const argv = process.argv.slice(2);
+if (argv.length && (argv.length !== 2 || argv[0] !== '--out')) throw new Error('Usage: node browser.cjs [--out <new-report.json>]');
+const options = args(argv);
+if (options.out !== undefined && !options.out.trim()) throw new Error('--out must be a nonempty file path.');
+const reportPath = path.resolve(options.out || path.join(__dirname, 'browser-checks.json'));
+const failurePath = path.join(path.dirname(reportPath), 'failure.json');
+const reportFlag = options.out === undefined ? 'w' : 'wx';
+if (options.out !== undefined && (reportPath === failurePath || fs.existsSync(reportPath) || fs.existsSync(failurePath))) throw new Error('--out requires new success and failure report paths; existing receipts will not be overwritten.');
 const checks = [], timings = {}, base = '0cee85c7d9da3e08b68342f882f9a88e078ae811';
 let fixture, session, mark;
 const check = (name, value, evidence) => { assert(value, name + ': ' + JSON.stringify(evidence)); checks.push({ name, pass: true, ...(evidence === undefined ? {} : { evidence }) }); };
@@ -27,6 +35,7 @@ async function heldSwitch() {
   return { dayCancelled: pending().filter(r => r.file.includes('day')).every(r => r.closedAt && !r.endedAt), ...(await state()) };
 }
 (async () => {
+  fs.mkdirSync(path.dirname(reportPath), { recursive: true });
   fixture = await startFixture();
   session = await newSession({ size: '960x600' });
   await session.call('Network.setCacheDisabled', { cacheDisabled: true });
@@ -131,10 +140,11 @@ async function heldSwitch() {
   check('no JavaScript exceptions in cold, failure, cancellation or production cases', !session.errors.some(e => e.startsWith('EXCEPTION:')), session.errors.filter(e => e.startsWith('EXCEPTION:')));
 
   const sha = text => createHash('sha256').update(text).digest('hex');
-  fs.writeFileSync(path.join(__dirname, 'browser-checks.json'), JSON.stringify({ ok: true, baseCommit: base, source: 'actual supplied Opus recordings with a local Range server; no production writes', environment: 'Owned headless Microsoft Edge, empty isolated profile, extensions disabled, cache disabled, 960x600; real Web Audio analyser', sourceSHA256: { before: sha(oldSource), after: sha(fs.readFileSync(path.join(__dirname, '../../apps/liangxiang-cloudwalk/src/audio.js'))) }, streamBytesPerSecond: Math.round(8192 / .15), timings, checks }, null, 2) + '\n');
+  fs.writeFileSync(reportPath, JSON.stringify({ ok: true, baseCommit: base, source: 'actual supplied Opus recordings with a local Range server; no production writes', environment: 'Owned headless Microsoft Edge, empty isolated profile, extensions disabled, cache disabled, 960x600; real Web Audio analyser', sourceSHA256: { before: sha(oldSource), after: sha(fs.readFileSync(path.join(__dirname, '../../apps/liangxiang-cloudwalk/src/audio.js'))) }, streamBytesPerSecond: Math.round(8192 / .15), timings, checks }, null, 2) + '\n', { flag: reportFlag });
   console.log(JSON.stringify({ ok: true, checks: checks.length, timings }));
 })().catch(async error => {
   console.error(error.stack);
-  fs.writeFileSync(path.join(__dirname, 'failure.json'), JSON.stringify({ ok: false, error: error.stack, checks, timings, errors: session?.errors }, null, 2) + '\n');
+  try { fs.writeFileSync(failurePath, JSON.stringify({ ok: false, error: error.stack, checks, timings, errors: session?.errors }, null, 2) + '\n', { flag: reportFlag }); }
+  catch (writeError) { console.error('Failure report could not be written:', writeError.message); }
   process.exitCode = 1;
 }).finally(async () => { if (session) await session.close(); if (fixture) await fixture.close(); });
