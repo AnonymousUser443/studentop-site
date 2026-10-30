@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "scope": "Read-only public TLS byte-range probes, normal certificate validation, no server mutation",
+  "checks": [
+    {
+      "range": "bytes=0-32767",
+      "status": 206,
+      "contentType": "audio/ogg",
+      "contentRange": "bytes 0-32767/743661",
+      "bytes": 32768,
+      "elapsedMs": 97,
+      "matchesLocalOriginal": true
+    },
+    {
+      "range": "bytes=-32768",
+      "status": 206,
+      "contentType": "audio/ogg",
+      "contentRange": "bytes 710893-743660/743661",
+      "bytes": 32768,
+      "elapsedMs": 13,
+      "matchesLocalOriginal": true
+    }
+  ]
+}
