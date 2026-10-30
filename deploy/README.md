@@ -7,6 +7,20 @@
 
 主页、理韵活动页和桌面真实监控最近一次发布以[2026-10-29 生产收据](../docs/ACTIVITY-MONITOR-RELEASE-20261029.md)为准。该次同时更新桌面认证代理；下方历史单主页脚本不能代替这项联动发布。
 
+## 仅更新体素校园
+
+所有者明确授权后，先在干净且已合并的提交上运行 `node tools/prepare-voxel-release.mjs <完整提交SHA>`。工具重新构建体素，生成 `.release-local/voxel-<id>/public`、`manifest.json` 及清单 SHA-256，不连接服务器。
+
+确认远端主分支仍是该提交，并只读记录当前 `/opt/projects/voxel-campus/current` 的实际目标。把 `public`、`manifest.json` 与已审查的 `apply-voxel-release.mjs` 上传到新建的0700目录 `/var/tmp/aiden-voxel-<id>`，核对远端脚本与本地脚本SHA256，再以所有者授权运行：
+
+```text
+sudo -n /opt/node24/bin/node /var/tmp/aiden-voxel-<id>/apply-voxel-release.mjs /var/tmp/aiden-voxel-<id> <manifestSHA256> <原current实际目标>
+```
+
+事务复用共享发布锁，验证清单和全部公开文件，仅追加体素共享哈希资源、创建新release并原子切换体素current。通过本机TLS/SNI验证逐文件字节、音频首尾Range及邻站健康，并核对其他版本指针、配置哈希和服务进程不变；失败恢复旧指针。它不上传门禁配置、不重启服务、不改nginx。旧release与共享资源保留，收据在 `/var/lib/aiden-release-history/voxel-<id>/`。发布后还需公网浏览器验收并另存实际发布记录。
+
+本地事务测试：`node --test qa/voxel-release-tests.mjs`。新的音频回归结果可通过 `node qa/voxel-audio-20261030/browser.cjs --out qa/<新目录>/browser-checks.json` 保存；指定路径已存在时拒绝覆盖。
+
 ## 文件地图
 
 | 文件 | 作用 |
