@@ -1,0 +1,82 @@
+{
+  "ok": false,
+  "target": "https://studentop.cn:14355/voxel-campus/",
+  "expectedScript": "https://studentop.cn:14355/voxel-campus/assets/index-sx_2Yh8w.js",
+  "startedAt": "2026-10-30T09:22:45.747Z",
+  "scope": "Read-only public static page; actual UI clicks and native media observations; no authentication or application state injection.",
+  "environment": "Owned headless Microsoft Edge, fresh isolated profile, extensions disabled, cache disabled, software rendering, 1440x900. Browser output is muted; this is playback/event evidence, not a physical listening or device performance test.",
+  "checks": [
+    {
+      "name": "exact public target without authentication navigation",
+      "pass": true
+    },
+    {
+      "name": "expected new bundle is referenced and successfully fetched",
+      "pass": true,
+      "evidence": {
+        "expected": "https://studentop.cn:14355/voxel-campus/assets/index-sx_2Yh8w.js",
+        "scripts": [
+          "https://studentop.cn:14355/voxel-campus/assets/index-sx_2Yh8w.js"
+        ]
+      }
+    },
+    {
+      "name": "production exposes no development campus global",
+      "pass": true
+    },
+    {
+      "name": "entry is silent without media downloads before a user gesture",
+      "pass": true
+    }
+  ],
+  "snapshots": [
+    {
+      "label": "before-intent",
+      "tracks": [],
+      "ui": {
+        "pressed": "false",
+        "busy": "false",
+        "track": "dawn_dusk"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/",
+      "status": 200,
+      "mimeType": "text/html",
+      "type": "Document",
+      "fromDiskCache": false,
+      "fromServiceWorker": false
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/index-sx_2Yh8w.js",
+      "status": 200,
+      "mimeType": "application/javascript",
+      "type": "Script",
+      "fromDiskCache": false,
+      "fromServiceWorker": false
+    },
+    {
+      "url": "https://studentop.cn:14355/voxel-campus/assets/three-B36RJSNi.js",
+      "status": 200,
+      "mimeType": "application/javascript",
+      "type": "Script",
+      "fromDiskCache": false,
+      "fromServiceWorker": false
+    }
+  ],
+  "mediaRequests": [],
+  "blockedRequests": [],
+  "diagnostics": [],
+  "error": "Error: day real period control timed out after 3000ms\n    at until (D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\lib.js:205:9)\n    at async choosePeriod (D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\voxel-release-20261030\\public-browser.cjs:76:3)\n    at async D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\voxel-release-20261030\\public-browser.cjs:111:5",
+  "audio": {
+    "tracks": [],
+    "events": []
+  },
+  "errors": [],
+  "navigations": [
+    "https://studentop.cn:14355/voxel-campus/"
+  ],
+  "finishedAt": "2026-10-30T09:22:55.457Z"
+}

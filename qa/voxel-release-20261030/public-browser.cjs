@@ -72,8 +72,9 @@ async function playing(key) {
 }
 async function choosePeriod(key) {
   await session.click('#time-button');
-  await session.click('[data-time-mode="' + key + '"]');
-  await until(() => session.evaluate(`document.querySelector('[data-time-mode="${key}"]')?.getAttribute('aria-pressed') === 'true'`), 3000, key + ' real period control');
+  await until(() => session.evaluate('document.querySelector("#time-panel")?.hidden === false'), 3000, 'period menu opens');
+  await session.click('#time-panel button[data-time-mode="' + key + '"]');
+  await until(() => session.evaluate(`document.body.dataset.timeMode === '${key}' && document.querySelector('#time-panel button[data-time-mode="${key}"]')?.getAttribute('aria-pressed') === 'true'`), 3000, key + ' real period control');
 }
 
 (async () => {
