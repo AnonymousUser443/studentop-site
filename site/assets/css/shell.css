@@ -404,10 +404,10 @@ svg { display: block; }
   position: absolute;
   z-index: var(--z-start);
   left: 50%;
-  bottom: calc(var(--taskbar-h) + 8px);
+  bottom: calc(var(--taskbar-h) + 8px + var(--flyout-inset-bottom, 0px));
   transform: translateX(-50%);
   width: min(640px, calc(100vw - 20px));
-  max-height: min(742px, calc(100vh - var(--taskbar-h) - 20px));
+  max-height: min(742px, calc(var(--flyout-viewport-height, 100vh) - var(--taskbar-h) - 20px));
   display: flex;
   flex-direction: column;
   padding: 20px 0 0;
@@ -758,14 +758,14 @@ svg { display: block; }
 /* 搜索面板 */
 .search-panel {
   left: 50%;
-  bottom: calc(var(--taskbar-h) + 8px);
+  bottom: calc(var(--taskbar-h) + 8px + var(--flyout-inset-bottom, 0px));
   transform: translateX(-50%);
   width: min(640px, calc(100vw - 20px));
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: min(560px, calc(100vh - var(--taskbar-h) - 24px));
+  max-height: min(560px, calc(var(--flyout-viewport-height, 100vh) - var(--taskbar-h) - 24px));
 }
 .search-panel .search-input-wrap {
   display: flex;
@@ -808,6 +808,8 @@ svg { display: block; }
   border-top: 1px solid var(--stroke-1);
 }
 .search-web:hover { background: var(--hover); }
+.search-web svg { width: 16px; height: 16px; flex: 0 0 16px; }
+.search-web span { min-width: 0; overflow-wrap: anywhere; }
 
 /* 日历 / 通知面板 */
 .calendar-panel {

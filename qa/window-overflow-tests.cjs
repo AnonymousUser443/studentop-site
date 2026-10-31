@@ -9,7 +9,7 @@ const vm = require('node:vm');
 const plain = value => JSON.parse(JSON.stringify(value));
 const dataKey = name => name.slice(5).replace(/-([a-z])/g, (_, c) => c.toUpperCase());
 
-function desktop(width = 1440, height = 900) {
+function desktop(width = 1440, height = 900, { coarse = false, visualViewport = false } = {}) {
   let document;
   class Events {
     constructor() { this.listeners = Object.create(null); }
@@ -50,8 +50,9 @@ function desktop(width = 1440, height = 900) {
   class Element extends Events {
     constructor(tag) {
       super(); this.tagName = tag.toUpperCase(); this.children = []; this.parentNode = null; this.attrs = {};
-      this.dataset = {}; this.style = {}; this.className = ''; this.id = ''; this._text = ''; this.hidden = false;
+      this.dataset = {}; this.style = { setProperty(name, value) { this[name] = value; }, getPropertyValue(name) { return this[name] || ''; } }; this.className = ''; this.id = ''; this._text = ''; this.hidden = false;
       this.inert = false; this.disabled = false; this.tabIndex = ['BUTTON', 'INPUT', 'TEXTAREA', 'A'].includes(this.tagName) ? 0 : -1;
+      this.value = '';
       this.scrollLeft = 0; this.scrollTop = 0;
       this.classList = { contains: c => this.className.split(/\s+/).includes(c),
         add: (...cs) => { this.className = [...new Set(this.className.split(/\s+/).filter(Boolean).concat(cs))].join(' '); },
@@ -135,13 +136,14 @@ function desktop(width = 1440, height = 900) {
     clamp: (v, min, max) => Math.max(min, Math.min(max, v)), debounce: fn => fn,
     esc: value => String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'),
     fmtTime: () => '12:00', fmtDateTaskbar: () => '2026/10/28', fmtDateCN: () => 'date',
-    notifications: [], renderNotificationBadge() {}, markAllRead() {}, clearNotifications() {}, notify() {} };
+    avatarMarkup: () => '', notifications: [], renderNotificationBadge() {}, markAllRead() {}, clearNotifications() {}, notify() {} };
   Object.assign(window, { window, document, Win, console, URL, innerWidth: width, innerHeight: height,
-    matchMedia: query => ({ matches: query.includes('900px') && window.innerWidth <= 900 }),
+    matchMedia: query => ({ matches: query.includes('900px') ? window.innerWidth <= 900 : query === '(pointer: coarse)' && coarse }),
     SITE: { taskbarPinned: ['notes', 'files'], desktop: [], startPinned: [], profile: {}, wallpapers: [] },
     ICONS: { app: () => '', glyph: () => '' }, navigator: { onLine: true },
     getComputedStyle: () => ({ getPropertyValue: name => name === '--titlebar-h' ? '38px' : '52px' }),
     setTimeout: fn => { timers.set(++nextTimer, fn); return nextTimer; }, clearTimeout: id => timers.delete(id), setInterval: () => 0 });
+  if (visualViewport) window.visualViewport = Object.assign(new Events(), { width, height, offsetTop: 0, scale: 1 });
   const context = vm.createContext(window);
   for (const name of ['wm', 'shell']) vm.runInContext(fs.readFileSync(path.join(__dirname, '../site/assets/js/' + name + '.js'), 'utf8'), context);
   window.WM.init(); window.Shell.init();
@@ -212,6 +214,73 @@ test('narrow mobile layout retains the full-screen policy', () => {
 test('resize returns focus only when focus was inside a closing flyout', () => {
   const { Shell, window, document, q, outside } = desktop(); Shell.toggleCalendar(q('#trayClock')); window.fire('resize'); assert.equal(document.activeElement,q('#trayClock'));
   Shell.toggleCalendar(q('#trayClock')); outside.focus(); window.fire('resize'); assert.equal(document.activeElement,outside);
+});
+
+test('mobile Start and Search open without focusing a text input', () => {
+  for (const [method, kind] of [['toggleStart', 'start'], ['toggleSearch', 'search']]) {
+    const { Shell, document, q, flush } = desktop(390, 844);
+    Shell[method](); flush();
+    assert.equal(document.activeElement, q('[data-flyout="' + kind + '"]'));
+    assert.notEqual(document.activeElement.tagName, 'INPUT');
+  }
+});
+
+test('large touchscreens do not autofocus while desktop keeps immediate search focus', () => {
+  const touch = desktop(1024, 768, { coarse: true });
+  touch.Shell.toggleSearch(); touch.flush();
+  assert.equal(touch.document.activeElement, touch.q('[data-flyout="search"]'));
+  for (const method of ['toggleStart', 'toggleSearch']) {
+    const mouse = desktop(); mouse.Shell[method](); mouse.flush();
+    assert.equal(mouse.document.activeElement.tagName, 'INPUT');
+  }
+});
+
+test('delayed opening focus never takes focus from an input the user already tapped', () => {
+  const { Shell, document, q, flush } = desktop(390, 844);
+  Shell.toggleStart(); const input = q('#startSearchInput'); input.focus(); flush();
+  assert.equal(document.activeElement, input);
+});
+
+test('keyboard-height changes preserve mobile panels, input value and the underlying window', () => {
+  for (const [method, kind, inputId] of [['toggleStart', 'start', 'startSearchInput'], ['toggleSearch', 'search', 'globalSearchInput']]) {
+    const { WM, Shell, window, document, q, flush } = desktop(390, 844);
+    const app = WM.open('notes'); flush(); Shell[method](); flush();
+    const panel = q('[data-flyout="' + kind + '"]'); const input = q('#' + inputId);
+    input.focus(); input.value = '合成搜索'; input.fire('input');
+    window.innerHeight = 480; window.fire('resize'); flush();
+    assert.equal(q('[data-flyout="' + kind + '"]'), panel);
+    assert.equal(document.activeElement, input); assert.equal(input.value, '合成搜索');
+    assert.equal(app.state, 'max'); assert.equal(WM.activeWin(), app);
+    window.innerHeight = 844; window.fire('resize'); flush();
+    assert.equal(q('[data-flyout="' + kind + '"]'), panel);
+    assert.equal(document.activeElement, input);
+  }
+});
+
+test('visual viewport keyboard resizing and panning updates panel space without closing it', () => {
+  const { Shell, window, document, q, flush } = desktop(390, 844, { visualViewport: true });
+  Shell.toggleSearch(); flush(); const panel = q('[data-flyout="search"]'), input = q('#globalSearchInput'); input.focus();
+  window.visualViewport.height = 480; window.visualViewport.fire('resize');
+  assert.equal(q('#flyoutHost').style.getPropertyValue('--flyout-viewport-height'), '480px');
+  assert.equal(q('#flyoutHost').style.getPropertyValue('--flyout-inset-bottom'), '364px');
+  window.visualViewport.offsetTop = 60; window.visualViewport.fire('scroll');
+  assert.equal(q('#flyoutHost').style.getPropertyValue('--flyout-inset-bottom'), '304px');
+  assert.equal(q('[data-flyout="search"]'), panel); assert.equal(document.activeElement, input);
+});
+
+test('returning from all Start apps on mobile does not summon the input keyboard', () => {
+  const { Shell, document, q, flush } = desktop(390, 844);
+  Shell.toggleStart(); flush(); q('[data-start-all]').click(); q('[data-start-back]').click();
+  assert.notEqual(document.activeElement.tagName, 'INPUT');
+  assert.equal(document.activeElement, q('[data-flyout="start"]'));
+});
+
+test('rotation or width changes still dismiss panels and restore the trigger', () => {
+  const { Shell, window, document, q, flush } = desktop(390, 844);
+  Shell.toggleStart(); flush(); q('#startSearchInput').focus();
+  window.innerWidth = 844; window.innerHeight = 390; window.fire('resize'); flush();
+  assert.equal(document.querySelector('[data-flyout="start"]'), null);
+  assert.equal(document.activeElement, q('#startBtn'));
 });
 test('calendar remembers the actual notification trigger and expanded owner', () => {
   const { Shell, document, q, key } = desktop(); Shell.toggleCalendar(q('#notifBtn'));

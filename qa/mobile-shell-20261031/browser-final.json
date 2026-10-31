@@ -1,0 +1,352 @@
+{
+  "ok": true,
+  "checkedAt": "2026-10-31T07:30:54.436Z",
+  "scope": "Start/Search focus, touch, layout/visual viewport keyboard models",
+  "browser": "owned isolated headless Edge; OpenCLI native input unavailable on hidden document",
+  "checks": [
+    {
+      "name": "390x844:start:touch-opens-without-IME-focus",
+      "pass": true
+    },
+    {
+      "name": "390x844:start:fits-full-viewport",
+      "pass": true
+    },
+    {
+      "name": "390x844:start:explicit-input-and-Chinese-filter",
+      "pass": true
+    },
+    {
+      "name": "390x844:start:keyboard-resize-preserves-panel-and-input",
+      "pass": true
+    },
+    {
+      "name": "390x844:start:fits-keyboard-viewport",
+      "pass": true
+    },
+    {
+      "name": "390x844:start:underlying-app-stays-open",
+      "pass": true
+    },
+    {
+      "name": "390x844:start:keyboard-dismiss-preserves-panel",
+      "pass": true
+    },
+    {
+      "name": "390x844:start:Escape-returns-to-trigger",
+      "pass": true
+    },
+    {
+      "name": "390x844:search:touch-opens-without-IME-focus",
+      "pass": true
+    },
+    {
+      "name": "390x844:search:fits-full-viewport",
+      "pass": true
+    },
+    {
+      "name": "390x844:search:explicit-input-and-Chinese-filter",
+      "pass": true
+    },
+    {
+      "name": "390x844:search:web-result-icons-fit",
+      "pass": true
+    },
+    {
+      "name": "390x844:search:keyboard-resize-preserves-panel-and-input",
+      "pass": true
+    },
+    {
+      "name": "390x844:search:fits-keyboard-viewport",
+      "pass": true
+    },
+    {
+      "name": "390x844:search:underlying-app-stays-open",
+      "pass": true
+    },
+    {
+      "name": "390x844:search:keyboard-dismiss-preserves-panel",
+      "pass": true
+    },
+    {
+      "name": "390x844:search:Escape-returns-to-trigger",
+      "pass": true
+    },
+    {
+      "name": "360x800:start:touch-opens-without-IME-focus",
+      "pass": true
+    },
+    {
+      "name": "360x800:start:fits-full-viewport",
+      "pass": true
+    },
+    {
+      "name": "360x800:start:explicit-input-and-Chinese-filter",
+      "pass": true
+    },
+    {
+      "name": "360x800:start:keyboard-resize-preserves-panel-and-input",
+      "pass": true
+    },
+    {
+      "name": "360x800:start:fits-keyboard-viewport",
+      "pass": true
+    },
+    {
+      "name": "360x800:start:underlying-app-stays-open",
+      "pass": true
+    },
+    {
+      "name": "360x800:start:keyboard-dismiss-preserves-panel",
+      "pass": true
+    },
+    {
+      "name": "360x800:start:Escape-returns-to-trigger",
+      "pass": true
+    },
+    {
+      "name": "360x800:search:touch-opens-without-IME-focus",
+      "pass": true
+    },
+    {
+      "name": "360x800:search:fits-full-viewport",
+      "pass": true
+    },
+    {
+      "name": "360x800:search:explicit-input-and-Chinese-filter",
+      "pass": true
+    },
+    {
+      "name": "360x800:search:web-result-icons-fit",
+      "pass": true
+    },
+    {
+      "name": "360x800:search:keyboard-resize-preserves-panel-and-input",
+      "pass": true
+    },
+    {
+      "name": "360x800:search:fits-keyboard-viewport",
+      "pass": true
+    },
+    {
+      "name": "360x800:search:underlying-app-stays-open",
+      "pass": true
+    },
+    {
+      "name": "360x800:search:keyboard-dismiss-preserves-panel",
+      "pass": true
+    },
+    {
+      "name": "360x800:search:Escape-returns-to-trigger",
+      "pass": true
+    },
+    {
+      "name": "320x568:start:touch-opens-without-IME-focus",
+      "pass": true
+    },
+    {
+      "name": "320x568:start:fits-full-viewport",
+      "pass": true
+    },
+    {
+      "name": "320x568:start:explicit-input-and-Chinese-filter",
+      "pass": true
+    },
+    {
+      "name": "320x568:start:keyboard-resize-preserves-panel-and-input",
+      "pass": true
+    },
+    {
+      "name": "320x568:start:fits-keyboard-viewport",
+      "pass": true
+    },
+    {
+      "name": "320x568:start:underlying-app-stays-open",
+      "pass": true
+    },
+    {
+      "name": "320x568:start:keyboard-dismiss-preserves-panel",
+      "pass": true
+    },
+    {
+      "name": "320x568:start:Escape-returns-to-trigger",
+      "pass": true
+    },
+    {
+      "name": "320x568:search:touch-opens-without-IME-focus",
+      "pass": true
+    },
+    {
+      "name": "320x568:search:fits-full-viewport",
+      "pass": true
+    },
+    {
+      "name": "320x568:search:explicit-input-and-Chinese-filter",
+      "pass": true
+    },
+    {
+      "name": "320x568:search:web-result-icons-fit",
+      "pass": true
+    },
+    {
+      "name": "320x568:search:keyboard-resize-preserves-panel-and-input",
+      "pass": true
+    },
+    {
+      "name": "320x568:search:fits-keyboard-viewport",
+      "pass": true
+    },
+    {
+      "name": "320x568:search:underlying-app-stays-open",
+      "pass": true
+    },
+    {
+      "name": "320x568:search:keyboard-dismiss-preserves-panel",
+      "pass": true
+    },
+    {
+      "name": "320x568:search:Escape-returns-to-trigger",
+      "pass": true
+    },
+    {
+      "name": "844x390:start:touch-opens-without-IME-focus",
+      "pass": true
+    },
+    {
+      "name": "844x390:start:fits-full-viewport",
+      "pass": true
+    },
+    {
+      "name": "844x390:start:explicit-input-and-Chinese-filter",
+      "pass": true
+    },
+    {
+      "name": "844x390:start:keyboard-resize-preserves-panel-and-input",
+      "pass": true
+    },
+    {
+      "name": "844x390:start:fits-keyboard-viewport",
+      "pass": true
+    },
+    {
+      "name": "844x390:start:underlying-app-stays-open",
+      "pass": true
+    },
+    {
+      "name": "844x390:start:keyboard-dismiss-preserves-panel",
+      "pass": true
+    },
+    {
+      "name": "844x390:start:Escape-returns-to-trigger",
+      "pass": true
+    },
+    {
+      "name": "844x390:search:touch-opens-without-IME-focus",
+      "pass": true
+    },
+    {
+      "name": "844x390:search:fits-full-viewport",
+      "pass": true
+    },
+    {
+      "name": "844x390:search:explicit-input-and-Chinese-filter",
+      "pass": true
+    },
+    {
+      "name": "844x390:search:web-result-icons-fit",
+      "pass": true
+    },
+    {
+      "name": "844x390:search:keyboard-resize-preserves-panel-and-input",
+      "pass": true
+    },
+    {
+      "name": "844x390:search:fits-keyboard-viewport",
+      "pass": true
+    },
+    {
+      "name": "844x390:search:underlying-app-stays-open",
+      "pass": true
+    },
+    {
+      "name": "844x390:search:keyboard-dismiss-preserves-panel",
+      "pass": true
+    },
+    {
+      "name": "844x390:search:Escape-returns-to-trigger",
+      "pass": true
+    },
+    {
+      "name": "mobile:all-apps-back-does-not-focus-input",
+      "pass": true
+    },
+    {
+      "name": "visual-only:panel-and-focus-survive",
+      "pass": true
+    },
+    {
+      "name": "visual-only:search-above-keyboard",
+      "pass": true
+    },
+    {
+      "name": "visual-only:pan-keeps-panel-in-visible-area",
+      "pass": true
+    },
+    {
+      "name": "visual-only:dismiss-restores-space",
+      "pass": true
+    },
+    {
+      "name": "mobile:rotation-closes-panel-and-returns-focus",
+      "pass": true
+    },
+    {
+      "name": "1440:start:desktop-autofocus",
+      "pass": true
+    },
+    {
+      "name": "1440:start:desktop-filter-still-works",
+      "pass": true
+    },
+    {
+      "name": "1440:search:desktop-autofocus",
+      "pass": true
+    },
+    {
+      "name": "1440:search:desktop-filter-still-works",
+      "pass": true
+    },
+    {
+      "name": "1366:start:desktop-autofocus",
+      "pass": true
+    },
+    {
+      "name": "1366:start:desktop-filter-still-works",
+      "pass": true
+    },
+    {
+      "name": "1366:search:desktop-autofocus",
+      "pass": true
+    },
+    {
+      "name": "1366:search:desktop-filter-still-works",
+      "pass": true
+    },
+    {
+      "name": "no-browser-errors",
+      "pass": true
+    }
+  ],
+  "screenshots": [
+    "browser-final-mobile-start-no-keyboard.png",
+    "browser-final-layout-keyboard-search.png",
+    "browser-final-visual-keyboard-search.png"
+  ],
+  "sourceHashes": {
+    "site/assets/js/shell.js": "b57805106bb998d9678231bb521913c43b7d2955d7db1d1584f1278bfbb56525",
+    "site/assets/css/shell.css": "a11dd6c28149e6656b40fa48a8f03eea8bd9b97515c659fd1add932ce9710af0",
+    "site/assets/css/paper.css": "78317e14aa9fbfbefd2b84126e010269d4b5576f20070bc6c237f8c41b0acfe7"
+  },
+  "browserVersion": "Edg/156.0.4314.50",
+  "errors": []
+}
