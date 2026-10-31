@@ -1,0 +1,54 @@
+{
+  "deployed": true,
+  "scope": "homepage mobile Start/Search keyboard repair",
+  "version": "2d6f20fd4b6c2f6098f6db38",
+  "codePullRequest": "https://github.com/AnonymousUser443/studentop-site/pull/13",
+  "codeCommit": "e11971e3dfba0385d71f12aa62cd74b074eaf454",
+  "publishedCommit": "dd8c91426ab25e183dc285cf8ed3ac36b0403090",
+  "mergedAt": "2026-10-31T07:49:15Z",
+  "releaseId": "20261031T074956Z",
+  "current": "/opt/win11-home/releases/20261031T074956Z",
+  "rollbackTarget": "/opt/win11-home/releases/activity-monitor-20261029T154940Z-f320dadbb9",
+  "rollbackTargetExists": true,
+  "rollbackPerformed": false,
+  "method": "deploy/deploy-site.sh with verified .release-local/mobile-shell-20261031/site",
+  "artifact": {
+    "versionedAssetCount": 44,
+    "htmlEntryCount": 3,
+    "buildFileCount": 94,
+    "buildTotalBytes": 7191414,
+    "deploymentArchiveSHA256": null,
+    "archiveNote": "The deployment script repacked the verified build; prepared archive hash is not an upload receipt."
+  },
+  "releaseSelfCheck": {
+    "httpStatus": 200,
+    "httpsStatus": 200,
+    "versionMatches": true,
+    "nginxConfigValid": true,
+    "nginxServiceActive": true
+  },
+  "verification": {
+    "nodePassed": 56,
+    "browserPassed": 83,
+    "publicPassed": 67,
+    "publicTotal": 67,
+    "publicVerifiedAt": "2026-10-31T07:53:23.485Z",
+    "publicReport": "public-results.json",
+    "postStateCheckedAt": "2026-10-31T07:55:16.986Z",
+    "postStateReport": "post-state.json"
+  },
+  "unchangedReleasePointers": [
+    "liyun",
+    "voxel",
+    "campusEntry",
+    "genshin",
+    "frost",
+    "desktopAuth"
+  ],
+  "campusReconnectTimer": {
+    "enabled": "enabled",
+    "active": "active",
+    "lastResult": "Result=success\nExecMainStatus=0"
+  },
+  "limits": "Isolated Edge/CDP touch with modeled keyboard viewport changes; no physical Android/iOS/WeChat IME or real production login was tested."
+}

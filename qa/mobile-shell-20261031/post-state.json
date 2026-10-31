@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-31T07:55:16.986Z",
+  "pointers": {
+    "home": "/opt/win11-home/releases/20261031T074956Z",
+    "liyun": "/opt/projects/liyun/releases/activity-monitor-20261029T154940Z-f320dadbb9",
+    "voxel": "/opt/projects/voxel-campus/releases/20261030T092022Z-c6f57c8998",
+    "campusEntry": "/opt/projects/campus-entry/releases/20261028T110253Z-e2bc44a0e3",
+    "genshin": "/opt/projects/genshin/releases/20261027T0835Z",
+    "frost": "/opt/projects/frost/releases/v4.0.8",
+    "desktopAuth": "/opt/projects/desktop-auth/releases/activity-monitor-20261029T154940Z-f320dadbb9"
+  },
+  "homeVersion": "2d6f20fd4b6c2f6098f6db38",
+  "services": {
+    "nginx": "active",
+    "frpc": "active",
+    "frost-atlas": "active",
+    "liyun-account": "active",
+    "desktop-auth": "active",
+    "rpi-task-manager": "active"
+  },
+  "campusReconnect": {
+    "enabled": "enabled",
+    "active": "active",
+    "lastResult": "Result=success\nExecMainStatus=0"
+  },
+  "nginxConfigValid": true,
+  "rollbackTargetExists": true
+}

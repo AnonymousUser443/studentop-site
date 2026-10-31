@@ -1,6 +1,6 @@
 # 手机开始菜单与搜索键盘修复 · 2026-10-31
 
-本地修复与验收完成，候选主页版本为 `2d6f20fd4b6c2f6098f6db38`，尚未发布到树莓派。源码基线为 `e8c17ff2d03cbb39ff85b042dfb1d9e7c401af9c` 加本次主页改动。部署仍需要所有者当次明确授权。
+修复已通过 [PR #13](https://github.com/AnonymousUser443/studentop-site/pull/13) 自审合并，并由所有者本次明确授权部署到树莓派。主页版本为 `2d6f20fd4b6c2f6098f6db38`；代码提交 `e11971e3dfba0385d71f12aa62cd74b074eaf454`，合并发布基线 `dd8c91426ab25e183dc285cf8ed3ac36b0403090`。
 
 ## 故障与修正
 
@@ -20,3 +20,13 @@
 OpenCLI连接正常，但测试页被浏览器标记为hidden，原生输入被工具拒绝；因此沿用项目的独立Edge/CDP测试，未修改OpenCLI、用户扩展或登录设施。所有桌面登录只使用临时合成门禁。
 
 详细证据、重跑命令与初次截图见[本轮QA](../qa/mobile-shell-20261031/QA.md)。本轮发布候选只含主页公开构建，不包含校园网凭据或其他私密配置。
+
+## 生产发布
+
+2026-10-31 **15:49（北京时间）**使用 `deploy/deploy-site.sh` 发布主页，15:53公网验收通过。发布前再次核对远端main，无冲突或新增未整合改动，PR以merge commit合并。脚本在共享发布锁内追加版本资源、核对nginx配置、原子切换主页current并reload nginx，HTTP/HTTPS和版本自检均通过。
+
+当前目标为 `/opt/win11-home/releases/20261031T074956Z`，上一版 `/opt/win11-home/releases/activity-monitor-20261029T154940Z-f320dadbb9` 保留为回滚目标；本次未触发生产回滚。发布脚本重新打包，未记录上传包SHA256；线上内容已按已验收构建逐文件校验。
+
+公网检查 **67/67**：三个HTML入口及44份版本资源的大小、SHA256与本地已验收构建一致，主页引用新版本JS/CSS；TLS证书校验通过，邻站页面、入口脚本、理韵与霜降API正常。桌面认证配置正常，监控匿名请求仍401，内部构建索引仍403，上一版三份相关JS/CSS继续可访问。见[公网收据](../qa/mobile-shell-20261031/public-results.json)及[重跑入口](../qa/mobile-shell-20261031/public-check.mjs)。
+
+理韵、体素、纸境入场、原版、霜降与桌面认证的发布指针保持原值，六项服务active；校园网自动重连timer仍enabled/active，最近执行成功。见[发布后状态](../qa/mobile-shell-20261031/post-state.json)和[部署摘要](../qa/mobile-shell-20261031/deployment.json)。本轮没有重跑真实账号/云存档或物理手机输入法流程。

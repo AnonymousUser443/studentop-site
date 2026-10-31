@@ -55,7 +55,7 @@ node --test qa/workspace-api-tests.mjs
 
 ## 保留的浏览器入口
 
-2026-10-31 手机开始菜单/搜索的自动聚焦与键盘高度变化修复使用[独立回归](mobile-shell-20261031/QA.md)，包括 `node --test qa/window-overflow-tests.cjs` 以及隔离手机视口浏览器测试；候选版本和当前发布状态见[修复记录](../docs/MOBILE-KEYBOARD-20261031.md)。
+2026-10-31 手机开始菜单/搜索的自动聚焦与键盘高度变化修复使用[独立回归](mobile-shell-20261031/QA.md)，包括 `node --test qa/window-overflow-tests.cjs` 以及隔离手机视口浏览器测试；修复版本和生产发布收据见[修复记录](../docs/MOBILE-KEYBOARD-20261031.md)。
 
 2026-10-29 的 AidenOS 开场 / 上滑 / 普通文本登录改动使用单独的局部回归，不需要重跑整站流程：
 

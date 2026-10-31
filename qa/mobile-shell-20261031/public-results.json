@@ -1,0 +1,486 @@
+{
+  "checkedAt": "2026-10-31T07:53:23.485Z",
+  "source": "Windows direct native HTTPS, certificate verification enabled",
+  "expectedVersion": "2d6f20fd4b6c2f6098f6db38",
+  "assetCount": 44,
+  "passed": 67,
+  "total": 67,
+  "ok": true,
+  "checks": [
+    {
+      "name": "entry:index.html",
+      "pass": true,
+      "status": 200,
+      "bytes": 11116,
+      "sha256": "fc769bf497df2f6243fd080477678798a8fe5576f1325414e8ff891fa93c9c68",
+      "tlsAuthorized": true
+    },
+    {
+      "name": "home:new-runtime-references",
+      "pass": true
+    },
+    {
+      "name": "entry:projects/index.html",
+      "pass": true,
+      "status": 200,
+      "bytes": 7243,
+      "sha256": "5fde0e7f9819843ae65f52a909df81996ebfd6ec1e99f1090bff9233a3503fa6",
+      "tlsAuthorized": true
+    },
+    {
+      "name": "entry:task-manager/index.html",
+      "pass": true,
+      "status": 200,
+      "bytes": 11059,
+      "sha256": "d4d6e72bdc74dae8f57d40d4036a6603bce5dc225d4fd7c2aa188e854585d750",
+      "tlsAuthorized": true
+    },
+    {
+      "name": "asset:css/apps.css",
+      "pass": true,
+      "status": 200,
+      "bytes": 33129,
+      "sha256": "ab47c7c00165f8b7ff5b44a6dee0c8e7e8c4c975bf663f9f16b04e81d734b748",
+      "contentType": "text/css"
+    },
+    {
+      "name": "asset:css/boot-lock.css",
+      "pass": true,
+      "status": 200,
+      "bytes": 16238,
+      "sha256": "10c1a45dc75eda272d9bc1d6919c4c73dbf4af11bb75880573140fa9a239f788",
+      "contentType": "text/css"
+    },
+    {
+      "name": "asset:css/paper.css",
+      "pass": true,
+      "status": 200,
+      "bytes": 36692,
+      "sha256": "78317e14aa9fbfbefd2b84126e010269d4b5576f20070bc6c237f8c41b0acfe7",
+      "contentType": "text/css"
+    },
+    {
+      "name": "asset:css/projects.css",
+      "pass": true,
+      "status": 200,
+      "bytes": 7483,
+      "sha256": "0eb88046669a2b314de3d7fa55b98ff4b4c2a6787e5b10e35205ff0849128952",
+      "contentType": "text/css"
+    },
+    {
+      "name": "asset:css/shell.css",
+      "pass": true,
+      "status": 200,
+      "bytes": 33069,
+      "sha256": "a11dd6c28149e6656b40fa48a8f03eea8bd9b97515c659fd1add932ce9710af0",
+      "contentType": "text/css"
+    },
+    {
+      "name": "asset:css/task-manager.css",
+      "pass": true,
+      "status": 200,
+      "bytes": 46052,
+      "sha256": "2901c6567276e00f13fc41c30e79920f389d2a3b7df4a7184a71cecf78946339",
+      "contentType": "text/css"
+    },
+    {
+      "name": "asset:css/update.css",
+      "pass": true,
+      "status": 200,
+      "bytes": 3016,
+      "sha256": "298b27791e8c876dfb80761d5208e0740dbb9dadc31c15e5b71e194f01b0cf0f",
+      "contentType": "text/css"
+    },
+    {
+      "name": "asset:css/tokens.css",
+      "pass": true,
+      "status": 200,
+      "bytes": 5835,
+      "sha256": "ff819748960642cd2557d6ce76807b448c568672403eefdf642375a3b32688a2",
+      "contentType": "text/css"
+    },
+    {
+      "name": "asset:fonts/OFL-NotoSansSC.txt",
+      "pass": true,
+      "status": 200,
+      "bytes": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "name": "asset:fonts/OFL-NotoSerifSC.txt",
+      "pass": true,
+      "status": 200,
+      "bytes": 4350,
+      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6",
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "name": "asset:fonts/noto-sans-sc.woff2",
+      "pass": true,
+      "status": 200,
+      "bytes": 291584,
+      "sha256": "16189714d223f93e75feae1e87fd714d611d4cd7be854690ab881f8e561eb9a2",
+      "contentType": "font/woff2"
+    },
+    {
+      "name": "asset:fonts/noto-serif-sc.woff2",
+      "pass": true,
+      "status": 200,
+      "bytes": 379156,
+      "sha256": "3dccdf0c10c6ff3d7b9be73c262d7a75f4cb58132b7b8763dbef5c6d3e9fe2c1",
+      "contentType": "font/woff2"
+    },
+    {
+      "name": "asset:img/avatar-aiden.jpg",
+      "pass": true,
+      "status": 200,
+      "bytes": 26674,
+      "sha256": "d1d61e32742a1973d01e10b29c31b78e3ec7087ab413a8170f7f47cc6a4e766d",
+      "contentType": "image/jpeg"
+    },
+    {
+      "name": "asset:img/aidenos-landscape.webp",
+      "pass": true,
+      "status": 200,
+      "bytes": 134950,
+      "sha256": "710ff7c41583442fa51c6304e85aef9e7a3fe561d6aee059f7ca3c6ccd68b436",
+      "contentType": "image/webp"
+    },
+    {
+      "name": "asset:img/boot-logo.webp",
+      "pass": true,
+      "status": 200,
+      "bytes": 632452,
+      "sha256": "5750d5e56d49f4b33dd60023a1319a2a22cfd68d3919408bc5618b6f7bc9d2f2",
+      "contentType": "image/webp"
+    },
+    {
+      "name": "asset:img/task-manager.svg",
+      "pass": true,
+      "status": 200,
+      "bytes": 269,
+      "sha256": "1be8f7d87303acbaf67635c47ab40e5f6519b9cf04923c557637a6b531d070e6",
+      "contentType": "image/svg+xml"
+    },
+    {
+      "name": "asset:img/og-cover.jpg",
+      "pass": true,
+      "status": 200,
+      "bytes": 66961,
+      "sha256": "4339e0b98365a123f4ef92b805611f45b2d624ccad5e88d3925a79dac071381e",
+      "contentType": "image/jpeg"
+    },
+    {
+      "name": "asset:img/favicon.svg",
+      "pass": true,
+      "status": 200,
+      "bytes": 562,
+      "sha256": "9795fc5aa4d05f69804bb8e61530b9e74f86588a92ff7235b033fc7f9d8febf9",
+      "contentType": "image/svg+xml"
+    },
+    {
+      "name": "asset:img/thumb-bloom.jpg",
+      "pass": true,
+      "status": 200,
+      "bytes": 5076,
+      "sha256": "d74d36e4079711ef8b002d20fb1f5a2720635d28534c941de5de4de33c210343",
+      "contentType": "image/jpeg"
+    },
+    {
+      "name": "asset:img/thumb-aurora.jpg",
+      "pass": true,
+      "status": 200,
+      "bytes": 5326,
+      "sha256": "cf6b8d0874327afefd0f4ebc05e9f34c6869591b2098b543f928c47818092d9e",
+      "contentType": "image/jpeg"
+    },
+    {
+      "name": "asset:img/thumb-chenyu.webp",
+      "pass": true,
+      "status": 200,
+      "bytes": 26852,
+      "sha256": "66819c76b8d9bcd0a9b77df79fe0f277aa5ac31e019d1cb88414af143d56d24a",
+      "contentType": "image/webp"
+    },
+    {
+      "name": "asset:img/thumb-solid.jpg",
+      "pass": true,
+      "status": 200,
+      "bytes": 1492,
+      "sha256": "8916fb7f48dfd030e0712da78175da23b53010458d35e7ca986966b4c44bc0a8",
+      "contentType": "image/jpeg"
+    },
+    {
+      "name": "asset:img/thumb-dusk.jpg",
+      "pass": true,
+      "status": 200,
+      "bytes": 5346,
+      "sha256": "890d6e7897bf41d3ee5c2deee09bcb2f61596ca22d13a96c5dcb9a6717aac707",
+      "contentType": "image/jpeg"
+    },
+    {
+      "name": "asset:img/thumb-sakura.jpg",
+      "pass": true,
+      "status": 200,
+      "bytes": 5048,
+      "sha256": "7a6261cce54a0b93653d0f7901457a9d1a384eae6b95e9c98efccb71e5e1ce60",
+      "contentType": "image/jpeg"
+    },
+    {
+      "name": "asset:img/wall-bloom.jpg",
+      "pass": true,
+      "status": 200,
+      "bytes": 205705,
+      "sha256": "ba53393c16686c02ddbb431364e8c51f5714c78bee62e17d3c6c0b10b38afab2",
+      "contentType": "image/jpeg"
+    },
+    {
+      "name": "asset:img/wall-aurora.jpg",
+      "pass": true,
+      "status": 200,
+      "bytes": 217852,
+      "sha256": "32479805fdc689e6bba09d72e6641fde9cd3930dbc1ec7bf18dfcf1f462f41c9",
+      "contentType": "image/jpeg"
+    },
+    {
+      "name": "asset:img/wall-chenyu.webp",
+      "pass": true,
+      "status": 200,
+      "bytes": 569302,
+      "sha256": "64658df59bfec730d3fc7abc9fe10eadd7e638c7942250b6424118ba6c3c13c8",
+      "contentType": "image/webp"
+    },
+    {
+      "name": "asset:img/wall-solid.jpg",
+      "pass": true,
+      "status": 200,
+      "bytes": 92054,
+      "sha256": "901b57e4f6f622023b48115fb93f451478b853bfd28643ccfadda900b007f3f0",
+      "contentType": "image/jpeg"
+    },
+    {
+      "name": "asset:img/wall-dusk.jpg",
+      "pass": true,
+      "status": 200,
+      "bytes": 217985,
+      "sha256": "59675f16ae5e6515ebd3897823d5862349641ccf8db7a27db1e043aeeccb539c",
+      "contentType": "image/jpeg"
+    },
+    {
+      "name": "asset:img/wall-sakura.jpg",
+      "pass": true,
+      "status": 200,
+      "bytes": 206641,
+      "sha256": "beecdb10830e6b380f705807e157ebc8acc4c10330baf12dd130ec1718178a5a",
+      "contentType": "image/jpeg"
+    },
+    {
+      "name": "asset:js/apps-task-manager.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 2307,
+      "sha256": "2733a5c992426448337bc73ef7def39894437633f4a40d09464188704e11d2eb",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "asset:js/apps-system.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 42915,
+      "sha256": "1280a2258b0a6d35a528ce0833b1ecd68223b5e88fa2ef9e87b591650600af84",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "asset:js/apps-about.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 17553,
+      "sha256": "530304e1993682e97ff58cadad2a9c973c2733ac180a45c6faff972c01180552",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "asset:js/content.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 11858,
+      "sha256": "44e7524de90e9f36c32a4e560a78ecabb306a2ad1d8a927a969b3e0ac4a616d7",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "asset:js/boot-lock.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 25863,
+      "sha256": "5c0fae0a8d69c2b3f1a21060c7d385b86e79d18b312f16fb755be69d82a6ef83",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "asset:js/apps.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 2187,
+      "sha256": "6a9848b09732131d607e5a92288d6c479c63b3dbd25a765b62f2b651a9874a19",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "asset:js/gate-effects.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 10822,
+      "sha256": "3f056108c6c25cbe83aa982d308f8ade4b6ae5533ccbf51610ebaab39a0ba11c",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "asset:js/core.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 16733,
+      "sha256": "2c1a78bf25ca94ea0a9cdf2e386429bfd902ccac60963b55a16a00e1e3ab823e",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "asset:js/icons.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 19064,
+      "sha256": "58d7d29771f7df7a67269d132f17b8ab724ffb10fc6cf469b129dfb6773acc5b",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "asset:js/main.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 2811,
+      "sha256": "a054681837b096a2d7fcb15cce1dfaa008bc2e31d6fb6f15158f32b738bb06b3",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "asset:js/task-manager-client.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 37767,
+      "sha256": "acf47f406737041a4c0b09a35061956669a0a98873bbd7390a4b1ce037498c0a",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "asset:js/shell.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 58404,
+      "sha256": "b57805106bb998d9678231bb521913c43b7d2955d7db1d1584f1278bfbb56525",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "asset:js/wm.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 33802,
+      "sha256": "d1f356d4ddd0c7b2b8a3653c934782eeb066ce25d4420fabc9879a0c012ea94d",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "asset:js/update-check.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 10142,
+      "sha256": "f1ea6ecbe2ab9e72a3c10f162901472a9c7b9095b619e1ef6f437584fc4ce50a",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "name": "home:version",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "voxel",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "voxel:entry-script",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "campus-entry",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "campus-entry:entry-script",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "liyun",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "liyun:entry-script",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "frost",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "frost:entry-script",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "genshin",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "genshin:entry-script",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "liyun:api-health",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "frost:api-health",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "desktop:auth-configured",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "monitor:anonymous-denied",
+      "pass": true,
+      "status": 401
+    },
+    {
+      "name": "home:build-index-not-public",
+      "pass": true,
+      "status": 403
+    },
+    {
+      "name": "previous-release:js/shell.js",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "previous-release:css/shell.css",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "previous-release:css/paper.css",
+      "pass": true,
+      "status": 200
+    }
+  ]
+}

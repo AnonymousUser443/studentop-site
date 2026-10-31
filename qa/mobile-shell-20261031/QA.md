@@ -1,6 +1,6 @@
 # 手机开始菜单与搜索 · 2026-10-31
 
-基线：`e8c17ff2d03cbb39ff85b042dfb1d9e7c401af9c` 加本次主页工作区改动。候选构建版本 `2d6f20fd4b6c2f6098f6db38`，本记录不表示已经上线。
+开发验收基线：`e8c17ff2d03cbb39ff85b042dfb1d9e7c401af9c` 加本次主页工作区改动。构建版本 `2d6f20fd4b6c2f6098f6db38` 随后已通过PR #13合并并部署；原始开发证据保留，生产验收见下文。
 
 ## 离线与构建
 
@@ -34,3 +34,15 @@ node qa/mobile-shell-20261031/browser.cjs --out qa/mobile-shell-20261031/<新的
 最终截图已人工复核：[开始菜单](browser-final-mobile-start-no-keyboard.png)、[布局高度缩小](browser-final-layout-keyboard-search.png)、[可视区域缩小](browser-final-visual-keyboard-search.png)。
 
 这些结果不等同于物理手机的系统输入法、iOS Safari或微信内置浏览器实测；未读取真实门禁答案或创建生产登录会话。
+
+## 生产验收补记
+
+发布基线 `dd8c91426ab25e183dc285cf8ed3ac36b0403090`，主页current指向 `/opt/win11-home/releases/20261031T074956Z`。发布脚本自检成功，[公网检查](public-results.json)于2026-10-31 15:53（北京时间）67/67通过，覆盖三个HTML入口、44份版本资源字节、TLS、邻站页面和API、门禁配置、监控匿名401、构建索引403与旧资源兼容。
+
+只读重跑入口（默认拒绝覆盖已有报告）：
+
+```text
+node qa/mobile-shell-20261031/public-check.mjs <该版本构建目录> <新的报告.json>
+```
+
+部署摘要见[deployment.json](deployment.json)，发布指针与服务状态见[post-state.json](post-state.json)。本轮只切换主页版本，保留上一release；生产验收不增加真机输入法覆盖范围。
