@@ -20,6 +20,31 @@ window.Shell = (function () {
   /* ================= 通用 ================= */
   function appDef(id) { return (window.Win.apps || {})[id] || null; }
 
+  function manualSearchFocus() {
+    return Win.isMobile() || window.matchMedia('(pointer: coarse)').matches;
+  }
+
+  function focusSearch(panel, input) {
+    // A touch-opened menu is for browsing first. Only tapping its input opens IME.
+    // Do not steal focus if the user already interacted during the opening delay.
+    if (!panel.contains(document.activeElement)) {
+      (manualSearchFocus() ? panel : input).focus({ preventScroll: true });
+    }
+  }
+
+  function syncFlyoutViewport() {
+    if (!flyoutHost) return;
+    var height = window.innerHeight, inset = 0, viewport = window.visualViewport;
+    // Keyboard resize/pan changes the visible area without always resizing layout.
+    // Pinch zoom retains the page's normal scroll/zoom behavior.
+    if (viewport && Math.abs((viewport.scale || 1) - 1) < 0.01) {
+      height = Math.min(height, viewport.height);
+      inset = Math.max(0, window.innerHeight - height - (viewport.offsetTop || 0));
+    }
+    flyoutHost.style.setProperty('--flyout-viewport-height', Math.max(1, height) + 'px');
+    flyoutHost.style.setProperty('--flyout-inset-bottom', inset + 'px');
+  }
+
   function closeTarget(id, returnFocus) {
     var nodes = Array.prototype.slice.call((flyoutHost || document).querySelectorAll('[data-flyout="' + id + '"]'));
     nodes.forEach(function (node) {
@@ -550,7 +575,7 @@ window.Shell = (function () {
       var head = document.createElement('div');
       head.className = 'start-section-head';
       head.innerHTML = '<span>' + (q ? '搜索结果' : '所有应用') + '</span><button type="button" class="more" data-start-back>返回已固定</button>';
-      head.querySelector('button').addEventListener('click', function () { state.startAll = false; state.startFilter = ''; var input = body.parentElement.querySelector('input'); input.value = ''; renderStartBody(body); input.focus(); });
+      head.querySelector('button').addEventListener('click', function () { state.startAll = false; state.startFilter = ''; var menu = body.parentElement, input = menu.querySelector('input'); input.value = ''; renderStartBody(body); focusSearch(menu, input); });
       if (!q) hits.sort(function (a, b) { return a.title.localeCompare(b.title, 'zh-CN'); });
       body.appendChild(head);
       if (!hits.length) {
@@ -633,7 +658,7 @@ window.Shell = (function () {
     state.startOpen = true;
     syncPanelButtons();
     var input = menu.querySelector('#startSearchInput');
-    setTimeout(function () { if (state.startOpen && menu.dataset.flyout && !Win.isLocked()) input.focus(); }, Win.reduceMotion() ? 0 : 60);
+    setTimeout(function () { if (state.startOpen && menu.dataset.flyout && !Win.isLocked()) focusSearch(menu, input); }, Win.reduceMotion() ? 0 : 60);
   }
 
   /* ================= 搜索面板 ================= */
@@ -735,7 +760,7 @@ window.Shell = (function () {
     flyoutHost.appendChild(panel);
     state.searchOpen = true;
     syncPanelButtons();
-    setTimeout(function () { var i = panel.querySelector('input'); if (state.searchOpen && panel.dataset.flyout && !Win.isLocked()) i.focus(); }, Win.reduceMotion() ? 0 : 60);
+    setTimeout(function () { var i = panel.querySelector('input'); if (state.searchOpen && panel.dataset.flyout && !Win.isLocked()) focusSearch(panel, i); }, Win.reduceMotion() ? 0 : 60);
   }
 
   /* ================= 日历 + 通知 ================= */
@@ -1000,7 +1025,19 @@ window.Shell = (function () {
       if (desktop) { e.preventDefault(); selectIcon(null); openDesktopMenu(e.clientX, e.clientY); }
     });
     Win.bus.on('wm:change', function () { syncTaskbar(); });
-    window.addEventListener('resize', function () { closeFlyouts(null, true); });
+    var viewportWidth = window.innerWidth;
+    window.addEventListener('resize', function () {
+      var sameWidth = window.innerWidth === viewportWidth;
+      viewportWidth = window.innerWidth;
+      syncFlyoutViewport();
+      // Mobile keyboard/browser chrome height changes must not dismiss the panel.
+      if (sameWidth && manualSearchFocus()) return;
+      closeFlyouts(null, true);
+    });
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', syncFlyoutViewport);
+      window.visualViewport.addEventListener('scroll', syncFlyoutViewport);
+    }
   }
 
   /* ================= 初始化 ================= */
@@ -1013,6 +1050,7 @@ window.Shell = (function () {
     renderTray();
     initClock();
     Win.renderNotificationBadge();
+    syncFlyoutViewport();
     bindGlobal();
     Win.bus.on('notifications', function () {
       var panel = document.querySelector('[data-flyout="calendar"]');

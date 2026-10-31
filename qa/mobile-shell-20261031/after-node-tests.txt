@@ -1,0 +1,346 @@
+TAP version 13
+# Subtest: desktop safeUrl rejects executable schemes credentials and controls
+ok 1 - desktop safeUrl rejects executable schemes credentials and controls
+  ---
+  duration_ms: 3.7006
+  type: 'test'
+  ...
+# Subtest: desktop project mapping is restricted to exact loopback hosts
+ok 2 - desktop project mapping is restricted to exact loopback hosts
+  ---
+  duration_ms: 2.3078
+  type: 'test'
+  ...
+# Subtest: desktop store reports persistence failure but preserves in-memory values
+ok 3 - desktop store reports persistence failure but preserves in-memory values
+  ---
+  duration_ms: 1.9036
+  type: 'test'
+  ...
+# Subtest: desktop preferences reject corrupt values and external open is never retried
+ok 4 - desktop preferences reject corrupt values and external open is never retried
+  ---
+  duration_ms: 1.8568
+  type: 'test'
+  ...
+# Subtest: launcher exposes only public site assets and fixed entrypoints
+ok 5 - launcher exposes only public site assets and fixed entrypoints
+  ---
+  duration_ms: 29.4599
+  type: 'test'
+  ...
+# Subtest: site-only preflight skips all application dependency entries
+ok 6 - site-only preflight skips all application dependency entries
+  ---
+  duration_ms: 3.4476
+  type: 'test'
+  ...
+# Subtest: containment rejects sibling prefix and parent paths
+ok 7 - containment rejects sibling prefix and parent paths
+  ---
+  duration_ms: 0.6959
+  type: 'test'
+  ...
+# Subtest: QA fails closed on false, missing, empty and malformed assertions
+ok 8 - QA fails closed on false, missing, empty and malformed assertions
+  ---
+  duration_ms: 0.5557
+  type: 'test'
+  ...
+# Subtest: URLs default to loopback and exact origins cannot be spoofed
+ok 9 - URLs default to loopback and exact origins cannot be spoofed
+  ---
+  duration_ms: 0.2822
+  type: 'test'
+  ...
+# Subtest: legacy positional URLs and explicit options parse
+ok 10 - legacy positional URLs and explicit options parse
+  ---
+  duration_ms: 0.2165
+  type: 'test'
+  ...
+# Subtest: validates hex ids and keeps legal duplicate query keys, hash and route
+ok 11 - validates hex ids and keeps legal duplicate query keys, hash and route
+  ---
+  duration_ms: 4.6236
+  type: 'test'
+  ...
+# Subtest: metadata mismatch shows an accessible opt-in notice without moving input focus
+ok 12 - metadata mismatch shows an accessible opt-in notice without moving input focus
+  ---
+  duration_ms: 1.3475
+  type: 'test'
+  ...
+# Subtest: absent or invalid meta uses first successful response only as development baseline
+ok 13 - absent or invalid meta uses first successful response only as development baseline
+  ---
+  duration_ms: 2.4439
+  type: 'test'
+  ...
+# Subtest: probe uses fixed same-origin no-store endpoint and never touches persistent storage
+ok 14 - probe uses fixed same-origin no-store endpoint and never touches persistent storage
+  ---
+  duration_ms: 0.729
+  type: 'test'
+  ...
+# Subtest: lock and boot suppress pending notices until unlock and relock hides without focus theft
+ok 15 - lock and boot suppress pending notices until unlock and relock hides without focus theft
+  ---
+  duration_ms: 1.6285
+  type: 'test'
+  ...
+# Subtest: later defers only that version in memory and preserves editor focus and content
+ok 16 - later defers only that version in memory and preserves editor focus and content
+  ---
+  duration_ms: 0.9694
+  type: 'test'
+  ...
+# Subtest: dirty draft cancellation keeps the page and confirmation refreshes only once
+ok 17 - dirty draft cancellation keeps the page and confirmation refreshes only once
+  ---
+  duration_ms: 1.2209
+  type: 'test'
+  ...
+# Subtest: clean documents navigate without confirmation; beforeunload cancellation can retry later
+ok 18 - clean documents navigate without confirmation; beforeunload cancellation can retry later
+  ---
+  duration_ms: 0.9565
+  type: 'test'
+  ...
+# Subtest: unknown draft status and thrown confirmation fail closed without altering drafts
+ok 19 - unknown draft status and thrown confirmation fail closed without altering drafts
+  ---
+  duration_ms: 0.9226
+  type: 'test'
+  ...
+# Subtest: invalid responses, HTTP failures and offline requests stay silent and retry
+ok 20 - invalid responses, HTTP failures and offline requests stay silent and retry
+  ---
+  duration_ms: 4.5757
+  type: 'test'
+  ...
+# Subtest: 60-second polling and visible/focus/pageshow wakeups are throttled and single-flight
+ok 21 - 60-second polling and visible/focus/pageshow wakeups are throttled and single-flight
+  ---
+  duration_ms: 0.8616
+  type: 'test'
+  ...
+# Subtest: timeout releases single-flight and stale responses cannot replace newer candidates
+ok 22 - timeout releases single-flight and stale responses cannot replace newer candidates
+  ---
+  duration_ms: 0.7453
+  type: 'test'
+  ...
+# Subtest: pagehide suspends timers and pageshow resumes exactly one interval
+ok 23 - pagehide suspends timers and pageshow resumes exactly one interval
+  ---
+  duration_ms: 0.8046
+  type: 'test'
+  ...
+# Subtest: rollback to the current version removes the notice without disturbing outside focus
+ok 24 - rollback to the current version removes the notice without disturbing outside focus
+  ---
+  duration_ms: 0.6815
+  type: 'test'
+  ...
+# Subtest: pagehide before the fetch microtask cancels the queued probe
+ok 25 - pagehide before the fetch microtask cancels the queued probe
+  ---
+  duration_ms: 0.5851
+  type: 'test'
+  ...
+# Subtest: duplicate script evaluation does not duplicate checks or intervals
+ok 26 - duplicate script evaluation does not duplicate checks or intervals
+  ---
+  duration_ms: 0.6256
+  type: 'test'
+  ...
+# Subtest: notice styling supplies mobile dark hidden and reduced-motion states without remote assets
+ok 27 - notice styling supplies mobile dark hidden and reduced-motion states without remote assets
+  ---
+  duration_ms: 0.1714
+  type: 'test'
+  ...
+# Subtest: voxel shortcut uses the exact public id, title, label and production URL
+ok 28 - voxel shortcut uses the exact public id, title, label and production URL
+  ---
+  duration_ms: 8.9933
+  type: 'test'
+  ...
+# Subtest: desktop, Start and project entry include voxel exactly once while both existing openings remain
+ok 29 - desktop, Start and project entry include voxel exactly once while both existing openings remain
+  ---
+  duration_ms: 6.8795
+  type: 'test'
+  ...
+# Subtest: only exact localhost and 127.0.0.1 map voxel to 5180; other hosts stay production
+ok 30 - only exact localhost and 127.0.0.1 map voxel to 5180; other hosts stay production
+  ---
+  duration_ms: 10.6998
+  type: 'test'
+  ...
+# Subtest: existing local routes and frost production-only behavior stay unchanged
+ok 31 - existing local routes and frost production-only behavior stay unchanged
+  ---
+  duration_ms: 4.8801
+  type: 'test'
+  ...
+# Subtest: all three opening shortcuts and project hrefs share the frozen local and production routes
+ok 32 - all three opening shortcuts and project hrefs share the frozen local and production routes
+  ---
+  duration_ms: 15.7953
+  type: 'test'
+  ...
+# Subtest: the voxel icon is a distinct self-contained decorative SVG, not a fallback or external image
+ok 33 - the voxel icon is a distinct self-contained decorative SVG, not a fallback or external image
+  ---
+  duration_ms: 4.8381
+  type: 'test'
+  ...
+# Subtest: launch opens once with noopener even when window.open returns null, without a desktop window
+ok 34 - launch opens once with noopener even when window.open returns null, without a desktop window
+  ---
+  duration_ms: 15.5394
+  type: 'test'
+  ...
+# Subtest: registry re-evaluation does not duplicate voxel or either existing opening
+ok 35 - registry re-evaluation does not duplicate voxel or either existing opening
+  ---
+  duration_ms: 6.7081
+  type: 'test'
+  ...
+# Subtest: reachable constraint preserves intentional overflow and never resizes desktop windows
+ok 36 - reachable constraint preserves intentional overflow and never resizes desktop windows
+  ---
+  duration_ms: 10.1407
+  type: 'test'
+  ...
+# Subtest: all extreme edges retain 120 by 20 draggable pixels excluding caption controls
+ok 37 - all extreme edges retain 120 by 20 draggable pixels excluding caption controls
+  ---
+  duration_ms: 3.76
+  type: 'test'
+  ...
+# Subtest: snap zones reject pointers outside every edge and preserve in-bounds sides and corners
+ok 38 - snap zones reject pointers outside every edge and preserve in-bounds sides and corners
+  ---
+  duration_ms: 3.5481
+  type: 'test'
+  ...
+# Subtest: restore, maximize restore, snap restore and viewport resize keep a reachable offscreen rectangle
+ok 39 - restore, maximize restore, snap restore and viewport resize keep a reachable offscreen rectangle
+  ---
+  duration_ms: 7.8271
+  type: 'test'
+  ...
+# Subtest: pointer drag allows overflow and pointerup outside clears stale edge snapping
+ok 40 - pointer drag allows overflow and pointerup outside clears stale edge snapping
+  ---
+  duration_ms: 3.8367
+  type: 'test'
+  ...
+# Subtest: resizing an overflowing window does not constrain its far edge to the viewport
+ok 41 - resizing an overflowing window does not constrain its far edge to the viewport
+  ---
+  duration_ms: 3.4407
+  type: 'test'
+  ...
+# Subtest: explicit taskbar recovery brings a minimized overflowing window fully into view
+ok 42 - explicit taskbar recovery brings a minimized overflowing window fully into view
+  ---
+  duration_ms: 4.9675
+  type: 'test'
+  ...
+# Subtest: narrow mobile layout retains the full-screen policy
+ok 43 - narrow mobile layout retains the full-screen policy
+  ---
+  duration_ms: 3.973
+  type: 'test'
+  ...
+# Subtest: resize returns focus only when focus was inside a closing flyout
+ok 44 - resize returns focus only when focus was inside a closing flyout
+  ---
+  duration_ms: 9.1679
+  type: 'test'
+  ...
+# Subtest: mobile Start and Search open without focusing a text input
+ok 45 - mobile Start and Search open without focusing a text input
+  ---
+  duration_ms: 7.1309
+  type: 'test'
+  ...
+# Subtest: large touchscreens do not autofocus while desktop keeps immediate search focus
+ok 46 - large touchscreens do not autofocus while desktop keeps immediate search focus
+  ---
+  duration_ms: 9.1133
+  type: 'test'
+  ...
+# Subtest: delayed opening focus never takes focus from an input the user already tapped
+ok 47 - delayed opening focus never takes focus from an input the user already tapped
+  ---
+  duration_ms: 3.8837
+  type: 'test'
+  ...
+# Subtest: keyboard-height changes preserve mobile panels, input value and the underlying window
+ok 48 - keyboard-height changes preserve mobile panels, input value and the underlying window
+  ---
+  duration_ms: 9.8573
+  type: 'test'
+  ...
+# Subtest: visual viewport keyboard resizing and panning updates panel space without closing it
+ok 49 - visual viewport keyboard resizing and panning updates panel space without closing it
+  ---
+  duration_ms: 3.2026
+  type: 'test'
+  ...
+# Subtest: returning from all Start apps on mobile does not summon the input keyboard
+ok 50 - returning from all Start apps on mobile does not summon the input keyboard
+  ---
+  duration_ms: 10.5047
+  type: 'test'
+  ...
+# Subtest: rotation or width changes still dismiss panels and restore the trigger
+ok 51 - rotation or width changes still dismiss panels and restore the trigger
+  ---
+  duration_ms: 4.5747
+  type: 'test'
+  ...
+# Subtest: calendar remembers the actual notification trigger and expanded owner
+ok 52 - calendar remembers the actual notification trigger and expanded owner
+  ---
+  duration_ms: 9.1857
+  type: 'test'
+  ...
+# Subtest: taskbar unpin preserves scroll and follows a replacement of the same running app
+ok 53 - taskbar unpin preserves scroll and follows a replacement of the same running app
+  ---
+  duration_ms: 4.5413
+  type: 'test'
+  ...
+# Subtest: unpin of a closed app chooses a surviving neighbor and never steals outside focus
+ok 54 - unpin of a closed app chooses a surviving neighbor and never steals outside focus
+  ---
+  duration_ms: 4.7713
+  type: 'test'
+  ...
+# Subtest: Snap menu uses one roving tab stop; Tab and ShiftTab close without preventing native traversal
+ok 55 - Snap menu uses one roving tab stop; Tab and ShiftTab close without preventing native traversal
+  ---
+  duration_ms: 6.5492
+  type: 'test'
+  ...
+# Subtest: Snap focus leaving or resize closes it without redirecting unrelated focus
+ok 56 - Snap focus leaving or resize closes it without redirecting unrelated focus
+  ---
+  duration_ms: 6.0258
+  type: 'test'
+  ...
+1..56
+# tests 56
+# suites 0
+# pass 56
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 258.0775

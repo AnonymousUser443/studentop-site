@@ -438,13 +438,13 @@ a { color: var(--accent-ink); }
   .window { top: max(6px, env(safe-area-inset-top)) !important; height: calc(100dvh - var(--taskbar-h) - max(6px, env(safe-area-inset-top)) - 6px) !important; min-height: 0; }
   .window.is-maximized { border-radius: 8px; border: 1px solid var(--gold-line); }
   .caption-btn { width: 40px; }
-  .start-menu { width: calc(100vw - 16px); max-height: calc(100dvh - var(--taskbar-h) - 22px - env(safe-area-inset-top)); }
+  .start-menu { width: calc(100vw - 16px); max-height: calc(var(--flyout-viewport-height, 100dvh) - var(--taskbar-h) - 22px - env(safe-area-inset-top)); }
   .start-menu-body { padding: 0 16px 8px; }
   .start-search { margin-inline: 16px; }
   .start-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .start-footer { padding-inline: 20px; min-height: 58px; flex-basis: 58px; }
   .start-tile { padding: 10px 2px 7px; }
-  .search-panel { width: calc(100vw - 16px); max-height: calc(100dvh - var(--taskbar-h) - 24px - env(safe-area-inset-top)); }
+  .search-panel { width: calc(100vw - 16px); max-height: calc(var(--flyout-viewport-height, 100dvh) - var(--taskbar-h) - 24px - env(safe-area-inset-top)); }
   .calendar-panel { max-height: calc(100dvh - var(--taskbar-h) - 24px - env(safe-area-inset-top)); }
   .calendar-clock, .cal-head, .cal-grid, .cal-section-title { flex-shrink: 0; }
   .toast-host { bottom: calc(var(--taskbar-h) + 10px); }
