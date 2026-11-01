@@ -38,6 +38,7 @@ apps/genshin-start/public/campus/fonts/OFL-*.txt -whitespace
 apps/genshin-start/scripts/licenses/Apache-2.0.txt -whitespace
 # Asset manifests hash license bytes too; make Windows/Linux checkouts identical.
 apps/liyun-explorer/public/assets/fonts/*-OFL.txt text eol=lf -whitespace
+apps/liyun-moyuan/public/fonts/OFL-*.txt text eol=lf -whitespace
 
 # Preserve the audited campus calibration bytes and SHA-256 on all platforms.
 apps/liyun-explorer/src/location/data/*.json -text whitespace=cr-at-eol

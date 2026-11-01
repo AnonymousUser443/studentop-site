@@ -34,7 +34,7 @@ test('voxel shortcut uses the exact public id, title, label and production URL',
 });
 test('desktop, Start and project entry include voxel exactly once while both existing openings remain', () => {
   const { SITE, Win } = desktop();
-  for (const id of ['voxel-campus', 'genshin-start', 'genshin-original']) {
+  for (const id of ['voxel-campus', 'genshin-start', 'genshin-original', 'liyun-moyuan']) {
     for (const list of [SITE.desktop, SITE.startPinned]) assert.equal(list.filter(item => item === id).length, 1, id + ' is listed once');
     assert.equal(Win.appList().filter(app => app.id === id).length, 1);
     assert.equal(SITE.projects.filter(item => item.id === id).length, 1);
@@ -61,9 +61,10 @@ test('existing local routes and frost production-only behavior stay unchanged', 
     assert.equal(Win.resolveProjectUrl('frost-atlas', 'https://frost.studentop.cn:14355/', host), 'https://frost.studentop.cn:14355/');
   }
 });
-test('all three opening shortcuts and project hrefs share the frozen local and production routes', () => {
+test('all independent opening shortcuts and project hrefs share the local and production routes', () => {
   const routes = [
     ['voxel-campus', PRODUCTION, LOCAL],
+    ['liyun-moyuan', 'https://studentop.cn:14355/liyun-moyuan/', 'http://127.0.0.1:5181/'],
     ['genshin-start', 'https://studentop.cn:14355/campus-entry/', 'http://127.0.0.1:8081/'],
     ['genshin-original', 'https://genshin.studentop.cn:14355/', 'http://127.0.0.1:8081/legacy.html']
   ];
@@ -102,7 +103,32 @@ test('launch opens once with noopener even when window.open returns null, withou
 });
 test('registry re-evaluation does not duplicate voxel or either existing opening', () => {
   const { window, load, Win } = desktop(); load('apps'); load('apps');
-  for (const id of ['voxel-campus', 'genshin-start', 'genshin-original']) {
+  for (const id of ['voxel-campus', 'genshin-start', 'genshin-original', 'liyun-moyuan']) {
     assert.equal(window.__APP_DEFS.filter(app => app.id === id).length, 1); assert.equal(Win.appList().filter(app => app.id === id).length, 1);
   }
+});
+
+test('Moyuan is a separate named studio shortcut with a safe self-contained icon and project entry', () => {
+  const { Win, SITE, ICONS } = desktop();
+  const app = Win.apps['liyun-moyuan'];
+  assert.equal(app.title, '理韵墨苑'); assert.equal(app.desktopLabel, '理韵墨苑');
+  assert.equal(app.external, 'https://studentop.cn:14355/liyun-moyuan/');
+  assert.equal(app.icon, 'liyun-moyuan'); assert.match(app.keywords, /活动室/); assert.match(app.keywords, /墨苑/);
+  const project = SITE.projects.find(item => item.id === 'liyun-moyuan');
+  assert.equal(project.title, app.title); assert.equal(project.link, app.external); assert.equal(project.icon, app.icon);
+  assert.equal(SITE.taskbarPinned.includes(app.id), false);
+  const icon = ICONS.app(app.icon);
+  assert.ok(ICONS.appNames.includes(app.icon));
+  assert.match(icon, /viewBox="0 0 48 48"/); assert.match(icon, /aria-hidden="true"/);
+  assert.notEqual(icon, ICONS.app('voxel-campus')); assert.notEqual(icon, ICONS.app('notepad'));
+  assert.doesNotMatch(icon, /<script|<foreignObject|<image|\b(?:href|src|on\w+)\s*=/i);
+  const index = fs.readFileSync(path.join(__dirname, '../site/projects/index.html'), 'utf8');
+  assert.match(index, /<a\b[^>]*href="https:\/\/studentop\.cn:14355\/liyun-moyuan\/"[^>]*data-project-link="liyun-moyuan"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
+});
+
+test('Moyuan local routing never redirects lookalike or production hosts to loopback', () => {
+  const { Win } = desktop();
+  const production = 'https://studentop.cn:14355/liyun-moyuan/';
+  for (const host of ['localhost', '127.0.0.1']) assert.equal(Win.resolveProjectUrl('liyun-moyuan', production, host), 'http://127.0.0.1:5181/');
+  for (const host of ['studentop.cn', 'localhost.evil', '127.0.0.1.evil', '0.0.0.0', '[::1]', 'localhost.', '']) assert.equal(Win.resolveProjectUrl('liyun-moyuan', production, host), production);
 });

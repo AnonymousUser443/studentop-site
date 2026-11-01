@@ -1,0 +1,135 @@
+TAP version 13
+# Subtest: account health requires actual JSON success and bounds failures and timeouts
+not ok 1 - account health requires actual JSON success and bounds failures and timeouts
+  ---
+  duration_ms: 14.5557
+  type: 'test'
+  location: '<workspace>\\qa\\workspace-api-tests.mjs:88:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (<workspace-uri>/qa/workspace-api-tests.mjs:101:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: full launcher owns six healthy services and proxies persisted account progress through Vite
+not ok 2 - full launcher owns six healthy services and proxies persisted account progress through Vite
+  ---
+  duration_ms: 45.1555
+  type: 'test'
+  location: '<workspace>\\qa\\workspace-api-tests.mjs:110:1'
+  failureType: 'testCodeFailure'
+  error: "EPERM: operation not permitted, rename '<temp>\\workspace-api-test-qQ52RQ\\auth.json.9b81bd65391387e0.tmp' -> '<temp>\\workspace-api-test-qQ52RQ\\auth.json'"
+  code: 'EPERM'
+  stack: |-
+    async rename (node:internal/fs/promises:1491:10)
+    async savePrivate (<workspace-uri>/tools/desktop-auth.mjs:47:3)
+    async fixture (<workspace-uri>/qa/workspace-api-tests.mjs:39:3)
+    async TestContext.<anonymous> (<workspace-uri>/qa/workspace-api-tests.mjs:111:13)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: site-only ignores the account API and its occupied port without opening a database
+not ok 3 - site-only ignores the account API and its occupied port without opening a database
+  ---
+  duration_ms: 36.5481
+  type: 'test'
+  location: '<workspace>\\qa\\workspace-api-tests.mjs:150:1'
+  failureType: 'testCodeFailure'
+  error: "EPERM: operation not permitted, rename '<temp>\\workspace-api-test-70dKFo\\auth.json.8fbb94f00c7b568a.tmp' -> '<temp>\\workspace-api-test-70dKFo\\auth.json'"
+  code: 'EPERM'
+  stack: |-
+    async rename (node:internal/fs/promises:1491:10)
+    async savePrivate (<workspace-uri>/tools/desktop-auth.mjs:47:3)
+    async fixture (<workspace-uri>/qa/workspace-api-tests.mjs:39:3)
+    async TestContext.<anonymous> (<workspace-uri>/qa/workspace-api-tests.mjs:151:13)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: occupied API port fails startup and never reuses or closes the existing service
+not ok 4 - occupied API port fails startup and never reuses or closes the existing service
+  ---
+  duration_ms: 35.9999
+  type: 'test'
+  location: '<workspace>\\qa\\workspace-api-tests.mjs:165:1'
+  failureType: 'testCodeFailure'
+  error: "EPERM: operation not permitted, rename '<temp>\\workspace-api-test-W1Mdfk\\auth.json.4a9607db22532bce.tmp' -> '<temp>\\workspace-api-test-W1Mdfk\\auth.json'"
+  code: 'EPERM'
+  stack: |-
+    async rename (node:internal/fs/promises:1491:10)
+    async savePrivate (<workspace-uri>/tools/desktop-auth.mjs:47:3)
+    async fixture (<workspace-uri>/qa/workspace-api-tests.mjs:39:3)
+    async TestContext.<anonymous> (<workspace-uri>/qa/workspace-api-tests.mjs:166:13)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: later Vite startup failure closes the owned API and earlier frontend, preserving the conflicting service
+not ok 5 - later Vite startup failure closes the owned API and earlier frontend, preserving the conflicting service
+  ---
+  duration_ms: 35.1203
+  type: 'test'
+  location: '<workspace>\\qa\\workspace-api-tests.mjs:176:1'
+  failureType: 'testCodeFailure'
+  error: "EPERM: operation not permitted, rename '<temp>\\workspace-api-test-NObMV0\\auth.json.c5faf80bc8664c6a.tmp' -> '<temp>\\workspace-api-test-NObMV0\\auth.json'"
+  code: 'EPERM'
+  stack: |-
+    async rename (node:internal/fs/promises:1491:10)
+    async savePrivate (<workspace-uri>/tools/desktop-auth.mjs:47:3)
+    async fixture (<workspace-uri>/qa/workspace-api-tests.mjs:39:3)
+    async TestContext.<anonymous> (<workspace-uri>/qa/workspace-api-tests.mjs:177:13)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: IPC loss stops the full workspace and releases every owned listener
+not ok 6 - IPC loss stops the full workspace and releases every owned listener
+  ---
+  duration_ms: 32.8967
+  type: 'test'
+  location: '<workspace>\\qa\\workspace-api-tests.mjs:187:1'
+  failureType: 'testCodeFailure'
+  error: "EPERM: operation not permitted, rename '<temp>\\workspace-api-test-IjYuKU\\auth.json.ecb9f5de7b28ac47.tmp' -> '<temp>\\workspace-api-test-IjYuKU\\auth.json'"
+  code: 'EPERM'
+  stack: |-
+    async rename (node:internal/fs/promises:1491:10)
+    async savePrivate (<workspace-uri>/tools/desktop-auth.mjs:47:3)
+    async fixture (<workspace-uri>/qa/workspace-api-tests.mjs:39:3)
+    async TestContext.<anonymous> (<workspace-uri>/qa/workspace-api-tests.mjs:188:13)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: an owned account process exiting after startup fails the workspace and closes its siblings
+not ok 7 - an owned account process exiting after startup fails the workspace and closes its siblings
+  ---
+  duration_ms: 33.1018
+  type: 'test'
+  location: '<workspace>\\qa\\workspace-api-tests.mjs:196:1'
+  failureType: 'testCodeFailure'
+  error: "EPERM: operation not permitted, rename '<temp>\\workspace-api-test-AAPzNL\\auth.json.8950985aa746fa1f.tmp' -> '<temp>\\workspace-api-test-AAPzNL\\auth.json'"
+  code: 'EPERM'
+  stack: |-
+    async rename (node:internal/fs/promises:1491:10)
+    async savePrivate (<workspace-uri>/tools/desktop-auth.mjs:47:3)
+    async fixture (<workspace-uri>/qa/workspace-api-tests.mjs:39:3)
+    async TestContext.<anonymous> (<workspace-uri>/qa/workspace-api-tests.mjs:197:13)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 0
+# fail 7
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 328.7177

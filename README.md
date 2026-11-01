@@ -1,6 +1,6 @@
 # studentop.cn · 集中开发工作区
 
-个人主页是原生 Windows 风格网页桌面，锁屏由同源私密 Node 服务校验；理韵寻踪、校园入场与体素校园是三个独立 Vite 应用，另在校园应用中保留原版开场独立入口。交互与安全设计见 [10月28日修订](<docs/REVISION-20261028.md>)；主页、校园与体素的发布见 [发布记录](docs/RELEASE-20261028.md)，理韵定位与账号的后续发布见 [融合发布记录](docs/PR2-LOCATION-RELEASE-20261028.md)。这些是历史发布证据，后续改动仍须重新验收和授权发布。升级范围见 [本地升级计划](docs/UPGRADE-PLAN.md)，团队日常操作见 [贡献指南](CONTRIBUTING.md)。
+个人主页是原生 Windows 风格网页桌面，锁屏由同源私密 Node 服务校验；理韵寻踪、校园入场、体素校园与理韵墨苑是四个独立 Vite 应用，另在校园应用中保留原版开场独立入口。交互与安全设计见 [10月28日修订](<docs/REVISION-20261028.md>)；主页、校园与体素的发布见 [发布记录](docs/RELEASE-20261028.md)，理韵定位与账号的后续发布见 [融合发布记录](docs/PR2-LOCATION-RELEASE-20261028.md)。这些是历史发布证据，后续改动仍须重新验收和授权发布。升级范围见 [本地升级计划](docs/UPGRADE-PLAN.md)，团队日常操作见 [贡献指南](CONTRIBUTING.md)。
 
 ## 本地启动（推荐入口）
 
@@ -10,7 +10,7 @@
 
 手机端开始菜单/搜索不再自动进入输入状态，键盘高度变化会保留面板及已输入内容；已于2026-10-31部署到树莓派，主页版本为 `2d6f20fd4b6c2f6098f6db38`。修复、验收与回滚目标见[2026-10-31发布记录](docs/MOBILE-KEYBOARD-20261031.md)。
 
-前端启动需要 Node.js **22.12+**；包含账号 API 的完整开发环境推荐统一使用 **Node.js 24**（本机已验证 v24.22.0）。以下命令从仓库根目录执行。三个应用有各自的依赖和锁文件，不是 npm workspace，也不是另一个 DeepSeek Harness 服务。
+前端启动需要 Node.js **22.12+**；包含账号 API 的完整开发环境推荐统一使用 **Node.js 24**（本机已验证 v24.22.0）。以下命令从仓库根目录执行。四个应用有各自的依赖和锁文件，不是 npm workspace，也不是另一个 DeepSeek Harness 服务。
 
 每个应用按自己的锁文件安装依赖；已有依赖无需重装。只查看主页时可以使用 --site-only，不要求应用依赖已安装：
 
@@ -18,12 +18,13 @@
 npm --prefix apps/liyun-explorer ci
 npm --prefix apps/genshin-start ci
 npm --prefix apps/liangxiang-cloudwalk ci
+npm --prefix apps/liyun-moyuan ci
 ~~~
 
 ~~~powershell
 # 只检查目录、Node / SQLite 能力和各应用本地 Vite；不安装、不监听、不读写数据库
 node tools/dev-workspace.mjs --check
-# 同时启动主页、账号 API 和三个独立 Vite 应用（共5个服务）
+# 同时启动主页、账号 API 和四个独立 Vite 应用（共6个服务）
 node tools/dev-workspace.mjs
 # 只看主页时不要求任何Vite应用依赖已安装
 node tools/dev-workspace.mjs --site-only
@@ -36,18 +37,21 @@ node tools/dev-workspace.mjs --site-only
 | 理韵寻踪 | <http://127.0.0.1:5174/> | React / TypeScript / Vite / p5.js |
 | 校园入场（保留 genshin-start 目录与应用 id） | <http://127.0.0.1:8081/> | 北理工主题轻量 3D 入场，进入理韵 |
 | 体素校园 | <http://127.0.0.1:5180/> | 独立体素校园应用；runner id 为 voxel，桌面 id 为 voxel-campus |
+| 理韵墨苑 | <http://127.0.0.1:5181/> | 协会活动室体素复原；runner id 为 moyuan，桌面 id 为 liyun-moyuan |
 | 原神启动（原版独立入口） | <http://127.0.0.1:8081/legacy.html> | 原版天空/柱路/门模型，本地同源解码；未公开部署 |
 
-完整模式先启动账号 API，再启动三个前端，无需额外终端。理韵前端经 Vite 将同源 `/api` 请求代理到内部 8787；浏览器不需要直接访问该端口。API 使用既有 `server/data/` 本地 SQLite，或由 `LIYUN_DATA_DIR` 指定数据目录，不自动重置数据。游客模式仍可使用。配置与测试见[账号 API 说明](apps/liyun-explorer/server/README.md)。
+完整模式先启动账号 API，再启动四个前端，无需额外终端。理韵前端经 Vite 将同源 `/api` 请求代理到内部 8787；浏览器不需要直接访问该端口。API 使用既有 `server/data/` 本地 SQLite，或由 `LIYUN_DATA_DIR` 指定数据目录，不自动重置数据。游客模式仍可使用。配置与测试见[账号 API 说明](apps/liyun-explorer/server/README.md)。
 
-- 五个服务（主页、账号 API 及三个 Vite）只绑定 **127.0.0.1**，端口占用直接失败，不自动换端口，不复用未知服务。**旧 5173、4173 服务与 8080 SSH 转发不可停止、复用或改写。**
-- <http://127.0.0.1:8899/__workspace/status> 返回工作区名称、路径指纹、启动实例与五项服务状态；<http://127.0.0.1:8899/__workspace/health> 在本次创建的服务全部就绪、账号 `/api/health` 实际请求成功时返回 200，否则为 503。API 健康请求有超时且不跟随重定向；子进程意外退出则整组退出并清理。同名目录用指纹区分。
-- 启动器不提供目录列表，不暴露仓库根、点文件、配置、源码映射或秘密文件；拒绝路径穿越及越界链接。三个 Vite 开发入口限定各自 app 根，不是公网服务器。
+- 六个服务（主页、账号 API 及四个 Vite）只绑定 **127.0.0.1**，端口占用直接失败，不自动换端口，不复用未知服务。**旧 5173、4173 服务与 8080 SSH 转发不可停止、复用或改写。**
+- <http://127.0.0.1:8899/__workspace/status> 返回工作区名称、路径指纹、启动实例与六项服务状态；<http://127.0.0.1:8899/__workspace/health> 在本次创建的服务全部就绪、账号 `/api/health` 实际请求成功时返回 200，否则为 503。API 健康请求有超时且不跟随重定向；子进程意外退出则整组退出并清理。同名目录用指纹区分。
+- 启动器不提供目录列表，不暴露仓库根、点文件、配置、源码映射或秘密文件；拒绝路径穿越及越界链接。四个 Vite 开发入口限定各自 app 根，不是公网服务器。
 - 在启动它的终端按 Ctrl+C，关闭**本次创建**的 Vite、账号 API 与主页 HTTP 服务，并关闭数据库连接；不会按端口或进程名清理外部服务。启动中途失败也清理已创建的服务。父子 IPC 断开时子进程自行退出；强制终止整个终端后的状态仍应由负责人检查。
-- 本地桌面中的理韵 / 校园 / 体素校园快捷方式分别使用 5174 / 8081 / 5180；原版开场复用 8081 的 legacy.html，不增加服务。校园本地出口仍为 5174。北湖霜降雅集不在这个工作区中运行，不映射到旧服务。理韵出口与原版既有子域不变；轻量校园/体素的生产路径见下表。
+- 本地桌面中的理韵 / 校园 / 体素校园 / 理韵墨苑快捷方式分别使用 5174 / 8081 / 5180 / 5181；原版开场复用 8081 的 legacy.html，不增加服务。校园本地出口仍为 5174。北湖霜降雅集不在这个工作区中运行，不映射到旧服务。理韵出口与原版既有子域不变；轻量校园/体素的生产路径见下表。
 - 不要从仓库根运行通用静态服务器；不要为本仓库另起 DSH Web。正常运行不需要重建已有地图、音乐或字体。
 
-单独启动时：理韵执行 **npm run dev**，账号 API 执行 **npm run server**；校园执行 **npm start**（**npm run dev** 是兼容别名）；体素校园执行 **npm run dev**。先退出自己启动的统一启动器，避免占用相同端口。理韵构建预览固定回环 4174，体素预览固定回环 4180，而非旧 4173。**--site-only 只启动8899，不预检或启动应用与账号 API**；--check不创建服务或打开数据库。
+单独启动时：理韵执行 **npm run dev**，账号 API 执行 **npm run server**；校园执行 **npm start**（**npm run dev** 是兼容别名）；体素校园和理韵墨苑分别在各自目录执行 **npm run dev**。先退出自己启动的统一启动器，避免占用相同端口。理韵构建预览固定回环 4174，体素预览固定回环 4180，墨苑预览固定回环 4181，而非旧 4173。**--site-only 只启动8899，不预检或启动应用与账号 API**；--check不创建服务或打开数据库。
+
+理韵墨苑可由桌面、开始菜单和项目索引的新快捷方式打开。本轮仅本地开发；生产规划路径为 `/liyun-moyuan/`，尚未部署。
 
 ## 目录
 
@@ -56,6 +60,7 @@ site/                       静态主页发布源：HTML / CSS / JS / 本地资�
 apps/liyun-explorer/         理韵源码与自己的 package-lock
 apps/genshin-start/          校园入场源码与自己的 package-lock
 apps/liangxiang-cloudwalk/   体素校园源码与自己的 package-lock
+apps/liyun-moyuan/           理韵墨苑活动室体素复原与自己的 package-lock
 qa/                         验收脚本；根目录已有 PNG 均为历史截图
 qa/upgrade-20261027/         第一轮历史日志、截图与结果
 qa/revision-20261028/        体素接入前历史证据（服务数量为3，不改写）
@@ -81,11 +86,12 @@ npm --prefix apps/liyun-explorer run test:server
 npm --prefix apps/liyun-explorer run build
 npm --prefix apps/genshin-start run build
 npm --prefix apps/liangxiang-cloudwalk run build
+npm --prefix apps/liyun-moyuan run build
 ~~~
 
-第一条只做纯 Node 检查；启动器集成回归使用临时合成门禁、临时数据库与隔离端口，验证五服务启动、Vite 同源账号流程、冲突回滚和退出清理，不影响已有开发服务。素材清单检查可从任意工作目录运行。浏览器验收先加载 **opencli** 技能后执行，详见 [QA 说明](qa/README.md)。兼容旧 CDP 文件名与主要参数，但默认改为回环；错误、异常、失败断言或空目标必须返回非零退出码，不能用“截图生成了”代替业务通过。
+第一条只做纯 Node 检查；启动器集成回归使用临时合成门禁、临时数据库与隔离端口，验证六服务启动、Vite 同源账号流程、冲突回滚和退出清理，不影响已有开发服务。素材清单检查可从任意工作目录运行。浏览器验收先加载 **opencli** 技能后执行，详见 [QA 说明](qa/README.md)。兼容旧 CDP 文件名与主要参数，但默认改为回环；错误、异常、失败断言或空目标必须返回非零退出码，不能用“截图生成了”代替业务通过。
 
-体素接入前的[10月28日修订记录](docs/REVISION-20261028.md)及其 QA 保留当时三服务快照，体素接入后的四服务记录见[发布记录](docs/RELEASE-20261028.md)。历史数量与结果不改写；当前新增账号 API 的五服务契约见[QA 说明](qa/README.md)。
+体素接入前的[10月28日修订记录](docs/REVISION-20261028.md)及其 QA 保留当时三服务快照，体素接入后的四服务记录见[发布记录](docs/RELEASE-20261028.md)。历史数量与结果不改写；当前接入理韵墨苑的六服务契约见[QA 说明](qa/README.md)。
 
 [理韵旧 QA 记录](apps/liyun-explorer/docs/QA.md) 引用的 app 内截图与 JSON **没有迁入本仓库**，历史数字不充当本轮证据。根 QA 目录的示例截图也属于旧版，不是当前青玉纸境和校园场景的最终效果：
 

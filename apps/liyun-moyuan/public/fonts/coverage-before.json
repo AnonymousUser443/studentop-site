@@ -1,0 +1,1563 @@
+{
+  "scope": "Moyuan app only: HTML UI, source-language UI states and Canvas labels",
+  "mode": "check",
+  "requiredCodepoints": 412,
+  "requiredCharacters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~·×–…↗◌☼⛶✧、。《》一七三上下不与两个中临为主之也书事云互交人从代以件会估位体作使例依元光入全六关具出切制刻前加动化十半协单博印原参双古可右听启和器回图在地场坐垂型堂境墙墨声处复夜子字实宣室家寄寸小尘尺屋屏展山工已席帷常幅幕平并幽序建开张弦归当形影待得微心忆怀恢悉意所扇手把折拓拖持指挡换捧据推提支收放故文料断新方无日时明是景晰暂月有木未朱材来松构架柄柔栅标样格案桌梁椅模横次正此每比毛水沿法洞活流测浏清滚烟照熟片物环现理琴瓷用画留白的相砚硬示移程空窗笔等筑筛篮精糊素紫纤纳纸纹细织结绘绫维绿缓缩置考聚背腰色节花苑茶萝落蔽薄补装裱见观览记讲设访说请读走身轮轴边过近返这进远速遮邻都釉里重铺错键镇闭间阴陈雅集雾青非面韵页顾题风香，",
+  "fonts": [
+    {
+      "file": "noto-sans-sc.woff2",
+      "bytes": 291584,
+      "sha256": "16189714d223f93e75feae1e87fd714d611d4cd7be854690ab881f8e561eb9a2",
+      "family": "Noto Sans SC",
+      "mappedCodepoints": 1009,
+      "required": 412,
+      "missing": [
+        {
+          "character": "–",
+          "codepoint": "U+2013"
+        },
+        {
+          "character": "◌",
+          "codepoint": "U+25CC"
+        },
+        {
+          "character": "☼",
+          "codepoint": "U+263C"
+        },
+        {
+          "character": "⛶",
+          "codepoint": "U+26F6"
+        },
+        {
+          "character": "✧",
+          "codepoint": "U+2727"
+        },
+        {
+          "character": "元",
+          "codepoint": "U+5143"
+        },
+        {
+          "character": "印",
+          "codepoint": "U+5370"
+        },
+        {
+          "character": "古",
+          "codepoint": "U+53E4"
+        },
+        {
+          "character": "垂",
+          "codepoint": "U+5782"
+        },
+        {
+          "character": "堂",
+          "codepoint": "U+5802"
+        },
+        {
+          "character": "墙",
+          "codepoint": "U+5899"
+        },
+        {
+          "character": "墨",
+          "codepoint": "U+58A8"
+        },
+        {
+          "character": "宣",
+          "codepoint": "U+5BA3"
+        },
+        {
+          "character": "室",
+          "codepoint": "U+5BA4"
+        },
+        {
+          "character": "寄",
+          "codepoint": "U+5BC4"
+        },
+        {
+          "character": "尘",
+          "codepoint": "U+5C18"
+        },
+        {
+          "character": "屋",
+          "codepoint": "U+5C4B"
+        },
+        {
+          "character": "席",
+          "codepoint": "U+5E2D"
+        },
+        {
+          "character": "帷",
+          "codepoint": "U+5E37"
+        },
+        {
+          "character": "幽",
+          "codepoint": "U+5E7D"
+        },
+        {
+          "character": "弦",
+          "codepoint": "U+5F26"
+        },
+        {
+          "character": "归",
+          "codepoint": "U+5F52"
+        },
+        {
+          "character": "忆",
+          "codepoint": "U+5FC6"
+        },
+        {
+          "character": "怀",
+          "codepoint": "U+6000"
+        },
+        {
+          "character": "扇",
+          "codepoint": "U+6247"
+        },
+        {
+          "character": "拓",
+          "codepoint": "U+62D3"
+        },
+        {
+          "character": "挡",
+          "codepoint": "U+6321"
+        },
+        {
+          "character": "捧",
+          "codepoint": "U+6367"
+        },
+        {
+          "character": "晰",
+          "codepoint": "U+6670"
+        },
+        {
+          "character": "木",
+          "codepoint": "U+6728"
+        },
+        {
+          "character": "朱",
+          "codepoint": "U+6731"
+        },
+        {
+          "character": "松",
+          "codepoint": "U+677E"
+        },
+        {
+          "character": "柔",
+          "codepoint": "U+67D4"
+        },
+        {
+          "character": "栅",
+          "codepoint": "U+6805"
+        },
+        {
+          "character": "梁",
+          "codepoint": "U+6881"
+        },
+        {
+          "character": "椅",
+          "codepoint": "U+6905"
+        },
+        {
+          "character": "毛",
+          "codepoint": "U+6BDB"
+        },
+        {
+          "character": "洞",
+          "codepoint": "U+6D1E"
+        },
+        {
+          "character": "滚",
+          "codepoint": "U+6EDA"
+        },
+        {
+          "character": "烟",
+          "codepoint": "U+70DF"
+        },
+        {
+          "character": "琴",
+          "codepoint": "U+7434"
+        },
+        {
+          "character": "瓷",
+          "codepoint": "U+74F7"
+        },
+        {
+          "character": "砚",
+          "codepoint": "U+781A"
+        },
+        {
+          "character": "笔",
+          "codepoint": "U+7B14"
+        },
+        {
+          "character": "筑",
+          "codepoint": "U+7B51"
+        },
+        {
+          "character": "筛",
+          "codepoint": "U+7B5B"
+        },
+        {
+          "character": "篮",
+          "codepoint": "U+7BEE"
+        },
+        {
+          "character": "紫",
+          "codepoint": "U+7D2B"
+        },
+        {
+          "character": "纤",
+          "codepoint": "U+7EA4"
+        },
+        {
+          "character": "纳",
+          "codepoint": "U+7EB3"
+        },
+        {
+          "character": "细",
+          "codepoint": "U+7EC6"
+        },
+        {
+          "character": "织",
+          "codepoint": "U+7EC7"
+        },
+        {
+          "character": "绫",
+          "codepoint": "U+7EEB"
+        },
+        {
+          "character": "聚",
+          "codepoint": "U+805A"
+        },
+        {
+          "character": "腰",
+          "codepoint": "U+8170"
+        },
+        {
+          "character": "花",
+          "codepoint": "U+82B1"
+        },
+        {
+          "character": "苑",
+          "codepoint": "U+82D1"
+        },
+        {
+          "character": "茶",
+          "codepoint": "U+8336"
+        },
+        {
+          "character": "萝",
+          "codepoint": "U+841D"
+        },
+        {
+          "character": "落",
+          "codepoint": "U+843D"
+        },
+        {
+          "character": "蔽",
+          "codepoint": "U+853D"
+        },
+        {
+          "character": "薄",
+          "codepoint": "U+8584"
+        },
+        {
+          "character": "裱",
+          "codepoint": "U+88F1"
+        },
+        {
+          "character": "讲",
+          "codepoint": "U+8BB2"
+        },
+        {
+          "character": "轮",
+          "codepoint": "U+8F6E"
+        },
+        {
+          "character": "遮",
+          "codepoint": "U+906E"
+        },
+        {
+          "character": "釉",
+          "codepoint": "U+91C9"
+        },
+        {
+          "character": "错",
+          "codepoint": "U+9519"
+        },
+        {
+          "character": "镇",
+          "codepoint": "U+9547"
+        },
+        {
+          "character": "阴",
+          "codepoint": "U+9634"
+        },
+        {
+          "character": "雾",
+          "codepoint": "U+96FE"
+        },
+        {
+          "character": "顾",
+          "codepoint": "U+987E"
+        },
+        {
+          "character": "香",
+          "codepoint": "U+9999"
+        }
+      ],
+      "covered": false,
+      "bySource": [
+        {
+          "source": "index.html",
+          "required": 213,
+          "missing": [
+            {
+              "character": "◌",
+              "codepoint": "U+25CC"
+            },
+            {
+              "character": "☼",
+              "codepoint": "U+263C"
+            },
+            {
+              "character": "⛶",
+              "codepoint": "U+26F6"
+            },
+            {
+              "character": "✧",
+              "codepoint": "U+2727"
+            },
+            {
+              "character": "古",
+              "codepoint": "U+53E4"
+            },
+            {
+              "character": "堂",
+              "codepoint": "U+5802"
+            },
+            {
+              "character": "墨",
+              "codepoint": "U+58A8"
+            },
+            {
+              "character": "室",
+              "codepoint": "U+5BA4"
+            },
+            {
+              "character": "尘",
+              "codepoint": "U+5C18"
+            },
+            {
+              "character": "屋",
+              "codepoint": "U+5C4B"
+            },
+            {
+              "character": "席",
+              "codepoint": "U+5E2D"
+            },
+            {
+              "character": "帷",
+              "codepoint": "U+5E37"
+            },
+            {
+              "character": "忆",
+              "codepoint": "U+5FC6"
+            },
+            {
+              "character": "扇",
+              "codepoint": "U+6247"
+            },
+            {
+              "character": "拓",
+              "codepoint": "U+62D3"
+            },
+            {
+              "character": "挡",
+              "codepoint": "U+6321"
+            },
+            {
+              "character": "木",
+              "codepoint": "U+6728"
+            },
+            {
+              "character": "柔",
+              "codepoint": "U+67D4"
+            },
+            {
+              "character": "栅",
+              "codepoint": "U+6805"
+            },
+            {
+              "character": "椅",
+              "codepoint": "U+6905"
+            },
+            {
+              "character": "洞",
+              "codepoint": "U+6D1E"
+            },
+            {
+              "character": "滚",
+              "codepoint": "U+6EDA"
+            },
+            {
+              "character": "琴",
+              "codepoint": "U+7434"
+            },
+            {
+              "character": "筑",
+              "codepoint": "U+7B51"
+            },
+            {
+              "character": "筛",
+              "codepoint": "U+7B5B"
+            },
+            {
+              "character": "紫",
+              "codepoint": "U+7D2B"
+            },
+            {
+              "character": "纤",
+              "codepoint": "U+7EA4"
+            },
+            {
+              "character": "纳",
+              "codepoint": "U+7EB3"
+            },
+            {
+              "character": "细",
+              "codepoint": "U+7EC6"
+            },
+            {
+              "character": "织",
+              "codepoint": "U+7EC7"
+            },
+            {
+              "character": "聚",
+              "codepoint": "U+805A"
+            },
+            {
+              "character": "苑",
+              "codepoint": "U+82D1"
+            },
+            {
+              "character": "茶",
+              "codepoint": "U+8336"
+            },
+            {
+              "character": "落",
+              "codepoint": "U+843D"
+            },
+            {
+              "character": "蔽",
+              "codepoint": "U+853D"
+            },
+            {
+              "character": "薄",
+              "codepoint": "U+8584"
+            },
+            {
+              "character": "讲",
+              "codepoint": "U+8BB2"
+            },
+            {
+              "character": "轮",
+              "codepoint": "U+8F6E"
+            },
+            {
+              "character": "遮",
+              "codepoint": "U+906E"
+            },
+            {
+              "character": "釉",
+              "codepoint": "U+91C9"
+            },
+            {
+              "character": "阴",
+              "codepoint": "U+9634"
+            },
+            {
+              "character": "雾",
+              "codepoint": "U+96FE"
+            },
+            {
+              "character": "顾",
+              "codepoint": "U+987E"
+            }
+          ]
+        },
+        {
+          "source": "src/decor.js",
+          "required": 106,
+          "missing": [
+            {
+              "character": "印",
+              "codepoint": "U+5370"
+            },
+            {
+              "character": "古",
+              "codepoint": "U+53E4"
+            },
+            {
+              "character": "垂",
+              "codepoint": "U+5782"
+            },
+            {
+              "character": "墙",
+              "codepoint": "U+5899"
+            },
+            {
+              "character": "墨",
+              "codepoint": "U+58A8"
+            },
+            {
+              "character": "宣",
+              "codepoint": "U+5BA3"
+            },
+            {
+              "character": "室",
+              "codepoint": "U+5BA4"
+            },
+            {
+              "character": "寄",
+              "codepoint": "U+5BC4"
+            },
+            {
+              "character": "席",
+              "codepoint": "U+5E2D"
+            },
+            {
+              "character": "幽",
+              "codepoint": "U+5E7D"
+            },
+            {
+              "character": "弦",
+              "codepoint": "U+5F26"
+            },
+            {
+              "character": "怀",
+              "codepoint": "U+6000"
+            },
+            {
+              "character": "拓",
+              "codepoint": "U+62D3"
+            },
+            {
+              "character": "木",
+              "codepoint": "U+6728"
+            },
+            {
+              "character": "朱",
+              "codepoint": "U+6731"
+            },
+            {
+              "character": "松",
+              "codepoint": "U+677E"
+            },
+            {
+              "character": "梁",
+              "codepoint": "U+6881"
+            },
+            {
+              "character": "毛",
+              "codepoint": "U+6BDB"
+            },
+            {
+              "character": "烟",
+              "codepoint": "U+70DF"
+            },
+            {
+              "character": "琴",
+              "codepoint": "U+7434"
+            },
+            {
+              "character": "瓷",
+              "codepoint": "U+74F7"
+            },
+            {
+              "character": "砚",
+              "codepoint": "U+781A"
+            },
+            {
+              "character": "笔",
+              "codepoint": "U+7B14"
+            },
+            {
+              "character": "篮",
+              "codepoint": "U+7BEE"
+            },
+            {
+              "character": "细",
+              "codepoint": "U+7EC6"
+            },
+            {
+              "character": "绫",
+              "codepoint": "U+7EEB"
+            },
+            {
+              "character": "腰",
+              "codepoint": "U+8170"
+            },
+            {
+              "character": "花",
+              "codepoint": "U+82B1"
+            },
+            {
+              "character": "萝",
+              "codepoint": "U+841D"
+            },
+            {
+              "character": "落",
+              "codepoint": "U+843D"
+            },
+            {
+              "character": "裱",
+              "codepoint": "U+88F1"
+            },
+            {
+              "character": "错",
+              "codepoint": "U+9519"
+            },
+            {
+              "character": "镇",
+              "codepoint": "U+9547"
+            }
+          ]
+        },
+        {
+          "source": "src/main.js",
+          "required": 142,
+          "missing": [
+            {
+              "character": "元",
+              "codepoint": "U+5143"
+            },
+            {
+              "character": "古",
+              "codepoint": "U+53E4"
+            },
+            {
+              "character": "堂",
+              "codepoint": "U+5802"
+            },
+            {
+              "character": "墨",
+              "codepoint": "U+58A8"
+            },
+            {
+              "character": "室",
+              "codepoint": "U+5BA4"
+            },
+            {
+              "character": "屋",
+              "codepoint": "U+5C4B"
+            },
+            {
+              "character": "归",
+              "codepoint": "U+5F52"
+            },
+            {
+              "character": "忆",
+              "codepoint": "U+5FC6"
+            },
+            {
+              "character": "扇",
+              "codepoint": "U+6247"
+            },
+            {
+              "character": "捧",
+              "codepoint": "U+6367"
+            },
+            {
+              "character": "晰",
+              "codepoint": "U+6670"
+            },
+            {
+              "character": "木",
+              "codepoint": "U+6728"
+            },
+            {
+              "character": "椅",
+              "codepoint": "U+6905"
+            },
+            {
+              "character": "洞",
+              "codepoint": "U+6D1E"
+            },
+            {
+              "character": "笔",
+              "codepoint": "U+7B14"
+            },
+            {
+              "character": "筛",
+              "codepoint": "U+7B5B"
+            },
+            {
+              "character": "紫",
+              "codepoint": "U+7D2B"
+            },
+            {
+              "character": "细",
+              "codepoint": "U+7EC6"
+            },
+            {
+              "character": "聚",
+              "codepoint": "U+805A"
+            },
+            {
+              "character": "茶",
+              "codepoint": "U+8336"
+            },
+            {
+              "character": "讲",
+              "codepoint": "U+8BB2"
+            },
+            {
+              "character": "轮",
+              "codepoint": "U+8F6E"
+            },
+            {
+              "character": "香",
+              "codepoint": "U+9999"
+            }
+          ]
+        },
+        {
+          "source": "src/render.js",
+          "required": 0,
+          "missing": []
+        },
+        {
+          "source": "src/room.js",
+          "required": 2,
+          "missing": [
+            {
+              "character": "–",
+              "codepoint": "U+2013"
+            }
+          ]
+        },
+        {
+          "source": "src/style.css",
+          "required": 0,
+          "missing": []
+        },
+        {
+          "source": "mandatory-title-and-Canvas",
+          "required": 18,
+          "missing": [
+            {
+              "character": "墨",
+              "codepoint": "U+58A8"
+            },
+            {
+              "character": "室",
+              "codepoint": "U+5BA4"
+            },
+            {
+              "character": "寄",
+              "codepoint": "U+5BC4"
+            },
+            {
+              "character": "幽",
+              "codepoint": "U+5E7D"
+            },
+            {
+              "character": "弦",
+              "codepoint": "U+5F26"
+            },
+            {
+              "character": "怀",
+              "codepoint": "U+6000"
+            },
+            {
+              "character": "松",
+              "codepoint": "U+677E"
+            },
+            {
+              "character": "苑",
+              "codepoint": "U+82D1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "noto-serif-sc.woff2",
+      "bytes": 379156,
+      "sha256": "3dccdf0c10c6ff3d7b9be73c262d7a75f4cb58132b7b8763dbef5c6d3e9fe2c1",
+      "family": "Noto Serif SC",
+      "mappedCodepoints": 1009,
+      "required": 412,
+      "missing": [
+        {
+          "character": "–",
+          "codepoint": "U+2013"
+        },
+        {
+          "character": "◌",
+          "codepoint": "U+25CC"
+        },
+        {
+          "character": "☼",
+          "codepoint": "U+263C"
+        },
+        {
+          "character": "⛶",
+          "codepoint": "U+26F6"
+        },
+        {
+          "character": "✧",
+          "codepoint": "U+2727"
+        },
+        {
+          "character": "元",
+          "codepoint": "U+5143"
+        },
+        {
+          "character": "印",
+          "codepoint": "U+5370"
+        },
+        {
+          "character": "古",
+          "codepoint": "U+53E4"
+        },
+        {
+          "character": "垂",
+          "codepoint": "U+5782"
+        },
+        {
+          "character": "堂",
+          "codepoint": "U+5802"
+        },
+        {
+          "character": "墙",
+          "codepoint": "U+5899"
+        },
+        {
+          "character": "墨",
+          "codepoint": "U+58A8"
+        },
+        {
+          "character": "宣",
+          "codepoint": "U+5BA3"
+        },
+        {
+          "character": "室",
+          "codepoint": "U+5BA4"
+        },
+        {
+          "character": "寄",
+          "codepoint": "U+5BC4"
+        },
+        {
+          "character": "尘",
+          "codepoint": "U+5C18"
+        },
+        {
+          "character": "屋",
+          "codepoint": "U+5C4B"
+        },
+        {
+          "character": "席",
+          "codepoint": "U+5E2D"
+        },
+        {
+          "character": "帷",
+          "codepoint": "U+5E37"
+        },
+        {
+          "character": "幽",
+          "codepoint": "U+5E7D"
+        },
+        {
+          "character": "弦",
+          "codepoint": "U+5F26"
+        },
+        {
+          "character": "归",
+          "codepoint": "U+5F52"
+        },
+        {
+          "character": "忆",
+          "codepoint": "U+5FC6"
+        },
+        {
+          "character": "怀",
+          "codepoint": "U+6000"
+        },
+        {
+          "character": "扇",
+          "codepoint": "U+6247"
+        },
+        {
+          "character": "拓",
+          "codepoint": "U+62D3"
+        },
+        {
+          "character": "挡",
+          "codepoint": "U+6321"
+        },
+        {
+          "character": "捧",
+          "codepoint": "U+6367"
+        },
+        {
+          "character": "晰",
+          "codepoint": "U+6670"
+        },
+        {
+          "character": "木",
+          "codepoint": "U+6728"
+        },
+        {
+          "character": "朱",
+          "codepoint": "U+6731"
+        },
+        {
+          "character": "松",
+          "codepoint": "U+677E"
+        },
+        {
+          "character": "柔",
+          "codepoint": "U+67D4"
+        },
+        {
+          "character": "栅",
+          "codepoint": "U+6805"
+        },
+        {
+          "character": "梁",
+          "codepoint": "U+6881"
+        },
+        {
+          "character": "椅",
+          "codepoint": "U+6905"
+        },
+        {
+          "character": "毛",
+          "codepoint": "U+6BDB"
+        },
+        {
+          "character": "洞",
+          "codepoint": "U+6D1E"
+        },
+        {
+          "character": "滚",
+          "codepoint": "U+6EDA"
+        },
+        {
+          "character": "烟",
+          "codepoint": "U+70DF"
+        },
+        {
+          "character": "琴",
+          "codepoint": "U+7434"
+        },
+        {
+          "character": "瓷",
+          "codepoint": "U+74F7"
+        },
+        {
+          "character": "砚",
+          "codepoint": "U+781A"
+        },
+        {
+          "character": "笔",
+          "codepoint": "U+7B14"
+        },
+        {
+          "character": "筑",
+          "codepoint": "U+7B51"
+        },
+        {
+          "character": "筛",
+          "codepoint": "U+7B5B"
+        },
+        {
+          "character": "篮",
+          "codepoint": "U+7BEE"
+        },
+        {
+          "character": "紫",
+          "codepoint": "U+7D2B"
+        },
+        {
+          "character": "纤",
+          "codepoint": "U+7EA4"
+        },
+        {
+          "character": "纳",
+          "codepoint": "U+7EB3"
+        },
+        {
+          "character": "细",
+          "codepoint": "U+7EC6"
+        },
+        {
+          "character": "织",
+          "codepoint": "U+7EC7"
+        },
+        {
+          "character": "绫",
+          "codepoint": "U+7EEB"
+        },
+        {
+          "character": "聚",
+          "codepoint": "U+805A"
+        },
+        {
+          "character": "腰",
+          "codepoint": "U+8170"
+        },
+        {
+          "character": "花",
+          "codepoint": "U+82B1"
+        },
+        {
+          "character": "苑",
+          "codepoint": "U+82D1"
+        },
+        {
+          "character": "茶",
+          "codepoint": "U+8336"
+        },
+        {
+          "character": "萝",
+          "codepoint": "U+841D"
+        },
+        {
+          "character": "落",
+          "codepoint": "U+843D"
+        },
+        {
+          "character": "蔽",
+          "codepoint": "U+853D"
+        },
+        {
+          "character": "薄",
+          "codepoint": "U+8584"
+        },
+        {
+          "character": "裱",
+          "codepoint": "U+88F1"
+        },
+        {
+          "character": "讲",
+          "codepoint": "U+8BB2"
+        },
+        {
+          "character": "轮",
+          "codepoint": "U+8F6E"
+        },
+        {
+          "character": "遮",
+          "codepoint": "U+906E"
+        },
+        {
+          "character": "釉",
+          "codepoint": "U+91C9"
+        },
+        {
+          "character": "错",
+          "codepoint": "U+9519"
+        },
+        {
+          "character": "镇",
+          "codepoint": "U+9547"
+        },
+        {
+          "character": "阴",
+          "codepoint": "U+9634"
+        },
+        {
+          "character": "雾",
+          "codepoint": "U+96FE"
+        },
+        {
+          "character": "顾",
+          "codepoint": "U+987E"
+        },
+        {
+          "character": "香",
+          "codepoint": "U+9999"
+        }
+      ],
+      "covered": false,
+      "bySource": [
+        {
+          "source": "index.html",
+          "required": 213,
+          "missing": [
+            {
+              "character": "◌",
+              "codepoint": "U+25CC"
+            },
+            {
+              "character": "☼",
+              "codepoint": "U+263C"
+            },
+            {
+              "character": "⛶",
+              "codepoint": "U+26F6"
+            },
+            {
+              "character": "✧",
+              "codepoint": "U+2727"
+            },
+            {
+              "character": "古",
+              "codepoint": "U+53E4"
+            },
+            {
+              "character": "堂",
+              "codepoint": "U+5802"
+            },
+            {
+              "character": "墨",
+              "codepoint": "U+58A8"
+            },
+            {
+              "character": "室",
+              "codepoint": "U+5BA4"
+            },
+            {
+              "character": "尘",
+              "codepoint": "U+5C18"
+            },
+            {
+              "character": "屋",
+              "codepoint": "U+5C4B"
+            },
+            {
+              "character": "席",
+              "codepoint": "U+5E2D"
+            },
+            {
+              "character": "帷",
+              "codepoint": "U+5E37"
+            },
+            {
+              "character": "忆",
+              "codepoint": "U+5FC6"
+            },
+            {
+              "character": "扇",
+              "codepoint": "U+6247"
+            },
+            {
+              "character": "拓",
+              "codepoint": "U+62D3"
+            },
+            {
+              "character": "挡",
+              "codepoint": "U+6321"
+            },
+            {
+              "character": "木",
+              "codepoint": "U+6728"
+            },
+            {
+              "character": "柔",
+              "codepoint": "U+67D4"
+            },
+            {
+              "character": "栅",
+              "codepoint": "U+6805"
+            },
+            {
+              "character": "椅",
+              "codepoint": "U+6905"
+            },
+            {
+              "character": "洞",
+              "codepoint": "U+6D1E"
+            },
+            {
+              "character": "滚",
+              "codepoint": "U+6EDA"
+            },
+            {
+              "character": "琴",
+              "codepoint": "U+7434"
+            },
+            {
+              "character": "筑",
+              "codepoint": "U+7B51"
+            },
+            {
+              "character": "筛",
+              "codepoint": "U+7B5B"
+            },
+            {
+              "character": "紫",
+              "codepoint": "U+7D2B"
+            },
+            {
+              "character": "纤",
+              "codepoint": "U+7EA4"
+            },
+            {
+              "character": "纳",
+              "codepoint": "U+7EB3"
+            },
+            {
+              "character": "细",
+              "codepoint": "U+7EC6"
+            },
+            {
+              "character": "织",
+              "codepoint": "U+7EC7"
+            },
+            {
+              "character": "聚",
+              "codepoint": "U+805A"
+            },
+            {
+              "character": "苑",
+              "codepoint": "U+82D1"
+            },
+            {
+              "character": "茶",
+              "codepoint": "U+8336"
+            },
+            {
+              "character": "落",
+              "codepoint": "U+843D"
+            },
+            {
+              "character": "蔽",
+              "codepoint": "U+853D"
+            },
+            {
+              "character": "薄",
+              "codepoint": "U+8584"
+            },
+            {
+              "character": "讲",
+              "codepoint": "U+8BB2"
+            },
+            {
+              "character": "轮",
+              "codepoint": "U+8F6E"
+            },
+            {
+              "character": "遮",
+              "codepoint": "U+906E"
+            },
+            {
+              "character": "釉",
+              "codepoint": "U+91C9"
+            },
+            {
+              "character": "阴",
+              "codepoint": "U+9634"
+            },
+            {
+              "character": "雾",
+              "codepoint": "U+96FE"
+            },
+            {
+              "character": "顾",
+              "codepoint": "U+987E"
+            }
+          ]
+        },
+        {
+          "source": "src/decor.js",
+          "required": 106,
+          "missing": [
+            {
+              "character": "印",
+              "codepoint": "U+5370"
+            },
+            {
+              "character": "古",
+              "codepoint": "U+53E4"
+            },
+            {
+              "character": "垂",
+              "codepoint": "U+5782"
+            },
+            {
+              "character": "墙",
+              "codepoint": "U+5899"
+            },
+            {
+              "character": "墨",
+              "codepoint": "U+58A8"
+            },
+            {
+              "character": "宣",
+              "codepoint": "U+5BA3"
+            },
+            {
+              "character": "室",
+              "codepoint": "U+5BA4"
+            },
+            {
+              "character": "寄",
+              "codepoint": "U+5BC4"
+            },
+            {
+              "character": "席",
+              "codepoint": "U+5E2D"
+            },
+            {
+              "character": "幽",
+              "codepoint": "U+5E7D"
+            },
+            {
+              "character": "弦",
+              "codepoint": "U+5F26"
+            },
+            {
+              "character": "怀",
+              "codepoint": "U+6000"
+            },
+            {
+              "character": "拓",
+              "codepoint": "U+62D3"
+            },
+            {
+              "character": "木",
+              "codepoint": "U+6728"
+            },
+            {
+              "character": "朱",
+              "codepoint": "U+6731"
+            },
+            {
+              "character": "松",
+              "codepoint": "U+677E"
+            },
+            {
+              "character": "梁",
+              "codepoint": "U+6881"
+            },
+            {
+              "character": "毛",
+              "codepoint": "U+6BDB"
+            },
+            {
+              "character": "烟",
+              "codepoint": "U+70DF"
+            },
+            {
+              "character": "琴",
+              "codepoint": "U+7434"
+            },
+            {
+              "character": "瓷",
+              "codepoint": "U+74F7"
+            },
+            {
+              "character": "砚",
+              "codepoint": "U+781A"
+            },
+            {
+              "character": "笔",
+              "codepoint": "U+7B14"
+            },
+            {
+              "character": "篮",
+              "codepoint": "U+7BEE"
+            },
+            {
+              "character": "细",
+              "codepoint": "U+7EC6"
+            },
+            {
+              "character": "绫",
+              "codepoint": "U+7EEB"
+            },
+            {
+              "character": "腰",
+              "codepoint": "U+8170"
+            },
+            {
+              "character": "花",
+              "codepoint": "U+82B1"
+            },
+            {
+              "character": "萝",
+              "codepoint": "U+841D"
+            },
+            {
+              "character": "落",
+              "codepoint": "U+843D"
+            },
+            {
+              "character": "裱",
+              "codepoint": "U+88F1"
+            },
+            {
+              "character": "错",
+              "codepoint": "U+9519"
+            },
+            {
+              "character": "镇",
+              "codepoint": "U+9547"
+            }
+          ]
+        },
+        {
+          "source": "src/main.js",
+          "required": 142,
+          "missing": [
+            {
+              "character": "元",
+              "codepoint": "U+5143"
+            },
+            {
+              "character": "古",
+              "codepoint": "U+53E4"
+            },
+            {
+              "character": "堂",
+              "codepoint": "U+5802"
+            },
+            {
+              "character": "墨",
+              "codepoint": "U+58A8"
+            },
+            {
+              "character": "室",
+              "codepoint": "U+5BA4"
+            },
+            {
+              "character": "屋",
+              "codepoint": "U+5C4B"
+            },
+            {
+              "character": "归",
+              "codepoint": "U+5F52"
+            },
+            {
+              "character": "忆",
+              "codepoint": "U+5FC6"
+            },
+            {
+              "character": "扇",
+              "codepoint": "U+6247"
+            },
+            {
+              "character": "捧",
+              "codepoint": "U+6367"
+            },
+            {
+              "character": "晰",
+              "codepoint": "U+6670"
+            },
+            {
+              "character": "木",
+              "codepoint": "U+6728"
+            },
+            {
+              "character": "椅",
+              "codepoint": "U+6905"
+            },
+            {
+              "character": "洞",
+              "codepoint": "U+6D1E"
+            },
+            {
+              "character": "笔",
+              "codepoint": "U+7B14"
+            },
+            {
+              "character": "筛",
+              "codepoint": "U+7B5B"
+            },
+            {
+              "character": "紫",
+              "codepoint": "U+7D2B"
+            },
+            {
+              "character": "细",
+              "codepoint": "U+7EC6"
+            },
+            {
+              "character": "聚",
+              "codepoint": "U+805A"
+            },
+            {
+              "character": "茶",
+              "codepoint": "U+8336"
+            },
+            {
+              "character": "讲",
+              "codepoint": "U+8BB2"
+            },
+            {
+              "character": "轮",
+              "codepoint": "U+8F6E"
+            },
+            {
+              "character": "香",
+              "codepoint": "U+9999"
+            }
+          ]
+        },
+        {
+          "source": "src/render.js",
+          "required": 0,
+          "missing": []
+        },
+        {
+          "source": "src/room.js",
+          "required": 2,
+          "missing": [
+            {
+              "character": "–",
+              "codepoint": "U+2013"
+            }
+          ]
+        },
+        {
+          "source": "src/style.css",
+          "required": 0,
+          "missing": []
+        },
+        {
+          "source": "mandatory-title-and-Canvas",
+          "required": 18,
+          "missing": [
+            {
+              "character": "墨",
+              "codepoint": "U+58A8"
+            },
+            {
+              "character": "室",
+              "codepoint": "U+5BA4"
+            },
+            {
+              "character": "寄",
+              "codepoint": "U+5BC4"
+            },
+            {
+              "character": "幽",
+              "codepoint": "U+5E7D"
+            },
+            {
+              "character": "弦",
+              "codepoint": "U+5F26"
+            },
+            {
+              "character": "怀",
+              "codepoint": "U+6000"
+            },
+            {
+              "character": "松",
+              "codepoint": "U+677E"
+            },
+            {
+              "character": "苑",
+              "codepoint": "U+82D1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ok": false
+}

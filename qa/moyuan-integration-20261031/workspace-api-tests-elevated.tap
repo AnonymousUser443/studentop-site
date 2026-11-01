@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: account health requires actual JSON success and bounds failures and timeouts
+ok 1 - account health requires actual JSON success and bounds failures and timeouts
+  ---
+  duration_ms: 144.7464
+  type: 'test'
+  ...
+# Subtest: full launcher owns six healthy services and proxies persisted account progress through Vite
+ok 2 - full launcher owns six healthy services and proxies persisted account progress through Vite
+  ---
+  duration_ms: 4183.8573
+  type: 'test'
+  ...
+# Subtest: site-only ignores the account API and its occupied port without opening a database
+ok 3 - site-only ignores the account API and its occupied port without opening a database
+  ---
+  duration_ms: 183.6655
+  type: 'test'
+  ...
+# Subtest: occupied API port fails startup and never reuses or closes the existing service
+ok 4 - occupied API port fails startup and never reuses or closes the existing service
+  ---
+  duration_ms: 313.9234
+  type: 'test'
+  ...
+# Subtest: later Vite startup failure closes the owned API and earlier frontend, preserving the conflicting service
+ok 5 - later Vite startup failure closes the owned API and earlier frontend, preserving the conflicting service
+  ---
+  duration_ms: 1633.5302
+  type: 'test'
+  ...
+# Subtest: IPC loss stops the full workspace and releases every owned listener
+ok 6 - IPC loss stops the full workspace and releases every owned listener
+  ---
+  duration_ms: 1756.8422
+  type: 'test'
+  ...
+# Subtest: an owned account process exiting after startup fails the workspace and closes its siblings
+ok 7 - an owned account process exiting after startup fails the workspace and closes its siblings
+  ---
+  duration_ms: 1816.4349
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10117.2433

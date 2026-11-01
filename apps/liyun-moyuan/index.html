@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#192b28"><meta name="description" content="走进理韵文化协会的活动室。以细体素重建月洞、书案与茶席，在光影里重访一间熟悉的屋子。">
+  <title>理韵墨苑 · 一室风雅</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+  <main id="app">
+    <div id="scene" aria-label="可交互的理韵活动室三维复原" tabindex="0"></div>
+    <header class="masthead">
+      <a class="brand" href="/" id="home-link" aria-label="返回个人主页"><span class="seal">理</span><span>理韵文化协会<small>LIYUN CULTURE ASSOCIATION</small></span></a>
+      <div class="edition"><span class="live-dot"></span>空间记忆 / VOL. 01</div>
+      <button id="about-toggle" class="outline-button" aria-expanded="false" aria-controls="about-panel">复原手记 <span>↗</span></button>
+    </header>
+    <section class="intro" aria-label="场景说明">
+      <p class="eyebrow">一室风雅，落在方寸之间</p>
+      <h1>理韵<span>墨苑</span><i>MO YUAN</i></h1>
+      <div class="intro-rule"></div><p id="view-description">木格筛光，茶器无声。<br>从一扇月洞，重访熟悉的相聚。</p>
+    </section>
+    <aside class="view-info"><span id="view-number">02</span><div><small>此刻所见</small><p id="view-name">入室 · 一室风雅</p></div></aside>
+    <div class="right-tools" aria-label="场景工具">
+      <button id="light-toggle" aria-pressed="false" title="切换日光与夜读"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2"/></svg><span>日光</span></button>
+      <button id="tour-toggle" aria-pressed="false" title="缓缓环顾活动室">◌<span>环顾</span></button>
+      <button id="detail-toggle" aria-pressed="true" title="切换精细光影"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z"/></svg><span>精细</span></button>
+      <button id="fullscreen" title="全屏观览"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m6 0h6v-6"/></svg><span>全屏</span></button>
+    </div>
+    <footer class="bottom-bar">
+      <div class="navigation-label"><span>观 室</span><small>CHOOSE A VIEW</small></div>
+      <nav aria-label="活动室观览位置" id="view-nav">
+        <button data-view="overview"><b>01</b><span>全景模型</span></button>
+        <button data-view="interior" class="active" aria-pressed="true"><b>02</b><span>一室风雅</span></button>
+        <button data-view="tea"><b>03</b><span>月洞茶席</span></button>
+        <button data-view="desk"><b>04</b><span>临窗书案</span></button>
+        <button data-view="stage"><b>05</b><span>帷幕讲堂</span></button>
+      </nav>
+      <div class="hint"><span>拖动环顾 · 滚轮远近</span><small>双指缩放 / 右键平移</small></div>
+    </footer>
+    <aside id="about-panel" hidden aria-label="复原手记">
+      <div class="panel-heading"><small>RECONSTRUCTION NOTES</small><button id="about-close" aria-label="关闭复原手记">×</button></div>
+      <h2>把相聚的地方，<br>留在方寸里。</h2>
+      <p>以《理韵文化协会活动室》的六张照片为参考，用细体素重建空间、家具和器物。月洞格栅、博古架、折椅、琴拓与紫色帷幕，是这间屋子的记忆坐标。</p>
+      <dl><div><dt>01 / 空间</dt><dd>照片比例推估，非实测尺寸</dd></div><div><dt>02 / 材料</dt><dd>木纹、纸纤维、釉面与织物</dd></div><div><dt>03 / 光影</dt><dd>柔和阴影、环境遮蔽、薄雾微尘</dd></div></dl>
+      <p class="note">照片未展示的背面与遮挡处依据相邻结构补全。人物不纳入场景，模糊的题字与纹样为复原示意。</p>
+      <div id="scene-stats" class="scene-stats">正在构筑空间…</div>
+    </aside>
+    <section id="loading" aria-live="polite"><div class="loading-mark">苑</div><h2>理韵墨苑</h2><p id="loading-text">正在铺陈一室风雅…</p><div class="loading-line"></div></section>
+    <section id="error" hidden role="alert"><h2>暂时无法进入墨苑</h2><p id="error-text"></p><button onclick="location.reload()">重新进入</button></section>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

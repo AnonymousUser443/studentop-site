@@ -271,6 +271,7 @@ window.Win = (function () {
       if (appId === 'genshin-start') return 'http://127.0.0.1:8081/';
       if (appId === 'genshin-original') return 'http://127.0.0.1:8081/legacy.html';
       if (appId === 'voxel-campus') return 'http://127.0.0.1:5180/';
+      if (appId === 'liyun-moyuan') return 'http://127.0.0.1:5181/';
     }
     return productionURL;
   }

@@ -1,0 +1,74 @@
+{
+  "checkedAt": "2026-11-01T15:05:33.330Z",
+  "baseCommit": "a80c0b53645536d3f6eb17ec3384b19c89a4adfa",
+  "checks": [
+    {
+      "command": "node --test qa/node-tests.cjs qa/desktop-node-tests.cjs qa/voxel-shortcut-tests.cjs qa/moyuan-release-tests.mjs",
+      "passed": 27,
+      "total": 27
+    },
+    {
+      "command": "node --test qa/workspace-api-tests.mjs",
+      "passed": 7,
+      "total": 7,
+      "environment": "Elevated local run; synthetic auth, temporary SQLite, isolated ports"
+    },
+    {
+      "command": "npm --prefix apps/liyun-moyuan run build",
+      "ok": true
+    },
+    {
+      "command": "bash deploy/deploy-moyuan.sh --check",
+      "ok": true,
+      "files": 8,
+      "bytes": 918460,
+      "contactsServer": false
+    },
+    {
+      "command": "node tools/dev-workspace.mjs --check",
+      "ok": true
+    },
+    {
+      "command": "node tools/build-site.mjs && node tools/build-site.mjs --check dist-site",
+      "ok": true,
+      "homeVersion": "5cb9607d0ca3b8864064b935"
+    }
+  ],
+  "browserEvidence": {
+    "report": "../moyuan-20261031/browser-final4.json",
+    "passed": 19,
+    "total": 19,
+    "allRenderSourceHashesMatch": true,
+    "engine": "Isolated Edge / SwiftShader; not physical mobile hardware"
+  },
+  "syntaxFiles": [
+    "site/assets/js/apps.js",
+    "site/assets/js/content.js",
+    "site/assets/js/core.js",
+    "site/assets/js/icons.js",
+    "tools/dev-workspace.mjs",
+    "apps/liyun-moyuan/src/decor.js",
+    "apps/liyun-moyuan/src/main.js",
+    "apps/liyun-moyuan/src/render.js",
+    "apps/liyun-moyuan/src/room.js"
+  ],
+  "releaseSourceHashes": {
+    "deploy/deploy-moyuan.sh": "bf5155f8987dfa2bcea6e65f44a4d99d99c284a65934c33ffa7a0af677a53704",
+    "deploy/apply-moyuan-release.sh": "815f9e3da84a901489250ff2d860ba7e80195811b38e806894c69c29516282c8",
+    "deploy/nginx/win11-home-projects.conf": "5041cf216589f9661c398b2c37cad4eec1fd2b9fdf1210054cc815036775ada6",
+    "site/assets/js/apps.js": "00ad1be22b919f1180bdb11b0f38e0af617be4ae4a46ee035a1318052ab93b23",
+    "site/assets/js/content.js": "6254d07080190505571b3547de61b061b3f82178595dc7c92139fe9427f457d5",
+    "site/assets/js/core.js": "1eae7c6fb0244603e7e20232c78774d8e275d3d3a6b86e3b53e0e9606d569dbc",
+    "site/assets/js/icons.js": "cd82d136740c21322a6b740d89eaab8d6c12f591287e12052cb88ab46f9e922a",
+    "tools/dev-workspace.mjs": "7f81b394899a62182d58b920c46cd2852153e9464cc05a33ff03af712f453862",
+    "apps/liyun-moyuan/src/decor.js": "977f57ff02a9bf3fc90998aa48e9563e4896e36994679d58292013bd52235a98",
+    "apps/liyun-moyuan/src/main.js": "698f95f3ed5fbe6631be96acc2fcc50cd68fa67c5d37d9d90b50e153623b5c67",
+    "apps/liyun-moyuan/src/render.js": "e74c5d8adf28ab1bdc191679e49aa7de4a306b6067c326c82f77367c5e9f9023",
+    "apps/liyun-moyuan/src/room.js": "9106ca2ac64b1634fff92a19f7b1977f3215541d7cf0f78ddead3219488d21b9"
+  },
+  "notes": [
+    "Local package check failures from Windows mkdir mode and tar drive syntax were fixed; final package check passed.",
+    "OpenCLI doctor connected successfully after local loopback permissions were allowed.",
+    "This preflight is not a production receipt."
+  ]
+}

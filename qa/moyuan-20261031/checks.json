@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-10-31T10:50:36.804Z",
+  "scope": "Liyun Moyuan local app, Win Web entry, Vite build and isolated Edge/WebGL",
+  "workspaceApi": { "passed": 7, "total": 7 },
+  "browser": { "passed": 19, "total": 19, "report": "browser-final4.json", "viewport": "900x700", "engine": "owned isolated Edge / SwiftShader" },
+  "font": { "requiredCodepoints": 409, "missing": 0, "publicMatchesViteSource": true, "report": "apps/liyun-moyuan/public/fonts/coverage-final3.json" },
+  "model": { "roomVoxelBlocks": 6087, "roomInstancedMeshes": 43, "decorVoxelInstances": 14850, "decorInstancedMeshes": 26 },
+  "production": { "deployed": false }
+}

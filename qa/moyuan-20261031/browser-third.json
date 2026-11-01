@@ -1,0 +1,42 @@
+{
+  "ok": false,
+  "checkedAt": "2026-10-31T09:39:16.026Z",
+  "browser": "Owned isolated Edge / SwiftShader; OpenCLI extension disconnected",
+  "checks": [
+    {
+      "name": "real-WebGL-canvas",
+      "pass": true
+    },
+    {
+      "name": "six-photo-model",
+      "pass": true
+    },
+    {
+      "name": "detailed-decor",
+      "pass": true
+    },
+    {
+      "name": "loading-clears",
+      "pass": true
+    },
+    {
+      "name": "view:overview",
+      "pass": false
+    }
+  ],
+  "screenshots": [
+    "browser-third-interior.png",
+    "browser-third-failure.png"
+  ],
+  "sourceHashes": {
+    "room.js": "9106ca2ac64b1634fff92a19f7b1977f3215541d7cf0f78ddead3219488d21b9",
+    "decor.js": "977f57ff02a9bf3fc90998aa48e9563e4896e36994679d58292013bd52235a98",
+    "render.js": "51980cfafaaedd3a7b7289b3229a9e0ff2a08386f0aa080e7bfd8e46c0f505d3",
+    "main.js": "612339733afbbc2266504e62cae0d01b0c6991533cf34598abb68760e8808688",
+    "style.css": "93d3b0083fa968026a4a149f2ee0389d211b71e598376fb30261c0cdef50a213"
+  },
+  "viewport": "1100x800",
+  "browserVersion": "Edg/156.0.4314.50",
+  "error": "Error: view:overview\n    at check (D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\moyuan-20261031\\browser.cjs:11:124)\n    at async D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\moyuan-20261031\\browser.cjs:24:120",
+  "errors": []
+}
