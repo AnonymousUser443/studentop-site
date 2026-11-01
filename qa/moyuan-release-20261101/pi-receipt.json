@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "id": "moyuan-20261101T151147Z-26c8ae3b42",
+  "current": "/opt/projects/liyun-moyuan/releases/moyuan-20261101T151147Z-26c8ae3b42",
+  "previous": "none",
+  "nginxConfigChanged": true,
+  "completedAt": "2026-11-01T15:12:00Z",
+  "commit": "26c8ae3b428cb63e9c41b3cd57b6392f6a44d6f4",
+  "home": {
+    "version": "5cb9607d0ca3b8864064b935",
+    "current": "/opt/win11-home/releases/20261101T151721Z",
+    "previous": "/opt/win11-home/releases/20261031T074956Z"
+  },
+  "nginx": {
+    "beforeSHA256": "53f61ccef358eefdae628f020e497e04127ee0d28635a511c4fff410587826d9",
+    "afterSHA256": "5041cf216589f9661c398b2c37cad4eec1fd2b9fdf1210054cc815036775ada6"
+  },
+  "publicReport": "public.json",
+  "browserReport": "browser-production.json",
+  "history": "/var/lib/aiden-release-history/moyuan-20261101T151147Z-26c8ae3b42",
+  "notes": [
+    "The first 13 MB home upload ended before activation; the previous home stayed current. A verified rebuild with retain=0 (same version; 44 assets) uploaded successfully.",
+    "Old server shared hash resources remain available. No campus-login code, credentials or production databases were included."
+  ]
+}

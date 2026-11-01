@@ -28,7 +28,7 @@ node qa/task-manager-20261029/browser.cjs
 
 所有端口严格绑定回环；--site-only只要求主页文件，不预检/启动应用或账号 API。完整模式先启动账号 API，再启动四个应用；status 与 health 实际请求账号 /api/health，非 200、非法 JSON、重定向或超时使其为 unhealthy，整体 health 返回 503；恢复后可重新变为 ready。子进程异常退出则整组退出并清理本次服务。
 
-理韵墨苑本地端口5181，构建生产规划路径/liyun-moyuan/，本轮未部署；快捷方式、项目索引与只允许精确回环主机的URL映射由voxel-shortcut-tests.cjs一并检查。体素的生产路径是主域/voxel-campus/，轻量校园是主域/campus-entry/；原神原版生产链接保留既有子域根 release，本地/legacy.html 不能照搬成生产路径。部署仍需所有者当次明确发起或授权。
+理韵墨苑本地端口5181，生产路径为/liyun-moyuan/，已于2026-11-01部署；[生产证据](moyuan-release-20261101/QA.md)包括公网24/24与真实Chrome交互17/17。快捷方式、项目索引与只允许精确回环主机的URL映射由voxel-shortcut-tests.cjs一并检查。体素的生产路径是主域/voxel-campus/，轻量校园是主域/campus-entry/；原神原版生产链接保留既有子域根 release，本地/legacy.html 不能照搬成生产路径。后续部署仍需所有者当次明确发起或授权。
 
 ## 先做离线检查
 

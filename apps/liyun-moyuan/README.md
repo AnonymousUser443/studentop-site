@@ -4,6 +4,8 @@
 
 应用采用 Three.js 与 Vite，依赖和锁文件独立于其他应用。Win Web 桌面快捷方式打开独立页面。
 
+2026-11-01已发布至 <https://studentop.cn:14355/liyun-moyuan/>，桌面、开始菜单和项目索引入口同步上线。生产收据、验证范围与回滚目标见[发布记录](../../docs/MOYUAN-RELEASE-20261101.md)。
+
 ## 本地运行
 
 从仓库根目录执行，使用 Node.js 22.12+，推荐 Node.js 24：

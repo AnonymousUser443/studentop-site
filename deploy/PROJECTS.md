@@ -5,11 +5,13 @@
 
 ---
 
-## 2026-11-01 理韵墨苑发布流程
+## 2026-11-01 理韵墨苑发布与维护
 
 新增活动室体素应用的生产入口为 `https://studentop.cn:14355/liyun-moyuan/`。沿用主站 nginx、TLS 与隧道，资源由 `/opt/projects/liyun-moyuan/current` 和保留旧版本的 `shared-assets` 提供。先合并代码、重新构建并运行 `deploy/deploy-moyuan.sh`，再构建主页并运行 `deploy/deploy-site.sh dist-site` 发布桌面、开始菜单与项目索引入口。完整命令、备份与回滚见 [deploy/README.md](README.md#更新理韵墨苑与桌面入口)。
 
 下文 2026-10-27 的版本、目录及验收数字是首次部署快照，不代表当前发布版本。
+
+本次墨苑已完成部署，生产主页版本为 `5cb9607d0ca3b8864064b935`。实际目录、收据和验收范围见[发布记录](../docs/MOYUAN-RELEASE-20261101.md)。
 
 ## 0. 一览
 

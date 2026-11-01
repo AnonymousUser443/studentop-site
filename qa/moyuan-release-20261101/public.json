@@ -1,0 +1,212 @@
+{
+  "ok": true,
+  "checkedAt": "2026-11-01T15:21:05.754Z",
+  "commit": "26c8ae3b428cb63e9c41b3cd57b6392f6a44d6f4",
+  "origin": "https://studentop.cn:14355",
+  "homeVersion": "5cb9607d0ca3b8864064b935",
+  "checks": [
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/liyun-moyuan/index.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 4660,
+      "sha256": "707575a329ad1c6e7b1474b031e649c340b03ae806701fcbed338695c3b70292",
+      "expectedSHA256": "707575a329ad1c6e7b1474b031e649c340b03ae806701fcbed338695c3b70292",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/liyun-moyuan/favicon.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "bytes": 287,
+      "sha256": "bb5a4bf1f4427a0113028b071b74f988951ba20210a18cba78baba65378a4d81",
+      "expectedSHA256": "bb5a4bf1f4427a0113028b071b74f988951ba20210a18cba78baba65378a4d81",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/liyun-moyuan/assets/index-C5aXF0iD.css",
+      "status": 200,
+      "contentType": "text/css",
+      "bytes": 8075,
+      "sha256": "00ec43ed13bde571dd9bef91d814354e115dedf05d9deb58912e74c45210abf3",
+      "expectedSHA256": "00ec43ed13bde571dd9bef91d814354e115dedf05d9deb58912e74c45210abf3",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/liyun-moyuan/assets/index-xEhHnQYp.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 581624,
+      "sha256": "312c7cac3f0cfd4675b5fe72136aeab8befdbbbbb6c45de2dceff9de2262cbed",
+      "expectedSHA256": "312c7cac3f0cfd4675b5fe72136aeab8befdbbbbb6c45de2dceff9de2262cbed",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/liyun-moyuan/assets/noto-sans-sc-BbT-SWSv.woff2",
+      "status": 200,
+      "contentType": "font/woff2",
+      "bytes": 134948,
+      "sha256": "2453c000b4f5ec6233819e52dce72036b05f039d92040fd9c988f1771ff6fcdb",
+      "expectedSHA256": "2453c000b4f5ec6233819e52dce72036b05f039d92040fd9c988f1771ff6fcdb",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/liyun-moyuan/assets/noto-serif-sc-CXMeL0Au.woff2",
+      "status": 200,
+      "contentType": "font/woff2",
+      "bytes": 180128,
+      "sha256": "add0811b499eb8e60e9fb2e5488c8dae9fbed7a01b762abc5abe9da1b155d364",
+      "expectedSHA256": "add0811b499eb8e60e9fb2e5488c8dae9fbed7a01b762abc5abe9da1b155d364",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/liyun-moyuan/fonts/OFL-NotoSansSC.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "expectedSHA256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/liyun-moyuan/fonts/OFL-NotoSerifSC.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 4350,
+      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6",
+      "expectedSHA256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/liyun-moyuan/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 4660,
+      "sha256": "707575a329ad1c6e7b1474b031e649c340b03ae806701fcbed338695c3b70292",
+      "expectedSHA256": "707575a329ad1c6e7b1474b031e649c340b03ae806701fcbed338695c3b70292",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 11116,
+      "sha256": "9d4aa494c90a1e7379b68a097871e58d2b219f7409443682e92a3790b1d30d90",
+      "expectedSHA256": "9d4aa494c90a1e7379b68a097871e58d2b219f7409443682e92a3790b1d30d90",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/projects/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 7724,
+      "sha256": "dc59e82d104fd570ef3692f88df6eeea977d2af7a75f77dfe0a5acc5cda4cedd",
+      "expectedSHA256": "dc59e82d104fd570ef3692f88df6eeea977d2af7a75f77dfe0a5acc5cda4cedd",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/assets/releases/5cb9607d0ca3b8864064b935/js/apps.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 2726,
+      "sha256": "00ad1be22b919f1180bdb11b0f38e0af617be4ae4a46ee035a1318052ab93b23",
+      "expectedSHA256": "00ad1be22b919f1180bdb11b0f38e0af617be4ae4a46ee035a1318052ab93b23",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/assets/releases/5cb9607d0ca3b8864064b935/js/content.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 12385,
+      "sha256": "09913a9ad48e12490491e49590d4be280bc21c5f26bcf4e1f28fd08655f7ac2b",
+      "expectedSHA256": "09913a9ad48e12490491e49590d4be280bc21c5f26bcf4e1f28fd08655f7ac2b",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/assets/releases/5cb9607d0ca3b8864064b935/js/core.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 16802,
+      "sha256": "ee897e4f589e1352dd4a38ddd3127a5612842dbfed7e7b3064bb6a3dd49f2fba",
+      "expectedSHA256": "ee897e4f589e1352dd4a38ddd3127a5612842dbfed7e7b3064bb6a3dd49f2fba",
+      "pass": true
+    },
+    {
+      "name": "public-exact-bytes",
+      "url": "https://studentop.cn:14355/assets/releases/5cb9607d0ca3b8864064b935/js/icons.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 20144,
+      "sha256": "cd82d136740c21322a6b740d89eaab8d6c12f591287e12052cb88ab46f9e922a",
+      "expectedSHA256": "cd82d136740c21322a6b740d89eaab8d6c12f591287e12052cb88ab46f9e922a",
+      "pass": true
+    },
+    {
+      "name": "home-version",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "name": "trailing-slash-preserves-query",
+      "status": 308,
+      "location": "/liyun-moyuan/?from=qa",
+      "pass": true
+    },
+    {
+      "name": "development-files-not-public",
+      "url": "https://studentop.cn:14355/liyun-moyuan/.env",
+      "status": 404,
+      "pass": true
+    },
+    {
+      "name": "development-files-not-public",
+      "url": "https://studentop.cn:14355/liyun-moyuan/fonts/coverage-final3.json",
+      "status": 404,
+      "pass": true
+    },
+    {
+      "name": "neighbor-healthy",
+      "url": "https://studentop.cn:14355/voxel-campus/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "name": "neighbor-healthy",
+      "url": "https://studentop.cn:14355/campus-entry/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "name": "neighbor-healthy",
+      "url": "https://liyun.studentop.cn:14355/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "name": "neighbor-healthy",
+      "url": "https://frost.studentop.cn:14355/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "name": "neighbor-healthy",
+      "url": "https://genshin.studentop.cn:14355/",
+      "status": 200,
+      "pass": true
+    }
+  ]
+}

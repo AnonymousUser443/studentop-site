@@ -7,7 +7,7 @@
 | [理韵寻踪](liyun-explorer/README.md) | <http://127.0.0.1:5174/> | npm run dev / npm test / npm run build | <https://liyun.studentop.cn:14355/>，既有子域根 |
 | [校园入场](genshin-start/README.md) | <http://127.0.0.1:8081/> | npm start（也可 npm run dev）/ npm run build | <https://studentop.cn:14355/campus-entry/>，固定构建 base |
 | [体素校园](liangxiang-cloudwalk/README.md) | <http://127.0.0.1:5180/> | npm run dev / npm run build / npm run preview | <https://studentop.cn:14355/voxel-campus/>，相对 base 支持子路径 |
-| [理韵墨苑](liyun-moyuan/README.md) | <http://127.0.0.1:5181/> | npm run dev / npm run build / npm run preview | 规划 `/liyun-moyuan/`，本轮未部署 |
+| [理韵墨苑](liyun-moyuan/README.md) | <http://127.0.0.1:5181/> | npm run dev / npm run build / npm run preview | <https://studentop.cn:14355/liyun-moyuan/>，2026-11-01已部署 |
 
 四个工程保留各自的 package 与锁文件，分别安装，不在根目录创建 npm workspace。推荐从根目录使用[统一启动器](../tools/dev-workspace.mjs)，端口和认证前置见[根说明](../README.md)。脚本本身不会安装依赖；团队开发与合并流程见[贡献指南](../CONTRIBUTING.md)。
 
@@ -18,7 +18,7 @@
 - --site-only只运行主页8899，不要求任何app依赖或账号后端；--check只做目录、依赖与 SQLite 能力预检，不探测/监听端口，不打开数据库。依赖不满足时完整预检明确失败，不能转而使用旧目录或外部服务。
 - 理韵构建预览使用4174；体素构建预览使用4180；墨苑构建预览使用4181；校园预览以其[Vite配置](genshin-start/vite.config.ts)为准。预览不由统一开发启动器额外启动。
 
-理韵墨苑是新增的协会活动室独立复原应用，本地使用5181，生产规划路径为 `/liyun-moyuan/`；本轮没有部署。主站快捷方式会在精确localhost或127.0.0.1下映射到本地端口。
+理韵墨苑是协会活动室的独立复原应用，本地使用5181，已部署到主站同域路径 `/liyun-moyuan/`，见[发布记录](../docs/MOYUAN-RELEASE-20261101.md)。主站快捷方式会在精确localhost或127.0.0.1下映射到本地端口。
 
 ## 原版开场与生产发布边界
 
