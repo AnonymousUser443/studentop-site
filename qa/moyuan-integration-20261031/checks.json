@@ -1,0 +1,61 @@
+{
+  "recordedAt": "2026-10-31T08:55:12.602Z",
+  "node": "v24.22.0",
+  "scope": "Moyuan shortcut, fixed six-service launcher, isolation and owned-child cleanup",
+  "checks": [
+    {
+      "name": "offline Node/core/shortcut tests",
+      "command": "node --test qa/node-tests.cjs qa/desktop-node-tests.cjs qa/voxel-shortcut-tests.cjs",
+      "passed": 20,
+      "total": 20
+    },
+    {
+      "name": "full dependency preflight",
+      "command": "node tools/dev-workspace.mjs --check",
+      "pass": true,
+      "plannedServices": [
+        "site:8899",
+        "liyun-api:8787",
+        "liyun:5174",
+        "campus:8081",
+        "voxel:5180",
+        "moyuan:5181"
+      ]
+    },
+    {
+      "name": "isolated workspace HTTP tests, sandbox run",
+      "command": "node --test --test-reporter=tap qa/workspace-api-tests.mjs",
+      "passed": 0,
+      "total": 7,
+      "report": "workspace-api-tests.tap",
+      "outcome": "First loopback health assertion failed; other six tests failed at synthetic auth temp-file rename with EPERM."
+    },
+    {
+      "name": "same isolated workspace HTTP tests, approved local execution",
+      "command": "node --test --test-reporter=tap qa/workspace-api-tests.mjs",
+      "passed": 7,
+      "total": 7,
+      "report": "workspace-api-tests-elevated.tap",
+      "pass": true
+    }
+  ],
+  "homepageBuild": {
+    "id": "2d5236436070bee7e04fcd80",
+    "versionedAssetCount": 44,
+    "htmlEntryCount": 3,
+    "checked": true,
+    "published": false
+  },
+  "sourceHashes": {
+    "tools/dev-workspace.mjs": "7f81b394899a62182d58b920c46cd2852153e9464cc05a33ff03af712f453862",
+    "qa/workspace-api-tests.mjs": "1f41b067742b5042ec23297c630731e4df29b2f114ec8cf58d4906ba096ce180",
+    "qa/node-tests.cjs": "9e1c5700f930a58c179fbfdcf6254a79a5e5030f1243da425fba32e434364059",
+    "qa/voxel-shortcut-tests.cjs": "b2bbece8531ce75022b4dca42fc46a99f4613fb435b01bf7e4db3d4bba1fb2e6",
+    "site/assets/js/apps.js": "00ad1be22b919f1180bdb11b0f38e0af617be4ae4a46ee035a1318052ab93b23",
+    "site/assets/js/core.js": "1eae7c6fb0244603e7e20232c78774d8e275d3d3a6b86e3b53e0e9606d569dbc",
+    "site/assets/js/content.js": "6254d07080190505571b3547de61b061b3f82178595dc7c92139fe9427f457d5",
+    "site/assets/js/icons.js": "cd82d136740c21322a6b740d89eaab8d6c12f591287e12052cb88ab46f9e922a",
+    "site/projects/index.html": "3a8d117486e1992b91ef34cd6298402022cc198f2b797bdafb0716e92fa4a7fc"
+  },
+  "limits": "HTTP launcher lifecycle and HTML entry checks only. Does not exercise the Moyuan renderer, GPU effects, browser navigation, physical phone input, real accounts, or production."
+}

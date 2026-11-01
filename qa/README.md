@@ -2,7 +2,9 @@
 
 浏览器验收先加载 **opencli** 技能，使用隔离会话；只管理自己启动的服务与浏览器。团队日常检查与合并遵守[贡献指南](../CONTRIBUTING.md)。默认访问回环地址，旧 5173 / 4173 / 8080 不能当作当前目标。
 
-## 当前五服务契约（账号 API 纳入统一启动器）
+## 当前六服务契约（含理韵墨苑）
+
+2026-10-31理韵墨苑快捷方式与启动契约的检查见[入口与启动器QA](moyuan-integration-20261031/QA.md)：离线回归20/20、获授权本地HTTP集成7/7，首次沙箱失败证据同时保留。此处仅覆盖入口和服务生命周期，场景渲染另行验收。
 
 新增活动页与任务管理器的局部回归见[活动说明](../apps/liyun-explorer/docs/activity/QA.md)、[监控说明](../docs/TASK-MANAGER.md)和[本轮检查收据](feature-20261029/checks.json)。入口分别是左下活动一览和桌面任务管理器。新脚本只使用隔离的合成状态，不替代旧全流程或真实云端验收：
 
@@ -13,7 +15,7 @@ node --test qa/task-manager-proxy-tests.mjs
 node qa/task-manager-20261029/browser.cjs
 ```
 
-任务管理器不计入新服务：它通过桌面会话保护的同源接口读取已有回环采样器，离线时诚实提示，原五服务health不受影响。素材故障注入和初始离线恢复必须单独检查；物理手机帧率、真实Pi数据和正式部署不能用本地合成结果冒充。
+任务管理器不计入新服务：它通过桌面会话保护的同源接口读取已有回环采样器，离线时诚实提示，现有六服务health不受影响。素材故障注入和初始离线恢复必须单独检查；物理手机帧率、真实Pi数据和正式部署不能用本地合成结果冒充。
 
 | runner id | 本地地址 | 用途 |
 | --- | --- | --- |
@@ -22,21 +24,22 @@ node qa/task-manager-20261029/browser.cjs
 | liyun | <http://127.0.0.1:5174/> | 理韵寻踪 |
 | campus | <http://127.0.0.1:8081/> | 轻量校园；原版共用 /legacy.html，不另计服务 |
 | voxel | <http://127.0.0.1:5180/> | 新体素校园，主站appid为voxel-campus |
+| moyuan | <http://127.0.0.1:5181/> | 理韵墨苑活动室复原，主站appid为liyun-moyuan |
 
-所有端口严格绑定回环；--site-only只要求主页文件，不预检/启动应用或账号 API。完整模式先启动账号 API，再启动三个应用；status 与 health 实际请求账号 /api/health，非 200、非法 JSON、重定向或超时使其为 unhealthy，整体 health 返回 503；恢复后可重新变为 ready。子进程异常退出则整组退出并清理本次服务。
+所有端口严格绑定回环；--site-only只要求主页文件，不预检/启动应用或账号 API。完整模式先启动账号 API，再启动四个应用；status 与 health 实际请求账号 /api/health，非 200、非法 JSON、重定向或超时使其为 unhealthy，整体 health 返回 503；恢复后可重新变为 ready。子进程异常退出则整组退出并清理本次服务。
 
-体素的生产路径是主域/voxel-campus/，轻量校园是主域/campus-entry/；原神原版生产链接保留既有子域根 release，本地/legacy.html 不能照搬成生产路径。部署仍需所有者当次明确发起或授权。
+理韵墨苑本地端口5181，构建生产规划路径/liyun-moyuan/，本轮未部署；快捷方式、项目索引与只允许精确回环主机的URL映射由voxel-shortcut-tests.cjs一并检查。体素的生产路径是主域/voxel-campus/，轻量校园是主域/campus-entry/；原神原版生产链接保留既有子域根 release，本地/legacy.html 不能照搬成生产路径。部署仍需所有者当次明确发起或授权。
 
 ## 先做离线检查
 
 从仓库根目录执行（不监听端口、不打开浏览器）：
 
 ~~~powershell
-node --test qa/node-tests.cjs qa/desktop-node-tests.cjs
+node --test qa/node-tests.cjs qa/desktop-node-tests.cjs qa/voxel-shortcut-tests.cjs
 pwsh -NoProfile -File qa/preflight-tests.ps1
 # 无需任何app依赖的主页预检
 node tools/dev-workspace.mjs --site-only --check
-# 完整五服务预检：不监听端口，也不打开数据库
+# 完整六服务预检：不监听端口，也不打开数据库
 node tools/dev-workspace.mjs --check
 node apps/liyun-explorer/scripts/asset-manifest.mjs --check
 ~~~
@@ -47,7 +50,7 @@ node apps/liyun-explorer/scripts/asset-manifest.mjs --check
 node --test qa/workspace-api-tests.mjs
 ~~~
 
-该回归通过程序化入口向同一启动流程传入隔离端口；日常 CLI 没有端口覆盖选项，仍固定使用上表端口。测试使用临时合成问答和临时 SQLite，覆盖五服务就绪、Vite 同源登录/存档、账号健康失败与超时、端口冲突回滚、site-only 不打开数据库、父子 IPC 断开与账号进程意外退出后的清理。既有服务不会被接管或停止。受限环境需允许测试的临时文件和本地回环操作，不能删除断言来跳过失败。
+该回归通过程序化入口向同一启动流程传入隔离端口；日常 CLI 没有端口覆盖选项，仍固定使用上表端口。测试使用临时合成问答和临时 SQLite，覆盖六服务就绪、Vite 同源登录/存档、账号健康失败与超时、端口冲突回滚、site-only 不打开数据库、父子 IPC 断开与账号进程意外退出后的清理。既有服务不会被接管或停止。受限环境需允许测试的临时文件和本地回环操作，不能删除断言来跳过失败。
 
 [素材负向预检](preflight-tests.ps1) 验证缺少音频源目录/源字体时明确失败，并比较现有音频、字体与字表哈希，确认没有项目文件被覆盖；不运行真实转换。
 
@@ -94,7 +97,7 @@ node qa/revision-20261028/desktop-browser.cjs
 node qa/genshin-flow-test.js --mode both --url "http://127.0.0.1:8081/" --target "http://127.0.0.1:5174/"
 ~~~
 
-[历史HTTP检查](revision-20261028/live-http.cjs)保存了当时三服务断言；体素发布目录保存其后的四服务记录。历史脚本、JSON、截图均不改写，不能用旧数量冒充当前五服务验收。旧快捷方式脚本默认也不包含体素校园，不能据其通过宣称新入口已验收；本次启动器契约由上述新集成回归验证。
+[历史HTTP检查](revision-20261028/live-http.cjs)保存了当时三服务断言；体素发布目录保存其后的四服务记录。历史脚本、JSON、截图均不改写，不能用旧数量冒充当前六服务验收。旧快捷方式脚本默认也不包含体素校园，不能据其通过宣称新入口已验收；本次启动器契约由上述新集成回归验证。
 
 以上门禁测试只监听回环临时端口；所有时间边界使用可控测试时钟，生产冷却仍为300秒。OpenCLI若扩展未连接，不安装或更改用户登录设施，改用项目自有隔离Edge/CDP测试并明确此验证边界。原版开场另做独立真实资源/流程验收，不能拿校园QA接口充当原版结果。
 

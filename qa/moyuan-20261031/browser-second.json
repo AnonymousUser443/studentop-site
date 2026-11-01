@@ -1,0 +1,36 @@
+{
+  "ok": false,
+  "checkedAt": "2026-10-31T09:28:40.238Z",
+  "browser": "Owned isolated Edge / SwiftShader; OpenCLI extension disconnected",
+  "checks": [
+    {
+      "name": "real-WebGL-canvas",
+      "pass": true
+    },
+    {
+      "name": "six-photo-model",
+      "pass": true
+    },
+    {
+      "name": "detailed-decor",
+      "pass": true
+    },
+    {
+      "name": "loading-clears",
+      "pass": true
+    }
+  ],
+  "screenshots": [
+    "browser-second-failure.png"
+  ],
+  "sourceHashes": {
+    "room.js": "9106ca2ac64b1634fff92a19f7b1977f3215541d7cf0f78ddead3219488d21b9",
+    "decor.js": "2e4f70b29c12cba626028f6c4241015ce730d35b23a13caffcd7a698eef3be1a",
+    "render.js": "2c00d101c4997db68196845eca8505d8151e7e8f882e4bc9ded02070963730ad",
+    "main.js": "eb53885487ee884067dc8274956f935dd34f17e096c7b0ad28680506331951e4",
+    "style.css": "3c040b709e4033c9bab5eccac62d8412595a7f11b53d2dfd4479998506583fa0"
+  },
+  "browserVersion": "Edg/156.0.4314.50",
+  "error": "Error: CDP timeout: Page.captureScreenshot\n    at Timeout._onTimeout (D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\lib.js:88:72)\n    at listOnTimeout (node:internal/timers:685:17)\n    at process.processTimers (node:internal/timers:618:7)",
+  "errors": []
+}

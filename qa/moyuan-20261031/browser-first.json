@@ -1,0 +1,19 @@
+{
+  "ok": false,
+  "checkedAt": "2026-10-31T09:10:34.191Z",
+  "browser": "Owned isolated Edge / SwiftShader; OpenCLI extension disconnected",
+  "checks": [],
+  "screenshots": [],
+  "sourceHashes": {
+    "room.js": "d0706a70d9ce22f77321f947b9451a0473714c3e4997f0db971bec26fc9a7a42",
+    "decor.js": "2e4f70b29c12cba626028f6c4241015ce730d35b23a13caffcd7a698eef3be1a",
+    "render.js": "022d41871bf9b72dcc67182585de1018cf304b4d491cbb6f01a897ad5bb4fdca",
+    "main.js": "5bbe00bb652e0cb6dfd462e2b138dd862fc02acfa5df84cf5d6aaf5cba3bfe5d",
+    "style.css": "3c040b709e4033c9bab5eccac62d8412595a7f11b53d2dfd4479998506583fa0"
+  },
+  "browserVersion": "Edg/156.0.4314.50",
+  "error": "Error: Navigation: net::ERR_CONNECTION_TIMED_OUT\n    at Object.navigate (D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\lib.js:184:37)\n    at async D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\moyuan-20261031\\browser.cjs:16:3",
+  "errors": [
+    "NETWORK: net::ERR_CONNECTION_TIMED_OUT"
+  ]
+}

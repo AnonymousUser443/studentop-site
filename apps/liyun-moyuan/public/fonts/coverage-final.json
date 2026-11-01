@@ -1,0 +1,128 @@
+{
+  "scope": "Moyuan app only: HTML UI, source-language UI states and Canvas labels",
+  "mode": "check",
+  "requiredCodepoints": 409,
+  "requiredCharacters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~·×–…↗◌、。《》一七三上下不与两个中临为主之也书事云互交人从代以件会估位体作使例依元光入全六关具出切制刻前加动化十半协单博印原参双古可右听启和器回图在地场坐垂型堂境墙墨声处复夜子字实宣室家寄寸小尘尺屋屏展山工已席帷常幅幕平并幽序建开张弦归当形影待得微心忆怀恢悉意所扇手把折拓拖持指挡换捧据推提支收放故文料断新方无日时明是景晰暂月有木未朱材来松构架柄柔栅标样格案桌梁椅模横次正此每比毛水沿法洞活流测浏清滚烟照熟片物环现理琴瓷用画留白的相砚硬示移程空窗笔等筑筛篮精糊素紫纤纳纸纹细织结绘绫维绿缓缩置考聚背腰色节花苑茶萝落蔽薄补装裱见观览记讲设访说请读走身轮轴边过近返这进远速遮邻都釉里重铺错键镇闭间阴陈雅集雾青非面韵页顾题风香，",
+  "sourceHashes": {
+    "index.html": "b50c92f6dbddb2eb8f3fa6f00db3364b5f4d8548148e2e33f3879e8612d52bd2",
+    "src/decor.js": "977f57ff02a9bf3fc90998aa48e9563e4896e36994679d58292013bd52235a98",
+    "src/main.js": "612339733afbbc2266504e62cae0d01b0c6991533cf34598abb68760e8808688",
+    "src/render.js": "51980cfafaaedd3a7b7289b3229a9e0ff2a08386f0aa080e7bfd8e46c0f505d3",
+    "src/room.js": "9106ca2ac64b1634fff92a19f7b1977f3215541d7cf0f78ddead3219488d21b9",
+    "src/style.css": "93d3b0083fa968026a4a149f2ee0389d211b71e598376fb30261c0cdef50a213"
+  },
+  "builderSHA256": "ef57a61b8fbe6cb506bb31488ac71b5afddd6413dd3f2d470328adbe7982b43f",
+  "fonts": [
+    {
+      "file": "noto-sans-sc.woff2",
+      "bytes": 134948,
+      "sha256": "2453c000b4f5ec6233819e52dce72036b05f039d92040fd9c988f1771ff6fcdb",
+      "family": "Noto Sans SC",
+      "mappedCodepoints": 409,
+      "variationAxes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 100.0,
+          "max": 900.0
+        }
+      ],
+      "required": 409,
+      "missing": [],
+      "covered": true,
+      "bySource": [
+        {
+          "source": "index.html",
+          "required": 210,
+          "missing": []
+        },
+        {
+          "source": "src/decor.js",
+          "required": 106,
+          "missing": []
+        },
+        {
+          "source": "src/main.js",
+          "required": 142,
+          "missing": []
+        },
+        {
+          "source": "src/render.js",
+          "required": 0,
+          "missing": []
+        },
+        {
+          "source": "src/room.js",
+          "required": 2,
+          "missing": []
+        },
+        {
+          "source": "src/style.css",
+          "required": 0,
+          "missing": []
+        },
+        {
+          "source": "mandatory-title-and-Canvas",
+          "required": 18,
+          "missing": []
+        }
+      ]
+    },
+    {
+      "file": "noto-serif-sc.woff2",
+      "bytes": 180128,
+      "sha256": "add0811b499eb8e60e9fb2e5488c8dae9fbed7a01b762abc5abe9da1b155d364",
+      "family": "Noto Serif SC",
+      "mappedCodepoints": 409,
+      "variationAxes": [
+        {
+          "tag": "wght",
+          "min": 200.0,
+          "default": 200.0,
+          "max": 900.0
+        }
+      ],
+      "required": 409,
+      "missing": [],
+      "covered": true,
+      "bySource": [
+        {
+          "source": "index.html",
+          "required": 210,
+          "missing": []
+        },
+        {
+          "source": "src/decor.js",
+          "required": 106,
+          "missing": []
+        },
+        {
+          "source": "src/main.js",
+          "required": 142,
+          "missing": []
+        },
+        {
+          "source": "src/render.js",
+          "required": 0,
+          "missing": []
+        },
+        {
+          "source": "src/room.js",
+          "required": 2,
+          "missing": []
+        },
+        {
+          "source": "src/style.css",
+          "required": 0,
+          "missing": []
+        },
+        {
+          "source": "mandatory-title-and-Canvas",
+          "required": 18,
+          "missing": []
+        }
+      ]
+    }
+  ],
+  "ok": true
+}

@@ -12,7 +12,7 @@ import { makeConfig, savePrivate } from '../tools/desktop-auth.mjs';
 
 const require = createRequire(import.meta.url);
 const { listenBrowserSafe } = require('./ports.cjs');
-const IDS = ['site', 'liyun-api', 'liyun', 'campus', 'voxel'];
+const IDS = ['site', 'liyun-api', 'liyun', 'campus', 'voxel', 'moyuan'];
 
 async function portsAvailable(ports) {
   for (const port of ports) {
@@ -107,7 +107,7 @@ test('account health requires actual JSON success and bounds failures and timeou
   assert.equal(await accountApiHealthy(port, 100), false);
 });
 
-test('full launcher owns five healthy services and proxies persisted account progress through Vite', async t => {
+test('full launcher owns six healthy services and proxies persisted account progress through Vite', async t => {
   const f = await fixture(t);
   const run = launch(t, f, [], {
     // The managed companion must retain the fixed development contract despite standalone overrides.
@@ -119,7 +119,10 @@ test('full launcher owns five healthy services and proxies persisted account pro
   assert.deepEqual(ready.services.map(({ id, port, status }) => [id, port, status]), IDS.map(id => [id, f.ports[id], 'ready']));
   const health = await fetch(f.base('site') + '/__workspace/health');
   assert.equal(health.status, 200);
-  assert.equal((await health.json()).services.length, 5);
+  assert.equal((await health.json()).services.length, IDS.length);
+  const moyuan = await fetch(f.base('moyuan') + '/');
+  assert.equal(moyuan.status, 200);
+  assert.match(await moyuan.text(), /理韵墨苑/);
   const proxiedHealth = await fetch(f.base('liyun') + '/api/health');
   assert.equal(proxiedHealth.status, 200);
   assert.deepEqual(await proxiedHealth.json(), { ok: true });
@@ -172,13 +175,13 @@ test('occupied API port fails startup and never reuses or closes the existing se
 
 test('later Vite startup failure closes the owned API and earlier frontend, preserving the conflicting service', async t => {
   const f = await fixture(t);
-  const external = await sentinel(t, f.ports.campus);
+  const external = await sentinel(t, f.ports.moyuan);
   const run = launch(t, f);
   assert.deepEqual(await run.exited(), { code: 1, signal: null });
-  assert.match(run.output(), /campus: exited/);
+  assert.match(run.output(), /moyuan: exited/);
   assert.equal(external.listening, true);
-  assert.equal(await fetch(f.base('campus') + '/').then(r => r.text()), 'unrelated-test-service');
-  await portsAvailable(IDS.filter(id => id !== 'campus').map(id => f.ports[id]));
+  assert.equal(await fetch(f.base('moyuan') + '/').then(r => r.text()), 'unrelated-test-service');
+  await portsAvailable(IDS.filter(id => id !== 'moyuan').map(id => f.ports[id]));
 });
 
 test('IPC loss stops the full workspace and releases every owned listener', async t => {

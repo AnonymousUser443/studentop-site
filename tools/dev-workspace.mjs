@@ -19,6 +19,7 @@ export const APPS = Object.freeze([
   { id: 'liyun', root: path.join(ROOT, 'apps/liyun-explorer'), port: 5174 },
   { id: 'campus', root: path.join(ROOT, 'apps/genshin-start'), port: 8081 },
   { id: 'voxel', root: path.join(ROOT, 'apps/liangxiang-cloudwalk'), port: 5180 },
+  { id: 'moyuan', root: path.join(ROOT, 'apps/liyun-moyuan'), port: 5181 },
 ]);
 export const ACCOUNT_API = Object.freeze({
   id: 'liyun-api', root: path.join(ROOT, 'apps/liyun-explorer'), port: 8787,
@@ -210,7 +211,7 @@ export async function run(argv = process.argv.slice(2), { ports = {}, cacheRoot 
   const allowed = new Set(['--site-only', '--check', '--help']);
   if (argv.some(a => !allowed.has(a))) throw new Error('Unknown option. Use --help.');
   if (argv.includes('--help')) {
-    console.log('node tools/dev-workspace.mjs [--site-only] [--check]\n--check: filesystem/dependency preflight only; no sockets, servers, database writes or install.\nFull mode: site 8899, liyun-api 8787, liyun 5174, campus 8081, voxel 5180 (127.0.0.1, strict).');
+    console.log('node tools/dev-workspace.mjs [--site-only] [--check]\n--check: filesystem/dependency preflight only; no sockets, servers, database writes or install.\nFull mode: site 8899, liyun-api 8787, liyun 5174, campus 8081, voxel 5180, moyuan 5181 (127.0.0.1, strict).');
     return;
   }
   const siteOnly = argv.includes('--site-only');

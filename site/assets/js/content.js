@@ -93,6 +93,16 @@ window.SITE = {
       link: 'https://studentop.cn:14355/voxel-campus/'
     },
     {
+      id: 'liyun-moyuan',
+      title: '理韵墨苑',
+      subtitle: '理韵文化协会活动室 · 体素空间复原',
+      desc: '以协会活动室参考图为依据，在独立的三维空间中还原房间、家具与书画陈设。点击后在新标签页走进墨苑，保留原有校园应用入口。',
+      tags: ['Three.js', '体素', 'Shader', '空间复原'],
+      year: '2026',
+      icon: 'liyun-moyuan',
+      link: 'https://studentop.cn:14355/liyun-moyuan/'
+    },
+    {
       id: 'rpi-task-manager',
       appId: 'rpi-task-manager',
       title: '树莓派任务管理器',
@@ -198,13 +208,13 @@ window.SITE = {
   ],
 
   /* ---------- 桌面图标（按顺序排两列） ---------- */
-  desktop: ['thispc', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'rpi-task-manager', 'about', 'skills', 'contact', 'cv', 'notepad', 'terminal', 'settings', 'recycle'],
+  desktop: ['thispc', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'liyun-moyuan', 'rpi-task-manager', 'about', 'skills', 'contact', 'cv', 'notepad', 'terminal', 'settings', 'recycle'],
 
   /* ---------- 任务栏固定项 ---------- */
   taskbarPinned: ['thispc', 'projects', 'about', 'terminal', 'settings'],
 
   /* ---------- 开始菜单固定项 ---------- */
-  startPinned: ['about', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'rpi-task-manager', 'skills', 'contact', 'thispc', 'terminal', 'settings', 'notepad', 'photos', 'cv', 'recycle'],
+  startPinned: ['about', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'liyun-moyuan', 'rpi-task-manager', 'skills', 'contact', 'thispc', 'terminal', 'settings', 'notepad', 'photos', 'cv', 'recycle'],
 
   /* ---------- 开始菜单「推荐的项目」 ---------- */
   recommended: [

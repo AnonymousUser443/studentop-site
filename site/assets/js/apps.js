@@ -9,7 +9,8 @@
   var projectUrls = {
     'genshin-start': 'https://studentop.cn:14355/campus-entry/',
     'genshin-original': 'https://genshin.studentop.cn:14355/',
-    'voxel-campus': 'https://studentop.cn:14355/voxel-campus/'
+    'voxel-campus': 'https://studentop.cn:14355/voxel-campus/',
+    'liyun-moyuan': 'https://studentop.cn:14355/liyun-moyuan/'
   };
   // Separate from the retained genshin-start campus shortcut; core resolves loopback development URLs.
   if (!defs.some(function (def) { return def.id === 'genshin-original'; })) {
@@ -32,6 +33,17 @@
       external: projectUrls['voxel-campus'],
       shortcutHint: '独立体素校园应用 · 在新标签页打开',
       keywords: 'voxel campus 体素 校园 良乡 方块 漫游 独立 快捷方式'
+    });
+  }
+  if (!defs.some(function (def) { return def.id === 'liyun-moyuan'; })) {
+    defs.push({
+      id: 'liyun-moyuan',
+      title: '理韵墨苑',
+      desktopLabel: '理韵墨苑',
+      icon: 'liyun-moyuan',
+      external: projectUrls['liyun-moyuan'],
+      shortcutHint: '理韵文化协会活动室 · 体素复原 · 在新标签页打开',
+      keywords: 'liyun moyuan 理韵 墨苑 文化 协会 活动室 体素 书法 国画 漫游 独立 快捷方式'
     });
   }
   defs.forEach(function (def) {

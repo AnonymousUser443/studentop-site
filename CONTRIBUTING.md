@@ -1,6 +1,6 @@
 # 贡献指南
 
-欢迎提 issue / PR。三个应用分别维护自己的依赖与锁文件，主页保持原生静态前端。当前启动方式以根 README 和 `tools/dev-workspace.mjs` 为准；带日期的升级、验收和发布文档记录当时的状态。本次已排查的问题与预防约定见[协作维护记录](docs/COLLABORATION.md)，提交和合并统一遵循本文。
+欢迎提 issue / PR。四个应用分别维护自己的依赖与锁文件，主页保持原生静态前端。当前启动方式以根 README 和 `tools/dev-workspace.mjs` 为准；带日期的升级、验收和发布文档记录当时的状态。本次已排查的问题与预防约定见[协作维护记录](docs/COLLABORATION.md)，提交和合并统一遵循本文。
 
 ## ⛔ 不要部署
 
@@ -30,10 +30,10 @@
 ```powershell
 node tools/dev-workspace.mjs --check
 node tools/dev-workspace.mjs
-# 只查看主页时使用 --site-only，不要求三个应用依赖已安装
+# 只查看主页时使用 --site-only，不要求四个应用依赖已安装
 ```
 
-完整模式管理五项服务：主页 8899、理韵账号 API 8787、理韵前端 5174、纸境入场 8081、体素校园 5180；都只监听回环，端口冲突直接失败。不要停止或复用旧 5173 / 4173 服务、8080 SSH 转发或其他人启动的服务。退出自己启动的统一启动器后，才单独启动应用。
+完整模式管理六项服务：主页 8899、理韵账号 API 8787、理韵前端 5174、纸境入场 8081、体素校园 5180、理韵墨苑 5181；都只监听回环，端口冲突直接失败。不要停止或复用旧 5173 / 4173 服务、8080 SSH 转发或其他人启动的服务。退出自己启动的统一启动器后，才单独启动应用。
 
 主页锁屏依赖启动器提供的同源认证接口，通用 Python 静态服务器无法代替它。完整模式自动启动理韵账号 API，前端仍请求同源 `/api`；账号服务必须通过实际健康请求，整组才会报告就绪。`--site-only` 只运行主页。单独调试 API 时可使用 `npm --prefix apps/liyun-explorer run server`，避免与完整模式重复启动。首次私密门禁配置见[修订说明](docs/REVISION-20261028.md)，不在命令行或日志里保存真实答案。
 
@@ -50,7 +50,7 @@ node --test qa/node-tests.cjs qa/desktop-node-tests.cjs
 node --test qa/workspace-api-tests.mjs
 ```
 
-第二条回归用隔离端口和临时数据验证五服务启动、同源账号流程、端口冲突与退出清理；只运行本次拥有的服务，不测试真实私密问答或生产数据库。理韵改动按范围执行：
+第二条回归用隔离端口和临时数据验证六服务启动、同源账号流程、端口冲突与退出清理；只运行本次拥有的服务，不测试真实私密问答或生产数据库。理韵改动按范围执行：
 
 ```powershell
 npm --prefix apps/liyun-explorer test
@@ -67,6 +67,7 @@ node apps/liyun-explorer/scripts/asset-manifest.mjs --check
 npm --prefix apps/liyun-explorer run build
 npm --prefix apps/genshin-start run build
 npm --prefix apps/liangxiang-cloudwalk run build
+npm --prefix apps/liyun-moyuan run build
 node tools/build-site.mjs
 node tools/build-site.mjs --check dist-site
 ```

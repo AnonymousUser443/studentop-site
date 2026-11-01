@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "checkedAt": "2026-10-31T10:50:36.804Z",
+  "browser": "Owned isolated Edge / SwiftShader; OpenCLI extension disconnected",
+  "checks": [
+    {
+      "name": "real-WebGL-canvas",
+      "pass": true
+    },
+    {
+      "name": "six-photo-model",
+      "pass": true
+    },
+    {
+      "name": "detailed-decor",
+      "pass": true
+    },
+    {
+      "name": "loading-clears",
+      "pass": true
+    },
+    {
+      "name": "view:overview",
+      "pass": true
+    },
+    {
+      "name": "view:tea",
+      "pass": true
+    },
+    {
+      "name": "view:desk",
+      "pass": true
+    },
+    {
+      "name": "view:stage",
+      "pass": true
+    },
+    {
+      "name": "night-lighting-control",
+      "pass": true
+    },
+    {
+      "name": "detail-toggle-off",
+      "pass": true
+    },
+    {
+      "name": "detail-toggle-on",
+      "pass": true
+    },
+    {
+      "name": "orbit-tour-on",
+      "pass": true
+    },
+    {
+      "name": "reference-notes-open",
+      "pass": true
+    },
+    {
+      "name": "reference-notes-Escape",
+      "pass": true
+    },
+    {
+      "name": "mobile-no-horizontal-overflow",
+      "pass": true
+    },
+    {
+      "name": "mobile-navigation-visible",
+      "pass": true
+    },
+    {
+      "name": "mobile-view-control",
+      "pass": true
+    },
+    {
+      "name": "no-runtime-errors",
+      "pass": true
+    }
+  ],
+  "screenshots": [
+    "browser-final3-interior.png",
+    "browser-final3-overview.png",
+    "browser-final3-tea.png",
+    "browser-final3-desk.png",
+    "browser-final3-stage.png",
+    "browser-final3-night.png",
+    "browser-final3-mobile.png"
+  ],
+  "sourceHashes": {
+    "room.js": "9106ca2ac64b1634fff92a19f7b1977f3215541d7cf0f78ddead3219488d21b9",
+    "decor.js": "977f57ff02a9bf3fc90998aa48e9563e4896e36994679d58292013bd52235a98",
+    "render.js": "e74c5d8adf28ab1bdc191679e49aa7de4a306b6067c326c82f77367c5e9f9023",
+    "main.js": "698f95f3ed5fbe6631be96acc2fcc50cd68fa67c5d37d9d90b50e153623b5c67",
+    "style.css": "e27dc6d1c36fdd9b706a7aeb6fd2c53f3f4dd35b0dc692b1fba081900ac5eeb2"
+  },
+  "viewport": "900x700",
+  "browserVersion": "Edg/156.0.4314.50",
+  "errors": [],
+  "state": {
+    "ready": true,
+    "referencePages": 6,
+    "stats": {
+      "room": {
+        "estimatedDimensions": [
+          9.6,
+          3.45,
+          14.4
+        ],
+        "desks": 16,
+        "foldingChairs": 16,
+        "armchairs": 0,
+        "windows": 4,
+        "cupboardModules": 11,
+        "ceilingLights": 8,
+        "voxelBlocks": 6087,
+        "note": "Dimensions and hidden construction are inferred from photographs.",
+        "drawCalls": 43
+      },
+      "decor": {
+        "shelves": 2,
+        "porcelainPieces": 25,
+        "plants": 6,
+        "scrolls": 3,
+        "teaChairs": 2,
+        "writingSets": 3,
+        "baskets": 1,
+        "guqins": 3,
+        "voxelInstances": 14850,
+        "instancedMeshes": 26
+      }
+    },
+    "view": "overview",
+    "night": false,
+    "detail": true,
+    "draws": 139,
+    "triangles": 489050
+  }
+}

@@ -21,11 +21,28 @@ sudo -n /opt/node24/bin/node /var/tmp/aiden-voxel-<id>/apply-voxel-release.mjs /
 
 本地事务测试：`node --test qa/voxel-release-tests.mjs`。新的音频回归结果可通过 `node qa/voxel-audio-20261030/browser.cjs --out qa/<新目录>/browser-checks.json` 保存；指定路径已存在时拒绝覆盖。
 
+## 更新理韵墨苑与桌面入口
+
+理韵墨苑使用主站同域路径 `/liyun-moyuan/`，静态文件位于 `/opt/projects/liyun-moyuan/current`。所有者当次明确授权、PR 合并后，在合并提交上重新构建并执行以下命令（Windows 使用 Git Bash）：
+
+```bash
+npm --prefix apps/liyun-moyuan run build
+bash deploy/deploy-moyuan.sh --check     # 只验证本地发布包，不连接服务器
+PI_HOST=biteraiden-pi bash deploy/deploy-moyuan.sh
+node tools/build-site.mjs
+PI_HOST=biteraiden-pi bash deploy/deploy-site.sh dist-site
+```
+
+先发布应用再发布主页快捷方式。墨苑事务只打包 HTML、favicon、哈希资源和两份字体许可；字体覆盖报告、原 PDF 与重复字体不上传。脚本检查上传和逐文件 SHA-256，在共享发布锁下追加不可变资源、更新同域 nginx 路由并原子切换 `current`，失败恢复旧指针和路由。它通过本机 TLS/SNI 验证应用全部字节及六个邻站；公网验证另存收据。备份、清单和成功收据位于 `/var/lib/aiden-release-history/moyuan-<时间>-<提交>/`。
+
+回滚使用该目录的 `previous-current` 与 `win11-home-projects.conf.before`；首次发布没有旧应用指针，应在恢复路由时移除墨苑 `current`。主页有独立发布指针，按主页发布记录回滚。共享哈希资源保留，供旧标签页继续加载。
+
 ## 文件地图
 
 | 文件 | 作用 |
 | --- | --- |
 | `deploy-site.sh` | **主页发布**：本地打包 → scp → 解到 `releases/<UTC时间戳>` → `nginx -t` → 原子切 `current` 软链 → 自检失败自动回滚 |
+| `deploy-moyuan.sh` / `apply-moyuan-release.sh` | 理韵墨苑独立发布：白名单打包、SHA-256、共享锁、nginx 路由、原子切换和失败回滚；`--check` 仅本地验证 |
 | `apply-activity-monitor.mjs` | 本次所有者授权的主页、理韵静态与桌面代理事务；接收私有上传目录和归档 SHA-256，在共享发布锁下运行；检查失败恢复三个指针与两份配置，不是单独可用的打包器 |
 | `probe-real-monitor.mjs` | 以桌面服务账号和临时合成门禁验证真实回环采样及退出断流，不读取所有者问答或创建生产会话 |
 | `../tools/build-liyun-release.mjs` | 本地封装理韵 Vite 产物到内容版本路径，覆盖字体及动态图片前缀，避免长期缓存复用旧素材 |
