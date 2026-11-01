@@ -1,0 +1,103 @@
+{
+  "ok": true,
+  "checkedAt": "2026-11-01T15:20:08.0795976Z",
+  "engine": "Chrome through OpenCLI 2.0.1 / extension 1.0.26",
+  "url": "https://studentop.cn:14355/liyun-moyuan/",
+  "checks": [
+    {
+      "name": "production-WebGL-ready",
+      "pass": true
+    },
+    {
+      "name": "loading-cleared-and-fonts-loaded",
+      "pass": true
+    },
+    {
+      "name": "model-and-decor-counts",
+      "pass": true
+    },
+    {
+      "name": "view-interior",
+      "pass": true
+    },
+    {
+      "name": "view-overview",
+      "pass": true
+    },
+    {
+      "name": "view-tea",
+      "pass": true
+    },
+    {
+      "name": "view-desk",
+      "pass": true
+    },
+    {
+      "name": "view-stage",
+      "pass": true
+    },
+    {
+      "name": "night-mode",
+      "pass": true
+    },
+    {
+      "name": "day-mode",
+      "pass": true
+    },
+    {
+      "name": "detail-off",
+      "pass": true
+    },
+    {
+      "name": "detail-on",
+      "pass": true
+    },
+    {
+      "name": "orbit-on",
+      "pass": true
+    },
+    {
+      "name": "notes-open",
+      "pass": true
+    },
+    {
+      "name": "notes-close-Escape",
+      "pass": true
+    },
+    {
+      "name": "desktop-layout",
+      "pass": true
+    },
+    {
+      "name": "no-runtime-console-errors",
+      "pass": true
+    }
+  ],
+  "screenshots": [
+    "qa/moyuan-release-20261101/production-overview.png",
+    "qa/moyuan-release-20261101/production-night.png",
+    "qa/moyuan-release-20261101/production-interior.png",
+    "qa/moyuan-release-20261101/production-mobile.png"
+  ],
+  "console": {
+    "session": "codex-moyuan-release-20261101",
+    "captured_at": "2026-11-01T15:21:24.602Z",
+    "count": 0,
+    "messages": []
+  },
+  "state": {
+    "title": "理韵墨苑 · 一室风雅",
+    "ready": true,
+    "view": "interior",
+    "detail": true,
+    "night": false,
+    "triangles": 500858,
+    "viewport": [
+      1258,
+      727
+    ]
+  },
+  "notes": [
+    "The mobile image uses a temporary browser viewport override; this is not a physical phone or iOS test."
+  ]
+}

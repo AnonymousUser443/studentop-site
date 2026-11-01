@@ -1,0 +1,20 @@
+/opt/win11-home /opt/win11-home/releases/20261101T151721Z
+/opt/projects/liyun-moyuan /opt/projects/liyun-moyuan/releases/moyuan-20261101T151147Z-26c8ae3b42
+/opt/projects/voxel-campus /opt/projects/voxel-campus/releases/20261030T092022Z-c6f57c8998
+/opt/projects/campus-entry /opt/projects/campus-entry/releases/20261028T110253Z-e2bc44a0e3
+/opt/projects/liyun /opt/projects/liyun/releases/activity-monitor-20261029T154940Z-f320dadbb9
+/opt/projects/genshin /opt/projects/genshin/releases/20261027T0835Z
+/opt/projects/desktop-auth /opt/projects/desktop-auth/releases/activity-monitor-20261029T154940Z-f320dadbb9
+5041cf216589f9661c398b2c37cad4eec1fd2b9fdf1210054cc815036775ada6  /etc/nginx/snippets/win11-home-projects.conf
+MainPID=854
+ActiveState=active
+
+MainPID=860
+ActiveState=active
+
+MainPID=784
+ActiveState=active
+
+ActiveState=active
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
