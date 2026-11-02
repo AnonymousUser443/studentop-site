@@ -57,14 +57,14 @@ export default function Atmosphere(props: EffectsProps) {
 
     function prepare(p: P5, host: HTMLDivElement, label: string) {
       const config = current.current;
-      p.pixelDensity(config.settings.quality === 'high' && config.viewport.width > 950 ? 1.5 : 1);
+      p.pixelDensity(config.spec.pixelDensity);
       const renderer = p.createCanvas(config.viewport.width, config.viewport.height);
       renderer.parent(host); renderer.elt.setAttribute('aria-hidden', 'true'); renderer.elt.setAttribute('data-effect-layer', label);
       if (import.meta.env.DEV && new URLSearchParams(location.search).get('qa') === '1') {
         (renderer.elt as HTMLCanvasElement & {__liyunP5?:P5}).__liyunP5 = p;
       }
       readyInstances.current.add(p);
-      p.frameRate(label === 'fog' ? 30 : config.settings.quality === 'high' && config.viewport.height > 520 ? 60 : 30);
+      p.frameRate(label === 'fog' ? config.spec.fogFps : config.spec.lightFps);
       if (config.paused || config.fixedTime !== undefined || config.settings.reducedMotion) p.noLoop();
     }
 
@@ -90,14 +90,15 @@ export default function Atmosphere(props: EffectsProps) {
         ctx.save(); ctx.setTransform(p.pixelDensity(), 0, 0, p.pixelDensity(), 0, 0);
         const mobile = width < 950 || height < 520;
         if (!config.settings.reducedMotion) {
-          const leafCount = config.settings.quality === 'low' || mobile ? 9 : 21;
+          // 画质预设直接决定粒子数量；移动端再对半衰减，避免小屏过密
+          const leafCount = mobile ? Math.ceil(config.spec.leafCount * 0.6) : config.spec.leafCount;
           for (const leaf of leaves.slice(0, leafCount)) {
             const y = ((leaf.y + t * leaf.speed) % 1.24) * height - height * 0.12;
             const x = ((leaf.x + t * leaf.speed * 0.22) % 1.2) * width - width * 0.1 + Math.sin(t * 0.55 + leaf.phase) * (mobile ? 12 : 28);
             ctx.save(); ctx.translate(x, y); ctx.scale(0.66 + Math.abs(Math.cos(t * 0.7 + leaf.phase)) * 0.34, 1);
             drawLeaf(ctx, leaf.size * (mobile ? 0.72 : 1), Math.sin(t * 0.42 + leaf.phase) * 0.6 + leaf.direction * 0.35, 0.35 + Math.sin(leaf.phase) * 0.15); ctx.restore();
           }
-          const moteCount = config.settings.quality === 'low' || mobile ? 16 : 44;
+          const moteCount = mobile ? Math.ceil(config.spec.moteCount * 0.6) : config.spec.moteCount;
           for (const mote of motes.slice(0, moteCount)) {
             const x = mote.x * width + Math.sin(t * 0.3 + mote.phase) * 16;
             const y = (1 - ((mote.y + t * mote.speed) % 1)) * height;
@@ -166,14 +167,14 @@ export default function Atmosphere(props: EffectsProps) {
   useEffect(() => {
     for (const [index, p] of instances.current.entries()) {
       if (!readyInstances.current.has(p)) continue;
-      const density = props.settings.quality === 'high' && props.viewport.width > 950 ? 1.5 : 1;
+      const density = props.spec.pixelDensity;
       if (p.pixelDensity() !== density) p.pixelDensity(density);
       if (p.width !== props.viewport.width || p.height !== props.viewport.height) p.resizeCanvas(props.viewport.width, props.viewport.height, true);
-      p.frameRate(index === 0 ? 30 : props.settings.quality === 'high' && props.viewport.height > 520 ? 60 : 30);
+      p.frameRate(index === 0 ? props.spec.fogFps : props.spec.lightFps);
       if (props.paused || props.fixedTime !== undefined || (props.settings.reducedMotion && !props.event)) { p.noLoop(); p.redraw(); }
       else p.loop();
     }
-  }, [props.viewport, props.camera, props.settings.quality, props.settings.reducedMotion, props.paused, props.fixedTime, props.event, props.discoveredIds]);
+  }, [props.viewport, props.camera, props.spec, props.settings.reducedMotion, props.paused, props.fixedTime, props.event, props.discoveredIds]);
 
   return <><div className="atmosphere-layer atmosphere-fog" ref={fogHost} aria-hidden="true" /><div className="atmosphere-layer atmosphere-light" ref={lightHost} aria-hidden="true" /></>;
 }

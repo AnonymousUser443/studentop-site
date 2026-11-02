@@ -5,9 +5,16 @@ import type { ExplorationState } from './types';
 const PASSWORD = 'synthetic-passphrase-24';
 const okJson = (data: unknown) => new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
 afterEach(() => vi.unstubAllGlobals());
-const state: ExplorationState = { version: 2, discoveredIds: ['wencui'], unlockedRegionIds: ['wencui'], playerUV: { ...START_UV }, settings: { music: true, volume: 0.35, quality: 'high', reducedMotion: false, track: 0 } };
+const state: ExplorationState = { version: 3, discoveredIds: ['wencui'], unlockedRegionIds: ['wencui'], playerUV: { ...START_UV }, settings: { music: true, volume: 0.35, quality: 'high', reducedMotion: false, track: 0, qualityPreset: 'high', qualityOverrides: {}, autoDegrade: true, degradedFrom: null, uiSound: true, reduceFlash: false, hudScale: 1 } };
 
 describe('账号客户端安全边界', () => {
+  it('v2 云存档的低画质升级为 v3 预设，保留真实打卡', () => {
+    const saved = sanitizeCloudState({ ...state, version: 2, settings: { quality: 'low' } });
+    expect(saved.version).toBe(3);
+    expect(saved.discoveredIds).toEqual(['wencui']);
+    expect(saved.settings.qualityPreset).toBe('low');
+    expect(saved.settings.quality).toBe('low');
+  });
   it('口令仅随一次同源POST，不落storage；禁缓存和重定向', async () => {
     const fetchMock = vi.fn().mockResolvedValue(okJson({ token: 'abc', user: { id: 'u1', nickname: 'fixture', studentId: 'demo-one', uid: 'LYABC' } }));
     const setItem = vi.fn();
@@ -47,7 +54,11 @@ describe('账号客户端安全边界', () => {
     const saved = JSON.parse(init.body as string).state;
     expect((init.body as string).includes('private-')).toBe(false);
     expect(Object.keys(saved).sort()).toEqual(['discoveredIds', 'playerUV', 'settings', 'unlockedRegionIds', 'version']);
-    expect(Object.keys(saved.settings).sort()).toEqual(['music', 'quality', 'reducedMotion', 'track', 'volume']);
+    // v3 白名单：新增设置字段必须在这里显式出现，否则云端往返会静默丢字段。
+    expect(Object.keys(saved.settings).sort()).toEqual([
+      'autoDegrade', 'degradedFrom', 'hudScale', 'music', 'quality', 'qualityOverrides',
+      'qualityPreset', 'reduceFlash', 'reducedMotion', 'track', 'uiSound', 'volume',
+    ]);
     expect(saved.discoveredIds).toEqual(['wencui']); expect(saved.unlockedRegionIds).toEqual(['wencui']);
     expect(saved.playerUV).toEqual(START_UV);
     expect(polluted.playerUV.u).toBe(0.123456); // Don't mutate the app's in-memory state.
@@ -62,7 +73,7 @@ describe('账号客户端安全边界', () => {
     const old = { ...state, version: 1, rawGPS: 'private-gps-marker', settings: { ...state.settings, music: false, secret: 'private-secret-marker' } };
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(okJson({ state: old, checkins: [{ landmarkId: 'wencui', discoveredAt: '2026-01-01T00:00:00.000Z' }], updatedAt: '2026-01-01T00:00:00.000Z' })));
     const progress = await fetchProgress('token');
-    expect(progress.state?.version).toBe(2); expect(progress.state?.discoveredIds).toEqual([]);
+    expect(progress.state?.version).toBe(3); expect(progress.state?.discoveredIds).toEqual([]);
     expect(progress.checkins).toEqual([]); expect(progress.state?.settings.music).toBe(false);
     expect(progress.state?.playerUV).toEqual(START_UV); expect(JSON.stringify(progress).includes('private-')).toBe(false);
   });

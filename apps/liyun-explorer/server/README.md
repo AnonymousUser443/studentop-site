@@ -35,7 +35,9 @@ node server/server.mjs
 
 ## 云存档边界
 
-[进度清洗](<progress.mjs>)仅允许 version、合法 discoveredIds、由地标重建的 unlockedRegionIds、公共锚点 playerUV 及五项设置 music/volume/quality/reducedMotion/track；不传播 raw GPS、朝向、未知字段、访问口令或令牌。
+[进度清洗](<progress.mjs>)兼容 v1/v2/v3 并输出 v3。v1 演示打卡不升级，v2/v3 保留有效打卡及固定公共锚点。设置与前端共用 [严格白名单](../shared/game-settings.mjs)：music/volume/quality/reducedMotion/track/qualityPreset/qualityOverrides/autoDegrade/degradedFrom/uiSound/reduceFlash/hudScale；覆盖项也逐字段、逐类型校验。raw GPS、朝向、未知字段、口令或令牌均不传播。SQLite 数据库 schema 仍为 2，无需重建数据库；JSON 存档版本与数据库版本不同。
+
+部署 API 时须包含 `shared/game-settings.mjs`，并保持相对目录。v3 前端应与支持 v3 的 API 配套发布；旧 API 会拒绝新存档。此处仅记录代码契约，不授权部署。
 
 playerUV 只允许起点或已发现地标的固定 UV，任意坐标回落起点。v1 演示仅保留合法设置，转为 v2 空打卡，不把旧点击升级成 GPS 打卡。启动时清洗旧快照并删除不再有效的旧台账；旧备份/WAL历史需管理员按保留策略安全清理，不宣称物理擦除。
 

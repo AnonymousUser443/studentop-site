@@ -1,0 +1,12 @@
+{
+  "scope": "Existing application assets reused for HUD refinement; no new raster, audio or font added.",
+  "sourceInventory": "apps/liyun-explorer/scripts/asset-manifest.mjs --check",
+  "assets": [
+    {"id":"map","path":"apps/liyun-explorer/public/assets/maps/calibrated/campus_no_labels.webp","format":"webp","dimensions":[4000,4958],"usable":true,"rights":"user-supplied; see application ASSETS.md","attribution":"existing project","quality":"original calibrated map, fixed hashes verified","sceneCandidates":["enter","explore"],"limitations":"No geometry or GPS changes in this round."},
+    {"id":"frame","path":"apps/liyun-explorer/public/assets/paintings/frost-frame.webp","format":"webp","bytes":194266,"usable":true,"rights":"existing project; no new rights claim","attribution":"application asset inventory","quality":"existing paper landscape","sceneCandidates":["enter","explore"],"limitations":"Reused without modification."},
+    {"id":"pine","path":"apps/liyun-explorer/public/assets/art/pine-left.webp","format":"webp","bytes":292888,"usable":true,"rights":"existing project; no new rights claim","attribution":"application asset inventory","quality":"existing transparent foreground","sceneCandidates":["enter","explore"],"limitations":"Reused without modification."},
+    {"id":"mountain","path":"apps/liyun-explorer/public/assets/art/mountain-right.webp","format":"webp","bytes":201018,"usable":true,"rights":"existing project; no new rights claim","attribution":"application asset inventory","quality":"existing transparent foreground","sceneCandidates":["enter","explore"],"limitations":"Reused without modification."},
+    {"id":"ui-font","path":"apps/liyun-explorer/public/assets/fonts/NotoSerifSC-UI.woff2","format":"woff2","bytes":327384,"usable":true,"rights":"SIL OFL; bundled license","attribution":"Noto Serif SC","quality":"existing local subset","sceneCandidates":["all"],"limitations":"Coverage checked separately; retain license."},
+    {"id":"title-font","path":"apps/liyun-explorer/public/assets/fonts/MaShanZheng-UI.woff2","format":"woff2","bytes":316300,"usable":true,"rights":"SIL OFL; bundled license","attribution":"Ma Shan Zheng","quality":"existing local subset","sceneCandidates":["all"],"limitations":"Coverage checked separately; retain license."}
+  ]
+}

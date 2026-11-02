@@ -1,6 +1,8 @@
 import { GOOD_ACCURACY_M } from './campus';
 import type { LocationState } from './geolocation';
 import { describeHeading, type HeadingState } from './deviceHeading';
+import ContextCard from '../hud/ContextCard';
+import HudButton from '../hud/HudButton';
 import './location.css';
 
 export default function LocationControls({ state, heading, following, distance, onLocate, onStop }: {
@@ -16,14 +18,16 @@ export default function LocationControls({ state, heading, following, distance, 
     paused:'朝向已暂停，点「继续定位」一起恢复', insecure:'方向访问需要 HTTPS 链接',
   };
   return <section className={`location-controls ${good ? 'location-good' : ''}`} aria-label="校园真实定位" data-status={state.status} data-heading-status={heading.status}>
-    <div className="location-actions">
-      <button type="button" className="location-primary" onClick={onLocate} disabled={state.status === 'locating'}>
+    <ContextCard attention={['denied', 'error', 'stale'].includes(state.status) ? state.message : undefined} actions={<div className="location-actions">
+      <HudButton className="location-primary" onClick={onLocate} disabled={state.status === 'locating'} aria-busy={state.status === 'locating'}>
         <span aria-hidden="true">◎</span> {state.status === 'locating' ? '定位中…' : state.status === 'paused' ? '继续定位' : good ? following ? '跟随中 · 定位到我' : '回到我的位置' : '定位到我'}
-      </button>
-      {state.running && <button type="button" onClick={onStop}>停止定位</button>}
-    </div>
-    <p role="status" aria-live="polite">{state.message}</p>
-    {headingMessages[heading.status] && <p className="location-heading-status" role="status">{headingMessages[heading.status]}</p>}
+      </HudButton>
+    </div>}>
+    <p>{state.message}</p>
+    {headingMessages[heading.status] && <p className="location-heading-status">{headingMessages[heading.status]}</p>}
     {distance && <p className="location-distance">{distance}</p>}
+    {state.running && <HudButton className="location-stop" onClick={onStop}>停止定位</HudButton>}
+    </ContextCard>
+    <span className="sr-only" role="status" aria-live="polite">{state.message} {headingMessages[heading.status]} {distance}</span>
   </section>;
 }

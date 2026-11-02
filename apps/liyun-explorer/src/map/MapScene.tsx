@@ -6,6 +6,7 @@ import { cameraLimits, clamp, clampCamera, screenToUV, uvToScreen, zoomAt } from
 import './map.css';
 import { CAMPUS_MAP_IMAGE, CAMPUS_MAP_FALLBACK, GOOD_ACCURACY_M } from '../location/campus';
 import '../location/location.css';
+import { useLabelOcclusion } from './useLabelOcclusion';
 
 type Point = { x: number; y: number };
 type Gesture = { camera: MapCamera; origin: Point; distance: number; anchor: UV };
@@ -41,6 +42,7 @@ function Beacon() {
 export default function MapScene(props: MapSceneProps) {
   const { camera, viewport, landmarks, discoveredIds, selectedId, playerUV, event, reducedMotion, disabled, fixedTime, paused, onSelect, onVisualPosition } = props;
   const surface = useRef<HTMLDivElement>(null);
+  useLabelOcclusion(surface, [camera, viewport, discoveredIds, disabled]);
   const propsRef = useRef(props);
   propsRef.current = props;
   const gestureCamera = useRef(camera);

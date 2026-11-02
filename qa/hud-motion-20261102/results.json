@@ -1,0 +1,2798 @@
+{
+  "ok": true,
+  "total": 34,
+  "checks": [
+    {
+      "name": "layout 1920x1080 expanded=true",
+      "pass": true,
+      "detail": {
+        "width": 1920,
+        "height": 1080,
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 40,
+            "y": 40,
+            "width": 269.6875,
+            "height": 90.59375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1654.953125,
+            "y": 40,
+            "width": 225.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 40,
+            "y": 988,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1771.921875,
+            "y": 871,
+            "width": 108.078125,
+            "height": 169
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1594,
+            "y": 280.796875,
+            "width": 286,
+            "height": 95.796875
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 0
+      }
+    },
+    {
+      "name": "layout 1920x1080 expanded=false",
+      "pass": true,
+      "detail": {
+        "width": 1920,
+        "height": 1080,
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 40,
+            "y": 40,
+            "width": 269.6875,
+            "height": 90.59375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1654.953125,
+            "y": 40,
+            "width": 225.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 40,
+            "y": 988,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1771.921875,
+            "y": 871,
+            "width": 108.078125,
+            "height": 169
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1594,
+            "y": 280.796875,
+            "width": 286,
+            "height": 64
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 0
+      }
+    },
+    {
+      "name": "layout 1440x900 expanded=true",
+      "pass": true,
+      "detail": {
+        "width": 1440,
+        "height": 900,
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 31.671875,
+            "y": 31.671875,
+            "width": 229.84375,
+            "height": 75.734375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1191.046875,
+            "y": 31.671875,
+            "width": 217.28125,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 31.671875,
+            "y": 816.328125,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1311.46875,
+            "y": 706.328125,
+            "width": 96.859375,
+            "height": 162
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1122.328125,
+            "y": 233.984375,
+            "width": 286,
+            "height": 93.109375
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "layout 1440x900 expanded=false",
+      "pass": true,
+      "detail": {
+        "width": 1440,
+        "height": 900,
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 31.671875,
+            "y": 31.671875,
+            "width": 229.84375,
+            "height": 75.734375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1191.046875,
+            "y": 31.671875,
+            "width": 217.28125,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 31.671875,
+            "y": 816.328125,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1311.46875,
+            "y": 706.328125,
+            "width": 96.859375,
+            "height": 162
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1122.328125,
+            "y": 233.984375,
+            "width": 286,
+            "height": 64
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 0
+      }
+    },
+    {
+      "name": "layout 1280x720 expanded=true",
+      "pass": true,
+      "detail": {
+        "width": 1280,
+        "height": 720,
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 28.15625,
+            "y": 28.15625,
+            "width": 213.640625,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1036.796875,
+            "y": 28.15625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 28.15625,
+            "y": 639.84375,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1155.84375,
+            "y": 530.84375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 965.84375,
+            "y": 187.1875,
+            "width": 286,
+            "height": 92.5
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "layout 1280x720 expanded=false",
+      "pass": true,
+      "detail": {
+        "width": 1280,
+        "height": 720,
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 28.15625,
+            "y": 28.15625,
+            "width": 213.640625,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1036.796875,
+            "y": 28.15625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 28.15625,
+            "y": 639.84375,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1155.84375,
+            "y": 530.84375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 965.84375,
+            "y": 187.1875,
+            "width": 286,
+            "height": 64
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "layout 1024x600 expanded=true",
+      "pass": true,
+      "detail": {
+        "width": 1024,
+        "height": 600,
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 22.515625,
+            "y": 22.515625,
+            "width": 202.171875,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 786.4375,
+            "y": 22.515625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 22.515625,
+            "y": 525.484375,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 905.484375,
+            "y": 416.484375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 715.484375,
+            "y": 156,
+            "width": 286,
+            "height": 92.5
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "layout 1024x600 expanded=false",
+      "pass": true,
+      "detail": {
+        "width": 1024,
+        "height": 600,
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 22.515625,
+            "y": 22.515625,
+            "width": 202.171875,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 786.4375,
+            "y": 22.515625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 22.515625,
+            "y": 525.484375,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 905.484375,
+            "y": 416.484375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 715.484375,
+            "y": 156,
+            "width": 286,
+            "height": 64
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "layout 844x390 expanded=true",
+      "pass": true,
+      "detail": {
+        "width": 844,
+        "height": 390,
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 655.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 332,
+            "width": 216,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 764,
+            "y": 277,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 592,
+            "y": 80,
+            "width": 240,
+            "height": 92.5
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "layout 844x390 expanded=false",
+      "pass": true,
+      "detail": {
+        "width": 844,
+        "height": 390,
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 655.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 332,
+            "width": 216,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 764,
+            "y": 277,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 592,
+            "y": 80,
+            "width": 240,
+            "height": 64
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "layout 667x375 expanded=true",
+      "pass": true,
+      "detail": {
+        "width": 667,
+        "height": 375,
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 478.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 317,
+            "width": 216,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 587,
+            "y": 262,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 441.5625,
+            "y": 80,
+            "width": 213.4375,
+            "height": 92.5
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "layout 667x375 expanded=false",
+      "pass": true,
+      "detail": {
+        "width": 667,
+        "height": 375,
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 478.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 317,
+            "width": 216,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 587,
+            "y": 262,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 441.5625,
+            "y": 80,
+            "width": 213.4375,
+            "height": 64
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "modal receives focus",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "modal has observable inert exit",
+      "pass": true,
+      "detail": {
+        "retained": true,
+        "inert": true
+      }
+    },
+    {
+      "name": "modal returns focus to trigger",
+      "pass": true,
+      "detail": {
+        "testid": "dock-collection",
+        "tag": "BUTTON"
+      }
+    },
+    {
+      "name": "menu reads actual exploration and guest identity",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "game reduced-motion applies and stays saved",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "settings keyboard route returns to map",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "system preference overrides game OFF and stops HUD loops",
+      "pass": true,
+      "detail": {
+        "mode": "reduced",
+        "ambient": "off",
+        "user": false,
+        "animations": 0
+      }
+    },
+    {
+      "name": "system preference live restoration",
+      "pass": true,
+      "detail": {
+        "mode": "full",
+        "ambient": "on",
+        "settings": {
+          "music": true,
+          "volume": 0.35,
+          "track": 0,
+          "quality": "high",
+          "reducedMotion": false,
+          "qualityPreset": "high",
+          "qualityOverrides": {},
+          "autoDegrade": false,
+          "degradedFrom": null,
+          "uiSound": true,
+          "reduceFlash": false,
+          "hudScale": 1
+        }
+      }
+    },
+    {
+      "name": "progress grows through visible intermediate values",
+      "pass": true,
+      "detail": [
+        {
+          "ms": 11,
+          "number": 0,
+          "arc": 0.00011983415163507871
+        },
+        {
+          "ms": 28,
+          "number": 5,
+          "arc": 5.153556891467204
+        },
+        {
+          "ms": 44,
+          "number": 7,
+          "arc": 6.531838698643034
+        },
+        {
+          "ms": 61,
+          "number": 8,
+          "arc": 7.646630655588926
+        },
+        {
+          "ms": 94,
+          "number": 11,
+          "arc": 11.003738921873962
+        },
+        {
+          "ms": 111,
+          "number": 18,
+          "arc": 17.53616514166798
+        },
+        {
+          "ms": 128,
+          "number": 20,
+          "arc": 19.58254403217844
+        },
+        {
+          "ms": 144,
+          "number": 22,
+          "arc": 21.6635833325178
+        },
+        {
+          "ms": 161,
+          "number": 24,
+          "arc": 23.601736861725776
+        },
+        {
+          "ms": 178,
+          "number": 25,
+          "arc": 25.19788410211182
+        },
+        {
+          "ms": 194,
+          "number": 27,
+          "arc": 26.680147138774345
+        },
+        {
+          "ms": 211,
+          "number": 28,
+          "arc": 27.971424243726585
+        },
+        {
+          "ms": 228,
+          "number": 29,
+          "arc": 29.034932941231762
+        },
+        {
+          "ms": 244,
+          "number": 30,
+          "arc": 30.02523036491467
+        },
+        {
+          "ms": 261,
+          "number": 31,
+          "arc": 30.890325900031947
+        },
+        {
+          "ms": 278,
+          "number": 32,
+          "arc": 31.605815788642843
+        },
+        {
+          "ms": 294,
+          "number": 32,
+          "arc": 32.27462022728012
+        },
+        {
+          "ms": 311,
+          "number": 33,
+          "arc": 32.82954046219386
+        },
+        {
+          "ms": 328,
+          "number": 33,
+          "arc": 33.349446609627385
+        },
+        {
+          "ms": 344,
+          "number": 34,
+          "arc": 33.80675181277809
+        },
+        {
+          "ms": 361,
+          "number": 34,
+          "arc": 34.20923697997493
+        },
+        {
+          "ms": 378,
+          "number": 35,
+          "arc": 34.54452339342187
+        },
+        {
+          "ms": 394,
+          "number": 35,
+          "arc": 34.85965018074382
+        },
+        {
+          "ms": 411,
+          "number": 35,
+          "arc": 35.13728713702634
+        },
+        {
+          "ms": 428,
+          "number": 35,
+          "arc": 35.36859232098656
+        },
+        {
+          "ms": 444,
+          "number": 36,
+          "arc": 35.58610407654549
+        },
+        {
+          "ms": 461,
+          "number": 36,
+          "arc": 35.77779736355839
+        },
+        {
+          "ms": 478,
+          "number": 36,
+          "arc": 35.9373059843016
+        },
+        {
+          "ms": 494,
+          "number": 36,
+          "arc": 36.086557953156664
+        },
+        {
+          "ms": 511,
+          "number": 36,
+          "arc": 36.21069880876835
+        },
+        {
+          "ms": 528,
+          "number": 36,
+          "arc": 36.32670507839977
+        },
+        {
+          "ms": 544,
+          "number": 36,
+          "arc": 36.428210564327266
+        },
+        {
+          "ms": 561,
+          "number": 37,
+          "arc": 36.51698365480742
+        },
+        {
+          "ms": 578,
+          "number": 37,
+          "arc": 36.589841250978374
+        },
+        {
+          "ms": 594,
+          "number": 37,
+          "arc": 36.6573936823796
+        },
+        {
+          "ms": 611,
+          "number": 37,
+          "arc": 36.71610417249794
+        },
+        {
+          "ms": 628,
+          "number": 37,
+          "arc": 36.76632639898473
+        },
+        {
+          "ms": 645,
+          "number": 37,
+          "arc": 36.80699932888598
+        },
+        {
+          "ms": 661,
+          "number": 37,
+          "arc": 36.8441354822741
+        },
+        {
+          "ms": 678,
+          "number": 37,
+          "arc": 36.87384440498458
+        },
+        {
+          "ms": 694,
+          "number": 37,
+          "arc": 36.901784939438485
+        },
+        {
+          "ms": 711,
+          "number": 37,
+          "arc": 36.92265192086609
+        },
+        {
+          "ms": 728,
+          "number": 37,
+          "arc": 36.939982125780546
+        },
+        {
+          "ms": 744,
+          "number": 37,
+          "arc": 36.955190264787106
+        },
+        {
+          "ms": 761,
+          "number": 37,
+          "arc": 36.96721530493182
+        },
+        {
+          "ms": 778,
+          "number": 37,
+          "arc": 36.97641092386602
+        },
+        {
+          "ms": 794,
+          "number": 37,
+          "arc": 36.98419183219496
+        },
+        {
+          "ms": 811,
+          "number": 37,
+          "arc": 36.9894969969647
+        },
+        {
+          "ms": 828,
+          "number": 37,
+          "arc": 36.99338745112916
+        },
+        {
+          "ms": 844,
+          "number": 37,
+          "arc": 36.99621687233968
+        },
+        {
+          "ms": 861,
+          "number": 37,
+          "arc": 36.997985260596266
+        },
+        {
+          "ms": 878,
+          "number": 37,
+          "arc": 36.99904629355021
+        },
+        {
+          "ms": 894,
+          "number": 37,
+          "arc": 36.99975364885284
+        },
+        {
+          "ms": 911,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 928,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 944,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 961,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 978,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 995,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1011,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1028,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1044,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1061,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1078,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1094,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1111,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1128,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1145,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1161,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1178,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1194,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1211,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1228,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1244,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1261,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1278,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1294,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1311,
+          "number": 37,
+          "arc": 37.00010732650415
+        }
+      ]
+    },
+    {
+      "name": "progress arc and number stay synchronized",
+      "pass": true,
+      "detail": [
+        {
+          "ms": 11,
+          "number": 0,
+          "arc": 0.00011983415163507871
+        },
+        {
+          "ms": 28,
+          "number": 5,
+          "arc": 5.153556891467204
+        },
+        {
+          "ms": 44,
+          "number": 7,
+          "arc": 6.531838698643034
+        },
+        {
+          "ms": 61,
+          "number": 8,
+          "arc": 7.646630655588926
+        },
+        {
+          "ms": 94,
+          "number": 11,
+          "arc": 11.003738921873962
+        },
+        {
+          "ms": 111,
+          "number": 18,
+          "arc": 17.53616514166798
+        },
+        {
+          "ms": 128,
+          "number": 20,
+          "arc": 19.58254403217844
+        },
+        {
+          "ms": 144,
+          "number": 22,
+          "arc": 21.6635833325178
+        },
+        {
+          "ms": 161,
+          "number": 24,
+          "arc": 23.601736861725776
+        },
+        {
+          "ms": 178,
+          "number": 25,
+          "arc": 25.19788410211182
+        },
+        {
+          "ms": 194,
+          "number": 27,
+          "arc": 26.680147138774345
+        },
+        {
+          "ms": 211,
+          "number": 28,
+          "arc": 27.971424243726585
+        },
+        {
+          "ms": 228,
+          "number": 29,
+          "arc": 29.034932941231762
+        },
+        {
+          "ms": 244,
+          "number": 30,
+          "arc": 30.02523036491467
+        },
+        {
+          "ms": 261,
+          "number": 31,
+          "arc": 30.890325900031947
+        },
+        {
+          "ms": 278,
+          "number": 32,
+          "arc": 31.605815788642843
+        },
+        {
+          "ms": 294,
+          "number": 32,
+          "arc": 32.27462022728012
+        },
+        {
+          "ms": 311,
+          "number": 33,
+          "arc": 32.82954046219386
+        },
+        {
+          "ms": 328,
+          "number": 33,
+          "arc": 33.349446609627385
+        },
+        {
+          "ms": 344,
+          "number": 34,
+          "arc": 33.80675181277809
+        },
+        {
+          "ms": 361,
+          "number": 34,
+          "arc": 34.20923697997493
+        },
+        {
+          "ms": 378,
+          "number": 35,
+          "arc": 34.54452339342187
+        },
+        {
+          "ms": 394,
+          "number": 35,
+          "arc": 34.85965018074382
+        },
+        {
+          "ms": 411,
+          "number": 35,
+          "arc": 35.13728713702634
+        },
+        {
+          "ms": 428,
+          "number": 35,
+          "arc": 35.36859232098656
+        },
+        {
+          "ms": 444,
+          "number": 36,
+          "arc": 35.58610407654549
+        },
+        {
+          "ms": 461,
+          "number": 36,
+          "arc": 35.77779736355839
+        },
+        {
+          "ms": 478,
+          "number": 36,
+          "arc": 35.9373059843016
+        },
+        {
+          "ms": 494,
+          "number": 36,
+          "arc": 36.086557953156664
+        },
+        {
+          "ms": 511,
+          "number": 36,
+          "arc": 36.21069880876835
+        },
+        {
+          "ms": 528,
+          "number": 36,
+          "arc": 36.32670507839977
+        },
+        {
+          "ms": 544,
+          "number": 36,
+          "arc": 36.428210564327266
+        },
+        {
+          "ms": 561,
+          "number": 37,
+          "arc": 36.51698365480742
+        },
+        {
+          "ms": 578,
+          "number": 37,
+          "arc": 36.589841250978374
+        },
+        {
+          "ms": 594,
+          "number": 37,
+          "arc": 36.6573936823796
+        },
+        {
+          "ms": 611,
+          "number": 37,
+          "arc": 36.71610417249794
+        },
+        {
+          "ms": 628,
+          "number": 37,
+          "arc": 36.76632639898473
+        },
+        {
+          "ms": 645,
+          "number": 37,
+          "arc": 36.80699932888598
+        },
+        {
+          "ms": 661,
+          "number": 37,
+          "arc": 36.8441354822741
+        },
+        {
+          "ms": 678,
+          "number": 37,
+          "arc": 36.87384440498458
+        },
+        {
+          "ms": 694,
+          "number": 37,
+          "arc": 36.901784939438485
+        },
+        {
+          "ms": 711,
+          "number": 37,
+          "arc": 36.92265192086609
+        },
+        {
+          "ms": 728,
+          "number": 37,
+          "arc": 36.939982125780546
+        },
+        {
+          "ms": 744,
+          "number": 37,
+          "arc": 36.955190264787106
+        },
+        {
+          "ms": 761,
+          "number": 37,
+          "arc": 36.96721530493182
+        },
+        {
+          "ms": 778,
+          "number": 37,
+          "arc": 36.97641092386602
+        },
+        {
+          "ms": 794,
+          "number": 37,
+          "arc": 36.98419183219496
+        },
+        {
+          "ms": 811,
+          "number": 37,
+          "arc": 36.9894969969647
+        },
+        {
+          "ms": 828,
+          "number": 37,
+          "arc": 36.99338745112916
+        },
+        {
+          "ms": 844,
+          "number": 37,
+          "arc": 36.99621687233968
+        },
+        {
+          "ms": 861,
+          "number": 37,
+          "arc": 36.997985260596266
+        },
+        {
+          "ms": 878,
+          "number": 37,
+          "arc": 36.99904629355021
+        },
+        {
+          "ms": 894,
+          "number": 37,
+          "arc": 36.99975364885284
+        },
+        {
+          "ms": 911,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 928,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 944,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 961,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 978,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 995,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1011,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1028,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1044,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1061,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1078,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1094,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1111,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1128,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1145,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1161,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1178,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1194,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1211,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1228,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1244,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1261,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1278,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1294,
+          "number": 37,
+          "arc": 37.00010732650415
+        },
+        {
+          "ms": 1311,
+          "number": 37,
+          "arc": 37.00010732650415
+        }
+      ]
+    },
+    {
+      "name": "progress settles at 37%",
+      "pass": true,
+      "detail": {
+        "ms": 1311,
+        "number": 37,
+        "arc": 37.00010732650415
+      }
+    },
+    {
+      "name": "mid-flight reduced motion settles immediately",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "reduce-flash disables HUD ambient highlight",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "rapid open/close leaves no stale modal",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "HUD hidden and inert before entry",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "HUD settles after staggered entrance",
+      "pass": true,
+      "detail": [
+        {
+          "time": 20992.5,
+          "slots": [
+            {
+              "name": "hud-anchor hud-anchor--brand",
+              "opacity": "0.0840625",
+              "transform": "matrix(1, 0, 0, 1, -10.9913, 0)"
+            },
+            {
+              "name": "hud-anchor hud-anchor--status",
+              "opacity": "0.0840625",
+              "transform": "matrix(1, 0, 0, 1, 10.9913, 0)"
+            },
+            {
+              "name": "hud-anchor hud-anchor--dock",
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 12)"
+            },
+            {
+              "name": "hud-anchor hud-anchor--progress",
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 10)"
+            },
+            {
+              "name": "hud-anchor hud-anchor--context",
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 12, 0)"
+            }
+          ]
+        },
+        {
+          "time": 21116.89999999851,
+          "slots": [
+            {
+              "name": "hud-anchor hud-anchor--brand",
+              "opacity": "0.870213",
+              "transform": "matrix(1, 0, 0, 1, -1.55745, 0)"
+            },
+            {
+              "name": "hud-anchor hud-anchor--status",
+              "opacity": "0.870213",
+              "transform": "matrix(1, 0, 0, 1, 1.55745, 0)"
+            },
+            {
+              "name": "hud-anchor hud-anchor--dock",
+              "opacity": "0.408206",
+              "transform": "matrix(1, 0, 0, 1, 0, 7.10152)"
+            },
+            {
+              "name": "hud-anchor hud-anchor--progress",
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 10)"
+            },
+            {
+              "name": "hud-anchor hud-anchor--context",
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 12, 0)"
+            }
+          ]
+        },
+        {
+          "time": 21428.39999999851,
+          "slots": [
+            {
+              "name": "hud-anchor hud-anchor--brand",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "name": "hud-anchor hud-anchor--status",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "name": "hud-anchor hud-anchor--dock",
+              "opacity": "0.999361",
+              "transform": "matrix(1, 0, 0, 1, 0, 0.00767156)"
+            },
+            {
+              "name": "hud-anchor hud-anchor--progress",
+              "opacity": "0.940895",
+              "transform": "matrix(1, 0, 0, 1, 0, 0.591046)"
+            },
+            {
+              "name": "hud-anchor hud-anchor--context",
+              "opacity": "0.989725",
+              "transform": "matrix(1, 0, 0, 1, 0.123296, 0)"
+            }
+          ]
+        },
+        {
+          "time": 21882.29999999702,
+          "slots": [
+            {
+              "name": "hud-anchor hud-anchor--brand",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "name": "hud-anchor hud-anchor--status",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "name": "hud-anchor hud-anchor--dock",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "name": "hud-anchor hud-anchor--progress",
+              "opacity": "1",
+              "transform": "none"
+            },
+            {
+              "name": "hud-anchor hud-anchor--context",
+              "opacity": "1",
+              "transform": "none"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "quality low controls HUD ambient",
+      "pass": true,
+      "detail": {
+        "preset": "low",
+        "frames": 302,
+        "ms": 5016.600000000002,
+        "rafFps": 60.000797352788716,
+        "ambient": "off"
+      }
+    },
+    {
+      "name": "quality high controls HUD ambient",
+      "pass": true,
+      "detail": {
+        "preset": "high",
+        "frames": 302,
+        "ms": 5016.799999999996,
+        "rafFps": 59.99840535799718,
+        "ambient": "on"
+      }
+    },
+    {
+      "name": "quality ultra controls HUD ambient",
+      "pass": true,
+      "detail": {
+        "preset": "ultra",
+        "frames": 302,
+        "ms": 5016.5,
+        "rafFps": 60.00199342170836,
+        "ambient": "on"
+      }
+    },
+    {
+      "name": "normal entry persists settings without losing exploration",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "reduced-motion setting survives reload",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "browser has no errors or failed requests",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "evidence": {
+    "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "layouts": [
+      {
+        "width": 1920,
+        "height": 1080,
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 40,
+            "y": 40,
+            "width": 269.6875,
+            "height": 90.59375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1654.953125,
+            "y": 40,
+            "width": 225.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 40,
+            "y": 988,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1771.921875,
+            "y": 871,
+            "width": 108.078125,
+            "height": 169
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1594,
+            "y": 280.796875,
+            "width": 286,
+            "height": 95.796875
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 0
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 40,
+            "y": 40,
+            "width": 269.6875,
+            "height": 90.59375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1654.953125,
+            "y": 40,
+            "width": 225.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 40,
+            "y": 988,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1771.921875,
+            "y": 871,
+            "width": 108.078125,
+            "height": 169
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1594,
+            "y": 280.796875,
+            "width": 286,
+            "height": 64
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 0
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 31.671875,
+            "y": 31.671875,
+            "width": 229.84375,
+            "height": 75.734375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1191.046875,
+            "y": 31.671875,
+            "width": 217.28125,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 31.671875,
+            "y": 816.328125,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1311.46875,
+            "y": 706.328125,
+            "width": 96.859375,
+            "height": 162
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1122.328125,
+            "y": 233.984375,
+            "width": 286,
+            "height": 93.109375
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 31.671875,
+            "y": 31.671875,
+            "width": 229.84375,
+            "height": 75.734375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1191.046875,
+            "y": 31.671875,
+            "width": 217.28125,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 31.671875,
+            "y": 816.328125,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1311.46875,
+            "y": 706.328125,
+            "width": 96.859375,
+            "height": 162
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1122.328125,
+            "y": 233.984375,
+            "width": 286,
+            "height": 64
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 0
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 28.15625,
+            "y": 28.15625,
+            "width": 213.640625,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1036.796875,
+            "y": 28.15625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 28.15625,
+            "y": 639.84375,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1155.84375,
+            "y": 530.84375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 965.84375,
+            "y": 187.1875,
+            "width": 286,
+            "height": 92.5
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 28.15625,
+            "y": 28.15625,
+            "width": 213.640625,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1036.796875,
+            "y": 28.15625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 28.15625,
+            "y": 639.84375,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1155.84375,
+            "y": 530.84375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 965.84375,
+            "y": 187.1875,
+            "width": 286,
+            "height": 64
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      },
+      {
+        "width": 1024,
+        "height": 600,
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 22.515625,
+            "y": 22.515625,
+            "width": 202.171875,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 786.4375,
+            "y": 22.515625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 22.515625,
+            "y": 525.484375,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 905.484375,
+            "y": 416.484375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 715.484375,
+            "y": 156,
+            "width": 286,
+            "height": 92.5
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      },
+      {
+        "width": 1024,
+        "height": 600,
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 22.515625,
+            "y": 22.515625,
+            "width": 202.171875,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 786.4375,
+            "y": 22.515625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 22.515625,
+            "y": 525.484375,
+            "width": 272,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 905.484375,
+            "y": 416.484375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 715.484375,
+            "y": 156,
+            "width": 286,
+            "height": 64
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 655.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 332,
+            "width": 216,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 764,
+            "y": 277,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 592,
+            "y": 80,
+            "width": 240,
+            "height": 92.5
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 655.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 332,
+            "width": 216,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 764,
+            "y": 277,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 592,
+            "y": 80,
+            "width": 240,
+            "height": 64
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      },
+      {
+        "width": 667,
+        "height": 375,
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 478.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 317,
+            "width": 216,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 587,
+            "y": 262,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 441.5625,
+            "y": 80,
+            "width": 213.4375,
+            "height": 92.5
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      },
+      {
+        "width": 667,
+        "height": 375,
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 478.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 317,
+            "width": 216,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 587,
+            "y": 262,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 441.5625,
+            "y": 80,
+            "width": 213.4375,
+            "height": 64
+          }
+        ],
+        "overlaps": [],
+        "small": [],
+        "outside": [],
+        "labelOverlaps": [],
+        "hiddenLabels": 1
+      }
+    ],
+    "exit": {
+      "retained": true,
+      "inert": true
+    },
+    "reduced": {
+      "mode": "reduced",
+      "ambient": "off",
+      "user": false,
+      "animations": 0
+    },
+    "progress": [
+      {
+        "ms": 11,
+        "number": 0,
+        "arc": 0.00011983415163507871
+      },
+      {
+        "ms": 28,
+        "number": 5,
+        "arc": 5.153556891467204
+      },
+      {
+        "ms": 44,
+        "number": 7,
+        "arc": 6.531838698643034
+      },
+      {
+        "ms": 61,
+        "number": 8,
+        "arc": 7.646630655588926
+      },
+      {
+        "ms": 94,
+        "number": 11,
+        "arc": 11.003738921873962
+      },
+      {
+        "ms": 111,
+        "number": 18,
+        "arc": 17.53616514166798
+      },
+      {
+        "ms": 128,
+        "number": 20,
+        "arc": 19.58254403217844
+      },
+      {
+        "ms": 144,
+        "number": 22,
+        "arc": 21.6635833325178
+      },
+      {
+        "ms": 161,
+        "number": 24,
+        "arc": 23.601736861725776
+      },
+      {
+        "ms": 178,
+        "number": 25,
+        "arc": 25.19788410211182
+      },
+      {
+        "ms": 194,
+        "number": 27,
+        "arc": 26.680147138774345
+      },
+      {
+        "ms": 211,
+        "number": 28,
+        "arc": 27.971424243726585
+      },
+      {
+        "ms": 228,
+        "number": 29,
+        "arc": 29.034932941231762
+      },
+      {
+        "ms": 244,
+        "number": 30,
+        "arc": 30.02523036491467
+      },
+      {
+        "ms": 261,
+        "number": 31,
+        "arc": 30.890325900031947
+      },
+      {
+        "ms": 278,
+        "number": 32,
+        "arc": 31.605815788642843
+      },
+      {
+        "ms": 294,
+        "number": 32,
+        "arc": 32.27462022728012
+      },
+      {
+        "ms": 311,
+        "number": 33,
+        "arc": 32.82954046219386
+      },
+      {
+        "ms": 328,
+        "number": 33,
+        "arc": 33.349446609627385
+      },
+      {
+        "ms": 344,
+        "number": 34,
+        "arc": 33.80675181277809
+      },
+      {
+        "ms": 361,
+        "number": 34,
+        "arc": 34.20923697997493
+      },
+      {
+        "ms": 378,
+        "number": 35,
+        "arc": 34.54452339342187
+      },
+      {
+        "ms": 394,
+        "number": 35,
+        "arc": 34.85965018074382
+      },
+      {
+        "ms": 411,
+        "number": 35,
+        "arc": 35.13728713702634
+      },
+      {
+        "ms": 428,
+        "number": 35,
+        "arc": 35.36859232098656
+      },
+      {
+        "ms": 444,
+        "number": 36,
+        "arc": 35.58610407654549
+      },
+      {
+        "ms": 461,
+        "number": 36,
+        "arc": 35.77779736355839
+      },
+      {
+        "ms": 478,
+        "number": 36,
+        "arc": 35.9373059843016
+      },
+      {
+        "ms": 494,
+        "number": 36,
+        "arc": 36.086557953156664
+      },
+      {
+        "ms": 511,
+        "number": 36,
+        "arc": 36.21069880876835
+      },
+      {
+        "ms": 528,
+        "number": 36,
+        "arc": 36.32670507839977
+      },
+      {
+        "ms": 544,
+        "number": 36,
+        "arc": 36.428210564327266
+      },
+      {
+        "ms": 561,
+        "number": 37,
+        "arc": 36.51698365480742
+      },
+      {
+        "ms": 578,
+        "number": 37,
+        "arc": 36.589841250978374
+      },
+      {
+        "ms": 594,
+        "number": 37,
+        "arc": 36.6573936823796
+      },
+      {
+        "ms": 611,
+        "number": 37,
+        "arc": 36.71610417249794
+      },
+      {
+        "ms": 628,
+        "number": 37,
+        "arc": 36.76632639898473
+      },
+      {
+        "ms": 645,
+        "number": 37,
+        "arc": 36.80699932888598
+      },
+      {
+        "ms": 661,
+        "number": 37,
+        "arc": 36.8441354822741
+      },
+      {
+        "ms": 678,
+        "number": 37,
+        "arc": 36.87384440498458
+      },
+      {
+        "ms": 694,
+        "number": 37,
+        "arc": 36.901784939438485
+      },
+      {
+        "ms": 711,
+        "number": 37,
+        "arc": 36.92265192086609
+      },
+      {
+        "ms": 728,
+        "number": 37,
+        "arc": 36.939982125780546
+      },
+      {
+        "ms": 744,
+        "number": 37,
+        "arc": 36.955190264787106
+      },
+      {
+        "ms": 761,
+        "number": 37,
+        "arc": 36.96721530493182
+      },
+      {
+        "ms": 778,
+        "number": 37,
+        "arc": 36.97641092386602
+      },
+      {
+        "ms": 794,
+        "number": 37,
+        "arc": 36.98419183219496
+      },
+      {
+        "ms": 811,
+        "number": 37,
+        "arc": 36.9894969969647
+      },
+      {
+        "ms": 828,
+        "number": 37,
+        "arc": 36.99338745112916
+      },
+      {
+        "ms": 844,
+        "number": 37,
+        "arc": 36.99621687233968
+      },
+      {
+        "ms": 861,
+        "number": 37,
+        "arc": 36.997985260596266
+      },
+      {
+        "ms": 878,
+        "number": 37,
+        "arc": 36.99904629355021
+      },
+      {
+        "ms": 894,
+        "number": 37,
+        "arc": 36.99975364885284
+      },
+      {
+        "ms": 911,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 928,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 944,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 961,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 978,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 995,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1011,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1028,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1044,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1061,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1078,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1094,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1111,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1128,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1145,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1161,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1178,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1194,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1211,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1228,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1244,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1261,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1278,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1294,
+        "number": 37,
+        "arc": 37.00010732650415
+      },
+      {
+        "ms": 1311,
+        "number": 37,
+        "arc": 37.00010732650415
+      }
+    ],
+    "entrance": [
+      {
+        "time": 20992.5,
+        "slots": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "opacity": "0.0840625",
+            "transform": "matrix(1, 0, 0, 1, -10.9913, 0)"
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "opacity": "0.0840625",
+            "transform": "matrix(1, 0, 0, 1, 10.9913, 0)"
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 12)"
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 10)"
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 12, 0)"
+          }
+        ]
+      },
+      {
+        "time": 21116.89999999851,
+        "slots": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "opacity": "0.870213",
+            "transform": "matrix(1, 0, 0, 1, -1.55745, 0)"
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "opacity": "0.870213",
+            "transform": "matrix(1, 0, 0, 1, 1.55745, 0)"
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "opacity": "0.408206",
+            "transform": "matrix(1, 0, 0, 1, 0, 7.10152)"
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 10)"
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 12, 0)"
+          }
+        ]
+      },
+      {
+        "time": 21428.39999999851,
+        "slots": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "opacity": "1",
+            "transform": "none"
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "opacity": "1",
+            "transform": "none"
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "opacity": "0.999361",
+            "transform": "matrix(1, 0, 0, 1, 0, 0.00767156)"
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "opacity": "0.940895",
+            "transform": "matrix(1, 0, 0, 1, 0, 0.591046)"
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "opacity": "0.989725",
+            "transform": "matrix(1, 0, 0, 1, 0.123296, 0)"
+          }
+        ]
+      },
+      {
+        "time": 21882.29999999702,
+        "slots": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "opacity": "1",
+            "transform": "none"
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "opacity": "1",
+            "transform": "none"
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "opacity": "1",
+            "transform": "none"
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "opacity": "1",
+            "transform": "none"
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "opacity": "1",
+            "transform": "none"
+          }
+        ]
+      }
+    ],
+    "perf": [
+      {
+        "preset": "low",
+        "frames": 302,
+        "ms": 5016.600000000002,
+        "rafFps": 60.000797352788716,
+        "ambient": "off"
+      },
+      {
+        "preset": "high",
+        "frames": 302,
+        "ms": 5016.799999999996,
+        "rafFps": 59.99840535799718,
+        "ambient": "on"
+      },
+      {
+        "preset": "ultra",
+        "frames": 302,
+        "ms": 5016.5,
+        "rafFps": 60.00199342170836,
+        "ambient": "on"
+      }
+    ]
+  },
+  "errors": []
+}

@@ -1,0 +1,22 @@
+/* 画质预设：只改 CSS 侧变量。三层与 useSettings.qualityPreset 同步。
+   data-quality 挂在 <html>，由 app/providers.tsx 写入。 */
+html[data-quality='low'] {
+  --q-blur: 0px;
+  --q-shadow: 0 1px 2px #16392d33;
+  --q-ambient: 0;          /* 关闭 HUD 呼吸与纸面微尘 */
+}
+html[data-quality='high'] {
+  --q-blur: 6px;
+  --q-shadow: var(--sh-soft);
+  --q-ambient: 1;
+}
+html[data-quality='ultra'] {
+  --q-blur: 10px;
+  --q-shadow: var(--sh-soft), var(--sh-deep);
+  --q-ambient: 1;
+}
+
+/* 依赖画质的环境装饰：--q-ambient 为 0 时整体停用 */
+@media (prefers-reduced-motion: reduce) {
+  html { --q-ambient: 0; }
+}

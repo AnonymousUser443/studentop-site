@@ -165,7 +165,7 @@ test('严格白名单：敏感字段不落盘，UV仅允许起点或已发现固
     assert.equal(raw.includes('private-'), false);
     const saved = JSON.parse(raw);
     assert.deepEqual(Object.keys(saved).sort(), ['discoveredIds', 'playerUV', 'settings', 'unlockedRegionIds', 'version']);
-    assert.deepEqual(Object.keys(saved.settings).sort(), ['music', 'quality', 'reducedMotion', 'track', 'volume']);
+    assert.deepEqual(Object.keys(saved.settings).sort(), ['autoDegrade', 'degradedFrom', 'hudScale', 'music', 'quality', 'qualityOverrides', 'qualityPreset', 'reduceFlash', 'reducedMotion', 'track', 'uiSound', 'volume']);
     assert.deepEqual(saved.discoveredIds, ['tower']);
     assert.deepEqual(saved.unlockedRegionIds, ['tower']);
     assert.deepEqual(saved.playerUV, START_UV);

@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "total": 6,
+  "checks": [
+    {
+      "name": "production omits dev-only debug API",
+      "pass": true
+    },
+    {
+      "name": "guest enters built HUD",
+      "pass": true
+    },
+    {
+      "name": "lazy menu shows actual zero progress",
+      "pass": true
+    },
+    {
+      "name": "built preference persists",
+      "pass": true
+    },
+    {
+      "name": "retained runtime fonts loaded",
+      "pass": true
+    },
+    {
+      "name": "no build runtime or resource errors",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

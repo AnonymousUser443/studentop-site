@@ -65,6 +65,28 @@ test('登录 → 读我 → 保存进度 → 读回 → 登出', async () => {
   });
 });
 
+test('v3 HUD 设置经保存、登出和重登完整往返，未知嵌套字段不落盘', async () => {
+  await withServer(async ({ request }) => {
+    const credentials = { nickname: 'fixture', studentId: 'hud-v3-fixture', password: PASSWORD };
+    const first = await request('/api/auth/login', { method:'POST', body:credentials });
+    const settings = { music:false, volume:.4, track:2, quality:'high', qualityPreset:'custom',
+      qualityOverrides:{backdropBlur:12,cssAmbient:false}, reducedMotion:true, autoDegrade:false,
+      degradedFrom:'ultra', uiSound:false, reduceFlash:true, hudScale:1.12 };
+    const saved = await request('/api/progress', { method:'PUT', token:first.data.token,
+      body:{state:{version:3,discoveredIds:['tower'],playerUV:START_UV,settings:{...settings,qualityOverrides:{...settings.qualityOverrides,rawGPS:'private-override-marker'},secret:'private-setting-marker'}}} });
+    assert.equal(saved.status,200);
+    await request('/api/auth/logout',{method:'POST',token:first.data.token});
+    const second = await request('/api/auth/login',{method:'POST',body:credentials});
+    const read = await request('/api/progress',{token:second.data.token});
+    assert.equal(read.status,200);
+    assert.equal(read.data.state.version,3);
+    assert.deepEqual(read.data.state.settings,settings);
+    assert.deepEqual(read.data.state.discoveredIds,['tower']);
+    assert.deepEqual(read.data.checkins.map(row=>row.landmarkId),['tower']);
+    assert.equal(JSON.stringify(read.data).includes('private-'),false);
+  });
+});
+
 test('同学号错误口令拒绝，不返回token，不改昵称/进度；正确口令仍可登录', async () => {
   await withServer(async ({ request }) => {
     const first = await request('/api/auth/login', { method: 'POST', body: { nickname: 'fixture', studentId: 'takeover-demo', password: PASSWORD } });

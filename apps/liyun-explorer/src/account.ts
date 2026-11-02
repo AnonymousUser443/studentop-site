@@ -1,5 +1,6 @@
-import type { AccountUser, ExplorationState } from './types';
+import type { AccountUser, ExplorationState, GameSettings } from './types';
 import { LANDMARKS, START_UV } from './data';
+import { sanitizeSettings } from './app/stores/useSettings';
 
 // 账号与进度同步客户端。所有请求走同源 /api/*（开发经 Vite 反代，生产经 nginx 反代）。
 // 任何网络失败都向上抛出，由调用方决定是降级为「游客/本机存档」还是给出提示。
@@ -88,22 +89,30 @@ const record = (value: unknown): Record<string, unknown> => value !== null && ty
 export function sanitizeCloudState(value: unknown): ExplorationState {
   const raw = record(value);
   const known = new Set(LANDMARKS.map(p => p.id));
-  const discoveredIds = raw.version === 2 && Array.isArray(raw.discoveredIds)
+  const isReal = raw.version === 2 || raw.version === 3;
+  const discoveredIds = isReal && Array.isArray(raw.discoveredIds)
     ? [...new Set(raw.discoveredIds.filter((id: unknown): id is string => typeof id === 'string' && known.has(id)))] : [];
   const places = LANDMARKS.filter(p => discoveredIds.includes(p.id));
   const point = record(raw.playerUV);
-  const anchor = raw.version === 2 ? [START_UV, ...places.map(p => p.uv)].find(p => p.u === point.u && p.v === point.v) : undefined;
+  const anchor = isReal ? [START_UV, ...places.map(p => p.uv)].find(p => p.u === point.u && p.v === point.v) : undefined;
   const s = record(raw.settings);
+  // v3 白名单：新增字段必须同步在此声明，否则云端会静默丢弃（见 V2 计划 6.4）。
   return {
-    version: 2, discoveredIds, unlockedRegionIds: [...new Set(places.map(p => p.regionId))],
+    version: 3, discoveredIds, unlockedRegionIds: [...new Set(places.map(p => p.regionId))],
     playerUV: { ...(anchor ?? START_UV) },
-    settings: {
-      music: typeof s.music === 'boolean' ? s.music : true,
-      volume: typeof s.volume === 'number' && Number.isFinite(s.volume) ? Math.max(0, Math.min(1, s.volume)) : 0.35,
-      quality: s.quality === 'low' ? 'low' : 'high',
-      reducedMotion: typeof s.reducedMotion === 'boolean' ? s.reducedMotion : false,
-      track: typeof s.track === 'number' && Number.isInteger(s.track) && s.track >= 0 && s.track <= 2 ? s.track : 0,
-    },
+    settings: sanitizeSettings({
+      music: s.music as boolean | undefined,
+      volume: s.volume as number | undefined,
+      reducedMotion: s.reducedMotion as boolean | undefined,
+      track: s.track as number | undefined,
+      qualityPreset: (s.qualityPreset ?? (s.quality === 'low' ? 'low' : 'high')) as GameSettings['qualityPreset'],
+      qualityOverrides: s.qualityOverrides as GameSettings['qualityOverrides'] | undefined,
+      autoDegrade: s.autoDegrade as boolean | undefined,
+      degradedFrom: s.degradedFrom as GameSettings['degradedFrom'] | undefined,
+      uiSound: s.uiSound as boolean | undefined,
+      reduceFlash: s.reduceFlash as boolean | undefined,
+      hudScale: s.hudScale as GameSettings['hudScale'] | undefined,
+    }),
   };
 }
 

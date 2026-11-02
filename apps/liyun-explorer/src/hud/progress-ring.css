@@ -1,0 +1,148 @@
+
+/* ── 探索进度环 ───────────────────────────────────────── */
+.hud-progress {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--sp-2);
+  pointer-events: none;
+  isolation: isolate;
+}
+
+/* 柔光底衬：让外圈圆环与山水前景区脱开（径向、无硬边） */
+.hud-progress::before {
+  content: '';
+  position: absolute;
+  inset: -12px -18px -10px -22px;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 66% at 72% 40%,
+    color-mix(in srgb, var(--jade-950) 58%, transparent) 0%,
+    color-mix(in srgb, var(--jade-950) 26%, transparent) 52%,
+    transparent 82%);
+}
+
+.hud-progress > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hud-progress-ring {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  padding: 0;
+  border: 0;
+  background: none;
+  display: grid;
+  place-items: center;
+  color: var(--gold-200);
+  pointer-events: auto;
+}
+.hud-progress-ring:focus-visible { border-radius: var(--r-pill); }
+
+.hud-progress-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+
+.hud-progress-track {
+  fill: none;
+  stroke: var(--jade-950);
+  stroke-opacity: .56;
+  stroke-width: 6;
+}
+
+.hud-progress-arc {
+  fill: none;
+  stroke: var(--gold-400);
+  stroke-width: 6;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--gold-300) 48%, transparent));
+  /* MotionValue 直接写入；再叠一层 CSS transition 会让圆弧落后于数字。 */
+}
+
+.hud-progress-sweep {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0 70deg, color-mix(in srgb, var(--gold-200) 40%, transparent) 90deg, transparent 110deg);
+  animation: hud-sweep var(--d-scene) var(--e-out) 1 both;
+  pointer-events: none;
+}
+@keyframes hud-sweep {
+  0%   { opacity: 0; transform: rotate(-90deg); }
+  20%  { opacity: 1; }
+  100% { opacity: 0; transform: rotate(210deg); }
+}
+
+.hud-progress-value {
+  position: relative;
+  font-family: var(--font-ui);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--gold-200);
+  text-shadow:
+    0 2px 3px var(--jade-950),
+    0 0 8px color-mix(in srgb, var(--jade-950) 76%, transparent);
+  font-variant-numeric: tabular-nums;
+}
+.hud-progress-unit {
+  font-size: .56em;
+  margin-left: 1px;
+  opacity: .86;
+}
+.hud-progress-number { display: inline-block; min-width: 1.25em; text-align: right; }
+.hud-progress-caption { display: block; font-size: var(--fs-caption); font-weight: 400; line-height: 1.8; letter-spacing: .12em; }
+
+.hud-progress-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  padding: var(--sp-1) var(--sp-3);
+  text-align: right;
+  /* 实底玉纸板：右下角压在奶油色月牙上时，仅靠渐变/阴影无法保证对比度 */
+  background: color-mix(in srgb, var(--jade-900) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold-500) 44%, transparent);
+  clip-path: var(--edge-cut-8);
+  box-shadow: var(--sh-paper);
+}
+.hud-progress-campus {
+  font-family: var(--font-display);
+  font-size: var(--fs-title);
+  letter-spacing: .06em;
+  color: var(--gold-200);
+}
+.hud-progress-count {
+  font-size: var(--fs-caption);
+  color: var(--paper-300);
+}
+.hud-progress-save {
+  font-size: var(--fs-caption);
+  color: var(--paper-300);
+  max-width: 14em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 矮屏横屏：环缩小，隐藏校区名与存档标识 */
+@media (max-height: 560px), (max-width: 1000px) {
+  .hud-progress-ring { width: 68px; height: 68px; }
+  .hud-progress-value { font-size: 19px; }
+  .hud-progress-campus { display: none; }
+  .hud-progress-save { display: none; }
+  .hud-progress-count { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hud-progress-sweep { display: none; }
+  .hud-progress-arc { transition: none; }
+}
