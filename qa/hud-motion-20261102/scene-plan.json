@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "project": {"title":"理韵寻踪 · HUD 动效验证场景","format":"interactive-h5","fps":60,"durationSeconds":9,"emotionalThesis":"旅人展开校园地图，让每一次探索都留下克制而清晰的痕迹。"},
+  "world": {"audienceRole":"校园寻路者","narrativeObject":"一纸校园地图","motifs":["玉纸","金线","探索环"],"palette":["jade","paper","gold"],"materialRules":"复用现有令牌、地图、纸浪和书法标题；正文与地图中心保持安静。"},
+  "assetsReviewed": [
+    {"id":"map","path":"apps/liyun-explorer/public/assets/maps/calibrated/campus_no_labels.webp","sourceType":"illustration","usable":true,"rights":"user-supplied","note":"现有标定资产；不新增再分发范围。"},
+    {"id":"frame","path":"apps/liyun-explorer/public/assets/paintings/frost-frame.webp","sourceType":"illustration","usable":true,"rights":"unknown","note":"沿用现有工程素材与权利说明。"}
+  ],
+  "scenes": [
+    {"id":"enter","startSeconds":0,"endSeconds":2,"reasonToExist":"明确地图与工具的关系","viewerGains":"知道身份、操作和探索度各在何处","emotionBefore":10,"emotionAfter":25,
+      "layers":[{"id":"landscape","depth":"background","role":"纸境的空间底色","assetId":"frame","origin":"original-illustration","moving":false},{"id":"map","depth":"middle","role":"可探索的世界","assetId":"map","origin":"original-illustration","moving":false},{"id":"hud","depth":"ui","role":"四角工具依次就位","assetId":null,"origin":"text","moving":true}],
+      "motions":[{"actor":"brand/status","trigger":"启程","purpose":"建立身份与状态","startSeconds":0,"endSeconds":0.42,"motion":"外侧 12px 淡入","settleState":"四锚坐标不变"},{"actor":"dock/context/progress","trigger":"身份带开始就位","purpose":"跟随建立工具层级","startSeconds":0.09,"endSeconds":0.69,"motion":"90ms 错峰，短位移淡入","settleState":"静置，仅主操作金线轻呼吸"}],
+      "sound":"沿用现有用户配乐；无新增必需声音","transitionOut":"停顿后等待旅人操作","interaction":"可即时点击与键盘访问；减少动态时只淡入","evidence":"results.json entrance; shots/hud-1440x900.png"},
+    {"id":"interact","startSeconds":2,"endSeconds":5,"reasonToExist":"让操作预测、反馈与完成保持连贯","viewerGains":"明白当前处于面板或地图状态","emotionBefore":12,"emotionAfter":30,
+      "layers":[{"id":"world","depth":"middle","role":"面板背后的世界暂停环境绘制","assetId":"map","origin":"original-illustration","moving":false},{"id":"panel","depth":"ui","role":"纸面内容与焦点","assetId":null,"origin":"text","moving":true}],
+      "motions":[{"actor":"button","trigger":"hover/press","purpose":"确认操作目标","startSeconds":2,"endSeconds":2.16,"motion":"金线、轻抬与90ms下压","settleState":"恢复原位并保留焦点环"},{"actor":"panel","trigger":"打开/关闭图鉴","purpose":"说明空间切换","startSeconds":2.2,"endSeconds":2.62,"motion":"短位移、淡入；160ms退场","settleState":"退场中 inert，结束后焦点归还"}],
+      "sound":"无声模式也有完整反馈","transitionOut":"纸面收起，回到原地图","interaction":"Esc关闭；定位卡可收拢，详情收拢后立刻 inert","evidence":"results.json modal checks; shots/collection-open.png"},
+    {"id":"progress","startSeconds":5,"endSeconds":9,"reasonToExist":"将探索成果变为可观察的增长","viewerGains":"数字与弧线指向同一个进度终态","emotionBefore":20,"emotionAfter":55,
+      "layers":[{"id":"world","depth":"middle","role":"保持焦点周围的地图","assetId":"map","origin":"original-illustration","moving":false},{"id":"progress","depth":"ui","role":"单次成果反馈","assetId":null,"origin":"effect","moving":true}],
+      "motions":[{"actor":"number/arc","trigger":"探索度增加","purpose":"同步表现新的成果","startSeconds":5,"endSeconds":5.9,"motion":"共用一个 MotionValue，900ms 补间","settleState":"目标百分比；更新中断则从可见值续接"},{"actor":"gold-sweep","trigger":"增长且允许装饰","purpose":"一次轻量高光","startSeconds":5,"endSeconds":5.9,"motion":"单次圆周扫光","settleState":"自动移除；低画质/减少动态/减少闪光时关闭"}],
+      "sound":"保留现有打卡提示音；本次仅验证 HUD 数值通路","transitionOut":"恢复低视觉能量的探索状态","interaction":"系统偏好与游戏开关任一为真时直接终态；可随时改偏好","evidence":"results.json progress/reduced/perf"}
+  ]
+}

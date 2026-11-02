@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-02",
+  "timezone": "Asia/Shanghai",
+  "baseline": "e15901d with existing uncommitted M1/M3 refactor",
+  "unit": {"ok":true,"files":10,"tests":93},
+  "server": {"ok":true,"store":9,"http":9},
+  "qaHarness": {"ok":true,"tests":6},
+  "browser": {"ok":true,"checks":34,"report":"results.json"},
+  "productionPreview": {"ok":true,"checks":6,"report":"production.json"},
+  "build": {"ok":true,"bytes":20043063,"removedSourceBytes":9693450,"budgetMiB":20,"circularChunkWarning":false,"knownWarning":"p5 chunk exceeds 700 kB"},
+  "assets": {"ok":true,"calibratedFilesUnchanged":6},
+  "fontCoverage": {"ok":true,"report":"font-coverage.json"},
+  "published":false
+}

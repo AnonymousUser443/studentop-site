@@ -1,0 +1,59 @@
+/* 全局基线：reset + 字体 + 焦点环。必须在所有组件样式之前加载。 */
+@font-face {
+  font-family: 'Noto Serif SC';
+  src: url('/assets/fonts/NotoSerifSC-UI.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ma Shan Zheng';
+  src: url('/assets/fonts/MaShanZheng-UI.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-ui);
+  color: var(--c-on-jade);
+  background: var(--jade-800);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+button:disabled { cursor: default; }
+
+/* 统一焦点环：奶油金 2px + 4px 偏移，全站唯一规格 */
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--gold-300);
+  outline-offset: 4px;
+  border-radius: var(--r-cut);
+}
+:where(button, a, input, select, textarea, [tabindex]):focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* 数值等宽，避免滚动时抖动 */
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* 仅在 reducedMotion 或 low 画质下由 providers 挂上 */
+html[data-ambient='off'] .ambient-only { display: none !important; }
+
+/* 游戏开关与系统偏好享有相同的 CSS 降级通路；framer 位移由 MotionConfig 处理。 */
+html[data-motion='reduced'] *,
+html[data-motion='reduced'] *::before,
+html[data-motion='reduced'] *::after { animation: none !important; transition-duration: 0s !important; scroll-behavior: auto !important; }

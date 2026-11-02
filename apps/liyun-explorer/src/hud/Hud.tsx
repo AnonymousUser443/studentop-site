@@ -1,13 +1,28 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { AnimatePresence, motion, useIsPresent } from 'framer-motion';
 import type { AccountUser, HudProps, IconName } from '../types';
 import { Icon } from './Icon';
-import { BrandGate, CompassRose, EdgeOrnaments } from './Ornaments';
+import { EdgeOrnaments } from './Ornaments';
+import { tween } from '../motion/transitions';
+import { useMotionPreferences } from '../motion/useMotionPreferences';
+import HudFrame from './HudFrame';
+import Brand from './Brand';
+import StatusBar from './StatusBar';
+import ActionDock from './ActionDock';
+import AnnounceLayer from './AnnounceLayer';
+import ProgressRing from './ProgressRing';
 import './hud.css';
+import './hud-frame.css';
+import './progress-ring.css';
+import './hud-shells.css';
 
-function Modal({ title, eyebrow, icon, children, onClose, className = '' }: { title: string; eyebrow: string; icon: IconName; children: ReactNode; onClose: () => void; className?: string }) {
+function Modal({ title, eyebrow, icon, children, onClose, className = '', returnFocus }: { title: string; eyebrow: string; icon: IconName; children: ReactNode; onClose: () => void; className?: string; returnFocus?: HTMLElement | null }) {
   const ref = useRef<HTMLDivElement>(null);
+  const isPresent = useIsPresent();
+  const { reducedMotion } = useMotionPreferences();
   useEffect(() => {
-    const previous = document.activeElement as HTMLElement | null;
+    if (!isPresent) return;
+    const previous = returnFocus ?? document.activeElement as HTMLElement | null;
     const dialog = ref.current;
     const targets = () => Array.from(dialog?.querySelectorAll<HTMLElement>('button:not([disabled]), input, select, [tabindex="0"]') ?? []);
     targets()[0]?.focus();
@@ -21,15 +36,21 @@ function Modal({ title, eyebrow, icon, children, onClose, className = '' }: { ti
     };
     document.addEventListener('keydown', handleKey, true);
     return () => { document.removeEventListener('keydown', handleKey, true); previous?.focus(); };
-  }, [onClose, title]);
+  }, [onClose, title, isPresent]);
   const inner = <>
     <header className="modal-heading"><span className="modal-emblem"><Icon name={icon}/></span><div><p className="eyebrow">{eyebrow}</p><h2>{title}</h2></div><button className="modal-close" aria-label="关闭面板" onClick={onClose}><Icon name="close"/></button></header>
     <div className="modal-body">{children}</div>
     <span className="modal-corner corner-tl"/><span className="modal-corner corner-tr"/><span className="modal-corner corner-bl"/><span className="modal-corner corner-br"/>
   </>;
-  return <div className="hud-modal-backdrop" onPointerDown={e => { if (e.target === e.currentTarget) onClose(); }}>
-    <div className={`hud-modal ${className}`} role="dialog" aria-modal="true" aria-label={title} ref={ref}>{inner}</div>
-  </div>;
+  return <motion.div className="hud-modal-backdrop" inert={!isPresent || undefined}
+    initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={tween.fast}
+    onPointerDown={e => { if (isPresent && e.target === e.currentTarget) onClose(); }}>
+    <motion.div className={`hud-modal ${className}`} role="dialog" aria-modal="true" aria-label={title} ref={ref}
+      initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: .98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 8, scale: .99 }}
+      transition={reducedMotion ? tween.tap : isPresent ? tween.slow : tween.fast}>{inner}</motion.div>
+  </motion.div>;
 }
 
 function Toggle({ checked, onChange, label, description }: { checked: boolean; onChange: (value: boolean) => void; label: string; description?: string }) {
@@ -82,13 +103,13 @@ function EntryGate({ account, loginBusy, loginError, onEnter, onLogin, onGuest, 
   </div></div>;
 }
 
-function Panels(p: HudProps) {
+function Panels(p: HudProps & { returnFocus?: HTMLElement | null }) {
   const [resetArmed, setResetArmed] = useState(false);
   useEffect(() => setResetArmed(false), [p.activePanel]);
   const settings = p.state.settings;
   if (p.selected) {
     const item = p.selected;
-    return <Modal title={item.name} eyebrow={item.subtitle} icon={item.icon} onClose={p.onClose} className="landmark-modal">
+    return <Modal title={item.name} eyebrow={item.subtitle} icon={item.icon} onClose={p.onClose} returnFocus={p.returnFocus} className="landmark-modal">
       <div className={`landmark-seal ${item.isBeacon ? 'beacon-seal' : ''}`}><div className="seal-orbit"/><Icon name={item.icon}/><span>{p.discovered ? '已 点 亮' : '待 发 现'}</span></div>
       <p className="landmark-verse">{item.verse}</p><div className="ornament-divider"><span>◆</span></div><p className="landmark-description">{item.description}</p>
       <div className="landmark-reward"><span><Icon name="star"/>{p.discovered ? '这段旅途已收入记忆' : `探索度 +${item.progress}%`}</span><span><Icon name="book"/>{p.discovered ? '地标已收录' : '收录校园地标'}</span></div>
@@ -104,7 +125,7 @@ function Panels(p: HudProps) {
     </Modal>;
   }
   if (!p.activePanel) return null;
-  const common = { onClose: p.onClose };
+  const common = { onClose: p.onClose, returnFocus: p.returnFocus };
   switch (p.activePanel) {
     case 'profile': return <Modal title="个人主页" eyebrow="旅途中的你" icon="people" {...common} className="profile-modal">
       <div className="profile-card">
@@ -144,30 +165,55 @@ function Panels(p: HudProps) {
   }
 }
 
-export default function Hud(p: HudProps) {
+export interface HudExtraProps extends HudProps {
+  /** 打开派蒙式旅途菜单 */
+  onOpenMenu: () => void;
+  context?: ReactNode;
+}
+
+export default function Hud(p: HudExtraProps) {
+  const chromeInert = !p.entered || Boolean(p.activePanel) || Boolean(p.selected);
+  const modalOpen = Boolean(p.selected || (p.activePanel && p.activePanel !== 'activities'));
+  const wasModalOpen = useRef(false);
+  const returnFocus = useRef<HTMLElement | null>(null);
+  // 在 inert 提交到 DOM 之前保存触发者；提交后浏览器已把原焦点移到 body。
+  if (modalOpen && !wasModalOpen.current) returnFocus.current = document.activeElement as HTMLElement | null;
+  wasModalOpen.current = modalOpen;
+  const announceItems = p.toast ? [{ id: p.toast, text: p.toast }] : [];
   return <>
     <EdgeOrnaments/>
-    <div className="game-hud" inert={!p.entered || Boolean(p.activePanel) || Boolean(p.selected)}>
-      <div className="brand">
-        <button className="brand-gate" onClick={() => p.onPanel('profile')} aria-label="打开个人主页" title="个人主页"><BrandGate/></button>
-        <button className="brand-copy" onClick={p.onCenter} aria-label="理韵寻踪，回到校园中心"><strong>理韵寻踪</strong><span className="brand-subtitle">— 北理校园探索 —</span><span className="brand-rule"/></button>
-        <span className="brand-seal">理<br/>韵</span>
-      </div>
-      <nav className="map-menu" aria-label="校园菜单">
-        <button type="button" className="map-menu-button" data-testid="activity-entry" onClick={() => p.onPanel('activities')} aria-haspopup="dialog"><Icon name="scroll"/><span>活动一览</span></button>
-        <button type="button" className="map-menu-button" onClick={() => p.onPanel('collection')} aria-haspopup="dialog"><Icon name="chest"/><span>收集图鉴</span></button>
-      </nav>
-      <div className="resource-bar" aria-label="旅途状态">
-        <button className="resource-pill" onClick={() => p.onPanel('collection')} aria-label={`收录 ${p.collected}/${p.landmarks.length}，打开图鉴`}><Icon name="book"/><span className="resource-label">收录</span><strong>{p.collected}<span>/{p.landmarks.length}</span></strong></button>
-        <button className="resource-pill account-status" onClick={() => p.onPanel('profile')} aria-label={p.account ? `${p.account.nickname}，已登录，打开个人主页` : '游客模式，打开个人主页'}><Icon name="people"/><span>{p.account?.nickname ?? '游客模式'}</span></button>
-      </div>
-      <button className="fullscreen-control" onClick={p.onFullscreen} aria-label={p.isFullscreen ? '退出全屏' : '进入全屏'} title={p.isFullscreen ? '退出全屏' : '进入全屏'}><Icon name="fullscreen"/></button>
-      <button className="map-compass" onClick={p.onCenter} aria-label="回到当前探索位置"><span>北</span><CompassRose/></button>
-      <div className="campus-progress" aria-label={`良乡校区，探索度 ${Math.round(p.progress)}%`}><div className="campus-name">良乡校区<span className="campus-seal">寻</span></div><p>探索度 <strong>{Math.round(p.progress)}<span>%</span></strong></p><div className="progress-track"><span style={{ width: `${Math.min(100, p.progress)}%` }}/><i/></div><small>{p.account ? `UID: ${p.account.uid}` : '游客 · 本机存档'}</small></div>
-      <div className="map-help"><span className="help-diamond">◇</span><span className="desktop-help">拖动地图 · 滚轮缩放</span><span className="touch-help">拖动地图 · 双指缩放</span></div>
-    </div>
-    {p.entered && <Panels {...p}/>}
-    {p.toast && p.entered && <div className="game-toast" role="status"><Icon name="star"/><span>{p.toast}</span></div>}
+    <HudFrame
+      visible={p.entered}
+      inert={chromeInert}
+      compact={Boolean(p.activePanel) || Boolean(p.selected)}
+      brand={<Brand onOpenMenu={p.onOpenMenu} onCenter={p.onCenter}/>}
+      status={<StatusBar
+        collected={p.collected}
+        total={p.landmarks.length}
+        accountName={p.account?.nickname ?? null}
+        isFullscreen={p.isFullscreen}
+        onOpenCollection={() => p.onPanel('collection')}
+        onOpenProfile={p.onOpenMenu}
+        onToggleFullscreen={p.onFullscreen}
+      />}
+      dock={<ActionDock actions={[
+        { id: 'activities', label: '活动一览', icon: 'scroll', key: 'A', emphasis: true, onClick: () => p.onPanel('activities') },
+        { id: 'collection', label: '收集图鉴', icon: 'chest', key: 'C', onClick: () => p.onPanel('collection') },
+      ]}/>}
+      progress={<ProgressRing
+        progress={p.progress}
+        collected={p.collected}
+        total={p.landmarks.length}
+        saveLabel={p.account ? `UID: ${p.account.uid}` : '游客 · 本机存档'}
+        onClick={p.onCenter}
+      />}
+      context={p.context}
+      announce={<AnnounceLayer items={announceItems}/>}
+    />
+    <AnimatePresence mode="wait">
+      {p.entered && (p.selected || (p.activePanel && p.activePanel !== 'activities')) &&
+        <Panels key={p.selected?.id ?? p.activePanel} {...p} returnFocus={returnFocus.current}/>}
+    </AnimatePresence>
     {!p.entered && <EntryGate account={p.account} loginBusy={p.loginBusy} loginError={p.loginError} onEnter={p.onEnter} onLogin={p.onLogin} onGuest={p.onGuest} onLogout={p.onLogout}/>}
   </>;
 }

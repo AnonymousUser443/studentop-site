@@ -131,8 +131,9 @@ async function newSession(options = {}) {
     try { fs.rmSync(profile, {recursive:true, force:true}); } catch {}
   };
   try {
+    const graphicsFlags = options.hardwareRendering ? [] : ['--use-angle=swiftshader','--enable-unsafe-swiftshader'];
     child = spawn(edge, ['--headless=new','--no-first-run','--no-default-browser-check','--disable-extensions','--mute-audio',
-      '--use-angle=swiftshader','--enable-unsafe-swiftshader','--remote-debugging-address=127.0.0.1',
+      ...graphicsFlags, '--remote-debugging-address=127.0.0.1',
       '--remote-debugging-port=' + port, '--user-data-dir=' + profile, '--window-size=' + width + ',' + height, 'about:blank'],
       {stdio:'ignore', windowsHide:true});
     child.on('error', error => { childError = error; });

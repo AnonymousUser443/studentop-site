@@ -6,7 +6,7 @@
 
 Node 24 内置 SQLite，无 npm 服务端依赖。独立服务用户 liyun-account，私有目录 /var/lib/liyun-account，0700、umask 0077；数据、WAL、备份均不得进入仓库或静态 webroot。
 
-生产程序至少包含[入口](<../../apps/liyun-explorer/server/server.mjs>)、[存储](<../../apps/liyun-explorer/server/store.mjs>)、[进度白名单](<../../apps/liyun-explorer/server/progress.mjs>)；离线[旧账号迁移工具](<../../apps/liyun-explorer/server/migrate-legacy.mjs>)只供管理员按需使用，不挂 HTTP。服务器不要使用静态站点目录提供这些源码。
+生产程序至少包含[入口](<../../apps/liyun-explorer/server/server.mjs>)、[存储](<../../apps/liyun-explorer/server/store.mjs>)、[进度白名单](<../../apps/liyun-explorer/server/progress.mjs>)及[共享设置校验](<../../apps/liyun-explorer/shared/game-settings.mjs>)，保留 `server/` 与 `shared/` 的相对目录。v3 HUD 前端需与本轮支持 v3 的 API 配套发布；SQLite schema 仍为 2。离线[旧账号迁移工具](<../../apps/liyun-explorer/server/migrate-legacy.mjs>)只供管理员按需使用，不挂 HTTP。服务器不要使用静态站点目录提供这些源码。
 
 独立 release 的 current 软链可用于 WorkingDirectory/绝对入口；入口用 canonical realpath 判断，不会因软链跳过 listen。
 

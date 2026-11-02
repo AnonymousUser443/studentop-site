@@ -1,0 +1,138 @@
+/* ============================================================
+   理韵寻踪 · 设计令牌（唯一真值）
+   规则：组件只消费变量，禁止再写裸 #hex / 裸毫秒 / 裸 px 圆角。
+   详见 docs/UI-REFACTOR-PLAN-V2.md 第 5 节。
+   ============================================================ */
+:root {
+  /* ── 间距刻度（4 的倍数） ─────────────────────────────── */
+  --sp-1: 4px;   --sp-2: 8px;   --sp-3: 12px;  --sp-4: 16px;
+  --sp-5: 24px;  --sp-6: 32px;  --sp-7: 48px;  --sp-8: 64px;
+
+  /* ── HUD 四边缩进（唯一入口，替代 --hud-inset） ────────── */
+  --hud-gutter: clamp(16px, 2.2vw, 40px);
+  --hud-top:    max(var(--hud-gutter), env(safe-area-inset-top));
+  --hud-bottom: max(var(--hud-gutter), env(safe-area-inset-bottom));
+  --hud-left:   max(var(--hud-gutter), env(safe-area-inset-left));
+  --hud-right:  max(var(--hud-gutter), env(safe-area-inset-right));
+
+  /* ── 色板：玉绿（主）/ 宣纸 / 金（强调）/ 赭金（限时） ──── */
+  --jade-950: #0d2b26;
+  --jade-900: #12332f;
+  --jade-800: #193c37;
+  --jade-700: #21493e;
+  --jade-600: #2d5343;
+  --jade-500: #3d6b57;
+  --jade-400: #577f68;
+
+  --paper-50:  #fffdf2;
+  --paper-100: #fdf6e2;
+  --paper-200: #f3e8c8;
+  --paper-300: #e6ddba;
+  --paper-400: #d3c79f;
+  --paper-500: #bfb28a;
+
+  --gold-200: #f5e6bd;
+  --gold-300: #e8cf83;
+  --gold-400: #d4b874;
+  --gold-500: #b8933f;
+  --gold-600: #8a6a30;
+
+  --bronze-500: #a75029;   /* 活动/限时 CTA，全站最多一处 */
+  --bronze-400: #c98a3a;
+
+  --ink-900: #1f3a2f;
+  --ink-700: #33513f;
+  --ink-500: #596751;
+  --ink-400: #6e785a;
+  --ink-300: #8b7b51;
+
+  --state-ready: #4c7657;
+  --state-warn:  #b46c4d;
+  --state-info:  #5b7d8a;
+  --state-danger:#a54f34;
+
+  /* ── 透明度阶梯（替代零散 8 位 hex） ───────────────────── */
+  --a-04: .04; --a-08: .08; --a-16: .16; --a-32: .32;
+  --a-56: .56; --a-72: .72; --a-80: .80; --a-96: .96;
+
+  /* ── 字体 ─────────────────────────────────────────────── */
+  --font-display: 'Ma Shan Zheng', 'KaiTi', serif;   /* 只给标题/校区名 */
+  --font-ui: 'Noto Serif SC', 'Songti SC', SimSun, serif;
+  --font-mono-num: 'Noto Serif SC', serif;           /* 配 tabular-nums */
+
+  --fs-caption: clamp(10px, .72vw, 12px);
+  --fs-body:    clamp(12px, .88vw, 15px);
+  --fs-title:   clamp(15px, 1.1vw, 19px);
+  --fs-head:    clamp(22px, 1.8vw, 34px);
+  --fs-display: clamp(32px, 2.9vw, 57px);
+
+  --lh-tight: 1.3;
+  --lh-body:  1.8;
+  --ls-wide:  .16em;
+  --ls-body:  .02em;
+
+  /* ── 形状：剪纸硬边，圆角只用于"状态胶囊" ──────────────── */
+  --r-cut: 3px;
+  --r-pill: 999px;
+  --edge-cut-8:  polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  --edge-cut-12: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  --edge-cut-both: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+
+  /* ── 层级（与 docs/SCENE.md 图层表对应，禁止就地写 z-index 数字） ── */
+  --z-map: 1;
+  --z-veil: 3;        /* 分区水墨遮罩 */
+  --z-atmosphere: 3;
+  --z-markers: 4;
+  --z-locate: 6;
+  --z-fx: 6;
+  --z-edge: 7;
+  --z-hud: 10;
+  --z-context: 12;
+  --z-panel: 30;
+  --z-toast: 35;
+  --z-entry: 40;
+  --z-activity: 60;
+  --z-menu: 70;
+  --z-settings: 72;
+  --z-cinematic: 80;
+  --z-orientation: 100;
+
+  /* ── 动效：三级时长 + 四套缓动 ─────────────────────────── */
+  --d-tap: 90ms;
+  --d-fast: 160ms;
+  --d-base: 240ms;
+  --d-slow: 420ms;
+  --d-scene: 900ms;
+  --d-cinema: 1600ms;
+
+  --e-out: cubic-bezier(.16, 1, .3, 1);
+  --e-in-out: cubic-bezier(.45, 0, .25, 1);
+  --e-soft: cubic-bezier(.22, .8, .2, 1);
+  --e-spring: cubic-bezier(.22, 1.32, .36, 1);
+
+  /* ── 阴影与光 ─────────────────────────────────────────── */
+  --sh-paper: 0 2px 3px #16392d33;
+  --sh-soft:  0 4px 14px #10241c44;
+  --sh-deep:  0 22px 80px #08271f66;
+  --glow-gold: 0 0 12px #ffe6a3aa;
+  --inset-frame: inset 0 0 0 3px var(--jade-700), inset 0 0 0 4px #d4b87466;
+
+  /* ── 画质预设注入点（由 data-quality 覆盖，见 quality.css） ── */
+  --q-blur: 6px;
+  --q-shadow: var(--sh-soft);
+  --q-ambient: 1;
+}
+
+/* 语义别名：组件优先用这些，避免到处记 400/500 编号 */
+:root {
+  --c-bg: var(--jade-800);
+  --c-surface: var(--paper-200);
+  --c-surface-ink: var(--ink-900);
+  --c-on-jade: var(--gold-200);
+  --c-on-paper: var(--ink-900);
+  --c-accent: var(--gold-400);
+  --c-accent-strong: var(--gold-300);
+  --c-cta: var(--bronze-500);
+  --c-border: var(--gold-500);
+  --c-border-soft: var(--paper-400);
+}

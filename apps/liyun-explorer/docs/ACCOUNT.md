@@ -40,15 +40,20 @@ node server/migrate-legacy.mjs --verified-owner <内部UUID>
 
 [客户端清洗](<../src/account.ts>)在传输前重新构造对象，[后端清洗](<../server/progress.mjs>)在存储前再次执行，不能依赖“前端类型里没有该字段”。允许字段只有：
 
-- version：输出 v2；只有输入严格 v2 的打卡集合才被保留。
+- version：输出 v3；只有输入 v2 或 v3 的打卡集合才被保留。
 - discoveredIds：已知八个地标 ID 去重；所有未知 ID 丢弃。
 - unlockedRegionIds：按已发现地标重建，不信任外部数组。
 - playerUV：只允许 START_UV，或当前已发现地标的完全相同固定 UV；其他任何 UV（包括合法 0–1 范围内的 GPS 派生值）回落 START_UV。其附带未知字段也丢弃。
-- settings：仅 music 布尔、volume 0–1 有限数、quality low/high、reducedMotion 布尔、track 整数 0–2，非法值回落默认。
+- settings：**逐字段白名单**（2026-11-02 起为 v3）：
+  - 沿用：music 布尔、volume 0–1 有限数、quality low/high（派生字段）、reducedMotion 布尔、track 整数 0–2
+  - 新增：qualityPreset（low/high/ultra/custom，其他回落 high）、qualityOverrides（逐键校验类型与取值域，越界截断、未知键丢弃）、autoDegrade 布尔、degradedFrom（high/ultra/null）、uiSound 布尔、reduceFlash 布尔、hudScale（0.9/1/1.12 三选一）
+  - 任何非法值回落默认，不抛错。
+
+> **维护要求**：新增 settings 字段必须同时更新 [客户端清洗](<../src/account.ts>)。`src/account.test.ts` 断言了 settings 的完整键集，漏字段会直接测试失败——这是有意的护栏。
 
 真实 GPS、精度、时间戳、方向始终只属于定位 Hook 内存，不写该快照。密码、token、rawGPS、经纬度、其他嵌套敏感字段全部剔除。客户端收到旧/异常云快照也先清洗再恢复。
 
-v1 演示存档只迁移合法设置，清空旧发现/区域/位置，输出 v2 空打卡；服务端相应清除旧台账，绝不将旧演示点击改标为 v2。合法 v2 地标及原有首次打卡时间保留，重置删除当前集合外台账。台账时间是首次服务端保存时间，并非 GPS 证明；此轻量 API 不验证定位真实性、不做防作弊证明。
+v1 演示存档只迁移合法设置，清空旧发现/区域/位置，输出 v3 空打卡；服务端相应清除旧台账，绝不将旧演示点击改标为 v3。合法 v2/v3 地标及原有首次打卡时间保留，重置删除当前集合外台账。v2→v3 为纯增量迁移：`quality` 会映射为 `qualityPreset`，其余新字段取默认值，已有打卡与设置不丢。台账时间是首次服务端保存时间，并非 GPS 证明；此轻量 API 不验证定位真实性、不做防作弊证明。
 
 启动时服务端重写旧快照的未知字段，并对齐台账；不保证历史备份、数据库空闲页/WAL或存储设备上的物理擦除。原始私有备份由管理员按保留策略处置，切勿发布。
 

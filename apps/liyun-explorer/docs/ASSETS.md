@@ -64,10 +64,14 @@ pwsh -File scripts/audio-assets.ps1 -SourceDir "X:\实际原始BGM目录" -Check
 
 ## 字体
 
+2026-11-02 构建收口：`npm run build` 在 Vite 后执行 `scripts/trim-dist.mjs`，仅从生成的 `dist/` 剔除 `MaShanZheng-Regular.ttf` 与历史 `campus.png/webp`、`campus-enhanced*.webp`。源码 `public/`、素材清单和重建输入保留，当前标定 WebP/PNG、两份 WOFF2 与 OFL 必须存在；产物不得超过 20 MiB。本轮无新字形，新增固定可见文案已由 [cmap 检查](../../../../qa/hud-motion-20261102/font-coverage.json)确认覆盖。
+
 | 字体 | 来源与用途 | 运行时文件 | 许可文件 |
 | --- | --- | --- | --- |
-| Noto Serif SC | 本机 `C:/Windows/Fonts/NotoSerifSC-VF.ttf`；正文、数值、菜单 | `NotoSerifSC-UI.woff2`，222,552 字节 | `NotoSerifSC-OFL.txt` |
-| Ma Shan Zheng | 工程保留 `MaShanZheng-Regular.ttf`；品牌与书法标题 | `MaShanZheng-UI.woff2`，187,600 字节 | `MaShanZheng-OFL.txt` |
+| Noto Serif SC | 本机 `C:/Windows/Fonts/NotoSerifSC-VF.ttf`；正文、数值、菜单 | `NotoSerifSC-UI.woff2`，327,384 字节 | `NotoSerifSC-OFL.txt` |
+| Ma Shan Zheng | 工程保留 `MaShanZheng-Regular.ttf`；品牌与书法标题 | `MaShanZheng-UI.woff2`，316,300 字节 | `MaShanZheng-OFL.txt` |
+
+2026-11-02 实测复核：上述两份子集字节数已按实际文件更正；早期记录为子集重建前的数值。
 
 文件均位于 `public/assets/fonts/`。两份许可文件均声明 SIL Open Font License 1.1；交付时应保留许可。CSS 使用本地 WOFF2 子集，不发起在线字体请求。
 

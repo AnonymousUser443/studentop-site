@@ -1,0 +1,137 @@
+/* ============================================================
+   HudFrame：四锚定位外壳
+   规则：只有这里写 position:absolute；子组件一律不用定位。
+   ============================================================ */
+.hud-frame, .hud-announce-layer {
+  --hud-top: max(var(--hud-gutter), env(safe-area-inset-top));
+  --hud-bottom: max(var(--hud-gutter), env(safe-area-inset-bottom));
+  --hud-left: max(var(--hud-gutter), env(safe-area-inset-left));
+  --hud-right: max(var(--hud-gutter), env(safe-area-inset-right));
+}
+.hud-frame {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-hud);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  color: var(--c-on-jade);
+  transition: opacity var(--d-base) var(--e-soft);
+}
+
+/* 框架本身不吃事件，只有里面的可交互件吃 */
+.hud-frame button,
+.hud-frame [role='button'],
+.hud-frame a,
+.hud-frame input,
+.hud-frame select {
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.hud-frame[inert] { pointer-events: none; }
+.hud-frame[inert] button { pointer-events: none; }
+
+/* 面板打开时压低存在感，避免与弹窗争视觉 */
+.hud-frame[data-compact='true'] {
+  opacity: .56;
+}
+
+/* ── 四个锚点 ─────────────────────────────────────────── */
+.hud-anchor {
+  position: absolute;
+  display: flex;
+}
+.hud-slot { min-width: 0; max-width: 100%; }
+
+.hud-anchor--brand {
+  top: var(--hud-top);
+  left: var(--hud-left);
+  max-width: min(46vw, 560px);
+}
+
+.hud-anchor--status {
+  top: var(--hud-top);
+  right: var(--hud-right);
+  align-items: flex-start;
+  gap: var(--sp-2);
+  max-width: min(50vw, 640px);
+}
+
+.hud-anchor--dock {
+  bottom: var(--hud-bottom);
+  left: var(--hud-left);
+  align-items: flex-end;
+  gap: var(--sp-2);
+}
+
+.hud-anchor--progress {
+  bottom: var(--hud-bottom);
+  right: var(--hud-right);
+  align-items: flex-end;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.hud-anchor--context {
+  top: max(calc(var(--hud-top) + 100px), 26%);
+  right: var(--hud-right);
+  width: min(286px, 32vw);
+  max-height: calc(100% - var(--hud-top) - var(--hud-bottom) - 270px);
+  flex-direction: column;
+  align-items: flex-end;
+}
+.hud-anchor--context > .hud-slot { width: 100%; }
+
+.hud-announce-layer {
+  position: absolute;
+  z-index: var(--z-toast);
+  top: max(calc(var(--hud-top) + 76px), 15%);
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  width: max-content;
+  max-width: min(520px, calc(100vw - 2 * var(--hud-gutter)));
+  pointer-events: none;
+}
+
+/* ── 竖屏：HUD 整体隐藏（由引导页接管） ─────────────────── */
+@media (orientation: portrait) {
+  .hud-frame { display: none; }
+}
+
+/* ── 矮屏横屏（手机）：收紧 gutter，锚点让位 ────────────── */
+@media (max-height: 560px), (max-width: 1000px) {
+  .hud-frame, .hud-announce-layer {
+    --hud-gutter: 12px;
+  }
+  .hud-anchor--brand { max-width: 44vw; }
+  .hud-anchor--context {
+    top: calc(var(--hud-top) + 68px);
+    width: min(240px, 32vw);
+    max-height: calc(100% - var(--hud-top) - var(--hud-bottom) - 180px);
+  }
+  .hud-announce-layer { top: calc(var(--hud-top) + 64px); max-width: min(28vw, 520px); }
+}
+
+/* 极矮屏：播报层下移，避免压住状态带 */
+@media (max-height: 400px) and (orientation: landscape) {
+  .hud-announce-layer { top: calc(var(--hud-top) + 60px); }
+}
+
+/* 弹窗进退场仍由 framer 管理，CSS 不再同时写同一元素的 transform。 */
+.hud-modal-backdrop { animation: none; backdrop-filter: blur(var(--q-blur)); -webkit-backdrop-filter: blur(var(--q-blur)); }
+.hud-modal { animation: none; transform-origin: 50% 35%; }
+.hud-modal .modal-heading, .hud-modal .modal-body { animation: none; }
+
+html[data-motion='reduced'] .hud-frame *,
+html[data-motion='reduced'] .hud-frame *::before,
+html[data-motion='reduced'] .hud-frame *::after,
+html[data-motion='reduced'] .entrance-overlay,
+html[data-motion='reduced'] .entrance-overlay * { animation: none; }
+html[data-motion='reduced'] .hud-context-toggle svg { transition: none; }
+html[data-page-visible='false'] .hud-frame *,
+html[data-page-visible='false'] .hud-frame *::before,
+html[data-page-visible='false'] .hud-frame *::after { animation-play-state: paused; }
