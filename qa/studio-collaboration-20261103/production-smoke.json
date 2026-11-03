@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "scope": "Unauthenticated team join gate and one guest game load only; multiplayer acceptance delegated to the owner",
+  "checks": [
+    {
+      "name": "public studio displays the protected team join page",
+      "pass": true
+    },
+    {
+      "name": "expected player release loaded",
+      "pass": true
+    },
+    {
+      "name": "existing guest game remains available",
+      "pass": true
+    },
+    {
+      "name": "basic load has no browser errors",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "completedAt": "2026-11-03T15:13:55.458Z"
+}

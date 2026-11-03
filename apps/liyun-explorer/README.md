@@ -2,6 +2,8 @@
 
 以良乡校园地图为基础的 Web 探索游戏，采用玉绿、宣纸、细金线与剪纸山水。工程使用 React、TypeScript、Vite、p5、Framer Motion、GSAP、Radix 和 Zustand；可选 Node / SQLite 服务提供账号与云存档。
 
+**最新上线：2026-11-03 23:10**，[在线协作工坊](https://liyun.studentop.cn:14355/studio/)及配套玩家版本 `c832d8ec9dd83e8df4f34da2` 已部署，源码已推送远端。见[工坊发布回执](docs/LIYUN-STUDIO-RELEASE-20261103.md)与[团队操作指南](docs/STUDIO-GUIDE.md)。多人端验收由用户手动完成。
+
 2026-11-03本轮开发和本地自动化验收已收口，入口为[场景约定](docs/SCENE.md)、[HUD交接](docs/hud-handoff.md)、[验收索引](docs/QA.md)与[TODO](TODO.md)。原[V2方案](docs/UI-REFACTOR-PLAN-V2.md)保留设计历史；最新要求已落实为**派蒙式左侧抽屉，右侧校园世界保持可见**。最终153项单测及服务端10+9项通过，原始构建产物20,908,923B（19.940MiB），首屏静态JS图gzip214,068B，字体946字符联合覆盖0缺字；细分范围见[总证据](../../qa/ui-implementation-20261103/README.md)。本轮已按所有者新授权于20:08发布[生产入口](https://liyun.studentop.cn:14355/)，版本`0a068ea850ed2b2b33c325f1`，公网8项及浏览器5项简检通过，见[发布记录](docs/LIYUN-UI-RELEASE-20261103.md)。真机与现场确认按用户安排由队员稍后执行，未记为通过。
 
 ## 本地运行
