@@ -1,0 +1,140 @@
+{
+  "ok": true,
+  "renderer": {
+    "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "visible": true,
+    "devicePixelRatio": 1
+  },
+  "windows": [
+    {
+      "requestedQuality": "low",
+      "elapsedMs": 5007.000000017881,
+      "frames": 301,
+      "rafFps": 60.11583782682746,
+      "medianMs": 16.69999999999891,
+      "p95Ms": 16.899999999999636,
+      "maxMs": 17.200000000000728,
+      "canvasFrames": [
+        {
+          "layer": "fog",
+          "frames": 100,
+          "targetFps": 24
+        },
+        {
+          "layer": "light",
+          "frames": 151,
+          "targetFps": 30
+        }
+      ],
+      "autoDegrade": false,
+      "quality": "low"
+    },
+    {
+      "requestedQuality": "high",
+      "elapsedMs": 5005.200000011922,
+      "frames": 301,
+      "rafFps": 60.137457044530294,
+      "medianMs": 16.700000000000728,
+      "p95Ms": 16.80000000000291,
+      "maxMs": 17,
+      "canvasFrames": [
+        {
+          "layer": "fog",
+          "frames": 151,
+          "targetFps": 30
+        },
+        {
+          "layer": "light",
+          "frames": 151,
+          "targetFps": 45
+        }
+      ],
+      "autoDegrade": false,
+      "quality": "high"
+    },
+    {
+      "requestedQuality": "ultra",
+      "elapsedMs": 5014.000000011922,
+      "frames": 301,
+      "rafFps": 60.031910650036764,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.80000000000291,
+      "maxMs": 16.900000000001455,
+      "canvasFrames": [
+        {
+          "layer": "fog",
+          "frames": 151,
+          "targetFps": 30
+        },
+        {
+          "layer": "light",
+          "frames": 301,
+          "targetFps": 60
+        }
+      ],
+      "autoDegrade": false,
+      "quality": "ultra"
+    }
+  ],
+  "gates": [
+    {
+      "quality": "low",
+      "elapsedMs": 5007.000000017881,
+      "rafFps": 60.11583782682746,
+      "threshold": 28,
+      "pass": true
+    },
+    {
+      "quality": "high",
+      "elapsedMs": 5005.200000011922,
+      "rafFps": 60.137457044530294,
+      "threshold": 30,
+      "pass": true
+    },
+    {
+      "quality": "ultra",
+      "elapsedMs": 5014.000000011922,
+      "rafFps": 60.031910650036764,
+      "threshold": 30,
+      "pass": true
+    }
+  ],
+  "autoDegrade": {
+    "file": "auto-degrade/results.json",
+    "checks": 10,
+    "clock": "real5s/30s; rAF throttling and visibility getter are explicitly fault fixtures"
+  },
+  "firstScreen": [
+    {
+      "file": "assets/index-O8gpkMDJ.js",
+      "rawBytes": 147729,
+      "gzipBytes": 53393
+    },
+    {
+      "file": "assets/vendor-misc-C8ArBquh.js",
+      "rawBytes": 2313,
+      "gzipBytes": 1081
+    },
+    {
+      "file": "assets/vendor-motion-CMh-u6xo.js",
+      "rawBytes": 158062,
+      "gzipBytes": 53872
+    },
+    {
+      "file": "assets/vendor-react-BBqAYxPs.js",
+      "rawBytes": 329951,
+      "gzipBytes": 105313
+    },
+    {
+      "file": "assets/vendor-state-DtEomig4.js",
+      "rawBytes": 638,
+      "gzipBytes": 409
+    }
+  ],
+  "dist": {
+    "bytes": 20908923,
+    "files": 62,
+    "indexSha256": "2b4240a4c3ee6ef6ffbc5a350e2e1ec0ab29880dd2ac1a2a84500c8b0bb16fa3"
+  },
+  "limits": "Visible desktop hardware Edge at844x390 andDPR1, not phone performance. Actual Canvas draws differ from rAF; raw counts are retained."
+}

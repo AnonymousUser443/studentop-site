@@ -1,0 +1,649 @@
+{
+  "ok": true,
+  "total": 24,
+  "checks": [
+    {
+      "name": "map-1920x1080",
+      "pass": true,
+      "detail": {
+        "state": "map",
+        "viewport": [
+          1920,
+          1080
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "b1eac18553992ca22c6a0ca0abf71905b9d43d0fde57263f2e738635f5253a18",
+        "cleanedSha256": "b1eac18553992ca22c6a0ca0abf71905b9d43d0fde57263f2e738635f5253a18"
+      }
+    },
+    {
+      "name": "menu-1920x1080",
+      "pass": true,
+      "detail": {
+        "state": "menu",
+        "viewport": [
+          1920,
+          1080
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "c49fc7e2b1787e034722585ad9a5a8fdaab0798ee80eb68e8d72fd4cfb8a9bc9",
+        "cleanedSha256": "c49fc7e2b1787e034722585ad9a5a8fdaab0798ee80eb68e8d72fd4cfb8a9bc9"
+      }
+    },
+    {
+      "name": "settings-1920x1080",
+      "pass": true,
+      "detail": {
+        "state": "settings",
+        "viewport": [
+          1920,
+          1080
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "0c06d5eaf8c94771af889efbcf3788949d6e6e0e2adda19226472a923c2c74cb",
+        "cleanedSha256": "0c06d5eaf8c94771af889efbcf3788949d6e6e0e2adda19226472a923c2c74cb"
+      }
+    },
+    {
+      "name": "cinematic-1920x1080",
+      "pass": true,
+      "detail": {
+        "state": "cinematic",
+        "viewport": [
+          1920,
+          1080
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "927608b76e0ddc554b70af1b9172cf800b36e210ba82377a07edc8c98d884918",
+        "cleanedSha256": "927608b76e0ddc554b70af1b9172cf800b36e210ba82377a07edc8c98d884918"
+      }
+    },
+    {
+      "name": "map-1440x900",
+      "pass": true,
+      "detail": {
+        "state": "map",
+        "viewport": [
+          1440,
+          900
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "fbb43e5c7d525ea331b49671c747110c0ad8b6fefd4094d2c28c85a8b7a5d262",
+        "cleanedSha256": "fbb43e5c7d525ea331b49671c747110c0ad8b6fefd4094d2c28c85a8b7a5d262"
+      }
+    },
+    {
+      "name": "menu-1440x900",
+      "pass": true,
+      "detail": {
+        "state": "menu",
+        "viewport": [
+          1440,
+          900
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "8860180028c84472e29245857623375b0b4375995e62962f0bc0618fe206606a",
+        "cleanedSha256": "8860180028c84472e29245857623375b0b4375995e62962f0bc0618fe206606a"
+      }
+    },
+    {
+      "name": "settings-1440x900",
+      "pass": true,
+      "detail": {
+        "state": "settings",
+        "viewport": [
+          1440,
+          900
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "7dd642828f78746903d73b26f6dfecf2cd52dba3db0510d3cb0b06a569fbbacd",
+        "cleanedSha256": "7dd642828f78746903d73b26f6dfecf2cd52dba3db0510d3cb0b06a569fbbacd"
+      }
+    },
+    {
+      "name": "cinematic-1440x900",
+      "pass": true,
+      "detail": {
+        "state": "cinematic",
+        "viewport": [
+          1440,
+          900
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "7ba2c784d8f9915577fb890023e655e2baf5293633483ec4acb23ed0d0a5565c",
+        "cleanedSha256": "7ba2c784d8f9915577fb890023e655e2baf5293633483ec4acb23ed0d0a5565c"
+      }
+    },
+    {
+      "name": "map-1280x720",
+      "pass": true,
+      "detail": {
+        "state": "map",
+        "viewport": [
+          1280,
+          720
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "c0eb510bd1a9d4524b73b1d79f93a7d53c32453f1cd7c36ee878e8814135d8ad",
+        "cleanedSha256": "c0eb510bd1a9d4524b73b1d79f93a7d53c32453f1cd7c36ee878e8814135d8ad"
+      }
+    },
+    {
+      "name": "menu-1280x720",
+      "pass": true,
+      "detail": {
+        "state": "menu",
+        "viewport": [
+          1280,
+          720
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "991886b447602be55d8aa8c702b7cd2efa58902a28f869bd6fb6eec5c8b98586",
+        "cleanedSha256": "991886b447602be55d8aa8c702b7cd2efa58902a28f869bd6fb6eec5c8b98586"
+      }
+    },
+    {
+      "name": "settings-1280x720",
+      "pass": true,
+      "detail": {
+        "state": "settings",
+        "viewport": [
+          1280,
+          720
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "312c32cb833b5704fe216d982c91e6cef4a1e438bfdd0bcda5f3f1040d6ab052",
+        "cleanedSha256": "312c32cb833b5704fe216d982c91e6cef4a1e438bfdd0bcda5f3f1040d6ab052"
+      }
+    },
+    {
+      "name": "cinematic-1280x720",
+      "pass": true,
+      "detail": {
+        "state": "cinematic",
+        "viewport": [
+          1280,
+          720
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "94bc056e659db6d10984e8563823273414a043dff0e32c35b5bf22592486e49e",
+        "cleanedSha256": "94bc056e659db6d10984e8563823273414a043dff0e32c35b5bf22592486e49e"
+      }
+    },
+    {
+      "name": "map-1024x600",
+      "pass": true,
+      "detail": {
+        "state": "map",
+        "viewport": [
+          1024,
+          600
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "c6ac57d861a16b84236f59f5c9ff532f7e34d74f3583eb3c824201dd40ed62b4",
+        "cleanedSha256": "c6ac57d861a16b84236f59f5c9ff532f7e34d74f3583eb3c824201dd40ed62b4"
+      }
+    },
+    {
+      "name": "menu-1024x600",
+      "pass": true,
+      "detail": {
+        "state": "menu",
+        "viewport": [
+          1024,
+          600
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "16b46727e98fc7c92569dfb5f8a9bc589ff296e1dc99fced32c90e85b7f5abb7",
+        "cleanedSha256": "16b46727e98fc7c92569dfb5f8a9bc589ff296e1dc99fced32c90e85b7f5abb7"
+      }
+    },
+    {
+      "name": "settings-1024x600",
+      "pass": true,
+      "detail": {
+        "state": "settings",
+        "viewport": [
+          1024,
+          600
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "78230bdf5184d4246ef00cb460682344108b1b42efcdf4bec872aabfba5fd577",
+        "cleanedSha256": "78230bdf5184d4246ef00cb460682344108b1b42efcdf4bec872aabfba5fd577"
+      }
+    },
+    {
+      "name": "cinematic-1024x600",
+      "pass": true,
+      "detail": {
+        "state": "cinematic",
+        "viewport": [
+          1024,
+          600
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "b259570890c767cba8988eb23f76e9823bbb276fa2d3626a85a27a2a6ea03fbf",
+        "cleanedSha256": "b259570890c767cba8988eb23f76e9823bbb276fa2d3626a85a27a2a6ea03fbf"
+      }
+    },
+    {
+      "name": "map-844x390",
+      "pass": true,
+      "detail": {
+        "state": "map",
+        "viewport": [
+          844,
+          390
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "2baf24f1d0f696066a0a845a71fd2e182d251a2efd7ff50e57a6e6dbe8cb61ba",
+        "cleanedSha256": "2baf24f1d0f696066a0a845a71fd2e182d251a2efd7ff50e57a6e6dbe8cb61ba"
+      }
+    },
+    {
+      "name": "menu-844x390",
+      "pass": true,
+      "detail": {
+        "state": "menu",
+        "viewport": [
+          844,
+          390
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "a6dea02422d0da12a18e2232d565484c510239470019d99e84a82d22c066685b",
+        "cleanedSha256": "a6dea02422d0da12a18e2232d565484c510239470019d99e84a82d22c066685b"
+      }
+    },
+    {
+      "name": "settings-844x390",
+      "pass": true,
+      "detail": {
+        "state": "settings",
+        "viewport": [
+          844,
+          390
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "436178125a9f9eb324ae98f7776108afb5edb117a19c5d92def21acc1dfd2a63",
+        "cleanedSha256": "436178125a9f9eb324ae98f7776108afb5edb117a19c5d92def21acc1dfd2a63"
+      }
+    },
+    {
+      "name": "cinematic-844x390",
+      "pass": true,
+      "detail": {
+        "state": "cinematic",
+        "viewport": [
+          844,
+          390
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "8ddcb43f5a67f3c72b62620eaf065986e9b3fa0ac3ab6aabf5daea791890ce5c",
+        "cleanedSha256": "8ddcb43f5a67f3c72b62620eaf065986e9b3fa0ac3ab6aabf5daea791890ce5c"
+      }
+    },
+    {
+      "name": "map-667x375",
+      "pass": true,
+      "detail": {
+        "state": "map",
+        "viewport": [
+          667,
+          375
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "8a5110259ee1cd3f7b5dcb2b7c98d6e22be037252b4cf5b389244a6a0c4975e1",
+        "cleanedSha256": "8a5110259ee1cd3f7b5dcb2b7c98d6e22be037252b4cf5b389244a6a0c4975e1"
+      }
+    },
+    {
+      "name": "menu-667x375",
+      "pass": true,
+      "detail": {
+        "state": "menu",
+        "viewport": [
+          667,
+          375
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "de666bfb52e7960c83204660fa08e3543ce32cc7168023bf5ba1c302bf819059",
+        "cleanedSha256": "de666bfb52e7960c83204660fa08e3543ce32cc7168023bf5ba1c302bf819059"
+      }
+    },
+    {
+      "name": "settings-667x375",
+      "pass": true,
+      "detail": {
+        "state": "settings",
+        "viewport": [
+          667,
+          375
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "d579fe035f91c090c244c32aec56c51ecb40ab536a2853c2c21c4f4813af0fff",
+        "cleanedSha256": "d579fe035f91c090c244c32aec56c51ecb40ab536a2853c2c21c4f4813af0fff"
+      }
+    },
+    {
+      "name": "cinematic-667x375",
+      "pass": true,
+      "detail": {
+        "state": "cinematic",
+        "viewport": [
+          667,
+          375
+        ],
+        "matches": [],
+        "exactPngEqual": true,
+        "restoredSha256": "567fd69de124ff2e78b883b4d7f4fbbcf2da4f296c7abc6301aaeb7c8d202439",
+        "cleanedSha256": "567fd69de124ff2e78b883b4d7f4fbbcf2da4f296c7abc6301aaeb7c8d202439"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "state": "map",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "b1eac18553992ca22c6a0ca0abf71905b9d43d0fde57263f2e738635f5253a18",
+      "cleanedSha256": "b1eac18553992ca22c6a0ca0abf71905b9d43d0fde57263f2e738635f5253a18"
+    },
+    {
+      "state": "menu",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "c49fc7e2b1787e034722585ad9a5a8fdaab0798ee80eb68e8d72fd4cfb8a9bc9",
+      "cleanedSha256": "c49fc7e2b1787e034722585ad9a5a8fdaab0798ee80eb68e8d72fd4cfb8a9bc9"
+    },
+    {
+      "state": "settings",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "0c06d5eaf8c94771af889efbcf3788949d6e6e0e2adda19226472a923c2c74cb",
+      "cleanedSha256": "0c06d5eaf8c94771af889efbcf3788949d6e6e0e2adda19226472a923c2c74cb"
+    },
+    {
+      "state": "cinematic",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "927608b76e0ddc554b70af1b9172cf800b36e210ba82377a07edc8c98d884918",
+      "cleanedSha256": "927608b76e0ddc554b70af1b9172cf800b36e210ba82377a07edc8c98d884918"
+    },
+    {
+      "state": "map",
+      "viewport": [
+        1440,
+        900
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "fbb43e5c7d525ea331b49671c747110c0ad8b6fefd4094d2c28c85a8b7a5d262",
+      "cleanedSha256": "fbb43e5c7d525ea331b49671c747110c0ad8b6fefd4094d2c28c85a8b7a5d262"
+    },
+    {
+      "state": "menu",
+      "viewport": [
+        1440,
+        900
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "8860180028c84472e29245857623375b0b4375995e62962f0bc0618fe206606a",
+      "cleanedSha256": "8860180028c84472e29245857623375b0b4375995e62962f0bc0618fe206606a"
+    },
+    {
+      "state": "settings",
+      "viewport": [
+        1440,
+        900
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "7dd642828f78746903d73b26f6dfecf2cd52dba3db0510d3cb0b06a569fbbacd",
+      "cleanedSha256": "7dd642828f78746903d73b26f6dfecf2cd52dba3db0510d3cb0b06a569fbbacd"
+    },
+    {
+      "state": "cinematic",
+      "viewport": [
+        1440,
+        900
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "7ba2c784d8f9915577fb890023e655e2baf5293633483ec4acb23ed0d0a5565c",
+      "cleanedSha256": "7ba2c784d8f9915577fb890023e655e2baf5293633483ec4acb23ed0d0a5565c"
+    },
+    {
+      "state": "map",
+      "viewport": [
+        1280,
+        720
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "c0eb510bd1a9d4524b73b1d79f93a7d53c32453f1cd7c36ee878e8814135d8ad",
+      "cleanedSha256": "c0eb510bd1a9d4524b73b1d79f93a7d53c32453f1cd7c36ee878e8814135d8ad"
+    },
+    {
+      "state": "menu",
+      "viewport": [
+        1280,
+        720
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "991886b447602be55d8aa8c702b7cd2efa58902a28f869bd6fb6eec5c8b98586",
+      "cleanedSha256": "991886b447602be55d8aa8c702b7cd2efa58902a28f869bd6fb6eec5c8b98586"
+    },
+    {
+      "state": "settings",
+      "viewport": [
+        1280,
+        720
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "312c32cb833b5704fe216d982c91e6cef4a1e438bfdd0bcda5f3f1040d6ab052",
+      "cleanedSha256": "312c32cb833b5704fe216d982c91e6cef4a1e438bfdd0bcda5f3f1040d6ab052"
+    },
+    {
+      "state": "cinematic",
+      "viewport": [
+        1280,
+        720
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "94bc056e659db6d10984e8563823273414a043dff0e32c35b5bf22592486e49e",
+      "cleanedSha256": "94bc056e659db6d10984e8563823273414a043dff0e32c35b5bf22592486e49e"
+    },
+    {
+      "state": "map",
+      "viewport": [
+        1024,
+        600
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "c6ac57d861a16b84236f59f5c9ff532f7e34d74f3583eb3c824201dd40ed62b4",
+      "cleanedSha256": "c6ac57d861a16b84236f59f5c9ff532f7e34d74f3583eb3c824201dd40ed62b4"
+    },
+    {
+      "state": "menu",
+      "viewport": [
+        1024,
+        600
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "16b46727e98fc7c92569dfb5f8a9bc589ff296e1dc99fced32c90e85b7f5abb7",
+      "cleanedSha256": "16b46727e98fc7c92569dfb5f8a9bc589ff296e1dc99fced32c90e85b7f5abb7"
+    },
+    {
+      "state": "settings",
+      "viewport": [
+        1024,
+        600
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "78230bdf5184d4246ef00cb460682344108b1b42efcdf4bec872aabfba5fd577",
+      "cleanedSha256": "78230bdf5184d4246ef00cb460682344108b1b42efcdf4bec872aabfba5fd577"
+    },
+    {
+      "state": "cinematic",
+      "viewport": [
+        1024,
+        600
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "b259570890c767cba8988eb23f76e9823bbb276fa2d3626a85a27a2a6ea03fbf",
+      "cleanedSha256": "b259570890c767cba8988eb23f76e9823bbb276fa2d3626a85a27a2a6ea03fbf"
+    },
+    {
+      "state": "map",
+      "viewport": [
+        844,
+        390
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "2baf24f1d0f696066a0a845a71fd2e182d251a2efd7ff50e57a6e6dbe8cb61ba",
+      "cleanedSha256": "2baf24f1d0f696066a0a845a71fd2e182d251a2efd7ff50e57a6e6dbe8cb61ba"
+    },
+    {
+      "state": "menu",
+      "viewport": [
+        844,
+        390
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "a6dea02422d0da12a18e2232d565484c510239470019d99e84a82d22c066685b",
+      "cleanedSha256": "a6dea02422d0da12a18e2232d565484c510239470019d99e84a82d22c066685b"
+    },
+    {
+      "state": "settings",
+      "viewport": [
+        844,
+        390
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "436178125a9f9eb324ae98f7776108afb5edb117a19c5d92def21acc1dfd2a63",
+      "cleanedSha256": "436178125a9f9eb324ae98f7776108afb5edb117a19c5d92def21acc1dfd2a63"
+    },
+    {
+      "state": "cinematic",
+      "viewport": [
+        844,
+        390
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "8ddcb43f5a67f3c72b62620eaf065986e9b3fa0ac3ab6aabf5daea791890ce5c",
+      "cleanedSha256": "8ddcb43f5a67f3c72b62620eaf065986e9b3fa0ac3ab6aabf5daea791890ce5c"
+    },
+    {
+      "state": "map",
+      "viewport": [
+        667,
+        375
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "8a5110259ee1cd3f7b5dcb2b7c98d6e22be037252b4cf5b389244a6a0c4975e1",
+      "cleanedSha256": "8a5110259ee1cd3f7b5dcb2b7c98d6e22be037252b4cf5b389244a6a0c4975e1"
+    },
+    {
+      "state": "menu",
+      "viewport": [
+        667,
+        375
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "de666bfb52e7960c83204660fa08e3543ce32cc7168023bf5ba1c302bf819059",
+      "cleanedSha256": "de666bfb52e7960c83204660fa08e3543ce32cc7168023bf5ba1c302bf819059"
+    },
+    {
+      "state": "settings",
+      "viewport": [
+        667,
+        375
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "d579fe035f91c090c244c32aec56c51ecb40ab536a2853c2c21c4f4813af0fff",
+      "cleanedSha256": "d579fe035f91c090c244c32aec56c51ecb40ab536a2853c2c21c4f4813af0fff"
+    },
+    {
+      "state": "cinematic",
+      "viewport": [
+        667,
+        375
+      ],
+      "matches": [],
+      "exactPngEqual": true,
+      "restoredSha256": "567fd69de124ff2e78b883b4d7f4fbbcf2da4f296c7abc6301aaeb7c8d202439",
+      "cleanedSha256": "567fd69de124ff2e78b883b4d7f4fbbcf2da4f296c7abc6301aaeb7c8d202439"
+    }
+  ],
+  "errors": [],
+  "source": {
+    "commit": "e15901d",
+    "file": "src/hud/hud.css",
+    "boundary": "Complete top-level nodes intersecting line560 through EOF, plus map selectors removed by05b7e32",
+    "bytes": 15869,
+    "selectors": 149,
+    "mapDeleted": [
+      ".map-water-ribbons",
+      ".map-player",
+      ".map-player>svg",
+      ".map-player-light",
+      ".map-player>svg",
+      ".map-player-light"
+    ]
+  },
+  "scope": "Exact paired PNG comparison in the same final app/profile/camera. System/game reduced motion and fixed Canvas isolate pure CSS removal; this is not a historical full-app before/after comparison or an ordinary-animation benchmark."
+}

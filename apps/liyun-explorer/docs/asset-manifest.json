@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-29T15:13:52.863Z",
+  "generatedAt": "2026-11-02T22:00:20.894Z",
   "mapId": "campus-v04-eaa124716c51375f",
   "logicalCanvas": [
     4000,
     4958
   ],
-  "totalBytes": 27895258,
+  "totalBytes": 28610537,
   "files": [
     {
       "path": "public/assets/activity/ambient-room-blur.webp",
@@ -88,6 +88,16 @@
       "sha256": "be5b234f75ddf924527789008c45ccde991b003ccdc920cb26dee66dc629e1b5"
     },
     {
+      "path": "public/assets/fonts/DejaVu-LICENSE.txt",
+      "bytes": 5019,
+      "sha256": "b75490dab1ec7d4beb26272b25c8b66dd04e4b111a030071568660ce6efaf240"
+    },
+    {
+      "path": "public/assets/fonts/LiyunSymbols-UI.woff2",
+      "bytes": 1036,
+      "sha256": "091bdd537d6fa7ce970c45bed822027bcef7650369587a382d0fdcf55980c350"
+    },
+    {
       "path": "public/assets/fonts/MaShanZheng-OFL.txt",
       "bytes": 4397,
       "sha256": "d7bdb1cee215b689e23c2f95672a6084c790542170648267a55114103d756a08"
@@ -99,8 +109,8 @@
     },
     {
       "path": "public/assets/fonts/MaShanZheng-UI.woff2",
-      "bytes": 316300,
-      "sha256": "7ee892d5c64057387b968bb915a87355209fa3ff31f798f171578fb6cf202cee"
+      "bytes": 357572,
+      "sha256": "ca4318b41120c0da49a29c8a5b722026d3ec6c6df371cbddbc4df7b83e175525"
     },
     {
       "path": "public/assets/fonts/NotoSerifSC-OFL.txt",
@@ -109,8 +119,48 @@
     },
     {
       "path": "public/assets/fonts/NotoSerifSC-UI.woff2",
-      "bytes": 327384,
-      "sha256": "8a722a976a80cac5676b9e54feb65e3029ed65c18d64caa57064676308c16a05"
+      "bytes": 357528,
+      "sha256": "935093953bda4acdc4acbb2e4a48785c38952fdb3a6f8d3e17002312fc4ae041"
+    },
+    {
+      "path": "public/assets/landmarks/beihu/hero.webp",
+      "bytes": 71730,
+      "sha256": "3fe73871c446861aedc51d089e0d62118b154b701fa7fd2a4bc1617e7cb65723"
+    },
+    {
+      "path": "public/assets/landmarks/library/hero.webp",
+      "bytes": 79428,
+      "sha256": "2ae75f060fa581cc541714056e4cd6ee75f01ca54b1f359a3884fb205847b6d5"
+    },
+    {
+      "path": "public/assets/landmarks/park/hero.webp",
+      "bytes": 76984,
+      "sha256": "ae6d7c0f1b569e35e5476d6b65334105aaebd50ec21e8f685eb0bd24cce2e8d7"
+    },
+    {
+      "path": "public/assets/landmarks/sports/hero.webp",
+      "bytes": 67300,
+      "sha256": "7883474f98fce35965328b4953a6de775b4e3a7fc844f2a30f620d9b10b55daa"
+    },
+    {
+      "path": "public/assets/landmarks/teaching/hero.webp",
+      "bytes": 71956,
+      "sha256": "a886b99fbc923714451f611255bcbdcfed25529bb600b5f2327b067a1dcf8ed0"
+    },
+    {
+      "path": "public/assets/landmarks/tower/hero.webp",
+      "bytes": 61134,
+      "sha256": "2e385aec8ec6cd7d0fb012c109342e5d81f26d4bbb16aced72b9109c580b422a"
+    },
+    {
+      "path": "public/assets/landmarks/wenbo/hero.webp",
+      "bytes": 68974,
+      "sha256": "ebafb65cd4147bda919ba42cc5033063dc1b59f6f8344efb4d89e359125bbb50"
+    },
+    {
+      "path": "public/assets/landmarks/wencui/hero.webp",
+      "bytes": 78434,
+      "sha256": "3253bb87bc8876064126034f874680795deba8246b0ce1f9a9b1e6696148404b"
     },
     {
       "path": "public/assets/maps/calibrated/campus_no_labels.png",
@@ -166,6 +216,11 @@
       "path": "public/assets/paintings/waterbirds.webp",
       "bytes": 369078,
       "sha256": "6b813d1088107eedb43fafbbc6cd3e22f3ef109745c888e1f7bf476d557528bb"
+    },
+    {
+      "path": "public/assets/regions/ink-cloud.webp",
+      "bytes": 61868,
+      "sha256": "17d09d25b05626fe11d123a168e44bd5b00348c1a3a8be8b1530846d4218ecf8"
     }
   ]
 }

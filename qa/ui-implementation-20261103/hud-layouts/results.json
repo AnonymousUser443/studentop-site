@@ -1,0 +1,1239 @@
+{
+  "ok": true,
+  "total": 13,
+  "checks": [
+    {
+      "name": "HUD and labels 1920x1080 expanded=true",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 40,
+            "y": 40,
+            "width": 269.6875,
+            "height": 90.59375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1654.953125,
+            "y": 40,
+            "width": 225.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 40,
+            "y": 988,
+            "width": 256.8125,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1771.921875,
+            "y": 871,
+            "width": 108.078125,
+            "height": 169
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1594,
+            "y": 280.796875,
+            "width": 286,
+            "height": 93.796875
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 0
+      }
+    },
+    {
+      "name": "HUD and labels 1920x1080 expanded=false",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 40,
+            "y": 40,
+            "width": 269.6875,
+            "height": 90.59375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1654.953125,
+            "y": 40,
+            "width": 225.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 40,
+            "y": 988,
+            "width": 256.8125,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1771.921875,
+            "y": 871,
+            "width": 108.078125,
+            "height": 169
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1594,
+            "y": 280.796875,
+            "width": 286,
+            "height": 62
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 0
+      }
+    },
+    {
+      "name": "HUD and labels 1440x900 expanded=true",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 31.671875,
+            "y": 31.671875,
+            "width": 229.84375,
+            "height": 75.734375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1191.046875,
+            "y": 31.671875,
+            "width": 217.28125,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 31.671875,
+            "y": 816.328125,
+            "width": 237.4375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1311.46875,
+            "y": 706.328125,
+            "width": 96.859375,
+            "height": 162
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1122.328125,
+            "y": 233.984375,
+            "width": 286,
+            "height": 91.109375
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "HUD and labels 1440x900 expanded=false",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 31.671875,
+            "y": 31.671875,
+            "width": 229.84375,
+            "height": 75.734375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1191.046875,
+            "y": 31.671875,
+            "width": 217.28125,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 31.671875,
+            "y": 816.328125,
+            "width": 237.4375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1311.46875,
+            "y": 706.328125,
+            "width": 96.859375,
+            "height": 162
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1122.328125,
+            "y": 233.984375,
+            "width": 286,
+            "height": 62
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 0
+      }
+    },
+    {
+      "name": "HUD and labels 1280x720 expanded=true",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1280,
+          720
+        ],
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 28.15625,
+            "y": 28.15625,
+            "width": 213.640625,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1036.796875,
+            "y": 28.15625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 28.15625,
+            "y": 639.84375,
+            "width": 231.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1155.84375,
+            "y": 530.84375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 965.84375,
+            "y": 187.1875,
+            "width": 286,
+            "height": 90.5
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "HUD and labels 1280x720 expanded=false",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1280,
+          720
+        ],
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 28.15625,
+            "y": 28.15625,
+            "width": 213.640625,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1036.796875,
+            "y": 28.15625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 28.15625,
+            "y": 639.84375,
+            "width": 231.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1155.84375,
+            "y": 530.84375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 965.84375,
+            "y": 187.1875,
+            "width": 286,
+            "height": 62
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 0
+      }
+    },
+    {
+      "name": "HUD and labels 1024x600 expanded=true",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1024,
+          600
+        ],
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 22.515625,
+            "y": 22.515625,
+            "width": 202.171875,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 786.4375,
+            "y": 22.515625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 22.515625,
+            "y": 525.484375,
+            "width": 231.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 905.484375,
+            "y": 416.484375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 715.484375,
+            "y": 156,
+            "width": 286,
+            "height": 90.5
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "HUD and labels 1024x600 expanded=false",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1024,
+          600
+        ],
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 22.515625,
+            "y": 22.515625,
+            "width": 202.171875,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 786.4375,
+            "y": 22.515625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 22.515625,
+            "y": 525.484375,
+            "width": 231.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 905.484375,
+            "y": 416.484375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 715.484375,
+            "y": 156,
+            "width": 286,
+            "height": 62
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "HUD and labels 844x390 expanded=true",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          844,
+          390
+        ],
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 655.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 332,
+            "width": 199.21875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 764,
+            "y": 277,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 592,
+            "y": 80,
+            "width": 240,
+            "height": 90.5
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "HUD and labels 844x390 expanded=false",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          844,
+          390
+        ],
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 655.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 332,
+            "width": 199.21875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 764,
+            "y": 277,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 592,
+            "y": 80,
+            "width": 240,
+            "height": 62
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "HUD and labels 667x375 expanded=true",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          667,
+          375
+        ],
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 478.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 317,
+            "width": 199.21875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 587,
+            "y": 262,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 441.5625,
+            "y": 80,
+            "width": 213.4375,
+            "height": 90.5
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "HUD and labels 667x375 expanded=false",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          667,
+          375
+        ],
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 478.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 317,
+            "width": 199.21875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 587,
+            "y": 262,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 441.5625,
+            "y": 80,
+            "width": 213.4375,
+            "height": 62
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      }
+    },
+    {
+      "name": "no browser errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "layouts": [
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "expanded": true,
+      "boxes": [
+        {
+          "name": "hud-anchor hud-anchor--brand",
+          "x": 40,
+          "y": 40,
+          "width": 269.6875,
+          "height": 90.59375
+        },
+        {
+          "name": "hud-anchor hud-anchor--status",
+          "x": 1654.953125,
+          "y": 40,
+          "width": 225.046875,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--dock",
+          "x": 40,
+          "y": 988,
+          "width": 256.8125,
+          "height": 52
+        },
+        {
+          "name": "hud-anchor hud-anchor--progress",
+          "x": 1771.921875,
+          "y": 871,
+          "width": 108.078125,
+          "height": 169
+        },
+        {
+          "name": "hud-anchor hud-anchor--context",
+          "x": 1594,
+          "y": 280.796875,
+          "width": 286,
+          "height": 93.796875
+        }
+      ],
+      "overlaps": [],
+      "labelOverlaps": [],
+      "small": [],
+      "outside": [],
+      "hiddenLabels": 0
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "expanded": false,
+      "boxes": [
+        {
+          "name": "hud-anchor hud-anchor--brand",
+          "x": 40,
+          "y": 40,
+          "width": 269.6875,
+          "height": 90.59375
+        },
+        {
+          "name": "hud-anchor hud-anchor--status",
+          "x": 1654.953125,
+          "y": 40,
+          "width": 225.046875,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--dock",
+          "x": 40,
+          "y": 988,
+          "width": 256.8125,
+          "height": 52
+        },
+        {
+          "name": "hud-anchor hud-anchor--progress",
+          "x": 1771.921875,
+          "y": 871,
+          "width": 108.078125,
+          "height": 169
+        },
+        {
+          "name": "hud-anchor hud-anchor--context",
+          "x": 1594,
+          "y": 280.796875,
+          "width": 286,
+          "height": 62
+        }
+      ],
+      "overlaps": [],
+      "labelOverlaps": [],
+      "small": [],
+      "outside": [],
+      "hiddenLabels": 0
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "expanded": true,
+      "boxes": [
+        {
+          "name": "hud-anchor hud-anchor--brand",
+          "x": 31.671875,
+          "y": 31.671875,
+          "width": 229.84375,
+          "height": 75.734375
+        },
+        {
+          "name": "hud-anchor hud-anchor--status",
+          "x": 1191.046875,
+          "y": 31.671875,
+          "width": 217.28125,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--dock",
+          "x": 31.671875,
+          "y": 816.328125,
+          "width": 237.4375,
+          "height": 52
+        },
+        {
+          "name": "hud-anchor hud-anchor--progress",
+          "x": 1311.46875,
+          "y": 706.328125,
+          "width": 96.859375,
+          "height": 162
+        },
+        {
+          "name": "hud-anchor hud-anchor--context",
+          "x": 1122.328125,
+          "y": 233.984375,
+          "width": 286,
+          "height": 91.109375
+        }
+      ],
+      "overlaps": [],
+      "labelOverlaps": [],
+      "small": [],
+      "outside": [],
+      "hiddenLabels": 1
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "expanded": false,
+      "boxes": [
+        {
+          "name": "hud-anchor hud-anchor--brand",
+          "x": 31.671875,
+          "y": 31.671875,
+          "width": 229.84375,
+          "height": 75.734375
+        },
+        {
+          "name": "hud-anchor hud-anchor--status",
+          "x": 1191.046875,
+          "y": 31.671875,
+          "width": 217.28125,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--dock",
+          "x": 31.671875,
+          "y": 816.328125,
+          "width": 237.4375,
+          "height": 52
+        },
+        {
+          "name": "hud-anchor hud-anchor--progress",
+          "x": 1311.46875,
+          "y": 706.328125,
+          "width": 96.859375,
+          "height": 162
+        },
+        {
+          "name": "hud-anchor hud-anchor--context",
+          "x": 1122.328125,
+          "y": 233.984375,
+          "width": 286,
+          "height": 62
+        }
+      ],
+      "overlaps": [],
+      "labelOverlaps": [],
+      "small": [],
+      "outside": [],
+      "hiddenLabels": 0
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "expanded": true,
+      "boxes": [
+        {
+          "name": "hud-anchor hud-anchor--brand",
+          "x": 28.15625,
+          "y": 28.15625,
+          "width": 213.640625,
+          "height": 72
+        },
+        {
+          "name": "hud-anchor hud-anchor--status",
+          "x": 1036.796875,
+          "y": 28.15625,
+          "width": 215.046875,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--dock",
+          "x": 28.15625,
+          "y": 639.84375,
+          "width": 231.84375,
+          "height": 52
+        },
+        {
+          "name": "hud-anchor hud-anchor--progress",
+          "x": 1155.84375,
+          "y": 530.84375,
+          "width": 96,
+          "height": 161
+        },
+        {
+          "name": "hud-anchor hud-anchor--context",
+          "x": 965.84375,
+          "y": 187.1875,
+          "width": 286,
+          "height": 90.5
+        }
+      ],
+      "overlaps": [],
+      "labelOverlaps": [],
+      "small": [],
+      "outside": [],
+      "hiddenLabels": 1
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "expanded": false,
+      "boxes": [
+        {
+          "name": "hud-anchor hud-anchor--brand",
+          "x": 28.15625,
+          "y": 28.15625,
+          "width": 213.640625,
+          "height": 72
+        },
+        {
+          "name": "hud-anchor hud-anchor--status",
+          "x": 1036.796875,
+          "y": 28.15625,
+          "width": 215.046875,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--dock",
+          "x": 28.15625,
+          "y": 639.84375,
+          "width": 231.84375,
+          "height": 52
+        },
+        {
+          "name": "hud-anchor hud-anchor--progress",
+          "x": 1155.84375,
+          "y": 530.84375,
+          "width": 96,
+          "height": 161
+        },
+        {
+          "name": "hud-anchor hud-anchor--context",
+          "x": 965.84375,
+          "y": 187.1875,
+          "width": 286,
+          "height": 62
+        }
+      ],
+      "overlaps": [],
+      "labelOverlaps": [],
+      "small": [],
+      "outside": [],
+      "hiddenLabels": 0
+    },
+    {
+      "viewport": [
+        1024,
+        600
+      ],
+      "expanded": true,
+      "boxes": [
+        {
+          "name": "hud-anchor hud-anchor--brand",
+          "x": 22.515625,
+          "y": 22.515625,
+          "width": 202.171875,
+          "height": 72
+        },
+        {
+          "name": "hud-anchor hud-anchor--status",
+          "x": 786.4375,
+          "y": 22.515625,
+          "width": 215.046875,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--dock",
+          "x": 22.515625,
+          "y": 525.484375,
+          "width": 231.84375,
+          "height": 52
+        },
+        {
+          "name": "hud-anchor hud-anchor--progress",
+          "x": 905.484375,
+          "y": 416.484375,
+          "width": 96,
+          "height": 161
+        },
+        {
+          "name": "hud-anchor hud-anchor--context",
+          "x": 715.484375,
+          "y": 156,
+          "width": 286,
+          "height": 90.5
+        }
+      ],
+      "overlaps": [],
+      "labelOverlaps": [],
+      "small": [],
+      "outside": [],
+      "hiddenLabels": 1
+    },
+    {
+      "viewport": [
+        1024,
+        600
+      ],
+      "expanded": false,
+      "boxes": [
+        {
+          "name": "hud-anchor hud-anchor--brand",
+          "x": 22.515625,
+          "y": 22.515625,
+          "width": 202.171875,
+          "height": 72
+        },
+        {
+          "name": "hud-anchor hud-anchor--status",
+          "x": 786.4375,
+          "y": 22.515625,
+          "width": 215.046875,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--dock",
+          "x": 22.515625,
+          "y": 525.484375,
+          "width": 231.84375,
+          "height": 52
+        },
+        {
+          "name": "hud-anchor hud-anchor--progress",
+          "x": 905.484375,
+          "y": 416.484375,
+          "width": 96,
+          "height": 161
+        },
+        {
+          "name": "hud-anchor hud-anchor--context",
+          "x": 715.484375,
+          "y": 156,
+          "width": 286,
+          "height": 62
+        }
+      ],
+      "overlaps": [],
+      "labelOverlaps": [],
+      "small": [],
+      "outside": [],
+      "hiddenLabels": 1
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "expanded": true,
+      "boxes": [
+        {
+          "name": "hud-anchor hud-anchor--brand",
+          "x": 12,
+          "y": 12,
+          "width": 152.84375,
+          "height": 52
+        },
+        {
+          "name": "hud-anchor hud-anchor--status",
+          "x": 655.625,
+          "y": 12,
+          "width": 176.375,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--dock",
+          "x": 12,
+          "y": 332,
+          "width": 199.21875,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--progress",
+          "x": 764,
+          "y": 277,
+          "width": 68,
+          "height": 101
+        },
+        {
+          "name": "hud-anchor hud-anchor--context",
+          "x": 592,
+          "y": 80,
+          "width": 240,
+          "height": 90.5
+        }
+      ],
+      "overlaps": [],
+      "labelOverlaps": [],
+      "small": [],
+      "outside": [],
+      "hiddenLabels": 1
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "expanded": false,
+      "boxes": [
+        {
+          "name": "hud-anchor hud-anchor--brand",
+          "x": 12,
+          "y": 12,
+          "width": 152.84375,
+          "height": 52
+        },
+        {
+          "name": "hud-anchor hud-anchor--status",
+          "x": 655.625,
+          "y": 12,
+          "width": 176.375,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--dock",
+          "x": 12,
+          "y": 332,
+          "width": 199.21875,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--progress",
+          "x": 764,
+          "y": 277,
+          "width": 68,
+          "height": 101
+        },
+        {
+          "name": "hud-anchor hud-anchor--context",
+          "x": 592,
+          "y": 80,
+          "width": 240,
+          "height": 62
+        }
+      ],
+      "overlaps": [],
+      "labelOverlaps": [],
+      "small": [],
+      "outside": [],
+      "hiddenLabels": 1
+    },
+    {
+      "viewport": [
+        667,
+        375
+      ],
+      "expanded": true,
+      "boxes": [
+        {
+          "name": "hud-anchor hud-anchor--brand",
+          "x": 12,
+          "y": 12,
+          "width": 152.84375,
+          "height": 52
+        },
+        {
+          "name": "hud-anchor hud-anchor--status",
+          "x": 478.625,
+          "y": 12,
+          "width": 176.375,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--dock",
+          "x": 12,
+          "y": 317,
+          "width": 199.21875,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--progress",
+          "x": 587,
+          "y": 262,
+          "width": 68,
+          "height": 101
+        },
+        {
+          "name": "hud-anchor hud-anchor--context",
+          "x": 441.5625,
+          "y": 80,
+          "width": 213.4375,
+          "height": 90.5
+        }
+      ],
+      "overlaps": [],
+      "labelOverlaps": [],
+      "small": [],
+      "outside": [],
+      "hiddenLabels": 1
+    },
+    {
+      "viewport": [
+        667,
+        375
+      ],
+      "expanded": false,
+      "boxes": [
+        {
+          "name": "hud-anchor hud-anchor--brand",
+          "x": 12,
+          "y": 12,
+          "width": 152.84375,
+          "height": 52
+        },
+        {
+          "name": "hud-anchor hud-anchor--status",
+          "x": 478.625,
+          "y": 12,
+          "width": 176.375,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--dock",
+          "x": 12,
+          "y": 317,
+          "width": 199.21875,
+          "height": 46
+        },
+        {
+          "name": "hud-anchor hud-anchor--progress",
+          "x": 587,
+          "y": 262,
+          "width": 68,
+          "height": 101
+        },
+        {
+          "name": "hud-anchor hud-anchor--context",
+          "x": 441.5625,
+          "y": 80,
+          "width": 213.4375,
+          "height": 62
+        }
+      ],
+      "overlaps": [],
+      "labelOverlaps": [],
+      "small": [],
+      "outside": [],
+      "hiddenLabels": 1
+    }
+  ],
+  "errors": [],
+  "scope": "Six CSS viewports, default explored camera, location card open/closed. HUD pair intersections and visible map-label conflicts allow2px rounding; at most2 culled labels. Not arbitrary cameras or physical devices."
+}

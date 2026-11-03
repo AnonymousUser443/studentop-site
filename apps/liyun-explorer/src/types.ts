@@ -5,14 +5,16 @@ export type UV = { u: number; v: number };
 export type MapCamera = { scale: number; x: number; y: number };
 export type Viewport = { width: number; height: number };
 export type IconName = 'book' | 'flower' | 'leaf' | 'scroll' | 'people' | 'settings' | 'compass' | 'chest' | 'lake' | 'gate' | 'sport' | 'star' | 'lock' | 'moon' | 'tower' | 'close' | 'sound' | 'fullscreen' | 'plus';
-export type Landmark = { id: string; name: string; subtitle: string; uv: UV; icon: IconName; regionId: string; description: string; verse: string; progress: number; checkInRadius: number; isBeacon?: boolean };
+export type Landmark = { id: string; name: string; subtitle: string; uv: UV; icon: IconName; regionId: string; description: string; verse: string; progress: number; checkInRadius: number; isBeacon?: boolean; photos?:{url:string;alt:string}[] };
 export type GameSettings = {
   music: boolean; volume: number; track: number;
-  /** @deprecated 派生字段：由 qualityPreset 映射（low→'low'，high/ultra→'high'）。仅 p5 环境层读取。 */
+  /** @deprecated 派生字段：基础预设 low→'low'，high/ultra→'high'。仅兼容旧环境层。 */
   quality: 'high' | 'low';
   reducedMotion: boolean;
   /** 画质预设，见 src/settings/spec.ts */
   qualityPreset: QualityPreset;
+  /** custom 覆盖项的原始基底；必须随存档一起保存，避免刷新后回到 high。 */
+  baseQualityPreset: Exclude<QualityPreset, 'custom'>;
   qualityOverrides: Partial<QualitySpec>;
   /** 自动降级总开关；默认 true。关闭后不采样、不降档、不提示。见 V2 计划 6.3 */
   autoDegrade: boolean;
@@ -24,6 +26,13 @@ export type GameSettings = {
   reduceFlash: boolean;
   /** UI 缩放 */
   hudScale: 0.9 | 1 | 1.12;
+  dragSensitivity: number;
+  zoomLimit: number;
+  doubleZoom: 1.2 | 1.45 | 1.8;
+  /** 播报停留秒数。 */
+  messageDuration: 2.4 | 3.6 | 5;
+  showCinematic: boolean;
+  redDot: boolean;
 };
 // Version 3 adds quality presets / auto-degrade / UI prefs on top of the v2 shape.
 // playerUV is the virtual exploration avatar; live GPS/heading must never be persisted or synced.

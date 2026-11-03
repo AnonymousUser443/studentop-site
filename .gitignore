@@ -33,3 +33,7 @@ rate-state.json
 *.pem
 *.key
 !apps/**/font*.key
+apps/liyun-explorer/.author-data/
+apps/liyun-explorer/.author-resources/
+apps/liyun-explorer/dist-studio/
+.release-local/

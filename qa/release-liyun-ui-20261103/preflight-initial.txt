@@ -1,0 +1,15 @@
+==== studentop.cn public-entry preflight ====
+frpc config : /opt/frpc/frpc.ini
+frp node    : cn-bj1-kvlqs4ee.frp.cool:7000
+
+[FAIL] (a) frpc 未成功登录节点（is-active=active, login_success_in_log=0）
+[PASS] (b) Pi -> 节点 TCP cn-bj1-kvlqs4ee.frp.cool:7000 连接成功
+[PASS] (c) DNS studentop.cn -> 49.232.69.222 （与节点 IP 一致）  [DoH dns.alidns.com]
+[PASS] (d) 本地证书含 studentop.cn 且非自签（subject=CN=studentop.cn | issuer=C=US, O=Let's Encrypt, CN=YE2）
+[PASS] (e) 公网 https://studentop.cn:14355/ -> 200，标题: Aiden 的个人主页 · 青玉纸境
+[PASS] (f) https://frost.studentop.cn:14355/ -> 200 且 /api/health ok（frost-atlas.service active）
+[PASS] (g) https://liyun.studentop.cn:14355/ -> 200，入口 JS 可取（/assets/releases/26ee33572fe102c61f53a3be/index-O8gpkMDJ.js）
+[PASS] (h) https://genshin.studentop.cn:14355/ -> 200，入口 JS 可取（/assets/index-7c2c39c5.js）
+
+SUMMARY: 7 PASS / 1 FAIL
+RESULT: FAIL - 按 deploy/SAKURA.md 的步骤修复后重新运行本脚本

@@ -1,0 +1,831 @@
+{
+  "at": "2026-11-03T09:03:57.275Z",
+  "sourceMetric": {
+    "before": 298,
+    "after": 51
+  },
+  "computedMetric": {
+    "definition": "Distinct nontransparent resolved solid colors (RGBA bytes) across nine computed properties on visible, non-inert DOM: color, background-color, four border colors, outline-color, fill and stroke. Computed fill/stroke from visible SVG elements is included. Raster pixels, gradient expansion, pseudo-elements and hidden states are excluded.",
+    "matchedFrames": 9,
+    "beforeUnion": 79,
+    "afterMatchedUnion": 40,
+    "afterAllFramesUnion": 41,
+    "allFinalFrames": 64,
+    "allFinalFramesUnion": 77,
+    "allFinalFramesAtMost80": true
+  },
+  "textContrast": {
+    "definition": "Opaque screenshot samples after temporarily hiding selected text; foreground alpha and ancestor opacity included. Reports the fifth percentile across inset line rectangles; thresholds 4.5 normal / 3 large. Disabled text omitted. Decorative text shadow is not counted as contrast support.",
+    "beforeChecks": 106,
+    "beforeFailures": 31,
+    "afterChecks": 149,
+    "afterFailures": 0
+  },
+  "boundaries": [
+    {
+      "frame": "map-1440x900",
+      "selector": ".hud-pill",
+      "ratio": 4.8555743985850315,
+      "pass": true
+    },
+    {
+      "frame": "map-1440x900",
+      "selector": ".hud-pill",
+      "ratio": 4.8555743985850315,
+      "pass": true
+    },
+    {
+      "frame": "map-1440x900",
+      "selector": ".hud-icon-button",
+      "ratio": 4.8555743985850315,
+      "pass": true
+    },
+    {
+      "frame": "map-1440x900",
+      "selector": ".hud-context-toggle",
+      "ratio": 6.310693041269771,
+      "pass": true
+    },
+    {
+      "frame": "map-1440x900",
+      "selector": ".location-primary",
+      "ratio": 9.798329740647125,
+      "pass": true
+    },
+    {
+      "frame": "map-1440x900",
+      "selector": ".map-marker-gem",
+      "ratio": 6.797374766731429,
+      "pass": true
+    },
+    {
+      "frame": "map-1440x900",
+      "selector": ".map-marker-gem",
+      "ratio": 6.797374766731429,
+      "pass": true
+    },
+    {
+      "frame": "map-1440x900",
+      "selector": ".map-marker-gem",
+      "ratio": 6.797374766731429,
+      "pass": true
+    },
+    {
+      "frame": "map-1440x900",
+      "selector": ".map-marker-gem",
+      "ratio": 6.797374766731429,
+      "pass": true
+    },
+    {
+      "frame": "map-1440x900",
+      "selector": ".map-marker-gem",
+      "ratio": 6.797374766731429,
+      "pass": true
+    },
+    {
+      "frame": "map-1440x900",
+      "selector": ".map-marker-gem",
+      "ratio": 5.476133801222779,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-1440x900",
+      "selector": ".hud-pill",
+      "ratio": 4.8555743985850315,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-1440x900",
+      "selector": ".hud-pill",
+      "ratio": 4.8555743985850315,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-1440x900",
+      "selector": ".hud-icon-button",
+      "ratio": 4.8555743985850315,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-1440x900",
+      "selector": ".hud-context-toggle",
+      "ratio": 6.310693041269771,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-1440x900",
+      "selector": ".location-primary",
+      "ratio": 9.798329740647125,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-1440x900",
+      "selector": ".map-marker-gem",
+      "ratio": 3.5509022027784467,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-1440x900",
+      "selector": ".map-marker-gem",
+      "ratio": 3.5509022027784467,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-1440x900",
+      "selector": ".map-marker-gem",
+      "ratio": 3.5509022027784467,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-1440x900",
+      "selector": ".map-marker-gem",
+      "ratio": 3.5509022027784467,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-1440x900",
+      "selector": ".map-marker-gem",
+      "ratio": 3.5509022027784467,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-1440x900",
+      "selector": ".map-marker-gem",
+      "ratio": 5.476133801222779,
+      "pass": true
+    },
+    {
+      "frame": "collection-1440x900",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-1440x900",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-1440x900",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-1440x900",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-1440x900",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-1440x900",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-1440x900",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-1440x900",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "activity-1440x900",
+      "selector": ".activity-close",
+      "ratio": 5.255509573070381,
+      "pass": true
+    },
+    {
+      "frame": "activity-1440x900",
+      "selector": ".activity-reward",
+      "ratio": 4.107006063266308,
+      "pass": true
+    },
+    {
+      "frame": "activity-1440x900",
+      "selector": ".activity-reward",
+      "ratio": 4.107006063266308,
+      "pass": true
+    },
+    {
+      "frame": "activity-1440x900",
+      "selector": ".activity-reward",
+      "ratio": 4.107006063266308,
+      "pass": true
+    },
+    {
+      "frame": "activity-1440x900",
+      "selector": ".activity-reward",
+      "ratio": 4.107006063266308,
+      "pass": true
+    },
+    {
+      "frame": "map-844x390",
+      "selector": ".hud-pill",
+      "ratio": 4.8555743985850315,
+      "pass": true
+    },
+    {
+      "frame": "map-844x390",
+      "selector": ".hud-pill",
+      "ratio": 4.8555743985850315,
+      "pass": true
+    },
+    {
+      "frame": "map-844x390",
+      "selector": ".hud-icon-button",
+      "ratio": 4.8555743985850315,
+      "pass": true
+    },
+    {
+      "frame": "map-844x390",
+      "selector": ".hud-context-toggle",
+      "ratio": 6.310693041269771,
+      "pass": true
+    },
+    {
+      "frame": "map-844x390",
+      "selector": ".location-primary",
+      "ratio": 9.798329740647125,
+      "pass": true
+    },
+    {
+      "frame": "map-844x390",
+      "selector": ".map-marker-gem",
+      "ratio": 6.797374766731429,
+      "pass": true
+    },
+    {
+      "frame": "map-844x390",
+      "selector": ".map-marker-gem",
+      "ratio": 6.797374766731429,
+      "pass": true
+    },
+    {
+      "frame": "map-844x390",
+      "selector": ".map-marker-gem",
+      "ratio": 6.797374766731429,
+      "pass": true
+    },
+    {
+      "frame": "map-844x390",
+      "selector": ".map-marker-gem",
+      "ratio": 6.797374766731429,
+      "pass": true
+    },
+    {
+      "frame": "map-844x390",
+      "selector": ".map-marker-gem",
+      "ratio": 6.797374766731429,
+      "pass": true
+    },
+    {
+      "frame": "map-844x390",
+      "selector": ".map-marker-gem",
+      "ratio": 5.476133801222779,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-844x390",
+      "selector": ".hud-pill",
+      "ratio": 4.8555743985850315,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-844x390",
+      "selector": ".hud-pill",
+      "ratio": 4.8555743985850315,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-844x390",
+      "selector": ".hud-icon-button",
+      "ratio": 4.8555743985850315,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-844x390",
+      "selector": ".hud-context-toggle",
+      "ratio": 6.310693041269771,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-844x390",
+      "selector": ".location-primary",
+      "ratio": 9.798329740647125,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-844x390",
+      "selector": ".map-marker-gem",
+      "ratio": 3.5509022027784467,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-844x390",
+      "selector": ".map-marker-gem",
+      "ratio": 3.5509022027784467,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-844x390",
+      "selector": ".map-marker-gem",
+      "ratio": 3.5509022027784467,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-844x390",
+      "selector": ".map-marker-gem",
+      "ratio": 3.5509022027784467,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-844x390",
+      "selector": ".map-marker-gem",
+      "ratio": 3.5509022027784467,
+      "pass": true
+    },
+    {
+      "frame": "map-fog-844x390",
+      "selector": ".map-marker-gem",
+      "ratio": 5.476133801222779,
+      "pass": true
+    },
+    {
+      "frame": "collection-844x390",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-844x390",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-844x390",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-844x390",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-844x390",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-844x390",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-844x390",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "collection-844x390",
+      "selector": ".collection-item",
+      "ratio": 3.683728438698523,
+      "pass": true
+    },
+    {
+      "frame": "activity-844x390",
+      "selector": ".activity-close",
+      "ratio": 5.255509573070381,
+      "pass": true
+    },
+    {
+      "frame": "activity-844x390",
+      "selector": ".activity-reward",
+      "ratio": 4.107006063266308,
+      "pass": true
+    },
+    {
+      "frame": "activity-844x390",
+      "selector": ".activity-reward",
+      "ratio": 4.107006063266308,
+      "pass": true
+    },
+    {
+      "frame": "activity-844x390",
+      "selector": ".activity-reward",
+      "ratio": 4.107006063266308,
+      "pass": true
+    },
+    {
+      "frame": "activity-844x390",
+      "selector": ".activity-reward",
+      "ratio": 4.107006063266308,
+      "pass": true
+    }
+  ],
+  "geometry": [
+    {
+      "frame": "map-1440x900",
+      "beforeComputedColors": 25,
+      "afterComputedColors": 19,
+      "changes": []
+    },
+    {
+      "frame": "collection-1440x900",
+      "beforeComputedColors": 14,
+      "afterComputedColors": 15,
+      "changes": []
+    },
+    {
+      "frame": "landmark-1440x900",
+      "beforeComputedColors": 14,
+      "afterComputedColors": 15,
+      "changes": []
+    },
+    {
+      "frame": "activity-1440x900",
+      "beforeComputedColors": 35,
+      "afterComputedColors": 17,
+      "changes": []
+    },
+    {
+      "frame": "map-844x390",
+      "beforeComputedColors": 23,
+      "afterComputedColors": 18,
+      "changes": []
+    },
+    {
+      "frame": "collection-844x390",
+      "beforeComputedColors": 14,
+      "afterComputedColors": 15,
+      "changes": []
+    },
+    {
+      "frame": "landmark-844x390",
+      "beforeComputedColors": 14,
+      "afterComputedColors": 15,
+      "changes": []
+    },
+    {
+      "frame": "activity-844x390",
+      "beforeComputedColors": 33,
+      "afterComputedColors": 16,
+      "changes": []
+    },
+    {
+      "frame": "entry-1440x900",
+      "beforeComputedColors": 15,
+      "afterComputedColors": 13,
+      "changes": []
+    }
+  ],
+  "layoutAuditDefinition": "Selected bounding boxes in nine matching normal-state frames, plus layout-related declaration comparison against before-source snapshots. Font aliases, separate press-feedback changes and safe-area changes are reported; this is not a claim that all CSS declarations or pixels stayed identical.",
+  "layoutDeclarationChanges": [
+    {
+      "file": "activity/activity.css",
+      "key": ".activity-screen :: font-family",
+      "before": [
+        "'Noto Serif SC', 'Songti SC', SimSun, serif"
+      ],
+      "after": [
+        "var(--font-ui)"
+      ]
+    },
+    {
+      "file": "activity/activity.css",
+      "key": ".activity-close:active :: transform",
+      "before": [
+        "scale(.96)"
+      ]
+    },
+    {
+      "file": "activity/activity.css",
+      "key": ".activity-primary:active :: transform",
+      "before": [
+        "scale(.985)"
+      ]
+    },
+    {
+      "file": "activity/activity.css",
+      "key": ".activity-tab:active :: transform",
+      "before": [
+        "scale(.985)"
+      ]
+    },
+    {
+      "file": "global.css",
+      "key": ":root :: font-family",
+      "before": [
+        "'Noto Serif SC','Songti SC',SimSun,serif"
+      ],
+      "after": [
+        "var(--font-ui)"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 1100px) / .settings-header :: padding",
+      "before": [
+        "16px 30px"
+      ],
+      "after": [
+        "max(16px, env(safe-area-inset-top)) max(30px, env(safe-area-inset-right)) 16px max(30px, env(safe-area-inset-left))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 1100px) / .settings-body :: padding-inline",
+      "before": [
+        "30px"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 1100px) / .settings-footer :: padding-inline",
+      "before": [
+        "30px"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-height: 560px) / .settings-header :: padding",
+      "before": [
+        "max(9px, env(safe-area-inset-top)) 22px 9px"
+      ],
+      "after": [
+        "max(9px, env(safe-area-inset-top)) max(22px, env(safe-area-inset-right)) 9px max(22px, env(safe-area-inset-left))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-height: 560px) / .settings-body :: padding",
+      "before": [
+        "0 22px 8px"
+      ],
+      "after": [
+        "0 max(22px, env(safe-area-inset-right)) 8px max(22px, env(safe-area-inset-left))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-height: 560px) / .settings-footer :: padding",
+      "before": [
+        "9px 22px max(9px, env(safe-area-inset-bottom))"
+      ],
+      "after": [
+        "9px max(22px, env(safe-area-inset-right)) max(9px, env(safe-area-inset-bottom)) max(22px, env(safe-area-inset-left))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 740px) / .settings-body :: padding-inline",
+      "before": [
+        "14px"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 740px) / .settings-header :: padding-inline",
+      "before": [
+        "16px"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 740px) / .settings-footer :: padding-inline",
+      "before": [
+        "16px"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 520px) / .settings-header :: padding-inline",
+      "before": [
+        "12px"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 520px) / .settings-body :: padding-inline",
+      "before": [
+        "9px"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 520px) / .settings-footer :: padding",
+      "before": [
+        "10px 12px"
+      ],
+      "after": [
+        "10px max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left))"
+      ]
+    }
+  ],
+  "addedLayoutDeclarations": [
+    {
+      "file": "activity/activity.css",
+      "key": ".activity-page-header::before :: position",
+      "value": [
+        "absolute"
+      ]
+    },
+    {
+      "file": "activity/activity.css",
+      "key": ".activity-page-header::before :: inset",
+      "value": [
+        "-8px -14px"
+      ]
+    },
+    {
+      "file": "activity/activity.css",
+      "key": ".activity-close:active .ly-icon :: transform",
+      "value": [
+        "scale(.92)"
+      ]
+    },
+    {
+      "file": "activity/activity.css",
+      "key": ".activity-primary:active .activity-action-arrow :: transform",
+      "value": [
+        "translateX(1px) scale(.92)"
+      ]
+    },
+    {
+      "file": "activity/activity.css",
+      "key": ".activity-tab:active .activity-tab-icon :: transform",
+      "value": [
+        "scale(.94)"
+      ]
+    },
+    {
+      "file": "calibration/calibration.css",
+      "key": ".cal-screen :: padding",
+      "value": [
+        "env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px)"
+      ]
+    },
+    {
+      "file": "hud/panels/panels.css",
+      "key": ".hud-modal .collection-item:active .collection-mark :: transform",
+      "value": [
+        "translateY(1px)"
+      ]
+    },
+    {
+      "file": "map/map.css",
+      "key": ".map-marker:active .map-marker-gem :: transform",
+      "value": [
+        "rotate(45deg) scale(.68)"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 1100px) / .settings-body :: padding-left",
+      "value": [
+        "max(30px, env(safe-area-inset-left))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 1100px) / .settings-body :: padding-right",
+      "value": [
+        "max(30px, env(safe-area-inset-right))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 1100px) / .settings-footer :: padding-left",
+      "value": [
+        "max(30px, env(safe-area-inset-left))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 1100px) / .settings-footer :: padding-right",
+      "value": [
+        "max(30px, env(safe-area-inset-right))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 740px) / .settings-body :: padding-left",
+      "value": [
+        "max(14px, env(safe-area-inset-left))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 740px) / .settings-body :: padding-right",
+      "value": [
+        "max(14px, env(safe-area-inset-right))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 740px) / .settings-header :: padding-left",
+      "value": [
+        "max(16px, env(safe-area-inset-left))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 740px) / .settings-header :: padding-right",
+      "value": [
+        "max(16px, env(safe-area-inset-right))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 740px) / .settings-footer :: padding-left",
+      "value": [
+        "max(16px, env(safe-area-inset-left))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 740px) / .settings-footer :: padding-right",
+      "value": [
+        "max(16px, env(safe-area-inset-right))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 520px) / .settings-header :: padding-left",
+      "value": [
+        "max(12px, env(safe-area-inset-left))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 520px) / .settings-header :: padding-right",
+      "value": [
+        "max(12px, env(safe-area-inset-right))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 520px) / .settings-body :: padding-left",
+      "value": [
+        "max(9px, env(safe-area-inset-left))"
+      ]
+    },
+    {
+      "file": "settings/settings.css",
+      "key": "@media (max-width: 520px) / .settings-body :: padding-right",
+      "value": [
+        "max(9px, env(safe-area-inset-right))"
+      ]
+    }
+  ],
+  "visibleDifferences": [
+    "Nearest shared brand-color substitutions retain alpha but change RGB; these are not pixel-identical screenshots.",
+    "A small jade backplate supports the HUD season text. The activity heading gains an absolutely positioned jade gradient behind the existing heading.",
+    "Map label fade starts after 90% rather than 55–68% to protect the last glyphs; locked pins retain their distinct muted gemstone but use readable full-opacity labels.",
+    "Map markers use the global z-markers token at 7 instead of the old local 4, so ambient leaves/light at 6 cannot paint over functional labels. The map layer remains below HUD and dialogs.",
+    "Activity --activity-fast uses the global 160ms duration instead of 140ms, and --activity-ease uses the global e-out curve. Control feedback was subsequently adjusted by the UI acceptance pass, including internal press indicators instead of shrinking the 44px outer hit area.",
+    "Paper modal accent text is darker, and interactive borders are stronger for contrast.",
+    "New-page contrast fixes strengthen off switches, danger/cancel outlines and calibration form borders. Calibration secondary choice text gains a backing matched to its active/normal state, WGS84 text is darker, and map text halos use non-scaling strokes.",
+    "The final screenshots include the separate UI safe-area pass and final font/image assets. Full-frame pixel differences are therefore observations of the final app, not an isolated attribution to the token migration."
+  ],
+  "newPages": {
+    "ok": true,
+    "frames": 53,
+    "textChecks": 1380,
+    "textFailures": 0,
+    "vectorChecks": 84,
+    "vectorFailures": 0,
+    "controlChecks": 645,
+    "controlFailures": 0,
+    "computedMaxPerFrame": 29,
+    "computedUnion": 55,
+    "errors": [],
+    "minimumObserved": {
+      "normalTextP05": 4.50364764953165,
+      "largeTextP05": 4.835906756640409,
+      "svgHaloRatio": 13.99130306472958,
+      "svgStrokeCssPixels": 2.5,
+      "controlRatio": 3.012983917098749
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "ok": true,
+  "mode": "Node CLI integration in an owned temporary miniature app; all confirmations are synthetic",
+  "checks": [
+    {
+      "name": "recommended dry-run succeeds without writing",
+      "pass": true
+    },
+    {
+      "name": "recommended --apply is refused without writing",
+      "pass": true
+    },
+    {
+      "name": "confirmed dry-run reports changed point but does not write",
+      "pass": true
+    },
+    {
+      "name": "explicit confirmed apply writes independent content and enabled overrides",
+      "pass": true
+    },
+    {
+      "name": "rejects alien map with no partial writes",
+      "pass": true
+    },
+    {
+      "name": "rejects unknown region ID with no partial writes",
+      "pass": true
+    },
+    {
+      "name": "rejects self-intersecting polygon with no partial writes",
+      "pass": true
+    },
+    {
+      "name": "rejects mismatched manual WGS84 binding with no partial writes",
+      "pass": true
+    },
+    {
+      "name": "all six sandbox frozen inputs stay byte-identical",
+      "pass": true
+    },
+    {
+      "name": "production content and frozen files stay byte-identical",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "tower",
+  "source": "C:\\Users\\12929\\.codex\\generated_images\\01a19cdf-88b3-7880-b645-ca87f10dbd3b\\exec-c993d32d-5be3-4e4d-ac96-f654be3d6d12.png",
+  "tool": "built-in ImageGen",
+  "prompt": "Original concept illustration for a Chinese university campus exploration game, cinematic 16:9 landscape, request large 1920x1080. Elegant hand-painted cel-shaded new Chinese landscape with layered cut-paper silhouettes and rice-paper fibers; sage jade, lake teal, warm ivory, muted autumn gold accents. Refined calm youthful game chapter art, strong foreground/middle/background depth, asymmetrical composition, no text, no signage, no logos, no UI, no borders. Stylized original architecture, explicitly a conceptual placeholder rather than a real campus photograph. A FICTIONAL exploration beacon, explicitly not a real campus tower. A slender geometric ivory-and-gold light obelisk hovering above an ornate small paper-cut stone plinth in an open jade-green garden; restrained starlight and soft golden rings, pale clouds parting, distant simplified university buildings. Whimsical fantastical landmark for a game, beautiful original concept art, no realistic institutional signage or text.",
+  "usage": "AI-generated fictional game beacon, not a real campus tower",
+  "hero": "D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\apps\\liyun-explorer\\public\\assets\\landmarks\\tower\\hero.webp",
+  "visualReview": "Native output inspected; concept placeholder, not a factual campus photograph.",
+  "nativePixels": [
+    1672,
+    941
+  ],
+  "deliveredPixels": [
+    768,
+    432
+  ],
+  "encoding": "WebP quality 74; local distribution derivative",
+  "bytes": 61134,
+  "sha256": "2e385aec8ec6cd7d0fb012c109342e5d81f26d4bbb16aced72b9109c580b422a"
+}

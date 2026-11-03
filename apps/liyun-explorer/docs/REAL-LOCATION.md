@@ -15,7 +15,7 @@
 由使用者自行打开两个 PowerShell 窗口。第一个启动前端：
 
 ```powershell
-Set-Location 'D:\软件工程导论\studentop-site\apps\liyun-explorer'
+Set-Location 'D:\Users\Desktop\北理的文件夹\学习相关\软件工程导论研究型课程\V2版本集中开发文件夹\apps\liyun-explorer'
 npm run dev -- --host 127.0.0.1 --port 5174 --strictPort
 ```
 

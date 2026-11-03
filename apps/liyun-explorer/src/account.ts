@@ -1,5 +1,6 @@
-import type { AccountUser, ExplorationState, GameSettings } from './types';
-import { LANDMARKS, START_UV } from './data';
+import type { AccountUser, ExplorationState } from './types';
+import { START_UV } from './data';
+import {KNOWN_ANCHORS} from './content/catalog';
 import { sanitizeSettings } from './app/stores/useSettings';
 
 // 账号与进度同步客户端。所有请求走同源 /api/*（开发经 Vite 反代，生产经 nginx 反代）。
@@ -88,31 +89,23 @@ const record = (value: unknown): Record<string, unknown> => value !== null && ty
 // Send only public anchors, never an arbitrary/live-GPS-derived UV or unknown nested fields.
 export function sanitizeCloudState(value: unknown): ExplorationState {
   const raw = record(value);
-  const known = new Set(LANDMARKS.map(p => p.id));
+  const known = new Set(Object.keys(KNOWN_ANCHORS));
   const isReal = raw.version === 2 || raw.version === 3;
   const discoveredIds = isReal && Array.isArray(raw.discoveredIds)
     ? [...new Set(raw.discoveredIds.filter((id: unknown): id is string => typeof id === 'string' && known.has(id)))] : [];
-  const places = LANDMARKS.filter(p => discoveredIds.includes(p.id));
   const point = record(raw.playerUV);
-  const anchor = isReal ? [START_UV, ...places.map(p => p.uv)].find(p => p.u === point.u && p.v === point.v) : undefined;
+  const anchor = isReal ? [START_UV, ...discoveredIds.map(id=>KNOWN_ANCHORS[id])].find(p => p.u === point.u && p.v === point.v) : undefined;
   const s = record(raw.settings);
-  // v3 白名单：新增字段必须同步在此声明，否则云端会静默丢弃（见 V2 计划 6.4）。
+  const knownRegions = new Set(Object.keys(KNOWN_ANCHORS));
+  const unlockedRegionIds = raw.version === 3 && Object.hasOwn(raw, 'unlockedRegionIds')
+    ? [...new Set((Array.isArray(raw.unlockedRegionIds) ? raw.unlockedRegionIds : [])
+      .filter((id: unknown): id is string => typeof id === 'string' && knownRegions.has(id)))]
+    : [...discoveredIds];
+  // 所有设置字段在共享白名单声明，浏览器与服务端使用同一份清洗契约。
   return {
-    version: 3, discoveredIds, unlockedRegionIds: [...new Set(places.map(p => p.regionId))],
+    version: 3, discoveredIds, unlockedRegionIds,
     playerUV: { ...(anchor ?? START_UV) },
-    settings: sanitizeSettings({
-      music: s.music as boolean | undefined,
-      volume: s.volume as number | undefined,
-      reducedMotion: s.reducedMotion as boolean | undefined,
-      track: s.track as number | undefined,
-      qualityPreset: (s.qualityPreset ?? (s.quality === 'low' ? 'low' : 'high')) as GameSettings['qualityPreset'],
-      qualityOverrides: s.qualityOverrides as GameSettings['qualityOverrides'] | undefined,
-      autoDegrade: s.autoDegrade as boolean | undefined,
-      degradedFrom: s.degradedFrom as GameSettings['degradedFrom'] | undefined,
-      uiSound: s.uiSound as boolean | undefined,
-      reduceFlash: s.reduceFlash as boolean | undefined,
-      hudScale: s.hudScale as GameSettings['hudScale'] | undefined,
-    }),
+    settings: sanitizeSettings(s),
   };
 }
 

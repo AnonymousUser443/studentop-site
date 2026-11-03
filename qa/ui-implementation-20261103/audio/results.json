@@ -1,0 +1,473 @@
+{
+  "ok": true,
+  "total": 19,
+  "checks": [
+    {
+      "name": "production has no development bridge",
+      "pass": true
+    },
+    {
+      "name": "native AudioContext unlocked on guest gesture while music is off",
+      "pass": true
+    },
+    {
+      "name": "one music element is owned and remains paused with music off",
+      "pass": true
+    },
+    {
+      "name": "real menu click emits an oscillator and a nonzero native analyser waveform with music off",
+      "pass": true,
+      "detail": {
+        "before": {
+          "starts": 0,
+          "rms": 0,
+          "peaks": [],
+          "elements": [
+            {
+              "paused": true,
+              "volume": 0,
+              "currentTime": 0,
+              "readyState": 4,
+              "src": "http://127.0.0.1:4174/assets/audio/bgm2.opus",
+              "duration": 114.785646
+            }
+          ],
+          "contexts": [
+            "running"
+          ]
+        },
+        "after": {
+          "starts": 2,
+          "rms": 6,
+          "peaks": [
+            0.0084,
+            0.015
+          ],
+          "elements": [
+            {
+              "paused": true,
+              "volume": 0,
+              "currentTime": 0,
+              "readyState": 4,
+              "src": "http://127.0.0.1:4174/assets/audio/bgm2.opus",
+              "duration": 114.785646
+            }
+          ],
+          "contexts": [
+            "running"
+          ]
+        }
+      }
+    },
+    {
+      "name": "uiSound off prevents a new native oscillator",
+      "pass": true,
+      "detail": {
+        "before": 8,
+        "after": 8
+      }
+    },
+    {
+      "name": "uiSound on restores feedback independently of music",
+      "pass": true,
+      "detail": {
+        "before": 8,
+        "after": {
+          "starts": 9,
+          "rms": 53,
+          "peaks": [
+            0.0084,
+            0.015,
+            0.0084,
+            0.015,
+            0.0084,
+            0.015,
+            0.0084,
+            0.015,
+            0.015
+          ],
+          "elements": [
+            {
+              "paused": true,
+              "volume": 0,
+              "currentTime": 0,
+              "readyState": 4,
+              "src": "http://127.0.0.1:4174/assets/audio/bgm2.opus",
+              "duration": 114.785646
+            }
+          ],
+          "contexts": [
+            "running"
+          ]
+        }
+      }
+    },
+    {
+      "name": "volume keyboard Home reaches zero",
+      "pass": true
+    },
+    {
+      "name": "zero master volume gates UI oscillators",
+      "pass": true
+    },
+    {
+      "name": "music really decodes and advances at selected nonzero volume",
+      "pass": true,
+      "detail": {
+        "starts": 11,
+        "rms": 65,
+        "peaks": [
+          0.0084,
+          0.015,
+          0.0084,
+          0.015,
+          0.0084,
+          0.015,
+          0.0084,
+          0.015,
+          0.015,
+          0.005600000000000001,
+          0.010000000000000002
+        ],
+        "elements": [
+          {
+            "paused": false,
+            "volume": 0.4,
+            "currentTime": 0.517111,
+            "readyState": 4,
+            "src": "http://127.0.0.1:4174/assets/audio/bgm2.opus",
+            "duration": 114.785646
+          }
+        ],
+        "contexts": [
+          "running"
+        ]
+      }
+    },
+    {
+      "name": "turning off UI sound keeps music advancing",
+      "pass": true,
+      "detail": {
+        "before": [
+          {
+            "paused": false,
+            "volume": 0.4,
+            "currentTime": 0.517111,
+            "readyState": 4,
+            "src": "http://127.0.0.1:4174/assets/audio/bgm2.opus",
+            "duration": 114.785646
+          }
+        ],
+        "after": [
+          {
+            "paused": false,
+            "volume": 0.4,
+            "currentTime": 0.784021,
+            "readyState": 4,
+            "src": "http://127.0.0.1:4174/assets/audio/bgm2.opus",
+            "duration": 114.785646
+          }
+        ]
+      }
+    },
+    {
+      "name": "selected music track 1 actually decodes and plays",
+      "pass": true,
+      "detail": {
+        "paused": false,
+        "volume": 0.14895999998569462,
+        "currentTime": 0.167165,
+        "readyState": 4,
+        "src": "http://127.0.0.1:4174/assets/audio/bgm1.opus",
+        "duration": 216.381521
+      }
+    },
+    {
+      "name": "selected music track 2 actually decodes and plays",
+      "pass": true,
+      "detail": {
+        "paused": false,
+        "volume": 0.1562399999856949,
+        "currentTime": 0.161537,
+        "readyState": 4,
+        "src": "http://127.0.0.1:4174/assets/audio/bgm2.opus",
+        "duration": 114.785646
+      }
+    },
+    {
+      "name": "selected music track 3 actually decodes and plays",
+      "pass": true,
+      "detail": {
+        "paused": false,
+        "volume": 0.2227999999809268,
+        "currentTime": 0.251594,
+        "readyState": 4,
+        "src": "http://127.0.0.1:4174/assets/audio/bgm3.opus",
+        "duration": 108.209167
+      }
+    },
+    {
+      "name": "turning off music fades to zero and pauses its native element",
+      "pass": true,
+      "detail": {
+        "starts": 13,
+        "rms": 77,
+        "peaks": [
+          0.0084,
+          0.015,
+          0.0084,
+          0.015,
+          0.0084,
+          0.015,
+          0.0084,
+          0.015,
+          0.015,
+          0.005600000000000001,
+          0.010000000000000002,
+          0.005600000000000001,
+          0.010000000000000002
+        ],
+        "elements": [
+          {
+            "paused": true,
+            "volume": 0,
+            "currentTime": 0.406098,
+            "readyState": 4,
+            "src": "http://127.0.0.1:4174/assets/audio/bgm3.opus",
+            "duration": 108.209167
+          }
+        ],
+        "contexts": [
+          "running"
+        ]
+      }
+    },
+    {
+      "name": "valid discovery reaches real polyphonic unlock graph with music off",
+      "pass": true,
+      "detail": [
+        {
+          "frequency": 440,
+          "at": 8304.5,
+          "contextState": "running"
+        },
+        {
+          "frequency": 440,
+          "at": 8306.100000023842,
+          "contextState": "running"
+        },
+        {
+          "frequency": 130.80999755859375,
+          "at": 8350.100000023842,
+          "contextState": "running"
+        },
+        {
+          "frequency": 196,
+          "at": 8350.200000017881,
+          "contextState": "running"
+        },
+        {
+          "frequency": 392,
+          "at": 8351,
+          "contextState": "running"
+        },
+        {
+          "frequency": 523.25,
+          "at": 8351,
+          "contextState": "running"
+        },
+        {
+          "frequency": 659.25,
+          "at": 8351.100000023842,
+          "contextState": "running"
+        },
+        {
+          "frequency": 783.989990234375,
+          "at": 8351.100000023842,
+          "contextState": "running"
+        },
+        {
+          "frequency": 1046.5,
+          "at": 8351.200000017881,
+          "contextState": "running"
+        },
+        {
+          "frequency": 1567.97998046875,
+          "at": 8351.200000017881,
+          "contextState": "running"
+        }
+      ]
+    },
+    {
+      "name": "cinematic exit dispatches a real feedback tone",
+      "pass": true,
+      "detail": {
+        "before": 28,
+        "after": 29
+      }
+    },
+    {
+      "name": "uiSound off gates the complete second discovery unlock path",
+      "pass": true,
+      "detail": {
+        "before": 37,
+        "after": 37
+      }
+    },
+    {
+      "name": "audio gates do not prevent valid discoveries or independent regions being saved",
+      "pass": true
+    },
+    {
+      "name": "no production browser errors or failed assets",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "evidence": {
+    "tracks": [
+      {
+        "paused": false,
+        "volume": 0.14895999998569462,
+        "currentTime": 0.167165,
+        "readyState": 4,
+        "src": "http://127.0.0.1:4174/assets/audio/bgm1.opus",
+        "duration": 216.381521
+      },
+      {
+        "paused": false,
+        "volume": 0.1562399999856949,
+        "currentTime": 0.161537,
+        "readyState": 4,
+        "src": "http://127.0.0.1:4174/assets/audio/bgm2.opus",
+        "duration": 114.785646
+      },
+      {
+        "paused": false,
+        "volume": 0.2227999999809268,
+        "currentTime": 0.251594,
+        "readyState": 4,
+        "src": "http://127.0.0.1:4174/assets/audio/bgm3.opus",
+        "duration": 108.209167
+      }
+    ],
+    "discoveries": {
+      "tones": [
+        {
+          "frequency": 440,
+          "at": 8304.5,
+          "contextState": "running"
+        },
+        {
+          "frequency": 440,
+          "at": 8306.100000023842,
+          "contextState": "running"
+        },
+        {
+          "frequency": 130.80999755859375,
+          "at": 8350.100000023842,
+          "contextState": "running"
+        },
+        {
+          "frequency": 196,
+          "at": 8350.200000017881,
+          "contextState": "running"
+        },
+        {
+          "frequency": 392,
+          "at": 8351,
+          "contextState": "running"
+        },
+        {
+          "frequency": 523.25,
+          "at": 8351,
+          "contextState": "running"
+        },
+        {
+          "frequency": 659.25,
+          "at": 8351.100000023842,
+          "contextState": "running"
+        },
+        {
+          "frequency": 783.989990234375,
+          "at": 8351.100000023842,
+          "contextState": "running"
+        },
+        {
+          "frequency": 1046.5,
+          "at": 8351.200000017881,
+          "contextState": "running"
+        },
+        {
+          "frequency": 1567.97998046875,
+          "at": 8351.200000017881,
+          "contextState": "running"
+        }
+      ],
+      "savedIds": [
+        "beihu",
+        "teaching"
+      ],
+      "gps": "Explicit CDP geolocation at public model-derived anchors, not field measurement."
+    },
+    "final": {
+      "starts": 37,
+      "rms": 329,
+      "peaks": [
+        0.0084,
+        0.015,
+        0.0084,
+        0.015,
+        0.0084,
+        0.015,
+        0.0084,
+        0.015,
+        0.015,
+        0.005600000000000001,
+        0.010000000000000002,
+        0.005600000000000001,
+        0.010000000000000002,
+        0.005600000000000001,
+        0.010000000000000002,
+        0.005600000000000001,
+        0.010000000000000002,
+        0.005600000000000001,
+        0.010000000000000002,
+        0.03,
+        0.020000000000000004,
+        0.034,
+        0.044000000000000004,
+        0.042,
+        0.04000000000000001,
+        0.042,
+        0.018,
+        0.010000000000000002,
+        0.010000000000000002,
+        0.005600000000000001,
+        0.010000000000000002,
+        0.005600000000000001,
+        0.010000000000000002,
+        0.005600000000000001,
+        0.010000000000000002,
+        0.005600000000000001,
+        0.010000000000000002
+      ],
+      "elements": [
+        {
+          "paused": true,
+          "volume": 0,
+          "currentTime": 0.406098,
+          "readyState": 4,
+          "src": "http://127.0.0.1:4174/assets/audio/bgm3.opus",
+          "duration": 108.209167
+        }
+      ],
+      "contexts": [
+        "running"
+      ]
+    },
+    "base": "http://127.0.0.1:4174",
+    "method": "Owned temporary profile; native muted Edge Audio/AudioContext with forwarding constructor and analyser tap; native CDP click/keyboard. Verifies graph/data/playback, not human hearing or device loudspeaker."
+  },
+  "errors": []
+}

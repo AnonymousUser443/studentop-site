@@ -7,6 +7,6 @@ export default function HudButton(props: HTMLMotionProps<'button'>) {
   const { reducedMotion } = useMotionPreferences();
   return <motion.button type="button" initial={false}
     whileHover={reducedMotion ? undefined : { y: -2 }}
-    whileTap={reducedMotion ? undefined : { y: 1, scale: .985, transition: tween.tap }}
+    whileTap={reducedMotion ? undefined : { y: 1, transition: tween.tap }}
     transition={tween.fast} {...props}/>;
 }

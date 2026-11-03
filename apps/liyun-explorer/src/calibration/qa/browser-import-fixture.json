@@ -1,0 +1,544 @@
+{
+  "schema_version": 1,
+  "map_id": "campus-v04-eaa124716c51375f",
+  "coordinate_system": "image-normalized-uv",
+  "status": "recommended",
+  "review": {
+    "confirmed": false,
+    "reviewer": "",
+    "reviewedAt": null,
+    "notes": "推荐初稿：外边界是游戏内容覆盖范围，不是定位 control hull 或校园行政边界。未进行现场确认。"
+  },
+  "gameBoundary": {
+    "id": "campus-game",
+    "name": "良乡校区 · 游戏推荐覆盖范围",
+    "status": "recommended",
+    "polygon": [
+      {
+        "u": 0.155,
+        "v": 0.12
+      },
+      {
+        "u": 0.405,
+        "v": 0.12
+      },
+      {
+        "u": 0.755,
+        "v": 0.25
+      },
+      {
+        "u": 0.755,
+        "v": 0.895
+      },
+      {
+        "u": 0.155,
+        "v": 0.895
+      }
+    ],
+    "notes": "参考主图校园主区轮廓，覆盖全部 8 个现有地标；不包含右侧独立建筑图块。support_polygon_uv 仅用于定位采样覆盖提示。"
+  },
+  "regions": [
+    {
+      "id": "wencui",
+      "name": "文萃楼",
+      "subtitle": "人文之境 · 探索起点",
+      "map_id": "campus-v04-eaa124716c51375f",
+      "status": "recommended",
+      "polygon": [
+        {
+          "u": 0.46,
+          "v": 0.3
+        },
+        {
+          "u": 0.605,
+          "v": 0.3
+        },
+        {
+          "u": 0.605,
+          "v": 0.51
+        },
+        {
+          "u": 0.46,
+          "v": 0.51
+        }
+      ],
+      "maskImage": null,
+      "unlock": {
+        "type": "landmark",
+        "landmarkId": "wencui"
+      },
+      "revealOrder": 1,
+      "story": {
+        "chapter": "第一章",
+        "title": "一页书香",
+        "body": "从文萃楼前出发，让熟悉的校园重新成为一场探索。树影、长廊和偶然相遇的笑声，都值得被写进这页旅程。",
+        "verse": "一页书香，一程山水。"
+      },
+      "art": {
+        "hero": "/assets/landmarks/wencui/hero.webp",
+        "alt": "文萃楼 · 校园水墨插画",
+        "palette": [
+          "#21493e",
+          "#f3e8c8",
+          "#d4b874"
+        ]
+      },
+      "notes": "以现有地标锚点与主图道路分段推荐；非实测校园行政边界，待团队现场确认。"
+    },
+    {
+      "id": "beihu",
+      "name": "北湖",
+      "subtitle": "湖光拾忆 · 水畔漫行",
+      "map_id": "campus-v04-eaa124716c51375f",
+      "status": "recommended",
+      "polygon": [
+        {
+          "u": 0.155,
+          "v": 0.3
+        },
+        {
+          "u": 0.46,
+          "v": 0.3
+        },
+        {
+          "u": 0.46,
+          "v": 0.42
+        },
+        {
+          "u": 0.155,
+          "v": 0.42
+        }
+      ],
+      "maskImage": null,
+      "unlock": {
+        "type": "landmark",
+        "landmarkId": "beihu"
+      },
+      "revealOrder": 2,
+      "story": {
+        "chapter": "第二章",
+        "title": "湖光拾忆",
+        "body": "沿着湖岸慢慢走。天光落入水面，风把四季的颜色带向对岸。此刻停留的你，也成为校园记忆的一部分。",
+        "verse": "风过湖心，拾一片秋光。"
+      },
+      "art": {
+        "hero": "/assets/landmarks/beihu/hero.webp",
+        "alt": "北湖 · 校园水墨插画",
+        "palette": [
+          "#236b70",
+          "#f3e8c8",
+          "#d4b874"
+        ]
+      },
+      "notes": "以现有地标锚点与主图道路分段推荐；非实测校园行政边界，待团队现场确认。"
+    },
+    {
+      "id": "library",
+      "name": "徐特立图书馆",
+      "subtitle": "书海寻踪 · 知识之门",
+      "map_id": "campus-v04-eaa124716c51375f",
+      "status": "recommended",
+      "polygon": [
+        {
+          "u": 0.155,
+          "v": 0.51
+        },
+        {
+          "u": 0.46,
+          "v": 0.51
+        },
+        {
+          "u": 0.46,
+          "v": 0.895
+        },
+        {
+          "u": 0.155,
+          "v": 0.895
+        }
+      ],
+      "maskImage": null,
+      "unlock": {
+        "type": "landmark",
+        "landmarkId": "library"
+      },
+      "revealOrder": 3,
+      "story": {
+        "chapter": "第三章",
+        "title": "灯火可亲",
+        "body": "一页翻过，还有另一页。知识的微光在这里聚拢，照亮一段没有终点的旅途。愿你总能找到想读的书，也遇见更宽阔的世界。",
+        "verse": "灯火可亲，书页有声。"
+      },
+      "art": {
+        "hero": "/assets/landmarks/library/hero.webp",
+        "alt": "徐特立图书馆 · 校园水墨插画",
+        "palette": [
+          "#66522f",
+          "#f3e8c8",
+          "#d4b874"
+        ]
+      },
+      "notes": "以现有地标锚点与主图道路分段推荐；非实测校园行政边界，待团队现场确认。"
+    },
+    {
+      "id": "teaching",
+      "name": "综合教学大楼",
+      "subtitle": "求知之路 · 青春回响",
+      "map_id": "campus-v04-eaa124716c51375f",
+      "status": "recommended",
+      "polygon": [
+        {
+          "u": 0.155,
+          "v": 0.42
+        },
+        {
+          "u": 0.46,
+          "v": 0.42
+        },
+        {
+          "u": 0.46,
+          "v": 0.51
+        },
+        {
+          "u": 0.155,
+          "v": 0.51
+        }
+      ],
+      "maskImage": null,
+      "unlock": {
+        "type": "landmark",
+        "landmarkId": "teaching"
+      },
+      "revealOrder": 4,
+      "story": {
+        "chapter": "第四章",
+        "title": "青春回响",
+        "body": "课间的钟声、匆忙的脚步、讨论未完的题目，组成了求学日子的底色。把今天留在这里，未来再回望时，仍能认出这一刻。",
+        "verse": "昨日的脚步，今日的回响。"
+      },
+      "art": {
+        "hero": "/assets/landmarks/teaching/hero.webp",
+        "alt": "综合教学大楼 · 校园水墨插画",
+        "palette": [
+          "#385c58",
+          "#f3e8c8",
+          "#d4b874"
+        ]
+      },
+      "notes": "以现有地标锚点与主图道路分段推荐；非实测校园行政边界，待团队现场确认。"
+    },
+    {
+      "id": "wenbo",
+      "name": "文博中心",
+      "subtitle": "文脉相逢 · 校园故事",
+      "map_id": "campus-v04-eaa124716c51375f",
+      "status": "recommended",
+      "polygon": [
+        {
+          "u": 0.605,
+          "v": 0.435
+        },
+        {
+          "u": 0.755,
+          "v": 0.435
+        },
+        {
+          "u": 0.755,
+          "v": 0.51
+        },
+        {
+          "u": 0.605,
+          "v": 0.51
+        }
+      ],
+      "maskImage": null,
+      "unlock": {
+        "type": "landmark",
+        "landmarkId": "wenbo"
+      },
+      "revealOrder": 5,
+      "story": {
+        "chapter": "第五章",
+        "title": "文脉相逢",
+        "body": "每一次交流，都让校园的故事多了一种声音。在这里收录一段相遇，沿着文脉继续前行。",
+        "verse": "相逢于此，文脉长流。"
+      },
+      "art": {
+        "hero": "/assets/landmarks/wenbo/hero.webp",
+        "alt": "文博中心 · 校园水墨插画",
+        "palette": [
+          "#795542",
+          "#f3e8c8",
+          "#d4b874"
+        ]
+      },
+      "notes": "以现有地标锚点与主图道路分段推荐；非实测校园行政边界，待团队现场确认。"
+    },
+    {
+      "id": "sports",
+      "name": "体育馆",
+      "subtitle": "逐风而行 · 活力校园",
+      "map_id": "campus-v04-eaa124716c51375f",
+      "status": "recommended",
+      "polygon": [
+        {
+          "u": 0.46,
+          "v": 0.51
+        },
+        {
+          "u": 0.755,
+          "v": 0.51
+        },
+        {
+          "u": 0.755,
+          "v": 0.895
+        },
+        {
+          "u": 0.46,
+          "v": 0.895
+        }
+      ],
+      "maskImage": null,
+      "unlock": {
+        "type": "landmark",
+        "landmarkId": "sports"
+      },
+      "revealOrder": 6,
+      "story": {
+        "chapter": "第六章",
+        "title": "少年逐风",
+        "body": "脚步落下，热爱便有了回声。把赛场的欢呼和奔跑的风装进行囊，让下一段旅途也带着这份明亮。",
+        "verse": "少年逐风，步履生光。"
+      },
+      "art": {
+        "hero": "/assets/landmarks/sports/hero.webp",
+        "alt": "体育馆 · 校园水墨插画",
+        "palette": [
+          "#4f6540",
+          "#f3e8c8",
+          "#d4b874"
+        ]
+      },
+      "notes": "以现有地标锚点与主图道路分段推荐；非实测校园行政边界，待团队现场确认。"
+    },
+    {
+      "id": "tower",
+      "name": "真理之塔",
+      "subtitle": "探索信标 · 解锁区域",
+      "map_id": "campus-v04-eaa124716c51375f",
+      "status": "recommended",
+      "polygon": [
+        {
+          "u": 0.605,
+          "v": 0.3
+        },
+        {
+          "u": 0.755,
+          "v": 0.3
+        },
+        {
+          "u": 0.755,
+          "v": 0.435
+        },
+        {
+          "u": 0.605,
+          "v": 0.435
+        }
+      ],
+      "maskImage": null,
+      "unlock": {
+        "type": "landmark",
+        "landmarkId": "tower"
+      },
+      "revealOrder": 7,
+      "story": {
+        "chapter": "第七章",
+        "title": "循光见境",
+        "body": "远处的金色信标，为探索者留下一束光。循光抵达，云海缓缓退去，新的一页校园在眼前展开。",
+        "verse": "循光而至，云开见境。"
+      },
+      "art": {
+        "hero": "/assets/landmarks/tower/hero.webp",
+        "alt": "真理之塔 · 校园水墨插画",
+        "palette": [
+          "#756232",
+          "#f3e8c8",
+          "#e8cf83"
+        ]
+      },
+      "notes": "以现有地标锚点与主图道路分段推荐；非实测校园行政边界，待团队现场确认。"
+    },
+    {
+      "id": "park",
+      "name": "国防教育主题公园",
+      "subtitle": "薪火之地 · 校园记忆",
+      "map_id": "campus-v04-eaa124716c51375f",
+      "status": "recommended",
+      "polygon": [
+        {
+          "u": 0.155,
+          "v": 0.12
+        },
+        {
+          "u": 0.405,
+          "v": 0.12
+        },
+        {
+          "u": 0.755,
+          "v": 0.25
+        },
+        {
+          "u": 0.755,
+          "v": 0.3
+        },
+        {
+          "u": 0.155,
+          "v": 0.3
+        }
+      ],
+      "maskImage": null,
+      "unlock": {
+        "type": "landmark",
+        "landmarkId": "park"
+      },
+      "revealOrder": 8,
+      "story": {
+        "chapter": "第八章",
+        "title": "薪火相续",
+        "body": "沿着校园的主题空间回望来路，在安静的步行中认识理工精神。把这一页记忆带走，也把自己的脚步留在这里。",
+        "verse": "薪火相续，理韵悠长。"
+      },
+      "art": {
+        "hero": "/assets/landmarks/park/hero.webp",
+        "alt": "国防教育主题公园 · 校园水墨插画",
+        "palette": [
+          "#5b6340",
+          "#f3e8c8",
+          "#d4b874"
+        ]
+      },
+      "notes": "以现有地标锚点与主图道路分段推荐；非实测校园行政边界，待团队现场确认。"
+    }
+  ],
+  "checkInPoints": [
+    {
+      "id": "wencui",
+      "regionId": "wencui",
+      "name": "文萃楼",
+      "status": "recommended",
+      "centerUv": {
+        "u": 0.5347005676820981,
+        "v": 0.4708614070001595
+      },
+      "radiusM": 63,
+      "physical": true,
+      "source": "existing-landmark-model-reference",
+      "fieldConfirmationRequired": true,
+      "notes": "保留现有地标 UV 和打卡半径原值。模型换算 WGS84 仅作候选，需在安全可达的室外位置现场确认。"
+    },
+    {
+      "id": "beihu",
+      "regionId": "beihu",
+      "name": "北湖",
+      "status": "recommended",
+      "centerUv": {
+        "u": 0.35779963220596467,
+        "v": 0.37007771543334456
+      },
+      "radiusM": 55,
+      "physical": true,
+      "source": "existing-landmark-model-reference",
+      "fieldConfirmationRequired": true,
+      "notes": "保留现有地标 UV 和打卡半径原值。模型换算 WGS84 仅作候选，需在安全可达的室外位置现场确认。"
+    },
+    {
+      "id": "library",
+      "regionId": "library",
+      "name": "徐特立图书馆",
+      "status": "recommended",
+      "centerUv": {
+        "u": 0.383324448308947,
+        "v": 0.5491987240978153
+      },
+      "radiusM": 45,
+      "physical": true,
+      "source": "existing-landmark-model-reference",
+      "fieldConfirmationRequired": true,
+      "notes": "保留现有地标 UV 和打卡半径原值。模型换算 WGS84 仅作候选，需在安全可达的室外位置现场确认。"
+    },
+    {
+      "id": "teaching",
+      "regionId": "teaching",
+      "name": "综合教学大楼",
+      "status": "recommended",
+      "centerUv": {
+        "u": 0.390014291996482,
+        "v": 0.4646537040510118
+      },
+      "radiusM": 50,
+      "physical": true,
+      "source": "existing-landmark-model-reference",
+      "fieldConfirmationRequired": true,
+      "notes": "保留现有地标 UV 和打卡半径原值。模型换算 WGS84 仅作候选，需在安全可达的室外位置现场确认。"
+    },
+    {
+      "id": "wenbo",
+      "regionId": "wenbo",
+      "name": "文博中心",
+      "status": "recommended",
+      "centerUv": {
+        "u": 0.6765014391940514,
+        "v": 0.47268809931576505
+      },
+      "radiusM": 55,
+      "physical": true,
+      "source": "existing-landmark-model-reference",
+      "fieldConfirmationRequired": true,
+      "notes": "保留现有地标 UV 和打卡半径原值。模型换算 WGS84 仅作候选，需在安全可达的室外位置现场确认。"
+    },
+    {
+      "id": "sports",
+      "regionId": "sports",
+      "name": "体育馆",
+      "status": "recommended",
+      "centerUv": {
+        "u": 0.7039834592628129,
+        "v": 0.5486589266457834
+      },
+      "radiusM": 55,
+      "physical": true,
+      "source": "existing-landmark-model-reference",
+      "fieldConfirmationRequired": true,
+      "notes": "保留现有地标 UV 和打卡半径原值。模型换算 WGS84 仅作候选，需在安全可达的室外位置现场确认。"
+    },
+    {
+      "id": "tower",
+      "regionId": "tower",
+      "name": "真理之塔",
+      "status": "recommended",
+      "centerUv": {
+        "u": 0.7265931078595986,
+        "v": 0.3958783404744492
+      },
+      "radiusM": 35,
+      "physical": false,
+      "source": "existing-landmark-model-reference",
+      "fieldConfirmationRequired": true,
+      "notes": "虚拟探索信标；当前模型参考点与半径原值保留。不能作为已实测建筑位置。"
+    },
+    {
+      "id": "park",
+      "regionId": "park",
+      "name": "国防教育主题公园",
+      "status": "recommended",
+      "centerUv": {
+        "u": 0.6146557927560566,
+        "v": 0.22978681677233811
+      },
+      "radiusM": 35,
+      "physical": true,
+      "source": "existing-landmark-model-reference",
+      "fieldConfirmationRequired": true,
+      "notes": "保留现有地标 UV 和打卡半径原值。模型换算 WGS84 仅作候选，需在安全可达的室外位置现场确认。"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "beihu",
+  "source": "C:\\Users\\12929\\.codex\\generated_images\\01a19cdf-88b3-7880-b645-ca87f10dbd3b\\exec-46cc2935-e224-4bf3-a05e-345b0d2e14a1.png",
+  "tool": "built-in ImageGen",
+  "prompt": "Original concept illustration for a Chinese university campus exploration game, cinematic landscape aspect ratio 16:9, large 1920x1080 request. Elegant layered paper-cut / hand-painted cel-shaded new Chinese landscape art, sage jade green, lake teal, warm ivory rice paper, small muted autumn gold accents, fine paper fibers, crisp silhouettes with soft ink wash distance. Serene youthful adventure, refined high-budget game chapter illustration, strong foreground/middle/background depth, slightly asymmetrical composition, no text, no logos, no interface, no borders, no photorealism, no people. This is a conceptual placeholder and must not imitate a real campus photo. Scene: a quiet northern campus lake under a pale autumn sky, small island reeds, a curving waterside path and low timber viewing deck, a single golden ginkgo tree in foreground, modern campus buildings very far away as soft silhouettes, reflections and broad still teal water. The water and tree are the hero.",
+  "usage": "AI-generated concept placeholder, not a campus photograph",
+  "hero": "D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\apps\\liyun-explorer\\public\\assets\\landmarks\\beihu\\hero.webp",
+  "visualReview": "Native output inspected; concept placeholder, not a factual campus photograph.",
+  "nativePixels": [
+    1672,
+    941
+  ],
+  "deliveredPixels": [
+    768,
+    432
+  ],
+  "encoding": "WebP quality 74; local distribution derivative",
+  "bytes": 71730,
+  "sha256": "3fe73871c446861aedc51d089e0d62118b154b701fa7fd2a4bc1617e7cb65723"
+}

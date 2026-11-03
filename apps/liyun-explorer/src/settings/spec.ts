@@ -84,9 +84,10 @@ export function resolveQuality(
   preset: QualityPreset,
   overrides: Partial<QualitySpec> = {},
   forceLow = false,
+  basePreset: Exclude<QualityPreset, 'custom'> = 'high',
 ): QualitySpec {
   const base = preset === 'custom' || preset === 'low' || preset === 'high' || preset === 'ultra'
-    ? { ...QUALITY_PRESETS[preset === 'custom' ? 'high' : preset] }
+    ? { ...QUALITY_PRESETS[preset === 'custom' ? basePreset : preset] }
     : { ...QUALITY_PRESETS.high };
   for (const [key, value] of Object.entries(overrides)) {
     if (value === undefined || value === null) continue;

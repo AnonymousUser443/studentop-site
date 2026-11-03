@@ -1,0 +1,71 @@
+{
+  "ok": false,
+  "error": "Error: server draft saved timed out after 12000ms\n    at until (D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\lib.js:206:9)\n    at async D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\studio-collaboration-20261103\\browser.cjs:67:133",
+  "checks": [
+    {
+      "name": "both members join real collaborative sessions",
+      "pass": true
+    },
+    {
+      "name": "a title edit appears in the second members real form",
+      "pass": true
+    },
+    {
+      "name": "independent title and introduction edits merge without replacement",
+      "pass": true
+    },
+    {
+      "name": "a stale same-field edit opens a conflict choice instead of overwriting",
+      "pass": true
+    },
+    {
+      "name": "keeping server content resolves to the other members edit",
+      "pass": true
+    },
+    {
+      "name": "lost response retries the same request without a second revision",
+      "pass": true,
+      "detail": {
+        "before": 3,
+        "after": 4
+      }
+    },
+    {
+      "name": "meter radius changes update the peer projected boundary",
+      "pass": true
+    },
+    {
+      "name": "native middle-button pans while drawing without adding vertices",
+      "pass": true
+    },
+    {
+      "name": "panning changes neither the server draft nor other members camera",
+      "pass": true
+    },
+    {
+      "name": "one-click closure saves an open three-vertex ring with implicit closing edge",
+      "pass": true
+    },
+    {
+      "name": "collaborative undo restores only the author geometry command",
+      "pass": true
+    },
+    {
+      "name": "a real uploaded photo appears and decodes for another member",
+      "pass": true
+    }
+  ],
+  "evidence": {
+    "method": "Two isolated Edge profiles; native pointer, middle-button, keyboard and file-input events. Explicit controlled response-loss and held-request fixtures only in these pages."
+  },
+  "errors": {
+    "a": [
+      "HTTP 404: http://localhost:5193/favicon.ico",
+      "HTTP 409: http://localhost:5193/api/editor/ops",
+      "HTTP 409: http://localhost:5193/api/editor/ops"
+    ],
+    "b": [
+      "HTTP 404: http://localhost:5193/favicon.ico"
+    ]
+  }
+}

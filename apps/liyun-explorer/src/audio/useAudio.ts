@@ -113,6 +113,7 @@ export function useAudio(settings: GameSettings, entered: boolean) {
   const start = useCallback((number?: number) => {
     started.current = true;
     loadTrack(number === undefined ? config.current.settings.track : number);
+    if (config.current.settings.uiSound) unlockChime();
     if (config.current.settings.music) { unlockChime(); play(); }
     else setBlocked(false);
   }, [loadTrack, play, unlockChime]);
@@ -120,7 +121,7 @@ export function useAudio(settings: GameSettings, entered: boolean) {
   const playChime = useCallback(() => {
     const { settings: sound } = config.current;
     // 解锁音效是反馈音，不跟随配乐开关，只看音量与页面可见性
-    if (normalVolume(sound.volume) === 0 || document.hidden) return;
+    if (!sound.uiSound || normalVolume(sound.volume) === 0 || document.hidden) return;
     unlockChime();
     const context = audioContext.current;
     if (!context || context.state !== 'running') return;
@@ -145,7 +146,7 @@ export function useAudio(settings: GameSettings, entered: boolean) {
    */
   const playUnlock = useCallback(() => {
     const { settings: sound } = config.current;
-    if (!sound.music || normalVolume(sound.volume) === 0 || document.hidden) return;
+    if (!sound.uiSound || normalVolume(sound.volume) === 0 || document.hidden) return;
     unlockChime();
     const context = audioContext.current;
     if (!context || context.state !== 'running') return;
@@ -216,7 +217,27 @@ export function useAudio(settings: GameSettings, entered: boolean) {
     else fadeTo(normalVolume(settings.volume), 200);
   }, [settings.track, settings.volume, settings.music, entered, fadeTo, loadTrack, play]);
 
-  return { blocked, start, playChime, playUnlock };
+  const playUi = useCallback((kind: 'hover' | 'confirm' | 'cancel' = 'confirm') => {
+    const sound = config.current.settings;
+    if (!sound.uiSound || normalVolume(sound.volume) === 0 || document.hidden) return;
+    unlockChime();
+    const context = audioContext.current;
+    if (!context || context.state !== 'running') return;
+    const at = context.currentTime;
+    const oscillator = context.createOscillator(), gain = context.createGain();
+    oscillator.type = 'sine';
+    const frequency = kind === 'hover' ? 660 : kind === 'cancel' ? 392 : 880;
+    oscillator.frequency.setValueAtTime(frequency, at);
+    oscillator.frequency.exponentialRampToValueAtTime(kind === 'cancel' ? 294 : frequency * 1.25, at + .065);
+    gain.gain.setValueAtTime(0, at);
+    gain.gain.linearRampToValueAtTime(normalVolume(sound.volume) * (kind === 'hover' ? .014 : .025), at + .008);
+    gain.gain.exponentialRampToValueAtTime(.0001, at + .11);
+    oscillator.connect(gain); gain.connect(context.destination);
+    oscillator.start(at); oscillator.stop(at + .12);
+    oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
+  }, [unlockChime]);
+
+  return { blocked, start, playChime, playUnlock, playUi };
 }
 
 export default useAudio;

@@ -237,6 +237,11 @@ export class FogField {
   }
 
   draw(ctx: CanvasRenderingContext2D, props: EffectsProps, pixelDensity: number, now: number) {
+    if (props.spec.inkLayers === 0) {
+      ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); ctx.restore();
+      return;
+    }
     const seed = props.seed ?? 1386;
     this.ensure(seed);
 
@@ -244,10 +249,10 @@ export class FogField {
     const camera = props.camera;
     const tuning = FOG_TUNING;
     const reduced = props.settings.reducedMotion;
-    // Even in reduced-motion the sheet keeps a very slow drift, so the scene never looks frozen.
-    const t = (now / 1000) * (reduced ? 0.55 : 1);
+    // The same preference freezes both the Canvas and the static fog sampling phase.
+    const t = reduced ? 0 : now / 1000;
 
-    const resolution = Math.min(props.settings.quality === 'low' ? 0.42 : 0.58, 1200 / Math.max(1, width), 1);
+    const resolution = Math.min(.36 + props.spec.pixelDensity * .18 + (props.spec.inkLayers === 2 ? .08 : 0), 1200 / Math.max(1, width), 1);
     const bufferWidth = Math.max(1, Math.ceil(width * resolution));
     const bufferHeight = Math.max(1, Math.ceil(height * resolution));
     if (this.buffer.width !== bufferWidth || this.buffer.height !== bufferHeight) {

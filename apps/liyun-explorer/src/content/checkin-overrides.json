@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "map_id": "campus-v04-eaa124716c51375f",
+  "enabled": false,
+  "review": {
+    "confirmed": false,
+    "reviewer": "",
+    "reviewedAt": null,
+    "notes": "默认无覆盖。只有经现场确认并显式 import --apply 的版本可启用。"
+  },
+  "points": []
+}

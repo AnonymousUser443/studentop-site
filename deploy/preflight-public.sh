@@ -7,7 +7,7 @@
 #
 # Run AFTER the user (1) replaced the SakuraFrp node/config and (2) added the
 # DNS record. Checks, in order:
-#   (a) frpc.service active AND /var/log/frpc.log has a recent "login to server success"
+#   (a) frpc.service active AND login log or the current process's established node control socket
 #   (b) TCP from the Pi to the frp node  <server_addr>:<server_port>
 #   (c) public DNS for studentop.cn resolves and matches the node IP
 #   (d) TLS cert on 127.0.0.1:443 mentions studentop.cn and is NOT self-signed
@@ -80,10 +80,17 @@ if sudo -n test -r /var/log/frpc.log 2>/dev/null; then
   if sudo -n tail -300 /var/log/frpc.log 2>/dev/null | grep -q 'login to server success'; then LOG_OK=1; fi
   LAST_LINE="$(sudo -n tail -1 /var/log/frpc.log 2>/dev/null | tr -d '\r' || true)"
 fi
+CONTROL_OK=0
+FRPC_PID="$(systemctl show frpc -p MainPID --value 2>/dev/null || true)"
+if [[ "$FRPC_PID" =~ ^[1-9][0-9]*$ ]] && [[ "$NODE_PORT" =~ ^[0-9]+$ ]] && [ -n "$NODE_IP_RESOLVED" ]; then
+  if sudo -n ss -Htnp state established "( dport = :$NODE_PORT )" 2>/dev/null | grep -F "$NODE_IP_RESOLVED:$NODE_PORT" | grep -qF "pid=$FRPC_PID,"; then CONTROL_OK=1; fi
+fi
 if [ "$SVC" = "active" ] && [ "$LOG_OK" = "1" ]; then
   pass "(a) frpc.service active 且日志出现 login success"
+elif [ "$SVC" = "active" ] && [ "$CONTROL_OK" = "1" ]; then
+  pass "(a) frpc.service active 且当前进程已建立节点控制连接（PID=$FRPC_PID，日志为空时的实时证据）"
 else
-  fail "(a) frpc 未成功登录节点（is-active=$SVC, login_success_in_log=$LOG_OK）"
+  fail "(a) frpc 未确认连接节点（is-active=$SVC, login_success_in_log=$LOG_OK, current_control_socket=$CONTROL_OK）"
   [ -n "$LAST_LINE" ] && note "最后一行日志: $LAST_LINE"
 fi
 
@@ -186,7 +193,7 @@ fi
 LIYUN_URL="${LIYUN_URL:-https://liyun.studentop.cn:14355/}"
 LIYUN_CODE="$(curl -s -o /dev/null -w '%{http_code}' --max-time 12 "$LIYUN_URL" 2>/dev/null || true)"
 LIYUN_BODY="$(curl -s --max-time 12 "$LIYUN_URL" 2>/dev/null || true)"
-LIYUN_ASSET="$(echo "$LIYUN_BODY" | tr -d '\n' | grep -o '/assets/index-[A-Za-z0-9_-]*\.js' | head -1 || true)"
+LIYUN_ASSET="$(echo "$LIYUN_BODY" | tr -d '\n' | grep -oE '/assets/(releases/[A-Za-z0-9_-]+/)?index-[A-Za-z0-9_-]+\.js' | head -1 || true)"
 LIYUN_ASSET_CODE=''
 [ -n "$LIYUN_ASSET" ] && LIYUN_ASSET_CODE="$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "${LIYUN_URL%/}${LIYUN_ASSET}" 2>/dev/null || true)"
 if [ "$LIYUN_CODE" = "200" ] && [ "$LIYUN_ASSET_CODE" = "200" ]; then

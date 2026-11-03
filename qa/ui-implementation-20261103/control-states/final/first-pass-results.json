@@ -1,0 +1,3580 @@
+{
+  "ok": false,
+  "total": 42,
+  "passed": 36,
+  "checks": [
+    {
+      "name": "hud-brand enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 31.671875,
+          "y": 33.53125,
+          "width": 72,
+          "height": 72,
+          "top": 33.53125,
+          "right": 103.671875,
+          "bottom": 105.53125,
+          "left": 31.671875
+        },
+        "pressedRect": {
+          "x": 31.671875,
+          "y": 33.53125,
+          "width": 72,
+          "height": 72,
+          "top": 33.53125,
+          "right": 103.671875,
+          "bottom": 105.53125,
+          "left": 31.671875
+        },
+        "hover": {
+          "count": 2,
+          "examples": [
+            {
+              "property": "0.filter",
+              "from": "none",
+              "to": "drop-shadow(color(srgb 0.909804 0.811765 0.513726 / 0.62) 0px 0px 10px)"
+            },
+            {
+              "property": "1.filter",
+              "from": "none",
+              "to": "drop-shadow(color(srgb 0.894118 0.811765 0.584314 / 0.666667) 0px 0px 9px)"
+            }
+          ]
+        },
+        "press": {
+          "count": 2,
+          "examples": [
+            {
+              "property": "0.filter",
+              "from": "drop-shadow(color(srgb 0.909804 0.811765 0.513726 / 0.62) 0px 0px 10px)",
+              "to": "brightness(0.96)"
+            },
+            {
+              "property": "1.transform",
+              "from": "none",
+              "to": "matrix(1, 0, 0, 1, 0, 1)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 4,
+          "examples": [
+            {
+              "property": "0.borderRadius",
+              "from": "0px",
+              "to": "3px"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "5px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 7
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "hud-center enabled normal/hover/held press/keyboard focus",
+      "pass": false,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 115.671875,
+          "y": 31.671875,
+          "width": 145.84375,
+          "height": 75.734375,
+          "top": 31.671875,
+          "right": 261.515625,
+          "bottom": 107.40625,
+          "left": 115.671875
+        },
+        "pressedRect": {
+          "x": 115.671875,
+          "y": 31.671875,
+          "width": 145.84375,
+          "height": 75.734375,
+          "top": 31.671875,
+          "right": 261.515625,
+          "bottom": 107.40625,
+          "left": 115.671875
+        },
+        "hover": {
+          "count": 12,
+          "examples": [
+            {
+              "property": "0.color",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0.borderTopColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0.borderRightColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0.borderBottomColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0.borderLeftColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "1.color",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "1.borderTopColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "1.borderRightColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "1.borderBottomColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "1.borderLeftColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "1.outlineColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(232, 207, 131)"
+            }
+          ]
+        },
+        "press": {
+          "count": 0,
+          "examples": []
+        },
+        "focus": {
+          "count": 4,
+          "examples": [
+            {
+              "property": "0.borderRadius",
+              "from": "0px",
+              "to": "3px"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "5px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 8
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "hud-collection enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 154.390625,
+          "y": 816.328125,
+          "width": 114.71875,
+          "height": 52,
+          "top": 816.328125,
+          "right": 269.109375,
+          "bottom": 868.328125,
+          "left": 154.390625
+        },
+        "pressedRect": {
+          "x": 154.390625,
+          "y": 816.328125,
+          "width": 114.71875,
+          "height": 52,
+          "top": 816.328125,
+          "right": 269.109375,
+          "bottom": 868.328125,
+          "left": 154.390625
+        },
+        "hover": {
+          "count": 4,
+          "examples": [
+            {
+              "property": "0.filter",
+              "from": "none",
+              "to": "brightness(1.16)"
+            },
+            {
+              "property": "0::after.opacity",
+              "from": "0",
+              "to": "0.9"
+            },
+            {
+              "property": "0::after.transform",
+              "from": "matrix(0.15, 0, 0, 1, 0, 0)",
+              "to": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "property": "6.opacity",
+              "from": "0",
+              "to": "1"
+            }
+          ]
+        },
+        "press": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.filter",
+              "from": "brightness(1.16)",
+              "to": "brightness(0.96)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 6,
+          "examples": [
+            {
+              "property": "0.borderRadius",
+              "from": "0px",
+              "to": "3px"
+            },
+            {
+              "property": "0.boxShadow",
+              "from": "color(srgb 0.721569 0.576471 0.247059 / 0.56) 0px 0px 0px 1px inset",
+              "to": "rgb(232, 207, 131) 0px 0px 0px 2px inset"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "5px"
+            },
+            {
+              "property": "0::after.opacity",
+              "from": "0",
+              "to": "0.9"
+            },
+            {
+              "property": "0::after.transform",
+              "from": "matrix(0.15, 0, 0, 1, 0, 0)",
+              "to": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "property": "6.opacity",
+              "from": "0",
+              "to": "1"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 13
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "hud-account enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 1272.984375,
+          "y": 31.671875,
+          "width": 81.34375,
+          "height": 46,
+          "top": 31.671875,
+          "right": 1354.328125,
+          "bottom": 77.671875,
+          "left": 1272.984375
+        },
+        "pressedRect": {
+          "x": 1272.984375,
+          "y": 31.671875,
+          "width": 81.34375,
+          "height": 46,
+          "top": 31.671875,
+          "right": 1354.328125,
+          "bottom": 77.671875,
+          "left": 1272.984375
+        },
+        "hover": {
+          "count": 5,
+          "examples": [
+            {
+              "property": "0.borderTopColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0.borderRightColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0.borderBottomColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0.borderLeftColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0.filter",
+              "from": "none",
+              "to": "brightness(1.12)"
+            }
+          ]
+        },
+        "press": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.filter",
+              "from": "brightness(1.12)",
+              "to": "brightness(0.96)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 5,
+          "examples": [
+            {
+              "property": "0.borderRadius",
+              "from": "999px",
+              "to": "3px"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(243, 232, 200)",
+              "to": "rgb(245, 230, 189)"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "5px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 10
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "hud-locate enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 1131.328125,
+          "y": 242.984375,
+          "width": 218,
+          "height": 44,
+          "top": 242.984375,
+          "right": 1349.328125,
+          "bottom": 286.984375,
+          "left": 1131.328125
+        },
+        "pressedRect": {
+          "x": 1131.328125,
+          "y": 242.984375,
+          "width": 218,
+          "height": 44,
+          "top": 242.984375,
+          "right": 1349.328125,
+          "bottom": 286.984375,
+          "left": 1131.328125
+        },
+        "hover": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.backgroundColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            }
+          ]
+        },
+        "press": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.backgroundColor",
+              "from": "rgb(255, 253, 242)",
+              "to": "rgb(232, 207, 131)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 3,
+          "examples": [
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "-4px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 15
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "map-marker enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 853.390625,
+          "y": 495,
+          "width": 139.703125,
+          "height": 54,
+          "top": 495,
+          "right": 993.09375,
+          "bottom": 549,
+          "left": 853.390625
+        },
+        "pressedRect": {
+          "x": 853.390625,
+          "y": 495,
+          "width": 139.703125,
+          "height": 54,
+          "top": 495,
+          "right": 993.09375,
+          "bottom": 549,
+          "left": 853.390625
+        },
+        "hover": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.filter",
+              "from": "drop-shadow(color(srgb 0.121569 0.227451 0.184314 / 0.333333) 0px 3px 3px)",
+              "to": "drop-shadow(color(srgb 0.909804 0.811765 0.513726 / 0.6) 0px 0px 8px)"
+            }
+          ]
+        },
+        "press": {
+          "count": 2,
+          "examples": [
+            {
+              "property": "1.boxShadow",
+              "from": "rgb(45, 83, 67) 0px 0px 0px 2px inset, color(srgb 0.74902 0.698039 0.541176 / 0.4) 0px 0px 0px 3px inset",
+              "to": "rgb(45, 83, 67) 0px 0px 0px 2px inset, rgb(232, 207, 131) 0px 0px 0px 5px inset"
+            },
+            {
+              "property": "1.transform",
+              "from": "matrix(0.509117, 0.509117, -0.509117, 0.509117, 0, 0)",
+              "to": "matrix(0.480833, 0.480833, -0.480833, 0.480833, 0, 0)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 6,
+          "examples": [
+            {
+              "property": "0.borderRadius",
+              "from": "0px",
+              "to": "3px"
+            },
+            {
+              "property": "0.filter",
+              "from": "drop-shadow(color(srgb 0.121569 0.227451 0.184314 / 0.333333) 0px 3px 3px)",
+              "to": "drop-shadow(color(srgb 0.909804 0.811765 0.513726 / 0.6) 0px 0px 8px)"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "5px"
+            },
+            {
+              "property": "1.outlineColor",
+              "from": "rgb(243, 232, 200)",
+              "to": "rgb(245, 230, 189)"
+            },
+            {
+              "property": "1.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "1.outlineOffset",
+              "from": "0px",
+              "to": "8px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 1
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "menu-close enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 9,
+          "y": 14,
+          "width": 44,
+          "height": 44,
+          "top": 14,
+          "right": 53,
+          "bottom": 58,
+          "left": 9
+        },
+        "pressedRect": {
+          "x": 9,
+          "y": 14,
+          "width": 44,
+          "height": 44,
+          "top": 14,
+          "right": 53,
+          "bottom": 58,
+          "left": 9
+        },
+        "hover": {
+          "count": 2,
+          "examples": [
+            {
+              "property": "0.backgroundColor",
+              "from": "rgb(243, 232, 200)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "0.transform",
+              "from": "none",
+              "to": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, 0)"
+            }
+          ]
+        },
+        "press": {
+          "count": 2,
+          "examples": [
+            {
+              "property": "0.transform",
+              "from": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, 0)",
+              "to": "none"
+            },
+            {
+              "property": "1.transform",
+              "from": "none",
+              "to": "matrix(0.93, 0, 0, 0.93, 0, 0)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 4,
+          "examples": [
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(18, 51, 47)",
+              "to": "rgb(245, 230, 189)"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "5px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 1
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "menu-login enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 560,
+          "y": 69,
+          "width": 44,
+          "height": 46,
+          "top": 69,
+          "right": 604,
+          "bottom": 115,
+          "left": 560
+        },
+        "pressedRect": {
+          "x": 560,
+          "y": 69,
+          "width": 44,
+          "height": 46,
+          "top": 69,
+          "right": 604,
+          "bottom": 115,
+          "left": 560
+        },
+        "hover": {
+          "count": 44,
+          "examples": [
+            {
+              "property": "0.color",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.color",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.borderTopColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.borderRightColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.borderBottomColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.borderLeftColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.outlineColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.stroke",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "2.color",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "2.borderTopColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "2.borderRightColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "2.borderBottomColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "2.borderLeftColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "2.outlineColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "2.fill",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(255, 253, 242)"
+            }
+          ]
+        },
+        "press": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.backgroundColor",
+              "from": "color(srgb 0.0509804 0.168627 0.14902 / 0.26)",
+              "to": "rgb(13, 43, 38)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 3,
+          "examples": [
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "5px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 7
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "menu-settings-tile enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 345.5,
+          "y": 326.671875,
+          "width": 122.25,
+          "height": 112,
+          "top": 326.671875,
+          "right": 467.75,
+          "bottom": 438.671875,
+          "left": 345.5
+        },
+        "pressedRect": {
+          "x": 348.5562438964844,
+          "y": 329.47186279296875,
+          "width": 116.13751220703125,
+          "height": 106.4000244140625,
+          "top": 329.47186279296875,
+          "right": 464.6937561035156,
+          "bottom": 435.87188720703125,
+          "left": 348.5562438964844
+        },
+        "hover": {
+          "count": 42,
+          "examples": [
+            {
+              "property": "0.color",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "0.backgroundColor",
+              "from": "rgb(33, 73, 62)",
+              "to": "rgb(61, 107, 87)"
+            },
+            {
+              "property": "0.boxShadow",
+              "from": "color(srgb 0.952941 0.909804 0.784314 / 0.13) 0px 0px 0px 3px inset",
+              "to": "rgb(253, 246, 226) 0px 0px 0px 2px inset, color(srgb 0.0627451 0.141176 0.109804 / 0.266667) 0px 4px 14px 0px"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "0::after.color",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "0::after.borderTopColor",
+              "from": "rgba(0, 0, 0, 0)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0::after.borderRightColor",
+              "from": "rgba(0, 0, 0, 0)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0::after.borderBottomColor",
+              "from": "rgba(0, 0, 0, 0)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0::after.borderLeftColor",
+              "from": "rgba(0, 0, 0, 0)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0::after.outlineColor",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.color",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.borderTopColor",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.borderRightColor",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.borderBottomColor",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.borderLeftColor",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.outlineColor",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            }
+          ]
+        },
+        "press": {
+          "count": 2,
+          "examples": [
+            {
+              "property": "0.backgroundColor",
+              "from": "rgb(61, 107, 87)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "0.transform",
+              "from": "none",
+              "to": "matrix(0.95, 0, 0, 0.95, 0, 0)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 45,
+          "examples": [
+            {
+              "property": "0.color",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "0.backgroundColor",
+              "from": "rgb(33, 73, 62)",
+              "to": "rgb(61, 107, 87)"
+            },
+            {
+              "property": "0.boxShadow",
+              "from": "color(srgb 0.952941 0.909804 0.784314 / 0.13) 0px 0px 0px 3px inset",
+              "to": "rgb(253, 246, 226) 0px 0px 0px 2px inset, color(srgb 0.0627451 0.141176 0.109804 / 0.266667) 0px 4px 14px 0px"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(245, 230, 189)"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "5px"
+            },
+            {
+              "property": "0::after.color",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "0::after.borderTopColor",
+              "from": "rgba(0, 0, 0, 0)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0::after.borderRightColor",
+              "from": "rgba(0, 0, 0, 0)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0::after.borderBottomColor",
+              "from": "rgba(0, 0, 0, 0)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0::after.borderLeftColor",
+              "from": "rgba(0, 0, 0, 0)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0::after.outlineColor",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.color",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.borderTopColor",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "1.borderRightColor",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(255, 253, 242)"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 10
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "menu-settings-rail enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 7,
+          "y": 493,
+          "width": 48,
+          "height": 48,
+          "top": 493,
+          "right": 55,
+          "bottom": 541,
+          "left": 7
+        },
+        "pressedRect": {
+          "x": 7,
+          "y": 493,
+          "width": 48,
+          "height": 48,
+          "top": 493,
+          "right": 55,
+          "bottom": 541,
+          "left": 7
+        },
+        "hover": {
+          "count": 25,
+          "examples": [
+            {
+              "property": "0.color",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "0.backgroundColor",
+              "from": "rgba(0, 0, 0, 0)",
+              "to": "color(srgb 0.0509804 0.168627 0.14902 / 0.55)"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "1.color",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "1.borderTopColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "1.borderRightColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "1.borderBottomColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "1.borderLeftColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "1.outlineColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "1.stroke",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "2.color",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "2.borderTopColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "2.borderRightColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "2.borderBottomColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "2.borderLeftColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "2.outlineColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            }
+          ]
+        },
+        "press": {
+          "count": 2,
+          "examples": [
+            {
+              "property": "0.backgroundColor",
+              "from": "color(srgb 0.0509804 0.168627 0.14902 / 0.55)",
+              "to": "rgb(13, 43, 38)"
+            },
+            {
+              "property": "1.transform",
+              "from": "none",
+              "to": "matrix(0.9, 0, 0, 0.9, 0, 0)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 28,
+          "examples": [
+            {
+              "property": "0.color",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "0.backgroundColor",
+              "from": "rgba(0, 0, 0, 0)",
+              "to": "color(srgb 0.0509804 0.168627 0.14902 / 0.55)"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(245, 230, 189)"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "5px"
+            },
+            {
+              "property": "1.color",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "1.borderTopColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "1.borderRightColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "1.borderBottomColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "1.borderLeftColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "1.outlineColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "1.stroke",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "2.color",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "2.borderTopColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "2.borderRightColor",
+              "from": "rgb(212, 184, 116)",
+              "to": "rgb(253, 246, 226)"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 4
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "upcoming menu tile has real disabled semantics and visible status",
+      "pass": true,
+      "detail": {
+        "label": "旅途档案，即将开放",
+        "opacity": "1"
+      }
+    },
+    {
+      "name": "settings-close enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 1350,
+          "y": 30,
+          "width": 48,
+          "height": 48,
+          "top": 30,
+          "right": 1398,
+          "bottom": 78,
+          "left": 1350
+        },
+        "pressedRect": {
+          "x": 1350,
+          "y": 30,
+          "width": 48,
+          "height": 48,
+          "top": 30,
+          "right": 1398,
+          "bottom": 78,
+          "left": 1350
+        },
+        "hover": {
+          "count": 17,
+          "examples": [
+            {
+              "property": "0.color",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "0.backgroundColor",
+              "from": "color(srgb 0.0509804 0.168627 0.14902 / 0.32)",
+              "to": "rgb(243, 232, 200)"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "1.color",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "1.borderTopColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "1.borderRightColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "1.borderBottomColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "1.borderLeftColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "1.outlineColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "1.stroke",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "2.color",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "2.borderTopColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "2.borderRightColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "2.borderBottomColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "2.borderLeftColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "2.outlineColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            }
+          ]
+        },
+        "press": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "1.transform",
+              "from": "none",
+              "to": "matrix(0.92, 0, 0, 0.92, 0, 0)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 3,
+          "examples": [
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "5px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 1
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "settings-category enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 58,
+          "y": 123,
+          "width": 304.96875,
+          "height": 59,
+          "top": 123,
+          "right": 362.96875,
+          "bottom": 182,
+          "left": 58
+        },
+        "pressedRect": {
+          "x": 58,
+          "y": 123,
+          "width": 304.96875,
+          "height": 59,
+          "top": 123,
+          "right": 362.96875,
+          "bottom": 182,
+          "left": 58
+        },
+        "hover": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.backgroundImage",
+              "from": "none",
+              "to": "linear-gradient(90deg, color(srgb 0.992157 0.964706 0.886275 / 0.12), rgba(0, 0, 0, 0))"
+            }
+          ]
+        },
+        "press": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.backgroundImage",
+              "from": "linear-gradient(90deg, color(srgb 0.992157 0.964706 0.886275 / 0.12), rgba(0, 0, 0, 0))",
+              "to": "linear-gradient(90deg, color(srgb 0.992157 0.964706 0.886275 / 0.18), rgba(0, 0, 0, 0))"
+            }
+          ]
+        },
+        "focus": {
+          "count": 5,
+          "examples": [
+            {
+              "property": "0.backgroundImage",
+              "from": "none",
+              "to": "linear-gradient(90deg, color(srgb 0.992157 0.964706 0.886275 / 0.12), rgba(0, 0, 0, 0))"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(255, 253, 242)",
+              "to": "rgb(245, 230, 189)"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "-3px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 2
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "settings-slider enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 1075.140625,
+          "y": 255.1875,
+          "width": 44,
+          "height": 44,
+          "top": 255.1875,
+          "right": 1119.140625,
+          "bottom": 299.1875,
+          "left": 1075.140625
+        },
+        "pressedRect": {
+          "x": 1075.140625,
+          "y": 255.1875,
+          "width": 44,
+          "height": 44,
+          "top": 255.1875,
+          "right": 1119.140625,
+          "bottom": 299.1875,
+          "left": 1075.140625
+        },
+        "hover": {
+          "count": 2,
+          "examples": [
+            {
+              "property": "0::before.backgroundColor",
+              "from": "rgb(45, 83, 67)",
+              "to": "rgb(138, 106, 48)"
+            },
+            {
+              "property": "0::before.transform",
+              "from": "matrix(0.707107, 0.707107, -0.707107, 0.707107, 0, 0)",
+              "to": "matrix(0.777817, 0.777817, -0.777817, 0.777817, 0, 0)"
+            }
+          ]
+        },
+        "press": {
+          "count": 2,
+          "examples": [
+            {
+              "property": "0::before.backgroundColor",
+              "from": "rgb(138, 106, 48)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "0::before.boxShadow",
+              "from": "rgb(138, 106, 48) 0px 0px 0px 1px, color(srgb 0.0627451 0.141176 0.109804 / 0.266667) 0px 4px 14px 0px",
+              "to": "rgb(232, 207, 131) 0px 0px 0px 2px inset, rgb(138, 106, 48) 0px 0px 0px 1px, color(srgb 0.0627451 0.141176 0.109804 / 0.266667) 0px 4px 14px 0px"
+            }
+          ]
+        },
+        "focus": {
+          "count": 4,
+          "examples": [
+            {
+              "property": "0.borderRadius",
+              "from": "0px",
+              "to": "3px"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(232, 207, 131)"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 4
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "settings-select enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 919.265625,
+          "y": 411.1875,
+          "width": 422.734375,
+          "height": 44,
+          "top": 411.1875,
+          "right": 1342,
+          "bottom": 455.1875,
+          "left": 919.265625
+        },
+        "pressedRect": {
+          "x": 919.265625,
+          "y": 411.1875,
+          "width": 422.734375,
+          "height": 44,
+          "top": 411.1875,
+          "right": 1342,
+          "bottom": 455.1875,
+          "left": 919.265625
+        },
+        "hover": {
+          "count": 12,
+          "examples": [
+            {
+              "property": "0.color",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(138, 106, 48)"
+            },
+            {
+              "property": "0.borderTopColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(138, 106, 48)"
+            },
+            {
+              "property": "0.borderRightColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(138, 106, 48)"
+            },
+            {
+              "property": "0.borderBottomColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(138, 106, 48)"
+            },
+            {
+              "property": "0.borderLeftColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(138, 106, 48)"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(138, 106, 48)"
+            },
+            {
+              "property": "1.color",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(138, 106, 48)"
+            },
+            {
+              "property": "1.borderTopColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(138, 106, 48)"
+            },
+            {
+              "property": "1.borderRightColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(138, 106, 48)"
+            },
+            {
+              "property": "1.borderBottomColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(138, 106, 48)"
+            },
+            {
+              "property": "1.borderLeftColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(138, 106, 48)"
+            },
+            {
+              "property": "1.outlineColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(138, 106, 48)"
+            }
+          ]
+        },
+        "press": {
+          "count": 13,
+          "examples": [
+            {
+              "property": "0.color",
+              "from": "rgb(138, 106, 48)",
+              "to": "rgb(31, 58, 47)"
+            },
+            {
+              "property": "0.borderTopColor",
+              "from": "rgb(138, 106, 48)",
+              "to": "rgb(31, 58, 47)"
+            },
+            {
+              "property": "0.borderRightColor",
+              "from": "rgb(138, 106, 48)",
+              "to": "rgb(31, 58, 47)"
+            },
+            {
+              "property": "0.borderBottomColor",
+              "from": "rgb(138, 106, 48)",
+              "to": "rgb(31, 58, 47)"
+            },
+            {
+              "property": "0.borderLeftColor",
+              "from": "rgb(138, 106, 48)",
+              "to": "rgb(31, 58, 47)"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(138, 106, 48)",
+              "to": "rgb(31, 58, 47)"
+            },
+            {
+              "property": "1.color",
+              "from": "rgb(138, 106, 48)",
+              "to": "rgb(31, 58, 47)"
+            },
+            {
+              "property": "1.borderTopColor",
+              "from": "rgb(138, 106, 48)",
+              "to": "rgb(31, 58, 47)"
+            },
+            {
+              "property": "1.borderRightColor",
+              "from": "rgb(138, 106, 48)",
+              "to": "rgb(31, 58, 47)"
+            },
+            {
+              "property": "1.borderBottomColor",
+              "from": "rgb(138, 106, 48)",
+              "to": "rgb(31, 58, 47)"
+            },
+            {
+              "property": "1.borderLeftColor",
+              "from": "rgb(138, 106, 48)",
+              "to": "rgb(31, 58, 47)"
+            },
+            {
+              "property": "1.outlineColor",
+              "from": "rgb(138, 106, 48)",
+              "to": "rgb(31, 58, 47)"
+            },
+            {
+              "property": "2.transform",
+              "from": "none",
+              "to": "matrix(-1, 0, 0, -1, 0, 0)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 4,
+          "examples": [
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(245, 230, 189)"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "5px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 6
+        },
+        "immediateAction": true
+      }
+    },
+    {
+      "name": "settings-defaults enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 48,
+          "y": 834.5,
+          "width": 152,
+          "height": 44,
+          "top": 834.5,
+          "right": 200,
+          "bottom": 878.5,
+          "left": 48
+        },
+        "pressedRect": {
+          "x": 48,
+          "y": 834.5,
+          "width": 152,
+          "height": 44,
+          "top": 834.5,
+          "right": 200,
+          "bottom": 878.5,
+          "left": 48
+        },
+        "hover": {
+          "count": 8,
+          "examples": [
+            {
+              "property": "0.color",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            },
+            {
+              "property": "0.backgroundColor",
+              "from": "color(srgb 0.0509804 0.168627 0.14902 / 0.32)",
+              "to": "rgb(255, 253, 242)"
+            },
+            {
+              "property": "0.borderTopColor",
+              "from": "rgb(184, 147, 63)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "0.borderRightColor",
+              "from": "rgb(184, 147, 63)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "0.borderBottomColor",
+              "from": "rgb(184, 147, 63)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "0.borderLeftColor",
+              "from": "rgb(184, 147, 63)",
+              "to": "rgb(253, 246, 226)"
+            },
+            {
+              "property": "0.boxShadow",
+              "from": "none",
+              "to": "rgb(232, 207, 131) 0px 0px 0px 2px inset"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(18, 51, 47)"
+            }
+          ]
+        },
+        "press": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.boxShadow",
+              "from": "rgb(232, 207, 131) 0px 0px 0px 2px inset",
+              "to": "rgb(184, 147, 63) 0px 0px 0px 2px inset"
+            }
+          ]
+        },
+        "focus": {
+          "count": 3,
+          "examples": [
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "5px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 7
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "settings-switch enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 1286,
+          "y": 333.1875,
+          "width": 56,
+          "height": 44,
+          "top": 333.1875,
+          "right": 1342,
+          "bottom": 377.1875,
+          "left": 1286
+        },
+        "pressedRect": {
+          "x": 1286,
+          "y": 333.1875,
+          "width": 56,
+          "height": 44,
+          "top": 333.1875,
+          "right": 1342,
+          "bottom": 377.1875,
+          "left": 1286
+        },
+        "hover": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0::before.boxShadow",
+              "from": "none",
+              "to": "color(srgb 0.721569 0.576471 0.247059 / 0.4) 0px 0px 0px 2px"
+            }
+          ]
+        },
+        "press": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0::before.boxShadow",
+              "from": "color(srgb 0.721569 0.576471 0.247059 / 0.4) 0px 0px 0px 2px",
+              "to": "rgb(253, 246, 226) 0px 0px 0px 2px inset, rgb(138, 106, 48) 0px 0px 0px 2px"
+            }
+          ]
+        },
+        "focus": {
+          "count": 4,
+          "examples": [
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(245, 230, 189)"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "5px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 5
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "collection-known-tile enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 433,
+          "y": 299,
+          "width": 182,
+          "height": 140,
+          "top": 299,
+          "right": 615,
+          "bottom": 439,
+          "left": 433
+        },
+        "pressedRect": {
+          "x": 433,
+          "y": 299,
+          "width": 182,
+          "height": 140,
+          "top": 299,
+          "right": 615,
+          "bottom": 439,
+          "left": 433
+        },
+        "hover": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.backgroundColor",
+              "from": "rgb(230, 221, 186)",
+              "to": "rgb(253, 246, 226)"
+            }
+          ]
+        },
+        "press": {
+          "count": 3,
+          "examples": [
+            {
+              "property": "0.backgroundColor",
+              "from": "rgb(253, 246, 226)",
+              "to": "rgb(243, 232, 200)"
+            },
+            {
+              "property": "0.boxShadow",
+              "from": "none",
+              "to": "rgb(138, 106, 48) 0px 0px 0px 2px inset"
+            },
+            {
+              "property": "1.transform",
+              "from": "none",
+              "to": "matrix(1, 0, 0, 1, 0, 1)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 5,
+          "examples": [
+            {
+              "property": "0.borderRadius",
+              "from": "0px",
+              "to": "3px"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(138, 106, 48)"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "3px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 2
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "calibration-pan-tool enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 234.078125,
+          "y": 98.5,
+          "width": 94.421875,
+          "height": 44,
+          "top": 98.5,
+          "right": 328.5,
+          "bottom": 142.5,
+          "left": 234.078125
+        },
+        "pressedRect": {
+          "x": 234.078125,
+          "y": 98.5,
+          "width": 94.421875,
+          "height": 44,
+          "top": 98.5,
+          "right": 328.5,
+          "bottom": 142.5,
+          "left": 234.078125
+        },
+        "hover": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.backgroundColor",
+              "from": "rgb(255, 253, 242)",
+              "to": "rgb(243, 232, 200)"
+            }
+          ]
+        },
+        "press": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.backgroundColor",
+              "from": "rgb(243, 232, 200)",
+              "to": "rgb(230, 221, 186)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 3,
+          "examples": [
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(18, 51, 47)",
+              "to": "rgb(91, 125, 138)"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "2px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 5
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "calibration Undo is visibly disabled before any edit",
+      "pass": true,
+      "detail": {
+        "opacity": "0.48",
+        "enabled": false
+      }
+    },
+    {
+      "name": "activity-selected-tab enabled normal/hover/held press/keyboard focus",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 74.59375,
+          "y": 208.796875,
+          "width": 226.625,
+          "height": 84.59375,
+          "top": 208.796875,
+          "right": 301.21875,
+          "bottom": 293.390625,
+          "left": 74.59375
+        },
+        "pressedRect": {
+          "x": 74.59375,
+          "y": 208.796875,
+          "width": 226.625,
+          "height": 84.59375,
+          "top": 208.796875,
+          "right": 301.21875,
+          "bottom": 293.390625,
+          "left": 74.59375
+        },
+        "hover": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.backgroundColor",
+              "from": "rgba(0, 0, 0, 0)",
+              "to": "color(srgb 0.831373 0.721569 0.454902 / 0.12)"
+            }
+          ]
+        },
+        "press": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "1.transform",
+              "from": "none",
+              "to": "matrix(0.94, 0, 0, 0.94, 0, 0)"
+            }
+          ]
+        },
+        "focus": {
+          "count": 5,
+          "examples": [
+            {
+              "property": "0.borderRadius",
+              "from": "0px",
+              "to": "3px"
+            },
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(31, 58, 47)",
+              "to": "rgb(45, 83, 67)"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "3px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 8
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "activity-primary enabled normal/hover/held press/keyboard focus",
+      "pass": false,
+      "detail": {
+        "enabled": true,
+        "rect": {
+          "x": 958.46875,
+          "y": 607.40625,
+          "width": 438.34375,
+          "height": 50,
+          "top": 607.40625,
+          "right": 1396.8125,
+          "bottom": 657.40625,
+          "left": 958.46875
+        },
+        "pressedRect": {
+          "x": 958.46875,
+          "y": 607.40625,
+          "width": 438.34375,
+          "height": 50,
+          "top": 607.40625,
+          "right": 1396.8125,
+          "bottom": 657.40625,
+          "left": 958.46875
+        },
+        "hover": {
+          "count": 2,
+          "examples": [
+            {
+              "property": "0.boxShadow",
+              "from": "rgb(212, 184, 116) 0px 0px 0px 3px inset, rgb(33, 73, 62) 0px 0px 0px 4px inset, rgb(243, 232, 200) 0px 0px 0px 3px, rgb(184, 147, 63) 0px 0px 0px 4px",
+              "to": "rgb(232, 207, 131) 0px 0px 0px 3px inset, rgb(33, 73, 62) 0px 0px 0px 4px inset, rgb(243, 232, 200) 0px 0px 0px 3px, rgb(184, 147, 63) 0px 0px 0px 4px"
+            },
+            {
+              "property": "2.transform",
+              "from": "none",
+              "to": "matrix(1, 0, 0, 1, 3, 0)"
+            }
+          ]
+        },
+        "press": {
+          "count": 0,
+          "examples": []
+        },
+        "focus": {
+          "count": 4,
+          "examples": [
+            {
+              "property": "0.outlineColor",
+              "from": "rgb(245, 230, 189)",
+              "to": "rgb(45, 83, 67)"
+            },
+            {
+              "property": "0.outlineStyle",
+              "from": "none",
+              "to": "solid"
+            },
+            {
+              "property": "0.outlineWidth",
+              "from": "3px",
+              "to": "2px"
+            },
+            {
+              "property": "0.outlineOffset",
+              "from": "0px",
+              "to": "3px"
+            }
+          ]
+        },
+        "active": true,
+        "focusVisible": true,
+        "keyboard": {
+          "reached": true,
+          "tabs": 6
+        },
+        "immediateAction": false
+      }
+    },
+    {
+      "name": "activity navigation uses real busy label/spinner and disables repeated action",
+      "pass": false,
+      "detail": {
+        "phase": "closed",
+        "busy": "false",
+        "disabled": false,
+        "label": "查看预告›",
+        "spinner": false,
+        "selectedTabDisabled": false,
+        "selectedTabOpacity": "1"
+      }
+    },
+    {
+      "name": "pending location has real busy/disabled label and animated internal indicator",
+      "pass": false,
+      "detail": {
+        "enabled": false,
+        "busy": "true",
+        "text": "◎ 定位中…",
+        "indicatorAnimation": "none"
+      }
+    },
+    {
+      "name": "safe-area 844x390 native CSS env reads nonzero override",
+      "pass": true,
+      "detail": {
+        "requested": {
+          "top": 12,
+          "right": 44,
+          "bottom": 21,
+          "left": 44
+        },
+        "actual": {
+          "top": 12,
+          "right": 44,
+          "bottom": 21,
+          "left": 44
+        }
+      }
+    },
+    {
+      "name": "safe-area 844x390 menu controls stay reachable and >=44",
+      "pass": true,
+      "detail": {
+        "context": "menu",
+        "viewport": [
+          844,
+          390
+        ],
+        "insets": {
+          "top": 12,
+          "right": 44,
+          "bottom": 21,
+          "left": 44
+        },
+        "targets": [
+          {
+            "selector": ".menu-close",
+            "label": "返回地图",
+            "rect": {
+              "x": 48,
+              "y": 12,
+              "width": 44,
+              "height": 44,
+              "top": 12,
+              "right": 92,
+              "bottom": 56,
+              "left": 48
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".menu-rail-button[aria-label=\"设置\"]",
+            "label": "设置",
+            "rect": {
+              "x": 47,
+              "y": 195,
+              "width": 46,
+              "height": 46,
+              "top": 195,
+              "right": 93,
+              "bottom": 241,
+              "left": 47
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".menu-tile[aria-label=\"设置\"]",
+            "label": "设置",
+            "rect": {
+              "x": 368.328125,
+              "y": 200,
+              "width": 122.65625,
+              "height": 91,
+              "top": 200,
+              "right": 490.984375,
+              "bottom": 291,
+              "left": 368.328125
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".menu-login",
+            "label": "登录并同步旅途",
+            "rect": {
+              "x": 447,
+              "y": 20,
+              "width": 44,
+              "height": 47,
+              "top": 20,
+              "right": 491,
+              "bottom": 67,
+              "left": 447
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "safe-area 844x390 settings controls stay reachable and >=44",
+      "pass": true,
+      "detail": {
+        "context": "settings",
+        "viewport": [
+          844,
+          390
+        ],
+        "insets": {
+          "top": 12,
+          "right": 44,
+          "bottom": 21,
+          "left": 44
+        },
+        "targets": [
+          {
+            "selector": ".settings-close",
+            "label": "关闭设置",
+            "rect": {
+              "x": 756,
+              "y": 12,
+              "width": 44,
+              "height": 44,
+              "top": 12,
+              "right": 800,
+              "bottom": 56,
+              "left": 756
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": "#settings-tab-control",
+            "label": "控制",
+            "rect": {
+              "x": 44,
+              "y": 65,
+              "width": 135,
+              "height": 44,
+              "top": 65,
+              "right": 179,
+              "bottom": 109,
+              "left": 44
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".settings-slider-thumb[aria-label=\"拖动灵敏度\"]",
+            "label": "拖动灵敏度",
+            "rect": {
+              "x": 556.578125,
+              "y": 162.59375,
+              "width": 44,
+              "height": 44,
+              "top": 162.59375,
+              "right": 600.578125,
+              "bottom": 206.59375,
+              "left": 556.578125
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".settings-footer .settings-btn--primary",
+            "label": "返回旅途 ↩",
+            "rect": {
+              "x": 675,
+              "y": 325,
+              "width": 125,
+              "height": 44,
+              "top": 325,
+              "right": 800,
+              "bottom": 369,
+              "left": 675
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "safe-area 844x390 cinematic controls stay reachable and >=44",
+      "pass": true,
+      "detail": {
+        "context": "cinematic",
+        "viewport": [
+          844,
+          390
+        ],
+        "insets": {
+          "top": 12,
+          "right": 44,
+          "bottom": 21,
+          "left": 44
+        },
+        "targets": [
+          {
+            "selector": "[data-testid=\"cinematic-screen\"] button",
+            "label": "继续探索 ◇",
+            "rect": {
+              "x": 486.28125,
+              "y": 267.890625,
+              "width": 180,
+              "height": 44,
+              "top": 267.890625,
+              "right": 666.28125,
+              "bottom": 311.890625,
+              "left": 486.28125
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "held 844x390 cinematic-continue keeps >=44 and visible feedback",
+      "pass": true,
+      "detail": {
+        "id": "cinematic-continue",
+        "viewport": [
+          844,
+          390
+        ],
+        "selector": "[data-testid=\"cinematic-screen\"] button",
+        "normalRect": {
+          "x": 486.28125,
+          "y": 267.890625,
+          "width": 180,
+          "height": 44,
+          "top": 267.890625,
+          "right": 666.28125,
+          "bottom": 311.890625,
+          "left": 486.28125
+        },
+        "pressedRect": {
+          "x": 486.28125,
+          "y": 267.890625,
+          "width": 180,
+          "height": 44,
+          "top": 267.890625,
+          "right": 666.28125,
+          "bottom": 311.890625,
+          "left": 486.28125
+        },
+        "active": true,
+        "visualDifference": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.boxShadow",
+              "from": "none",
+              "to": "rgb(138, 106, 48) 0px 0px 0px 3px inset"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "safe-area 844x390 calibration controls stay reachable and >=44",
+      "pass": true,
+      "detail": {
+        "context": "calibration",
+        "viewport": [
+          844,
+          390
+        ],
+        "insets": {
+          "top": 12,
+          "right": 44,
+          "bottom": 21,
+          "left": 44
+        },
+        "targets": [
+          {
+            "selector": "[aria-label=\"关闭标定工坊\"]",
+            "label": "关闭标定工坊",
+            "rect": {
+              "x": 693.671875,
+              "y": 18,
+              "width": 94.328125,
+              "height": 44,
+              "top": 18,
+              "right": 788,
+              "bottom": 62,
+              "left": 693.671875
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".cal-tools button:nth-child(3)",
+            "label": "拖动地图P",
+            "rect": {
+              "x": 212.375,
+              "y": 75,
+              "width": 68,
+              "height": 44,
+              "top": 75,
+              "right": 280.375,
+              "bottom": 119,
+              "left": 212.375
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".cal-map-controls button[aria-label=\"放大地图\"]",
+            "label": "放大地图",
+            "rect": {
+              "x": 312,
+              "y": 183,
+              "width": 44,
+              "height": 44,
+              "top": 183,
+              "right": 356,
+              "bottom": 227,
+              "left": 312
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".cal-inspector .cal-wide-button",
+            "label": "在所选顶点后插入中点 ＋",
+            "rect": {
+              "x": 535,
+              "y": 288.53125,
+              "width": 241,
+              "height": 44,
+              "top": 288.53125,
+              "right": 776,
+              "bottom": 332.53125,
+              "left": 535
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "held 844x390 location-primary keeps >=44 and visible feedback",
+      "pass": true,
+      "detail": {
+        "id": "location-primary",
+        "viewport": [
+          844,
+          390
+        ],
+        "selector": ".location-primary",
+        "normalRect": {
+          "x": 569,
+          "y": 89,
+          "width": 172,
+          "height": 44,
+          "top": 89,
+          "right": 741,
+          "bottom": 133,
+          "left": 569
+        },
+        "pressedRect": {
+          "x": 569,
+          "y": 89,
+          "width": 172,
+          "height": 44,
+          "top": 89,
+          "right": 741,
+          "bottom": 133,
+          "left": 569
+        },
+        "active": true,
+        "visualDifference": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.backgroundColor",
+              "from": "rgb(255, 253, 242)",
+              "to": "rgb(232, 207, 131)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "held 844x390 activity-primary keeps >=44 and visible feedback",
+      "pass": false,
+      "detail": {
+        "id": "activity-primary",
+        "viewport": [
+          844,
+          390
+        ],
+        "selector": ".activity-primary",
+        "normalRect": {
+          "x": 543.53125,
+          "y": 291.984375,
+          "width": 168.46875,
+          "height": 44,
+          "top": 291.984375,
+          "right": 712,
+          "bottom": 335.984375,
+          "left": 543.53125
+        },
+        "pressedRect": {
+          "x": 543.53125,
+          "y": 291.984375,
+          "width": 168.46875,
+          "height": 44,
+          "top": 291.984375,
+          "right": 712,
+          "bottom": 335.984375,
+          "left": 543.53125
+        },
+        "active": true,
+        "visualDifference": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    {
+      "name": "held 844x390 activity-close keeps >=44 and visible feedback",
+      "pass": true,
+      "detail": {
+        "id": "activity-close",
+        "viewport": [
+          844,
+          390
+        ],
+        "selector": ".activity-close",
+        "normalRect": {
+          "x": 753.4828491210938,
+          "y": 9.482858657836914,
+          "width": 49.0343017578125,
+          "height": 49.034278869628906,
+          "top": 9.482858657836914,
+          "right": 802.5171508789062,
+          "bottom": 58.51713752746582,
+          "left": 753.4828491210938
+        },
+        "pressedRect": {
+          "x": 753.4828491210938,
+          "y": 9.482858657836914,
+          "width": 49.0343017578125,
+          "height": 49.034278869628906,
+          "top": 9.482858657836914,
+          "right": 802.5171508789062,
+          "bottom": 58.51713752746582,
+          "left": 753.4828491210938
+        },
+        "active": true,
+        "visualDifference": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "1.transform",
+              "from": "none",
+              "to": "matrix(0.92, 0, 0, 0.92, 0, 0)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "safe-area 667x375 native CSS env reads nonzero override",
+      "pass": true,
+      "detail": {
+        "requested": {
+          "top": 12,
+          "right": 44,
+          "bottom": 21,
+          "left": 44
+        },
+        "actual": {
+          "top": 12,
+          "right": 44,
+          "bottom": 21,
+          "left": 44
+        }
+      }
+    },
+    {
+      "name": "safe-area 667x375 menu controls stay reachable and >=44",
+      "pass": true,
+      "detail": {
+        "context": "menu",
+        "viewport": [
+          667,
+          375
+        ],
+        "insets": {
+          "top": 12,
+          "right": 44,
+          "bottom": 21,
+          "left": 44
+        },
+        "targets": [
+          {
+            "selector": ".menu-close",
+            "label": "返回地图",
+            "rect": {
+              "x": 48,
+              "y": 12,
+              "width": 44,
+              "height": 44,
+              "top": 12,
+              "right": 92,
+              "bottom": 56,
+              "left": 48
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".menu-rail-button[aria-label=\"设置\"]",
+            "label": "设置",
+            "rect": {
+              "x": 47,
+              "y": 187.5,
+              "width": 46,
+              "height": 46,
+              "top": 187.5,
+              "right": 93,
+              "bottom": 233.5,
+              "left": 47
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".menu-tile[aria-label=\"设置\"]",
+            "label": "设置",
+            "rect": {
+              "x": 330.6875,
+              "y": 200,
+              "width": 103.84375,
+              "height": 91,
+              "top": 200,
+              "right": 434.53125,
+              "bottom": 291,
+              "left": 330.6875
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".menu-login",
+            "label": "登录并同步旅途",
+            "rect": {
+              "x": 390.53125,
+              "y": 20,
+              "width": 44,
+              "height": 47,
+              "top": 20,
+              "right": 434.53125,
+              "bottom": 67,
+              "left": 390.53125
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "safe-area 667x375 settings controls stay reachable and >=44",
+      "pass": true,
+      "detail": {
+        "context": "settings",
+        "viewport": [
+          667,
+          375
+        ],
+        "insets": {
+          "top": 12,
+          "right": 44,
+          "bottom": 21,
+          "left": 44
+        },
+        "targets": [
+          {
+            "selector": ".settings-close",
+            "label": "关闭设置",
+            "rect": {
+              "x": 579,
+              "y": 12,
+              "width": 44,
+              "height": 44,
+              "top": 12,
+              "right": 623,
+              "bottom": 56,
+              "left": 579
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": "#settings-tab-control",
+            "label": "控制",
+            "rect": {
+              "x": 44,
+              "y": 65,
+              "width": 112,
+              "height": 44,
+              "top": 65,
+              "right": 156,
+              "bottom": 109,
+              "left": 44
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".settings-slider-thumb[aria-label=\"拖动灵敏度\"]",
+            "label": "拖动灵敏度",
+            "rect": {
+              "x": 434.015625,
+              "y": 162.59375,
+              "width": 44,
+              "height": 44,
+              "top": 162.59375,
+              "right": 478.015625,
+              "bottom": 206.59375,
+              "left": 434.015625
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".settings-footer .settings-btn--primary",
+            "label": "返回旅途 ↩",
+            "rect": {
+              "x": 511,
+              "y": 310,
+              "width": 112,
+              "height": 44,
+              "top": 310,
+              "right": 623,
+              "bottom": 354,
+              "left": 511
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "safe-area 667x375 cinematic controls stay reachable and >=44",
+      "pass": true,
+      "detail": {
+        "context": "cinematic",
+        "viewport": [
+          667,
+          375
+        ],
+        "insets": {
+          "top": 12,
+          "right": 44,
+          "bottom": 21,
+          "left": 44
+        },
+        "targets": [
+          {
+            "selector": "[data-testid=\"cinematic-screen\"] button",
+            "label": "继续探索 ◇",
+            "rect": {
+              "x": 385.140625,
+              "y": 265.484375,
+              "width": 180,
+              "height": 44,
+              "top": 265.484375,
+              "right": 565.140625,
+              "bottom": 309.484375,
+              "left": 385.140625
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "held 667x375 cinematic-continue keeps >=44 and visible feedback",
+      "pass": true,
+      "detail": {
+        "id": "cinematic-continue",
+        "viewport": [
+          667,
+          375
+        ],
+        "selector": "[data-testid=\"cinematic-screen\"] button",
+        "normalRect": {
+          "x": 385.140625,
+          "y": 265.484375,
+          "width": 180,
+          "height": 44,
+          "top": 265.484375,
+          "right": 565.140625,
+          "bottom": 309.484375,
+          "left": 385.140625
+        },
+        "pressedRect": {
+          "x": 385.140625,
+          "y": 265.484375,
+          "width": 180,
+          "height": 44,
+          "top": 265.484375,
+          "right": 565.140625,
+          "bottom": 309.484375,
+          "left": 385.140625
+        },
+        "active": true,
+        "visualDifference": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.boxShadow",
+              "from": "none",
+              "to": "rgb(138, 106, 48) 0px 0px 0px 3px inset"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "safe-area 667x375 calibration controls stay reachable and >=44",
+      "pass": true,
+      "detail": {
+        "context": "calibration",
+        "viewport": [
+          667,
+          375
+        ],
+        "insets": {
+          "top": 12,
+          "right": 44,
+          "bottom": 21,
+          "left": 44
+        },
+        "targets": [
+          {
+            "selector": "[aria-label=\"关闭标定工坊\"]",
+            "label": "关闭标定工坊",
+            "rect": {
+              "x": 533.171875,
+              "y": 18,
+              "width": 77.828125,
+              "height": 44,
+              "top": 18,
+              "right": 611,
+              "bottom": 62,
+              "left": 533.171875
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".cal-tools button:nth-child(3)",
+            "label": "拖动地图P",
+            "rect": {
+              "x": 195.515625,
+              "y": 75,
+              "width": 60,
+              "height": 44,
+              "top": 75,
+              "right": 255.515625,
+              "bottom": 119,
+              "left": 195.515625
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".cal-map-controls button[aria-label=\"放大地图\"]",
+            "label": "放大地图",
+            "rect": {
+              "x": 221,
+              "y": 231,
+              "width": 44,
+              "height": 44,
+              "top": 231,
+              "right": 265,
+              "bottom": 275,
+              "left": 221
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          },
+          {
+            "selector": ".cal-inspector .cal-wide-button",
+            "label": "在所选顶点后插入中点 ＋",
+            "rect": {
+              "x": 386,
+              "y": 273.53125,
+              "width": 213,
+              "height": 44,
+              "top": 273.53125,
+              "right": 599,
+              "bottom": 317.53125,
+              "left": 386
+            },
+            "enabled": true,
+            "centerUncovered": true,
+            "insideSafe": true,
+            "large": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "held 667x375 location-primary keeps >=44 and visible feedback",
+      "pass": true,
+      "detail": {
+        "id": "location-primary",
+        "viewport": [
+          667,
+          375
+        ],
+        "selector": ".location-primary",
+        "normalRect": {
+          "x": 418.5625,
+          "y": 89,
+          "width": 145.4375,
+          "height": 44,
+          "top": 89,
+          "right": 564,
+          "bottom": 133,
+          "left": 418.5625
+        },
+        "pressedRect": {
+          "x": 418.5625,
+          "y": 89,
+          "width": 145.4375,
+          "height": 44,
+          "top": 89,
+          "right": 564,
+          "bottom": 133,
+          "left": 418.5625
+        },
+        "active": true,
+        "visualDifference": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "0.backgroundColor",
+              "from": "rgb(255, 253, 242)",
+              "to": "rgb(232, 207, 131)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "held 667x375 activity-primary keeps >=44 and visible feedback",
+      "pass": false,
+      "detail": {
+        "id": "activity-primary",
+        "viewport": [
+          667,
+          375
+        ],
+        "selector": ".activity-primary",
+        "normalRect": {
+          "x": 429.546875,
+          "y": 254.5,
+          "width": 116.0625,
+          "height": 68,
+          "top": 254.5,
+          "right": 545.609375,
+          "bottom": 322.5,
+          "left": 429.546875
+        },
+        "pressedRect": {
+          "x": 429.546875,
+          "y": 254.5,
+          "width": 116.0625,
+          "height": 68,
+          "top": 254.5,
+          "right": 545.609375,
+          "bottom": 322.5,
+          "left": 429.546875
+        },
+        "active": true,
+        "visualDifference": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    {
+      "name": "held 667x375 activity-close keeps >=44 and visible feedback",
+      "pass": true,
+      "detail": {
+        "id": "activity-close",
+        "viewport": [
+          667,
+          375
+        ],
+        "selector": ".activity-close",
+        "normalRect": {
+          "x": 576.4828491210938,
+          "y": 9.482858657836914,
+          "width": 49.0343017578125,
+          "height": 49.034278869628906,
+          "top": 9.482858657836914,
+          "right": 625.5171508789062,
+          "bottom": 58.51713752746582,
+          "left": 576.4828491210938
+        },
+        "pressedRect": {
+          "x": 576.4828491210938,
+          "y": 9.482858657836914,
+          "width": 49.0343017578125,
+          "height": 49.034278869628906,
+          "top": 9.482858657836914,
+          "right": 625.5171508789062,
+          "bottom": 58.51713752746582,
+          "left": 576.4828491210938
+        },
+        "active": true,
+        "visualDifference": {
+          "count": 1,
+          "examples": [
+            {
+              "property": "1.transform",
+              "from": "none",
+              "to": "matrix(0.92, 0, 0, 0.92, 0, 0)"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "evidence": {
+    "scope": "Owned temporary Edge, localhost DEV isolated QA; no physical phone/GPS claim",
+    "controls": 20,
+    "mode": "all",
+    "initialInput": {
+      "stage": {},
+      "ui": {
+        "route": "map",
+        "activePanel": null,
+        "selectedId": null,
+        "announcements": [],
+        "cinematicQueue": []
+      },
+      "dialogs": [],
+      "active": "BODY"
+    },
+    "equivalentStates": [
+      {
+        "id": "hud-brand",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "hud-center",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": true,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "hud-collection",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "hud-account",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "hud-locate",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "map-marker",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "menu-close",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "menu-login",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "menu-settings-tile",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "menu-settings-rail",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "settings-close",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "settings-category",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "settings-slider",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "settings-select",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": true
+      },
+      {
+        "id": "settings-defaults",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "settings-switch",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "collection-known-tile",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "calibration-pan-tool",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "activity-selected-tab",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "activity-primary",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": true,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      }
+    ],
+    "fifthStatePolicy": "No fabricated busy state for synchronous navigation, tabs, sliders or switches. Real menu upcoming, calibration Undo, activity transition, and pending-location states are measured separately.",
+    "semanticEquivalence": [
+      {
+        "control": "settings-select",
+        "reason": "Pointerdown immediately opens the real listbox; its caret/expanded feedback is accepted without adding a second button animation."
+      },
+      {
+        "control": "activity-selected-tab disabled during navigation",
+        "reason": "The selected tab keeps its selection color/opacity while disabled. The owning dialog exposes aria-busy and the primary action shows a spinner and pending label, so the brief whole-page transition supplies busy feedback."
+      },
+      {
+        "controls": "Synchronous menu navigation, category tabs, sliders and switches",
+        "reason": "No asynchronous busy phase is supported; pending/disabled states are not fabricated to fill a universal five-state matrix."
+      }
+    ],
+    "safeAreaProtocol": {
+      "command": {
+        "name": "setSafeAreaInsetsOverride",
+        "description": "Overrides the values for env(safe-area-inset-*) and env(safe-area-max-inset-*). Unset values will cause the\nrespective variables to be undefined, even if previously overridden.",
+        "experimental": true,
+        "parameters": [
+          {
+            "name": "insets",
+            "$ref": "SafeAreaInsets"
+          }
+        ]
+      },
+      "safeType": {
+        "id": "SafeAreaInsets",
+        "experimental": true,
+        "type": "object",
+        "properties": [
+          {
+            "name": "top",
+            "description": "Overrides safe-area-inset-top.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "topMax",
+            "description": "Overrides safe-area-max-inset-top.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "left",
+            "description": "Overrides safe-area-inset-left.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "leftMax",
+            "description": "Overrides safe-area-max-inset-left.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "bottom",
+            "description": "Overrides safe-area-inset-bottom.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "bottomMax",
+            "description": "Overrides safe-area-max-inset-bottom.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "right",
+            "description": "Overrides safe-area-inset-right.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "rightMax",
+            "description": "Overrides safe-area-max-inset-right.",
+            "optional": true,
+            "type": "integer"
+          }
+        ]
+      }
+    }
+  },
+  "errors": []
+}

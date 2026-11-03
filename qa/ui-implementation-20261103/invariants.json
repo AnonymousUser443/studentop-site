@@ -1,0 +1,248 @@
+{
+  "ok": true,
+  "at": "2026-11-03T09:26:45.342Z",
+  "total": 8,
+  "checks": [
+    {
+      "name": "no prior static testid signatures removed",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "six frozen calibrated inputs and public landmark anchors unchanged",
+      "pass": true,
+      "detail": [
+        {
+          "file": "src/data.ts",
+          "bytes": 3062,
+          "sha256": "e0cb6cb31b9c6209dfdaa7d3be97e45b56c66d79f2bd647f9cbc15225760b14b",
+          "unchanged": true
+        },
+        {
+          "file": "src/location/vendor/coordinates.mjs",
+          "bytes": 1335,
+          "sha256": "df79a77de465e34e0622a94398dd638731b81179a07e084a088748f10f261f0c",
+          "unchanged": true
+        },
+        {
+          "file": "src/location/vendor/model-transform.mjs",
+          "bytes": 5066,
+          "sha256": "b9e950c4aced553109ae85af8e0e4a3df500ef050219328262d9507e63eb3be6",
+          "unchanged": true
+        },
+        {
+          "file": "src/location/data/map.json",
+          "bytes": 1492,
+          "sha256": "2998857bea6918e6b4bc8ca6a54f7c58f9be22012fa3e5e576962e9ae5014907",
+          "unchanged": true
+        },
+        {
+          "file": "src/location/data/selected_model.json",
+          "bytes": 30967,
+          "sha256": "b9daad2e079047fa0601b462b5516ab187bc3505ac86733ee953267160abc465",
+          "unchanged": true
+        },
+        {
+          "file": "public/assets/maps/calibrated/campus_no_labels.webp",
+          "bytes": 1070594,
+          "sha256": "bc5f8dd0c07b6a296152cade00a11d9c32055ea01a06a837a559ab0d8a37c474",
+          "unchanged": true
+        },
+        {
+          "file": "public/assets/maps/calibrated/campus_no_labels.png",
+          "bytes": 1973144,
+          "sha256": "ed9fae1e1ef6fea0d0998abf7a2d586d1a15bd3058411c06cd1b9268be5e447f",
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "name": "dist within fixed 20MiB budget",
+      "pass": true,
+      "detail": {
+        "bytes": 20908923,
+        "MiB": 19.940302848815918,
+        "budgetBytes": 20971520,
+        "remainingBytes": 62597
+      }
+    },
+    {
+      "name": "no source TTF or historical duplicate maps shipped",
+      "pass": true
+    },
+    {
+      "name": "HTML and transitive static JS graph gzip below600KB",
+      "pass": true,
+      "detail": {
+        "gzipBytes": 214068,
+        "scope": "sum of independently gzip-compressed JavaScript in HTML entry/modulepreload/static-import graph; no dynamic imports",
+        "files": [
+          {
+            "file": "assets/index-O8gpkMDJ.js",
+            "rawBytes": 147729,
+            "gzipBytes": 53393
+          },
+          {
+            "file": "assets/vendor-misc-C8ArBquh.js",
+            "rawBytes": 2313,
+            "gzipBytes": 1081
+          },
+          {
+            "file": "assets/vendor-motion-CMh-u6xo.js",
+            "rawBytes": 158062,
+            "gzipBytes": 53872
+          },
+          {
+            "file": "assets/vendor-react-BBqAYxPs.js",
+            "rawBytes": 329951,
+            "gzipBytes": 105313
+          },
+          {
+            "file": "assets/vendor-state-DtEomig4.js",
+            "rawBytes": 638,
+            "gzipBytes": 409
+          }
+        ]
+      }
+    },
+    {
+      "name": "p5 and GSAP absent from initial static graph",
+      "pass": true
+    },
+    {
+      "name": "local authoring editor and wrapper excluded from production",
+      "pass": true
+    },
+    {
+      "name": "three runtime fonts and their licences ship",
+      "pass": true
+    }
+  ],
+  "evidence": {
+    "testids": {
+      "method": "Static JSX literal / template signatures, not exhaustive runtime DOM state enumeration",
+      "baseline": "HEAD 14a087b",
+      "previous": [
+        "activity-close",
+        "activity-cta",
+        "activity-entry",
+        "activity-map-preview",
+        "activity-notice",
+        "activity-return",
+        "activity-screen",
+        "activity-tab-${item.id}",
+        "check-in-button",
+        "check-in-status",
+        "game-stage",
+        "heading-sector",
+        "hud-progress",
+        "map-scene",
+        "poi-${landmark.id}",
+        "real-location-marker"
+      ],
+      "current": [
+        "activity-close",
+        "activity-cta",
+        "activity-entry",
+        "activity-map-preview",
+        "activity-notice",
+        "activity-return",
+        "activity-screen",
+        "activity-tab-${item.id}",
+        "calibration-canvas",
+        "calibration-local-only",
+        "calibration-screen",
+        "check-in-button",
+        "check-in-status",
+        "cinematic-screen",
+        "dock-collection",
+        "game-stage",
+        "heading-sector",
+        "hud-progress",
+        "map-scene",
+        "poi-${landmark.id}",
+        "real-location-marker",
+        "region-procedural-cloud",
+        "region-veil",
+        "region-veil-base"
+      ],
+      "missing": []
+    },
+    "frozen": [
+      {
+        "file": "src/data.ts",
+        "bytes": 3062,
+        "sha256": "e0cb6cb31b9c6209dfdaa7d3be97e45b56c66d79f2bd647f9cbc15225760b14b",
+        "unchanged": true
+      },
+      {
+        "file": "src/location/vendor/coordinates.mjs",
+        "bytes": 1335,
+        "sha256": "df79a77de465e34e0622a94398dd638731b81179a07e084a088748f10f261f0c",
+        "unchanged": true
+      },
+      {
+        "file": "src/location/vendor/model-transform.mjs",
+        "bytes": 5066,
+        "sha256": "b9e950c4aced553109ae85af8e0e4a3df500ef050219328262d9507e63eb3be6",
+        "unchanged": true
+      },
+      {
+        "file": "src/location/data/map.json",
+        "bytes": 1492,
+        "sha256": "2998857bea6918e6b4bc8ca6a54f7c58f9be22012fa3e5e576962e9ae5014907",
+        "unchanged": true
+      },
+      {
+        "file": "src/location/data/selected_model.json",
+        "bytes": 30967,
+        "sha256": "b9daad2e079047fa0601b462b5516ab187bc3505ac86733ee953267160abc465",
+        "unchanged": true
+      },
+      {
+        "file": "public/assets/maps/calibrated/campus_no_labels.webp",
+        "bytes": 1070594,
+        "sha256": "bc5f8dd0c07b6a296152cade00a11d9c32055ea01a06a837a559ab0d8a37c474",
+        "unchanged": true
+      },
+      {
+        "file": "public/assets/maps/calibrated/campus_no_labels.png",
+        "bytes": 1973144,
+        "sha256": "ed9fae1e1ef6fea0d0998abf7a2d586d1a15bd3058411c06cd1b9268be5e447f",
+        "unchanged": true
+      }
+    ],
+    "initialJS": [
+      {
+        "file": "assets/index-O8gpkMDJ.js",
+        "rawBytes": 147729,
+        "gzipBytes": 53393
+      },
+      {
+        "file": "assets/vendor-misc-C8ArBquh.js",
+        "rawBytes": 2313,
+        "gzipBytes": 1081
+      },
+      {
+        "file": "assets/vendor-motion-CMh-u6xo.js",
+        "rawBytes": 158062,
+        "gzipBytes": 53872
+      },
+      {
+        "file": "assets/vendor-react-BBqAYxPs.js",
+        "rawBytes": 329951,
+        "gzipBytes": 105313
+      },
+      {
+        "file": "assets/vendor-state-DtEomig4.js",
+        "rawBytes": 638,
+        "gzipBytes": 409
+      }
+    ],
+    "dist": {
+      "bytes": 20908923,
+      "files": 62,
+      "indexSha256": "2b4240a4c3ee6ef6ffbc5a350e2e1ec0ab29880dd2ac1a2a84500c8b0bb16fa3"
+    }
+  }
+}

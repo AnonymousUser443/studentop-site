@@ -33,7 +33,11 @@ export default defineConfig({
   server: {
     host: '127.0.0.1', port: 5174, strictPort: true,
     allowedHosts: ['.trycloudflare.com'],
-    proxy: { '/api': { target: 'http://127.0.0.1:8787', changeOrigin: true } },
+    proxy: {
+      '/api/editor': { target: `http://127.0.0.1:${process.env.LIYUN_AUTHOR_PORT ?? 8790}`, changeOrigin: true },
+      '/api/content': { target: `http://127.0.0.1:${process.env.LIYUN_AUTHOR_PORT ?? 8790}`, changeOrigin: true },
+      '/api': { target: 'http://127.0.0.1:8787', changeOrigin: true },
+    },
     watch: { usePolling: true, interval: 200,
       ignored: ['**/*.tmpdir', '**/*.tmpdir/**', '**/*.tmp', /(^|[/\\])[^/\\]*\.tmpdir([/\\]|$)/, /\.tmp$/] },
   },

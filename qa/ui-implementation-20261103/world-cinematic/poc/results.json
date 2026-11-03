@@ -1,0 +1,58 @@
+{
+  "ok": true,
+  "evidence": [
+    {
+      "quality": "low",
+      "video": "ink-reveal-low-844x390.mp4",
+      "paintFrames": 134,
+      "firstTimestamp": 1793678901.807844,
+      "lastTimestamp": 1793678905.023728,
+      "unlockWallClock": 1793678902658,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 844,
+            "height": 390,
+            "nb_frames": "135"
+          }
+        ],
+        "format": {
+          "duration": "3.283000",
+          "size": "96140"
+        }
+      },
+      "method": "CDP Page.startScreencast, real paint timestamps in ffconcat/VFR; actual application transition, no fabricated interpolation, audio omitted. Desktop Edge at844x390; not phone FPS.",
+      "encodingTimebase": "Each input JPEG uses1/1000s timestamps; ffconcat durations from actual paint deltas, VFR without interpolated frames."
+    },
+    {
+      "quality": "high",
+      "video": "ink-reveal-high-844x390.mp4",
+      "paintFrames": 121,
+      "firstTimestamp": 1793678907.207054,
+      "lastTimestamp": 1793678910.406969,
+      "unlockWallClock": 1793678908028,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 844,
+            "height": 390,
+            "nb_frames": "122"
+          }
+        ],
+        "format": {
+          "duration": "3.201000",
+          "size": "170123"
+        }
+      },
+      "method": "CDP Page.startScreencast, real paint timestamps in ffconcat/VFR; actual application transition, no fabricated interpolation, audio omitted. Desktop Edge at844x390; not phone FPS.",
+      "encodingTimebase": "Each input JPEG uses1/1000s timestamps; ffconcat durations from actual paint deltas, VFR without interpolated frames."
+    }
+  ],
+  "errors": []
+}

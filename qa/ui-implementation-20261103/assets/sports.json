@@ -1,0 +1,20 @@
+{
+  "id": "sports",
+  "source": "C:\\Users\\12929\\.codex\\generated_images\\01a19cdf-88b3-7880-b645-ca87f10dbd3b\\exec-2e8f5254-b6b8-4e89-af37-3c49957e36fc.png",
+  "tool": "built-in ImageGen",
+  "prompt": "Original concept illustration for a Chinese university campus exploration game, cinematic 16:9 landscape, request large 1920x1080. Elegant hand-painted cel-shaded new Chinese landscape with layered cut-paper silhouettes and rice-paper fibers; sage jade, lake teal, warm ivory, muted autumn gold accents. Refined calm youthful game chapter art, strong foreground/middle/background depth, asymmetrical composition, no text, no signage, no logos, no UI, no borders. Stylized original architecture, explicitly a conceptual placeholder rather than a real campus photograph. A university sports hall with a sweeping low curved roof and clear geometric facade, open running-track lanes sweeping from foreground into a jade-green athletic lawn, autumn trees, light mountain silhouettes and a pale warm blue sky. Convey fresh energy and movement through composition, no athlete figures.",
+  "usage": "AI-generated concept placeholder, not a campus photograph",
+  "hero": "D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\apps\\liyun-explorer\\public\\assets\\landmarks\\sports\\hero.webp",
+  "visualReview": "Native output inspected; concept placeholder, not a factual campus photograph.",
+  "nativePixels": [
+    1672,
+    941
+  ],
+  "deliveredPixels": [
+    768,
+    432
+  ],
+  "encoding": "WebP quality 74; local distribution derivative",
+  "bytes": 67300,
+  "sha256": "7883474f98fce35965328b4953a6de775b4e3a7fc844f2a30f620d9b10b55daa"
+}

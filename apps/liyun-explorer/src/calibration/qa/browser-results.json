@@ -1,0 +1,427 @@
+{
+  "ok": true,
+  "total": 33,
+  "passed": 33,
+  "checks": [
+    {
+      "name": "1440 screen fits viewport and owns focus",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "right": 1440,
+          "bottom": 900
+        },
+        "canvas": {
+          "x": 208,
+          "y": 153.5,
+          "width": 920,
+          "height": 649.5,
+          "right": 1128,
+          "bottom": 803
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 88.5,
+          "width": 1440,
+          "height": 65,
+          "right": 1440,
+          "bottom": 153.5
+        },
+        "overflow": false,
+        "focusInside": true,
+        "small": [],
+        "inspector": {
+          "x": 1128,
+          "y": 153.5,
+          "width": 312,
+          "height": 702.5,
+          "right": 1440,
+          "bottom": 856,
+          "clientWidth": 301,
+          "scrollWidth": 301
+        }
+      }
+    },
+    {
+      "name": "1440 visible buttons have at least 44px hit areas",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "numeric center editing updates the draft",
+      "pass": true
+    },
+    {
+      "name": "undo restores the previous center",
+      "pass": true
+    },
+    {
+      "name": "redo restores the edited center",
+      "pass": true
+    },
+    {
+      "name": "local save contains edited review draft and model candidate coordinates",
+      "pass": true
+    },
+    {
+      "name": "local save leaves both ordinary game archives untouched",
+      "pass": true
+    },
+    {
+      "name": "pointer drag moves check-in center",
+      "pass": true
+    },
+    {
+      "name": "one undo reverses one complete drag",
+      "pass": true
+    },
+    {
+      "name": "projected range handle edits the meter radius",
+      "pass": true
+    },
+    {
+      "name": "hand-entered WGS84 is preserved as a manual field candidate",
+      "pass": true
+    },
+    {
+      "name": "dragging a manual center clears its previous WGS84 binding",
+      "pass": true
+    },
+    {
+      "name": "export downloads an unconfirmed review JSON without applying it",
+      "pass": true
+    },
+    {
+      "name": "JSON file import loads an independent draft",
+      "pass": true
+    },
+    {
+      "name": "focused vertex supports keyboard micro-adjustment",
+      "pass": true
+    },
+    {
+      "name": "pointer drawing collects vertices before committing",
+      "pass": true
+    },
+    {
+      "name": "finish drawing replaces only the selected polygon",
+      "pass": true
+    },
+    {
+      "name": "self-intersecting safe draft opens for repair with actionable errors",
+      "pass": true
+    },
+    {
+      "name": "validation error locates the affected region and vertex",
+      "pass": true
+    },
+    {
+      "name": "alien-map import is rejected with visible feedback",
+      "pass": true
+    },
+    {
+      "name": "844 landscape fits and keeps a usable editor canvas",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          844,
+          390
+        ],
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390,
+          "right": 844,
+          "bottom": 390
+        },
+        "canvas": {
+          "x": 0,
+          "y": 161,
+          "width": 564,
+          "height": 152,
+          "right": 564,
+          "bottom": 313
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 59,
+          "width": 844,
+          "height": 53,
+          "right": 844,
+          "bottom": 112
+        },
+        "overflow": false,
+        "focusInside": true,
+        "small": [],
+        "inspector": {
+          "x": 564,
+          "y": 112,
+          "width": 280,
+          "height": 242,
+          "right": 844,
+          "bottom": 354,
+          "clientWidth": 269,
+          "scrollWidth": 269
+        }
+      }
+    },
+    {
+      "name": "844 visible buttons have at least 44px hit areas",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "667 landscape keeps the editor within the viewport",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          667,
+          375
+        ],
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 667,
+          "height": 375,
+          "right": 667,
+          "bottom": 375
+        },
+        "canvas": {
+          "x": 0,
+          "y": 161,
+          "width": 415,
+          "height": 137,
+          "right": 415,
+          "bottom": 298
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 59,
+          "width": 667,
+          "height": 53,
+          "right": 667,
+          "bottom": 112
+        },
+        "overflow": false,
+        "focusInside": true,
+        "small": [],
+        "inspector": {
+          "x": 415,
+          "y": 112,
+          "width": 252,
+          "height": 227,
+          "right": 667,
+          "bottom": 339,
+          "clientWidth": 241,
+          "scrollWidth": 241
+        }
+      }
+    },
+    {
+      "name": "667 visible buttons have at least 44px hit areas",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "emulated two-finger gesture zooms the map",
+      "pass": true,
+      "detail": {
+        "before": 0.025,
+        "after": 0.055
+      }
+    },
+    {
+      "name": "Tab stays in the author surface and cycles to its first control",
+      "pass": true
+    },
+    {
+      "name": "authoring never requests device GPS",
+      "pass": true
+    },
+    {
+      "name": "all operations leave both ordinary game archives untouched",
+      "pass": true
+    },
+    {
+      "name": "saved local draft survives reload and restores independently",
+      "pass": true
+    },
+    {
+      "name": "reload and local restore never read or write either ordinary archive",
+      "pass": true
+    },
+    {
+      "name": "explicit ?tool=calibration without QA never reads or writes ordinary archives",
+      "pass": true,
+      "detail": {
+        "archiveCalls": [],
+        "archives": {
+          "legacy": "isolated-calibration-game-sentinel",
+          "current": "isolated-calibration-current-sentinel"
+        },
+        "gpsCalls": 0
+      }
+    },
+    {
+      "name": "explicit author tool without QA never requests device GPS",
+      "pass": true
+    },
+    {
+      "name": "no browser exceptions or failed local requests",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "evidence": {
+    "mode": "Isolated Edge / CDP pointer, keyboard and emulated touch input; localhost only",
+    "layouts": [
+      {
+        "viewport": [
+          1440,
+          900
+        ],
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "right": 1440,
+          "bottom": 900
+        },
+        "canvas": {
+          "x": 208,
+          "y": 153.5,
+          "width": 920,
+          "height": 649.5,
+          "right": 1128,
+          "bottom": 803
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 88.5,
+          "width": 1440,
+          "height": 65,
+          "right": 1440,
+          "bottom": 153.5
+        },
+        "overflow": false,
+        "focusInside": true,
+        "small": [],
+        "inspector": {
+          "x": 1128,
+          "y": 153.5,
+          "width": 312,
+          "height": 702.5,
+          "right": 1440,
+          "bottom": 856,
+          "clientWidth": 301,
+          "scrollWidth": 301
+        }
+      },
+      {
+        "viewport": [
+          844,
+          390
+        ],
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390,
+          "right": 844,
+          "bottom": 390
+        },
+        "canvas": {
+          "x": 0,
+          "y": 161,
+          "width": 564,
+          "height": 152,
+          "right": 564,
+          "bottom": 313
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 59,
+          "width": 844,
+          "height": 53,
+          "right": 844,
+          "bottom": 112
+        },
+        "overflow": false,
+        "focusInside": true,
+        "small": [],
+        "inspector": {
+          "x": 564,
+          "y": 112,
+          "width": 280,
+          "height": 242,
+          "right": 844,
+          "bottom": 354,
+          "clientWidth": 269,
+          "scrollWidth": 269
+        }
+      },
+      {
+        "viewport": [
+          667,
+          375
+        ],
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 667,
+          "height": 375,
+          "right": 667,
+          "bottom": 375
+        },
+        "canvas": {
+          "x": 0,
+          "y": 161,
+          "width": 415,
+          "height": 137,
+          "right": 415,
+          "bottom": 298
+        },
+        "toolbar": {
+          "x": 0,
+          "y": 59,
+          "width": 667,
+          "height": 53,
+          "right": 667,
+          "bottom": 112
+        },
+        "overflow": false,
+        "focusInside": true,
+        "small": [],
+        "inspector": {
+          "x": 415,
+          "y": 112,
+          "width": 252,
+          "height": 227,
+          "right": 667,
+          "bottom": 339,
+          "clientWidth": 241,
+          "scrollWidth": 241
+        }
+      }
+    ],
+    "explicitTool": {
+      "archiveCalls": [],
+      "archives": {
+        "legacy": "isolated-calibration-game-sentinel",
+        "current": "isolated-calibration-current-sentinel"
+      },
+      "gpsCalls": 0
+    }
+  },
+  "errors": []
+}

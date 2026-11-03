@@ -4,7 +4,7 @@ import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { openStore } from './store.mjs';
-import { LANDMARK_UVS, START_UV } from './progress.mjs';
+import { LANDMARK_UVS, START_UV, sanitizeProgress } from './progress.mjs';
 const PASSWORD = 'synthetic-passphrase-24';
 
 function tempStore() {
@@ -165,7 +165,7 @@ test('严格白名单：敏感字段不落盘，UV仅允许起点或已发现固
     assert.equal(raw.includes('private-'), false);
     const saved = JSON.parse(raw);
     assert.deepEqual(Object.keys(saved).sort(), ['discoveredIds', 'playerUV', 'settings', 'unlockedRegionIds', 'version']);
-    assert.deepEqual(Object.keys(saved.settings).sort(), ['autoDegrade', 'degradedFrom', 'hudScale', 'music', 'quality', 'qualityOverrides', 'qualityPreset', 'reduceFlash', 'reducedMotion', 'track', 'uiSound', 'volume']);
+    assert.deepEqual(Object.keys(saved.settings).sort(), ['autoDegrade', 'baseQualityPreset', 'degradedFrom', 'doubleZoom', 'dragSensitivity', 'hudScale', 'messageDuration', 'music', 'quality', 'qualityOverrides', 'qualityPreset', 'redDot', 'reduceFlash', 'reducedMotion', 'showCinematic', 'track', 'uiSound', 'volume', 'zoomLimit']);
     assert.deepEqual(saved.discoveredIds, ['tower']);
     assert.deepEqual(saved.unlockedRegionIds, ['tower']);
     assert.deepEqual(saved.playerUV, START_UV);
@@ -179,6 +179,19 @@ test('严格白名单：敏感字段不落盘，UV仅允许起点或已发现固
     assert.deepEqual(store.getCheckins(user.id), []);
     assert.equal(store.getProgress(user.id).state.settings.music, false);
   } finally { store.close(); rmSync(dir, { recursive: true, force: true }); }
+});
+
+test('v3 独立区域契约：无打卡可解锁、有打卡可为空、未知过滤、缺字段迁移', () => {
+  const input = { version: 3, discoveredIds: ['tower'], unlockedRegionIds: ['beihu', 'beihu', 'park', 'unknown', 2] };
+  assert.deepEqual(sanitizeProgress(input).unlockedRegionIds, ['beihu', 'park']);
+  assert.deepEqual(sanitizeProgress({ ...input, discoveredIds: [] }).unlockedRegionIds, ['beihu', 'park']);
+  assert.deepEqual(sanitizeProgress({ ...input, unlockedRegionIds: [] }).unlockedRegionIds, []);
+  assert.deepEqual(sanitizeProgress({ ...input, unlockedRegionIds: null }).unlockedRegionIds, []);
+  const { unlockedRegionIds, ...oldV3 } = input;
+  assert.deepEqual(sanitizeProgress(oldV3).unlockedRegionIds, ['tower']);
+  assert.deepEqual(sanitizeProgress({ ...input, version: 2 }).unlockedRegionIds, ['tower']);
+  assert.deepEqual(sanitizeProgress({ ...input, version: 1 }).unlockedRegionIds, []);
+  assert.deepEqual(sanitizeProgress(sanitizeProgress(input)), sanitizeProgress(input));
 });
 
 test('拒绝比当前更新的 schema', () => {

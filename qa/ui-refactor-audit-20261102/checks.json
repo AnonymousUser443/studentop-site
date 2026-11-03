@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-02",
+  "timezone": "Asia/Shanghai",
+  "head": "14a087b7d75562e5392767ee55d6a4c1f0875e0d",
+  "scope": "V2 plan audit; no runtime source changes",
+  "checks": [
+    { "command": "npm test", "result": "pass", "files": 10, "tests": 93 },
+    { "command": "node server/store.test.mjs", "result": "pass", "tests": 9, "invokedBy": "npm run test:server" },
+    { "command": "node server/server.test.mjs", "result": "pass", "tests": 9, "note": "First sandbox run failed on loopback EACCES; rerun outside sandbox passed. Temporary synthetic accounts and SQLite only." },
+    { "command": "npm run build", "result": "pass", "distBytes": 20043063, "initialHtmlJsGzipBytes": 484163, "warnings": ["vendor-p5 chunk exceeds 700 kB"] },
+    { "command": "node scripts/asset-manifest.mjs --check", "result": "pass" },
+    { "command": "node scripts/verify-calibrated-map.mjs", "result": "pass", "unchangedFiles": 6 },
+    { "command": "node qa/ui-refactor-audit-20261102/static-audit.mjs", "result": "completed", "note": "Audit report includes reproducible unmet requirements; not an all-pass acceptance suite." }
+  ],
+  "browser": {
+    "tool": "OpenCLI 2.0.1 / Chrome",
+    "url": "http://127.0.0.1:5174/?qa=1&preset=explored",
+    "mode": "DOM-driven probes and actual viewport screenshots",
+    "nativeInput": "not dispatched: visible-window precondition failed",
+    "screenViewports": [[1440, 900], [844, 390], [667, 375]],
+    "realTouchGpsHeading": "not tested",
+    "lowFpsAndHiddenFaultInjection": "not tested",
+    "fullFourStateSixViewportMatrix": "not tested; cinematic is not implemented"
+  }
+}

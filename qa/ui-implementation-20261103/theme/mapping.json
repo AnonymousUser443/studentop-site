@@ -1,0 +1,3619 @@
+{
+  "metric": "CIE76 distance compares original and chosen base RGB; original alpha is retained independently. Large text contrast fixes and semantic aliases are explicit, not nearest-color choices.",
+  "paletteCount": 51,
+  "scope": [
+    "global.css",
+    "styles/quality.css",
+    "map/map.css",
+    "location/location.css",
+    "activity/activity.css",
+    "activity/artwork.css",
+    "hud/hud.css"
+  ],
+  "mappings": [
+    {
+      "source": "#9b8854",
+      "base": "#9b8854",
+      "token": "--gold-700",
+      "target": "#72562c",
+      "alpha": 1,
+      "deltaE76": 19.913,
+      "explicit": true,
+      "output": "var(--gold-700)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#6f765b",
+      "base": "#6f765b",
+      "token": "--ink-700",
+      "target": "#33513f",
+      "alpha": 1,
+      "deltaE76": 19.732,
+      "explicit": true,
+      "output": "var(--ink-700)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#4f5d35",
+      "base": "#4f5d35",
+      "token": "--jade-600",
+      "target": "#2d5343",
+      "alpha": 1,
+      "deltaE76": 17.539,
+      "explicit": true,
+      "output": "var(--jade-600)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#8a886a",
+      "base": "#8a886a",
+      "token": "--ink-500",
+      "target": "#596751",
+      "alpha": 1,
+      "deltaE76": 16.304,
+      "explicit": true,
+      "output": "var(--ink-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#455234",
+      "base": "#455234",
+      "token": "--jade-700",
+      "target": "#21493e",
+      "alpha": 1,
+      "deltaE76": 15.811,
+      "explicit": true,
+      "output": "var(--jade-700)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#ffdc7455",
+      "base": "#ffdc74",
+      "token": "--gold-300",
+      "target": "#e8cf83",
+      "alpha": 0.3333333333333333,
+      "deltaE76": 14.998,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-300) 33.3333%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#b19861",
+      "base": "#b19861",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 1,
+      "deltaE76": 13.269,
+      "explicit": false,
+      "output": "var(--gold-400)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#7e725a",
+      "base": "#7e725a",
+      "token": "--ink-500",
+      "target": "#596751",
+      "alpha": 1,
+      "deltaE76": 13.174,
+      "explicit": true,
+      "output": "var(--ink-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#37352604",
+      "base": "#373526",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.01568627450980392,
+      "deltaE76": 12.892,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 1.5686%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#37352600",
+      "base": "#373526",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0,
+      "deltaE76": 12.892,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 0%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#a9915710",
+      "base": "#a99157",
+      "token": "--ink-300",
+      "target": "#8b7b51",
+      "alpha": 0.06274509803921569,
+      "deltaE76": 12.619,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-300) 6.2745%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#ac9b5529",
+      "base": "#ac9b55",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 0.1607843137254902,
+      "deltaE76": 12.48,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-400) 16.0784%, transparent)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#423f30",
+      "base": "#423f30",
+      "token": "--jade-pin-muted",
+      "target": "#4b584d",
+      "alpha": 1,
+      "deltaE76": 12.226,
+      "explicit": false,
+      "output": "var(--jade-pin-muted)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#ffdc7b99",
+      "base": "#ffdc7b",
+      "token": "--gold-300",
+      "target": "#e8cf83",
+      "alpha": 0.6,
+      "deltaE76": 12.143,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-300) 60%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#a58e5338",
+      "base": "#a58e53",
+      "token": "--ink-300",
+      "target": "#8b7b51",
+      "alpha": 0.2196078431372549,
+      "deltaE76": 12.086,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-300) 21.9608%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#a98c4e64",
+      "base": "#a98c4e",
+      "token": "--gold-500",
+      "target": "#b8933f",
+      "alpha": 0.39215686274509803,
+      "deltaE76": 12.054,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-500) 39.2157%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#fff0ae",
+      "base": "#fff0ae",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 1,
+      "deltaE76": 11.748,
+      "explicit": false,
+      "output": "var(--gold-soft)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#b19455",
+      "base": "#b19455",
+      "token": "--gold-500",
+      "target": "#b8933f",
+      "alpha": 1,
+      "deltaE76": 11.48,
+      "explicit": false,
+      "output": "var(--gold-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#b59b5c99",
+      "base": "#b59b5c",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 0.6,
+      "deltaE76": 10.932,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-400) 60%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#b8a16b5c",
+      "base": "#b8a16b",
+      "token": "--paper-500",
+      "target": "#bfb28a",
+      "alpha": 0.3607843137254902,
+      "deltaE76": 10.931,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--paper-500) 36.0784%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#9d6c42",
+      "base": "#9d6c42",
+      "token": "--gold-600",
+      "target": "#8a6a30",
+      "alpha": 1,
+      "deltaE76": 10.837,
+      "explicit": false,
+      "output": "var(--gold-600)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#fff4b7",
+      "base": "#fff4b7",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 10.718,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#66633e",
+      "base": "#66633e",
+      "token": "--ink-400",
+      "target": "#6e785a",
+      "alpha": 1,
+      "deltaE76": 10.684,
+      "explicit": false,
+      "output": "var(--ink-400)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#b99d61",
+      "base": "#b99d61",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 1,
+      "deltaE76": 10.36,
+      "explicit": false,
+      "output": "var(--gold-400)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#a67a2e",
+      "base": "#a67a2e",
+      "token": "--gold-500",
+      "target": "#b8933f",
+      "alpha": 1,
+      "deltaE76": 10.069,
+      "explicit": false,
+      "output": "var(--gold-500)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#9d8343",
+      "base": "#9d8343",
+      "token": "--gold-600",
+      "target": "#8a6a30",
+      "alpha": 1,
+      "deltaE76": 10.004,
+      "explicit": false,
+      "output": "var(--gold-600)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#b9a36a66",
+      "base": "#b9a36a",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 0.4,
+      "deltaE76": 9.901,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-400) 40%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#b4b997",
+      "base": "#b4b997",
+      "token": "--paper-400",
+      "target": "#d3c79f",
+      "alpha": 1,
+      "deltaE76": 9.726,
+      "explicit": true,
+      "output": "var(--paper-400)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#fff3b8",
+      "base": "#fff3b8",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 9.702,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#fff2b7b0",
+      "base": "#fff2b7",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 0.6901960784313725,
+      "deltaE76": 9.588,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-200) 69.0196%, transparent)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#ab8a48",
+      "base": "#ab8a48",
+      "token": "--gold-500",
+      "target": "#b8933f",
+      "alpha": 1,
+      "deltaE76": 9.549,
+      "explicit": false,
+      "output": "var(--gold-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#ab8a4833",
+      "base": "#ab8a48",
+      "token": "--gold-500",
+      "target": "#b8933f",
+      "alpha": 0.2,
+      "deltaE76": 9.549,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-500) 20%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#a28e59",
+      "base": "#a28e59",
+      "token": "--ink-300",
+      "target": "#8b7b51",
+      "alpha": 1,
+      "deltaE76": 9.468,
+      "explicit": false,
+      "output": "var(--ink-300)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#ffe6a3aa",
+      "base": "#ffe6a3",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 0.6666666666666666,
+      "deltaE76": 9.348,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-soft) 66.6667%, transparent)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#b49853",
+      "base": "#b49853",
+      "token": "--gold-500",
+      "target": "#b8933f",
+      "alpha": 1,
+      "deltaE76": 9.182,
+      "explicit": false,
+      "output": "var(--gold-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#bc9f5c55",
+      "base": "#bc9f5c",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 0.3333333333333333,
+      "deltaE76": 9.147,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-400) 33.3333%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#b9b39b",
+      "base": "#b9b39b",
+      "token": "--paper-500",
+      "target": "#bfb28a",
+      "alpha": 1,
+      "deltaE76": 9.144,
+      "explicit": false,
+      "output": "var(--paper-500)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#bda77366",
+      "base": "#bda773",
+      "token": "--paper-500",
+      "target": "#bfb28a",
+      "alpha": 0.4,
+      "deltaE76": 8.699,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--paper-500) 40%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#c4a36980",
+      "base": "#c4a369",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 0.5019607843137255,
+      "deltaE76": 8.662,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-400) 50.1961%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#fff1b8",
+      "base": "#fff1b8",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 8.589,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#ffe6a9",
+      "base": "#ffe6a9",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 1,
+      "deltaE76": 8.574,
+      "explicit": false,
+      "output": "var(--gold-soft)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#fff0b7",
+      "base": "#fff0b7",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 8.51,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#9f8e6a06",
+      "base": "#9f8e6a",
+      "token": "--ink-300",
+      "target": "#8b7b51",
+      "alpha": 0.023529411764705882,
+      "deltaE76": 8.45,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-300) 2.3529%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#c2a66d77",
+      "base": "#c2a66d",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 0.4666666666666667,
+      "deltaE76": 8.208,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-400) 46.6667%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#ffe4a8",
+      "base": "#ffe4a8",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 1,
+      "deltaE76": 8.2,
+      "explicit": false,
+      "output": "var(--gold-soft)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#f5d4a6",
+      "base": "#f5d4a6",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 1,
+      "deltaE76": 8.092,
+      "explicit": false,
+      "output": "var(--gold-soft)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#a58035",
+      "base": "#a58035",
+      "token": "--gold-500",
+      "target": "#b8933f",
+      "alpha": 1,
+      "deltaE76": 8.058,
+      "explicit": false,
+      "output": "var(--gold-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#ab8c46",
+      "base": "#ab8c46",
+      "token": "--gold-500",
+      "target": "#b8933f",
+      "alpha": 1,
+      "deltaE76": 7.991,
+      "explicit": false,
+      "output": "var(--gold-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#bbac643d",
+      "base": "#bbac64",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 0.23921568627450981,
+      "deltaE76": 7.925,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-400) 23.9216%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#ffdf8a99",
+      "base": "#ffdf8a",
+      "token": "--gold-300",
+      "target": "#e8cf83",
+      "alpha": 0.6,
+      "deltaE76": 7.89,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-300) 60%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#c8b680",
+      "base": "#c8b680",
+      "token": "--paper-500",
+      "target": "#bfb28a",
+      "alpha": 1,
+      "deltaE76": 7.863,
+      "explicit": false,
+      "output": "var(--paper-500)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#c8b68066",
+      "base": "#c8b680",
+      "token": "--paper-500",
+      "target": "#bfb28a",
+      "alpha": 0.4,
+      "deltaE76": 7.863,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--paper-500) 40%, transparent)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#d1aa60",
+      "base": "#d1aa60",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 1,
+      "deltaE76": 7.81,
+      "explicit": false,
+      "output": "var(--gold-400)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#b4934e",
+      "base": "#b4934e",
+      "token": "--gold-500",
+      "target": "#b8933f",
+      "alpha": 1,
+      "deltaE76": 7.74,
+      "explicit": false,
+      "output": "var(--gold-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#9e8d5c",
+      "base": "#9e8d5c",
+      "token": "--ink-300",
+      "target": "#8b7b51",
+      "alpha": 1,
+      "deltaE76": 7.689,
+      "explicit": false,
+      "output": "var(--ink-300)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#6c6d50",
+      "base": "#6c6d50",
+      "token": "--ink-500",
+      "target": "#596751",
+      "alpha": 1,
+      "deltaE76": 7.687,
+      "explicit": true,
+      "output": "var(--ink-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f8e5aa",
+      "base": "#f8e5aa",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 1,
+      "deltaE76": 7.675,
+      "explicit": false,
+      "output": "var(--gold-soft)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#cab77f",
+      "base": "#cab77f",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 1,
+      "deltaE76": 7.606,
+      "explicit": false,
+      "output": "var(--gold-400)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#bda56538",
+      "base": "#bda565",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 0.2196078431372549,
+      "deltaE76": 7.562,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-400) 21.9608%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#7d9a76",
+      "base": "#7d9a76",
+      "token": "--sage-500",
+      "target": "#799179",
+      "alpha": 1,
+      "deltaE76": 7.446,
+      "explicit": false,
+      "output": "var(--sage-500)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#c2aa70",
+      "base": "#c2aa70",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 1,
+      "deltaE76": 7.372,
+      "explicit": false,
+      "output": "var(--gold-400)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#758071",
+      "base": "#758071",
+      "token": "--sage-600",
+      "target": "#617d6b",
+      "alpha": 1,
+      "deltaE76": 7.37,
+      "explicit": false,
+      "output": "var(--sage-600)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#a65943",
+      "base": "#a65943",
+      "token": "--state-danger",
+      "target": "#a54f34",
+      "alpha": 1,
+      "deltaE76": 7.23,
+      "explicit": false,
+      "output": "var(--state-danger)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#9a845069",
+      "base": "#9a8450",
+      "token": "--ink-300",
+      "target": "#8b7b51",
+      "alpha": 0.4117647058823529,
+      "deltaE76": 7.171,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-300) 41.1765%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#3a4833",
+      "base": "#3a4833",
+      "token": "--ink-700",
+      "target": "#33513f",
+      "alpha": 1,
+      "deltaE76": 7.167,
+      "explicit": false,
+      "output": "var(--ink-700)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#d0c8ad",
+      "base": "#d0c8ad",
+      "token": "--paper-400",
+      "target": "#d3c79f",
+      "alpha": 1,
+      "deltaE76": 7.08,
+      "explicit": false,
+      "output": "var(--paper-400)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#9e8756",
+      "base": "#9e8756",
+      "token": "--ink-300",
+      "target": "#8b7b51",
+      "alpha": 1,
+      "deltaE76": 7.063,
+      "explicit": false,
+      "output": "var(--ink-300)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#ae8c45",
+      "base": "#ae8c45",
+      "token": "--gold-500",
+      "target": "#b8933f",
+      "alpha": 1,
+      "deltaE76": 6.91,
+      "explicit": false,
+      "output": "var(--gold-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#b68a43",
+      "base": "#b68a43",
+      "token": "--gold-500",
+      "target": "#b8933f",
+      "alpha": 1,
+      "deltaE76": 6.899,
+      "explicit": false,
+      "output": "var(--gold-500)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#f4df9c",
+      "base": "#f4df9c",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 1,
+      "deltaE76": 6.899,
+      "explicit": false,
+      "output": "var(--gold-soft)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#f1e2ac",
+      "base": "#f1e2ac",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 6.877,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#8b704338",
+      "base": "#8b7043",
+      "token": "--ink-300",
+      "target": "#8b7b51",
+      "alpha": 0.2196078431372549,
+      "deltaE76": 6.857,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-300) 21.9608%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#9c4f3b",
+      "base": "#9c4f3b",
+      "token": "--state-danger",
+      "target": "#a54f34",
+      "alpha": 1,
+      "deltaE76": 6.822,
+      "explicit": false,
+      "output": "var(--state-danger)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#a7b493",
+      "base": "#a7b493",
+      "token": "--sage-200",
+      "target": "#bcc5a3",
+      "alpha": 1,
+      "deltaE76": 6.698,
+      "explicit": false,
+      "output": "var(--sage-200)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#ead5a773",
+      "base": "#ead5a7",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 0.45098039215686275,
+      "deltaE76": 6.693,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-soft) 45.098%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#425b47",
+      "base": "#425b47",
+      "token": "--jade-600",
+      "target": "#2d5343",
+      "alpha": 1,
+      "deltaE76": 6.485,
+      "explicit": true,
+      "output": "var(--jade-600)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#b4a37677",
+      "base": "#b4a376",
+      "token": "--paper-500",
+      "target": "#bfb28a",
+      "alpha": 0.4666666666666667,
+      "deltaE76": 6.434,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--paper-500) 46.6667%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#fff1bd66",
+      "base": "#fff1bd",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 0.4,
+      "deltaE76": 6.432,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-200) 40%, transparent)",
+      "files": [
+        "location/location.css"
+      ]
+    },
+    {
+      "source": "#3a4937",
+      "base": "#3a4937",
+      "token": "--ink-700",
+      "target": "#33513f",
+      "alpha": 1,
+      "deltaE76": 6.364,
+      "explicit": false,
+      "output": "var(--ink-700)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#8c6423",
+      "base": "#8c6423",
+      "token": "--gold-600",
+      "target": "#8a6a30",
+      "alpha": 1,
+      "deltaE76": 6.191,
+      "explicit": false,
+      "output": "var(--gold-600)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#98523d",
+      "base": "#98523d",
+      "token": "--bronze-700",
+      "target": "#8a483a",
+      "alpha": 1,
+      "deltaE76": 6.091,
+      "explicit": false,
+      "output": "var(--bronze-700)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#8e7845",
+      "base": "#8e7845",
+      "token": "--ink-300",
+      "target": "#8b7b51",
+      "alpha": 1,
+      "deltaE76": 6.089,
+      "explicit": false,
+      "output": "var(--ink-300)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#1f302f99",
+      "base": "#1f302f",
+      "token": "--jade-900",
+      "target": "#12332f",
+      "alpha": 0.6,
+      "deltaE76": 6.025,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-900) 60%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#d5c18e",
+      "base": "#d5c18e",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 1,
+      "deltaE76": 5.979,
+      "explicit": false,
+      "output": "var(--gold-soft)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#d5bd83",
+      "base": "#d5bd83",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 1,
+      "deltaE76": 5.944,
+      "explicit": false,
+      "output": "var(--gold-400)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#6a56232b",
+      "base": "#6a5623",
+      "token": "--gold-700",
+      "target": "#72562c",
+      "alpha": 0.16862745098039217,
+      "deltaE76": 5.793,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-700) 16.8627%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#9a783f",
+      "base": "#9a783f",
+      "token": "--gold-600",
+      "target": "#8a6a30",
+      "alpha": 1,
+      "deltaE76": 5.764,
+      "explicit": true,
+      "output": "var(--gold-600)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#ceceb0",
+      "base": "#ceceb0",
+      "token": "--sage-200",
+      "target": "#bcc5a3",
+      "alpha": 1,
+      "deltaE76": 5.747,
+      "explicit": false,
+      "output": "var(--sage-200)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#d5d8b9",
+      "base": "#d5d8b9",
+      "token": "--paper-300",
+      "target": "#e6ddba",
+      "alpha": 1,
+      "deltaE76": 5.672,
+      "explicit": false,
+      "output": "var(--paper-300)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#899b9c22",
+      "base": "#899b9c",
+      "token": "--slate-300",
+      "target": "#9aa9aa",
+      "alpha": 0.13333333333333333,
+      "deltaE76": 5.608,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--slate-300) 13.3333%, transparent)",
+      "files": [
+        "location/location.css"
+      ]
+    },
+    {
+      "source": "#d7b468",
+      "base": "#d7b468",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 1,
+      "deltaE76": 5.575,
+      "explicit": true,
+      "output": "var(--gold-400)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#c3aa6940",
+      "base": "#c3aa69",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 0.25098039215686274,
+      "deltaE76": 5.571,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-400) 25.098%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#fff5c8",
+      "base": "#fff5c8",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 5.439,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#304b32",
+      "base": "#304b32",
+      "token": "--ink-700",
+      "target": "#33513f",
+      "alpha": 1,
+      "deltaE76": 5.323,
+      "explicit": false,
+      "output": "var(--ink-700)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#41634b",
+      "base": "#41634b",
+      "token": "--jade-500",
+      "target": "#3d6b57",
+      "alpha": 1,
+      "deltaE76": 5.278,
+      "explicit": false,
+      "output": "var(--jade-500)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#85b99a26",
+      "base": "#85b99a",
+      "token": "--state-location",
+      "target": "#83af96",
+      "alpha": 0.14901960784313725,
+      "deltaE76": 5.242,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--state-location) 14.902%, transparent)",
+      "files": [
+        "location/location.css"
+      ]
+    },
+    {
+      "source": "#995241",
+      "base": "#995241",
+      "token": "--bronze-700",
+      "target": "#8a483a",
+      "alpha": 1,
+      "deltaE76": 5.212,
+      "explicit": true,
+      "output": "var(--bronze-700)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#d5c186",
+      "base": "#d5c186",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 1,
+      "deltaE76": 5.2,
+      "explicit": false,
+      "output": "var(--gold-soft)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#5c6047b8",
+      "base": "#5c6047",
+      "token": "--ink-500",
+      "target": "#596751",
+      "alpha": 0.7215686274509804,
+      "deltaE76": 5.185,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-500) 72.1569%, transparent)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#283f2d3b",
+      "base": "#283f2d",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.23137254901960785,
+      "deltaE76": 5.147,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 23.1373%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#283e2c",
+      "base": "#283e2c",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 1,
+      "deltaE76": 5.115,
+      "explicit": false,
+      "output": "var(--ink-900)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#4c6248",
+      "base": "#4c6248",
+      "token": "--ink-500",
+      "target": "#596751",
+      "alpha": 1,
+      "deltaE76": 5.094,
+      "explicit": false,
+      "output": "var(--ink-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#d4b57b8f",
+      "base": "#d4b57b",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 0.5607843137254902,
+      "deltaE76": 5.082,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-400) 56.0784%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#b6b99b",
+      "base": "#b6b99b",
+      "token": "--sage-200",
+      "target": "#bcc5a3",
+      "alpha": 1,
+      "deltaE76": 4.873,
+      "explicit": true,
+      "output": "var(--sage-200)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#fff4cb",
+      "base": "#fff4cb",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 4.86,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#527f70",
+      "base": "#527f70",
+      "token": "--jade-400",
+      "target": "#577f68",
+      "alpha": 1,
+      "deltaE76": 4.831,
+      "explicit": false,
+      "output": "var(--jade-400)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#f7dc8e",
+      "base": "#f7dc8e",
+      "token": "--gold-300",
+      "target": "#e8cf83",
+      "alpha": 1,
+      "deltaE76": 4.825,
+      "explicit": false,
+      "output": "var(--gold-300)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#d9c38e",
+      "base": "#d9c38e",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 1,
+      "deltaE76": 4.731,
+      "explicit": false,
+      "output": "var(--gold-soft)",
+      "files": [
+        "location/location.css"
+      ]
+    },
+    {
+      "source": "rgba(232,224,178,.16)",
+      "base": "#e8e0b2",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 0.16,
+      "deltaE76": 4.604,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-200) 16%, transparent)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#ecddae",
+      "base": "#ecddae",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 4.601,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#fff4d7",
+      "base": "#fff4d7",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 4.569,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#26372f55",
+      "base": "#26372f",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.3333333333333333,
+      "deltaE76": 4.526,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 33.3333%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#163b2c",
+      "base": "#163b2c",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 1,
+      "deltaE76": 4.521,
+      "explicit": false,
+      "output": "var(--ink-900)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#fff4d0",
+      "base": "#fff4d0",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 4.513,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#e8d8af",
+      "base": "#e8d8af",
+      "token": "--paper-300",
+      "target": "#e6ddba",
+      "alpha": 1,
+      "deltaE76": 4.5,
+      "explicit": false,
+      "output": "var(--paper-300)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#eef0df",
+      "base": "#eef0df",
+      "token": "--paper-100",
+      "target": "#fdf6e2",
+      "alpha": 1,
+      "deltaE76": 4.5,
+      "explicit": false,
+      "output": "var(--paper-100)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#375d4a",
+      "base": "#375d4a",
+      "token": "--jade-600",
+      "target": "#2d5343",
+      "alpha": 1,
+      "deltaE76": 4.404,
+      "explicit": false,
+      "output": "var(--jade-600)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#253f2e57",
+      "base": "#253f2e",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.3411764705882353,
+      "deltaE76": 4.391,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 34.1176%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#fff2cd",
+      "base": "#fff2cd",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 4.359,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#789684",
+      "base": "#789684",
+      "token": "--sage-500",
+      "target": "#799179",
+      "alpha": 1,
+      "deltaE76": 4.321,
+      "explicit": false,
+      "output": "var(--sage-500)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "rgba(28,49,39,.18)",
+      "base": "#1c3127",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.18,
+      "deltaE76": 4.316,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 18%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#12392c33",
+      "base": "#12392c",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.2,
+      "deltaE76": 4.295,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 20%, transparent)",
+      "files": [
+        "location/location.css"
+      ]
+    },
+    {
+      "source": "#1a30275c",
+      "base": "#1a3027",
+      "token": "--jade-950",
+      "target": "#0d2b26",
+      "alpha": 0.3607843137254902,
+      "deltaE76": 4.279,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-950) 36.0784%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#fff4d4",
+      "base": "#fff4d4",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 4.192,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#10382d77",
+      "base": "#10382d",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.4666666666666667,
+      "deltaE76": 4.152,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 46.6667%, transparent)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#82612c",
+      "base": "#82612c",
+      "token": "--gold-600",
+      "target": "#8a6a30",
+      "alpha": 1,
+      "deltaE76": 4.147,
+      "explicit": false,
+      "output": "var(--gold-600)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#fff6da",
+      "base": "#fff6da",
+      "token": "--paper-100",
+      "target": "#fdf6e2",
+      "alpha": 1,
+      "deltaE76": 4.14,
+      "explicit": false,
+      "output": "var(--paper-100)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f1deb04d",
+      "base": "#f1deb0",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 0.30196078431372547,
+      "deltaE76": 4.135,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-200) 30.1961%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f1deb0",
+      "base": "#f1deb0",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 4.135,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#335a4540",
+      "base": "#335a45",
+      "token": "--jade-600",
+      "target": "#2d5343",
+      "alpha": 0.25098039215686274,
+      "deltaE76": 4.084,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-600) 25.098%, transparent)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#e3ce9c88",
+      "base": "#e3ce9c",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 0.5333333333333333,
+      "deltaE76": 4.072,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-soft) 53.3333%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#f9f1d68a",
+      "base": "#f9f1d6",
+      "token": "--paper-100",
+      "target": "#fdf6e2",
+      "alpha": 0.5411764705882353,
+      "deltaE76": 4.061,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--paper-100) 54.1176%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#c7b18c99",
+      "base": "#c7b18c",
+      "token": "--paper-500",
+      "target": "#bfb28a",
+      "alpha": 0.6,
+      "deltaE76": 3.976,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--paper-500) 60%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#334b36",
+      "base": "#334b36",
+      "token": "--ink-700",
+      "target": "#33513f",
+      "alpha": 1,
+      "deltaE76": 3.682,
+      "explicit": false,
+      "output": "var(--ink-700)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#59664a",
+      "base": "#59664a",
+      "token": "--ink-500",
+      "target": "#596751",
+      "alpha": 1,
+      "deltaE76": 3.649,
+      "explicit": false,
+      "output": "var(--ink-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#c8bc93",
+      "base": "#c8bc93",
+      "token": "--paper-500",
+      "target": "#bfb28a",
+      "alpha": 1,
+      "deltaE76": 3.605,
+      "explicit": false,
+      "output": "var(--paper-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#123229",
+      "base": "#123229",
+      "token": "--jade-900",
+      "target": "#12332f",
+      "alpha": 1,
+      "deltaE76": 3.579,
+      "explicit": false,
+      "output": "var(--jade-900)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#182b213d",
+      "base": "#182b21",
+      "token": "--shade-950",
+      "target": "#10241c",
+      "alpha": 0.23921568627450981,
+      "deltaE76": 3.555,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--shade-950) 23.9216%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f3d78d",
+      "base": "#f3d78d",
+      "token": "--gold-300",
+      "target": "#e8cf83",
+      "alpha": 1,
+      "deltaE76": 3.479,
+      "explicit": false,
+      "output": "var(--gold-300)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#33574b",
+      "base": "#33574b",
+      "token": "--jade-600",
+      "target": "#2d5343",
+      "alpha": 1,
+      "deltaE76": 3.423,
+      "explicit": false,
+      "output": "var(--jade-600)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#8a6a29",
+      "base": "#8a6a29",
+      "token": "--gold-600",
+      "target": "#8a6a30",
+      "alpha": 1,
+      "deltaE76": 3.422,
+      "explicit": false,
+      "output": "var(--gold-600)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#dfbf79",
+      "base": "#dfbf79",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 1,
+      "deltaE76": 3.396,
+      "explicit": false,
+      "output": "var(--gold-400)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#8fa98f",
+      "base": "#8fa98f",
+      "token": "--sage-400",
+      "target": "#8ca894",
+      "alpha": 1,
+      "deltaE76": 3.366,
+      "explicit": false,
+      "output": "var(--sage-400)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#1c342c",
+      "base": "#1c342c",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 1,
+      "deltaE76": 3.359,
+      "explicit": false,
+      "output": "var(--ink-900)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#1e4335",
+      "base": "#1e4335",
+      "token": "--jade-700",
+      "target": "#21493e",
+      "alpha": 1,
+      "deltaE76": 3.358,
+      "explicit": false,
+      "output": "var(--jade-700)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#b9bea0",
+      "base": "#b9bea0",
+      "token": "--sage-200",
+      "target": "#bcc5a3",
+      "alpha": 1,
+      "deltaE76": 3.323,
+      "explicit": false,
+      "output": "var(--sage-200)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#f8eed394",
+      "base": "#f8eed3",
+      "token": "--paper-map",
+      "target": "#efe5cc",
+      "alpha": 0.5803921568627451,
+      "deltaE76": 3.245,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--paper-map) 58.0392%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#e0c67c",
+      "base": "#e0c67c",
+      "token": "--gold-300",
+      "target": "#e8cf83",
+      "alpha": 1,
+      "deltaE76": 3.23,
+      "explicit": false,
+      "output": "var(--gold-300)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#294c39b8",
+      "base": "#294c39",
+      "token": "--ink-700",
+      "target": "#33513f",
+      "alpha": 0.7215686274509804,
+      "deltaE76": 3.213,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-700) 72.1569%, transparent)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#153c3326",
+      "base": "#153c33",
+      "token": "--jade-800",
+      "target": "#193c37",
+      "alpha": 0.14901960784313725,
+      "deltaE76": 3.193,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-800) 14.902%, transparent)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#d2b16d",
+      "base": "#d2b16d",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 1,
+      "deltaE76": 3.168,
+      "explicit": false,
+      "output": "var(--gold-400)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#d2b16d00",
+      "base": "#d2b16d",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 0,
+      "deltaE76": 3.168,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-400) 0%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#14382f9c",
+      "base": "#14382f",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.611764705882353,
+      "deltaE76": 3.159,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 61.1765%, transparent)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#19332855",
+      "base": "#193328",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.3333333333333333,
+      "deltaE76": 3.126,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 33.3333%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#274e3b",
+      "base": "#274e3b",
+      "token": "--jade-600",
+      "target": "#2d5343",
+      "alpha": 1,
+      "deltaE76": 3.124,
+      "explicit": false,
+      "output": "var(--jade-600)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#e4dfc1",
+      "base": "#e4dfc1",
+      "token": "--paper-300",
+      "target": "#e6ddba",
+      "alpha": 1,
+      "deltaE76": 3.105,
+      "explicit": false,
+      "output": "var(--paper-300)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#e4c880",
+      "base": "#e4c880",
+      "token": "--gold-300",
+      "target": "#e8cf83",
+      "alpha": 1,
+      "deltaE76": 3.068,
+      "explicit": false,
+      "output": "var(--gold-300)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#1b453ee0",
+      "base": "#1b453e",
+      "token": "--jade-700",
+      "target": "#21493e",
+      "alpha": 0.8784313725490196,
+      "deltaE76": 3.049,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-700) 87.8431%, transparent)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#162f27",
+      "base": "#162f27",
+      "token": "--jade-950",
+      "target": "#0d2b26",
+      "alpha": 1,
+      "deltaE76": 3.045,
+      "explicit": false,
+      "output": "var(--jade-950)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#234537dd",
+      "base": "#234537",
+      "token": "--jade-700",
+      "target": "#21493e",
+      "alpha": 0.8666666666666667,
+      "deltaE76": 2.971,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-700) 86.6667%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "rgba(21,53,43,.34)",
+      "base": "#15352b",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.34,
+      "deltaE76": 2.969,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 34%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#f7edc8",
+      "base": "#f7edc8",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 2.949,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#455147d9",
+      "base": "#455147",
+      "token": "--jade-pin-muted",
+      "target": "#4b584d",
+      "alpha": 0.8509803921568627,
+      "deltaE76": 2.931,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-pin-muted) 85.098%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#45514700",
+      "base": "#455147",
+      "token": "--jade-pin-muted",
+      "target": "#4b584d",
+      "alpha": 0,
+      "deltaE76": 2.931,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-pin-muted) 0%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#16392d33",
+      "base": "#16392d",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.2,
+      "deltaE76": 2.926,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 20%, transparent)",
+      "files": [
+        "styles/quality.css"
+      ]
+    },
+    {
+      "source": "rgba(23,52,41,.22)",
+      "base": "#173429",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.22,
+      "deltaE76": 2.911,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 22%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#d9bf7d",
+      "base": "#d9bf7d",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 1,
+      "deltaE76": 2.906,
+      "explicit": false,
+      "output": "var(--gold-400)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#bfcaac",
+      "base": "#bfcaac",
+      "token": "--sage-200",
+      "target": "#bcc5a3",
+      "alpha": 1,
+      "deltaE76": 2.904,
+      "explicit": false,
+      "output": "var(--sage-200)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "rgba(26,52,43,.2)",
+      "base": "#1a342b",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.2,
+      "deltaE76": 2.901,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 20%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#213b3455",
+      "base": "#213b34",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.3333333333333333,
+      "deltaE76": 2.9,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 33.3333%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "rgba(23,52,42,.18)",
+      "base": "#17342a",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.18,
+      "deltaE76": 2.895,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 18%, transparent)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#e6d7b4",
+      "base": "#e6d7b4",
+      "token": "--paper-300",
+      "target": "#e6ddba",
+      "alpha": 1,
+      "deltaE76": 2.887,
+      "explicit": false,
+      "output": "var(--paper-300)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#5844224d",
+      "base": "#584422",
+      "token": "--gold-800",
+      "target": "#5f4a26",
+      "alpha": 0.30196078431372547,
+      "deltaE76": 2.829,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-800) 30.1961%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f7edd4",
+      "base": "#f7edd4",
+      "token": "--paper-map",
+      "target": "#efe5cc",
+      "alpha": 1,
+      "deltaE76": 2.805,
+      "explicit": false,
+      "output": "var(--paper-map)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#203f32a8",
+      "base": "#203f32",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 0.6588235294117647,
+      "deltaE76": 2.749,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-900) 65.8824%, transparent)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#faf0d9",
+      "base": "#faf0d9",
+      "token": "--paper-100",
+      "target": "#fdf6e2",
+      "alpha": 1,
+      "deltaE76": 2.742,
+      "explicit": false,
+      "output": "var(--paper-100)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#092e2c44",
+      "base": "#092e2c",
+      "token": "--jade-900",
+      "target": "#12332f",
+      "alpha": 0.26666666666666666,
+      "deltaE76": 2.722,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-900) 26.6667%, transparent)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#345042",
+      "base": "#345042",
+      "token": "--ink-700",
+      "target": "#33513f",
+      "alpha": 1,
+      "deltaE76": 2.721,
+      "explicit": false,
+      "output": "var(--ink-700)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#1b4038ed",
+      "base": "#1b4038",
+      "token": "--jade-800",
+      "target": "#193c37",
+      "alpha": 0.9294117647058824,
+      "deltaE76": 2.697,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-800) 92.9412%, transparent)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#f9efd173",
+      "base": "#f9efd1",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 0.45098039215686275,
+      "deltaE76": 2.69,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--paper-200) 45.098%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f8efd9",
+      "base": "#f8efd9",
+      "token": "--paper-100",
+      "target": "#fdf6e2",
+      "alpha": 1,
+      "deltaE76": 2.679,
+      "explicit": false,
+      "output": "var(--paper-100)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#244b3c9c",
+      "base": "#244b3c",
+      "token": "--jade-700",
+      "target": "#21493e",
+      "alpha": 0.611764705882353,
+      "deltaE76": 2.673,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-700) 61.1765%, transparent)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#f7e9bb",
+      "base": "#f7e9bb",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 2.649,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#be9a46",
+      "base": "#be9a46",
+      "token": "--gold-500",
+      "target": "#b8933f",
+      "alpha": 1,
+      "deltaE76": 2.631,
+      "explicit": false,
+      "output": "var(--gold-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#ddc89080",
+      "base": "#ddc890",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 0.5019607843137255,
+      "deltaE76": 2.614,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-soft) 50.1961%, transparent)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#244a3bd9",
+      "base": "#244a3b",
+      "token": "--jade-700",
+      "target": "#21493e",
+      "alpha": 0.8509803921568627,
+      "deltaE76": 2.614,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-700) 85.098%, transparent)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#e5d49c7a",
+      "base": "#e5d49c",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 0.47843137254901963,
+      "deltaE76": 2.581,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-soft) 47.8431%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#e5d49c35",
+      "base": "#e5d49c",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 0.20784313725490197,
+      "deltaE76": 2.581,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-soft) 20.7843%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#17251d30",
+      "base": "#17251d",
+      "token": "--shade-950",
+      "target": "#10241c",
+      "alpha": 0.18823529411764706,
+      "deltaE76": 2.57,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--shade-950) 18.8235%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#17251d4f",
+      "base": "#17251d",
+      "token": "--shade-950",
+      "target": "#10241c",
+      "alpha": 0.30980392156862746,
+      "deltaE76": 2.57,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--shade-950) 30.9804%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#0c2d2594",
+      "base": "#0c2d25",
+      "token": "--jade-950",
+      "target": "#0d2b26",
+      "alpha": 0.5803921568627451,
+      "deltaE76": 2.554,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-950) 58.0392%, transparent)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#e2d6b3",
+      "base": "#e2d6b3",
+      "token": "--paper-300",
+      "target": "#e6ddba",
+      "alpha": 1,
+      "deltaE76": 2.551,
+      "explicit": false,
+      "output": "var(--paper-300)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#253f32",
+      "base": "#253f32",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 1,
+      "deltaE76": 2.542,
+      "explicit": false,
+      "output": "var(--ink-900)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#e7cc7c",
+      "base": "#e7cc7c",
+      "token": "--gold-300",
+      "target": "#e8cf83",
+      "alpha": 1,
+      "deltaE76": 2.527,
+      "explicit": false,
+      "output": "var(--gold-300)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#eee1bb",
+      "base": "#eee1bb",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 2.493,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#eadebf00",
+      "base": "#eadebf",
+      "token": "--paper-300",
+      "target": "#e6ddba",
+      "alpha": 0,
+      "deltaE76": 2.428,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--paper-300) 0%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#e2ca8e",
+      "base": "#e2ca8e",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 1,
+      "deltaE76": 2.398,
+      "explicit": false,
+      "output": "var(--gold-soft)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "rgba(18,44,36,.42)",
+      "base": "#122c24",
+      "token": "--jade-950",
+      "target": "#0d2b26",
+      "alpha": 0.42,
+      "deltaE76": 2.302,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-950) 42%, transparent)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "rgba(18,44,36,.16)",
+      "base": "#122c24",
+      "token": "--jade-950",
+      "target": "#0d2b26",
+      "alpha": 0.16,
+      "deltaE76": 2.302,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-950) 16%, transparent)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#e9e5cc",
+      "base": "#e9e5cc",
+      "token": "--paper-map",
+      "target": "#efe5cc",
+      "alpha": 1,
+      "deltaE76": 2.299,
+      "explicit": false,
+      "output": "var(--paper-map)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#695e4f",
+      "base": "#695e4f",
+      "token": "--earth-800",
+      "target": "#665e4c",
+      "alpha": 1,
+      "deltaE76": 2.22,
+      "explicit": false,
+      "output": "var(--earth-800)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#0e2c2499",
+      "base": "#0e2c24",
+      "token": "--jade-950",
+      "target": "#0d2b26",
+      "alpha": 0.6,
+      "deltaE76": 2.195,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-950) 60%, transparent)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#d8cba069",
+      "base": "#d8cba0",
+      "token": "--paper-400",
+      "target": "#d3c79f",
+      "alpha": 0.4117647058823529,
+      "deltaE76": 2.132,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--paper-400) 41.1765%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#18392f",
+      "base": "#18392f",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 1,
+      "deltaE76": 2.101,
+      "explicit": true,
+      "output": "var(--ink-900)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f8edcf",
+      "base": "#f8edcf",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 2.094,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "location/location.css"
+      ]
+    },
+    {
+      "source": "#253e32",
+      "base": "#253e32",
+      "token": "--ink-900",
+      "target": "#1f3a2f",
+      "alpha": 1,
+      "deltaE76": 2.074,
+      "explicit": false,
+      "output": "var(--ink-900)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f5e7c4",
+      "base": "#f5e7c4",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 1.971,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f9f1df",
+      "base": "#f9f1df",
+      "token": "--paper-100",
+      "target": "#fdf6e2",
+      "alpha": 1,
+      "deltaE76": 1.926,
+      "explicit": false,
+      "output": "var(--paper-100)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#fff9e8",
+      "base": "#fff9e8",
+      "token": "--paper-100",
+      "target": "#fdf6e2",
+      "alpha": 1,
+      "deltaE76": 1.898,
+      "explicit": false,
+      "output": "var(--paper-100)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f6e9bd",
+      "base": "#f6e9bd",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 1.839,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#3455436b",
+      "base": "#345543",
+      "token": "--ink-700",
+      "target": "#33513f",
+      "alpha": 0.4196078431372549,
+      "deltaE76": 1.832,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--ink-700) 41.9608%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#d5ba79",
+      "base": "#d5ba79",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 1,
+      "deltaE76": 1.829,
+      "explicit": false,
+      "output": "var(--gold-400)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#6e552cd9",
+      "base": "#6e552c",
+      "token": "--gold-700",
+      "target": "#72562c",
+      "alpha": 0.8509803921568627,
+      "deltaE76": 1.792,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-700) 85.098%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#6e552c00",
+      "base": "#6e552c",
+      "token": "--gold-700",
+      "target": "#72562c",
+      "alpha": 0,
+      "deltaE76": 1.792,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-700) 0%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#f1e5c8",
+      "base": "#f1e5c8",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 1.785,
+      "explicit": true,
+      "output": "var(--paper-200)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f1e5c8df",
+      "base": "#f1e5c8",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 0.8745098039215686,
+      "deltaE76": 1.785,
+      "explicit": true,
+      "output": "color-mix(in srgb, var(--paper-200) 87.451%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f4e4b8",
+      "base": "#f4e4b8",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 1.769,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#f2e6c3",
+      "base": "#f2e6c3",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 1.761,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#23413be8",
+      "base": "#23413b",
+      "token": "--jade-pin",
+      "target": "#27453f",
+      "alpha": 0.9098039215686274,
+      "deltaE76": 1.75,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-pin) 90.9804%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#23413b00",
+      "base": "#23413b",
+      "token": "--jade-pin",
+      "target": "#27453f",
+      "alpha": 0,
+      "deltaE76": 1.75,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-pin) 0%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#ede5cfb3",
+      "base": "#ede5cf",
+      "token": "--paper-map",
+      "target": "#efe5cc",
+      "alpha": 0.7019607843137254,
+      "deltaE76": 1.734,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--paper-map) 70.1961%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#0e302bdd",
+      "base": "#0e302b",
+      "token": "--jade-900",
+      "target": "#12332f",
+      "alpha": 0.8666666666666667,
+      "deltaE76": 1.658,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-900) 86.6667%, transparent)",
+      "files": [
+        "location/location.css"
+      ]
+    },
+    {
+      "source": "#0e302bb3",
+      "base": "#0e302b",
+      "token": "--jade-900",
+      "target": "#12332f",
+      "alpha": 0.7019607843137254,
+      "deltaE76": 1.658,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-900) 70.1961%, transparent)",
+      "files": [
+        "location/location.css"
+      ]
+    },
+    {
+      "source": "#153d37",
+      "base": "#153d37",
+      "token": "--jade-800",
+      "target": "#193c37",
+      "alpha": 1,
+      "deltaE76": 1.64,
+      "explicit": false,
+      "output": "var(--jade-800)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#fff8e1",
+      "base": "#fff8e1",
+      "token": "--paper-100",
+      "target": "#fdf6e2",
+      "alpha": 1,
+      "deltaE76": 1.631,
+      "explicit": false,
+      "output": "var(--paper-100)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f7eac223",
+      "base": "#f7eac2",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 0.13725490196078433,
+      "deltaE76": 1.614,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-200) 13.7255%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#2f5547",
+      "base": "#2f5547",
+      "token": "--jade-600",
+      "target": "#2d5343",
+      "alpha": 1,
+      "deltaE76": 1.611,
+      "explicit": false,
+      "output": "var(--jade-600)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#e7ddbd",
+      "base": "#e7ddbd",
+      "token": "--paper-300",
+      "target": "#e6ddba",
+      "alpha": 1,
+      "deltaE76": 1.585,
+      "explicit": false,
+      "output": "var(--paper-300)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#f4e8cb",
+      "base": "#f4e8cb",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 1.572,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#eee5c5",
+      "base": "#eee5c5",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 1.422,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#f0e5c7",
+      "base": "#f0e5c7",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 1.412,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#183e38ed",
+      "base": "#183e38",
+      "token": "--jade-800",
+      "target": "#193c37",
+      "alpha": 0.9294117647058824,
+      "deltaE76": 1.38,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-800) 92.9412%, transparent)",
+      "files": [
+        "location/location.css"
+      ]
+    },
+    {
+      "source": "#e4cd953b",
+      "base": "#e4cd95",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 0.23137254901960785,
+      "deltaE76": 1.335,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--gold-soft) 23.1373%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#143a3670",
+      "base": "#143a36",
+      "token": "--jade-800",
+      "target": "#193c37",
+      "alpha": 0.4392156862745098,
+      "deltaE76": 1.323,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-800) 43.9216%, transparent)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#74592f",
+      "base": "#74592f",
+      "token": "--gold-700",
+      "target": "#72562c",
+      "alpha": 1,
+      "deltaE76": 1.299,
+      "explicit": false,
+      "output": "var(--gold-700)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f2e6c8",
+      "base": "#f2e6c8",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 1.207,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f3e5ba",
+      "base": "#f3e5ba",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 1.181,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#23483c45",
+      "base": "#23483c",
+      "token": "--jade-700",
+      "target": "#21493e",
+      "alpha": 0.27058823529411763,
+      "deltaE76": 1.08,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-700) 27.0588%, transparent)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#f6eaca",
+      "base": "#f6eaca",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 0.863,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#f4e7be",
+      "base": "#f4e7be",
+      "token": "--gold-200",
+      "target": "#f5e6bd",
+      "alpha": 1,
+      "deltaE76": 0.805,
+      "explicit": false,
+      "output": "var(--gold-200)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#fff7e2a3",
+      "base": "#fff7e2",
+      "token": "--paper-100",
+      "target": "#fdf6e2",
+      "alpha": 0.6392156862745098,
+      "deltaE76": 0.741,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--paper-100) 63.9216%, transparent)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#f3e7c6",
+      "base": "#f3e7c6",
+      "token": "--paper-200",
+      "target": "#f3e8c8",
+      "alpha": 1,
+      "deltaE76": 0.724,
+      "explicit": false,
+      "output": "var(--paper-200)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#72552b",
+      "base": "#72552b",
+      "token": "--gold-700",
+      "target": "#72562c",
+      "alpha": 1,
+      "deltaE76": 0.633,
+      "explicit": false,
+      "output": "var(--gold-700)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#9fb7a2",
+      "base": "#9fb7a2",
+      "token": "--sage-300",
+      "target": "#9eb6a1",
+      "alpha": 1,
+      "deltaE76": 0.369,
+      "explicit": false,
+      "output": "var(--sage-300)",
+      "files": [
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#193c37",
+      "base": "#193c37",
+      "token": "--jade-800",
+      "target": "#193c37",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--jade-800)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#12332f",
+      "base": "#12332f",
+      "token": "--jade-900",
+      "target": "#12332f",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--jade-900)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#d4b874",
+      "base": "#d4b874",
+      "token": "--gold-400",
+      "target": "#d4b874",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--gold-400)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#000",
+      "base": "#000000",
+      "token": "--mask-ink",
+      "target": "#000000",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--mask-ink)",
+      "files": [
+        "global.css",
+        "activity/activity.css",
+        "hud/hud.css"
+      ]
+    },
+    {
+      "source": "#000000d9",
+      "base": "#000000",
+      "token": "--mask-ink",
+      "target": "#000000",
+      "alpha": 0.8509803921568627,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--mask-ink) 85.098%, transparent)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#00000080",
+      "base": "#000000",
+      "token": "--mask-ink",
+      "target": "#000000",
+      "alpha": 0.5019607843137255,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--mask-ink) 50.1961%, transparent)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#efe5ccf2",
+      "base": "#efe5cc",
+      "token": "--paper-map",
+      "target": "#efe5cc",
+      "alpha": 0.9490196078431372,
+      "deltaE76": 0,
+      "explicit": true,
+      "output": "color-mix(in srgb, var(--paper-map) 94.902%, transparent)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#efe5ccd1",
+      "base": "#efe5cc",
+      "token": "--paper-map",
+      "target": "#efe5cc",
+      "alpha": 0.8196078431372549,
+      "deltaE76": 0,
+      "explicit": true,
+      "output": "color-mix(in srgb, var(--paper-map) 81.9608%, transparent)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#efe5cc8c",
+      "base": "#efe5cc",
+      "token": "--paper-map",
+      "target": "#efe5cc",
+      "alpha": 0.5490196078431373,
+      "deltaE76": 0,
+      "explicit": true,
+      "output": "color-mix(in srgb, var(--paper-map) 54.902%, transparent)",
+      "files": [
+        "global.css"
+      ]
+    },
+    {
+      "source": "#efe5cc",
+      "base": "#efe5cc",
+      "token": "--paper-map",
+      "target": "#efe5cc",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": true,
+      "output": "var(--paper-map)",
+      "files": [
+        "global.css",
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#e4cf95",
+      "base": "#e4cf95",
+      "token": "--gold-soft",
+      "target": "#e4cf95",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--gold-soft)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#27453f",
+      "base": "#27453f",
+      "token": "--jade-pin",
+      "target": "#27453f",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--jade-pin)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#4b584d",
+      "base": "#4b584d",
+      "token": "--jade-pin-muted",
+      "target": "#4b584d",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--jade-pin-muted)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#425848f5",
+      "base": "#425848",
+      "token": "--jade-focus",
+      "target": "#425848",
+      "alpha": 0.9607843137254902,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-focus) 96.0784%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#42584800",
+      "base": "#425848",
+      "token": "--jade-focus",
+      "target": "#425848",
+      "alpha": 0,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--jade-focus) 0%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#5f4a26",
+      "base": "#5f4a26",
+      "token": "--gold-800",
+      "target": "#5f4a26",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--gold-800)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#efe5ccf0",
+      "base": "#efe5cc",
+      "token": "--paper-map",
+      "target": "#efe5cc",
+      "alpha": 0.9411764705882353,
+      "deltaE76": 0,
+      "explicit": true,
+      "output": "color-mix(in srgb, var(--paper-map) 94.1176%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#efe5ccb8",
+      "base": "#efe5cc",
+      "token": "--paper-map",
+      "target": "#efe5cc",
+      "alpha": 0.7215686274509804,
+      "deltaE76": 0,
+      "explicit": true,
+      "output": "color-mix(in srgb, var(--paper-map) 72.1569%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#efe5cc66",
+      "base": "#efe5cc",
+      "token": "--paper-map",
+      "target": "#efe5cc",
+      "alpha": 0.4,
+      "deltaE76": 0,
+      "explicit": true,
+      "output": "color-mix(in srgb, var(--paper-map) 40%, transparent)",
+      "files": [
+        "map/map.css"
+      ]
+    },
+    {
+      "source": "#83af96aa",
+      "base": "#83af96",
+      "token": "--state-location",
+      "target": "#83af96",
+      "alpha": 0.6666666666666666,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "color-mix(in srgb, var(--state-location) 66.6667%, transparent)",
+      "files": [
+        "location/location.css"
+      ]
+    },
+    {
+      "source": "#9aa9aa",
+      "base": "#9aa9aa",
+      "token": "--slate-300",
+      "target": "#9aa9aa",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--slate-300)",
+      "files": [
+        "location/location.css"
+      ]
+    },
+    {
+      "source": "#665e4c",
+      "base": "#665e4c",
+      "token": "--earth-800",
+      "target": "#665e4c",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--earth-800)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#bcc5a3",
+      "base": "#bcc5a3",
+      "token": "--sage-200",
+      "target": "#bcc5a3",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--sage-200)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#72562c",
+      "base": "#72562c",
+      "token": "--gold-700",
+      "target": "#72562c",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--gold-700)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#8a483a",
+      "base": "#8a483a",
+      "token": "--bronze-700",
+      "target": "#8a483a",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--bronze-700)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#799179",
+      "base": "#799179",
+      "token": "--sage-500",
+      "target": "#799179",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--sage-500)",
+      "files": [
+        "activity/activity.css"
+      ]
+    },
+    {
+      "source": "#e0b343",
+      "base": "#e0b343",
+      "token": "--leaf-500",
+      "target": "#e0b343",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--leaf-500)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#8ca894",
+      "base": "#8ca894",
+      "token": "--sage-400",
+      "target": "#8ca894",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--sage-400)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#9eb6a1",
+      "base": "#9eb6a1",
+      "token": "--sage-300",
+      "target": "#9eb6a1",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--sage-300)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#617d6b",
+      "base": "#617d6b",
+      "token": "--sage-600",
+      "target": "#617d6b",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--sage-600)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#bccc84",
+      "base": "#bccc84",
+      "token": "--leaf-300",
+      "target": "#bccc84",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--leaf-300)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#87994d",
+      "base": "#87994d",
+      "token": "--leaf-700",
+      "target": "#87994d",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": false,
+      "output": "var(--leaf-700)",
+      "files": [
+        "activity/artwork.css"
+      ]
+    },
+    {
+      "source": "#e2a07a",
+      "base": "#e2a07a",
+      "token": "--state-warn-on-dark",
+      "target": "#e2a07a",
+      "alpha": 1,
+      "deltaE76": 0,
+      "explicit": true,
+      "output": "var(--state-warn-on-dark)",
+      "files": [
+        "hud/hud.css"
+      ]
+    }
+  ]
+}

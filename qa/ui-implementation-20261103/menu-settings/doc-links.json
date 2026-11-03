@@ -1,0 +1,1218 @@
+{
+  "ok": true,
+  "files": 15,
+  "checked": 242,
+  "broken": [],
+  "links": [
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "docs/SCENE.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "docs/hud-handoff.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "docs/QA.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "TODO.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "docs/UI-REFACTOR-PLAN-V2.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "../../qa/ui-implementation-20261103/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "../../tools/dev-workspace.mjs",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "docs/REAL-LOCATION.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "../../qa/ui-implementation-20261103/menu-settings/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "src/calibration/AUTHORING.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "docs/ASSETS.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "docs/ACCOUNT.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "server/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "docs/QA.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "../../docs/PR2-LOCATION-RELEASE-20261028.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "docs/SCENE.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "docs/hud-handoff.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "docs/ASSETS.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "docs/ACCOUNT.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\README.md",
+      "target": "docs/QA.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\SCENE.md",
+      "target": "QA.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\SCENE.md",
+      "target": "UI-REFACTOR-PLAN-V2.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\SCENE.md",
+      "target": "ASSETS.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\SCENE.md",
+      "target": "../src/styles/tokens.css",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\SCENE.md",
+      "target": "../../../qa/ui-implementation-20261103/menu-settings/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\SCENE.md",
+      "target": "activity/QA.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\SCENE.md",
+      "target": "REAL-LOCATION.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\SCENE.md",
+      "target": "../../../qa/ui-implementation-20261103/world-cinematic/final/region-pixels/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\SCENE.md",
+      "target": "../src/calibration/AUTHORING.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\SCENE.md",
+      "target": "ASSETS.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\SCENE.md",
+      "target": "ACCOUNT.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\SCENE.md",
+      "target": "QA.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "../README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "SCENE.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "../TODO.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "UI-REFACTOR-PLAN-V2.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "../../../qa/ui-implementation-20261103/menu-settings/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "../../../qa/ui-implementation-20261103/hud-panels/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "QA.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "../../../qa/ui-implementation-20261103/",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "../../../qa/ui-implementation-20261103/menu-settings/reference/",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "../../../qa/ui-implementation-20261103/menu-settings/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "../../../qa/hud-motion-20261102/QA.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "ACCOUNT.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "../public/calibrate.html",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "../src/calibration/AUTHORING.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "ASSETS.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\hud-handoff.md",
+      "target": "SCENE.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../src/account.ts",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../src/app/hooks/useAccountSession.ts",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../src/app/saveLifecycle.ts",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../src/hud/Hud.tsx",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../server/server.mjs",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../server/store.mjs",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../../../qa/ui-implementation-20261103/app-runtime/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "QA.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../src/calibration/AUTHORING.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../server/migrate-legacy.mjs",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../src/account.ts",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../server/progress.mjs",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../shared/game-settings.mjs",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../src/data.ts",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../src/calibration/AUTHORING.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../server/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../../../docs/PR2-LOCATION-RELEASE-20261028.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ACCOUNT.md",
+      "target": "../../../deploy/pi-liyun/ACCOUNT-API.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "../../../docs/PR2-LOCATION-RELEASE-20261028.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "../../../qa/ui-implementation-20261103/assets/",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "../../../qa/ui-implementation-20261103/assets/",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "../../../qa/ui-implementation-20261103/menu-settings/reference/",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "../../../qa/ui-implementation-20261103/menu-settings/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "../../../qa/ui-implementation-20261103/assets/index.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "asset-manifest.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "../src/calibration/AUTHORING.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "../../../qa/ui-implementation-20261103/invariants.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "../../../qa/ui-implementation-20261103/checks.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "REAL-LOCATION.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "../../../qa/ui-implementation-20261103/font-coverage.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "activity/asset-manifest.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "activity/reward-assets.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "activity/font-coverage.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\ASSETS.md",
+      "target": "asset-manifest.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "SCENE.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "hud-handoff.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../TODO.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/pure-cleanup/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/menu-settings/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/menu-settings/verified-focus-fullscreen-2/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/hud-panels/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/hud-panels/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/app-runtime/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/app-runtime/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../src/calibration/AUTHORING.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../src/calibration/qa/final/browser-results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/world-cinematic/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/world-cinematic/final/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/world-cinematic/final/region-pixels/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/theme/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/control-states/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/hud-layouts/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/keyboard-production/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/audio/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/auto-degrade/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "ASSETS.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/checks.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/menu-settings/press-hitareas/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/invariants.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-implementation-20261103/FIELD-ACCEPTANCE.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../src/calibration/AUTHORING.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "SCENE.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/hud-motion-20261102/QA.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/ui-refactor-audit-20261102/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/upgrade-20261027/baseline.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "activity/QA.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../../../qa/feature-20261029/checks.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "../README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "ASSETS.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\QA.md",
+      "target": "asset-manifest.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\UI-REFACTOR-PLAN-V2.md",
+      "target": "../README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\UI-REFACTOR-PLAN-V2.md",
+      "target": "SCENE.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\UI-REFACTOR-PLAN-V2.md",
+      "target": "hud-handoff.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\UI-REFACTOR-PLAN-V2.md",
+      "target": "QA.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\UI-REFACTOR-PLAN-V2.md",
+      "target": "../TODO.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\UI-REFACTOR-PLAN-V2.md",
+      "target": "../../../qa/ui-implementation-20261103/menu-settings/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\UI-REFACTOR-PLAN-V2.md",
+      "target": "../../../qa/ui-implementation-20261103/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\UI-REFACTOR-PLAN-V2.md",
+      "target": "UI-REFACTOR-PLAN.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\UI-REFACTOR-PLAN-V2.md",
+      "target": "../../../qa/ui-implementation-20261103/pure-cleanup/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\docs\\UI-REFACTOR-PLAN-V2.md",
+      "target": "UI-REFACTOR-PLAN.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\TODO.md",
+      "target": "../../qa/ui-refactor-audit-20261102/TODO-snapshot.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\TODO.md",
+      "target": "docs/IMPLEMENTATION-TRACKER-20261103.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\TODO.md",
+      "target": "../../qa/ui-implementation-20261103/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\TODO.md",
+      "target": "../../qa/ui-implementation-20261103/app-runtime/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\TODO.md",
+      "target": "../../qa/ui-implementation-20261103/menu-settings/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\TODO.md",
+      "target": "../../qa/ui-implementation-20261103/hud-panels/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\TODO.md",
+      "target": "../../qa/ui-implementation-20261103/keyboard-production/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\TODO.md",
+      "target": "../../qa/ui-implementation-20261103/auto-degrade/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\TODO.md",
+      "target": "../../qa/ui-implementation-20261103/world-cinematic/README.md",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\TODO.md",
+      "target": "../../qa/ui-implementation-20261103/hud-layouts/results.json",
+      "exists": true
+    },
+    {
+      "file": "apps\\liyun-explorer\\TODO.md",
+      "target": "src/calibration/AUTHORING.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "../../apps/liyun-explorer/TODO.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "pure-cleanup/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/README.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/press-hitareas/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "hud-panels/README.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "hud-layouts/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "app-runtime/README.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "../../apps/liyun-explorer/src/calibration/qa/final/browser-results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "../../apps/liyun-explorer/src/calibration/qa/cli-results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/README.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/region-pixels/README.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "audio/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "keyboard-production/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "auto-degrade/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "control-states/README.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "theme/README.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "checks.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "invariants.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "evidence-index.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "measure.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "contrast.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "perf.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "regions-check.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "motion.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "requirements.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/shots/map-1920x1080.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/verified-focus-fullscreen-2/shots/menu-1920x1080.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/verified-focus-fullscreen-2/shots/settings-1920x1080.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/shots/cinematic-1920x1080.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/shots/map-1440x900.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/verified-focus-fullscreen-2/shots/menu-1440x900.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/verified-focus-fullscreen-2/shots/settings-1440x900.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/shots/cinematic-1440x900.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/shots/map-1280x720.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/verified-focus-fullscreen-2/shots/menu-1280x720.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/verified-focus-fullscreen-2/shots/settings-1280x720.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/shots/cinematic-1280x720.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/shots/map-1024x600.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/verified-focus-fullscreen-2/shots/menu-1024x600.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/verified-focus-fullscreen-2/shots/settings-1024x600.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/shots/cinematic-1024x600.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/shots/map-844x390.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/verified-focus-fullscreen-2/shots/menu-844x390.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/verified-focus-fullscreen-2/shots/settings-844x390.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/shots/cinematic-844x390.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/shots/map-667x375.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/verified-focus-fullscreen-2/shots/menu-667x375.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/verified-focus-fullscreen-2/shots/settings-667x375.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/final/shots/cinematic-667x375.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/poc/ink-reveal-low-844x390.mp4",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/poc/ink-reveal-high-844x390.mp4",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "world-cinematic/poc/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "assets/index.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "font-coverage.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/reference/",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "menu-settings/README.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "theme/pixel-differences.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\README.md",
+      "target": "FIELD-ACCEPTANCE.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\FIELD-ACCEPTANCE.md",
+      "target": "../../apps/liyun-explorer/src/calibration/AUTHORING.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\FIELD-ACCEPTANCE.md",
+      "target": "../../apps/liyun-explorer/docs/REAL-LOCATION.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\world-cinematic\\README.md",
+      "target": "final/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\world-cinematic\\README.md",
+      "target": "final/shots",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\world-cinematic\\README.md",
+      "target": "host-reduced-20261103.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\world-cinematic\\README.md",
+      "target": "final/region-pixels/README.md",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\world-cinematic\\README.md",
+      "target": "poc/ink-reveal-low-844x390.mp4",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\world-cinematic\\README.md",
+      "target": "poc/ink-reveal-high-844x390.mp4",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\world-cinematic\\README.md",
+      "target": "shots/cinematic-normal-hero.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\world-cinematic\\README.md",
+      "target": "shots/cinematic-fallback.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\world-cinematic\\README.md",
+      "target": "shots/cinematic-667x375.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\world-cinematic\\README.md",
+      "target": "shots/map-844-high.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\world-cinematic\\README.md",
+      "target": "shots/hud-844-1.12.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "before.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "after.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "migrate.mjs",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "mapping.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "before-source",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "comparison.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "pixel-differences.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "diff",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "pages/review-20261103-1655/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "comparison.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "after/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "pages/after/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "pages/before/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\theme\\README.md",
+      "target": "opencli-connected.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "final/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "final/state-samples.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "browser.cjs",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "final/safe-area.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "final/safe-menu-667.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "final/safe-settings-667.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "final/safe-cinematic-667.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "final/safe-calibration-667.png",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "final/pressed-hitareas.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "aggregate.cjs",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "final/first-pass-results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "targeted-states/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "targeted-safe-held/results.json",
+      "exists": true
+    },
+    {
+      "file": "qa\\ui-implementation-20261103\\control-states\\README.md",
+      "target": "final/results.json",
+      "exists": true
+    }
+  ]
+}

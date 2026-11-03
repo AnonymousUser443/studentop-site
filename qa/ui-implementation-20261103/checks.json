@@ -1,0 +1,166 @@
+{
+  "ok": true,
+  "at": "2026-11-03T09:26:45.353Z",
+  "unit": {
+    "files": 19,
+    "passed": 153,
+    "total": 153
+  },
+  "checks": [
+    {
+      "name": "unit",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--reporter=json",
+        "--outputFile=../../qa/ui-implementation-20261103/vitest-final.json"
+      ],
+      "exitCode": 0,
+      "pass": true,
+      "elapsedMs": 905,
+      "log": "logs/unit.log"
+    },
+    {
+      "name": "server-store",
+      "command": [
+        "node",
+        "server/store.test.mjs"
+      ],
+      "exitCode": 0,
+      "pass": true,
+      "elapsedMs": 1274,
+      "log": "logs/server-store.log"
+    },
+    {
+      "name": "server-http",
+      "command": [
+        "node",
+        "server/server.test.mjs"
+      ],
+      "exitCode": 0,
+      "pass": true,
+      "elapsedMs": 902,
+      "log": "logs/server-http.log"
+    },
+    {
+      "name": "regions-check",
+      "command": [
+        "node",
+        "scripts/verify-regions.mjs"
+      ],
+      "exitCode": 0,
+      "pass": true,
+      "elapsedMs": 66,
+      "log": "logs/regions-check.log"
+    },
+    {
+      "name": "calibration-cli",
+      "command": [
+        "node",
+        "src/calibration/cli-qa.mjs"
+      ],
+      "exitCode": 0,
+      "pass": true,
+      "elapsedMs": 699,
+      "log": "logs/calibration-cli.log"
+    },
+    {
+      "name": "map-frozen",
+      "command": [
+        "node",
+        "scripts/verify-calibrated-map.mjs"
+      ],
+      "exitCode": 0,
+      "pass": true,
+      "elapsedMs": 66,
+      "log": "logs/map-frozen.log"
+    },
+    {
+      "name": "asset-manifest",
+      "command": [
+        "node",
+        "scripts/asset-manifest.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "pass": true,
+      "elapsedMs": 110,
+      "log": "logs/asset-manifest.log"
+    },
+    {
+      "name": "font-characters",
+      "command": [
+        "node",
+        "scripts/collect-font-text.mjs",
+        "--out",
+        "D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\ui-implementation-20261103\\font-characters-final.txt"
+      ],
+      "exitCode": 0,
+      "pass": true,
+      "elapsedMs": 366,
+      "log": "logs/font-characters.log"
+    },
+    {
+      "name": "font-subset-text-current",
+      "pass": true
+    },
+    {
+      "name": "font-coverage",
+      "command": [
+        "python",
+        "D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\ui-implementation-20261103\\font-coverage.py"
+      ],
+      "exitCode": 0,
+      "pass": true,
+      "elapsedMs": 172,
+      "log": "logs/font-coverage.log"
+    },
+    {
+      "name": "typescript",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "-b"
+      ],
+      "exitCode": 0,
+      "pass": true,
+      "elapsedMs": 2406,
+      "log": "logs/typescript.log"
+    },
+    {
+      "name": "vite-build",
+      "command": [
+        "node",
+        "node_modules/vite/bin/vite.js",
+        "build"
+      ],
+      "exitCode": 0,
+      "pass": true,
+      "elapsedMs": 5118,
+      "log": "logs/vite-build.log"
+    },
+    {
+      "name": "dist-budget",
+      "command": [
+        "node",
+        "scripts/trim-dist.mjs"
+      ],
+      "exitCode": 0,
+      "pass": true,
+      "elapsedMs": 78,
+      "log": "logs/dist-budget.log"
+    },
+    {
+      "name": "invariants",
+      "command": [
+        "node",
+        "D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\ui-implementation-20261103\\check-invariants.cjs"
+      ],
+      "exitCode": 0,
+      "pass": true,
+      "elapsedMs": 2997,
+      "log": "logs/invariants.log"
+    }
+  ]
+}

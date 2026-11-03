@@ -1,431 +1,84 @@
-/* ============================================================
-   旅途菜单（派蒙式骨架 · 理韵寻踪语言）
-   仅消费 tokens.css 变量，禁止裸色值。
-   ============================================================ */
-
-.menu-screen {
-  position: fixed;
-  inset: 0;
-  z-index: var(--z-menu);
-  overflow: hidden;
-  font-family: var(--font-ui);
-  color: var(--paper-100);
-  /* 半透明深玉 + 固定 8px 毛玻璃（不依赖运行时 --q-blur） */
-  background: color-mix(in srgb, var(--jade-950) 82%, transparent);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-/* ── 上下纸浪压边 ───────────────────────────────────────── */
-.menu-wave {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 12%;
-  background: var(--paper-200);
-  opacity: .06;
-  pointer-events: none;
-}
-.menu-wave-top {
-  top: 0;
-  clip-path: polygon(0 0, 100% 0, 100% 56%, 92% 68%, 85% 52%, 76% 66%, 67% 49%, 58% 63%, 48% 46%, 39% 64%, 30% 50%, 21% 65%, 12% 48%, 6% 62%, 0 54%);
-}
-.menu-wave-bottom {
-  bottom: 0;
-  clip-path: polygon(0 0, 100% 0, 100% 56%, 92% 68%, 85% 52%, 76% 66%, 67% 49%, 58% 63%, 48% 46%, 39% 64%, 30% 50%, 21% 65%, 12% 48%, 6% 62%, 0 54%);
-  transform: scaleY(-1);
-}
-
-/* 内容滚动区；返回按钮与功能栏在滚动区之外，不受滚动影响 */
-.menu-scroll {
-  position: absolute;
-  inset: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding-bottom: calc(var(--sp-8) + var(--sp-7));
-  overscroll-behavior: contain;
-}
-
-/* ── 返回按钮（左上） ───────────────────────────────────── */
-.menu-close {
-  position: absolute;
-  z-index: 2;
-  top: var(--sp-5);
-  left: var(--sp-5);
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  border: 1px solid var(--c-border);
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--jade-900) 72%, transparent);
-  color: var(--gold-200);
-  transition:
-    background var(--d-fast) var(--e-soft),
-    color var(--d-fast) var(--e-soft),
-    transform var(--d-fast) var(--e-soft);
-}
-.menu-close .ly-icon {
-  width: 24px;
-  height: 24px;
-}
-.menu-close:hover {
-  background: var(--jade-700);
-  color: var(--gold-300);
-}
-.menu-close:active {
-  transform: scale(.96);
-}
-
-/* ── 通用宽度：信息卡与宫格同宽 ─────────────────────────── */
-.menu-card,
-.menu-grid {
-  width: min(520px, calc(100% - 2 * var(--sp-5)));
-  margin: 0 auto;
-}
-.menu-card {
-  position: relative;
-  margin-top: var(--sp-7);
-  padding: var(--sp-6);
-  /* 八角切 */
-  clip-path: var(--edge-cut-both);
-  background: linear-gradient(135deg, var(--paper-100), var(--paper-300));
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--gold-500) 40%, transparent),
-    var(--sh-deep);
-  color: var(--ink-900);
-}
-
-/* ── 信息卡：头像 + 昵称 ───────────────────────────────── */
-.menu-identity {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-5);
-}
-.menu-avatar {
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 96px;
-  height: 96px;
-}
-.menu-avatar-diamond {
-  display: grid;
-  place-items: center;
-  width: 68px;
-  height: 68px;
-  border: 1px solid var(--gold-500);
-  background: var(--jade-700);
-  box-shadow:
-    inset 0 0 0 3px var(--jade-700),
-    inset 0 0 0 4px color-mix(in srgb, var(--gold-400) 40%, transparent),
-    0 2px 6px color-mix(in srgb, var(--jade-950) 32%, transparent);
-  transform: rotate(45deg);
-}
-.menu-avatar-diamond .ly-icon {
-  width: 44px;
-  height: 44px;
-  color: var(--gold-200);
-  transform: rotate(-45deg);
-}
-.menu-identity-text {
-  min-width: 0;
-}
-.menu-nickname {
-  margin: 0;
-  overflow-wrap: anywhere;
-  font-family: var(--font-display);
-  font-size: var(--fs-head);
-  font-weight: 400;
-  line-height: var(--lh-tight);
-  color: var(--ink-900);
-}
-.menu-signature {
-  margin: var(--sp-2) 0 0;
-  font-size: var(--fs-caption);
-  line-height: var(--lh-body);
-  color: var(--ink-400);
-}
-
-/* ── 信息卡：寻踪阶 + 探索度进度 ───────────────────────── */
-.menu-rank {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  margin-top: var(--sp-4);
-}
-.menu-rank-label {
-  flex: none;
-  font-size: var(--fs-caption);
-  letter-spacing: .08em;
-  color: var(--ink-400);
-}
-.menu-rank-value {
-  flex: none;
-  margin-right: var(--sp-1);
-  font-size: var(--fs-title);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-  color: var(--ink-900);
-}
-/* 探索度条：内嵌轨道 + 金渐变填充 + 端点菱形，避免读成"禁用输入框" */
-.menu-progress {
-  position: relative;
-  flex: 1;
-  height: 10px;
-  border: 1px solid color-mix(in srgb, var(--gold-500) 46%, transparent);
-  background:
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--jade-950) 26%, transparent),
-      color-mix(in srgb, var(--jade-950) 12%, transparent));
-  box-shadow: inset 0 1px 2px color-mix(in srgb, var(--jade-950) 32%, transparent);
-}
-.menu-progress-fill {
-  display: block;
-  height: 100%;
-  background: linear-gradient(90deg, var(--gold-500), var(--gold-300));
-  box-shadow: 0 0 6px color-mix(in srgb, var(--gold-300) 52%, transparent);
-  transition: width var(--d-slow) var(--e-out);
-}
-/* 填充末端的菱形端点：让 0% 时也能看出这是可增长的条 */
-.menu-progress-fill::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: -2px;
-  width: 7px;
-  height: 7px;
-  transform: translateY(-50%) rotate(45deg);
-  background: var(--gold-300);
-  border: 1px solid var(--gold-600);
-}
-.menu-progress-fill { position: relative; }
-.menu-progress-text {
-  flex: none;
-  font-size: var(--fs-caption);
-  font-variant-numeric: tabular-nums;
-  color: var(--ink-400);
-}
-
-/* ── 信息卡：UID / 校区 ────────────────────────────────── */
-.menu-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--sp-3);
-  margin-top: var(--sp-3);
-  font-size: var(--fs-caption);
-  color: var(--ink-400);
-}
-
-/* ── 宫格 ──────────────────────────────────────────────── */
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--sp-3);
-  margin-top: var(--sp-7);
-}
-.menu-tile-motion {
-  display: flex;
-  min-width: 0;
-}
-.menu-tile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-2);
-  width: 100%;
-  height: 108px;
-  padding: var(--sp-2);
-  border: 0;
-  border-radius: 0;
-  clip-path: var(--edge-cut-12);
-  background: linear-gradient(160deg, var(--paper-100), var(--paper-300));
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold-500) 32%, transparent);
-  color: var(--ink-900);
-  transition:
-    transform var(--d-fast) var(--e-soft),
-    box-shadow var(--d-fast) var(--e-soft);
-}
-.menu-tile .ly-icon {
-  width: 32px;
-  height: 32px;
-  color: var(--jade-700);
-  transition: color var(--d-fast) var(--e-soft);
-}
-.menu-tile-label {
-  font-size: var(--fs-body);
-  line-height: var(--lh-tight);
-  color: var(--ink-900);
-}
-.menu-tile:not(.is-locked):hover {
-  transform: translateY(-3px);
-  box-shadow:
-    inset 0 0 0 1px var(--gold-400),
-    var(--sh-soft);
-}
-/* 切角会裁掉外部 outline，用内描边补齐焦点环 */
-.menu-tile:focus-visible {
-  box-shadow:
-    inset 0 0 0 2px var(--gold-300),
-    var(--sh-soft);
-}
-.menu-tile.is-locked {
-  cursor: not-allowed;
-}
-.menu-tile.is-locked .ly-icon,
-.menu-tile.is-locked .menu-tile-label {
-  opacity: .45;
-}
-
-/* ── 左侧功能栏（贴左下，避免遮挡信息卡） ───────────────── */
-.menu-rail {
-  position: absolute;
-  z-index: 2;
-  left: var(--sp-5);
-  bottom: var(--sp-7);
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-3);
-}
-.menu-rail-button {
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  border: 1px solid color-mix(in srgb, var(--gold-500) 50%, transparent);
-  background: color-mix(in srgb, var(--jade-700) 60%, transparent);
-  clip-path: var(--edge-cut-8);
-  color: var(--paper-300);
-  transition:
-    background var(--d-fast) var(--e-soft),
-    color var(--d-fast) var(--e-soft),
-    transform var(--d-fast) var(--e-soft);
-}
-.menu-rail-button .ly-icon {
-  width: 26px;
-  height: 26px;
-}
-.menu-rail-button:not(.is-locked):hover {
-  background: var(--jade-600);
-  color: var(--gold-300);
-  transform: translateY(-2px);
-}
-/* 切角会裁掉外部 outline，用内描边补齐焦点环 */
-.menu-rail-button:focus-visible {
-  box-shadow: inset 0 0 0 2px var(--gold-300);
-}
-.menu-rail-button.is-locked {
-  opacity: .45;
-  cursor: not-allowed;
-}
-
-/* ── 移动端：宫格三列 + 功能栏横向贴底 ──────────────────── */
-@media (max-width: 720px) {
-  .menu-card {
-    width: calc(100% - 2 * var(--sp-4));
-  }
-  .menu-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .menu-tile {
-    height: 92px;
-  }
-  .menu-scroll {
-    padding-bottom: calc(var(--sp-8) + 48px);
-  }
-  .menu-rail {
-    left: var(--sp-4);
-    right: var(--sp-4);
-    bottom: var(--sp-4);
-    flex-direction: row;
-    justify-content: center;
-  }
-}
-
-/* ── 矮屏横屏（手机 844×390 / 667×375）：整体压缩，功能栏横置贴底 ──
-   仅按宽度断点不够——844px 宽但只有 390px 高，纵向仍会撞车。 */
-@media (max-height: 560px) and (orientation: landscape) {
-  .menu-scroll {
-    padding-bottom: 76px;
-  }
-  .menu-card {
-    margin-top: var(--sp-4);
-    padding: var(--sp-4) var(--sp-5);
-  }
-  .menu-avatar {
-    width: 64px;
-    height: 64px;
-  }
-  .menu-avatar-diamond {
-    width: 46px;
-    height: 46px;
-  }
-  .menu-avatar-diamond .ly-icon {
-    width: 30px;
-    height: 30px;
-  }
-  .menu-nickname {
-    font-size: var(--fs-title);
-  }
-  .menu-rank,
-  .menu-meta {
-    margin-top: var(--sp-2);
-  }
-  .menu-grid {
-    margin-top: var(--sp-3);
-    gap: var(--sp-2);
-  }
-  .menu-tile {
-    height: 76px;
-    gap: var(--sp-1);
-  }
-  .menu-tile .ly-icon {
-    width: 24px;
-    height: 24px;
-  }
-  .menu-tile-label {
-    font-size: var(--fs-caption);
-  }
-  /* 功能栏改为贴底横排，避开左上返回钮 */
-  .menu-rail {
-    left: var(--sp-4);
-    right: var(--sp-4);
-    top: auto;
-    bottom: var(--sp-3);
-    flex-direction: row;
-    justify-content: center;
-    gap: var(--sp-2);
-  }
-  .menu-rail-button {
-    width: 42px;
-    height: 42px;
-  }
-  .menu-rail-button .ly-icon {
-    width: 22px;
-    height: 22px;
-  }
-  .menu-close {
-    top: var(--sp-3);
-    left: var(--sp-3);
-    width: 40px;
-    height: 40px;
-  }
-}
-
-/* ── 低动态偏好：取消位移与过渡，保留终态 ───────────────── */
-@media (prefers-reduced-motion: reduce) {
-  .menu-close,
-  .menu-tile,
-  .menu-rail-button {
-    transition: none;
-  }
-  .menu-close:active,
-  .menu-tile:not(.is-locked):hover,
-  .menu-rail-button:not(.is-locked):hover {
-    transform: none;
-  }
-}
+/* Paimon drawer proportions, rendered in the project's jade / paper / gold palette. */
+.menu-world-scrim { position: fixed; inset: 0; z-index: var(--z-menu); background: linear-gradient(90deg, color-mix(in srgb, var(--jade-950) 18%, transparent), transparent 72%); }
+.menu-screen { --menu-rail-width: 62px; position: fixed; inset: 0 auto 0 0; z-index: var(--z-menu); display: grid; grid-template-columns: var(--menu-rail-width) minmax(0, 1fr); width: min(620px, 46vw); min-width: 470px; height: 100dvh; outline: none; color: var(--ink-900); font-family: var(--font-ui); background: var(--jade-900); box-shadow: var(--q-shadow); border-right: 1px solid var(--gold-400); }
+.menu-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+/* Keep the rail beyond the landscape notch without narrowing the paper drawer. */
+.menu-screen { left: env(safe-area-inset-left, 0px); }
+.menu-screen::before { content: ''; position: absolute; inset-block: 0; right: 100%; width: env(safe-area-inset-left, 0px); background: var(--jade-900); pointer-events: none; }
+.menu-close { position: absolute; z-index: 3; top: max(14px, env(safe-area-inset-top)); left: calc((var(--menu-rail-width) - 44px) / 2); display: grid; place-items: center; width: 44px; height: 44px; padding: 10px; border: 1px solid var(--paper-400); border-radius: var(--r-pill); background: var(--paper-200); color: var(--jade-900); box-shadow: 0 0 0 4px color-mix(in srgb, var(--paper-200) 12%, transparent); transition: background var(--d-fast) var(--e-soft), transform var(--d-tap) var(--e-soft); }
+.menu-close svg { width: 100%; height: 100%; overflow: visible; }
+.menu-close:hover { background: var(--paper-50); transform: rotate(-8deg); }
+.menu-close:active { transform: none; }
+.menu-close:active svg { transform: scale(.93); }
+.menu-paper { position: relative; grid-column: 2; display: grid; grid-template-rows: minmax(0, 1fr) auto; min-width: 0; min-height: 0; background: var(--paper-200); border-left: 1px solid var(--gold-500); }
+.menu-paper::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 0 6px color-mix(in srgb, var(--paper-50) 30%, transparent); }
+.menu-scroll { min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--gold-500) var(--paper-300); }
+.menu-card { position: relative; isolation: isolate; overflow: hidden; min-height: 262px; margin: 0; padding: 20px 24px 22px; color: var(--paper-100); background: linear-gradient(130deg, var(--jade-600), var(--jade-900)); border-top: 7px solid var(--paper-200); border-bottom: 1px solid var(--gold-500); }
+.menu-card-art { position: absolute; z-index: -1; inset: 0; width: 100%; height: 100%; color: var(--gold-300); opacity: .14; stroke: currentColor; stroke-width: 1.5; }
+.menu-card-topline { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 12px; color: var(--gold-200); letter-spacing: .2em; }
+.menu-identity { display: flex; align-items: center; gap: 18px; }
+.menu-avatar { position: relative; flex: none; display: grid; place-items: center; width: 84px; height: 84px; border: 3px solid var(--paper-200); border-radius: var(--r-pill); background: var(--jade-800); box-shadow: 0 0 0 5px color-mix(in srgb, var(--gold-300) 20%, transparent); }
+.menu-avatar .ly-icon { width: 54px; height: 54px; color: var(--gold-200); }
+.menu-avatar > span { position: absolute; right: -2px; bottom: -3px; width: 26px; height: 26px; display: grid; place-items: center; font-family: var(--font-display); font-size: 18px; color: var(--jade-900); background: var(--gold-300); border-radius: var(--r-pill); }
+.menu-identity-text { min-width: 0; flex: 1; }
+.menu-nickname { margin: 0; max-width: 100%; font-family: var(--font-ui); font-size: clamp(24px, 2vw, 32px); font-weight: 650; line-height: 1.35; overflow-wrap: anywhere; }
+.menu-signature { margin: 7px 0 8px; color: var(--paper-200); font-size: 12px; line-height: 1.65; }
+.menu-account-state { display: inline-block; padding: 2px 9px; color: var(--paper-100); font-size: 12px; background: color-mix(in srgb, var(--jade-950) 40%, transparent); border: 1px solid color-mix(in srgb, var(--paper-200) 24%, transparent); border-radius: var(--r-pill); }
+.menu-rank { display: flex; align-items: baseline; gap: 12px; margin: 24px 0 8px; font-size: 14px; }
+.menu-rank > strong { font-size: 25px; font-weight: 600; line-height: 1; color: var(--gold-200); }
+.menu-rank-count { margin-left: auto; font-size: 12px; white-space: nowrap; color: var(--paper-200); }
+.menu-rank-count b { color: var(--paper-50); font-weight: 600; }
+.menu-progress { height: 6px; background: color-mix(in srgb, var(--jade-950) 80%, transparent); border: 1px solid color-mix(in srgb, var(--gold-300) 24%, transparent); }
+.menu-progress-fill { position: relative; display: block; height: 100%; min-width: 2px; background: var(--gold-300); transition: width var(--d-slow) var(--e-out); }
+.menu-progress-fill::after { content: ''; position: absolute; top: 50%; right: -3px; width: 5px; height: 5px; background: var(--paper-100); transform: translateY(-50%) rotate(45deg); }
+.menu-meta { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 9px; color: var(--paper-200); font-size: 12px; font-variant-numeric: tabular-nums; }
+.menu-card.has-login .menu-identity-text { padding-right: 42px; }
+.menu-login { position: absolute; top: 62px; right: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; width: 44px; min-height: 44px; padding: 3px; border: 1px solid color-mix(in srgb, var(--gold-300) 35%, transparent); border-radius: var(--r-cut); color: var(--gold-200); background: color-mix(in srgb, var(--jade-950) 26%, transparent); font-size: 11px; }
+.menu-login .ly-icon { width: 20px; height: 20px; }
+.menu-login:hover { color: var(--paper-50); }
+.menu-login:active { background: var(--jade-950); }
+.menu-content { padding: 18px 20px 24px; }
+.menu-section-title { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; color: var(--ink-700); font-size: 13px; letter-spacing: .12em; }
+.menu-section-title::after { content: ''; height: 1px; flex: 1; background: var(--paper-400); }
+.menu-section-title > span:last-child { font-size: 6px; color: var(--gold-600); }
+.menu-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; }
+.menu-tile-motion { display: flex; min-width: 0; }
+.menu-tile { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; width: 100%; min-width: 0; min-height: 112px; padding: 12px 3px 10px; border: 1px solid var(--jade-800); border-radius: var(--r-cut); color: var(--paper-100); background: var(--jade-700); box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--paper-200) 13%, transparent); transition: background var(--d-fast) var(--e-soft), box-shadow var(--d-fast) var(--e-soft), transform var(--d-tap) var(--e-soft); }
+.menu-tile::after { content: ''; position: absolute; inset: 4px; border: 1px solid transparent; border-radius: var(--r-cut); pointer-events: none; transition: border-color var(--d-fast) var(--e-soft); }
+.menu-tile-icon { display: grid; place-items: center; height: 41px; }
+.menu-tile .ly-icon { width: 39px; height: 39px; }
+.menu-tile-label { font-size: 13px; line-height: 1.4; white-space: nowrap; }
+.menu-tile-detail { color: var(--paper-300); font-size: 11px; line-height: 1.5; white-space: nowrap; }
+.menu-tile:not(:disabled) .menu-tile-detail { display: none; }
+.menu-tile:not(:disabled):hover, .menu-tile:not(:disabled):focus-visible { color: var(--paper-50); background: var(--jade-500); box-shadow: inset 0 0 0 2px var(--paper-100), var(--q-shadow); }
+.menu-tile:not(:disabled):hover::after, .menu-tile:focus-visible::after { border-color: var(--gold-300); }
+.menu-tile:not(:disabled):active { transform: scale(.95); background: var(--jade-900); }
+.menu-tile.is-locked { color: var(--paper-200); background: color-mix(in srgb, var(--jade-700) 80%, var(--paper-200)); border-color: var(--paper-500); cursor: default; }
+.menu-tile.is-locked .menu-tile-icon { opacity: .65; }
+.menu-tile.is-locked .menu-tile-detail { color: var(--paper-100); }
+.menu-footnote { display: flex; gap: 12px; align-items: center; margin: 28px 0 0; padding: 16px 4px 0; border-top: 1px solid var(--paper-400); color: var(--ink-700); }
+.menu-footnote > .ly-icon { flex: none; width: 34px; height: 34px; color: var(--jade-500); }
+.menu-footnote p { margin: 0; font-size: 14px; line-height: 1.8; }
+.menu-footnote p span { font-size: 12px; color: var(--ink-700); }
+.menu-footer { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 48px; padding: 10px 20px max(10px, env(safe-area-inset-bottom)); border-top: 1px solid var(--paper-400); background: var(--paper-300); color: var(--ink-700); font-size: 12px; }
+.menu-footer kbd { padding: 0 4px; border: 1px solid var(--paper-500); border-radius: var(--r-cut); font-size: 11px; font-family: var(--font-ui); }
+.menu-rail { position: relative; grid-column: 1; grid-row: 1; display: flex; flex-direction: column; align-items: center; padding: max(83px, env(safe-area-inset-top)) 0 max(16px, env(safe-area-inset-bottom)); background: linear-gradient(140deg, var(--jade-700), var(--jade-900) 70%); }
+.menu-rail-mark { display: grid; place-items: center; width: 34px; height: 34px; margin: 9px 0 24px; border: 1px solid color-mix(in srgb, var(--gold-300) 40%, transparent); color: var(--gold-200); font-family: var(--font-display); font-size: 23px; transform: rotate(45deg); }
+.menu-rail-mark > span { transform: rotate(-45deg); }
+.menu-rail-items { display: flex; flex: 1; flex-direction: column; justify-content: center; gap: 22px; }
+.menu-rail-button { position: relative; display: grid; place-items: center; flex: none; width: 48px; height: 48px; padding: 10px; border: 1px solid transparent; border-radius: var(--r-pill); color: var(--gold-400); background: transparent; transition: color var(--d-fast) var(--e-soft), background var(--d-fast) var(--e-soft), transform var(--d-tap) var(--e-soft); }
+.menu-rail-button > svg { width: 29px; height: 29px; }
+.menu-rail-button:hover, .menu-rail-button:focus-visible { color: var(--paper-100); background: color-mix(in srgb, var(--jade-950) 55%, transparent); }
+.menu-rail-button:active { background: var(--jade-950); }
+.menu-rail-button:active > svg { transform: scale(.9); }
+.menu-rail-tooltip { position: absolute; left: calc(100% + 6px); z-index: 5; display: block; padding: 4px 10px; pointer-events: none; white-space: nowrap; color: var(--paper-100); background: var(--jade-950); border: 1px solid var(--gold-600); border-radius: var(--r-cut); font-size: 13px; opacity: 0; transform: translateX(-4px); transition: opacity var(--d-fast) var(--e-soft), transform var(--d-fast) var(--e-soft); }
+.menu-rail-button:hover .menu-rail-tooltip, .menu-rail-button:focus-visible .menu-rail-tooltip { opacity: 1; transform: translateX(0); }
+.menu-rail-return { margin-top: 22px; }
+@media (max-width: 1100px) { .menu-screen { width: min(520px, 54vw); min-width: 400px; --menu-rail-width: 56px; } .menu-card { padding-inline: 20px; } .menu-content { padding-inline: 16px; } .menu-grid { gap: 8px; } .menu-tile { min-height: 104px; } .menu-tile-label { font-size: 12px; } }
+@media (max-width: 900px) { .menu-screen { width: 58vw; min-width: 380px; --menu-rail-width: 52px; } .menu-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .menu-rail-button { width: 46px; height: 46px; } .menu-card { padding-inline: 16px; } .menu-avatar { width: 68px; height: 68px; } .menu-avatar .ly-icon { width: 44px; height: 44px; } .menu-identity { gap: 14px; } .menu-nickname { font-size: 24px; } .menu-footer { padding-inline: 12px; } .menu-footer > span:first-child { display: none; } .menu-footer > span:last-child { margin-left: auto; } }
+@media (max-height: 560px) { .menu-screen { width: min(470px, 62vw); min-width: 370px; --menu-rail-width: 52px; } .menu-close { top: max(10px, env(safe-area-inset-top)); } .menu-card { min-height: auto; padding: 12px 16px 14px; border-top-width: 4px; } .menu-card-topline { margin-bottom: 12px; font-size: 12px; } .menu-avatar { width: 58px; height: 58px; border-width: 2px; } .menu-avatar .ly-icon { width: 38px; height: 38px; } .menu-avatar > span { width: 20px; height: 20px; font-size: 14px; } .menu-nickname { font-size: 22px; } .menu-signature { margin: 3px 0; font-size: 12px; } .menu-account-state { font-size: 12px; padding-block: 0; } .menu-rank { margin-top: 14px; font-size: 12px; } .menu-rank > strong { font-size: 22px; } .menu-rank-count { font-size: 12px; } .menu-meta { font-size: 12px; } .menu-login { margin-top: 5px; margin-bottom: -10px; font-size: 12px; } .menu-content { padding: 12px 12px 18px; } .menu-section-title { margin-bottom: 10px; font-size: 12px; } .menu-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; } .menu-tile { min-height: 91px; gap: 4px; padding-block: 9px; } .menu-tile-icon { height: 33px; } .menu-tile .ly-icon { width: 31px; height: 31px; } .menu-footnote { margin-top: 18px; } .menu-footer { min-height: 37px; padding-block: 7px; } .menu-rail { padding-top: 68px; padding-bottom: 8px; } .menu-rail-mark { display: none; } .menu-rail-items { gap: 3px; } .menu-rail-return { margin-top: 4px; } }
+@media (max-width: 600px) { .menu-screen { width: calc(100vw - 48px); min-width: 0; max-width: 420px; } .menu-card { padding-inline: 14px; } .menu-identity { gap: 12px; } .menu-avatar { width: 60px; height: 60px; } .menu-signature { font-size: 12px; } }
+@media (max-height: 560px) { .menu-card-topline, .menu-signature { display: none; } .menu-identity-text { padding-right: 0; } .menu-card.has-login .menu-identity-text { padding-right: 36px; } .menu-login { top: 16px; right: 12px; margin: 0; } .menu-rank { margin-top: 11px; margin-bottom: 6px; } }
+@media (prefers-reduced-motion: reduce) { .menu-screen *, .menu-screen *::after { transition-duration: 0s; } }
+@media (max-height: 560px) { .menu-rail { padding-bottom: max(8px, env(safe-area-inset-bottom)); } .menu-footer { padding-bottom: max(7px, env(safe-area-inset-bottom)); } }
+@media (max-width: 600px) { .menu-screen { max-width: min(420px, calc(100vw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) - 48px)); } }

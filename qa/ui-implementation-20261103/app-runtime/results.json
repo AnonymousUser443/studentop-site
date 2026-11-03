@@ -1,0 +1,986 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "name": "QA initial hydration never reads/writes ordinary save or token",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "QA initial hydration does not call an account API",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "QA reset empties exploration and independent regions while retaining settings",
+      "pass": true,
+      "detail": {
+        "version": 3,
+        "discoveredIds": [],
+        "unlockedRegionIds": [],
+        "playerUV": {
+          "u": 0.502,
+          "v": 0.507
+        },
+        "settings": {
+          "music": false,
+          "volume": 0.35,
+          "track": 0,
+          "quality": "high",
+          "reducedMotion": false,
+          "qualityPreset": "high",
+          "baseQualityPreset": "high",
+          "qualityOverrides": {},
+          "autoDegrade": false,
+          "degradedFrom": null,
+          "uiSound": true,
+          "reduceFlash": false,
+          "hudScale": 1,
+          "dragSensitivity": 1,
+          "zoomLimit": 3.8,
+          "doubleZoom": 1.45,
+          "messageDuration": 5,
+          "showCinematic": true,
+          "redDot": true
+        }
+      }
+    },
+    {
+      "name": "QA export reads sanitized current memory instead of ordinary archive",
+      "pass": true,
+      "detail": {
+        "version": 3,
+        "discoveredIds": [],
+        "unlockedRegionIds": [
+          "park"
+        ],
+        "playerUV": {
+          "u": 0.502,
+          "v": 0.507
+        },
+        "settings": {
+          "music": false,
+          "volume": 0.35,
+          "track": 0,
+          "quality": "high",
+          "reducedMotion": false,
+          "qualityPreset": "high",
+          "baseQualityPreset": "high",
+          "qualityOverrides": {},
+          "autoDegrade": false,
+          "degradedFrom": null,
+          "uiSound": true,
+          "reduceFlash": false,
+          "hudScale": 1,
+          "dragSensitivity": 1,
+          "zoomLimit": 3.8,
+          "doubleZoom": 1.45,
+          "messageDuration": 5,
+          "showCinematic": true,
+          "redDot": true
+        }
+      }
+    },
+    {
+      "name": "QA clear returns to a usable entry with map route",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "QA reset, export and clear preserve ordinary keys exactly",
+      "pass": true,
+      "detail": {
+        "save": "{\"version\":3,\"discoveredIds\":[\"tower\"],\"unlockedRegionIds\":[\"park\"],\"playerUV\":{\"u\":0.502,\"v\":0.507},\"settings\":{\"music\":false,\"volume\":0.35,\"track\":0,\"quality\":\"high\",\"reducedMotion\":false,\"qualityPreset\":\"high\",\"baseQualityPreset\":\"high\",\"qualityOverrides\":{},\"autoDegrade\":false,\"degradedFrom\":null,\"uiSound\":false,\"reduceFlash\":false,\"hudScale\":1,\"dragSensitivity\":1,\"zoomLimit\":3.8,\"doubleZoom\":1.45,\"messageDuration\":5,\"showCinematic\":true,\"redDot\":true}}",
+        "legacy": "legacy-sentinel",
+        "token": "ordinary-token-sentinel"
+      }
+    },
+    {
+      "name": "QA data actions never contact the account API",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "Calibration direct entry never reads/writes ordinary save or token",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "Calibration direct entry has no QA bridge and no cloud activity",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "Ordinary development page does not expose the QA bridge",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "Guest login prompt closes routes and leaves entry interactive",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "Failed initial cloud read cannot autosave the stale local snapshot",
+      "pass": true,
+      "detail": {
+        "puts": 0,
+        "state": {
+          "version": 3,
+          "discoveredIds": [
+            "tower"
+          ],
+          "unlockedRegionIds": [
+            "park"
+          ],
+          "playerUV": {
+            "u": 0.502,
+            "v": 0.507
+          },
+          "settings": {
+            "music": false,
+            "volume": 0.35,
+            "track": 2,
+            "quality": "high",
+            "reducedMotion": false,
+            "qualityPreset": "high",
+            "baseQualityPreset": "high",
+            "qualityOverrides": {},
+            "autoDegrade": false,
+            "degradedFrom": null,
+            "uiSound": false,
+            "reduceFlash": false,
+            "hudScale": 1,
+            "dragSensitivity": 1,
+            "zoomLimit": 3.8,
+            "doubleZoom": 1.45,
+            "messageDuration": 5,
+            "showCinematic": true,
+            "redDot": true
+          }
+        }
+      }
+    },
+    {
+      "name": "Online recovery restores the cloud snapshot and independent regions",
+      "pass": true,
+      "detail": {
+        "version": 3,
+        "discoveredIds": [
+          "beihu"
+        ],
+        "unlockedRegionIds": [
+          "park",
+          "beihu"
+        ],
+        "playerUV": {
+          "u": 0.502,
+          "v": 0.507
+        },
+        "settings": {
+          "music": false,
+          "volume": 0.35,
+          "track": 0,
+          "quality": "high",
+          "reducedMotion": false,
+          "qualityPreset": "high",
+          "baseQualityPreset": "high",
+          "qualityOverrides": {},
+          "autoDegrade": false,
+          "degradedFrom": null,
+          "uiSound": false,
+          "reduceFlash": false,
+          "hudScale": 1,
+          "dragSensitivity": 1,
+          "zoomLimit": 3.8,
+          "doubleZoom": 1.45,
+          "messageDuration": 5,
+          "showCinematic": true,
+          "redDot": true
+        }
+      }
+    },
+    {
+      "name": "Reset commits empty memory before its cloud write completes",
+      "pass": true,
+      "detail": {
+        "version": 3,
+        "discoveredIds": [],
+        "unlockedRegionIds": [],
+        "playerUV": {
+          "u": 0.502,
+          "v": 0.507
+        },
+        "settings": {
+          "music": false,
+          "volume": 0.35,
+          "track": 0,
+          "quality": "high",
+          "reducedMotion": false,
+          "qualityPreset": "high",
+          "baseQualityPreset": "high",
+          "qualityOverrides": {},
+          "autoDegrade": false,
+          "degradedFrom": null,
+          "uiSound": false,
+          "reduceFlash": false,
+          "hudScale": 1,
+          "dragSensitivity": 1,
+          "zoomLimit": 3.5,
+          "doubleZoom": 1.45,
+          "messageDuration": 5,
+          "showCinematic": true,
+          "redDot": true
+        }
+      }
+    },
+    {
+      "name": "Reset waits behind the older cloud write and shows busy feedback",
+      "pass": true,
+      "detail": {
+        "puts": 2,
+        "beforeResetPuts": 2
+      }
+    },
+    {
+      "name": "Serialized reset leaves cloud exploration empty and settings intact",
+      "pass": true,
+      "detail": {
+        "version": 3,
+        "discoveredIds": [],
+        "unlockedRegionIds": [],
+        "playerUV": {
+          "u": 0.502,
+          "v": 0.507
+        },
+        "settings": {
+          "music": false,
+          "volume": 0.35,
+          "track": 0,
+          "quality": "high",
+          "reducedMotion": false,
+          "qualityPreset": "high",
+          "baseQualityPreset": "high",
+          "qualityOverrides": {},
+          "autoDegrade": false,
+          "degradedFrom": null,
+          "uiSound": false,
+          "reduceFlash": false,
+          "hudScale": 1,
+          "dragSensitivity": 1,
+          "zoomLimit": 3.5,
+          "doubleZoom": 1.45,
+          "messageDuration": 5,
+          "showCinematic": true,
+          "redDot": true
+        }
+      }
+    },
+    {
+      "name": "Refresh restores the empty reset and retained controls",
+      "pass": true,
+      "detail": {
+        "version": 3,
+        "discoveredIds": [],
+        "unlockedRegionIds": [],
+        "playerUV": {
+          "u": 0.502,
+          "v": 0.507
+        },
+        "settings": {
+          "music": false,
+          "volume": 0.35,
+          "track": 0,
+          "quality": "high",
+          "reducedMotion": false,
+          "qualityPreset": "high",
+          "baseQualityPreset": "high",
+          "qualityOverrides": {},
+          "autoDegrade": false,
+          "degradedFrom": null,
+          "uiSound": false,
+          "reduceFlash": false,
+          "hudScale": 1,
+          "dragSensitivity": 1,
+          "zoomLimit": 3.5,
+          "doubleZoom": 1.45,
+          "messageDuration": 5,
+          "showCinematic": true,
+          "redDot": true
+        }
+      }
+    },
+    {
+      "name": "Logout closes portals, removes token and makes entry interactive",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "Re-login retains the reset cloud journey",
+      "pass": true,
+      "detail": {
+        "version": 3,
+        "discoveredIds": [],
+        "unlockedRegionIds": [],
+        "playerUV": {
+          "u": 0.502,
+          "v": 0.507
+        },
+        "settings": {
+          "music": false,
+          "volume": 0.35,
+          "track": 0,
+          "quality": "high",
+          "reducedMotion": false,
+          "qualityPreset": "high",
+          "baseQualityPreset": "high",
+          "qualityOverrides": {},
+          "autoDegrade": false,
+          "degradedFrom": null,
+          "uiSound": false,
+          "reduceFlash": false,
+          "hudScale": 1,
+          "dragSensitivity": 1,
+          "zoomLimit": 3.5,
+          "doubleZoom": 1.45,
+          "messageDuration": 5,
+          "showCinematic": true,
+          "redDot": true
+        }
+      }
+    },
+    {
+      "name": "Clear-local removes both local keys and session without immediately rewriting an empty key",
+      "pass": true,
+      "detail": {
+        "save": null,
+        "legacy": null,
+        "token": null
+      }
+    },
+    {
+      "name": "Clear-local sends no empty cloud PUT and preserves distinct cloud data",
+      "pass": true,
+      "detail": {
+        "beforeClearPuts": 6,
+        "afterClearPuts": 6
+      }
+    },
+    {
+      "name": "Clear-local leaves entry outside inert and all routes closed",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "Cloud journey recovers after clearing this browser",
+      "pass": true,
+      "detail": {
+        "version": 3,
+        "discoveredIds": [
+          "beihu"
+        ],
+        "unlockedRegionIds": [
+          "park",
+          "beihu"
+        ],
+        "playerUV": {
+          "u": 0.502,
+          "v": 0.507
+        },
+        "settings": {
+          "music": false,
+          "volume": 0.35,
+          "track": 2,
+          "quality": "high",
+          "reducedMotion": false,
+          "qualityPreset": "high",
+          "baseQualityPreset": "high",
+          "qualityOverrides": {},
+          "autoDegrade": false,
+          "degradedFrom": null,
+          "uiSound": false,
+          "reduceFlash": false,
+          "hudScale": 1,
+          "dragSensitivity": 1,
+          "zoomLimit": 3.8,
+          "doubleZoom": 1.45,
+          "messageDuration": 5,
+          "showCinematic": true,
+          "redDot": true
+        }
+      }
+    },
+    {
+      "name": "Ordinary export succeeds with no local key using current sanitized memory",
+      "pass": true,
+      "detail": {
+        "version": 3,
+        "discoveredIds": [
+          "beihu"
+        ],
+        "unlockedRegionIds": [
+          "park",
+          "beihu"
+        ],
+        "playerUV": {
+          "u": 0.502,
+          "v": 0.507
+        },
+        "settings": {
+          "music": false,
+          "volume": 0.35,
+          "track": 2,
+          "quality": "high",
+          "reducedMotion": false,
+          "qualityPreset": "high",
+          "baseQualityPreset": "high",
+          "qualityOverrides": {},
+          "autoDegrade": false,
+          "degradedFrom": null,
+          "uiSound": false,
+          "reduceFlash": false,
+          "hudScale": 1,
+          "dragSensitivity": 1,
+          "zoomLimit": 3.8,
+          "doubleZoom": 1.45,
+          "messageDuration": 5,
+          "showCinematic": true,
+          "redDot": true
+        }
+      }
+    },
+    {
+      "name": "An older delayed cloud GET cannot overwrite an explicit reset",
+      "pass": true,
+      "detail": {
+        "version": 3,
+        "discoveredIds": [],
+        "unlockedRegionIds": [],
+        "playerUV": {
+          "u": 0.502,
+          "v": 0.507
+        },
+        "settings": {
+          "music": true,
+          "volume": 0.35,
+          "track": 0,
+          "quality": "high",
+          "reducedMotion": false,
+          "qualityPreset": "high",
+          "baseQualityPreset": "high",
+          "qualityOverrides": {},
+          "autoDegrade": true,
+          "degradedFrom": null,
+          "uiSound": true,
+          "reduceFlash": false,
+          "hudScale": 1,
+          "dragSensitivity": 1,
+          "zoomLimit": 2.7,
+          "doubleZoom": 1.45,
+          "messageDuration": 3.6,
+          "showCinematic": true,
+          "redDot": true
+        }
+      }
+    },
+    {
+      "name": "QA discover still rejects missing GPS without mutating progress or queue",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "Real check-in button enables only after valid simulated browser GPS",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "Valid discovery commits progress and independent region before the 3.2s prelude",
+      "pass": true,
+      "detail": {
+        "state": {
+          "version": 3,
+          "discoveredIds": [
+            "beihu"
+          ],
+          "unlockedRegionIds": [
+            "park",
+            "beihu"
+          ],
+          "playerUV": {
+            "u": 0.35779963220596467,
+            "v": 0.37007771543334456
+          },
+          "settings": {
+            "music": false,
+            "volume": 0.35,
+            "track": 0,
+            "quality": "high",
+            "reducedMotion": false,
+            "qualityPreset": "high",
+            "baseQualityPreset": "high",
+            "qualityOverrides": {},
+            "autoDegrade": false,
+            "degradedFrom": null,
+            "uiSound": false,
+            "reduceFlash": false,
+            "hudScale": 1,
+            "dragSensitivity": 1,
+            "zoomLimit": 2.7,
+            "doubleZoom": 1.45,
+            "messageDuration": 3.6,
+            "showCinematic": true,
+            "redDot": true
+          }
+        },
+        "event": {
+          "id": 1793655492102,
+          "type": "discover",
+          "landmarkId": "beihu",
+          "from": {
+            "u": 0.502,
+            "v": 0.507
+          },
+          "to": {
+            "u": 0.35779963220596467,
+            "v": 0.37007771543334456
+          },
+          "startedAt": 1238.8999999910593,
+          "duration": 3200
+        },
+        "ui": {
+          "route": "map",
+          "activePanel": null,
+          "selectedId": null,
+          "announcements": [
+            {
+              "id": 1,
+              "text": "请先开启定位，到达点位附近后再打卡",
+              "duration": 3600
+            },
+            {
+              "id": 2,
+              "text": "打卡成功 · 北湖",
+              "duration": 3600
+            }
+          ],
+          "cinematicQueue": [
+            {
+              "type": "landmark",
+              "contentId": "beihu",
+              "progressDelta": 7,
+              "availableAt": 4438.899999991059,
+              "quick": false,
+              "unlockedRegions": [
+                "beihu"
+              ],
+              "id": 1
+            }
+          ]
+        },
+        "cinematic": false
+      }
+    },
+    {
+      "name": "Skipping a cinematic changes neither exploration nor independent regions",
+      "pass": true,
+      "detail": {
+        "version": 3,
+        "discoveredIds": [
+          "beihu"
+        ],
+        "unlockedRegionIds": [
+          "park",
+          "beihu"
+        ],
+        "playerUV": {
+          "u": 0.35779963220596467,
+          "v": 0.37007771543334456
+        },
+        "settings": {
+          "music": false,
+          "volume": 0.35,
+          "track": 0,
+          "quality": "high",
+          "reducedMotion": false,
+          "qualityPreset": "high",
+          "baseQualityPreset": "high",
+          "qualityOverrides": {},
+          "autoDegrade": false,
+          "degradedFrom": null,
+          "uiSound": false,
+          "reduceFlash": false,
+          "hudScale": 1,
+          "dragSensitivity": 1,
+          "zoomLimit": 2.7,
+          "doubleZoom": 1.45,
+          "messageDuration": 3.6,
+          "showCinematic": true,
+          "redDot": true
+        }
+      }
+    },
+    {
+      "name": "A consecutive discovery queues the quick presentation",
+      "pass": true,
+      "detail": [
+        {
+          "type": "landmark",
+          "contentId": "teaching",
+          "progressDelta": 5,
+          "availableAt": 8673.09999999404,
+          "quick": true,
+          "unlockedRegions": [
+            "teaching"
+          ],
+          "id": 2
+        }
+      ]
+    },
+    {
+      "name": "Disabling cinematic clears queued presentation and retains committed discoveries",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "Disabled cinematic does not reappear after the prelude",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "Reduced-motion discovery has a 0.4s prelude and <=1.2s actual GSAP timeline",
+      "pass": true,
+      "detail": {
+        "testid": "cinematic-screen",
+        "cinematicId": "sports",
+        "duration": "1",
+        "quick": "true",
+        "state": "open",
+        "timelineReady": "true",
+        "timelineDuration": "1"
+      }
+    },
+    {
+      "name": "Reduced-motion timeline retains a stable readable terminal frame with focus inside",
+      "pass": true,
+      "detail": "[null,null,null,null,null,null,null,null]"
+    },
+    {
+      "name": "Space leaves the reduced terminal frame without changing the saved journey",
+      "pass": true,
+      "detail": {
+        "version": 3,
+        "discoveredIds": [
+          "beihu",
+          "teaching",
+          "sports"
+        ],
+        "unlockedRegionIds": [
+          "park",
+          "beihu",
+          "teaching",
+          "sports"
+        ],
+        "playerUV": {
+          "u": 0.7039834592628129,
+          "v": 0.5486589266457834
+        },
+        "settings": {
+          "music": false,
+          "volume": 0.35,
+          "track": 0,
+          "quality": "high",
+          "reducedMotion": true,
+          "qualityPreset": "high",
+          "baseQualityPreset": "high",
+          "qualityOverrides": {},
+          "autoDegrade": false,
+          "degradedFrom": null,
+          "uiSound": false,
+          "reduceFlash": false,
+          "hudScale": 1,
+          "dragSensitivity": 1,
+          "zoomLimit": 2.7,
+          "doubleZoom": 1.45,
+          "messageDuration": 3.6,
+          "showCinematic": true,
+          "redDot": true
+        }
+      }
+    },
+    {
+      "name": "QA discovery, regions and cinematic never touch ordinary archive or cloud",
+      "pass": true,
+      "detail": {
+        "apiBeforeQaDiscovery": 28,
+        "apiAfter": 28,
+        "archive": {
+          "save": "{\"version\":3,\"discoveredIds\":[],\"unlockedRegionIds\":[],\"playerUV\":{\"u\":0.502,\"v\":0.507},\"settings\":{\"music\":true,\"volume\":0.35,\"track\":0,\"quality\":\"high\",\"reducedMotion\":false,\"qualityPreset\":\"high\",\"baseQualityPreset\":\"high\",\"qualityOverrides\":{},\"autoDegrade\":true,\"degradedFrom\":null,\"uiSound\":true,\"reduceFlash\":false,\"hudScale\":1,\"dragSensitivity\":1,\"zoomLimit\":2.7,\"doubleZoom\":1.45,\"messageDuration\":3.6,\"showCinematic\":true,\"redDot\":true}}",
+          "legacy": null,
+          "token": "IhtLG7YyahGHVFnT7c9ATUgcCGnVb5yFQ7G3N0fF644"
+        }
+      }
+    },
+    {
+      "name": "No unexpected browser exception or request failure",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "evidence": {
+    "resetWrites": [
+      {
+        "ids": [
+          "beihu"
+        ],
+        "status": 200
+      },
+      {
+        "ids": [
+          "beihu"
+        ],
+        "held": true,
+        "status": 200
+      },
+      {
+        "ids": [],
+        "status": 200
+      },
+      {
+        "ids": [],
+        "status": 200
+      }
+    ],
+    "discovery": {
+      "version": 3,
+      "discoveredIds": [
+        "beihu",
+        "teaching",
+        "sports"
+      ],
+      "unlockedRegionIds": [
+        "park",
+        "beihu",
+        "teaching",
+        "sports"
+      ],
+      "playerUV": {
+        "u": 0.7039834592628129,
+        "v": 0.5486589266457834
+      },
+      "settings": {
+        "music": false,
+        "volume": 0.35,
+        "track": 0,
+        "quality": "high",
+        "reducedMotion": true,
+        "qualityPreset": "high",
+        "baseQualityPreset": "high",
+        "qualityOverrides": {},
+        "autoDegrade": false,
+        "degradedFrom": null,
+        "uiSound": false,
+        "reduceFlash": false,
+        "hudScale": 1,
+        "dragSensitivity": 1,
+        "zoomLimit": 2.7,
+        "doubleZoom": 1.45,
+        "messageDuration": 3.6,
+        "showCinematic": true,
+        "redDot": true
+      }
+    },
+    "mode": "Owned temporary headless Edge; synthetic SQLite API; CDP native inputs; simulated browser GPS, not field GPS",
+    "presentationDecision": "5.2s normal / <=1.2s reduced measure the animation timeline. The terminal story frame stays readable until Continue, any click, Escape or Space.",
+    "api": [
+      {
+        "method": "POST",
+        "path": "/api/auth/login",
+        "at": 1793655464754,
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/api/progress",
+        "at": 1793655464802,
+        "status": 503,
+        "expectedFailure": true
+      },
+      {
+        "method": "GET",
+        "path": "/api/progress",
+        "at": 1793655466558,
+        "status": 200
+      },
+      {
+        "method": "PUT",
+        "path": "/api/progress",
+        "ids": [
+          "beihu"
+        ],
+        "at": 1793655467307,
+        "status": 200
+      },
+      {
+        "method": "PUT",
+        "path": "/api/progress",
+        "ids": [
+          "beihu"
+        ],
+        "at": 1793655470118,
+        "held": true,
+        "status": 200
+      },
+      {
+        "method": "PUT",
+        "path": "/api/progress",
+        "ids": [],
+        "at": 1793655470974,
+        "status": 200
+      },
+      {
+        "method": "PUT",
+        "path": "/api/progress",
+        "ids": [],
+        "at": 1793655471347,
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/api/auth/me",
+        "at": 1793655472626,
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/api/auth/me",
+        "at": 1793655472631,
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/api/progress",
+        "at": 1793655472763,
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/api/auth/me",
+        "at": 1793655473255,
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/api/progress",
+        "at": 1793655473258,
+        "status": 200
+      },
+      {
+        "method": "PUT",
+        "path": "/api/progress",
+        "ids": [],
+        "at": 1793655473997,
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/api/auth/me",
+        "at": 1793655475293,
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/api/progress",
+        "at": 1793655475298,
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/logout",
+        "at": 1793655475995,
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/login",
+        "at": 1793655477131,
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/api/progress",
+        "at": 1793655477180,
+        "status": 200
+      },
+      {
+        "method": "PUT",
+        "path": "/api/progress",
+        "ids": [],
+        "at": 1793655478080,
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/logout",
+        "at": 1793655480829,
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/login",
+        "at": 1793655482946,
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/api/progress",
+        "at": 1793655483005,
+        "status": 200
+      },
+      {
+        "method": "PUT",
+        "path": "/api/progress",
+        "ids": [
+          "beihu"
+        ],
+        "at": 1793655483905,
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/api/auth/me",
+        "at": 1793655485813,
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/api/auth/me",
+        "at": 1793655485815,
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/api/progress",
+        "at": 1793655485936,
+        "status": 200,
+        "held": true
+      },
+      {
+        "method": "PUT",
+        "path": "/api/progress",
+        "ids": [],
+        "at": 1793655489509,
+        "status": 200
+      },
+      {
+        "method": "PUT",
+        "path": "/api/progress",
+        "ids": [],
+        "at": 1793655490575,
+        "status": 200
+      }
+    ]
+  },
+  "errors": [
+    "HTTP 503: http://127.0.0.1:5176/api/progress"
+  ]
+}

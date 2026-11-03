@@ -39,6 +39,7 @@
   transition: color var(--d-fast) var(--e-soft);
 }
 .hud-brand-copy:hover { color: var(--gold-300); }
+.hud-brand-copy:active .hud-brand-title { color: var(--paper-50); text-shadow: 0 1px 0 var(--jade-950); }
 
 .hud-brand-title {
   font-family: var(--font-display);
@@ -57,7 +58,9 @@
   margin-top: 2px;
   font-size: var(--fs-caption);
   letter-spacing: .18em;
-  color: color-mix(in srgb, var(--paper-400) 76%, transparent);
+  color: var(--paper-200);
+  background: color-mix(in srgb, var(--jade-900) 96%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--jade-900) 96%, transparent);
 }
 
 /* ── 状态带：胶囊降权，只留图标 + 数字 ────────────────── */
@@ -74,7 +77,7 @@
   gap: var(--sp-2);
   height: 46px;
   padding: 0 var(--sp-3);
-  border: 1px solid color-mix(in srgb, var(--gold-500) 62%, transparent);
+  border: 1px solid var(--gold-400);
   border-radius: var(--r-pill);
   background: color-mix(in srgb, var(--jade-800) 88%, transparent);
   color: var(--paper-200);
@@ -97,7 +100,7 @@
   width: 46px;
   height: 46px;
   padding: 0;
-  border: 1px solid color-mix(in srgb, var(--gold-500) 62%, transparent);
+  border: 1px solid var(--gold-400);
   border-radius: 50%;
   background: color-mix(in srgb, var(--jade-800) 88%, transparent);
   color: var(--gold-200);
@@ -221,7 +224,7 @@ html[data-ambient='off'] .hud-dock-button::before { display: none; }
   min-height: 46px;
   flex: none;
   padding: var(--sp-2);
-  border: 1px solid color-mix(in srgb, var(--gold-500) 50%, transparent);
+  border: 1px solid var(--gold-400);
   border-radius: var(--r-cut);
   background: transparent;
   color: var(--gold-200);

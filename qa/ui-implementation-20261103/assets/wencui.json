@@ -1,0 +1,20 @@
+{
+  "id": "wencui",
+  "source": "C:\\Users\\12929\\.codex\\generated_images\\01a19cdf-88b3-7880-b645-ca87f10dbd3b\\exec-b46fbcb0-76d8-4784-b774-b66665ab1ae3.png",
+  "tool": "built-in ImageGen",
+  "prompt": "Original concept illustration for a Chinese university campus exploration game, cinematic landscape aspect ratio 16:9, large 1920x1080 request. Elegant layered paper-cut / hand-painted cel-shaded new Chinese landscape art, sage jade green, lake teal, warm ivory rice paper, small muted autumn gold accents, fine paper fibers, crisp silhouettes with soft ink wash distance. Serene youthful adventure, refined high-budget game chapter illustration, strong foreground/middle/background depth, slightly asymmetrical composition, no text, no logos, no interface, no borders, no photorealism, no people. This is a conceptual placeholder and must not imitate a real campus photo. Scene: an inviting campus humanities courtyard, low modern academic building with rhythmic ivory colonnades, open jade-green lawn and stone path, bamboo shadows and a golden ginkgo branch, a subtle open-book silhouette echoed by the shape of the courtyard, beautiful morning light. Invented conceptual architecture, no identifiable signage.",
+  "usage": "AI-generated concept placeholder, not a campus photograph",
+  "hero": "D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\apps\\liyun-explorer\\public\\assets\\landmarks\\wencui\\hero.webp",
+  "visualReview": "Native output inspected; concept placeholder, not a factual campus photograph.",
+  "nativePixels": [
+    1672,
+    941
+  ],
+  "deliveredPixels": [
+    768,
+    432
+  ],
+  "encoding": "WebP quality 74; local distribution derivative",
+  "bytes": 78434,
+  "sha256": "3253bb87bc8876064126034f874680795deba8246b0ce1f9a9b1e6696148404b"
+}

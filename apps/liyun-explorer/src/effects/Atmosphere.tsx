@@ -52,8 +52,8 @@ export default function Atmosphere(props: EffectsProps) {
     if (!fogHost.current || !lightHost.current) return;
     const fogField = new FogField();
     const random = seededRandom((current.current.seed ?? 1386) + 17);
-    const leaves: Leaf[] = Array.from({ length: 25 }, () => ({ x: random(), y: random(), size: 5 + random() * 8, speed: 0.012 + random() * 0.011, phase: random() * TAU, direction: random() > 0.5 ? 1 : -1 }));
-    const motes: Mote[] = Array.from({ length: 52 }, () => ({ x: random(), y: random(), phase: random() * TAU, speed: 0.005 + random() * 0.008, size: 0.7 + random() * 1.6 }));
+    const leaves: Leaf[] = Array.from({ length: 40 }, () => ({ x: random(), y: random(), size: 5 + random() * 8, speed: 0.012 + random() * 0.011, phase: random() * TAU, direction: random() > 0.5 ? 1 : -1 }));
+    const motes: Mote[] = Array.from({ length: 80 }, () => ({ x: random(), y: random(), phase: random() * TAU, speed: 0.005 + random() * 0.008, size: 0.7 + random() * 1.6 }));
 
     function prepare(p: P5, host: HTMLDivElement, label: string) {
       const config = current.current;
@@ -110,14 +110,16 @@ export default function Atmosphere(props: EffectsProps) {
         if (beacon) {
           const point = landmarkPoint(beacon, config);
           const radius = (mobile ? 33 : 50) * Math.min(1.4, Math.max(0.7, config.camera.scale / 0.72));
-          const pulse = 0.5 + 0.5 * Math.sin(t * 1.6);
+          const pulse = config.settings.reduceFlash ? .35 : 0.5 + 0.5 * Math.sin(t * 1.6);
+          const glowStrength = .45 + config.spec.glowLayers * .275;
           const halo = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, radius * 1.7);
-          halo.addColorStop(0, `rgba(249,208,91,${0.12 + pulse * 0.07})`); halo.addColorStop(1, 'rgba(249,208,91,0)');
+          halo.addColorStop(0, `rgba(249,208,91,${(0.12 + pulse * 0.07) * glowStrength})`); halo.addColorStop(1, 'rgba(249,208,91,0)');
           ctx.fillStyle = halo; ctx.fillRect(point.x - radius * 1.7, point.y - radius * 1.7, radius * 3.4, radius * 3.4);
           ctx.strokeStyle = `rgba(255,221,133,${0.42 + pulse * 0.22})`; ctx.lineWidth = 1.2;
           ctx.beginPath(); ctx.ellipse(point.x, point.y + radius * 0.6, radius, radius * 0.27, -0.15, 0, TAU); ctx.stroke();
-          ctx.beginPath(); ctx.arc(point.x, point.y, radius * 1.08, t * 0.4, t * 0.4 + Math.PI * 1.35); ctx.stroke();
-          if (!config.settings.reducedMotion) {
+          const orbitTime = config.settings.reduceFlash ? 0 : t;
+          ctx.beginPath(); ctx.arc(point.x, point.y, radius * 1.08, orbitTime * 0.4, orbitTime * 0.4 + Math.PI * 1.35); ctx.stroke();
+          if (!config.settings.reducedMotion && !config.settings.reduceFlash) {
             const orbit = t * 0.52;
             star(ctx, point.x + Math.cos(orbit) * radius * 1.08, point.y + Math.sin(orbit) * radius * 1.08, mobile ? 4 : 6, 0.85);
           }
@@ -125,7 +127,7 @@ export default function Atmosphere(props: EffectsProps) {
         const timing = eventTiming(config.event, now);
         if (config.event && timing.active) {
           const target = { x: config.camera.x + config.event.to.u * MAP_WIDTH * config.camera.scale, y: config.camera.y + config.event.to.v * MAP_HEIGHT * config.camera.scale };
-          if (config.settings.reducedMotion) {
+          if (config.settings.reducedMotion || config.settings.reduceFlash) {
             ctx.strokeStyle = `rgba(255,225,144,${Math.sin(timing.progress * Math.PI) * 0.8})`; ctx.lineWidth = 2;
             ctx.beginPath(); ctx.arc(target.x, target.y, mobile ? 35 : 55, 0, TAU); ctx.stroke();
           } else {
@@ -148,7 +150,7 @@ export default function Atmosphere(props: EffectsProps) {
               ctx.beginPath(); ctx.arc(target.x, target.y, radius, 0, TAU); ctx.stroke();
               ctx.strokeStyle = `rgba(255,242,192,${(1 - b) * 0.62})`;
               ctx.beginPath(); ctx.ellipse(target.x, target.y + 12, radius * 0.86, radius * 0.36, -0.18, 0, TAU); ctx.stroke();
-              const count = mobile ? 14 : 28;
+              const count = Math.round((mobile ? 7 : 14) * config.spec.glowLayers);
               for (let i = 0; i < count; i++) {
                 const angle = (i / count) * TAU + 0.2;
                 const r = Math.sqrt(b) * reach * (0.4 + ((i * 13) % 11) / 14);
@@ -174,7 +176,7 @@ export default function Atmosphere(props: EffectsProps) {
       if (props.paused || props.fixedTime !== undefined || (props.settings.reducedMotion && !props.event)) { p.noLoop(); p.redraw(); }
       else p.loop();
     }
-  }, [props.viewport, props.camera, props.spec, props.settings.reducedMotion, props.paused, props.fixedTime, props.event, props.discoveredIds]);
+  }, [props.viewport, props.camera, props.spec, props.settings.reducedMotion, props.settings.reduceFlash, props.paused, props.fixedTime, props.event, props.discoveredIds]);
 
   return <><div className="atmosphere-layer atmosphere-fog" ref={fogHost} aria-hidden="true" /><div className="atmosphere-layer atmosphere-light" ref={lightHost} aria-hidden="true" /></>;
 }

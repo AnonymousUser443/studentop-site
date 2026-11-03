@@ -5,6 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5174 --strictPort",
+    "calibrate": "node scripts/start-studio.mjs",
+    "studio": "node scripts/start-studio.mjs",
+    "build:studio": "vite build --config vite.studio.config.ts && node scripts/finalize-studio.mjs",
+    "test:studio": "node --test server/authoring.test.mjs server/author-http.test.mjs",
     "build": "tsc -b && vite build && node scripts/trim-dist.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4174 --strictPort",
     "test": "vitest run",
@@ -24,11 +28,13 @@
     "framer-motion": "^14.9.0",
     "gsap": "^3.15.0",
     "p5": "^1.11.11",
+    "polygon-clipping": "0.15.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "zustand": "^5.0.16"
   },
   "devDependencies": {
+    "@types/node": "24.19.2",
     "@types/p5": "^1.7.7",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",

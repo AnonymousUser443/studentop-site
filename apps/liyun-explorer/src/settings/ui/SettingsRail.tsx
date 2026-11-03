@@ -1,4 +1,7 @@
 import { useRef, type KeyboardEvent } from 'react';
+import { motion } from 'framer-motion';
+import { useMotionPreferences } from '../../motion/useMotionPreferences';
+import { tween } from '../../motion/transitions';
 
 export const SETTINGS_CATEGORIES = [
   { id: 'control', label: '控制' },
@@ -21,14 +24,15 @@ interface SettingsRailProps {
 /** 左侧分类栏：◆ 标记 + 金色选中线，方向键在 tab 间循环 */
 export default function SettingsRail({ active, onChange }: SettingsRailProps) {
   const buttons = useRef<(HTMLButtonElement | null)[]>([]);
+  const { reducedMotion, reduceFlash } = useMotionPreferences();
 
   const move = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
-    if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') return;
+    if (!['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
-    const offset = event.key === 'ArrowDown' ? 1 : -1;
-    const next = (index + offset + SETTINGS_CATEGORIES.length) % SETTINGS_CATEGORIES.length;
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? SETTINGS_CATEGORIES.length - 1 : (index + (event.key === 'ArrowDown' ? 1 : -1) + SETTINGS_CATEGORIES.length) % SETTINGS_CATEGORIES.length;
     onChange(SETTINGS_CATEGORIES[next].id);
     buttons.current[next]?.focus();
+    buttons.current[next]?.scrollIntoView({ block: 'nearest' });
   };
 
   return (
@@ -49,8 +53,9 @@ export default function SettingsRail({ active, onChange }: SettingsRailProps) {
             onClick={() => onChange(category.id)}
             onKeyDown={event => move(event, index)}
           >
-            {selected && <span key={active} className="settings-rail-sweep" aria-hidden="true" />}
-            <span className="settings-rail-diamond" aria-hidden="true">◆</span>
+            {selected && <motion.span layoutId="settings-category-highlight" className="settings-rail-selected" transition={reducedMotion ? tween.tap : tween.base} aria-hidden="true" />}
+            {selected && !reducedMotion && !reduceFlash && <span key={active} className="settings-rail-sweep" aria-hidden="true"><i /><i /><i /></span>}
+            <span className="settings-rail-diamond" aria-hidden="true" />
             <span className="settings-rail-label">{category.label}</span>
           </button>
         );

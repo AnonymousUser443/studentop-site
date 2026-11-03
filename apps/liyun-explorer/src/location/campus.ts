@@ -1,8 +1,10 @@
 import { createCampusMap } from './vendor/coordinates.mjs';
 import metadata from './data/map.json';
 import artifact from './data/selected_model.json';
-import { LANDMARKS, MAP_ID, MAP_WIDTH, MAP_HEIGHT } from '../data';
+import { MAP_ID, MAP_WIDTH, MAP_HEIGHT } from '../data';
+import {LANDMARKS} from '../content/catalog';
 import type { UV } from '../types';
+import { getConfirmedCheckInOverride } from '../content/regions';
 
 // Original v0.4 SDK and full model are copied verbatim. Inputs are WGS84,
 // latitude first. Never feed GCJ-02 results from the old AMap implementation.
@@ -25,9 +27,14 @@ export function distanceMeters(a: { latitude: number; longitude: number }, b: { 
 
 // Preserve every existing UI landmark anchor. These are model-derived reference
 // coordinates, not additional field measurements or backend check-in rules.
-export const campusLandmarks = LANDMARKS.map(place => ({
-  ...place, ...campusMap.uvToGeo(place.uv.u, place.uv.v), physical: !place.isBeacon,
-}));
+export const campusLandmarks = LANDMARKS.map(place => {
+  const confirmed = getConfirmedCheckInOverride(place.id);
+  const candidate = campusMap.uvToGeo(place.uv.u, place.uv.v);
+  return { ...place, ...candidate,
+    ...(confirmed ? { latitude: confirmed.latitude, longitude: confirmed.longitude, checkInRadius: confirmed.radiusM } : {}),
+    physical: !place.isBeacon,
+  };
+});
 
 export function nearestLandmark(position: { latitude: number; longitude: number }) {
   return campusLandmarks.filter(place => place.physical)

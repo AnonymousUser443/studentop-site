@@ -15,10 +15,10 @@
 .location-good .hud-context-card{border-color:var(--jade-400)}
 .location-controls .location-heading-status{color:var(--paper-300)}
 .map-heading-sector{position:absolute;left:-50px;top:-50px;width:100px;height:100px;transform-origin:50% 50%;pointer-events:none}
-.map-location-arrow{filter:drop-shadow(0 2px 2px #0e302bdd) drop-shadow(0 0 4px #fff1bd66)}
-.map-location-neutral{position:absolute;left:-14px;top:-14px;width:28px;height:28px;filter:drop-shadow(0 2px 3px #0e302bb3)}
+.map-location-arrow{filter:drop-shadow(0 2px 2px color-mix(in srgb, var(--jade-900) 86.6667%, transparent)) drop-shadow(0 0 4px color-mix(in srgb, var(--gold-200) 40%, transparent))}
+.map-location-neutral{position:absolute;left:-14px;top:-14px;width:28px;height:28px;filter:drop-shadow(0 2px 3px color-mix(in srgb, var(--jade-900) 70.1961%, transparent))}
 .map-real-location{position:absolute;z-index:6;width:0;height:0;pointer-events:none}
-.map-location-accuracy{position:absolute;border:1px solid #83af96aa;border-radius:50%;background:#85b99a26;transform:translate(-50%,-50%);max-width:1600px;max-height:1600px}
-.map-location-label{position:absolute;left:25px;top:-12px;padding:3px 8px;white-space:nowrap;background:#183e38ed;color:#f8edcf;border:1px solid #d9c38e;border-radius:5px;font:12px/1.4 system-ui,sans-serif;box-shadow:0 2px 4px #12392c33}
+.map-location-accuracy{position:absolute;border:1px solid color-mix(in srgb, var(--state-location) 66.6667%, transparent);border-radius:50%;background:color-mix(in srgb, var(--state-location) 14.902%, transparent);transform:translate(-50%,-50%);max-width:1600px;max-height:1600px}
+.map-location-label{position:absolute;left:25px;top:-12px;padding:3px 8px;white-space:nowrap;background:color-mix(in srgb, var(--jade-800) 92.9412%, transparent);color:var(--paper-200);border:1px solid var(--gold-soft);border-radius:5px;font:12px/1.4 system-ui,sans-serif;box-shadow:0 2px 4px color-mix(in srgb, var(--ink-900) 20%, transparent)}
 .map-real-location.is-unreliable .map-location-neutral{opacity:.7;filter:grayscale(.7)}
-.map-real-location.is-unreliable .map-location-accuracy{border-style:dashed;background:#899b9c22;border-color:#9aa9aa}
+.map-real-location.is-unreliable .map-location-accuracy{border-style:dashed;background:color-mix(in srgb, var(--slate-300) 13.3333%, transparent);border-color:var(--slate-300)}

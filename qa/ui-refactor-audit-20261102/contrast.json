@@ -1,0 +1,50 @@
+[
+  {
+    "allEndpointsBelow4_5": true,
+    "background": "linear-gradient(135deg, rgb(253, 246, 226), rgb(230, 221, 186))",
+    "fontSize": "10px",
+    "foreground": "rgb(110, 120, 90)",
+    "gradientEndpointRatios": [
+      4.3264534991138035,
+      3.4279393395978763
+    ],
+    "note": "Opaque sRGB gradient endpoints; excludes disabled items. Spot check only.",
+    "selector": ".menu-signature"
+  },
+  {
+    "allEndpointsBelow4_5": true,
+    "background": "linear-gradient(135deg, rgb(253, 246, 226), rgb(230, 221, 186))",
+    "fontSize": "10px",
+    "foreground": "rgb(110, 120, 90)",
+    "gradientEndpointRatios": [
+      4.3264534991138035,
+      3.4279393395978763
+    ],
+    "note": "Opaque sRGB gradient endpoints; excludes disabled items. Spot check only.",
+    "selector": ".menu-rank-label"
+  },
+  {
+    "allEndpointsBelow4_5": true,
+    "background": "linear-gradient(135deg, rgb(253, 246, 226), rgb(230, 221, 186))",
+    "fontSize": "10px",
+    "foreground": "rgb(110, 120, 90)",
+    "gradientEndpointRatios": [
+      4.3264534991138035,
+      3.4279393395978763
+    ],
+    "note": "Opaque sRGB gradient endpoints; excludes disabled items. Spot check only.",
+    "selector": ".menu-progress-text"
+  },
+  {
+    "allEndpointsBelow4_5": true,
+    "background": "linear-gradient(135deg, rgb(253, 246, 226), rgb(230, 221, 186))",
+    "fontSize": "10px",
+    "foreground": "rgb(110, 120, 90)",
+    "gradientEndpointRatios": [
+      4.3264534991138035,
+      3.4279393395978763
+    ],
+    "note": "Opaque sRGB gradient endpoints; excludes disabled items. Spot check only.",
+    "selector": ".menu-meta"
+  }
+]

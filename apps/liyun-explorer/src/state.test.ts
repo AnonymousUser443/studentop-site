@@ -77,4 +77,28 @@ describe('GPS-validated exploration save contract', () => {
     expect(state.settings.qualityOverrides.dropShadows).toBeUndefined();
     expect(state.settings.qualityOverrides.cssAmbient).toBeUndefined();
   });
+
+  it('preserves independent region unlocks without changing check-ins or accepting unknown IDs', () => {
+    const raw = { ...createInitialState(), discoveredIds: ['tower'], unlockedRegionIds: ['beihu', 'beihu', 'park', 'unknown', 2] };
+    const saved = restoreState(JSON.stringify(raw));
+    expect(saved.discoveredIds).toEqual(['tower']);
+    expect(saved.unlockedRegionIds).toEqual(['beihu', 'park']);
+    expect(restoreState(JSON.stringify(saved))).toEqual(saved);
+    expect(restoreState(JSON.stringify({ ...raw, unlockedRegionIds: [] })).unlockedRegionIds).toEqual([]);
+  });
+
+  it('migrates v3 saves with no region field but keeps explicit empty progress independent', () => {
+    const old = { version: 3, discoveredIds: ['tower'], settings: {} };
+    expect(restoreState(JSON.stringify(old)).unlockedRegionIds).toEqual(['tower']);
+    expect(restoreState(JSON.stringify({ ...old, unlockedRegionIds: [] })).unlockedRegionIds).toEqual([]);
+    expect(restoreState(JSON.stringify({ ...old, unlockedRegionIds: null })).unlockedRegionIds).toEqual([]);
+  });
+
+  it('preserves new controls and messages while stripping arbitrary local coordinates and nested GPS', () => {
+    const settings = { ...createInitialState().settings, dragSensitivity: 1.7, zoomLimit: 3.4, doubleZoom: 1.8, messageDuration: 5, showCinematic: false, redDot: false };
+    const saved = restoreState(JSON.stringify({ version: 3, discoveredIds: [], unlockedRegionIds: [], playerUV: { u: .13, v: .72, rawGPS: 'private-marker' }, rawGPS: 'private-marker', settings: { ...settings, rawGPS: 'private-marker' } }));
+    expect(saved.settings).toEqual(settings);
+    expect(saved.playerUV).toEqual(createInitialState().playerUV);
+    expect(JSON.stringify(saved)).not.toContain('private-marker');
+  });
 });

@@ -1,0 +1,820 @@
+{
+  "ok": true,
+  "total": 45,
+  "passed": 45,
+  "checks": [
+    {
+      "name": "collection 1920x1080 fits/focus/hit area",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "class": "hud-modal collection-modal",
+        "bounds": {
+          "x": 635,
+          "y": 211,
+          "width": 650,
+          "height": 658,
+          "top": 211,
+          "right": 1285,
+          "bottom": 869,
+          "left": 635
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 512,
+          "clientHeight": 512
+        }
+      }
+    },
+    {
+      "name": "collection 1920x1080 retains entries",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "collection 1920x1080 observable inert exit",
+      "pass": true,
+      "detail": {
+        "retained": true,
+        "inert": true
+      }
+    },
+    {
+      "name": "collection 1920x1080 restores focus/no residual",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "landmark 1920x1080 fits/focus/hit area",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "class": "hud-modal landmark-modal",
+        "bounds": {
+          "x": 690,
+          "y": 262.046875,
+          "width": 540,
+          "height": 555.890625,
+          "top": 262.046875,
+          "right": 1230,
+          "bottom": 817.9375,
+          "left": 690
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 410,
+          "clientHeight": 410
+        }
+      }
+    },
+    {
+      "name": "landmark 1920x1080 restores marker focus",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "collection 1440x900 fits/focus/hit area",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "class": "hud-modal collection-modal",
+        "bounds": {
+          "x": 395,
+          "y": 121,
+          "width": 650,
+          "height": 658,
+          "top": 121,
+          "right": 1045,
+          "bottom": 779,
+          "left": 395
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 512,
+          "clientHeight": 512
+        }
+      }
+    },
+    {
+      "name": "collection 1440x900 retains entries",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "collection Shift Tab wraps to last body control",
+      "pass": true,
+      "detail": "国防教育主题公园待发现"
+    },
+    {
+      "name": "collection Tab wraps to shell close",
+      "pass": true,
+      "detail": "关闭面板"
+    },
+    {
+      "name": "collection 1440x900 observable inert exit",
+      "pass": true,
+      "detail": {
+        "retained": true,
+        "inert": true
+      }
+    },
+    {
+      "name": "collection 1440x900 restores focus/no residual",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "landmark 1440x900 fits/focus/hit area",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "class": "hud-modal landmark-modal",
+        "bounds": {
+          "x": 450,
+          "y": 172.046875,
+          "width": 540,
+          "height": 555.890625,
+          "top": 172.046875,
+          "right": 990,
+          "bottom": 727.9375,
+          "left": 450
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 410,
+          "clientHeight": 410
+        }
+      }
+    },
+    {
+      "name": "landmark 1440x900 restores marker focus",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "collection 1280x720 fits/focus/hit area",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1280,
+          720
+        ],
+        "class": "hud-modal collection-modal",
+        "bounds": {
+          "x": 315,
+          "y": 31,
+          "width": 650,
+          "height": 658,
+          "top": 31,
+          "right": 965,
+          "bottom": 689,
+          "left": 315
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 512,
+          "clientHeight": 512
+        }
+      }
+    },
+    {
+      "name": "collection 1280x720 retains entries",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "collection 1280x720 observable inert exit",
+      "pass": true,
+      "detail": {
+        "retained": true,
+        "inert": true
+      }
+    },
+    {
+      "name": "collection 1280x720 restores focus/no residual",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "landmark 1280x720 fits/focus/hit area",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1280,
+          720
+        ],
+        "class": "hud-modal landmark-modal",
+        "bounds": {
+          "x": 370,
+          "y": 82.046875,
+          "width": 540,
+          "height": 555.890625,
+          "top": 82.046875,
+          "right": 910,
+          "bottom": 637.9375,
+          "left": 370
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 410,
+          "clientHeight": 410
+        }
+      }
+    },
+    {
+      "name": "landmark 1280x720 restores marker focus",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "collection 1024x600 fits/focus/hit area",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1024,
+          600
+        ],
+        "class": "hud-modal collection-modal",
+        "bounds": {
+          "x": 187,
+          "y": 28,
+          "width": 650,
+          "height": 544,
+          "top": 28,
+          "right": 837,
+          "bottom": 572,
+          "left": 187
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 512,
+          "clientHeight": 398
+        }
+      }
+    },
+    {
+      "name": "collection 1024x600 retains entries",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "collection 1024x600 observable inert exit",
+      "pass": true,
+      "detail": {
+        "retained": true,
+        "inert": true
+      }
+    },
+    {
+      "name": "collection 1024x600 restores focus/no residual",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "landmark 1024x600 fits/focus/hit area",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          1024,
+          600
+        ],
+        "class": "hud-modal landmark-modal",
+        "bounds": {
+          "x": 242,
+          "y": 28,
+          "width": 540,
+          "height": 544,
+          "top": 28,
+          "right": 782,
+          "bottom": 572,
+          "left": 242
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 410,
+          "clientHeight": 398
+        }
+      }
+    },
+    {
+      "name": "landmark 1024x600 restores marker focus",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "collection 844x390 fits/focus/hit area",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          844,
+          390
+        ],
+        "class": "hud-modal collection-modal",
+        "bounds": {
+          "x": 132,
+          "y": 17,
+          "width": 580,
+          "height": 356,
+          "top": 17,
+          "right": 712,
+          "bottom": 373,
+          "left": 132
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 384,
+          "clientHeight": 255
+        }
+      }
+    },
+    {
+      "name": "collection 844x390 retains entries",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "collection 844x390 observable inert exit",
+      "pass": true,
+      "detail": {
+        "retained": true,
+        "inert": true
+      }
+    },
+    {
+      "name": "collection 844x390 restores focus/no residual",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "landmark 844x390 fits/focus/hit area",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          844,
+          390
+        ],
+        "class": "hud-modal landmark-modal",
+        "bounds": {
+          "x": 162,
+          "y": 17,
+          "width": 520,
+          "height": 356,
+          "top": 17,
+          "right": 682,
+          "bottom": 373,
+          "left": 162
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 315,
+          "clientHeight": 255
+        }
+      }
+    },
+    {
+      "name": "landmark 844x390 restores marker focus",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "collection 667x375 fits/focus/hit area",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          667,
+          375
+        ],
+        "class": "hud-modal collection-modal",
+        "bounds": {
+          "x": 43.5,
+          "y": 17,
+          "width": 580,
+          "height": 341,
+          "top": 17,
+          "right": 623.5,
+          "bottom": 358,
+          "left": 43.5
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 384,
+          "clientHeight": 240
+        }
+      }
+    },
+    {
+      "name": "collection 667x375 retains entries",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "collection 667x375 observable inert exit",
+      "pass": true,
+      "detail": {
+        "retained": true,
+        "inert": true
+      }
+    },
+    {
+      "name": "collection 667x375 restores focus/no residual",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "landmark 667x375 fits/focus/hit area",
+      "pass": true,
+      "detail": {
+        "viewport": [
+          667,
+          375
+        ],
+        "class": "hud-modal landmark-modal",
+        "bounds": {
+          "x": 73.5,
+          "y": 17,
+          "width": 520,
+          "height": 341,
+          "top": 17,
+          "right": 593.5,
+          "bottom": 358,
+          "left": 73.5
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 315,
+          "clientHeight": 240
+        }
+      }
+    },
+    {
+      "name": "landmark 667x375 restores marker focus",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "undiscovered panel preserves check-in status/button testids",
+      "pass": true,
+      "detail": {
+        "text": "请先开启定位，到达点位附近后再打卡打卡范围：45米",
+        "reason": "no-location",
+        "button": "到达范围后可打卡"
+      }
+    },
+    {
+      "name": "reduced motion panel owns focus",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "reduced motion exit leaves no modal",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "rapid repeated opens leave no modal and restore HUD",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "entry card/form remains available",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "collection and landmark body modules were fetched separately",
+      "pass": true,
+      "detail": [
+        "http://127.0.0.1:5176/src/hud/panels/CollectionPanel.tsx",
+        "http://127.0.0.1:5176/src/hud/panels/panels.css",
+        "http://127.0.0.1:5176/src/hud/panels/LandmarkPanel.tsx"
+      ]
+    },
+    {
+      "name": "no browser errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "evidence": {
+    "layouts": [
+      {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "class": "hud-modal collection-modal",
+        "bounds": {
+          "x": 635,
+          "y": 211,
+          "width": 650,
+          "height": 658,
+          "top": 211,
+          "right": 1285,
+          "bottom": 869,
+          "left": 635
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 512,
+          "clientHeight": 512
+        }
+      },
+      {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "class": "hud-modal landmark-modal",
+        "bounds": {
+          "x": 690,
+          "y": 262.046875,
+          "width": 540,
+          "height": 555.890625,
+          "top": 262.046875,
+          "right": 1230,
+          "bottom": 817.9375,
+          "left": 690
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 410,
+          "clientHeight": 410
+        },
+        "marker": "poi-wencui"
+      },
+      {
+        "viewport": [
+          1440,
+          900
+        ],
+        "class": "hud-modal collection-modal",
+        "bounds": {
+          "x": 395,
+          "y": 121,
+          "width": 650,
+          "height": 658,
+          "top": 121,
+          "right": 1045,
+          "bottom": 779,
+          "left": 395
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 512,
+          "clientHeight": 512
+        }
+      },
+      {
+        "viewport": [
+          1440,
+          900
+        ],
+        "class": "hud-modal landmark-modal",
+        "bounds": {
+          "x": 450,
+          "y": 172.046875,
+          "width": 540,
+          "height": 555.890625,
+          "top": 172.046875,
+          "right": 990,
+          "bottom": 727.9375,
+          "left": 450
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 410,
+          "clientHeight": 410
+        },
+        "marker": "poi-wencui"
+      },
+      {
+        "viewport": [
+          1280,
+          720
+        ],
+        "class": "hud-modal collection-modal",
+        "bounds": {
+          "x": 315,
+          "y": 31,
+          "width": 650,
+          "height": 658,
+          "top": 31,
+          "right": 965,
+          "bottom": 689,
+          "left": 315
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 512,
+          "clientHeight": 512
+        }
+      },
+      {
+        "viewport": [
+          1280,
+          720
+        ],
+        "class": "hud-modal landmark-modal",
+        "bounds": {
+          "x": 370,
+          "y": 82.046875,
+          "width": 540,
+          "height": 555.890625,
+          "top": 82.046875,
+          "right": 910,
+          "bottom": 637.9375,
+          "left": 370
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 410,
+          "clientHeight": 410
+        },
+        "marker": "poi-wencui"
+      },
+      {
+        "viewport": [
+          1024,
+          600
+        ],
+        "class": "hud-modal collection-modal",
+        "bounds": {
+          "x": 187,
+          "y": 28,
+          "width": 650,
+          "height": 544,
+          "top": 28,
+          "right": 837,
+          "bottom": 572,
+          "left": 187
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 512,
+          "clientHeight": 398
+        }
+      },
+      {
+        "viewport": [
+          1024,
+          600
+        ],
+        "class": "hud-modal landmark-modal",
+        "bounds": {
+          "x": 242,
+          "y": 28,
+          "width": 540,
+          "height": 544,
+          "top": 28,
+          "right": 782,
+          "bottom": 572,
+          "left": 242
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 410,
+          "clientHeight": 398
+        },
+        "marker": "poi-wencui"
+      },
+      {
+        "viewport": [
+          844,
+          390
+        ],
+        "class": "hud-modal collection-modal",
+        "bounds": {
+          "x": 132,
+          "y": 17,
+          "width": 580,
+          "height": 356,
+          "top": 17,
+          "right": 712,
+          "bottom": 373,
+          "left": 132
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 384,
+          "clientHeight": 255
+        }
+      },
+      {
+        "viewport": [
+          844,
+          390
+        ],
+        "class": "hud-modal landmark-modal",
+        "bounds": {
+          "x": 162,
+          "y": 17,
+          "width": 520,
+          "height": 356,
+          "top": 17,
+          "right": 682,
+          "bottom": 373,
+          "left": 162
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 315,
+          "clientHeight": 255
+        },
+        "marker": "poi-wencui"
+      },
+      {
+        "viewport": [
+          667,
+          375
+        ],
+        "class": "hud-modal collection-modal",
+        "bounds": {
+          "x": 43.5,
+          "y": 17,
+          "width": 580,
+          "height": 341,
+          "top": 17,
+          "right": 623.5,
+          "bottom": 358,
+          "left": 43.5
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 384,
+          "clientHeight": 240
+        }
+      },
+      {
+        "viewport": [
+          667,
+          375
+        ],
+        "class": "hud-modal landmark-modal",
+        "bounds": {
+          "x": 73.5,
+          "y": 17,
+          "width": 520,
+          "height": 341,
+          "top": 17,
+          "right": 593.5,
+          "bottom": 358,
+          "left": 73.5
+        },
+        "focusInside": true,
+        "small": [],
+        "body": {
+          "scrollHeight": 315,
+          "clientHeight": 240
+        },
+        "marker": "poi-wencui"
+      }
+    ],
+    "requests": [
+      "http://127.0.0.1:5176/src/hud/panels/CollectionPanel.tsx",
+      "http://127.0.0.1:5176/src/hud/panels/panels.css",
+      "http://127.0.0.1:5176/src/hud/panels/LandmarkPanel.tsx"
+    ],
+    "beforeOpen": [],
+    "checkIn": {
+      "text": "请先开启定位，到达点位附近后再打卡打卡范围：45米",
+      "reason": "no-location",
+      "button": "到达范围后可打卡"
+    }
+  },
+  "errors": []
+}

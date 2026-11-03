@@ -6,6 +6,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = realpathSync(join(root, 'dist'));
 if (dist !== join(root, 'dist')) throw new Error('Refusing an unexpected dist target.');
 const sourceOnly = [
+  'calibrate.html',
   'assets/fonts/MaShanZheng-Regular.ttf',
   'assets/maps/campus.png', 'assets/maps/campus.webp',
   'assets/maps/campus-enhanced.webp', 'assets/maps/campus-enhanced-mobile.webp',

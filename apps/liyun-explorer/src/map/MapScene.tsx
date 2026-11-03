@@ -7,6 +7,9 @@ import './map.css';
 import { CAMPUS_MAP_IMAGE, CAMPUS_MAP_FALLBACK, GOOD_ACCURACY_M } from '../location/campus';
 import '../location/location.css';
 import { useLabelOcclusion } from './useLabelOcclusion';
+import { useSettings } from '../app/stores/useSettings';
+import { useExploration } from '../app/stores/useExploration';
+import RegionVeil from '../world/fog/RegionVeil';
 
 type Point = { x: number; y: number };
 type Gesture = { camera: MapCamera; origin: Point; distance: number; anchor: UV };
@@ -42,6 +45,12 @@ function Beacon() {
 export default function MapScene(props: MapSceneProps) {
   const { camera, viewport, landmarks, discoveredIds, selectedId, playerUV, event, reducedMotion, disabled, fixedTime, paused, onSelect, onVisualPosition } = props;
   const surface = useRef<HTMLDivElement>(null);
+  const dragSensitivity = useSettings(state => state.settings.dragSensitivity);
+  const zoomLimit = useSettings(state => state.settings.zoomLimit);
+  const doubleZoom = useSettings(state => state.settings.doubleZoom);
+  const unlockedRegionIds = useExploration(state => state.state.unlockedRegionIds);
+  const controls = useRef({ dragSensitivity, zoomLimit, doubleZoom });
+  controls.current = { dragSensitivity, zoomLimit, doubleZoom };
   useLabelOcclusion(surface, [camera, viewport, discoveredIds, disabled]);
   const propsRef = useRef(props);
   propsRef.current = props;
@@ -85,11 +94,12 @@ export default function MapScene(props: MapSceneProps) {
     if (!dragged.current) return;
     const current = propsRef.current;
     if (points.length > 1 && base.distance > 0) {
-      const limits = cameraLimits(current.viewport);
+      const limits = cameraLimits(current.viewport, controls.current.zoomLimit);
       const scale = clamp(base.camera.scale * distance(points[0], points[1]) / base.distance, limits.min, limits.max);
-      changeCamera(clampCamera({ scale, x: origin.x - base.anchor.u * MAP_WIDTH * scale, y: origin.y - base.anchor.v * MAP_HEIGHT * scale }, current.viewport));
+      changeCamera(clampCamera({ scale, x: origin.x - base.anchor.u * MAP_WIDTH * scale, y: origin.y - base.anchor.v * MAP_HEIGHT * scale }, current.viewport, controls.current.zoomLimit));
     } else {
-      changeCamera(clampCamera({ ...base.camera, x: base.camera.x + origin.x - base.origin.x, y: base.camera.y + origin.y - base.origin.y }, current.viewport));
+      const sensitivity = controls.current.dragSensitivity;
+      changeCamera(clampCamera({ ...base.camera, x: base.camera.x + (origin.x - base.origin.x) * sensitivity, y: base.camera.y + (origin.y - base.origin.y) * sensitivity }, current.viewport, controls.current.zoomLimit));
     }
   };
   const up = (e: ReactPointerEvent<HTMLDivElement>) => {
@@ -110,8 +120,8 @@ export default function MapScene(props: MapSceneProps) {
       if (current.disabled) return;
       e.preventDefault();
       const rect = element.getBoundingClientRect();
-      const limits = cameraLimits(current.viewport);
-      changeCamera(clampCamera(zoomAt(gestureCamera.current, Math.exp(-clamp(e.deltaY, -200, 200) * 0.0018), e.clientX - rect.left, e.clientY - rect.top, limits.min, limits.max), current.viewport));
+      const limits = cameraLimits(current.viewport, controls.current.zoomLimit);
+      changeCamera(clampCamera(zoomAt(gestureCamera.current, Math.exp(-clamp(e.deltaY, -200, 200) * 0.0018), e.clientX - rect.left, e.clientY - rect.top, limits.min, limits.max), current.viewport, controls.current.zoomLimit));
     };
     element.addEventListener('wheel', wheel, { passive: false });
     return () => element.removeEventListener('wheel', wheel);
@@ -141,14 +151,15 @@ export default function MapScene(props: MapSceneProps) {
   const reliable = props.locationFresh && live && live.accuracy <= GOOD_ACCURACY_M;
   return <div ref={surface} className={`map-scene ${dragging ? 'is-dragging' : ''} ${reducedMotion ? 'map-reduced-motion' : ''}`} role="region" aria-label="良乡校区探索地图" data-testid="map-scene" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} onDoubleClick={e => {
     if (disabled || (e.target as Element).closest('button')) return;
-    const point = localPoint(e); const limits = cameraLimits(viewport);
-    changeCamera(clampCamera(zoomAt(gestureCamera.current, 1.45, point.x, point.y, limits.min, limits.max), viewport));
+    const point = localPoint(e); const limits = cameraLimits(viewport, controls.current.zoomLimit);
+    changeCamera(clampCamera(zoomAt(gestureCamera.current, controls.current.doubleZoom, point.x, point.y, limits.min, limits.max), viewport, controls.current.zoomLimit));
   }}>
     <div className="map-world" style={worldStyle} aria-hidden="true">
       <span className="map-paper-halo" />
       <img className="map-base-image" src={imageFailed ? CAMPUS_MAP_FALLBACK : CAMPUS_MAP_IMAGE} onError={() => setImageFailed(true)} draggable={false} alt="" width={MAP_WIDTH} height={MAP_HEIGHT}/>
     </div>
     <div className="map-ground-vignette" aria-hidden="true"/>
+    <RegionVeil camera={camera} unlockedIds={unlockedRegionIds} reducedMotion={reducedMotion} />
     <div className="map-markers">
       {landmarks.map(landmark => {
         const point = uvToScreen(landmark.uv, camera);

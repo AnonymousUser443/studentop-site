@@ -1,0 +1,20 @@
+'use strict';
+// Rechecks the explicit V2 HUD/label collision gate against the final source, not historical screenshots.
+const fs=require('node:fs'),path=require('node:path');
+const {newSession,until,sleep}=require('../lib.js');
+const out=path.join(__dirname,'hud-layouts'),checks=[],layouts=[];
+(async()=>{let s;try{
+  fs.mkdirSync(out,{recursive:true});s=await newSession({size:'1440x900',hardwareRendering:true});
+  await s.call('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'no-preference'}]});
+  await s.navigate('http://127.0.0.1:5176/?qa=1&preset=explored');await until(()=>s.evaluate('Boolean(window.__LIYUN__)'),15000,'QA bridge');
+  await s.evaluate('window.__LIYUN__.setSettings({autoDegrade:false,music:false,uiSound:false,reducedMotion:false});window.__LIYUN__.freeze(1000);window.__hudFinalRaf=requestAnimationFrame(function frame(){window.__hudFinalRaf=requestAnimationFrame(frame)});true');await sleep(600);
+  for(const[width,height]of[[1920,1080],[1440,900],[1280,720],[1024,600],[844,390],[667,375]]){
+    await s.call('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});await sleep(450);
+    for(const expanded of[true,false]){
+      if(await s.evaluate('document.querySelector(".hud-context-toggle").getAttribute("aria-expanded")==="true"')!==expanded)await s.click('.hud-context-toggle');await sleep(450);
+      const row=await s.evaluate(`(()=>{const boxes=[...document.querySelectorAll('.hud-anchor>.hud-slot')].map(e=>{const r=e.getBoundingClientRect();return{name:e.parentElement.className,x:r.x,y:r.y,width:r.width,height:r.height}}),overlaps=[],hits=(a,b)=>Math.min(a.right,b.right)-Math.max(a.left,b.left)>2&&Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>2;for(let i=0;i<boxes.length;i++)for(let j=i+1;j<boxes.length;j++){const a=boxes[i],b=boxes[j];if(hits({left:a.x,top:a.y,right:a.x+a.width,bottom:a.y+a.height},{left:b.x,top:b.y,right:b.x+b.width,bottom:b.y+b.height}))overlaps.push([a.name,b.name]);}const labels=[...document.querySelectorAll('.map-marker-name')].filter(e=>getComputedStyle(e).display!=='none').map(e=>({name:e.textContent,r:e.getBoundingClientRect()})),labelOverlaps=[];for(const a of labels)for(const b of boxes)if(hits(a.r,{left:b.x,top:b.y,right:b.x+b.width,bottom:b.y+b.height}))labelOverlaps.push([a.name,b.name]);for(let i=0;i<labels.length;i++)for(let j=i+1;j<labels.length;j++)if(hits(labels[i].r,labels[j].r))labelOverlaps.push([labels[i].name,labels[j].name]);const small=[...document.querySelectorAll('.hud-frame button')].map(e=>({name:e.getAttribute('aria-label')||e.textContent,r:e.getBoundingClientRect()})).filter(({r})=>r.width>0&&r.height>0&&(r.width<43.9||r.height<43.9)).map(({name,r})=>({name,width:r.width,height:r.height}));return{viewport:[innerWidth,innerHeight],expanded:${expanded},boxes,overlaps,labelOverlaps,small,outside:boxes.filter(b=>b.x<0||b.y<0||b.x+b.width>innerWidth+1||b.y+b.height>innerHeight+1),hiddenLabels:document.querySelectorAll('.map-marker[data-label-hidden=true]').length}})()`);
+      layouts.push(row);checks.push({name:`HUD and labels ${width}x${height} expanded=${expanded}`,pass:!row.overlaps.length&&!row.labelOverlaps.length&&!row.small.length&&!row.outside.length&&row.hiddenLabels<=2,detail:row});
+    }
+  }
+  checks.push({name:'no browser errors',pass:s.errors.length===0,detail:s.errors});const result={ok:checks.every(c=>c.pass),total:checks.length,checks,layouts,errors:s.errors,scope:'Six CSS viewports, default explored camera, location card open/closed. HUD pair intersections and visible map-label conflicts allow2px rounding; at most2 culled labels. Not arbitrary cameras or physical devices.'};fs.writeFileSync(path.join(out,'results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify({ok:result.ok,total:checks.length,failed:checks.filter(c=>!c.pass)},null,2));if(!result.ok)process.exitCode=1;
+}catch(error){fs.writeFileSync(path.join(out,'results.json'),JSON.stringify({ok:false,error:String(error.stack||error),checks,layouts,errors:s?.errors},null,2));console.error(error);process.exitCode=1;}finally{await s?.close();}})();

@@ -1,4 +1,4 @@
-import { LANDMARKS } from '../data';
+import { LANDMARKS } from '../content/catalog';
 import type { IconName } from '../types';
 
 export type EventStatus = 'upcoming' | 'active' | 'completed' | 'archived' | 'locked' | 'unavailable';

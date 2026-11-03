@@ -1,0 +1,167 @@
+{
+  "ok": true,
+  "total": 17,
+  "checks": [
+    {
+      "name": "keyboard guest entry reveals map and no development bridge",
+      "pass": true
+    },
+    {
+      "name": "keyboard enters the left menu and focus is within it",
+      "pass": true
+    },
+    {
+      "name": "keyboard arrows select image category",
+      "pass": true
+    },
+    {
+      "name": "keyboard changes the real quality preset",
+      "pass": true
+    },
+    {
+      "name": "Escape returns settings to menu",
+      "pass": true
+    },
+    {
+      "name": "menu close restores its original keyboard trigger",
+      "pass": true
+    },
+    {
+      "name": "keyboard locates with an explicit synthetic geolocation fixture",
+      "pass": true,
+      "detail": {
+        "latitude": 39.733525857262535,
+        "longitude": 116.16447656237081,
+        "accuracy": 5,
+        "source": "public anchor inverse model; CDP synthetic, not field GPS",
+        "region": "beihu"
+      }
+    },
+    {
+      "name": "selected landmark offers an enabled check-in under valid fixture",
+      "pass": true
+    },
+    {
+      "name": "production cinematic contains a decoded local concept hero and focused continue button",
+      "pass": true
+    },
+    {
+      "name": "keyboard skip preserves committed production save",
+      "pass": true
+    },
+    {
+      "name": "keyboard opens collection and focus remains inside",
+      "pass": true
+    },
+    {
+      "name": "keyboard opens activity long scroll",
+      "pass": true
+    },
+    {
+      "name": "keyboard returns to map from activity",
+      "pass": true
+    },
+    {
+      "name": "production saved discovery and independent region agree after the full keyboard path",
+      "pass": true
+    },
+    {
+      "name": "production does not load the local editor and preserves ordinary archive on tool URL",
+      "pass": true
+    },
+    {
+      "name": "local-tool notice provides a44px development link",
+      "pass": true,
+      "detail": {
+        "href": "http://127.0.0.1:5174/?tool=calibration",
+        "width": 150.109375,
+        "height": 44
+      }
+    },
+    {
+      "name": "production has no browser errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "evidence": {
+    "focusPath": [
+      {
+        "selector": ".entry-alt",
+        "tabs": 5,
+        "active": "<button class=\"entry-alt\">游客模式 · 进度仅保存在本机</button>"
+      },
+      {
+        "selector": ".hud-brand-badge",
+        "tabs": 7,
+        "active": "<button type=\"button\" class=\"hud-brand-badge\" aria-label=\"打开旅途菜单\" title=\"旅途菜单\"><svg class=\"brand-gate\" viewBox=\"0 0 180 160\" aria-hidden=\"true\"><defs><clipPath id=\"brand-circle\"><circle cx=\"83\" cy=\"77\" r=\"61\"></circle></clipPath><linearGradient id=\"brand-sky\" x2=\"0\" y2=\"1\"><stop stop-color=\"#b9c8ae\"></stop><stop offset=\"1\" stop-color=\"#f7edc5\"></stop></linearGradient></defs><circle cx=\"83\" cy=\"77\" r=\"66\" fill=\"none\" stroke=\"#d9bc75\" stroke-width=\"2\"></circle><circle cx=\"83\" cy=\"77\" r=\"61\" fill=\"url(#brand-sky)\"></circle><g clip-path=\"url(#brand-circle)\"><path d=\"m4 102 19-45 17 25 23-52 20 44 20-33 31 50 15-23 30 57v35H0Z\" fill=\"#849b7d\"></path><path d=\"m-5 126 31-30 17 8 20-23 16 25 20-25 28 29 30-13 31 24v60H0\" fill=\"#4e7560\"></path><path d=\"M53 128V77h59v51H97v-25q-15-22-30 0v25Z\" fill=\"#2d5549\"></path><path d=\"M47 79h72L102 66H65zM58 62h50l-9-8H67zM70 48h27M75 47V36h16v11\" fill=\"#2d5"
+      },
+      {
+        "selector": ".menu-grid [aria-label=\"设置\"]",
+        "tabs": 9,
+        "active": "<button type=\"button\" class=\"menu-tile\" aria-label=\"设置\"><span class=\"menu-tile-icon\"><svg class=\"ly-icon \" viewBox=\"0 0 48 48\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.1\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m20 4 8 0 2 6 6 3 6-1 4 7-4 5 0 6 3 5-5 6-6-2-5 3-2 5h-8l-2-6-6-3-6 1-4-7 4-5v-6l-3-5 5-6 6 2 5-3z\" fill=\"currentColor\" transform=\"translate(1 -1) scale(.95)\" stroke=\"none\"></path><circle cx=\"24\" cy=\"24\" r=\"8\" fill=\"#254740\" stroke=\"none\"></circle></svg></span><span class=\"menu-tile-label\">设置</span><span class=\"menu-tile-detail\">调整你的旅途</span></button>"
+      },
+      {
+        "selector": "#settings-tab-control",
+        "tabs": 1,
+        "active": "<button id=\"settings-tab-control\" type=\"button\" role=\"tab\" aria-selected=\"true\" aria-controls=\"settings-panel-control\" tabindex=\"0\" class=\"settings-rail-item\"><span class=\"settings-rail-selected\" aria-hidden=\"true\" style=\"opacity: 1;\"></span><span class=\"settings-rail-diamond\" aria-hidden=\"true\"></span><span class=\"settings-rail-label\">控制</span></button>"
+      },
+      {
+        "selector": "[role=combobox][aria-label=\"画面预设\"]",
+        "tabs": 2,
+        "active": "<button type=\"button\" role=\"combobox\" aria-expanded=\"false\" aria-autocomplete=\"none\" dir=\"ltr\" data-state=\"closed\" class=\"settings-select-trigger\" aria-label=\"画面预设\"><span class=\"settings-select-value\">高 · 推荐</span><span class=\"settings-select-caret\" aria-hidden=\"true\">▾</span></button>"
+      },
+      {
+        "selector": ".location-primary",
+        "tabs": 8,
+        "active": "<button type=\"button\" class=\"location-primary\" aria-busy=\"false\"><span aria-hidden=\"true\">◎</span> 定位到我</button>"
+      },
+      {
+        "selector": "[data-testid=\"poi-beihu\"]",
+        "tabs": 4,
+        "active": "<button type=\"button\" class=\"map-marker is-locked    \" data-testid=\"poi-beihu\" data-u=\"0.35779963220596467\" data-v=\"0.37007771543334456\" aria-label=\"北湖，待发现\" style=\"left: 727.526px; top: 468px;\"><span class=\"map-marker-gem\"><span class=\"map-marker-glyph\"><svg viewBox=\"0 0 40 40\" aria-hidden=\"true\"><path d=\"M14 17v-5a6 6 0 0 1 12 0v5m-14 0h16v16H12z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\" stroke-linejoin=\"round\"></path><path d=\"M20 22v5\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"></path></svg></span></span><span class=\"map-marker-name\"><strong>北湖</strong><small>待发现</small></span></button>"
+      },
+      {
+        "selector": "[data-testid=\"check-in-button\"]",
+        "tabs": 1,
+        "active": "<button class=\"parchment-button\" data-testid=\"check-in-button\">确认打卡<svg class=\"ly-icon \" viewBox=\"0 0 48 48\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.1\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m24 3 5 15 15 6-15 6-5 15-5-15-15-6 15-6z\"></path><path d=\"m24 14 3 7 7 3-7 3-3 7-3-7-7-3 7-3z\" fill=\"currentColor\"></path></svg></button>"
+      }
+    ],
+    "finalSave": {
+      "version": 3,
+      "discoveredIds": [
+        "beihu"
+      ],
+      "unlockedRegionIds": [
+        "beihu"
+      ],
+      "playerUV": {
+        "u": 0.35779963220596467,
+        "v": 0.37007771543334456
+      },
+      "settings": {
+        "music": false,
+        "volume": 0.35,
+        "track": 2,
+        "quality": "high",
+        "reducedMotion": true,
+        "qualityPreset": "ultra",
+        "baseQualityPreset": "ultra",
+        "qualityOverrides": {},
+        "autoDegrade": false,
+        "degradedFrom": null,
+        "uiSound": false,
+        "reduceFlash": false,
+        "hudScale": 1,
+        "dragSensitivity": 1,
+        "zoomLimit": 2.7,
+        "doubleZoom": 1.45,
+        "messageDuration": 3.6,
+        "showCinematic": true,
+        "redDot": true
+      }
+    },
+    "method": "All journey actions use native CDP keyDown/keyUp and Tab navigation; page evaluations only observe. Empty owned temporary profile is seeded with fixture settings. GPS is explicit CDP synthetic, not a phone/field measurement. No ordinary user browser state or account API."
+  },
+  "errors": []
+}

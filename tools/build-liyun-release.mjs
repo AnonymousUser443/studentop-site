@@ -5,7 +5,7 @@ const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const digest=b=>createHash('sha256').update(b).digest('hex');
 const allowed=/^(?:index\.html|favicon\.svg|assets\/[A-Za-z0-9_./-]+)$/;
 const extensions=new Set(['.html','.css','.js','.mjs','.json','.svg','.png','.jpg','.jpeg','.webp','.avif','.gif','.ico','.woff','.woff2','.ttf','.otf','.mp3','.opus','.ogg','.wav','.m4a','.mp4','.webm','.wasm']);
-const licenses=new Set(['assets/fonts/MaShanZheng-OFL.txt','assets/fonts/NotoSerifSC-OFL.txt']);
+const licenses=new Set(['assets/fonts/MaShanZheng-OFL.txt','assets/fonts/NotoSerifSC-OFL.txt','assets/fonts/DejaVu-LICENSE.txt']);
 function files(root,dir=''){
  const out=[];for(const entry of fs.readdirSync(path.join(root,dir),{withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name,'en'))){
   const name=dir?dir+'/'+entry.name:entry.name;if(entry.isSymbolicLink()||name.split('/').some(s=>!s||s.startsWith('.')||s==='..'))throw Error('Unsafe public artifact');
@@ -17,12 +17,12 @@ export function buildLiyunRelease(source,out){
  if(!relative||(!path.isAbsolute(relative)&&relative!=='..'&&!relative.startsWith('..'+path.sep)))throw Error('Output must be outside source');
  if(fs.existsSync(out))throw Error('Output already exists; use a new dedicated release directory');
  const input=files(source);if(!input.some(f=>f.path==='index.html'))throw Error('Missing index');
- const hash=createHash('sha256').update('liyun-immutable-release-v1\0');for(const f of input)hash.update(f.path+'\0'+f.data.length+'\0').update(f.data).update('\0');
+ const hash=createHash('sha256').update('liyun-immutable-release-v2\0');for(const f of input)hash.update(f.path+'\0'+f.data.length+'\0').update(f.data).update('\0');
  const id=hash.digest('hex').slice(0,24),prefix='/assets/releases/'+id+'/';const manifest=[];
  for(const file of input){
   let data=file.data;
   if(/\.(?:html|js|css|mjs)$/.test(file.path)){
-   let text=data.toString('utf8').replace(/(["'`(])\/assets\//g,(_all,start)=>start+prefix).replace(/(["'`(])\/favicon\.svg/g,(_all,start)=>start+prefix+'favicon.svg');
+   let text=data.toString('utf8').replace(/(["'`(])\/assets\//g,(_all,start)=>start+prefix).replace(/(["'`])assets\//g,(_all,start)=>start+prefix.slice(1)).replace(/(["'`(])\/favicon\.svg/g,(_all,start)=>start+prefix+'favicon.svg');
    if(file.path==='index.html')text=text.replace('</head>','<meta name="liyun-release" content="'+id+'">\n</head>');data=Buffer.from(text);
   }
   const name=file.path==='index.html'?'index.html':prefix.slice(1)+(file.path.startsWith('assets/')?file.path.slice(7):file.path);

@@ -1,0 +1,123 @@
+{
+  "at": "2026-11-03T09:42:06.182Z",
+  "source": "apps/liyun-explorer/TODO.md",
+  "total": 54,
+  "done": 51,
+  "remaining": [
+    {
+      "done": false,
+      "item": "uiSound、配乐三曲、音量和解锁反馈已接；生产浏览器19项解码/波形/开关/打卡反馈检查通过，**设备扬声器实听待队员完成**。"
+    },
+    {
+      "done": false,
+      "item": "生产完整键盘17项已通过；**真机触摸、安全区、GPS、朝向及设备听音尚需团队实测**，桌面CDP不代替手机。"
+    },
+    {
+      "done": false,
+      "item": "留实际渲染帧PoC视频及844低/高档帧率记录；桌面三档5s已约60rAF FPS，**手机帧率仍需实机**。"
+    }
+  ],
+  "deferredByUser": {
+    "date": "2026-11-03",
+    "answer": "稍后由队员按验收表实测",
+    "scope": "physical phone GPS/compass/touch/safe area, speaker listening and phone FPS; no passing claim"
+  },
+  "allLocalEvidencePassing": true,
+  "fieldAndPhysicalDeviceStatus": "Not executed; see FIELD-ACCEPTANCE.md. Do not promote to completion based on desktop fixtures.",
+  "stages": [
+    {
+      "id": "P0",
+      "state": "isolated unused CSS restore/remove verified: six viewports by four states, all24 paired PNGs exactly equal; full redesign screenshots are separate intentional differences",
+      "evidence": [
+        "pure-cleanup/results.json",
+        "hud-panels/css-prune.json",
+        "theme/pixel-differences.json"
+      ]
+    },
+    {
+      "id": "P1",
+      "state": "implemented/local verified",
+      "evidence": [
+        "invariants.json",
+        "checks.json",
+        "hud-panels/results.json"
+      ]
+    },
+    {
+      "id": "P2",
+      "state": "implemented/local verified",
+      "evidence": [
+        "vitest-final.json",
+        "logs/server-store.log",
+        "logs/server-http.log",
+        "app-runtime/results.json"
+      ]
+    },
+    {
+      "id": "P3",
+      "state": "implemented/local verified; physical safe area pending",
+      "evidence": [
+        "measure.json",
+        "contrast.json",
+        "FIELD-ACCEPTANCE.md"
+      ]
+    },
+    {
+      "id": "P4a",
+      "state": "local PoC complete; phone FPS pending",
+      "evidence": [
+        "world-cinematic/poc/results.json",
+        "world-cinematic/final/region-pixels/README.md",
+        "perf.json"
+      ]
+    },
+    {
+      "id": "P4b",
+      "state": "implemented/local verified; field content confirmation pending",
+      "evidence": [
+        "world-cinematic/final/region-pixels/repaired/results.json",
+        "../../apps/liyun-explorer/src/calibration/qa/final/browser-results.json",
+        "regions-check.json",
+        "FIELD-ACCEPTANCE.md"
+      ]
+    },
+    {
+      "id": "P5",
+      "state": "implemented/local verified, latest user left drawer override",
+      "evidence": [
+        "menu-settings/verified-focus-fullscreen-2/results.json",
+        "control-states/final/results.json",
+        "theme/pages/after/results.json"
+      ]
+    },
+    {
+      "id": "P6",
+      "state": "implemented/local verified; physical audio pending",
+      "evidence": [
+        "menu-settings/verified-focus-fullscreen-2/results.json",
+        "audio/results.json",
+        "app-runtime/results.json",
+        "FIELD-ACCEPTANCE.md"
+      ]
+    },
+    {
+      "id": "P7",
+      "state": "implemented/local verified",
+      "evidence": [
+        "world-cinematic/final/results.json",
+        "keyboard-production/results.json"
+      ]
+    },
+    {
+      "id": "P8",
+      "state": "local checks/documentation complete; physical device acceptance pending",
+      "evidence": [
+        "auto-degrade/results.json",
+        "keyboard-production/results.json",
+        "control-states/final/results.json",
+        "checks.json",
+        "FIELD-ACCEPTANCE.md"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,13 @@
 /* 全局基线：reset + 字体 + 焦点环。必须在所有组件样式之前加载。 */
 @font-face {
+  font-family: 'Liyun Symbols';
+  src: url('/assets/fonts/LiyunSymbols-UI.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+21A9, U+21B5, U+21B6-21B7, U+25B4, U+25BE, U+25C8, U+2715;
+}
+@font-face {
   font-family: 'Noto Serif SC';
   src: url('/assets/fonts/NotoSerifSC-UI.woff2') format('woff2');
   font-style: normal;

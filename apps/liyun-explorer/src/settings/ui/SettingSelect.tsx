@@ -12,7 +12,7 @@ export interface SettingSelectProps {
   onChange: (value: string) => void;
   ariaLabel: string;
   disabled?: boolean;
-  /** 行尾的开发中标记 */
+  /** Visible status or effective-value note. */
   note?: string;
 }
 
@@ -29,7 +29,8 @@ export default function SettingSelect({ value, options, onChange, ariaLabel, dis
           </Select.Icon>
         </Select.Trigger>
         <Select.Portal>
-          <Select.Content className="settings-select-content" position="popper" sideOffset={6} align="end">
+          <Select.Content className="settings-select-content" position="popper" sideOffset={6} align="end" collisionPadding={12} onEscapeKeyDown={event => event.stopPropagation()}>
+            <Select.ScrollUpButton className="settings-select-scroll" aria-label="向上滚动选项">▴</Select.ScrollUpButton>
             <Select.Viewport className="settings-select-viewport">
               {options.map(option => (
                 <Select.Item
@@ -45,6 +46,7 @@ export default function SettingSelect({ value, options, onChange, ariaLabel, dis
                 </Select.Item>
               ))}
             </Select.Viewport>
+            <Select.ScrollDownButton className="settings-select-scroll" aria-label="向下滚动选项">▾</Select.ScrollDownButton>
           </Select.Content>
         </Select.Portal>
       </Select.Root>

@@ -1,0 +1,96 @@
+{
+  "at": "2026-11-03T08:59:32.232Z",
+  "metric": "Full-frame RGB absolute screenshot difference; changed pixel means any channel differs by >=3 or >=10 of 255. Heatmaps amplify max-channel difference x6. These independently captured paused frames show actual differences, not a zero-diff guarantee; residual ambient timing/font asset updates may contribute.",
+  "frames": [
+    {
+      "frame": "activity-1440x900.png",
+      "width": 1440,
+      "height": 900,
+      "meanAbsoluteRgbError": 3.9531,
+      "changedAtLeast3": 612218,
+      "changedAtLeast3Percent": 47.239,
+      "changedAtLeast10": 139907,
+      "changedAtLeast10Percent": 10.795
+    },
+    {
+      "frame": "activity-844x390.png",
+      "width": 844,
+      "height": 390,
+      "meanAbsoluteRgbError": 5.4394,
+      "changedAtLeast3": 193031,
+      "changedAtLeast3Percent": 58.644,
+      "changedAtLeast10": 56573,
+      "changedAtLeast10Percent": 17.187
+    },
+    {
+      "frame": "collection-1440x900.png",
+      "width": 1440,
+      "height": 900,
+      "meanAbsoluteRgbError": 5.0308,
+      "changedAtLeast3": 603438,
+      "changedAtLeast3Percent": 46.562,
+      "changedAtLeast10": 287846,
+      "changedAtLeast10Percent": 22.21
+    },
+    {
+      "frame": "collection-844x390.png",
+      "width": 844,
+      "height": 390,
+      "meanAbsoluteRgbError": 2.5371,
+      "changedAtLeast3": 94940,
+      "changedAtLeast3Percent": 28.843,
+      "changedAtLeast10": 30076,
+      "changedAtLeast10Percent": 9.137
+    },
+    {
+      "frame": "entry-1440x900.png",
+      "width": 1440,
+      "height": 900,
+      "meanAbsoluteRgbError": 10.2251,
+      "changedAtLeast3": 871269,
+      "changedAtLeast3Percent": 67.228,
+      "changedAtLeast10": 434344,
+      "changedAtLeast10Percent": 33.514
+    },
+    {
+      "frame": "landmark-1440x900.png",
+      "width": 1440,
+      "height": 900,
+      "meanAbsoluteRgbError": 5.6784,
+      "changedAtLeast3": 709725,
+      "changedAtLeast3Percent": 54.763,
+      "changedAtLeast10": 341874,
+      "changedAtLeast10Percent": 26.379
+    },
+    {
+      "frame": "landmark-844x390.png",
+      "width": 844,
+      "height": 390,
+      "meanAbsoluteRgbError": 2.6694,
+      "changedAtLeast3": 114080,
+      "changedAtLeast3Percent": 34.658,
+      "changedAtLeast10": 36787,
+      "changedAtLeast10Percent": 11.176
+    },
+    {
+      "frame": "map-1440x900.png",
+      "width": 1440,
+      "height": 900,
+      "meanAbsoluteRgbError": 11.9179,
+      "changedAtLeast3": 689091,
+      "changedAtLeast3Percent": 53.171,
+      "changedAtLeast10": 392759,
+      "changedAtLeast10Percent": 30.305
+    },
+    {
+      "frame": "map-844x390.png",
+      "width": 844,
+      "height": 390,
+      "meanAbsoluteRgbError": 10.7548,
+      "changedAtLeast3": 181070,
+      "changedAtLeast3Percent": 55.01,
+      "changedAtLeast10": 108370,
+      "changedAtLeast10Percent": 32.923
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+.veil{position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none;contain:layout style paint}
+.piece{pointer-events:none}.paper{fill:var(--paper-200)}.texture{opacity:.98}.edge{stroke:var(--paper-500);stroke-width:2;stroke-opacity:.3}
+.caption{opacity:.58;font-family:var(--font-display);color:var(--bronze-500)}.caption rect{fill:none;stroke:currentColor;stroke-width:2}.caption text{fill:currentColor;letter-spacing:.08em}.name{fill:var(--ink-700)!important;letter-spacing:.18em}

@@ -1,0 +1,34 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process'),crypto=require('node:crypto'),zlib=require('node:zlib');
+const root=path.resolve(__dirname,'../..'),app=path.join(root,'apps/liyun-explorer');
+const checks=[],evidence={};const check=(name,pass,detail)=>{checks.push({name,pass:!!pass,detail});};
+const git=(...args)=>cp.execFileSync('git',args,{cwd:root,encoding:'utf8',maxBuffer:16e6}).trim();
+const walk=folder=>fs.readdirSync(folder,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(folder,e.name)):[path.join(folder,e.name)]);
+const ids=text=>[...text.matchAll(/data-testid\s*=\s*(?:"([^"]+)"|'([^']+)'|\{\s*`([^`]+)`\s*\})/g)].map(m=>m[1]??m[2]??m[3]);
+const previousFiles=git('ls-tree','-r','--name-only','HEAD','apps/liyun-explorer/src').split('\n').filter(f=>/\.(?:tsx|ts)$/.test(f));
+const previousIds=new Set(previousFiles.flatMap(f=>ids(git('show','HEAD:'+f))));
+const currentIds=new Set(walk(path.join(app,'src')).filter(f=>/\.(?:tsx|ts)$/.test(f)&&!f.includes(path.sep+'qa'+path.sep)).flatMap(f=>ids(fs.readFileSync(f,'utf8'))));
+evidence.testids={method:'Static JSX literal / template signatures, not exhaustive runtime DOM state enumeration',baseline:'HEAD 14a087b',previous:[...previousIds].sort(),current:[...currentIds].sort(),missing:[...previousIds].filter(id=>!currentIds.has(id))};
+check('no prior static testid signatures removed',evidence.testids.missing.length===0,evidence.testids.missing);
+const immutable=['src/data.ts','src/location/vendor/coordinates.mjs','src/location/vendor/model-transform.mjs','src/location/data/map.json','src/location/data/selected_model.json','public/assets/maps/calibrated/campus_no_labels.webp','public/assets/maps/calibrated/campus_no_labels.png'];
+evidence.frozen=immutable.map(f=>{const actual=fs.readFileSync(path.join(app,f));const base=cp.execFileSync('git',['show','HEAD:apps/liyun-explorer/'+f],{cwd:root,maxBuffer:24e6});return {file:f,bytes:actual.length,sha256:crypto.createHash('sha256').update(actual).digest('hex'),unchanged:actual.equals(base)};});
+check('six frozen calibrated inputs and public landmark anchors unchanged',evidence.frozen.every(f=>f.unchanged),evidence.frozen);
+const dist=path.join(app,'dist');
+if(fs.existsSync(dist)){
+  const files=walk(dist),bytes=files.reduce((n,f)=>n+fs.statSync(f).size,0);
+  check('dist within fixed 20MiB budget',bytes<=20*1024*1024,{bytes,MiB:bytes/1024/1024,budgetBytes:20*1024*1024,remainingBytes:20*1024*1024-bytes});
+  check('no source TTF or historical duplicate maps shipped',files.every(f=>!f.endsWith('.ttf')&&!/assets[\\/]maps[\\/]campus(?:\.png|\.webp|-enhanced)/.test(f)));
+  const html=fs.readFileSync(path.join(dist,'index.html'),'utf8');
+  const graph=new Set([...html.matchAll(/(?:src|href)="(\/assets\/[^"?]+\.js)"/g)].map(m=>m[1].slice(1)));
+  for(const name of graph){const js=fs.readFileSync(path.join(dist,name),'utf8');for(const m of js.matchAll(/(?:\bimport\s*(?:[^;"']*?\bfrom\s*)?|\bexport\s*[^;"']*?\bfrom\s*)["'](\.\/[^"']+\.js)["']/g)){graph.add(path.posix.join(path.posix.dirname(name),m[1]));}}
+  evidence.initialJS=[...graph].sort().map(f=>{const data=fs.readFileSync(path.join(dist,f));return {file:f,rawBytes:data.length,gzipBytes:zlib.gzipSync(data).length};});
+  const gzip=evidence.initialJS.reduce((n,f)=>n+f.gzipBytes,0);
+  check('HTML and transitive static JS graph gzip below600KB',gzip<=600000,{gzipBytes:gzip,scope:'sum of independently gzip-compressed JavaScript in HTML entry/modulepreload/static-import graph; no dynamic imports',files:evidence.initialJS});
+  check('p5 and GSAP absent from initial static graph',evidence.initialJS.every(f=>!/p5|gsap/i.test(f.file)));
+  check('local authoring editor and wrapper excluded from production',!fs.existsSync(path.join(dist,'calibrate.html'))&&!files.some(f=>/CalibrationScreen/.test(f)));
+  check('three runtime fonts and their licences ship',['NotoSerifSC-UI.woff2','MaShanZheng-UI.woff2','LiyunSymbols-UI.woff2','NotoSerifSC-OFL.txt','MaShanZheng-OFL.txt','DejaVu-LICENSE.txt'].every(f=>fs.existsSync(path.join(dist,'assets/fonts',f))));
+  evidence.dist={bytes,files:files.length,indexSha256:crypto.createHash('sha256').update(html).digest('hex')};
+}else check('production build exists',false);
+const result={ok:checks.every(c=>c.pass),at:new Date().toISOString(),total:checks.length,checks,evidence};
+fs.writeFileSync(path.join(__dirname,'invariants.json'),JSON.stringify(result,null,2));
+console.log(JSON.stringify({ok:result.ok,total:checks.length,failed:checks.filter(c=>!c.pass),dist:evidence.dist,initialJS:evidence.initialJS},null,2));if(!result.ok)process.exitCode=1;

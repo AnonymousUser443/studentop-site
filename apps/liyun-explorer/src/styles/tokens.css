@@ -51,13 +51,37 @@
   --state-info:  #5b7d8a;
   --state-danger:#a54f34;
 
+  /* Scene and illustration tones shared by the legacy map, entry and activity surfaces. */
+  --paper-map: #efe5cc;
+  --shade-950: #10241c;
+  --mask-ink: #000000;
+  --sage-200: #bcc5a3;
+  --sage-300: #9eb6a1;
+  --sage-400: #8ca894;
+  --sage-500: #799179;
+  --sage-600: #617d6b;
+  --leaf-300: #bccc84;
+  --leaf-500: #e0b343;
+  --leaf-700: #87994d;
+  --earth-800: #665e4c;
+  --gold-700: #72562c;
+  --gold-800: #5f4a26;
+  --bronze-700: #8a483a;
+  --jade-pin: #27453f;
+  --jade-pin-muted: #4b584d;
+  --jade-focus: #425848;
+  --gold-soft: #e4cf95;
+  --slate-300: #9aa9aa;
+  --state-location: #83af96;
+  --state-warn-on-dark: #e2a07a;
+
   /* ── 透明度阶梯（替代零散 8 位 hex） ───────────────────── */
   --a-04: .04; --a-08: .08; --a-16: .16; --a-32: .32;
   --a-56: .56; --a-72: .72; --a-80: .80; --a-96: .96;
 
   /* ── 字体 ─────────────────────────────────────────────── */
-  --font-display: 'Ma Shan Zheng', 'KaiTi', serif;   /* 只给标题/校区名 */
-  --font-ui: 'Noto Serif SC', 'Songti SC', SimSun, serif;
+  --font-display: 'Ma Shan Zheng', 'Liyun Symbols', 'KaiTi', serif;   /* 只给标题/校区名 */
+  --font-ui: 'Noto Serif SC', 'Liyun Symbols', 'Songti SC', SimSun, serif;
   --font-mono-num: 'Noto Serif SC', serif;           /* 配 tabular-nums */
 
   --fs-caption: clamp(10px, .72vw, 12px);
@@ -82,7 +106,7 @@
   --z-map: 1;
   --z-veil: 3;        /* 分区水墨遮罩 */
   --z-atmosphere: 3;
-  --z-markers: 4;
+  --z-markers: 7;     /* Keep functional pin labels above ambient leaves/light. */
   --z-locate: 6;
   --z-fx: 6;
   --z-edge: 7;
@@ -111,11 +135,11 @@
   --e-spring: cubic-bezier(.22, 1.32, .36, 1);
 
   /* ── 阴影与光 ─────────────────────────────────────────── */
-  --sh-paper: 0 2px 3px #16392d33;
-  --sh-soft:  0 4px 14px #10241c44;
-  --sh-deep:  0 22px 80px #08271f66;
-  --glow-gold: 0 0 12px #ffe6a3aa;
-  --inset-frame: inset 0 0 0 3px var(--jade-700), inset 0 0 0 4px #d4b87466;
+  --sh-paper: 0 2px 3px color-mix(in srgb, var(--jade-900) 20%, transparent);
+  --sh-soft:  0 4px 14px color-mix(in srgb, var(--shade-950) 26.6667%, transparent);
+  --sh-deep:  0 22px 80px color-mix(in srgb, var(--jade-950) 40%, transparent);
+  --glow-gold: 0 0 12px color-mix(in srgb, var(--gold-300) 66.6667%, transparent);
+  --inset-frame: inset 0 0 0 3px var(--jade-700), inset 0 0 0 4px color-mix(in srgb, var(--gold-400) 40%, transparent);
 
   /* ── 画质预设注入点（由 data-quality 覆盖，见 quality.css） ── */
   --q-blur: 6px;

@@ -1,0 +1,367 @@
+{
+  "ok": true,
+  "total": 36,
+  "checks": [
+    {
+      "name": "1920x1080 menu close pressed",
+      "pass": true,
+      "detail": {
+        "width": 44,
+        "height": 44,
+        "active": true,
+        "label": "返回地图"
+      }
+    },
+    {
+      "name": "1920x1080 menu rail pressed",
+      "pass": true,
+      "detail": {
+        "width": 48,
+        "height": 48,
+        "active": true,
+        "label": "设置"
+      }
+    },
+    {
+      "name": "1920x1080 settings close pressed",
+      "pass": true,
+      "detail": {
+        "width": 48,
+        "height": 48,
+        "active": true,
+        "label": "关闭设置"
+      }
+    },
+    {
+      "name": "1920x1080 defaults pressed",
+      "pass": true,
+      "detail": {
+        "width": 152,
+        "height": 44,
+        "active": true,
+        "label": "恢复默认"
+      }
+    },
+    {
+      "name": "1920x1080 confirmation cancel pressed",
+      "pass": true,
+      "detail": {
+        "width": 225,
+        "height": 44,
+        "active": true,
+        "label": "取消"
+      }
+    },
+    {
+      "name": "1920x1080 return pressed",
+      "pass": true,
+      "detail": {
+        "width": 152,
+        "height": 44,
+        "active": true,
+        "label": "返回旅途 ↩"
+      }
+    },
+    {
+      "name": "1440x900 menu close pressed",
+      "pass": true,
+      "detail": {
+        "width": 44,
+        "height": 44,
+        "active": true,
+        "label": "返回地图"
+      }
+    },
+    {
+      "name": "1440x900 menu rail pressed",
+      "pass": true,
+      "detail": {
+        "width": 48,
+        "height": 48,
+        "active": true,
+        "label": "设置"
+      }
+    },
+    {
+      "name": "1440x900 settings close pressed",
+      "pass": true,
+      "detail": {
+        "width": 48,
+        "height": 48,
+        "active": true,
+        "label": "关闭设置"
+      }
+    },
+    {
+      "name": "1440x900 defaults pressed",
+      "pass": true,
+      "detail": {
+        "width": 152,
+        "height": 44,
+        "active": true,
+        "label": "恢复默认"
+      }
+    },
+    {
+      "name": "1440x900 confirmation cancel pressed",
+      "pass": true,
+      "detail": {
+        "width": 225,
+        "height": 44,
+        "active": true,
+        "label": "取消"
+      }
+    },
+    {
+      "name": "1440x900 return pressed",
+      "pass": true,
+      "detail": {
+        "width": 152,
+        "height": 44,
+        "active": true,
+        "label": "返回旅途 ↩"
+      }
+    },
+    {
+      "name": "1280x720 menu close pressed",
+      "pass": true,
+      "detail": {
+        "width": 44,
+        "height": 44,
+        "active": true,
+        "label": "返回地图"
+      }
+    },
+    {
+      "name": "1280x720 menu rail pressed",
+      "pass": true,
+      "detail": {
+        "width": 48,
+        "height": 48,
+        "active": true,
+        "label": "设置"
+      }
+    },
+    {
+      "name": "1280x720 settings close pressed",
+      "pass": true,
+      "detail": {
+        "width": 48,
+        "height": 48,
+        "active": true,
+        "label": "关闭设置"
+      }
+    },
+    {
+      "name": "1280x720 defaults pressed",
+      "pass": true,
+      "detail": {
+        "width": 152,
+        "height": 44,
+        "active": true,
+        "label": "恢复默认"
+      }
+    },
+    {
+      "name": "1280x720 confirmation cancel pressed",
+      "pass": true,
+      "detail": {
+        "width": 225,
+        "height": 44,
+        "active": true,
+        "label": "取消"
+      }
+    },
+    {
+      "name": "1280x720 return pressed",
+      "pass": true,
+      "detail": {
+        "width": 152,
+        "height": 44,
+        "active": true,
+        "label": "返回旅途 ↩"
+      }
+    },
+    {
+      "name": "1024x600 menu close pressed",
+      "pass": true,
+      "detail": {
+        "width": 44,
+        "height": 44,
+        "active": true,
+        "label": "返回地图"
+      }
+    },
+    {
+      "name": "1024x600 menu rail pressed",
+      "pass": true,
+      "detail": {
+        "width": 48,
+        "height": 48,
+        "active": true,
+        "label": "设置"
+      }
+    },
+    {
+      "name": "1024x600 settings close pressed",
+      "pass": true,
+      "detail": {
+        "width": 48,
+        "height": 48,
+        "active": true,
+        "label": "关闭设置"
+      }
+    },
+    {
+      "name": "1024x600 defaults pressed",
+      "pass": true,
+      "detail": {
+        "width": 152,
+        "height": 44,
+        "active": true,
+        "label": "恢复默认"
+      }
+    },
+    {
+      "name": "1024x600 confirmation cancel pressed",
+      "pass": true,
+      "detail": {
+        "width": 225,
+        "height": 44,
+        "active": true,
+        "label": "取消"
+      }
+    },
+    {
+      "name": "1024x600 return pressed",
+      "pass": true,
+      "detail": {
+        "width": 152,
+        "height": 44,
+        "active": true,
+        "label": "返回旅途 ↩"
+      }
+    },
+    {
+      "name": "844x390 menu close pressed",
+      "pass": true,
+      "detail": {
+        "width": 44,
+        "height": 44,
+        "active": true,
+        "label": "返回地图"
+      }
+    },
+    {
+      "name": "844x390 menu rail pressed",
+      "pass": true,
+      "detail": {
+        "width": 46,
+        "height": 46,
+        "active": true,
+        "label": "设置"
+      }
+    },
+    {
+      "name": "844x390 settings close pressed",
+      "pass": true,
+      "detail": {
+        "width": 44,
+        "height": 44,
+        "active": true,
+        "label": "关闭设置"
+      }
+    },
+    {
+      "name": "844x390 defaults pressed",
+      "pass": true,
+      "detail": {
+        "width": 125,
+        "height": 44,
+        "active": true,
+        "label": "恢复默认"
+      }
+    },
+    {
+      "name": "844x390 confirmation cancel pressed",
+      "pass": true,
+      "detail": {
+        "width": 233,
+        "height": 44,
+        "active": true,
+        "label": "取消"
+      }
+    },
+    {
+      "name": "844x390 return pressed",
+      "pass": true,
+      "detail": {
+        "width": 125,
+        "height": 44,
+        "active": true,
+        "label": "返回旅途 ↩"
+      }
+    },
+    {
+      "name": "667x375 menu close pressed",
+      "pass": true,
+      "detail": {
+        "width": 44,
+        "height": 44,
+        "active": true,
+        "label": "返回地图"
+      }
+    },
+    {
+      "name": "667x375 menu rail pressed",
+      "pass": true,
+      "detail": {
+        "width": 46,
+        "height": 46,
+        "active": true,
+        "label": "设置"
+      }
+    },
+    {
+      "name": "667x375 settings close pressed",
+      "pass": true,
+      "detail": {
+        "width": 44,
+        "height": 44,
+        "active": true,
+        "label": "关闭设置"
+      }
+    },
+    {
+      "name": "667x375 defaults pressed",
+      "pass": true,
+      "detail": {
+        "width": 112,
+        "height": 44,
+        "active": true,
+        "label": "恢复默认"
+      }
+    },
+    {
+      "name": "667x375 confirmation cancel pressed",
+      "pass": true,
+      "detail": {
+        "width": 233,
+        "height": 44,
+        "active": true,
+        "label": "取消"
+      }
+    },
+    {
+      "name": "667x375 return pressed",
+      "pass": true,
+      "detail": {
+        "width": 112,
+        "height": 44,
+        "active": true,
+        "label": "返回旅途 ↩"
+      }
+    }
+  ],
+  "errors": []
+}

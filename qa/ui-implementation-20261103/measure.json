@@ -1,0 +1,2336 @@
+{
+  "ok": true,
+  "views": [
+    [
+      1920,
+      1080
+    ],
+    [
+      1440,
+      900
+    ],
+    [
+      1280,
+      720
+    ],
+    [
+      1024,
+      600
+    ],
+    [
+      844,
+      390
+    ],
+    [
+      667,
+      375
+    ]
+  ],
+  "states": [
+    "map",
+    "menu",
+    "settings",
+    "cinematic"
+  ],
+  "menuAndSettings": {
+    "file": "menu-settings/verified-focus-fullscreen-2/results.json",
+    "method": "six viewports, all eight setting categories, scrolling, hit areas and focus"
+  },
+  "worldLayouts": [
+    {
+      "kind": "hud-scale",
+      "scale": 0.9,
+      "viewport": [
+        844,
+        390
+      ],
+      "progress": 0,
+      "discovered": [],
+      "unlocked": [],
+      "masks": [
+        {
+          "id": "wencui",
+          "phase": "locked"
+        },
+        {
+          "id": "beihu",
+          "phase": "locked"
+        },
+        {
+          "id": "library",
+          "phase": "locked"
+        },
+        {
+          "id": "teaching",
+          "phase": "locked"
+        },
+        {
+          "id": "wenbo",
+          "phase": "locked"
+        },
+        {
+          "id": "sports",
+          "phase": "locked"
+        },
+        {
+          "id": "tower",
+          "phase": "locked"
+        },
+        {
+          "id": "park",
+          "phase": "locked"
+        }
+      ],
+      "hudButtons": [
+        {
+          "name": "打开旅途菜单",
+          "x": 12,
+          "y": 12,
+          "width": 46.796875,
+          "height": 46.796875,
+          "right": 58.796875,
+          "bottom": 58.796875
+        },
+        {
+          "name": "理韵寻踪，回到校园中心",
+          "x": 65.984375,
+          "y": 13.390625,
+          "width": 83.53125,
+          "height": 44,
+          "right": 149.515625,
+          "bottom": 57.390625
+        },
+        {
+          "name": "已收录 0 / 8 处地标，打开收集图鉴",
+          "x": 670.328125,
+          "y": 12,
+          "width": 49.140625,
+          "height": 44,
+          "right": 719.46875,
+          "bottom": 56
+        },
+        {
+          "name": "游客模式，打开旅途菜单",
+          "x": 726.65625,
+          "y": 12,
+          "width": 54.15625,
+          "height": 44,
+          "right": 780.8125,
+          "bottom": 56
+        },
+        {
+          "name": "进入全屏",
+          "x": 788,
+          "y": 12,
+          "width": 44,
+          "height": 44,
+          "right": 832,
+          "bottom": 56
+        },
+        {
+          "name": "活动一览",
+          "x": 12,
+          "y": 334,
+          "width": 86.03125,
+          "height": 44,
+          "right": 98.03125,
+          "bottom": 378
+        },
+        {
+          "name": "收集图鉴",
+          "x": 105.21875,
+          "y": 334,
+          "width": 86.03125,
+          "height": 44,
+          "right": 191.25,
+          "bottom": 378
+        },
+        {
+          "name": "探索度 0%，已收录 0 / 8 处地标，回到校园中心",
+          "x": 770.8125,
+          "y": 287.4375,
+          "width": 61.1875,
+          "height": 61.1875,
+          "right": 832,
+          "bottom": 348.625
+        },
+        {
+          "name": "◎ 定位到我",
+          "x": 600.1875,
+          "y": 88.1875,
+          "width": 176.03125,
+          "height": 44,
+          "right": 776.21875,
+          "bottom": 132.1875
+        },
+        {
+          "name": "收起定位详情",
+          "x": 779.8125,
+          "y": 88.1875,
+          "width": 44,
+          "height": 44,
+          "right": 823.8125,
+          "bottom": 132.1875
+        }
+      ],
+      "small": [],
+      "outside": [],
+      "quality": "high",
+      "motion": "full",
+      "hudScale": "0.9",
+      "hitTargets": [
+        {
+          "name": "打开旅途菜单",
+          "hit": true
+        },
+        {
+          "name": "理韵寻踪，回到校园中心",
+          "hit": true
+        },
+        {
+          "name": "已收录 0 / 8 处地标，打开收集图鉴",
+          "hit": true
+        },
+        {
+          "name": "游客模式，打开旅途菜单",
+          "hit": true
+        },
+        {
+          "name": "进入全屏",
+          "hit": true
+        },
+        {
+          "name": "活动一览",
+          "hit": true
+        },
+        {
+          "name": "收集图鉴",
+          "hit": true
+        },
+        {
+          "name": "探索度 0%，已收录 0 / 8 处地标，回到校园中心",
+          "hit": true
+        },
+        {
+          "name": "◎ 定位到我",
+          "hit": true
+        },
+        {
+          "name": "收起定位详情",
+          "hit": true
+        }
+      ]
+    },
+    {
+      "kind": "hud-scale",
+      "scale": 1.12,
+      "viewport": [
+        844,
+        390
+      ],
+      "progress": 0,
+      "discovered": [],
+      "unlocked": [],
+      "masks": [
+        {
+          "id": "wencui",
+          "phase": "locked"
+        },
+        {
+          "id": "beihu",
+          "phase": "locked"
+        },
+        {
+          "id": "library",
+          "phase": "locked"
+        },
+        {
+          "id": "teaching",
+          "phase": "locked"
+        },
+        {
+          "id": "wenbo",
+          "phase": "locked"
+        },
+        {
+          "id": "sports",
+          "phase": "locked"
+        },
+        {
+          "id": "tower",
+          "phase": "locked"
+        },
+        {
+          "id": "park",
+          "phase": "locked"
+        }
+      ],
+      "hudButtons": [
+        {
+          "name": "打开旅途菜单",
+          "x": 12,
+          "y": 12,
+          "width": 58.234375,
+          "height": 58.234375,
+          "right": 70.234375,
+          "bottom": 70.234375
+        },
+        {
+          "name": "理韵寻踪，回到校园中心",
+          "x": 79.1875,
+          "y": 19.109375,
+          "width": 103.984375,
+          "height": 44,
+          "right": 183.171875,
+          "bottom": 63.109375
+        },
+        {
+          "name": "已收录 0 / 8 处地标，打开收集图鉴",
+          "x": 634.953125,
+          "y": 12,
+          "width": 60.6875,
+          "height": 51.515625,
+          "right": 695.640625,
+          "bottom": 63.515625
+        },
+        {
+          "name": "游客模式，打开旅途菜单",
+          "x": 704.59375,
+          "y": 12,
+          "width": 66.9375,
+          "height": 51.515625,
+          "right": 771.53125,
+          "bottom": 63.515625
+        },
+        {
+          "name": "进入全屏",
+          "x": 780.484375,
+          "y": 12,
+          "width": 51.515625,
+          "height": 51.515625,
+          "right": 832,
+          "bottom": 63.515625
+        },
+        {
+          "name": "活动一览",
+          "x": 12,
+          "y": 326.484375,
+          "width": 107.046875,
+          "height": 51.515625,
+          "right": 119.046875,
+          "bottom": 378
+        },
+        {
+          "name": "收集图鉴",
+          "x": 128,
+          "y": 326.484375,
+          "width": 107.046875,
+          "height": 51.515625,
+          "right": 235.046875,
+          "bottom": 378
+        },
+        {
+          "name": "探索度 0%，已收录 0 / 8 处地标，回到校园中心",
+          "x": 755.84375,
+          "y": 265.953125,
+          "width": 76.15625,
+          "height": 76.15625,
+          "right": 832,
+          "bottom": 342.109375
+        },
+        {
+          "name": "◎ 定位到我",
+          "x": 601.953125,
+          "y": 91.34375,
+          "width": 164.109375,
+          "height": 44,
+          "right": 766.0625,
+          "bottom": 135.34375
+        },
+        {
+          "name": "收起定位详情",
+          "x": 770.53125,
+          "y": 89.953125,
+          "width": 51.515625,
+          "height": 46.78125,
+          "right": 822.046875,
+          "bottom": 136.734375
+        }
+      ],
+      "small": [],
+      "outside": [],
+      "quality": "high",
+      "motion": "full",
+      "hudScale": "1.12",
+      "hitTargets": [
+        {
+          "name": "打开旅途菜单",
+          "hit": true
+        },
+        {
+          "name": "理韵寻踪，回到校园中心",
+          "hit": true
+        },
+        {
+          "name": "已收录 0 / 8 处地标，打开收集图鉴",
+          "hit": true
+        },
+        {
+          "name": "游客模式，打开旅途菜单",
+          "hit": true
+        },
+        {
+          "name": "进入全屏",
+          "hit": true
+        },
+        {
+          "name": "活动一览",
+          "hit": true
+        },
+        {
+          "name": "收集图鉴",
+          "hit": true
+        },
+        {
+          "name": "探索度 0%，已收录 0 / 8 处地标，回到校园中心",
+          "hit": true
+        },
+        {
+          "name": "◎ 定位到我",
+          "hit": true
+        },
+        {
+          "name": "收起定位详情",
+          "hit": true
+        }
+      ]
+    },
+    {
+      "kind": "map",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "progress": 0,
+      "discovered": [],
+      "unlocked": [],
+      "masks": [
+        {
+          "id": "wencui",
+          "phase": "locked"
+        },
+        {
+          "id": "beihu",
+          "phase": "locked"
+        },
+        {
+          "id": "library",
+          "phase": "locked"
+        },
+        {
+          "id": "teaching",
+          "phase": "locked"
+        },
+        {
+          "id": "wenbo",
+          "phase": "locked"
+        },
+        {
+          "id": "sports",
+          "phase": "locked"
+        },
+        {
+          "id": "tower",
+          "phase": "locked"
+        },
+        {
+          "id": "park",
+          "phase": "locked"
+        }
+      ],
+      "hudButtons": [
+        {
+          "name": "打开旅途菜单",
+          "x": 40,
+          "y": 49.296875,
+          "width": 72,
+          "height": 72,
+          "right": 112,
+          "bottom": 121.296875
+        },
+        {
+          "name": "理韵寻踪，回到校园中心",
+          "x": 124,
+          "y": 40,
+          "width": 185.6875,
+          "height": 90.59375,
+          "right": 309.6875,
+          "bottom": 130.59375
+        },
+        {
+          "name": "已收录 0 / 8 处地标，打开收集图鉴",
+          "x": 1654.859375,
+          "y": 40,
+          "width": 77.140625,
+          "height": 46,
+          "right": 1732,
+          "bottom": 86
+        },
+        {
+          "name": "游客模式，打开旅途菜单",
+          "x": 1740,
+          "y": 40,
+          "width": 86,
+          "height": 46,
+          "right": 1826,
+          "bottom": 86
+        },
+        {
+          "name": "进入全屏",
+          "x": 1834,
+          "y": 40,
+          "width": 46,
+          "height": 46,
+          "right": 1880,
+          "bottom": 86
+        },
+        {
+          "name": "活动一览",
+          "x": 40,
+          "y": 988,
+          "width": 124.40625,
+          "height": 52,
+          "right": 164.40625,
+          "bottom": 1040
+        },
+        {
+          "name": "收集图鉴",
+          "x": 172.40625,
+          "y": 988,
+          "width": 124.40625,
+          "height": 52,
+          "right": 296.8125,
+          "bottom": 1040
+        },
+        {
+          "name": "探索度 0%，已收录 0 / 8 处地标，回到校园中心",
+          "x": 1784,
+          "y": 871,
+          "width": 96,
+          "height": 96,
+          "right": 1880,
+          "bottom": 967
+        },
+        {
+          "name": "◎ 定位到我",
+          "x": 1603,
+          "y": 289.796875,
+          "width": 218,
+          "height": 44,
+          "right": 1821,
+          "bottom": 333.796875
+        },
+        {
+          "name": "收起定位详情",
+          "x": 1825,
+          "y": 289.796875,
+          "width": 46,
+          "height": 44,
+          "right": 1871,
+          "bottom": 333.796875
+        }
+      ],
+      "small": [],
+      "outside": [],
+      "quality": "high",
+      "motion": "full",
+      "hudScale": "1"
+    },
+    {
+      "kind": "cinematic",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "id": "park",
+      "duration": 2.4,
+      "timelineReady": "true",
+      "timelineDuration": 2.4,
+      "quick": "true",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080,
+        "right": 1920,
+        "bottom": 1080
+      },
+      "button": {
+        "x": 1129.140625,
+        "y": 758.09375,
+        "width": 180,
+        "height": 48,
+        "right": 1309.140625,
+        "bottom": 806.09375
+      },
+      "art": {
+        "x": 64,
+        "y": 241.140625,
+        "width": 969.140625,
+        "height": 605.703125,
+        "right": 1033.140625,
+        "bottom": 846.84375
+      },
+      "story": {
+        "x": 1129.140625,
+        "y": 281.90625,
+        "width": 726.859375,
+        "height": 524.1875,
+        "right": 1856,
+        "bottom": 806.09375,
+        "scrollHeight": 524,
+        "clientHeight": 524,
+        "scrollWidth": 727,
+        "clientWidth": 727
+      },
+      "image": {
+        "complete": true,
+        "naturalWidth": 768,
+        "src": "/assets/landmarks/park/hero.webp"
+      },
+      "svg": false,
+      "focusInside": true,
+      "opacity": "1",
+      "copy": [
+        {
+          "opacity": "1",
+          "text": "分区已启"
+        },
+        {
+          "opacity": "1",
+          "text": "国防教育主题公园"
+        },
+        {
+          "opacity": "1",
+          "text": "薪火之地 · 校园记忆"
+        },
+        {
+          "opacity": "1",
+          "text": "「薪火相续，理韵悠长。」"
+        },
+        {
+          "opacity": "1",
+          "text": "沿着校园的主题空间回望来路，在安静的步行中认识理工精神。把这一页记忆带走，也把自己的脚步留在这里。"
+        }
+      ],
+      "gain": null,
+      "heroTransform": "matrix(1.0323, 0, 0, 1.0323, 0, 0)"
+    },
+    {
+      "kind": "map",
+      "viewport": [
+        1440,
+        900
+      ],
+      "progress": 0,
+      "discovered": [],
+      "unlocked": [],
+      "masks": [
+        {
+          "id": "wencui",
+          "phase": "locked"
+        },
+        {
+          "id": "beihu",
+          "phase": "locked"
+        },
+        {
+          "id": "library",
+          "phase": "locked"
+        },
+        {
+          "id": "teaching",
+          "phase": "locked"
+        },
+        {
+          "id": "wenbo",
+          "phase": "locked"
+        },
+        {
+          "id": "sports",
+          "phase": "locked"
+        },
+        {
+          "id": "tower",
+          "phase": "locked"
+        },
+        {
+          "id": "park",
+          "phase": "locked"
+        }
+      ],
+      "hudButtons": [
+        {
+          "name": "打开旅途菜单",
+          "x": 31.671875,
+          "y": 33.53125,
+          "width": 72,
+          "height": 72,
+          "right": 103.671875,
+          "bottom": 105.53125
+        },
+        {
+          "name": "理韵寻踪，回到校园中心",
+          "x": 115.671875,
+          "y": 31.671875,
+          "width": 145.84375,
+          "height": 75.734375,
+          "right": 261.515625,
+          "bottom": 107.40625
+        },
+        {
+          "name": "已收录 0 / 8 处地标，打开收集图鉴",
+          "x": 1190.96875,
+          "y": 31.671875,
+          "width": 74.015625,
+          "height": 46,
+          "right": 1264.984375,
+          "bottom": 77.671875
+        },
+        {
+          "name": "游客模式，打开旅途菜单",
+          "x": 1272.984375,
+          "y": 31.671875,
+          "width": 81.34375,
+          "height": 46,
+          "right": 1354.328125,
+          "bottom": 77.671875
+        },
+        {
+          "name": "进入全屏",
+          "x": 1362.328125,
+          "y": 31.671875,
+          "width": 46,
+          "height": 46,
+          "right": 1408.328125,
+          "bottom": 77.671875
+        },
+        {
+          "name": "活动一览",
+          "x": 31.671875,
+          "y": 816.328125,
+          "width": 114.71875,
+          "height": 52,
+          "right": 146.390625,
+          "bottom": 868.328125
+        },
+        {
+          "name": "收集图鉴",
+          "x": 154.390625,
+          "y": 816.328125,
+          "width": 114.71875,
+          "height": 52,
+          "right": 269.109375,
+          "bottom": 868.328125
+        },
+        {
+          "name": "探索度 0%，已收录 0 / 8 处地标，回到校园中心",
+          "x": 1312.328125,
+          "y": 706.328125,
+          "width": 96,
+          "height": 96,
+          "right": 1408.328125,
+          "bottom": 802.328125
+        },
+        {
+          "name": "◎ 定位到我",
+          "x": 1131.328125,
+          "y": 242.984375,
+          "width": 218,
+          "height": 44,
+          "right": 1349.328125,
+          "bottom": 286.984375
+        },
+        {
+          "name": "收起定位详情",
+          "x": 1353.328125,
+          "y": 242.984375,
+          "width": 46,
+          "height": 44,
+          "right": 1399.328125,
+          "bottom": 286.984375
+        }
+      ],
+      "small": [],
+      "outside": [],
+      "quality": "high",
+      "motion": "full",
+      "hudScale": "1"
+    },
+    {
+      "kind": "cinematic",
+      "viewport": [
+        1440,
+        900
+      ],
+      "id": "park",
+      "duration": 2.4,
+      "timelineReady": "true",
+      "timelineDuration": 2.4,
+      "quick": "true",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900,
+        "right": 1440,
+        "bottom": 900
+      },
+      "button": {
+        "x": 846.515625,
+        "y": 658.09375,
+        "width": 180,
+        "height": 48,
+        "right": 1026.515625,
+        "bottom": 706.09375
+      },
+      "art": {
+        "x": 50.390625,
+        "y": 227.703125,
+        "width": 724.125,
+        "height": 452.578125,
+        "right": 774.515625,
+        "bottom": 680.28125
+      },
+      "story": {
+        "x": 846.515625,
+        "y": 201.890625,
+        "width": 543.09375,
+        "height": 504.203125,
+        "right": 1389.609375,
+        "bottom": 706.09375,
+        "scrollHeight": 504,
+        "clientHeight": 504,
+        "scrollWidth": 543,
+        "clientWidth": 543
+      },
+      "image": {
+        "complete": true,
+        "naturalWidth": 768,
+        "src": "/assets/landmarks/park/hero.webp"
+      },
+      "svg": false,
+      "focusInside": true,
+      "opacity": "1",
+      "copy": [
+        {
+          "opacity": "1",
+          "text": "分区已启"
+        },
+        {
+          "opacity": "1",
+          "text": "国防教育主题公园"
+        },
+        {
+          "opacity": "1",
+          "text": "薪火之地 · 校园记忆"
+        },
+        {
+          "opacity": "1",
+          "text": "「薪火相续，理韵悠长。」"
+        },
+        {
+          "opacity": "1",
+          "text": "沿着校园的主题空间回望来路，在安静的步行中认识理工精神。把这一页记忆带走，也把自己的脚步留在这里。"
+        }
+      ],
+      "gain": null,
+      "heroTransform": "matrix(1.0323, 0, 0, 1.0323, 0, 0)"
+    },
+    {
+      "kind": "map",
+      "viewport": [
+        1280,
+        720
+      ],
+      "progress": 0,
+      "discovered": [],
+      "unlocked": [],
+      "masks": [
+        {
+          "id": "wencui",
+          "phase": "locked"
+        },
+        {
+          "id": "beihu",
+          "phase": "locked"
+        },
+        {
+          "id": "library",
+          "phase": "locked"
+        },
+        {
+          "id": "teaching",
+          "phase": "locked"
+        },
+        {
+          "id": "wenbo",
+          "phase": "locked"
+        },
+        {
+          "id": "sports",
+          "phase": "locked"
+        },
+        {
+          "id": "tower",
+          "phase": "locked"
+        },
+        {
+          "id": "park",
+          "phase": "locked"
+        }
+      ],
+      "hudButtons": [
+        {
+          "name": "打开旅途菜单",
+          "x": 28.15625,
+          "y": 28.15625,
+          "width": 72,
+          "height": 72,
+          "right": 100.15625,
+          "bottom": 100.15625
+        },
+        {
+          "name": "理韵寻踪，回到校园中心",
+          "x": 112.15625,
+          "y": 28.5,
+          "width": 129.640625,
+          "height": 71.3125,
+          "right": 241.796875,
+          "bottom": 99.8125
+        },
+        {
+          "name": "已收录 0 / 8 处地标，打开收集图鉴",
+          "x": 1036.71875,
+          "y": 28.15625,
+          "width": 73.125,
+          "height": 46,
+          "right": 1109.84375,
+          "bottom": 74.15625
+        },
+        {
+          "name": "游客模式，打开旅途菜单",
+          "x": 1117.84375,
+          "y": 28.15625,
+          "width": 80,
+          "height": 46,
+          "right": 1197.84375,
+          "bottom": 74.15625
+        },
+        {
+          "name": "进入全屏",
+          "x": 1205.84375,
+          "y": 28.15625,
+          "width": 46,
+          "height": 46,
+          "right": 1251.84375,
+          "bottom": 74.15625
+        },
+        {
+          "name": "活动一览",
+          "x": 28.15625,
+          "y": 639.84375,
+          "width": 111.921875,
+          "height": 52,
+          "right": 140.078125,
+          "bottom": 691.84375
+        },
+        {
+          "name": "收集图鉴",
+          "x": 148.078125,
+          "y": 639.84375,
+          "width": 111.921875,
+          "height": 52,
+          "right": 260,
+          "bottom": 691.84375
+        },
+        {
+          "name": "探索度 0%，已收录 0 / 8 处地标，回到校园中心",
+          "x": 1155.84375,
+          "y": 530.84375,
+          "width": 96,
+          "height": 96,
+          "right": 1251.84375,
+          "bottom": 626.84375
+        },
+        {
+          "name": "◎ 定位到我",
+          "x": 974.84375,
+          "y": 196.1875,
+          "width": 218,
+          "height": 44,
+          "right": 1192.84375,
+          "bottom": 240.1875
+        },
+        {
+          "name": "收起定位详情",
+          "x": 1196.84375,
+          "y": 196.1875,
+          "width": 46,
+          "height": 44,
+          "right": 1242.84375,
+          "bottom": 240.1875
+        }
+      ],
+      "small": [],
+      "outside": [],
+      "quality": "high",
+      "motion": "full",
+      "hudScale": "1"
+    },
+    {
+      "kind": "cinematic",
+      "viewport": [
+        1280,
+        720
+      ],
+      "id": "park",
+      "duration": 2.4,
+      "timelineReady": "true",
+      "timelineDuration": 2.4,
+      "quick": "true",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720,
+        "right": 1280,
+        "bottom": 720
+      },
+      "button": {
+        "x": 752.453125,
+        "y": 548.96875,
+        "width": 180,
+        "height": 48,
+        "right": 932.453125,
+        "bottom": 596.96875
+      },
+      "art": {
+        "x": 44.796875,
+        "y": 162.859375,
+        "width": 643.65625,
+        "height": 402.28125,
+        "right": 688.453125,
+        "bottom": 565.140625
+      },
+      "story": {
+        "x": 752.453125,
+        "y": 131.03125,
+        "width": 482.75,
+        "height": 465.9375,
+        "right": 1235.203125,
+        "bottom": 596.96875,
+        "scrollHeight": 466,
+        "clientHeight": 466,
+        "scrollWidth": 483,
+        "clientWidth": 483
+      },
+      "image": {
+        "complete": true,
+        "naturalWidth": 768,
+        "src": "/assets/landmarks/park/hero.webp"
+      },
+      "svg": false,
+      "focusInside": true,
+      "opacity": "1",
+      "copy": [
+        {
+          "opacity": "1",
+          "text": "分区已启"
+        },
+        {
+          "opacity": "1",
+          "text": "国防教育主题公园"
+        },
+        {
+          "opacity": "1",
+          "text": "薪火之地 · 校园记忆"
+        },
+        {
+          "opacity": "1",
+          "text": "「薪火相续，理韵悠长。」"
+        },
+        {
+          "opacity": "1",
+          "text": "沿着校园的主题空间回望来路，在安静的步行中认识理工精神。把这一页记忆带走，也把自己的脚步留在这里。"
+        }
+      ],
+      "gain": null,
+      "heroTransform": "matrix(1.0323, 0, 0, 1.0323, 0, 0)"
+    },
+    {
+      "kind": "map",
+      "viewport": [
+        1024,
+        600
+      ],
+      "progress": 0,
+      "discovered": [],
+      "unlocked": [],
+      "masks": [
+        {
+          "id": "wencui",
+          "phase": "locked"
+        },
+        {
+          "id": "beihu",
+          "phase": "locked"
+        },
+        {
+          "id": "library",
+          "phase": "locked"
+        },
+        {
+          "id": "teaching",
+          "phase": "locked"
+        },
+        {
+          "id": "wenbo",
+          "phase": "locked"
+        },
+        {
+          "id": "sports",
+          "phase": "locked"
+        },
+        {
+          "id": "tower",
+          "phase": "locked"
+        },
+        {
+          "id": "park",
+          "phase": "locked"
+        }
+      ],
+      "hudButtons": [
+        {
+          "name": "打开旅途菜单",
+          "x": 22.515625,
+          "y": 22.515625,
+          "width": 72,
+          "height": 72,
+          "right": 94.515625,
+          "bottom": 94.515625
+        },
+        {
+          "name": "理韵寻踪，回到校园中心",
+          "x": 106.515625,
+          "y": 24.421875,
+          "width": 118.171875,
+          "height": 68.1875,
+          "right": 224.6875,
+          "bottom": 92.609375
+        },
+        {
+          "name": "已收录 0 / 8 处地标，打开收集图鉴",
+          "x": 786.359375,
+          "y": 22.515625,
+          "width": 73.125,
+          "height": 46,
+          "right": 859.484375,
+          "bottom": 68.515625
+        },
+        {
+          "name": "游客模式，打开旅途菜单",
+          "x": 867.484375,
+          "y": 22.515625,
+          "width": 80,
+          "height": 46,
+          "right": 947.484375,
+          "bottom": 68.515625
+        },
+        {
+          "name": "进入全屏",
+          "x": 955.484375,
+          "y": 22.515625,
+          "width": 46,
+          "height": 46,
+          "right": 1001.484375,
+          "bottom": 68.515625
+        },
+        {
+          "name": "活动一览",
+          "x": 22.515625,
+          "y": 525.484375,
+          "width": 111.921875,
+          "height": 52,
+          "right": 134.4375,
+          "bottom": 577.484375
+        },
+        {
+          "name": "收集图鉴",
+          "x": 142.4375,
+          "y": 525.484375,
+          "width": 111.921875,
+          "height": 52,
+          "right": 254.359375,
+          "bottom": 577.484375
+        },
+        {
+          "name": "探索度 0%，已收录 0 / 8 处地标，回到校园中心",
+          "x": 905.484375,
+          "y": 416.484375,
+          "width": 96,
+          "height": 96,
+          "right": 1001.484375,
+          "bottom": 512.484375
+        },
+        {
+          "name": "◎ 定位到我",
+          "x": 724.484375,
+          "y": 165,
+          "width": 218,
+          "height": 44,
+          "right": 942.484375,
+          "bottom": 209
+        },
+        {
+          "name": "收起定位详情",
+          "x": 946.484375,
+          "y": 165,
+          "width": 46,
+          "height": 44,
+          "right": 992.484375,
+          "bottom": 209
+        }
+      ],
+      "small": [],
+      "outside": [],
+      "quality": "high",
+      "motion": "full",
+      "hudScale": "1"
+    },
+    {
+      "kind": "cinematic",
+      "viewport": [
+        1024,
+        600
+      ],
+      "id": "park",
+      "duration": 2.4,
+      "timelineReady": "true",
+      "timelineDuration": 2.4,
+      "quick": "true",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 600,
+        "right": 1024,
+        "bottom": 600
+      },
+      "button": {
+        "x": 601.953125,
+        "y": 460.265625,
+        "width": 180,
+        "height": 48,
+        "right": 781.953125,
+        "bottom": 508.265625
+      },
+      "art": {
+        "x": 35.828125,
+        "y": 143.078125,
+        "width": 514.9375,
+        "height": 321.828125,
+        "right": 550.765625,
+        "bottom": 464.90625
+      },
+      "story": {
+        "x": 601.953125,
+        "y": 99.734375,
+        "width": 386.21875,
+        "height": 408.53125,
+        "right": 988.171875,
+        "bottom": 508.265625,
+        "scrollHeight": 409,
+        "clientHeight": 409,
+        "scrollWidth": 386,
+        "clientWidth": 386
+      },
+      "image": {
+        "complete": true,
+        "naturalWidth": 768,
+        "src": "/assets/landmarks/park/hero.webp"
+      },
+      "svg": false,
+      "focusInside": true,
+      "opacity": "1",
+      "copy": [
+        {
+          "opacity": "1",
+          "text": "分区已启"
+        },
+        {
+          "opacity": "1",
+          "text": "国防教育主题公园"
+        },
+        {
+          "opacity": "1",
+          "text": "薪火之地 · 校园记忆"
+        },
+        {
+          "opacity": "1",
+          "text": "「薪火相续，理韵悠长。」"
+        },
+        {
+          "opacity": "1",
+          "text": "沿着校园的主题空间回望来路，在安静的步行中认识理工精神。把这一页记忆带走，也把自己的脚步留在这里。"
+        }
+      ],
+      "gain": null,
+      "heroTransform": "matrix(1.0322, 0, 0, 1.0322, 0, 0)"
+    },
+    {
+      "kind": "map",
+      "viewport": [
+        844,
+        390
+      ],
+      "progress": 0,
+      "discovered": [],
+      "unlocked": [],
+      "masks": [
+        {
+          "id": "wencui",
+          "phase": "locked"
+        },
+        {
+          "id": "beihu",
+          "phase": "locked"
+        },
+        {
+          "id": "library",
+          "phase": "locked"
+        },
+        {
+          "id": "teaching",
+          "phase": "locked"
+        },
+        {
+          "id": "wenbo",
+          "phase": "locked"
+        },
+        {
+          "id": "sports",
+          "phase": "locked"
+        },
+        {
+          "id": "tower",
+          "phase": "locked"
+        },
+        {
+          "id": "park",
+          "phase": "locked"
+        }
+      ],
+      "hudButtons": [
+        {
+          "name": "打开旅途菜单",
+          "x": 12,
+          "y": 12,
+          "width": 52,
+          "height": 52,
+          "right": 64,
+          "bottom": 64
+        },
+        {
+          "name": "理韵寻踪，回到校园中心",
+          "x": 72,
+          "y": 16,
+          "width": 92.84375,
+          "height": 44,
+          "right": 164.84375,
+          "bottom": 60
+        },
+        {
+          "name": "已收录 0 / 8 处地标，打开收集图鉴",
+          "x": 655.5625,
+          "y": 12,
+          "width": 54.4375,
+          "height": 46,
+          "right": 710,
+          "bottom": 58
+        },
+        {
+          "name": "游客模式，打开旅途菜单",
+          "x": 718,
+          "y": 12,
+          "width": 60,
+          "height": 46,
+          "right": 778,
+          "bottom": 58
+        },
+        {
+          "name": "进入全屏",
+          "x": 786,
+          "y": 12,
+          "width": 46,
+          "height": 46,
+          "right": 832,
+          "bottom": 58
+        },
+        {
+          "name": "活动一览",
+          "x": 12,
+          "y": 332,
+          "width": 95.609375,
+          "height": 46,
+          "right": 107.609375,
+          "bottom": 378
+        },
+        {
+          "name": "收集图鉴",
+          "x": 115.609375,
+          "y": 332,
+          "width": 95.609375,
+          "height": 46,
+          "right": 211.21875,
+          "bottom": 378
+        },
+        {
+          "name": "探索度 0%，已收录 0 / 8 处地标，回到校园中心",
+          "x": 764,
+          "y": 277,
+          "width": 68,
+          "height": 68,
+          "right": 832,
+          "bottom": 345
+        },
+        {
+          "name": "◎ 定位到我",
+          "x": 601,
+          "y": 89,
+          "width": 172,
+          "height": 44,
+          "right": 773,
+          "bottom": 133
+        },
+        {
+          "name": "收起定位详情",
+          "x": 777,
+          "y": 89,
+          "width": 46,
+          "height": 44,
+          "right": 823,
+          "bottom": 133
+        }
+      ],
+      "small": [],
+      "outside": [],
+      "quality": "high",
+      "motion": "full",
+      "hudScale": "1"
+    },
+    {
+      "kind": "cinematic",
+      "viewport": [
+        844,
+        390
+      ],
+      "id": "park",
+      "duration": 2.4,
+      "timelineReady": "true",
+      "timelineDuration": 2.4,
+      "quick": "true",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390,
+        "right": 844,
+        "bottom": 390
+      },
+      "button": {
+        "x": 489.140625,
+        "y": 272.390625,
+        "width": 180,
+        "height": 44,
+        "right": 669.140625,
+        "bottom": 316.390625
+      },
+      "art": {
+        "x": 24,
+        "y": 60.5,
+        "width": 436.796875,
+        "height": 272.984375,
+        "right": 460.796875,
+        "bottom": 333.484375
+      },
+      "story": {
+        "x": 489.140625,
+        "y": 77.609375,
+        "width": 330.859375,
+        "height": 238.78125,
+        "right": 820,
+        "bottom": 316.390625,
+        "scrollHeight": 239,
+        "clientHeight": 239,
+        "scrollWidth": 331,
+        "clientWidth": 331
+      },
+      "image": {
+        "complete": true,
+        "naturalWidth": 768,
+        "src": "/assets/landmarks/park/hero.webp"
+      },
+      "svg": false,
+      "focusInside": true,
+      "opacity": "1",
+      "copy": [
+        {
+          "opacity": "1",
+          "text": "分区已启"
+        },
+        {
+          "opacity": "1",
+          "text": "国防教育主题公园"
+        },
+        {
+          "opacity": "1",
+          "text": "薪火之地 · 校园记忆"
+        },
+        {
+          "opacity": "1",
+          "text": "「薪火相续，理韵悠长。」"
+        },
+        {
+          "opacity": "1",
+          "text": "沿着校园的主题空间回望来路，在安静的步行中认识理工精神。把这一页记忆带走，也把自己的脚步留在这里。"
+        }
+      ],
+      "gain": null,
+      "heroTransform": "matrix(1.0322, 0, 0, 1.0322, 0, 0)"
+    },
+    {
+      "kind": "map",
+      "viewport": [
+        667,
+        375
+      ],
+      "progress": 0,
+      "discovered": [],
+      "unlocked": [],
+      "masks": [
+        {
+          "id": "wencui",
+          "phase": "locked"
+        },
+        {
+          "id": "beihu",
+          "phase": "locked"
+        },
+        {
+          "id": "library",
+          "phase": "locked"
+        },
+        {
+          "id": "teaching",
+          "phase": "locked"
+        },
+        {
+          "id": "wenbo",
+          "phase": "locked"
+        },
+        {
+          "id": "sports",
+          "phase": "locked"
+        },
+        {
+          "id": "tower",
+          "phase": "locked"
+        },
+        {
+          "id": "park",
+          "phase": "locked"
+        }
+      ],
+      "hudButtons": [
+        {
+          "name": "打开旅途菜单",
+          "x": 12,
+          "y": 12,
+          "width": 52,
+          "height": 52,
+          "right": 64,
+          "bottom": 64
+        },
+        {
+          "name": "理韵寻踪，回到校园中心",
+          "x": 72,
+          "y": 16,
+          "width": 92.84375,
+          "height": 44,
+          "right": 164.84375,
+          "bottom": 60
+        },
+        {
+          "name": "已收录 0 / 8 处地标，打开收集图鉴",
+          "x": 478.5625,
+          "y": 12,
+          "width": 54.4375,
+          "height": 46,
+          "right": 533,
+          "bottom": 58
+        },
+        {
+          "name": "游客模式，打开旅途菜单",
+          "x": 541,
+          "y": 12,
+          "width": 60,
+          "height": 46,
+          "right": 601,
+          "bottom": 58
+        },
+        {
+          "name": "进入全屏",
+          "x": 609,
+          "y": 12,
+          "width": 46,
+          "height": 46,
+          "right": 655,
+          "bottom": 58
+        },
+        {
+          "name": "活动一览",
+          "x": 12,
+          "y": 317,
+          "width": 95.609375,
+          "height": 46,
+          "right": 107.609375,
+          "bottom": 363
+        },
+        {
+          "name": "收集图鉴",
+          "x": 115.609375,
+          "y": 317,
+          "width": 95.609375,
+          "height": 46,
+          "right": 211.21875,
+          "bottom": 363
+        },
+        {
+          "name": "探索度 0%，已收录 0 / 8 处地标，回到校园中心",
+          "x": 587,
+          "y": 262,
+          "width": 68,
+          "height": 68,
+          "right": 655,
+          "bottom": 330
+        },
+        {
+          "name": "◎ 定位到我",
+          "x": 450.5625,
+          "y": 89,
+          "width": 145.4375,
+          "height": 44,
+          "right": 596,
+          "bottom": 133
+        },
+        {
+          "name": "收起定位详情",
+          "x": 600,
+          "y": 89,
+          "width": 46,
+          "height": 44,
+          "right": 646,
+          "bottom": 133
+        }
+      ],
+      "small": [],
+      "outside": [],
+      "quality": "high",
+      "motion": "full",
+      "hudScale": "1"
+    },
+    {
+      "kind": "cinematic",
+      "viewport": [
+        667,
+        375
+      ],
+      "id": "park",
+      "duration": 2.4,
+      "timelineReady": "true",
+      "timelineDuration": 2.4,
+      "quick": "true",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 667,
+        "height": 375,
+        "right": 667,
+        "bottom": 375
+      },
+      "button": {
+        "x": 388,
+        "y": 269.984375,
+        "width": 180,
+        "height": 44,
+        "right": 568,
+        "bottom": 313.984375
+      },
+      "art": {
+        "x": 24,
+        "y": 83.25,
+        "width": 340,
+        "height": 212.5,
+        "right": 364,
+        "bottom": 295.75
+      },
+      "story": {
+        "x": 388,
+        "y": 65.015625,
+        "width": 255,
+        "height": 248.96875,
+        "right": 643,
+        "bottom": 313.984375,
+        "scrollHeight": 249,
+        "clientHeight": 249,
+        "scrollWidth": 255,
+        "clientWidth": 255
+      },
+      "image": {
+        "complete": true,
+        "naturalWidth": 768,
+        "src": "/assets/landmarks/park/hero.webp"
+      },
+      "svg": false,
+      "focusInside": true,
+      "opacity": "1",
+      "copy": [
+        {
+          "opacity": "1",
+          "text": "分区已启"
+        },
+        {
+          "opacity": "1",
+          "text": "国防教育主题公园"
+        },
+        {
+          "opacity": "1",
+          "text": "薪火之地 · 校园记忆"
+        },
+        {
+          "opacity": "1",
+          "text": "「薪火相续，理韵悠长。」"
+        },
+        {
+          "opacity": "1",
+          "text": "沿着校园的主题空间回望来路，在安静的步行中认识理工精神。把这一页记忆带走，也把自己的脚步留在这里。"
+        }
+      ],
+      "gain": null,
+      "heroTransform": "matrix(1.0324, 0, 0, 1.0324, 0, 0)"
+    }
+  ],
+  "hudAndLabelCollisions": {
+    "file": "hud-layouts/results.json",
+    "layouts": [
+      {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 40,
+            "y": 40,
+            "width": 269.6875,
+            "height": 90.59375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1654.953125,
+            "y": 40,
+            "width": 225.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 40,
+            "y": 988,
+            "width": 256.8125,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1771.921875,
+            "y": 871,
+            "width": 108.078125,
+            "height": 169
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1594,
+            "y": 280.796875,
+            "width": 286,
+            "height": 93.796875
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 0
+      },
+      {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 40,
+            "y": 40,
+            "width": 269.6875,
+            "height": 90.59375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1654.953125,
+            "y": 40,
+            "width": 225.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 40,
+            "y": 988,
+            "width": 256.8125,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1771.921875,
+            "y": 871,
+            "width": 108.078125,
+            "height": 169
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1594,
+            "y": 280.796875,
+            "width": 286,
+            "height": 62
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 0
+      },
+      {
+        "viewport": [
+          1440,
+          900
+        ],
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 31.671875,
+            "y": 31.671875,
+            "width": 229.84375,
+            "height": 75.734375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1191.046875,
+            "y": 31.671875,
+            "width": 217.28125,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 31.671875,
+            "y": 816.328125,
+            "width": 237.4375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1311.46875,
+            "y": 706.328125,
+            "width": 96.859375,
+            "height": 162
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1122.328125,
+            "y": 233.984375,
+            "width": 286,
+            "height": 91.109375
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      },
+      {
+        "viewport": [
+          1440,
+          900
+        ],
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 31.671875,
+            "y": 31.671875,
+            "width": 229.84375,
+            "height": 75.734375
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1191.046875,
+            "y": 31.671875,
+            "width": 217.28125,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 31.671875,
+            "y": 816.328125,
+            "width": 237.4375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1311.46875,
+            "y": 706.328125,
+            "width": 96.859375,
+            "height": 162
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 1122.328125,
+            "y": 233.984375,
+            "width": 286,
+            "height": 62
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 0
+      },
+      {
+        "viewport": [
+          1280,
+          720
+        ],
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 28.15625,
+            "y": 28.15625,
+            "width": 213.640625,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1036.796875,
+            "y": 28.15625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 28.15625,
+            "y": 639.84375,
+            "width": 231.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1155.84375,
+            "y": 530.84375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 965.84375,
+            "y": 187.1875,
+            "width": 286,
+            "height": 90.5
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      },
+      {
+        "viewport": [
+          1280,
+          720
+        ],
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 28.15625,
+            "y": 28.15625,
+            "width": 213.640625,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 1036.796875,
+            "y": 28.15625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 28.15625,
+            "y": 639.84375,
+            "width": 231.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 1155.84375,
+            "y": 530.84375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 965.84375,
+            "y": 187.1875,
+            "width": 286,
+            "height": 62
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 0
+      },
+      {
+        "viewport": [
+          1024,
+          600
+        ],
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 22.515625,
+            "y": 22.515625,
+            "width": 202.171875,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 786.4375,
+            "y": 22.515625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 22.515625,
+            "y": 525.484375,
+            "width": 231.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 905.484375,
+            "y": 416.484375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 715.484375,
+            "y": 156,
+            "width": 286,
+            "height": 90.5
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      },
+      {
+        "viewport": [
+          1024,
+          600
+        ],
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 22.515625,
+            "y": 22.515625,
+            "width": 202.171875,
+            "height": 72
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 786.4375,
+            "y": 22.515625,
+            "width": 215.046875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 22.515625,
+            "y": 525.484375,
+            "width": 231.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 905.484375,
+            "y": 416.484375,
+            "width": 96,
+            "height": 161
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 715.484375,
+            "y": 156,
+            "width": 286,
+            "height": 62
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      },
+      {
+        "viewport": [
+          844,
+          390
+        ],
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 655.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 332,
+            "width": 199.21875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 764,
+            "y": 277,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 592,
+            "y": 80,
+            "width": 240,
+            "height": 90.5
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      },
+      {
+        "viewport": [
+          844,
+          390
+        ],
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 655.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 332,
+            "width": 199.21875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 764,
+            "y": 277,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 592,
+            "y": 80,
+            "width": 240,
+            "height": 62
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      },
+      {
+        "viewport": [
+          667,
+          375
+        ],
+        "expanded": true,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 478.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 317,
+            "width": 199.21875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 587,
+            "y": 262,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 441.5625,
+            "y": 80,
+            "width": 213.4375,
+            "height": 90.5
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      },
+      {
+        "viewport": [
+          667,
+          375
+        ],
+        "expanded": false,
+        "boxes": [
+          {
+            "name": "hud-anchor hud-anchor--brand",
+            "x": 12,
+            "y": 12,
+            "width": 152.84375,
+            "height": 52
+          },
+          {
+            "name": "hud-anchor hud-anchor--status",
+            "x": 478.625,
+            "y": 12,
+            "width": 176.375,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--dock",
+            "x": 12,
+            "y": 317,
+            "width": 199.21875,
+            "height": 46
+          },
+          {
+            "name": "hud-anchor hud-anchor--progress",
+            "x": 587,
+            "y": 262,
+            "width": 68,
+            "height": 101
+          },
+          {
+            "name": "hud-anchor hud-anchor--context",
+            "x": 441.5625,
+            "y": 80,
+            "width": 213.4375,
+            "height": 62
+          }
+        ],
+        "overlaps": [],
+        "labelOverlaps": [],
+        "small": [],
+        "outside": [],
+        "hiddenLabels": 1
+      }
+    ]
+  },
+  "press": {
+    "file": "menu-settings/press-hitareas/results.json",
+    "checks": 36
+  },
+  "controls": {
+    "file": "control-states/final/results.json"
+  },
+  "limits": "Desktop CSS viewport / CDP input. No phone physical touch, OS safe area, or arbitrary map camera/long-content permutation claim."
+}

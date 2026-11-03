@@ -43,6 +43,8 @@
   display: flex;
 }
 .hud-slot { min-width: 0; max-width: 100%; }
+.hud-slot > * { zoom: var(--hud-scale, 1); }
+.hud-frame button { min-width: calc(44px / var(--hud-scale, 1)); min-height: calc(44px / var(--hud-scale, 1)); }
 
 .hud-anchor--brand {
   top: var(--hud-top);

@@ -1,0 +1,140 @@
+{
+  "ok": true,
+  "at": "2026-11-03T09:42:06.178Z",
+  "scopes": [
+    {
+      "scope": "cleanup",
+      "file": "pure-cleanup/results.json",
+      "ok": true,
+      "checks": 24,
+      "frames": 24
+    },
+    {
+      "scope": "menu",
+      "file": "menu-settings/verified-focus-fullscreen-2/results.json",
+      "ok": true,
+      "checks": 114,
+      "frames": null
+    },
+    {
+      "scope": "press",
+      "file": "menu-settings/press-hitareas/results.json",
+      "ok": true,
+      "checks": 36,
+      "frames": null
+    },
+    {
+      "scope": "hudLayouts",
+      "file": "hud-layouts/results.json",
+      "ok": true,
+      "checks": 13,
+      "frames": null
+    },
+    {
+      "scope": "panels",
+      "file": "hud-panels/results.json",
+      "ok": true,
+      "checks": 45,
+      "frames": null
+    },
+    {
+      "scope": "runtime",
+      "file": "app-runtime/results.json",
+      "ok": true,
+      "checks": 37,
+      "frames": null
+    },
+    {
+      "scope": "world",
+      "file": "world-cinematic/final/results.json",
+      "ok": true,
+      "checks": 51,
+      "frames": null
+    },
+    {
+      "scope": "pixels",
+      "file": "world-cinematic/final/region-pixels/repaired/results.json",
+      "ok": true,
+      "checks": 103,
+      "frames": null
+    },
+    {
+      "scope": "calibration",
+      "file": "../../apps/liyun-explorer/src/calibration/qa/final/browser-results.json",
+      "ok": true,
+      "checks": 33,
+      "frames": null
+    },
+    {
+      "scope": "controls",
+      "file": "control-states/final/results.json",
+      "ok": true,
+      "checks": 42,
+      "frames": null
+    },
+    {
+      "scope": "theme",
+      "file": "theme/after/results.json",
+      "ok": true,
+      "checks": null,
+      "frames": 11
+    },
+    {
+      "scope": "pages",
+      "file": "theme/pages/after/results.json",
+      "ok": true,
+      "checks": null,
+      "frames": 53
+    },
+    {
+      "scope": "audio",
+      "file": "audio/results.json",
+      "ok": true,
+      "checks": 19,
+      "frames": null
+    },
+    {
+      "scope": "keyboard",
+      "file": "keyboard-production/results.json",
+      "ok": true,
+      "checks": 17,
+      "frames": null
+    },
+    {
+      "scope": "degrade",
+      "file": "auto-degrade/results.json",
+      "ok": true,
+      "checks": 10,
+      "frames": null
+    },
+    {
+      "scope": "build",
+      "file": "checks.json",
+      "ok": true,
+      "checks": 14,
+      "frames": null
+    },
+    {
+      "scope": "invariants",
+      "file": "invariants.json",
+      "ok": true,
+      "checks": 8,
+      "frames": null
+    },
+    {
+      "scope": "font",
+      "file": "font-coverage.json",
+      "ok": true,
+      "checks": null,
+      "frames": null
+    },
+    {
+      "scope": "poc",
+      "file": "world-cinematic/poc/results.json",
+      "ok": true,
+      "checks": null,
+      "frames": null
+    }
+  ],
+  "method": "Each row is a distinct test scope. Counts overlap and must not be added as an exhaustive whole-product assertion count."
+}

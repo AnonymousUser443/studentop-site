@@ -1,432 +1,69 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { flushSync } from 'react-dom';
-import type { AccountUser, ExplorationState, GameSettings, MapCamera, PanelId, SceneEvent, Viewport } from './types';
-import { LANDMARKS, MAP_HEIGHT, MAP_WIDTH } from './data';
-import { createExploredState, createInitialState, explore, progressOf, restoreState, SAVE_KEY, LEGACY_SAVE_KEY } from './state';
-import { ApiError, fetchMe, fetchProgress, isAuthError, login as loginAccount, logout, readToken, saveProgress, writeToken } from './account';
-import MapScene from './map/MapScene';
-import { cameraAt, clampCamera, initialCamera, uvToScreen } from './map/geometry';
-import Hud from './hud/Hud';
-import Atmosphere from './effects/Atmosphere';
-import { useAudio } from './audio/useAudio';
-import { useCampusLocation } from './location/useCampusLocation';
-import LocationControls from './location/LocationControls';
-import { campusLandmarks, distanceMeters, GOOD_ACCURACY_M, nearestLandmark, headingOnMap } from './location/campus';
+import { Suspense, useRef, useState } from 'react';
+import { DISPLAY_LANDMARKS as LANDMARKS, displayPlayerUV } from './map/displayLandmarks';
+import { progressOf } from './state';
 import { checkInEligibility } from './location/checkIn';
-import ActivityScreen from './activity/ActivityScreen';
-import { Suspense, lazy } from 'react';
-import { useSettings } from './app/stores/useSettings';
-import { useAutoDegrade } from './app/useAutoDegrade';
-import { useHotkeys } from './app/useHotkeys';
-import { useMotionPreferences } from './motion/useMotionPreferences';
+import MapScene from './map/MapScene';
+import Hud from './hud/Hud';
+import LocationControls from './location/LocationControls';
+import { useExplorerController } from './app/useExplorerController';
+import { ActivityScreen, Atmosphere, CalibrationScreen, CinematicScreen, MenuScreen, SettingsScreen } from './app/lazyPages';
 
-/** 全屏页（菜单/设置）的路由；与 PanelId 不同，这两者是整页而非弹窗 */
-type Route = 'map' | 'menu' | 'settings';
-
-// 设置页依赖 Radix，体积不小；菜单页只在打开时用。两者都不进首屏包。
-const MenuScreenLazy = lazy(() => import('./menu/MenuScreen'));
-const SettingsScreenLazy = lazy(() => import('./settings/SettingsScreen'));
-
-const params = new URLSearchParams(location.search);
-const qaMode = import.meta.env.DEV && params.get('qa') === '1';
-const preset = qaMode ? params.get('preset') : null;
-type ActivityReturn = { kind: 'map'; landmarkId: string } | { kind: 'collection' } | null;
-
-/**
- * 启程卡只弹一次：模块级记号 + 跨实例事件。
- * 开发模式的重复挂载、HMR 重挂载都会重新初始化组件状态，
- * 靠这两样东西保证已经点过「进入校园」后不会再弹第二张卡。
- */
-const ENTERED_EVENT = 'liyun:entered';
-let enteredOnce = false;
-
-function load(): ExplorationState {
-  if (preset === 'explored') return createExploredState();
-  if (preset === 'fog') return createInitialState();
-  try { return restoreState(localStorage.getItem(SAVE_KEY) ?? localStorage.getItem(LEGACY_SAVE_KEY), matchMedia('(prefers-reduced-motion: reduce)').matches); }
-  catch { return createInitialState(); }
+function PageLoading() {
+  return <div className="app-page-loading" role="status" aria-live="polite" style={{ position: 'absolute', inset: 0, zIndex: 90, display: 'grid', placeItems: 'center', background: 'var(--paper-warm, #f6ecd8)', color: 'var(--ink-primary, #273a32)' }}>正在翻开旅途手札…</div>;
 }
+
 export default function App() {
-  const { reducedMotion: effectiveReducedMotion } = useMotionPreferences();
   const stage = useRef<HTMLDivElement>(null);
-  const [viewport, setViewport] = useState<Viewport>({width:innerWidth,height:innerHeight});
-  const viewportRef = useRef(viewport);
-  const [camera, setCamera] = useState<MapCamera>(() => initialCamera(viewport));
-  const cameraFrame = useRef<number | undefined>(undefined);
-  const landscapeView = useRef({viewport, camera});
-  const [state, setState] = useState(load);
-  const visual = useRef({uv:state.playerUV,camera});
-  const rememberVisual=useCallback((uv:ExplorationState['playerUV'],view:MapCamera)=>{visual.current={uv,camera:view};},[]);
-  const stateRef = useRef(state); stateRef.current = state;
-  const tokenRef = useRef<string | null>(null);
-  const [account, setAccount] = useState<AccountUser | null>(null);
-  const [loginBusy, setLoginBusy] = useState(false);
-  const [loginError, setLoginError] = useState<string | null>(null);
-  const [entered, setEntered] = useState(() => qaMode || enteredOnce);
-  /** 全屏路由：map / menu / settings。与 activePanel（弹窗）互斥。 */
-  const [route, setRoute] = useState<Route>('map');
-  const [activePanel, setActivePanel] = useState<PanelId>(null);
-  const activePanelRef = useRef(activePanel); activePanelRef.current = activePanel;
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [activityReturn, setActivityReturn] = useState<ActivityReturn>(null);
-  const activityReturnRef = useRef(activityReturn); activityReturnRef.current = activityReturn;
-  const activityOpen = entered && activePanel === 'activities';
-  const activityOpenRef = useRef(activityOpen); activityOpenRef.current = activityOpen;
-  const [event, setEvent] = useState<SceneEvent | null>(null);
-  const eventRef=useRef(event);eventRef.current=event;
-  const [toast, setToast] = useState<string | null>(null);
-  const [hidden, setHidden] = useState(document.hidden);
-  const [isFullscreen, setFullscreen] = useState(Boolean(document.fullscreenElement));
-  const [fixedTime, setFixedTime] = useState<number | undefined>();
-  const [art, setArt] = useState({pine:true,mountain:true});
-  // Live GPS/heading stay in the location controller, never in saved/cloud exploration state.
-  const location = useCampusLocation();
-  const locationRef = useRef(location.state);locationRef.current = location.state;
-  const [followingLocation, setFollowingLocation] = useState(false);
-  const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-  const unlockTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-  const audio = useAudio(state.settings, entered && !qaMode);
-  const portrait = viewport.width <= viewport.height;
-  const worldPaused = hidden || portrait || !entered || activityOpen || Boolean(activePanel) || Boolean(selectedId) || route !== 'map';
-  const selected = LANDMARKS.find(x => x.id === selectedId) ?? null;
-  const message = useCallback((text:string) => { setToast(text); clearTimeout(toastTimer.current); toastTimer.current = setTimeout(() => setToast(null), 3600); }, []);
-  useEffect(() => { if (preset) return; try { localStorage.setItem(SAVE_KEY, JSON.stringify(state)); } catch { /* Private mode keeps a usable in-memory session. */ } }, [state]);
-
-  // 首次从存档装载，此后 store 是运行时设置来源；单向写回存档，避免 UI 更新被旧值覆盖。
-  const qualitySpec = useSettings(s => s.spec);
-  // 自动降级采样：受 settings.autoDegrade 控制，关闭时零开销（见 6.3）
-  useAutoDegrade(hidden || portrait);
-  useLayoutEffect(() => {
-    useSettings.getState().hydrate(stateRef.current.settings, matchMedia('(prefers-reduced-motion: reduce)').matches);
-    setState(current => ({ ...current, settings: useSettings.getState().settings }));
-    return useSettings.subscribe((next, previous) => {
-      if (next.settings !== previous.settings) setState(current => ({ ...current, settings: next.settings }));
-    });
-  }, []);
-  const replaceState = useCallback((next: ExplorationState) => {
-    useSettings.getState().hydrate(next.settings, matchMedia('(prefers-reduced-motion: reduce)').matches);
-    setState({ ...next, settings: useSettings.getState().settings });
-  }, []);
-  const restoredRef = useRef(false);
-  useEffect(() => {
-    if (restoredRef.current || qaMode) return;
-    restoredRef.current = true;
-    const token = readToken();
-    if (!token) return;
-    tokenRef.current = token;
-    void (async () => {
-      try {
-        const { user } = await fetchMe(token);
-        try {
-          const progress = await fetchProgress(token);
-          if (progress.state) replaceState(restoreState(JSON.stringify(progress.state), matchMedia('(prefers-reduced-motion: reduce)').matches));
-          else await saveProgress(token, stateRef.current);
-        } catch { /* 进度拉取失败：保留本机存档，登录态仍有效 */ }
-        setAccount(user);
-      }
-      catch (error) {
-        if (isAuthError(error)) { writeToken(null); tokenRef.current = null; setAccount(null); }
-        // 网络失败：保持游客与本地存档，下次进入再重试。
-      }
-    })();
-  }, []);
-  useEffect(() => {
-    if (!account || qaMode) return;
-    const token = tokenRef.current;
-    if (!token) return;
-    const timer = setTimeout(() => {
-      void saveProgress(token, stateRef.current).catch(error => {
-        if (isAuthError(error)) { writeToken(null); tokenRef.current = null; setAccount(null); }
-      });
-    }, 700);
-    return () => clearTimeout(timer);
-  }, [state, account]);
-  useEffect(() => {
-    const dismiss = () => setEntered(true);
-    window.addEventListener(ENTERED_EVENT, dismiss);
-    return () => window.removeEventListener(ENTERED_EVENT, dismiss);
-  }, []);
-  useEffect(() => {
-    if (!stage.current) return;
-    const observer = new ResizeObserver(([entry]) => {
-      const next = {width:entry.contentRect.width,height:entry.contentRect.height};
-      if (!next.width || !next.height) return;
-      const prev = viewportRef.current;
-      if (Math.abs(prev.width-next.width)<1 && Math.abs(prev.height-next.height)<1) return;
-      if(cameraFrame.current!==undefined)cancelAnimationFrame(cameraFrame.current);
-      if(prev.width>prev.height)landscapeView.current={viewport:prev,camera:visual.current.camera};
-      if(next.width>next.height){
-        const source=landscapeView.current,c=source.camera,old=source.viewport;
-        const u=(old.width/2-c.x)/(MAP_WIDTH*c.scale),v=(old.height/2-c.y)/(MAP_HEIGHT*c.scale);
-        const scale=c.scale*Math.min(next.width,next.height)/Math.min(old.width,old.height);
-        setCamera(clampCamera({scale,x:next.width/2-u*MAP_WIDTH*scale,y:next.height/2-v*MAP_HEIGHT*scale},next));
-      }
-      viewportRef.current=next;setViewport(next);
-    });
-    observer.observe(stage.current);return () => observer.disconnect();
-  }, []);
-  useEffect(() => {
-    const visibility=()=>setHidden(document.hidden), full=()=>setFullscreen(Boolean(document.fullscreenElement));
-    const key=(e:KeyboardEvent)=>{
-      if (e.key !== 'Escape' || e.defaultPrevented || activityOpenRef.current) return;
-      // 路由优先于弹窗：设置 → 菜单 → 地图
-      setRoute(current => {
-        if (current === 'settings') return 'menu';
-        if (current === 'menu') return 'map';
-        return current;
-      });
-      setActivePanel(null);
-      setSelectedId(null);
-    };
-    document.addEventListener('visibilitychange',visibility);document.addEventListener('fullscreenchange',full);document.addEventListener('keydown',key);
-    return()=>{document.removeEventListener('visibilitychange',visibility);document.removeEventListener('fullscreenchange',full);document.removeEventListener('keydown',key);clearTimeout(toastTimer.current);clearTimeout(unlockTimer.current);if(cameraFrame.current!==undefined)cancelAnimationFrame(cameraFrame.current);};
-  }, []);
-  useEffect(() => { if(!event || fixedTime!==undefined) return; const timer=setTimeout(()=>setEvent(null),Math.max(0,event.startedAt+event.duration-performance.now())+100);return()=>clearTimeout(timer); }, [event,fixedTime]);
-  const fullscreen=useCallback(()=>{
-    if(document.fullscreenElement){void document.exitFullscreen().catch(()=>{});return;}
-    const el=stage.current;
-    if(!el?.requestFullscreen){message('当前浏览器不支持全屏，仍可横屏探索');return;}
-    void el.requestFullscreen({navigationUI:'hide'}).then(()=>{
-      const orientation=screen.orientation as ScreenOrientation & {lock?:(mode:string)=>Promise<void>};
-      void orientation?.lock?.('landscape').catch(()=>{});
-    }).catch(()=>message('未能进入全屏，仍可横屏继续探索'));
-  },[message]);
-  const settings=useCallback((patch:Partial<GameSettings>)=>useSettings.getState().update(patch),[]);
-  const enter=()=>{
-    enteredOnce = true;
-    const track=Math.floor(Math.random()*3);
-    settings({track});audio.start(track);setEntered(true);
-    // 同一次加载里若存在第二个 App 实例（开发模式重复挂载等），让它一起关闭启程卡
-    window.dispatchEvent(new Event(ENTERED_EVENT));
-    if(matchMedia('(pointer: coarse)').matches)fullscreen();
-  };
-  const select=useCallback((id:string)=>{if(!LANDMARKS.some(x=>x.id===id))return;setSelectedId(id);setActivePanel(null);},[]);
-  const openActivities = useCallback(() => {
-    if (cameraFrame.current !== undefined) cancelAnimationFrame(cameraFrame.current);
-    setFollowingLocation(false);
-    setSelectedId(null);
-    setActivityReturn(null);
-    setActivePanel('activities');
-  }, []);
-  const showPanel = useCallback((id: PanelId) => {
-    if (id === 'activities') { openActivities(); return; }
-    setSelectedId(null);
-    setActivePanel(id);
-  }, [openActivities]);
-  const close = useCallback(() => {
-    setSelectedId(null);
-    if (activityReturnRef.current?.kind === 'collection') {
-      if (activePanelRef.current === 'collection') {
-        setActivityReturn(null);
-        setActivePanel('activities');
-      } else setActivePanel('collection');
-    } else setActivePanel(null);
-  }, []);
-  const closeActivities = useCallback(() => {
-    setActivePanel(current => current === 'activities' ? null : current);
-  }, []);
-  const visitActivityMap = useCallback((id: string) => {
-    if (!activityOpenRef.current) return;
-    const place = LANDMARKS.find(item => item.id === id);
-    if (!place) throw new Error('这处校园地图暂时无法打开，请返回活动一览重试');
-    if (cameraFrame.current !== undefined) cancelAnimationFrame(cameraFrame.current);
-    setFollowingLocation(false);
-    setSelectedId(null);
-    setActivityReturn({ kind: 'map', landmarkId: id });
-    setActivePanel(null);
-    // This is a camera preview only; real GPS check-in and saved progress are untouched.
-    setCamera(cameraAt(place.uv, viewportRef.current, visual.current.camera.scale));
-  }, []);
-  const viewActivityCollection = useCallback(() => {
-    if (!activityOpenRef.current) return;
-    setSelectedId(null);
-    setActivityReturn({ kind: 'collection' });
-    setActivePanel('collection');
-  }, []);
-  const wasActivityOpen = useRef(false);
-  useEffect(() => {
-    const leaving = wasActivityOpen.current && !activityOpen;
-    wasActivityOpen.current = activityOpen;
-    if (!leaving || !entered || portrait || activePanel || selectedId) return;
-    const frame = requestAnimationFrame(() => {
-      stage.current?.querySelector<HTMLButtonElement>(activityReturn?.kind === 'map' ? '[data-testid="activity-return"]' : '[data-testid="activity-entry"]')?.focus({ preventScroll: true });
-    });
-    return () => cancelAnimationFrame(frame);
-  }, [activityOpen, activityReturn, activePanel, entered, portrait, selectedId]);
-  const wasPortrait = useRef(portrait);
-  useEffect(() => {
-    const resuming = wasPortrait.current && !portrait;
-    wasPortrait.current = portrait;
-    if (!resuming || !activityOpen) return;
-    const frame = requestAnimationFrame(() => stage.current?.querySelector<HTMLButtonElement>('[data-testid="activity-screen"] [role="tab"][aria-selected="true"]')?.focus({ preventScroll: true }));
-    return () => cancelAnimationFrame(frame);
-  }, [portrait, activityOpen]);
-  const moveCamera=useCallback((next:MapCamera)=>{if(cameraFrame.current!==undefined)cancelAnimationFrame(cameraFrame.current);setFollowingLocation(false);setCamera(next);},[]);
-  const discover=useCallback((id:string)=>{
-    const place=LANDMARKS.find(x=>x.id===id),before=stateRef.current;
-    const reducedMotion = before.settings.reducedMotion || matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(!place)return;
-    if(before.discoveredIds.includes(id)){message('这一处风景，已收录于你的旅途');return;}
-    const next = explore(before,id,locationRef.current);
-    if (next === before) { message(checkInEligibility(id,locationRef.current).message);return; }
-    setFollowingLocation(false);
-    const startedAt=performance.now(),from=visual.current.uv;
-    const view=viewportRef.current, origin=visual.current.camera, point=uvToScreen(place.uv,origin);
-    if(cameraFrame.current!==undefined){cancelAnimationFrame(cameraFrame.current);cameraFrame.current=undefined;}
-    setCamera(origin);
-    if(point.x<view.width*.26 || point.x>view.width*.88 || point.y<view.height*.2 || point.y>view.height*.78){
-      const target=cameraAt(place.uv,view,origin.scale), began=performance.now();
-      if(cameraFrame.current!==undefined)cancelAnimationFrame(cameraFrame.current);
-      if(reducedMotion)setCamera(target);
-      else { const step=(now:number)=>{const t=Math.min(1,(now-began)/650),e=t*t*(3-2*t);setCamera({scale:origin.scale+(target.scale-origin.scale)*e,x:origin.x+(target.x-origin.x)*e,y:origin.y+(target.y-origin.y)*e});if(t<1)cameraFrame.current=requestAnimationFrame(step);};cameraFrame.current=requestAnimationFrame(step); }
-    }
-    stateRef.current=next;setState(next);
-    setEvent({id:Date.now(),type:'discover',landmarkId:id,from,to:place.uv,startedAt,duration:reducedMotion?400:3200});
-    setSelectedId(null);
-    if(!qaMode){
-      const cueDuration = reducedMotion ? 400 : 3200;
-      const cueAt = reducedMotion ? 40 : Math.round(cueDuration * 0.39);
-      clearTimeout(unlockTimer.current);
-      unlockTimer.current = setTimeout(() => audio.playUnlock(), cueAt);
-    }
-    message(`打卡成功 · ${place.name}`);
-  },[audio.playUnlock,message]);
-  useEffect(() => {
-    const reading = location.state.reading;
-    if (!followingLocation || location.state.status !== 'tracking' || !reading?.insideImage) return;
-    if (cameraFrame.current !== undefined) cancelAnimationFrame(cameraFrame.current);
-    setCamera(current => cameraAt(reading.uv, viewportRef.current, current.scale));
-  }, [followingLocation, location.state.reading, location.state.status]);
-  const locate = () => {
-    location.start();
-    setFollowingLocation(true);
-    if (location.state.status === 'tracking' && location.state.reading?.insideImage) {
-      setCamera(current => cameraAt(location.state.reading!.uv, viewportRef.current, current.scale));
-    }
-  };
-  const center=useCallback(()=>{
-    if(location.state.status==='tracking' && location.state.reading?.insideImage){
-      setFollowingLocation(true);setCamera(current=>cameraAt(location.state.reading!.uv,viewportRef.current,current.scale));
-    }else moveCamera(initialCamera(viewportRef.current));
-  },[moveCamera,location.state]);
-  const reading = location.state.reading;
-  const freshLocation = location.state.status === 'tracking';
-  const headingAngle = freshLocation && reading?.insideImage && reading.accuracy <= GOOD_ACCURACY_M
-    && location.heading.status === 'active' && location.heading.bearing !== null
-    ? headingOnMap(reading,location.heading.bearing) : null;
-  let distanceLabel = '';
-  if (reading?.insideImage && freshLocation && reading.accuracy <= GOOD_ACCURACY_M) {
-    const target = selected ? campusLandmarks.find(place => place.id === selected.id) : nearestLandmark(reading);
-    if (target && !target.isBeacon) {
-      const distance = distanceMeters(reading, target);
-      distanceLabel = `${selected ? '所选点位' : '最近点位'}：${state.discoveredIds.includes(target.id) ? target.name : '未知地标'} · 直线约 ${distance >= 1000 ? `${(distance / 1000).toFixed(1)} 千米` : `${Math.round(distance)} 米`}`;
-    } else if (target?.isBeacon) distanceLabel = '所选信标为虚构玩法点，不提供真实目的地距离';
-  }
-  const reset=()=>{setState(s=>({...createInitialState(s.settings.reducedMotion),settings:s.settings}));setEvent(null);setSelectedId(null);setActivePanel(null);setActivityReturn(null);center();message('云雾归来，新的旅途已开启');};
-  const handleLogin = useCallback((nickname: string, studentId: string, password: string) => {
-    if (loginBusy) return;
-    setLoginBusy(true);
-    setLoginError(null);
-    void (async () => {
-      try {
-        const result = await loginAccount(nickname, studentId, password);
-        writeToken(result.token);
-        tokenRef.current = result.token;
-        try {
-          const progress = await fetchProgress(result.token);
-          if (progress.state) replaceState(restoreState(JSON.stringify(progress.state), matchMedia('(prefers-reduced-motion: reduce)').matches));
-          else await saveProgress(result.token, stateRef.current);
-        } catch { /* 网络异常时保留本机进度，登录态仍有效 */ }
-        setAccount(result.user);
-      }
-      catch (error) {
-        setLoginError(error instanceof ApiError ? `登录失败：${error.message}` : '无法连接账号服务，请检查网络后重试，或先以游客身份进入');
-      }
-      finally {
-        setLoginBusy(false);
-      }
-    })();
-  }, [loginBusy]);
-  const handleGuest = useCallback(() => { setLoginError(null); enter(); }, [enter]);
-  const handleLogout = useCallback(() => {
-    enteredOnce = false;
-    const token = tokenRef.current;
-    setAccount(null);
-    writeToken(null);
-    tokenRef.current = null;
-    setEntered(false);
-    setActivePanel(null);
-    setActivityReturn(null);
-    setSelectedId(null);
-    setLoginError(null);
-    if (token) void logout(token).catch(() => { /* 离线退出：本地令牌已清，服务端会话到期后自动失效 */ });
-  }, []);
-  const handleLoginPrompt = useCallback(() => { enteredOnce = false; setActivePanel(null); setActivityReturn(null); setEntered(false); setLoginError(null); }, []);
-
-  // 桌面热键：仅在已进入地图、无弹窗/全屏页、非竖屏时生效
-  useHotkeys({
-    onActivities: () => showPanel('activities'),
-    onCollection: () => showPanel('collection'),
-    onCenter: center,
-    onFullscreen: fullscreen,
-    onLocate: locate,
-  }, entered && !portrait && route === 'map' && !activePanel && !selectedId);
-  useEffect(()=>{
-    if(!qaMode)return;
-    const api={getState:()=>stateRef.current,getCamera:()=>visual.current.camera,getEvent:()=>eventRef.current,flushSync,select,discover,setCamera,reset,freeze:(offset?:number)=>setFixedTime(offset===undefined?undefined:(event?.startedAt??0)+offset),showPanel,setPreset:(name:string)=>{replaceState(name==='explored'?createExploredState():createInitialState());setEvent(null);setFixedTime(undefined);setToast(null);clearTimeout(toastTimer.current);setSelectedId(null);setActivePanel(null);setActivityReturn(null);moveCamera(initialCamera(viewportRef.current));},setEntered,setSettings:settings,setQualityPreset:useSettings.getState().setPreset};
-    (window as unknown as {__LIYUN__:typeof api}).__LIYUN__=api;
-  },[camera,discover,select,event,showPanel]);
-  return <div className="game-stage" ref={stage} data-testid="game-stage" data-entered={entered} data-progress={progressOf(state)} data-activity-open={activityOpen}>
-    {/* 纸底 + 左右山水：纸色与地图图片一致，避免贴图分界 */}
+  const { state, entry, map, environment, motion, audio, session, ui, journey, selected, worldPaused, qualitySpec, announcement, cinematic, retained, actions } = useExplorerController(stage);
+  const [art, setArt] = useState({ pine: true, mountain: true });
+  const mapDisabled = worldPaused;
+  const pageOpen = entry.entered && !map.portrait && !cinematic;
+  const progress = progressOf(state);
+  const previewId = ui.activityReturn?.kind === 'map' ? ui.activityReturn.landmarkId : null;
+  return <div className="game-stage" ref={stage} data-testid="game-stage" data-entered={entry.entered} data-progress={progress} data-activity-open={ui.activityOpen} data-route={ui.route} data-world-paused={worldPaused}>
     <div className="scene-paper" aria-hidden="true" />
-    <div className="scene-painting" aria-hidden="true">
-      <img src="/assets/paintings/frost-frame.webp" alt="" decoding="async" />
-      <span className="scene-painting-haze" />
+    <div className="scene-painting" aria-hidden="true"><img src="/assets/paintings/frost-frame.webp" alt="" decoding="async" /><span className="scene-painting-haze" /></div>
+    <div className="map-layer" inert={mapDisabled}>
+      <MapScene camera={map.camera} viewport={map.viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} selectedId={ui.selectedId} playerUV={displayPlayerUV(state.playerUV)}
+        liveLocation={map.reading} locationFresh={map.freshLocation} headingAngle={map.headingAngle} event={journey.event} reducedMotion={motion.reducedMotion}
+        onCameraChange={map.moveCamera} onSelect={ui.select} onVisualPosition={map.rememberVisual} fixedTime={journey.fixedTime} paused={worldPaused} disabled={mapDisabled} />
+      {retained.atmosphere && <Suspense fallback={null}><Atmosphere camera={map.camera} viewport={map.viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds}
+        event={journey.event} settings={{ ...state.settings, reducedMotion: motion.reducedMotion }} spec={qualitySpec} paused={worldPaused} seed={42} fixedTime={journey.fixedTime} /></Suspense>}
     </div>
-    <div className="map-layer" inert={portrait||!entered||Boolean(activePanel)||Boolean(selectedId)||route!=='map'}>
-    <MapScene camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} selectedId={selectedId} playerUV={state.playerUV} liveLocation={reading} locationFresh={freshLocation} headingAngle={headingAngle} event={event} reducedMotion={effectiveReducedMotion} onCameraChange={moveCamera} onSelect={select} onVisualPosition={rememberVisual} fixedTime={fixedTime} paused={worldPaused} disabled={portrait||!entered||Boolean(activePanel)||Boolean(selectedId)||route!=='map'} />
-    <Atmosphere camera={camera} viewport={viewport} landmarks={LANDMARKS} discoveredIds={state.discoveredIds} event={event} settings={{...state.settings,reducedMotion:effectiveReducedMotion}} spec={qualitySpec} paused={worldPaused} seed={42} fixedTime={fixedTime}/>
-    </div>
-    <div className="scene-vignette"/>
-    {art.pine&&<img className="border-art pine" src="/assets/art/pine-left.webp" alt="" onError={()=>setArt(s=>({...s,pine:false}))}/>}
-    {art.mountain&&<img className="border-art mountain" src="/assets/art/mountain-right.webp" alt="" onError={()=>setArt(s=>({...s,mountain:false}))}/>}
-    <div className="hud-layer" inert={portrait||activityOpen||route!=='map'}><Hud
-      progress={progressOf(state)} collected={state.discoveredIds.length} activePanel={activePanel}
-      selected={selected} discovered={Boolean(selected&&state.discoveredIds.includes(selected.id))}
-      checkIn={selected ? checkInEligibility(selected.id,location.state) : null}
-      state={state} landmarks={LANDMARKS} entered={entered} toast={toast} activityReturn={Boolean(activityReturn)}
-      isFullscreen={isFullscreen} audioBlocked={audio.blocked}
-      account={account} loginBusy={loginBusy} loginError={loginError}
-      onPanel={showPanel} onSelect={select} onClose={close}
-      onExplore={()=>selectedId&&discover(selectedId)} onLocate={locate} onSettings={settings}
-      onReset={reset} onFullscreen={fullscreen} onCenter={center} onEnter={enter}
-      onLogin={handleLogin} onGuest={handleGuest} onLogout={handleLogout} onLoginPrompt={handleLoginPrompt}
-      onOpenMenu={() => setRoute('menu')}
-      context={entered && !portrait ? <LocationControls state={location.state} heading={location.heading} following={followingLocation} distance={distanceLabel} onLocate={locate} onStop={()=>{setFollowingLocation(false);location.stop();}}/> : null}
+    <div className="scene-vignette" />
+    {art.pine && <img className="border-art pine" src="/assets/art/pine-left.webp" alt="" onError={() => setArt(current => ({ ...current, pine: false }))} />}
+    {art.mountain && <img className="border-art mountain" src="/assets/art/mountain-right.webp" alt="" onError={() => setArt(current => ({ ...current, mountain: false }))} />}
+    <div className="hud-layer" inert={map.portrait || ui.activityOpen || ui.route !== 'map' || Boolean(cinematic)}><Hud
+      progress={progress} collected={state.discoveredIds.length} activePanel={ui.activePanel} selected={selected} discovered={Boolean(selected && state.discoveredIds.includes(selected.id))}
+      checkIn={selected ? checkInEligibility(selected.id, map.location.state) : null} state={state} landmarks={LANDMARKS} entered={entry.entered}
+      toast={announcement?.text ?? null} announcement={announcement} activityReturn={Boolean(ui.activityReturn)} isFullscreen={environment.isFullscreen} audioBlocked={audio.blocked}
+      account={session.account} loginBusy={session.loginBusy} loginError={session.loginError} onPanel={ui.showPanel} onSelect={ui.select} onClose={ui.close}
+      onExplore={() => ui.selectedId && journey.discover(ui.selectedId)} onLocate={map.locate} onSettings={actions.updateSettings} onReset={() => { void actions.reset().catch(() => undefined); }}
+      onFullscreen={environment.fullscreen} onCenter={map.center} onEnter={actions.enter} onLogin={session.login} onGuest={actions.guest} onLogout={actions.logout}
+      onLoginPrompt={actions.loginPrompt} onOpenMenu={() => ui.setRoute('menu')}
+      context={entry.entered && !map.portrait ? <LocationControls state={map.location.state} heading={map.location.heading} following={map.following} distance={map.distanceLabel} onLocate={map.locate} onStop={map.stopLocation} /> : null}
     /></div>
-    {entered && !portrait && activityReturn?.kind === 'map' && !activePanel && !selectedId && <section className="activity-map-return" aria-label="活动地图预览">
-      <small>{LANDMARKS.find(item => item.id === activityReturn.landmarkId)?.name} · 校园地图预览</small>
-      <button type="button" data-testid="activity-return" onClick={openActivities}><span aria-hidden="true">←</span>返回活动一览</button>
+    {pageOpen && ui.route === 'map' && ui.activityReturn?.kind === 'map' && !ui.activePanel && !ui.selectedId && <section className="activity-map-return" aria-label="活动地图预览">
+      <small>{LANDMARKS.find(item => item.id === previewId)?.name} · 校园地图预览</small>
+      <button type="button" data-testid="activity-return" onClick={ui.openActivities}><span aria-hidden="true">←</span>返回活动一览</button>
     </section>}
-    <div className="activity-layer" inert={portrait}>
-      <ActivityScreen open={activityOpen} reducedMotion={effectiveReducedMotion} quality={state.settings.quality} discoveredIds={state.discoveredIds} onClose={closeActivities} onVisitMap={visitActivityMap} onViewCollection={viewActivityCollection}/>
-    </div>
-    {route === 'menu' && !portrait && <Suspense fallback={null}><MenuScreenLazy
-      account={account} progress={progressOf(state)} collected={state.discoveredIds.length} total={LANDMARKS.length}
-      onClose={() => setRoute('map')}
-      onNavigate={(target) => {
-        if (target === 'settings') { setRoute('settings'); return; }
-        if (target === 'collection') { setRoute('map'); showPanel('collection'); return; }
-        if (target === 'activities') { setRoute('map'); showPanel('activities'); return; }
-        // 'about' 尚未实现，回到地图避免死路
-        setRoute('map');
-      }}
-    /></Suspense>}
-    {route === 'settings' && !portrait && <Suspense fallback={null}><SettingsScreenLazy onClose={() => setRoute('menu')} /></Suspense>}
-    {portrait&&<div className="orientation-gate" role="dialog" aria-modal="true" aria-label="请横屏探索">
-      <svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g className="rotate-line"><rect x="30" y="12" width="40" height="76" rx="7" stroke="currentColor" strokeWidth="2"/><path d="M43 20h14M46 80h8" stroke="currentColor" strokeWidth="2"/></g><path d="M83 32a38 38 0 0 0-56-15m-2-8 1 10 10-2M17 68a38 38 0 0 0 56 15m2 8-1-10-10 2" stroke="currentColor" strokeWidth="2"/></svg>
-      <h1>展开一方天地</h1><p>{matchMedia('(pointer: coarse)').matches?'请手动旋转手机，横屏开启校园之旅':'请将浏览器窗口调整为横向，开启校园之旅'}<br/>你的探索进度会为你保留</p><small>理韵寻踪 · 北理校园探索</small>
+    {retained.activity && <div className="activity-layer" inert={map.portrait || Boolean(cinematic)}><Suspense fallback={ui.activityOpen ? <PageLoading /> : null}>
+      <ActivityScreen open={ui.activityOpen} reducedMotion={motion.reducedMotion} quality={state.settings.quality} discoveredIds={state.discoveredIds}
+        onClose={ui.closeActivities} onVisitMap={ui.visitActivityMap} onViewCollection={ui.viewActivityCollection} />
+    </Suspense></div>}
+    {retained.menu && <Suspense fallback={ui.route === 'menu' ? <PageLoading /> : null}><MenuScreen open={pageOpen && ui.route === 'menu'}
+      account={session.account} progress={progress} collected={state.discoveredIds.length} total={LANDMARKS.length} returnFocus={ui.menuReturnFocus} onClose={() => ui.setRoute('map')} onNavigate={ui.navigateMenu} onLoginPrompt={actions.loginPrompt} /></Suspense>}
+    {retained.settings && <Suspense fallback={ui.route === 'settings' ? <PageLoading /> : null}><SettingsScreen open={pageOpen && ui.route === 'settings'} initialCategory={ui.initialCategory}
+      onClose={() => ui.setRoute('menu')} account={session.account} onLoginPrompt={actions.loginPrompt} onLogout={actions.logout} onResetProgress={actions.reset}
+      onClearLocalSave={actions.clearLocalSave} onExportSave={actions.exportSave} isFullscreen={environment.isFullscreen} onFullscreen={environment.fullscreen} onOpenCalibration={import.meta.env.DEV ? () => ui.setRoute('calibration') : undefined} /></Suspense>}
+    {ui.route === 'calibration' && (CalibrationScreen ? <Suspense fallback={<PageLoading />}><CalibrationScreen onClose={() => ui.setRoute('map')} /></Suspense> :
+      <section data-testid="calibration-local-only" style={{ position: 'absolute', inset: 0, zIndex: 90, display: 'grid', placeContent: 'center', gap: 16, padding: 24, background: 'var(--paper-200)', color: 'var(--ink-900)' }}>
+        <h1>地图标定工具</h1><p>仅本地开发环境开放</p><a href="http://127.0.0.1:5174/?tool=calibration" style={{ display: 'inline-flex', alignItems: 'center', minHeight: 44, padding: '8px 16px', border: '1px solid currentColor', width: 'fit-content' }}>打开标定工具 ↗</a>
+      </section>)}
+    {retained.cinematic && <Suspense fallback={cinematic ? <PageLoading /> : null}><CinematicScreen payload={cinematic} onComplete={actions.completeCinematic} /></Suspense>}
+    {map.portrait && ui.route !== 'calibration' && <div className="orientation-gate" role="dialog" aria-modal="true" aria-label="请横屏探索">
+      <svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g className="rotate-line"><rect x="30" y="12" width="40" height="76" rx="7" stroke="currentColor" strokeWidth="2" /><path d="M43 20h14M46 80h8" stroke="currentColor" strokeWidth="2" /></g><path d="M83 32a38 38 0 0 0-56-15m-2-8 1 10 10-2M17 68a38 38 0 0 0 56 15m2 8-1-10-10 2" stroke="currentColor" strokeWidth="2" /></svg>
+      <h1>展开一方天地</h1><p>{matchMedia('(pointer: coarse)').matches ? '请手动旋转手机，横屏开启校园之旅' : '请将浏览器窗口调整为横向，开启校园之旅'}<br />你的探索进度会为你保留</p><small>理韵寻踪 · 北理校园探索</small>
     </div>}
   </div>;
 }
-

@@ -1,0 +1,2935 @@
+{
+  "scope": "Menu, eight settings categories, dialogs/selects, cinematic and calibration; isolated QA or author tool only",
+  "frames": [
+    {
+      "scope": ".menu-screen",
+      "viewport": [
+        1440,
+        900
+      ],
+      "texts": [
+        {
+          "selector": "span",
+          "text": "理韵寻踪",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 87,
+              "y": 27,
+              "right": 144.609375,
+              "bottom": 44,
+              "width": 57.609375,
+              "height": 17
+            }
+          ],
+          "sampleCount": 135,
+          "minimum": 5.369270304304033,
+          "p05": 5.822665022271216,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "旅途手札",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 537.390625,
+              "y": 27,
+              "right": 595,
+              "bottom": 44,
+              "width": 57.609375,
+              "height": 17
+            }
+          ],
+          "sampleCount": 135,
+          "minimum": 7.033653818887229,
+          "p05": 7.6218852109681485,
+          "pass": true
+        },
+        {
+          "selector": "h1.menu-nickname",
+          "text": "校园旅人",
+          "fontSize": 28.8,
+          "weight": 650,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 3,
+          "rects": [
+            {
+              "x": 189,
+              "y": 62,
+              "right": 304.203125,
+              "bottom": 103,
+              "width": 115.203125,
+              "height": 41
+            }
+          ],
+          "sampleCount": 616,
+          "minimum": 6.736320844005637,
+          "p05": 8.759165256669649,
+          "pass": true
+        },
+        {
+          "selector": "p.menu-signature",
+          "text": "循理韵而行，把校园写进旅途。",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 189,
+              "y": 110.875,
+              "right": 357,
+              "bottom": 127.875,
+              "width": 168,
+              "height": 17
+            }
+          ],
+          "sampleCount": 410,
+          "minimum": 6.132143485588899,
+          "p05": 6.86501234649488,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-account-state",
+          "text": "游客 · 本机存档",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 199,
+              "y": 141.671875,
+              "right": 281.078125,
+              "bottom": 158.671875,
+              "width": 82.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 156,
+          "minimum": 11.177391348532208,
+          "p05": 11.177391348532208,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "寻踪阶",
+          "fontSize": 14,
+          "weight": 400,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 87,
+              "y": 192.671875,
+              "right": 129,
+              "bottom": 212.671875,
+              "width": 42,
+              "height": 20
+            }
+          ],
+          "sampleCount": 95,
+          "minimum": 6.736320844005637,
+          "p05": 6.857598571367228,
+          "pass": true
+        },
+        {
+          "selector": "strong",
+          "text": "04",
+          "fontSize": 25,
+          "weight": 600,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 3,
+          "rects": [
+            {
+              "x": 141,
+              "y": 179.671875,
+              "right": 169.875,
+              "bottom": 215.671875,
+              "width": 28.875,
+              "height": 36
+            }
+          ],
+          "sampleCount": 120,
+          "minimum": 5.9690806993784875,
+          "p05": 6.674821139068638,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-rank-count",
+          "text": "已点亮",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 492.90625,
+              "y": 194.671875,
+              "right": 531.984375,
+              "bottom": 211.671875,
+              "width": 39.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 68,
+          "minimum": 7.330074069592512,
+          "p05": 8.46078134947204,
+          "pass": true
+        },
+        {
+          "selector": "b",
+          "text": "7",
+          "fontSize": 12,
+          "weight": 600,
+          "foreground": [
+            255,
+            253,
+            242,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 531.984375,
+              "y": 194.671875,
+              "right": 538.84375,
+              "bottom": 211.671875,
+              "width": 6.859375,
+              "height": 17
+            }
+          ],
+          "sampleCount": 4,
+          "minimum": 8.90826968445676,
+          "p05": 8.90826968445676,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-rank-count",
+          "text": "/",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 538.84375,
+              "y": 194.671875,
+              "right": 549.21875,
+              "bottom": 211.671875,
+              "width": 10.375,
+              "height": 17
+            }
+          ],
+          "sampleCount": 12,
+          "minimum": 10.295150282711946,
+          "p05": 10.295150282711946,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-rank-count",
+          "text": "8",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 549.21875,
+              "y": 194.671875,
+              "right": 555.921875,
+              "bottom": 211.671875,
+              "width": 6.703125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 4,
+          "minimum": 10.295150282711946,
+          "p05": 10.295150282711946,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-rank-count",
+          "text": "处地标",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 555.921875,
+              "y": 194.671875,
+              "right": 595,
+              "bottom": 211.671875,
+              "width": 39.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 72,
+          "minimum": 10.295150282711946,
+          "p05": 10.417336638650225,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "良乡校区 · 自在寻踪",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 87,
+              "y": 235.671875,
+              "right": 193.078125,
+              "bottom": 252.671875,
+              "width": 106.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 204,
+          "minimum": 8.086159000052401,
+          "p05": 8.188222190218498,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "探索度",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 531.5625,
+              "y": 235.671875,
+              "right": 570.640625,
+              "bottom": 252.671875,
+              "width": 39.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 68,
+          "minimum": 10.443049961555188,
+          "p05": 10.566275215077862,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "37",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 570.640625,
+              "y": 235.671875,
+              "right": 583.921875,
+              "bottom": 252.671875,
+              "width": 13.28125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 16,
+          "minimum": 10.730442492586949,
+          "p05": 10.730442492586949,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "%",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 583.921875,
+              "y": 235.671875,
+              "right": 595,
+              "bottom": 252.671875,
+              "width": 11.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 16,
+          "minimum": 10.866776637549574,
+          "p05": 10.866776637549574,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "登录",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 571,
+              "y": 95,
+              "right": 593,
+              "bottom": 111,
+              "width": 22,
+              "height": 16
+            }
+          ],
+          "sampleCount": 36,
+          "minimum": 10.42256585421151,
+          "p05": 10.42256585421151,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "旅途之中",
+          "fontSize": 13,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 83,
+              "y": 293.671875,
+              "right": 141.25,
+              "bottom": 312.671875,
+              "width": 58.25,
+              "height": 19
+            }
+          ],
+          "sampleCount": 135,
+          "minimum": 7.1929439417972745,
+          "p05": 7.1929439417972745,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-tile-label",
+          "text": "收集图鉴",
+          "fontSize": 13,
+          "weight": 400,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 118.125,
+              "y": 397.078125,
+              "right": 170.125,
+              "bottom": 416.078125,
+              "width": 52,
+              "height": 19
+            }
+          ],
+          "sampleCount": 120,
+          "minimum": 9.321877200660747,
+          "p05": 9.321877200660747,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-tile-label",
+          "text": "活动一览",
+          "fontSize": 13,
+          "weight": 400,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 249.375,
+              "y": 397.078125,
+              "right": 301.375,
+              "bottom": 416.078125,
+              "width": 52,
+              "height": 19
+            }
+          ],
+          "sampleCount": 120,
+          "minimum": 9.321877200660747,
+          "p05": 9.321877200660747,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-tile-label",
+          "text": "设置",
+          "fontSize": 13,
+          "weight": 400,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 393.625,
+              "y": 397.078125,
+              "right": 419.625,
+              "bottom": 416.078125,
+              "width": 26,
+              "height": 19
+            }
+          ],
+          "sampleCount": 55,
+          "minimum": 9.321877200660747,
+          "p05": 9.321877200660747,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-tile-label",
+          "text": "关于",
+          "fontSize": 13,
+          "weight": 400,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 524.875,
+              "y": 397.078125,
+              "right": 550.875,
+              "bottom": 416.078125,
+              "width": 26,
+              "height": 19
+            }
+          ],
+          "sampleCount": 55,
+          "minimum": 9.321877200660747,
+          "p05": 9.321877200660747,
+          "pass": true
+        },
+        {
+          "selector": "p",
+          "text": "眼前一景，足下一程。",
+          "fontSize": 14,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 133,
+              "y": 606.671875,
+              "right": 273,
+              "bottom": 626.671875,
+              "width": 140,
+              "height": 20
+            }
+          ],
+          "sampleCount": 340,
+          "minimum": 7.1929439417972745,
+          "p05": 7.1929439417972745,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "未开放的篇章，会在以后的旅途中相见。",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 133,
+              "y": 633.859375,
+              "right": 349,
+              "bottom": 650.859375,
+              "width": 216,
+              "height": 17
+            }
+          ],
+          "sampleCount": 530,
+          "minimum": 7.1929439417972745,
+          "p05": 7.1929439417972745,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "一纸良乡 · 步履成诗",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 83,
+              "y": 868,
+              "right": 189.078125,
+              "bottom": 885,
+              "width": 106.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 255,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": "kbd",
+          "text": "Esc",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 524.625,
+              "y": 869,
+              "right": 542.921875,
+              "bottom": 885,
+              "width": 18.296875,
+              "height": 16
+            }
+          ],
+          "sampleCount": 28,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "返回校园",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 547.921875,
+              "y": 868,
+              "right": 599,
+              "bottom": 885,
+              "width": 51.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 120,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        }
+      ],
+      "vectors": [],
+      "controls": [
+        {
+          "selector": "button.menu-close",
+          "label": "返回地图",
+          "background": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "border": [
+            211,
+            199,
+            159,
+            255
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              18,
+              51,
+              47,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 9,
+            "y": 14,
+            "width": 44,
+            "height": 44
+          },
+          "pairs": {
+            "fill": 11.158629701043232,
+            "border": 8.076223998118842,
+            "identifier": 11.158629701043232
+          },
+          "ratio": 11.158629701043232,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-rail-button",
+          "label": "收集图鉴",
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              212,
+              184,
+              116,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 7,
+            "y": 353,
+            "width": 48,
+            "height": 48
+          },
+          "pairs": {
+            "fill": 1,
+            "border": 1,
+            "identifier": 7.081617050559873
+          },
+          "ratio": 7.081617050559873,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-rail-button",
+          "label": "活动一览",
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              212,
+              184,
+              116,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 7,
+            "y": 423,
+            "width": 48,
+            "height": 48
+          },
+          "pairs": {
+            "fill": 1,
+            "border": 1,
+            "identifier": 7.081617050559873
+          },
+          "ratio": 7.081617050559873,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-rail-button",
+          "label": "设置",
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              212,
+              184,
+              116,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 7,
+            "y": 493,
+            "width": 48,
+            "height": 48
+          },
+          "pairs": {
+            "fill": 1,
+            "border": 1,
+            "identifier": 7.081617050559873
+          },
+          "ratio": 7.081617050559873,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-rail-button",
+          "label": "关于",
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              212,
+              184,
+              116,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 7,
+            "y": 563,
+            "width": 48,
+            "height": 48
+          },
+          "pairs": {
+            "fill": 1,
+            "border": 1,
+            "identifier": 7.081617050559873
+          },
+          "ratio": 7.081617050559873,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-rail-button.menu-rail-return",
+          "label": "返回校园",
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              212,
+              184,
+              116,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 7,
+            "y": 836,
+            "width": 48,
+            "height": 48
+          },
+          "pairs": {
+            "fill": 1,
+            "border": 1,
+            "identifier": 7.081617050559873
+          },
+          "ratio": 7.081617050559873,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-login",
+          "label": "登录并同步旅途",
+          "background": [
+            12,
+            42,
+            39,
+            66
+          ],
+          "border": [
+            232,
+            206,
+            132,
+            89
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              245,
+              230,
+              189,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 560,
+            "y": 69,
+            "width": 44,
+            "height": 46
+          },
+          "pairs": {
+            "fill": 1.673005238345107,
+            "border": 1.0842627883961193,
+            "identifier": 1.6485186597993386
+          },
+          "ratio": 1.673005238345107,
+          "pass": false
+        },
+        {
+          "selector": "button.menu-tile",
+          "label": "收集图鉴",
+          "background": [
+            33,
+            73,
+            62,
+            255
+          ],
+          "border": [
+            25,
+            60,
+            55,
+            255
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              253,
+              246,
+              226,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 83,
+            "y": 326.671875,
+            "width": 122.25,
+            "height": 112
+          },
+          "pairs": {
+            "fill": 8.234594209165087,
+            "border": 9.861810204416352,
+            "identifier": 9.321877200660747
+          },
+          "ratio": 9.861810204416352,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-tile",
+          "label": "活动一览",
+          "background": [
+            33,
+            73,
+            62,
+            255
+          ],
+          "border": [
+            25,
+            60,
+            55,
+            255
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              253,
+              246,
+              226,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 214.25,
+            "y": 326.671875,
+            "width": 122.25,
+            "height": 112
+          },
+          "pairs": {
+            "fill": 8.234594209165087,
+            "border": 9.861810204416352,
+            "identifier": 9.321877200660747
+          },
+          "ratio": 9.861810204416352,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-tile",
+          "label": "设置",
+          "background": [
+            33,
+            73,
+            62,
+            255
+          ],
+          "border": [
+            25,
+            60,
+            55,
+            255
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              253,
+              246,
+              226,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 345.5,
+            "y": 326.671875,
+            "width": 122.25,
+            "height": 112
+          },
+          "pairs": {
+            "fill": 8.234594209165087,
+            "border": 9.861810204416352,
+            "identifier": 9.321877200660747
+          },
+          "ratio": 9.861810204416352,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-tile",
+          "label": "关于",
+          "background": [
+            33,
+            73,
+            62,
+            255
+          ],
+          "border": [
+            25,
+            60,
+            55,
+            255
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              253,
+              246,
+              226,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 476.75,
+            "y": 326.671875,
+            "width": 122.25,
+            "height": 112
+          },
+          "pairs": {
+            "fill": 8.234594209165087,
+            "border": 9.861810204416352,
+            "identifier": 9.321877200660747
+          },
+          "ratio": 9.861810204416352,
+          "pass": true
+        }
+      ],
+      "boundaries": [],
+      "maskCount": 22,
+      "name": "menu-1440"
+    },
+    {
+      "scope": ".menu-screen",
+      "viewport": [
+        1440,
+        900
+      ],
+      "texts": [
+        {
+          "selector": "span",
+          "text": "理韵寻踪",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 87,
+              "y": 27,
+              "right": 144.609375,
+              "bottom": 44,
+              "width": 57.609375,
+              "height": 17
+            }
+          ],
+          "sampleCount": 135,
+          "minimum": 5.369270304304033,
+          "p05": 5.822665022271216,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "旅途手札",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 537.390625,
+              "y": 27,
+              "right": 595,
+              "bottom": 44,
+              "width": 57.609375,
+              "height": 17
+            }
+          ],
+          "sampleCount": 135,
+          "minimum": 7.033653818887229,
+          "p05": 7.6218852109681485,
+          "pass": true
+        },
+        {
+          "selector": "h1.menu-nickname",
+          "text": "校园旅人",
+          "fontSize": 28.8,
+          "weight": 650,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 3,
+          "rects": [
+            {
+              "x": 189,
+              "y": 62,
+              "right": 304.203125,
+              "bottom": 103,
+              "width": 115.203125,
+              "height": 41
+            }
+          ],
+          "sampleCount": 616,
+          "minimum": 6.736320844005637,
+          "p05": 8.759165256669649,
+          "pass": true
+        },
+        {
+          "selector": "p.menu-signature",
+          "text": "循理韵而行，把校园写进旅途。",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 189,
+              "y": 110.875,
+              "right": 357,
+              "bottom": 127.875,
+              "width": 168,
+              "height": 17
+            }
+          ],
+          "sampleCount": 410,
+          "minimum": 6.132143485588899,
+          "p05": 6.86501234649488,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-account-state",
+          "text": "游客 · 本机存档",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 199,
+              "y": 141.671875,
+              "right": 281.078125,
+              "bottom": 158.671875,
+              "width": 82.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 156,
+          "minimum": 11.177391348532208,
+          "p05": 11.177391348532208,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "寻踪阶",
+          "fontSize": 14,
+          "weight": 400,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 87,
+              "y": 192.671875,
+              "right": 129,
+              "bottom": 212.671875,
+              "width": 42,
+              "height": 20
+            }
+          ],
+          "sampleCount": 95,
+          "minimum": 6.736320844005637,
+          "p05": 6.857598571367228,
+          "pass": true
+        },
+        {
+          "selector": "strong",
+          "text": "04",
+          "fontSize": 25,
+          "weight": 600,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 3,
+          "rects": [
+            {
+              "x": 141,
+              "y": 179.671875,
+              "right": 169.875,
+              "bottom": 215.671875,
+              "width": 28.875,
+              "height": 36
+            }
+          ],
+          "sampleCount": 120,
+          "minimum": 5.9690806993784875,
+          "p05": 6.674821139068638,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-rank-count",
+          "text": "已点亮",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 492.90625,
+              "y": 194.671875,
+              "right": 531.984375,
+              "bottom": 211.671875,
+              "width": 39.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 68,
+          "minimum": 7.330074069592512,
+          "p05": 8.46078134947204,
+          "pass": true
+        },
+        {
+          "selector": "b",
+          "text": "7",
+          "fontSize": 12,
+          "weight": 600,
+          "foreground": [
+            255,
+            253,
+            242,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 531.984375,
+              "y": 194.671875,
+              "right": 538.84375,
+              "bottom": 211.671875,
+              "width": 6.859375,
+              "height": 17
+            }
+          ],
+          "sampleCount": 4,
+          "minimum": 8.90826968445676,
+          "p05": 8.90826968445676,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-rank-count",
+          "text": "/",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 538.84375,
+              "y": 194.671875,
+              "right": 549.21875,
+              "bottom": 211.671875,
+              "width": 10.375,
+              "height": 17
+            }
+          ],
+          "sampleCount": 12,
+          "minimum": 10.295150282711946,
+          "p05": 10.295150282711946,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-rank-count",
+          "text": "8",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 549.21875,
+              "y": 194.671875,
+              "right": 555.921875,
+              "bottom": 211.671875,
+              "width": 6.703125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 4,
+          "minimum": 10.295150282711946,
+          "p05": 10.295150282711946,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-rank-count",
+          "text": "处地标",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 555.921875,
+              "y": 194.671875,
+              "right": 595,
+              "bottom": 211.671875,
+              "width": 39.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 72,
+          "minimum": 10.295150282711946,
+          "p05": 10.417336638650225,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "良乡校区 · 自在寻踪",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 87,
+              "y": 235.671875,
+              "right": 193.078125,
+              "bottom": 252.671875,
+              "width": 106.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 204,
+          "minimum": 8.086159000052401,
+          "p05": 8.188222190218498,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "探索度",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 531.5625,
+              "y": 235.671875,
+              "right": 570.640625,
+              "bottom": 252.671875,
+              "width": 39.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 68,
+          "minimum": 10.443049961555188,
+          "p05": 10.566275215077862,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "37",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 570.640625,
+              "y": 235.671875,
+              "right": 583.921875,
+              "bottom": 252.671875,
+              "width": 13.28125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 16,
+          "minimum": 10.730442492586949,
+          "p05": 10.730442492586949,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "%",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 583.921875,
+              "y": 235.671875,
+              "right": 595,
+              "bottom": 252.671875,
+              "width": 11.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 16,
+          "minimum": 10.866776637549574,
+          "p05": 10.866776637549574,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "登录",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 571,
+              "y": 95,
+              "right": 593,
+              "bottom": 111,
+              "width": 22,
+              "height": 16
+            }
+          ],
+          "sampleCount": 36,
+          "minimum": 10.42256585421151,
+          "p05": 10.42256585421151,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "旅途之中",
+          "fontSize": 13,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 83,
+              "y": 293.671875,
+              "right": 141.25,
+              "bottom": 312.671875,
+              "width": 58.25,
+              "height": 19
+            }
+          ],
+          "sampleCount": 135,
+          "minimum": 7.1929439417972745,
+          "p05": 7.1929439417972745,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-tile-label",
+          "text": "收集图鉴",
+          "fontSize": 13,
+          "weight": 400,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 118.125,
+              "y": 397.078125,
+              "right": 170.125,
+              "bottom": 416.078125,
+              "width": 52,
+              "height": 19
+            }
+          ],
+          "sampleCount": 120,
+          "minimum": 9.321877200660747,
+          "p05": 9.321877200660747,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-tile-label",
+          "text": "活动一览",
+          "fontSize": 13,
+          "weight": 400,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 249.375,
+              "y": 397.078125,
+              "right": 301.375,
+              "bottom": 416.078125,
+              "width": 52,
+              "height": 19
+            }
+          ],
+          "sampleCount": 120,
+          "minimum": 9.321877200660747,
+          "p05": 9.321877200660747,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-tile-label",
+          "text": "设置",
+          "fontSize": 13,
+          "weight": 400,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 393.625,
+              "y": 397.078125,
+              "right": 419.625,
+              "bottom": 416.078125,
+              "width": 26,
+              "height": 19
+            }
+          ],
+          "sampleCount": 55,
+          "minimum": 9.321877200660747,
+          "p05": 9.321877200660747,
+          "pass": true
+        },
+        {
+          "selector": "span.menu-tile-label",
+          "text": "关于",
+          "fontSize": 13,
+          "weight": 400,
+          "foreground": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 524.875,
+              "y": 397.078125,
+              "right": 550.875,
+              "bottom": 416.078125,
+              "width": 26,
+              "height": 19
+            }
+          ],
+          "sampleCount": 55,
+          "minimum": 9.321877200660747,
+          "p05": 9.321877200660747,
+          "pass": true
+        },
+        {
+          "selector": "p",
+          "text": "眼前一景，足下一程。",
+          "fontSize": 14,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 133,
+              "y": 606.671875,
+              "right": 273,
+              "bottom": 626.671875,
+              "width": 140,
+              "height": 20
+            }
+          ],
+          "sampleCount": 340,
+          "minimum": 7.1929439417972745,
+          "p05": 7.1929439417972745,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "未开放的篇章，会在以后的旅途中相见。",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 133,
+              "y": 633.859375,
+              "right": 349,
+              "bottom": 650.859375,
+              "width": 216,
+              "height": 17
+            }
+          ],
+          "sampleCount": 530,
+          "minimum": 7.1929439417972745,
+          "p05": 7.1929439417972745,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "一纸良乡 · 步履成诗",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 83,
+              "y": 868,
+              "right": 189.078125,
+              "bottom": 885,
+              "width": 106.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 255,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": "kbd",
+          "text": "Esc",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 524.625,
+              "y": 869,
+              "right": 542.921875,
+              "bottom": 885,
+              "width": 18.296875,
+              "height": 16
+            }
+          ],
+          "sampleCount": 28,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": "span",
+          "text": "返回校园",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 547.921875,
+              "y": 868,
+              "right": 599,
+              "bottom": 885,
+              "width": 51.078125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 120,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        }
+      ],
+      "vectors": [],
+      "controls": [
+        {
+          "selector": "button.menu-close",
+          "label": "返回地图",
+          "background": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "border": [
+            211,
+            199,
+            159,
+            255
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              18,
+              51,
+              47,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 9,
+            "y": 14,
+            "width": 44,
+            "height": 44
+          },
+          "pairs": {
+            "fill": 11.158629701043232,
+            "border": 8.076223998118842,
+            "identifier": 11.158629701043232
+          },
+          "ratio": 11.158629701043232,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-rail-button",
+          "label": "收集图鉴",
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              212,
+              184,
+              116,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 7,
+            "y": 353,
+            "width": 48,
+            "height": 48
+          },
+          "pairs": {
+            "fill": 1,
+            "border": 1,
+            "identifier": 7.081617050559873
+          },
+          "ratio": 7.081617050559873,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-rail-button",
+          "label": "活动一览",
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              212,
+              184,
+              116,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 7,
+            "y": 423,
+            "width": 48,
+            "height": 48
+          },
+          "pairs": {
+            "fill": 1,
+            "border": 1,
+            "identifier": 7.081617050559873
+          },
+          "ratio": 7.081617050559873,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-rail-button",
+          "label": "设置",
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              212,
+              184,
+              116,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 7,
+            "y": 493,
+            "width": 48,
+            "height": 48
+          },
+          "pairs": {
+            "fill": 1,
+            "border": 1,
+            "identifier": 7.081617050559873
+          },
+          "ratio": 7.081617050559873,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-rail-button",
+          "label": "关于",
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              212,
+              184,
+              116,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 7,
+            "y": 563,
+            "width": 48,
+            "height": 48
+          },
+          "pairs": {
+            "fill": 1,
+            "border": 1,
+            "identifier": 7.081617050559873
+          },
+          "ratio": 7.081617050559873,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-rail-button.menu-rail-return",
+          "label": "返回校园",
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              212,
+              184,
+              116,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 7,
+            "y": 836,
+            "width": 48,
+            "height": 48
+          },
+          "pairs": {
+            "fill": 1,
+            "border": 1,
+            "identifier": 7.081617050559873
+          },
+          "ratio": 7.081617050559873,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-login",
+          "label": "登录并同步旅途",
+          "background": [
+            12,
+            42,
+            39,
+            66
+          ],
+          "border": [
+            232,
+            206,
+            132,
+            89
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              245,
+              230,
+              189,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 560,
+            "y": 69,
+            "width": 44,
+            "height": 46
+          },
+          "pairs": {
+            "fill": 1.673005238345107,
+            "border": 1.0842627883961193,
+            "identifier": 1.6485186597993386
+          },
+          "ratio": 1.673005238345107,
+          "pass": false
+        },
+        {
+          "selector": "button.menu-tile",
+          "label": "收集图鉴",
+          "background": [
+            33,
+            73,
+            62,
+            255
+          ],
+          "border": [
+            25,
+            60,
+            55,
+            255
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              253,
+              246,
+              226,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 83,
+            "y": 326.671875,
+            "width": 122.25,
+            "height": 112
+          },
+          "pairs": {
+            "fill": 8.234594209165087,
+            "border": 9.861810204416352,
+            "identifier": 9.321877200660747
+          },
+          "ratio": 9.861810204416352,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-tile",
+          "label": "活动一览",
+          "background": [
+            33,
+            73,
+            62,
+            255
+          ],
+          "border": [
+            25,
+            60,
+            55,
+            255
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              253,
+              246,
+              226,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 214.25,
+            "y": 326.671875,
+            "width": 122.25,
+            "height": 112
+          },
+          "pairs": {
+            "fill": 8.234594209165087,
+            "border": 9.861810204416352,
+            "identifier": 9.321877200660747
+          },
+          "ratio": 9.861810204416352,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-tile",
+          "label": "设置",
+          "background": [
+            33,
+            73,
+            62,
+            255
+          ],
+          "border": [
+            25,
+            60,
+            55,
+            255
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              253,
+              246,
+              226,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 345.5,
+            "y": 326.671875,
+            "width": 122.25,
+            "height": 112
+          },
+          "pairs": {
+            "fill": 8.234594209165087,
+            "border": 9.861810204416352,
+            "identifier": 9.321877200660747
+          },
+          "ratio": 9.861810204416352,
+          "pass": true
+        },
+        {
+          "selector": "button.menu-tile",
+          "label": "关于",
+          "background": [
+            33,
+            73,
+            62,
+            255
+          ],
+          "border": [
+            25,
+            60,
+            55,
+            255
+          ],
+          "borderWidth": 1,
+          "borderStyle": "solid",
+          "color": [
+            253,
+            246,
+            226,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "pseudo": {
+            "background": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "border": [
+              253,
+              246,
+              226,
+              255
+            ],
+            "borderWidth": 0,
+            "content": "none"
+          },
+          "role": null,
+          "tag": "BUTTON",
+          "type": "button",
+          "hasIcon": true,
+          "rect": {
+            "x": 476.75,
+            "y": 326.671875,
+            "width": 122.25,
+            "height": 112
+          },
+          "pairs": {
+            "fill": 8.234594209165087,
+            "border": 9.861810204416352,
+            "identifier": 9.321877200660747
+          },
+          "ratio": 9.861810204416352,
+          "pass": true
+        }
+      ],
+      "boundaries": [],
+      "maskCount": 22,
+      "name": "menu-scroll-1440"
+    }
+  ],
+  "errors": [],
+  "error": "Error: EVAL: TypeError: DOM.createRoot is not a function\n    at <anonymous>:1:421\n    at Object.evaluate (D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\lib.js:179:42)\n    at async fixture (D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\ui-implementation-20261103\\theme\\pages.cjs:76:5)\n    at async D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\ui-implementation-20261103\\theme\\pages.cjs:94:5"
+}

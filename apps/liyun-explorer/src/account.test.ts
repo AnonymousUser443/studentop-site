@@ -2,10 +2,11 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import { ApiError, fetchMe, fetchProgress, isAuthError, login, saveProgress, sanitizeCloudState } from './account';
 import { LANDMARKS, START_UV } from './data';
 import type { ExplorationState } from './types';
+import { DEFAULT_SETTINGS } from '../shared/game-settings.mjs';
 const PASSWORD = 'synthetic-passphrase-24';
 const okJson = (data: unknown) => new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
 afterEach(() => vi.unstubAllGlobals());
-const state: ExplorationState = { version: 3, discoveredIds: ['wencui'], unlockedRegionIds: ['wencui'], playerUV: { ...START_UV }, settings: { music: true, volume: 0.35, quality: 'high', reducedMotion: false, track: 0, qualityPreset: 'high', qualityOverrides: {}, autoDegrade: true, degradedFrom: null, uiSound: true, reduceFlash: false, hudScale: 1 } };
+const state: ExplorationState = { version: 3, discoveredIds: ['wencui'], unlockedRegionIds: ['wencui'], playerUV: { ...START_UV }, settings: { ...DEFAULT_SETTINGS } };
 
 describe('账号客户端安全边界', () => {
   it('v2 云存档的低画质升级为 v3 预设，保留真实打卡', () => {
@@ -56,10 +57,10 @@ describe('账号客户端安全边界', () => {
     expect(Object.keys(saved).sort()).toEqual(['discoveredIds', 'playerUV', 'settings', 'unlockedRegionIds', 'version']);
     // v3 白名单：新增设置字段必须在这里显式出现，否则云端往返会静默丢字段。
     expect(Object.keys(saved.settings).sort()).toEqual([
-      'autoDegrade', 'degradedFrom', 'hudScale', 'music', 'quality', 'qualityOverrides',
-      'qualityPreset', 'reduceFlash', 'reducedMotion', 'track', 'uiSound', 'volume',
+      'autoDegrade', 'baseQualityPreset', 'degradedFrom', 'doubleZoom', 'dragSensitivity', 'hudScale', 'messageDuration', 'music', 'quality', 'qualityOverrides',
+      'qualityPreset', 'redDot', 'reduceFlash', 'reducedMotion', 'showCinematic', 'track', 'uiSound', 'volume', 'zoomLimit',
     ]);
-    expect(saved.discoveredIds).toEqual(['wencui']); expect(saved.unlockedRegionIds).toEqual(['wencui']);
+    expect(saved.discoveredIds).toEqual(['wencui']); expect(saved.unlockedRegionIds).toEqual([]);
     expect(saved.playerUV).toEqual(START_UV);
     expect(polluted.playerUV.u).toBe(0.123456); // Don't mutate the app's in-memory state.
   });
@@ -68,6 +69,17 @@ describe('账号客户端安全边界', () => {
     expect(sanitizeCloudState({ ...state, discoveredIds: ['tower'], playerUV: tower.uv }).playerUV).toEqual(tower.uv);
     expect(sanitizeCloudState({ ...state, discoveredIds: [], playerUV: tower.uv }).playerUV).toEqual(START_UV);
     expect(sanitizeCloudState({ ...state, playerUV: { u: 0.5, v: 0.5 } }).playerUV).toEqual(START_UV);
+  });
+  it('云端独立保留区域和新设置，并兼容缺区域字段的旧v3', () => {
+    const settings = { ...state.settings, baseQualityPreset: 'ultra' as const, qualityPreset: 'custom' as const, qualityOverrides: { leafCount: 9 }, dragSensitivity: 1.7, zoomLimit: 3.5, doubleZoom: 1.8 as const, messageDuration: 5 as const, showCinematic: false, redDot: false };
+    const saved = sanitizeCloudState({ ...state, settings, unlockedRegionIds: ['park', 'beihu', 'park', 'unknown'] });
+    expect(saved.unlockedRegionIds).toEqual(['park', 'beihu']);
+    expect(saved.discoveredIds).toEqual(['wencui']);
+    expect(saved.settings).toEqual(settings);
+    expect(sanitizeCloudState(saved)).toEqual(saved);
+    const { unlockedRegionIds: _regions, ...oldV3 } = state;
+    expect(sanitizeCloudState(oldV3).unlockedRegionIds).toEqual(['wencui']);
+    expect(sanitizeCloudState({ ...state, unlockedRegionIds: [] }).unlockedRegionIds).toEqual([]);
   });
   it('v1仅迁移设置不升级演示打卡，云返回同样剔除未知敏感字段', async () => {
     const old = { ...state, version: 1, rawGPS: 'private-gps-marker', settings: { ...state.settings, music: false, secret: 'private-secret-marker' } };

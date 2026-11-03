@@ -16,6 +16,7 @@ export default function Providers({ children }: { children: ReactNode }) {
   const { systemReduced, reducedMotion, reduceFlash, ambient } = useMotionPreferences();
   const hudScale = useSettings((s) => s.settings.hudScale);
   const blur = useSettings((s) => s.spec.backdropBlur);
+  const shadowStyle = useSettings((s) => s.spec.dropShadows);
   const refreshQuality = useSettings((s) => s.refreshQuality);
 
   useEffect(() => {
@@ -35,11 +36,14 @@ export default function Providers({ children }: { children: ReactNode }) {
     root.dataset.reduceFlash = reduceFlash ? 'true' : 'false';
     root.style.setProperty('--hud-scale', String(hudScale));
     root.style.setProperty('--q-blur', `${blur}px`);
+    root.style.setProperty('--q-shadow', shadowStyle === 'flat'
+      ? '0 1px 2px color-mix(in srgb, var(--jade-950) 20%, transparent)'
+      : shadowStyle === 'rich' ? 'var(--sh-soft), var(--sh-deep)' : 'var(--sh-soft)');
     const visibility = () => { root.dataset.pageVisible = document.hidden ? 'false' : 'true'; };
     visibility();
     document.addEventListener('visibilitychange', visibility);
     return () => document.removeEventListener('visibilitychange', visibility);
-  }, [ambient, reducedMotion, reduceFlash, hudScale, blur]);
+  }, [ambient, reducedMotion, reduceFlash, hudScale, blur, shadowStyle]);
 
   return (
     <MotionConfig reducedMotion={reducedMotion ? 'always' : 'never'}>

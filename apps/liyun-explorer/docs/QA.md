@@ -1,6 +1,38 @@
-# 迁移后的验收入口与历史记录
+# 验收入口与分阶段证据
 
-> **证据状态：旧应用 qa 目录未迁入。** 下方保留迁移前的数字和描述供追溯，不是当前工作区的通过声明；引用的截图、构建日志和 JSON 均不可在此仓库复核。旧服务端口、会话 id 和性能值不得作为本轮证据。
+## 2026-11-03 当前实施
+
+本轮开发与本地自动化验收已收口，范围以[README](../README.md)、[SCENE](SCENE.md)、[HUD交接](hud-handoff.md)、[TODO](../TODO.md)与[总证据](../../../qa/ui-implementation-20261103/README.md)为准。菜单已按最新要求改为左抽屉，右侧世界可见。下列证据各有范围，数量有重叠，不能简单相加为全站结论：
+
+| 范围 | 已记录结果 | 证据 |
+| --- | --- | --- |
+| P0纯清场 | 24对同一App/相机/冻结帧恢复与移除旧死CSS，PNG字节完全一致；不是整版换肤零差异 | [结果](../../../qa/ui-implementation-20261103/pure-cleanup/results.json) |
+| 菜单 / 设置 | 114 / 114；六档、八分类、44px、Tab、Select 首 Esc、确认取消与焦点、原入口归还、减少动态、全屏 Portal | [说明](../../../qa/ui-implementation-20261103/menu-settings/README.md)、[最终 JSON](../../../qa/ui-implementation-20261103/menu-settings/verified-focus-fullscreen-2/results.json) |
+| HUD 正文懒载 | 45 / 45；图鉴 / 地标六档、testid、焦点循环 / 归还、inert 退场、快速开合、正文独立请求、入口表单 | [说明](../../../qa/ui-implementation-20261103/hud-panels/README.md)、[JSON](../../../qa/ui-implementation-20261103/hud-panels/results.json) |
+| 主应用存档 / 会话 | 37 / 37；临时 SQLite / 合成账号、云读取失败门槛、串行重置、清本机、有效内存导出、隔离存储、演出接线 | [说明](../../../qa/ui-implementation-20261103/app-runtime/README.md)、[JSON](../../../qa/ui-implementation-20261103/app-runtime/results.json) |
+| 团队标定 UI | 33通过；候选编辑、几何/来源约束、导入导出及隔离 | [作者指南](../src/calibration/AUTHORING.md)、[最终JSON](../src/calibration/qa/final/browser-results.json) |
+| 世界 / Cinematic | 51通过；三档实际消费者、5.2/2.4/1s、队列、普通/系统减少动态与六档 | [说明](../../../qa/ui-implementation-20261103/world-cinematic/README.md)、[最终JSON](../../../qa/ui-implementation-20261103/world-cinematic/final/results.json) |
+| 分区有限像素 | 修复后103通过；8区24内部点、13共享边、5外边、相邻解锁/重锁、实际pan/wheel对齐、SVG/ImageGen对照 | [范围](../../../qa/ui-implementation-20261103/world-cinematic/final/region-pixels/README.md) |
+| 主题 / 对比度 | 旧11帧149文字/70边界，新53帧1380文字/84halo/645控件通过；源码hex51、所列帧computed纯色联合77 | [方法与阈值](../../../qa/ui-implementation-20261103/theme/README.md) |
+| 控件反馈 / 安全区 | 20控件，42唯一断言通过；8组合26目标及8次按住最短边44px | [说明](../../../qa/ui-implementation-20261103/control-states/README.md) |
+| 当前HUD与标签 | 六档定位卡展开/收拢13项通过，锚点及可见标签无交叠，隐藏标签≤2 | [JSON](../../../qa/ui-implementation-20261103/hud-layouts/results.json) |
+| 生产纯键盘 / 音频 | 键盘17、音频19通过；含本地工具提示/隔离和44px链接，三曲解码、多音解锁和门控；GPS显式模拟 | [键盘](../../../qa/ui-implementation-20261103/keyboard-production/results.json)、[音频](../../../qa/ui-implementation-20261103/audio/results.json) |
+| 自动降级 | 真实5s/30s低帧注入10通过，暂停/隐藏清零，关闭零采样，双降只播报一次，恢复原档 | [JSON](../../../qa/ui-implementation-20261103/auto-degrade/results.json) |
+| 资产 / 字体 / 构建 | 9图637,808B；946字符0缺字；最终14门禁通过 | [ASSETS](ASSETS.md)、[checks](../../../qa/ui-implementation-20261103/checks.json) |
+
+另有[按下态命中区 36 / 36 项](../../../qa/ui-implementation-20261103/menu-settings/press-hitareas/results.json)：六档中按住菜单关闭 / 竖栏、设置关闭 / 默认 / 返回与确认取消，按钮自身不缩小，实际 DOM rect 均不小于 44px。
+
+最终单测19文件153项、服务端存储10项/HTTP9项通过。dist20,908,923B（19.9403028MiB），首屏静态JS图gzip214,068B；精确方法见[不变量](../../../qa/ui-implementation-20261103/invariants.json)。浏览器使用临时独立Edge，输入为CDP；模拟GPS不证明现场定位、物理触摸/罗盘或扬声器听音，对比度也仅证明报告所列帧和采样范围。用户已明确安排真机部分稍后由队员执行，[待填表](../../../qa/ui-implementation-20261103/FIELD-ACCEPTANCE.md)保持未执行。主应用HTTP503与缺图拦截均为精确记录的故障注入，不忽略其他错误。
+
+演出正常 5.2 秒 / reduced 1 秒 / quick 2.4 秒是主视觉时间轴；结束后保留故事终态，等待手动继续，不按总页面停留时间误判动画。推荐边界 / 分区 / 打卡候选未现场确认，校准工具与 `--apply` 审查流程见[作者指南](../src/calibration/AUTHORING.md)。
+
+默认开发 / 预览端口仍为回环 5174 / 4174，本轮独立集成 QA 可复用 5176。所有开发 `qa=1` 模式均隔离普通探索 / 会话键和真实账号；生产不提供 DEVQA。新 `getUi / getRegions / unlockRegion / previewCinematic` 见 [README](../README.md)与 [SCENE](SCENE.md)。
+
+---
+
+## 历史迁移记录入口
+
+> **历史证据状态：迁移前旧应用 qa 目录未迁入。** 下方旧数字和描述只供追溯，不是 2026-11-03 的通过声明；不可复核的旧截图 / JSON 已明确标识。2026-11-02 的 HUD 记录另见 [HUD 动效验收](../../../qa/hud-motion-20261102/QA.md)和[后续审查](../../../qa/ui-refactor-audit-20261102/README.md)。
 
 ## 当前已记录的基线
 
@@ -18,7 +50,7 @@ npm --prefix apps/liyun-explorer run build
 node apps/liyun-explorer/scripts/asset-manifest.mjs --check
 ~~~
 
-开发服务固定回环 5174；构建预览固定回环 4174。浏览器验收必须先加载 opencli，由负责人统一启动和执行，记录实际命令、异常、断言、视口、版本和截图。新证据放入根 qa/upgrade-20261027，不与下列历史结果混用。固定预设仍使用 qa=1&preset=fog 或 explored；无 preset 的普通存档验证要隔离浏览器会话。脚本与严格失败约定见[根 QA 说明](../../../qa/README.md)。
+开发服务固定回环 5174；构建预览固定回环 4174。浏览器验收先按 OpenCLI 规范尝试，桥接不可用时记录原因并使用已授权的仓库独占临时浏览器路径。记录真实命令、断言、视口、输入方式与截图；2026-11-03 新证据放入本轮独立目录。普通存档验证须另用临时 profile，不能借开发 QA 模式触碰真实用户数据。
 
 ---
 

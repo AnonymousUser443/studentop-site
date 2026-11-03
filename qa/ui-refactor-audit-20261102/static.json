@@ -1,0 +1,253 @@
+{
+  "date": "2026-11-02",
+  "timezone": "Asia/Shanghai",
+  "head": "14a087b7d75562e5392767ee55d6a4c1f0875e0d",
+  "previous": "e15901dfd27833151bc0944bc4b005e7d19ab90d",
+  "appLines": 432,
+  "stores": [
+    "src\\app\\stores\\useSettings.ts"
+  ],
+  "css": {
+    "scope": "src/**/*.css; static literals, not computed runtime colors",
+    "files": 15,
+    "lines": 3230,
+    "uniqueHex": 485,
+    "previousUniqueHex": 609,
+    "important": 33,
+    "modules": 0
+  },
+  "testIds": {
+    "scope": "static JSX literals/templates only; not full DOM/state coverage",
+    "previous": [
+      "activity-close",
+      "activity-cta",
+      "activity-entry",
+      "activity-map-preview",
+      "activity-notice",
+      "activity-return",
+      "activity-screen",
+      "activity-tab-${item.id}",
+      "check-in-button",
+      "check-in-status",
+      "game-stage",
+      "heading-sector",
+      "map-scene",
+      "poi-${landmark.id}",
+      "real-location-marker"
+    ],
+    "current": [
+      "activity-close",
+      "activity-cta",
+      "activity-entry",
+      "activity-map-preview",
+      "activity-notice",
+      "activity-return",
+      "activity-screen",
+      "activity-tab-${item.id}",
+      "check-in-button",
+      "check-in-status",
+      "game-stage",
+      "heading-sector",
+      "hud-progress",
+      "map-scene",
+      "poi-${landmark.id}",
+      "real-location-marker"
+    ],
+    "removed": []
+  },
+  "customQualityProbe": {
+    "steps": [
+      "setPreset('ultra')",
+      "setOverride('glowLayers', 1)"
+    ],
+    "before": {
+      "pixelDensity": 1.5,
+      "fogFps": 30,
+      "lightFps": 60,
+      "leafCount": 21,
+      "moteCount": 44,
+      "inkLayers": 2,
+      "backdropBlur": 10,
+      "inkRevealFidelity": "full",
+      "cssAmbient": true,
+      "dropShadows": "rich",
+      "glowLayers": 3
+    },
+    "after": {
+      "pixelDensity": 1.25,
+      "fogFps": 30,
+      "lightFps": 45,
+      "leafCount": 14,
+      "moteCount": 28,
+      "inkLayers": 1,
+      "backdropBlur": 6,
+      "inkRevealFidelity": "full",
+      "cssAmbient": true,
+      "dropShadows": "soft",
+      "glowLayers": 1
+    },
+    "changed": [
+      "pixelDensity",
+      "lightFps",
+      "leafCount",
+      "moteCount",
+      "inkLayers",
+      "backdropBlur",
+      "dropShadows",
+      "glowLayers"
+    ],
+    "expectedChanged": [
+      "glowLayers"
+    ],
+    "isolatesSingleOverride": false
+  },
+  "independentRegionProbe": {
+    "input": [
+      "beihu",
+      "park"
+    ],
+    "restored": [
+      "wencui",
+      "beihu",
+      "library",
+      "teaching",
+      "wenbo",
+      "sports",
+      "tower"
+    ],
+    "cloudSanitized": [
+      "wencui",
+      "beihu",
+      "library",
+      "teaching",
+      "wenbo",
+      "sports",
+      "tower"
+    ],
+    "note": "Current one-landmark-one-region compatibility is intentional; independent unlock persistence is not implemented."
+  },
+  "regionPlanPreflight": {
+    "modelMessage": "13 点拟合；留一验证 RMSE 5.43 米。虚线内为采样覆盖，范围外为未验证外推；过渡 150 米后退回全局仿射。此数值不等于独立实测精度。",
+    "landmarkSupport": [
+      {
+        "id": "wencui",
+        "name": "文萃楼",
+        "uv": {
+          "u": 0.5347005676820981,
+          "v": 0.4708614070001595
+        },
+        "insideControlHull": false
+      },
+      {
+        "id": "beihu",
+        "name": "北湖",
+        "uv": {
+          "u": 0.35779963220596467,
+          "v": 0.37007771543334456
+        },
+        "insideControlHull": true
+      },
+      {
+        "id": "library",
+        "name": "徐特立图书馆",
+        "uv": {
+          "u": 0.383324448308947,
+          "v": 0.5491987240978153
+        },
+        "insideControlHull": false
+      },
+      {
+        "id": "teaching",
+        "name": "综合教学大楼",
+        "uv": {
+          "u": 0.390014291996482,
+          "v": 0.4646537040510118
+        },
+        "insideControlHull": true
+      },
+      {
+        "id": "wenbo",
+        "name": "文博中心",
+        "uv": {
+          "u": 0.6765014391940514,
+          "v": 0.47268809931576505
+        },
+        "insideControlHull": false
+      },
+      {
+        "id": "sports",
+        "name": "体育馆",
+        "uv": {
+          "u": 0.7039834592628129,
+          "v": 0.5486589266457834
+        },
+        "insideControlHull": false
+      },
+      {
+        "id": "tower",
+        "name": "真理之塔",
+        "uv": {
+          "u": 0.7265931078595986,
+          "v": 0.3958783404744492
+        },
+        "insideControlHull": false
+      },
+      {
+        "id": "park",
+        "name": "国防教育主题公园",
+        "uv": {
+          "u": 0.6146557927560566,
+          "v": 0.22978681677233811
+        },
+        "insideControlHull": false
+      }
+    ],
+    "outsideSupportIds": [
+      "wencui",
+      "library",
+      "wenbo",
+      "sports",
+      "tower",
+      "park"
+    ],
+    "note": "The calibration control hull is not a campus boundary. The existing supportXY uses same-sign edge crosses (convex polygons only), not a general concave polygon containment test."
+  },
+  "build": {
+    "totalBytes": 20043063,
+    "sourceTtfFiles": [],
+    "htmlInitialJs": [
+      {
+        "url": "/assets/index-CIpcbDCL.js",
+        "bytes": 151476,
+        "gzipBytes": 55577
+      },
+      {
+        "url": "/assets/vendor-misc-BZp2Yq-r.js",
+        "bytes": 2313,
+        "gzipBytes": 1082
+      },
+      {
+        "url": "/assets/vendor-react-8JoE-sNA.js",
+        "bytes": 323560,
+        "gzipBytes": 103827
+      },
+      {
+        "url": "/assets/vendor-state-zlBQzzDx.js",
+        "bytes": 638,
+        "gzipBytes": 409
+      },
+      {
+        "url": "/assets/vendor-motion-my5VeNiC.js",
+        "bytes": 158143,
+        "gzipBytes": 53915
+      },
+      {
+        "url": "/assets/vendor-p5-BNQ3hdgD.js",
+        "bytes": 1067299,
+        "gzipBytes": 269353
+      }
+    ],
+    "htmlInitialJsGzipBytes": 484163,
+    "note": "JS sum includes index.html script/modulepreload entries; menu/settings lazy chunks are excluded."
+  }
+}

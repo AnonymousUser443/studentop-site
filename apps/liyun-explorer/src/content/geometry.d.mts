@@ -1,0 +1,11 @@
+import type { UV } from '../types';
+export const GEOMETRY_EPSILON: number;
+export type PolygonError = { code: string; message: string; vertex: number; otherVertex?: number };
+export function isUV(point: unknown): point is UV;
+export function pointOnSegment(point: UV, a: UV, b: UV, epsilon?: number): boolean;
+export function segmentsIntersect(a: UV, b: UV, c: UV, d: UV): boolean;
+export function pointInPolygon(point: UV, polygon: readonly UV[]): boolean;
+export function signedArea(polygon: readonly UV[]): number;
+export function validatePolygon(polygon: unknown): PolygonError[];
+export function polygonInPolygon(polygon: readonly UV[], parent: readonly UV[]): boolean;
+export function polygonCentroid(polygon: readonly UV[]): UV;

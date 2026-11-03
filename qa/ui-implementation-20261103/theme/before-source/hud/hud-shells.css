@@ -1,0 +1,281 @@
+/* ============================================================
+   新 HUD 组件样式（品牌 / 状态带 / 操作坞 / 播报）
+   与旧 hud.css 并存，逐步替代。
+   ============================================================ */
+
+/* ── 品牌身份带 ───────────────────────────────────────── */
+.hud-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  filter: drop-shadow(0 3px 2px color-mix(in srgb, var(--jade-950) 70%, transparent));
+}
+
+.hud-brand-badge {
+  width: 72px;
+  height: 72px;
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  display: grid;
+  place-items: center;
+  transition: filter var(--d-fast) var(--e-soft);
+}
+.hud-brand-badge svg { width: 100%; height: 100%; display: block; }
+.hud-brand-badge:hover { filter: drop-shadow(0 0 10px color-mix(in srgb, var(--gold-300) 62%, transparent)); }
+.hud-brand-badge:active { filter: brightness(.96); }
+
+.hud-brand-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  color: var(--gold-200);
+  transition: color var(--d-fast) var(--e-soft);
+}
+.hud-brand-copy:hover { color: var(--gold-300); }
+
+.hud-brand-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 2.4vw, 44px);
+  line-height: 1.15;
+  letter-spacing: .055em;
+  white-space: nowrap;
+}
+.hud-brand-sub {
+  font-size: var(--fs-caption);
+  letter-spacing: .3em;
+  color: color-mix(in srgb, var(--paper-300) 88%, transparent);
+  white-space: nowrap;
+}
+.hud-brand-season {
+  margin-top: 2px;
+  font-size: var(--fs-caption);
+  letter-spacing: .18em;
+  color: color-mix(in srgb, var(--paper-400) 76%, transparent);
+}
+
+/* ── 状态带：胶囊降权，只留图标 + 数字 ────────────────── */
+.hud-status {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.hud-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  height: 46px;
+  padding: 0 var(--sp-3);
+  border: 1px solid color-mix(in srgb, var(--gold-500) 62%, transparent);
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--jade-800) 88%, transparent);
+  color: var(--paper-200);
+  font-size: var(--fs-body);
+  white-space: nowrap;
+  box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--jade-700) 88%, transparent);
+  transition: filter var(--d-fast) var(--e-soft), border-color var(--d-fast) var(--e-soft);
+}
+.hud-pill:hover { filter: brightness(1.12); }
+.hud-pill:active { filter: brightness(.96); }
+.hud-pill:hover { border-color: var(--gold-300); }
+.hud-pill .ly-icon { width: 22px; height: 22px; color: var(--gold-300); }
+.hud-pill strong { font-weight: 600; font-variant-numeric: tabular-nums; }
+.hud-pill strong > span { font-weight: 400; font-size: .84em; opacity: .72; margin-left: 1px; }
+.hud-pill-name { max-width: 8em; overflow: hidden; text-overflow: ellipsis; }
+
+.hud-icon-button {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--gold-500) 62%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--jade-800) 88%, transparent);
+  color: var(--gold-200);
+  transition: filter var(--d-fast) var(--e-soft), border-color var(--d-fast) var(--e-soft);
+}
+.hud-icon-button:hover { filter: brightness(1.14); }
+.hud-icon-button:active { filter: brightness(.96); }
+.hud-icon-button:hover { border-color: var(--gold-300); }
+.hud-icon-button .ly-icon { width: 22px; height: 22px; }
+
+/* ── 操作坞：切角纸片 + 右侧快捷键角标 ─────────────────── */
+.hud-dock {
+  display: flex;
+  align-items: stretch;
+  gap: var(--sp-2);
+}
+
+.hud-dock-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 132px;
+  height: 52px;
+  padding: 0 var(--sp-4) 0 var(--sp-3);
+  border: 0;
+  background: linear-gradient(150deg, var(--jade-700), var(--jade-900));
+  color: var(--gold-200);
+  font-size: var(--fs-body);
+  letter-spacing: .04em;
+  clip-path: var(--edge-cut-8);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold-500) 56%, transparent);
+  transition: filter var(--d-fast) var(--e-soft);
+}
+.hud-dock-button:hover { filter: brightness(1.16); }
+.hud-dock-button:active { filter: brightness(.96); }
+.hud-dock-button::after {
+  content: '';
+  position: absolute;
+  left: var(--sp-3);
+  right: var(--sp-3);
+  bottom: var(--sp-1);
+  height: 1px;
+  background: var(--gold-300);
+  transform: scaleX(.15);
+  transform-origin: left;
+  opacity: 0;
+  transition: transform var(--d-base) var(--e-out), opacity var(--d-fast) var(--e-soft);
+}
+.hud-dock-button:hover::after, .hud-dock-button:focus-visible::after { opacity: .9; transform: scaleX(1); }
+.hud-dock-button:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--gold-300); }
+.hud-dock-button[data-emphasis='true']::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px var(--gold-200);
+  animation: hud-gold-breath calc(var(--d-cinema) * 4) var(--e-in-out) infinite;
+}
+@keyframes hud-gold-breath { 0%, 100% { opacity: .08; } 50% { opacity: .48; } }
+html[data-ambient='off'] .hud-dock-button::before { display: none; }
+.hud-frame button:disabled { opacity: .42; filter: saturate(.4); cursor: default; }
+.hud-frame button:disabled::before, .hud-frame button:disabled::after { display: none; }
+.hud-frame button[aria-busy='true'] { opacity: .6; }
+.hud-dock-button .ly-icon { width: 26px; height: 26px; color: var(--gold-300); flex: none; }
+.hud-dock-button[data-emphasis='true'] {
+  background: linear-gradient(150deg, var(--jade-600), var(--jade-800));
+  box-shadow: inset 0 0 0 1px var(--gold-400);
+}
+
+/* 快捷键角标：桌面 hover 才出现 */
+.hud-dock-key {
+  position: absolute;
+  right: 4px;
+  bottom: 2px;
+  font-size: 9px;
+  letter-spacing: 0;
+  color: color-mix(in srgb, var(--gold-300) 76%, transparent);
+  opacity: 0;
+  transition: opacity var(--d-fast) var(--e-soft);
+}
+.hud-dock-button:hover .hud-dock-key, .hud-dock-button:focus-visible .hud-dock-key { opacity: 1; }
+@media (hover: none) {
+  .hud-dock-key { display: none; }
+}
+
+/* ── 播报层 ───────────────────────────────────────────── */
+.hud-announce {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  max-width: 100%;
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid color-mix(in srgb, var(--gold-500) 72%, transparent);
+  background: color-mix(in srgb, var(--jade-800) 94%, transparent);
+  color: var(--gold-200);
+  font-size: var(--fs-body);
+  letter-spacing: .04em;
+  text-align: center;
+  clip-path: var(--edge-cut-8);
+  box-shadow: var(--sh-soft);
+}
+.hud-announce .ly-icon { width: 20px; height: 20px; color: var(--gold-300); flex: none; }
+
+/* 上下文卡内容不定位，由 HudFrame 的 context 锚点统一占位。 */
+.hud-context-card {
+  width: 100%;
+  padding: var(--sp-2);
+  color: var(--paper-200);
+  background: color-mix(in srgb, var(--jade-900) 96%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold-500) 72%, transparent);
+  clip-path: var(--edge-cut-8);
+  box-shadow: var(--q-shadow);
+  pointer-events: auto;
+}
+.hud-context-actions { display: flex; align-items: center; gap: var(--sp-1); }
+.hud-context-toggle {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  min-height: 46px;
+  flex: none;
+  padding: var(--sp-2);
+  border: 1px solid color-mix(in srgb, var(--gold-500) 50%, transparent);
+  border-radius: var(--r-cut);
+  background: transparent;
+  color: var(--gold-200);
+}
+.hud-context-toggle:hover { background: var(--jade-700); }
+.hud-context-toggle:active { background: var(--jade-800); }
+.hud-context-toggle:focus-visible { outline-offset: -3px; }
+.hud-context-toggle svg { width: 24px; height: 24px; }
+.hud-context-toggle[aria-expanded='true'] svg { transform: rotate(180deg); }
+.hud-context-details { overflow: hidden; }
+.hud-context-details-inner { padding: 0 var(--sp-1) var(--sp-1); max-height: min(30vh, 220px); overflow: auto; overscroll-behavior: contain; }
+
+/* ── 矮屏横屏：只压密度，不压命中区 ──────────────────────
+   铁律：任何可点目标最短边 ≥44px。这里通过缩小字号/内边距/隐藏次要文字
+   来省空间，绝不缩小按钮尺寸。 */
+@media (max-height: 560px), (max-width: 1000px) {
+  .hud-brand { gap: var(--sp-2); }
+  .hud-brand-badge { width: 52px; height: 52px; }
+  /* 标题按钮本身要保持 44 高，否则变成"细长条"命中区 */
+  .hud-brand-copy {
+    min-height: 46px;
+    justify-content: center;
+    padding: var(--sp-1) 0;
+  }
+  .hud-brand-title { font-size: clamp(22px, 2vw, 30px); line-height: 1.1; }
+  .hud-brand-sub { display: none; }
+  .hud-brand-season { display: none; }
+
+  /* 保持 44 高；靠收窄横向内边距与字号省宽度 */
+  .hud-pill {
+    height: 46px;
+    min-height: 46px;
+    padding: 0 var(--sp-2);
+    gap: var(--sp-1);
+    font-size: var(--fs-caption);
+  }
+  .hud-pill .ly-icon { width: 18px; height: 18px; }
+  .hud-pill-name { max-width: 4.5em; }
+  .hud-icon-button { width: 46px; height: 46px; }
+  .hud-icon-button .ly-icon { width: 18px; height: 18px; }
+
+  .hud-dock-button { min-width: 104px; height: 46px; padding: 0 var(--sp-3); font-size: var(--fs-caption); }
+  .hud-dock-button .ly-icon { width: 22px; height: 22px; }
+}
+
+/* ── 通用：读屏专用 ───────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

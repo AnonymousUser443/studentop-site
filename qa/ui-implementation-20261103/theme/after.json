@@ -1,0 +1,194 @@
+{
+  "at": "2026-11-03T09:06:38.248Z",
+  "metric": "Literal CSS #hex tokens in src/**/*.css; includes 8-digit alpha variants; excludes TS/SVG/raster pixels and computed colors.",
+  "uniqueHex": 51,
+  "uniqueHexBase": 51,
+  "uniqueRgb": 0,
+  "files": [
+    {
+      "file": "activity/activity.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "activity/artwork.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "calibration/calibration.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "cinematic/cinematic.module.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "effects/effects.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "global.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "hud/hud-frame.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "hud/hud-shells.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "hud/hud.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "hud/panels/panels.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "hud/progress-ring.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "location/location.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "map/map.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "menu/menu.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "settings/settings.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "styles/base.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "styles/quality.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "styles/tokens.css",
+      "hexCount": 51,
+      "hex": [
+        "#000000",
+        "#0d2b26",
+        "#10241c",
+        "#12332f",
+        "#193c37",
+        "#1f3a2f",
+        "#21493e",
+        "#27453f",
+        "#2d5343",
+        "#33513f",
+        "#3d6b57",
+        "#425848",
+        "#4b584d",
+        "#4c7657",
+        "#577f68",
+        "#596751",
+        "#5b7d8a",
+        "#5f4a26",
+        "#617d6b",
+        "#665e4c",
+        "#6e785a",
+        "#72562c",
+        "#799179",
+        "#83af96",
+        "#87994d",
+        "#8a483a",
+        "#8a6a30",
+        "#8b7b51",
+        "#8ca894",
+        "#9aa9aa",
+        "#9eb6a1",
+        "#a54f34",
+        "#a75029",
+        "#b46c4d",
+        "#b8933f",
+        "#bcc5a3",
+        "#bccc84",
+        "#bfb28a",
+        "#c98a3a",
+        "#d3c79f",
+        "#d4b874",
+        "#e0b343",
+        "#e2a07a",
+        "#e4cf95",
+        "#e6ddba",
+        "#e8cf83",
+        "#efe5cc",
+        "#f3e8c8",
+        "#f5e6bd",
+        "#fdf6e2",
+        "#fffdf2"
+      ],
+      "rgbCount": 0,
+      "rgb": []
+    },
+    {
+      "file": "world/fog/region-veil.module.css",
+      "hexCount": 0,
+      "hex": [],
+      "rgbCount": 0,
+      "rgb": []
+    }
+  ]
+}

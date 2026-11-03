@@ -1,0 +1,47 @@
+'use strict';
+// Visible browser + real 5s/30s wall clocks. Cancel-aware rAF throttling is deliberate fault injection.
+const fs=require('node:fs'),path=require('node:path');
+const {newSession,until,sleep}=require('../../lib.js');
+const out=__dirname,checks=[],evidence={events:[],phases:[]};
+const check=(name,pass,detail)=>{checks.push({name,pass:!!pass,detail});if(!pass)throw Error(name+': '+JSON.stringify(detail));};
+const setup=`(()=>{
+  const nativeRAF=requestAnimationFrame.bind(window),nativeCancel=cancelAnimationFrame.bind(window),nativeTimeout=setTimeout.bind(window),nativeClear=clearTimeout.bind(window);
+  const pending=new Map(),timers=new Map();let seq=-1;
+  window.__degradeQA={fps:20,requests:0,cancels:0,frames:0,visibility:false,pending,timers,events:[]};
+  window.requestAnimationFrame=callback=>{const id=seq--,isHook=new Error().stack.includes('useAutoDegrade.ts');const row={id,isHook,timeout:null,raf:null};pending.set(id,row);if(isHook)window.__degradeQA.requests++;
+    row.timeout=nativeTimeout(()=>{row.timeout=null;row.raf=nativeRAF(now=>{pending.delete(id);if(isHook)window.__degradeQA.frames++;callback(now);});},Math.max(0,1000/window.__degradeQA.fps-1));return id;};
+  window.cancelAnimationFrame=id=>{const row=pending.get(id);if(!row){nativeCancel(id);return;}if(row.timeout!==null)nativeClear(row.timeout);if(row.raf!==null)nativeCancel(row.raf);pending.delete(id);if(row.isHook)window.__degradeQA.cancels++;};
+  window.setTimeout=(callback,ms,...args)=>{const isHook=new Error().stack.includes('useAutoDegrade.ts');let id;id=nativeTimeout(()=>{timers.delete(id);callback(...args);},ms);if(isHook)timers.set(id,{duration:ms});return id;};
+  window.clearTimeout=id=>{timers.delete(id);return nativeClear(id);};
+  const hidden=Object.getOwnPropertyDescriptor(Document.prototype,'hidden');Object.defineProperty(document,'hidden',{configurable:true,get(){return window.__degradeQA.visibility||hidden.get.call(document)}});
+})();`;
+(async()=>{let s;try{
+  fs.mkdirSync(out,{recursive:true});s=await newSession({size:'844x390',hardwareRendering:true});await s.call('Emulation.setFocusEmulationEnabled',{enabled:true});
+  await s.call('Page.addScriptToEvaluateOnNewDocument',{source:setup});await s.navigate('http://127.0.0.1:5176/?qa=1&preset=fog');
+  await until(()=>s.evaluate('Boolean(window.__LIYUN__)'),15000,'development QA bridge');
+  await s.evaluate(`(async()=>{const name=performance.getEntriesByType('resource').map(e=>e.name).find(n=>new URL(n).pathname==='/src/app/stores/useUi.ts');const m=await import(name||'/src/app/stores/useUi.ts');m.useUi.subscribe(value=>{for(const a of value.announcements)if(a.text.includes('画质已自动调整')&&!window.__degradeQA.events.some(e=>e.id===a.id))window.__degradeQA.events.push({...a,at:performance.now()});});window.__LIYUN__.setSettings({autoDegrade:false,music:false,uiSound:false,reducedMotion:false});window.__LIYUN__.setQualityPreset('ultra');return true})()`);
+  const snapshot=async label=>{const row=await s.evaluate(`({label:${JSON.stringify(label)},now:performance.now(),settings:window.__LIYUN__.getState().settings,activeHookRaf:[...window.__degradeQA.pending.values()].filter(r=>r.isHook).length,activeHookTimers:window.__degradeQA.timers.size,requests:window.__degradeQA.requests,cancels:window.__degradeQA.cancels,frames:window.__degradeQA.frames,events:window.__degradeQA.events.slice(),hidden:document.hidden})`);evidence.phases.push(row);console.log(JSON.stringify({phase:label,preset:row.settings.qualityPreset,frames:row.frames,events:row.events.length,hookRaf:row.activeHookRaf,timers:row.activeHookTimers}));return row;};
+  await s.evaluate('window.__LIYUN__.setSettings({autoDegrade:true});true');let start=await snapshot('enabled');await sleep(6100);let row=await snapshot('first-bad-window');
+  check('one real low-FPS window does not degrade',row.settings.qualityPreset==='ultra'&&row.frames-start.frames>50,row);
+  await s.click('.hud-brand-badge');await sleep(600);const paused=await snapshot('menu-paused');await sleep(5600);row=await snapshot('menu-remains-paused');
+  check('menu cancels both sampling handles and discards elapsed paused time',row.settings.qualityPreset==='ultra'&&row.activeHookRaf===0&&row.activeHookTimers===0&&row.frames===paused.frames,row);
+  await s.call('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});await s.call('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});await sleep(6500);row=await snapshot('fresh-window-after-menu');
+  check('returning from menu starts a fresh first window',row.settings.qualityPreset==='ultra',row);
+  await s.evaluate('window.__degradeQA.visibility=true;document.dispatchEvent(new Event("visibilitychange"));true');await sleep(200);const hidden=await snapshot('visibility-fixture-hidden');await sleep(5600);row=await snapshot('visibility-fixture-still-hidden');
+  check('hidden event cancels window and cannot create a 0fps downgrade',row.settings.qualityPreset==='ultra'&&row.activeHookRaf===0&&row.activeHookTimers===0&&row.frames===hidden.frames,row);
+  await s.evaluate('window.__degradeQA.visibility=false;document.dispatchEvent(new Event("visibilitychange"));true');start=await snapshot('visibility-restored');
+  await sleep(6100);row=await snapshot('first-window-after-visibility');check('hidden restore clears previous bad streak',row.settings.qualityPreset==='ultra',row);
+  await until(()=>s.evaluate('window.__LIYUN__.getState().settings.qualityPreset==="high"'),34000,'two real low-FPS windows degrade ultra to high');row=await snapshot('first-degradation');
+  check('two valid low-FPS windows cause one downgrade and preserve original',row.settings.degradedFrom==='ultra'&&row.events.length===1&&row.now-start.now>=34500,row);
+  await s.evaluate('window.__LIYUN__.setSettings({autoDegrade:false});true');await sleep(250);const off=await snapshot('disabled');await sleep(5500);row=await snapshot('disabled-after-window');
+  check('disabled auto-degrade registers zero new sampling frames/timers and keeps selected quality',row.settings.qualityPreset==='high'&&row.frames===off.frames&&row.requests===off.requests&&row.activeHookRaf===0&&row.activeHookTimers===0,row);
+  await s.evaluate('window.__LIYUN__.setSettings({autoDegrade:true});true');
+  await until(()=>s.evaluate('window.__LIYUN__.getState().settings.qualityPreset==="low"'),40000,'second pair of windows degrades to low');row=await snapshot('second-degradation');
+  check('second degradation keeps initial ultra and does not repeat announcement',row.settings.degradedFrom==='ultra'&&row.events.length===1,row);
+  await s.evaluate('window.__LIYUN__.setSettings({autoDegrade:false});true');await s.click('.hud-brand-badge');await sleep(500);await s.click('.menu-grid [aria-label="设置"]');await sleep(550);await s.click('#settings-tab-image');await sleep(500);
+  await s.evaluate(`(()=>{const b=[...document.querySelectorAll('.settings-panel button')].find(e=>e.textContent.trim()==='恢复原档');if(!b)throw Error('restore button missing');b.dataset.qaRestore='1';b.scrollIntoView({block:'center'});return true})()`);await sleep(150);await s.screenshot(path.join(out,'restore-original.png'));await s.click('[data-qa-restore="1"]');await sleep(350);row=await snapshot('restored');
+  check('real settings button restores the original preset and clears degradedFrom',row.settings.qualityPreset==='ultra'&&row.settings.degradedFrom===null&&!row.settings.autoDegrade,row);
+  check('no browser runtime/asset errors',s.errors.length===0,s.errors);
+  evidence.method='Real wall-clock setTimeout (first5s,next30s); cancel-aware throttling of actual rAF callbacks, all app callbacks affected. document.hidden getter/event is explicitly a visibility fault fixture, not an OS background test. Unit tests additionally cover a healthy window clearing streak. No device performance claim.';
+  fs.writeFileSync(path.join(out,'results.json'),JSON.stringify({ok:true,total:checks.length,checks,evidence,errors:s.errors},null,2));console.log(JSON.stringify({ok:true,total:checks.length}));
+}catch(error){await s?.screenshot(path.join(out,'failure.png')).catch(()=>{});fs.writeFileSync(path.join(out,'results.json'),JSON.stringify({ok:false,error:String(error.stack||error),checks,evidence,errors:s?.errors},null,2));console.error(error);process.exitCode=1;}finally{await s?.close();}})();

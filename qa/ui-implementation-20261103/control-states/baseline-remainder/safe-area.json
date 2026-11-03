@@ -1,0 +1,729 @@
+{
+  "evidence": {
+    "scope": "Owned temporary Edge, localhost DEV isolated QA; no physical phone/GPS claim",
+    "controls": 20,
+    "mode": "all",
+    "initialInput": {
+      "stage": {},
+      "ui": {
+        "route": "map",
+        "activePanel": null,
+        "selectedId": null,
+        "announcements": [],
+        "cinematicQueue": []
+      },
+      "dialogs": [],
+      "active": "BODY"
+    },
+    "equivalentStates": [
+      {
+        "id": "settings-select",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": true
+      },
+      {
+        "id": "settings-defaults",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "settings-switch",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": true,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "collection-known-tile",
+        "hoverEqualsNormal": true,
+        "pressEqualsHover": true,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "calibration-pan-tool",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "activity-selected-tab",
+        "hoverEqualsNormal": true,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      },
+      {
+        "id": "activity-primary",
+        "hoverEqualsNormal": false,
+        "pressEqualsHover": false,
+        "focusEqualsNormal": false,
+        "immediateAction": false
+      }
+    ],
+    "fifthStatePolicy": "No fabricated busy state for synchronous navigation, tabs, sliders or switches. Real menu upcoming, calibration Undo, activity transition, and pending-location states are measured separately.",
+    "safeAreaProtocol": {
+      "command": {
+        "name": "setSafeAreaInsetsOverride",
+        "description": "Overrides the values for env(safe-area-inset-*) and env(safe-area-max-inset-*). Unset values will cause the\nrespective variables to be undefined, even if previously overridden.",
+        "experimental": true,
+        "parameters": [
+          {
+            "name": "insets",
+            "$ref": "SafeAreaInsets"
+          }
+        ]
+      },
+      "safeType": {
+        "id": "SafeAreaInsets",
+        "experimental": true,
+        "type": "object",
+        "properties": [
+          {
+            "name": "top",
+            "description": "Overrides safe-area-inset-top.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "topMax",
+            "description": "Overrides safe-area-max-inset-top.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "left",
+            "description": "Overrides safe-area-inset-left.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "leftMax",
+            "description": "Overrides safe-area-max-inset-left.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "bottom",
+            "description": "Overrides safe-area-inset-bottom.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "bottomMax",
+            "description": "Overrides safe-area-max-inset-bottom.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "right",
+            "description": "Overrides safe-area-inset-right.",
+            "optional": true,
+            "type": "integer"
+          },
+          {
+            "name": "rightMax",
+            "description": "Overrides safe-area-max-inset-right.",
+            "optional": true,
+            "type": "integer"
+          }
+        ]
+      }
+    }
+  },
+  "safeAreas": [
+    {
+      "context": "menu",
+      "viewport": [
+        844,
+        390
+      ],
+      "insets": {
+        "top": 12,
+        "right": 44,
+        "bottom": 21,
+        "left": 44
+      },
+      "targets": [
+        {
+          "selector": ".menu-close",
+          "label": "返回地图",
+          "rect": {
+            "x": 4,
+            "y": 12,
+            "width": 44,
+            "height": 44,
+            "top": 12,
+            "right": 48,
+            "bottom": 56,
+            "left": 4
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        },
+        {
+          "selector": ".menu-rail-button[aria-label=\"设置\"]",
+          "label": "设置",
+          "rect": {
+            "x": 3,
+            "y": 201.5,
+            "width": 46,
+            "height": 46,
+            "top": 201.5,
+            "right": 49,
+            "bottom": 247.5,
+            "left": 3
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        },
+        {
+          "selector": ".menu-tile[aria-label=\"设置\"]",
+          "label": "设置",
+          "rect": {
+            "x": 324.328125,
+            "y": 200,
+            "width": 122.65625,
+            "height": 91,
+            "top": 200,
+            "right": 446.984375,
+            "bottom": 291,
+            "left": 324.328125
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": true,
+          "large": true
+        },
+        {
+          "selector": ".menu-login",
+          "label": "登录并同步旅途",
+          "rect": {
+            "x": 403,
+            "y": 20,
+            "width": 44,
+            "height": 47,
+            "top": 20,
+            "right": 447,
+            "bottom": 67,
+            "left": 403
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": true,
+          "large": true
+        }
+      ]
+    },
+    {
+      "context": "settings",
+      "viewport": [
+        844,
+        390
+      ],
+      "insets": {
+        "top": 12,
+        "right": 44,
+        "bottom": 21,
+        "left": 44
+      },
+      "targets": [
+        {
+          "selector": ".settings-close",
+          "label": "关闭设置",
+          "rect": {
+            "x": 778,
+            "y": 12,
+            "width": 44,
+            "height": 44,
+            "top": 12,
+            "right": 822,
+            "bottom": 56,
+            "left": 778
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        },
+        {
+          "selector": "#settings-tab-control",
+          "label": "控制",
+          "rect": {
+            "x": 22,
+            "y": 65,
+            "width": 135,
+            "height": 44,
+            "top": 65,
+            "right": 157,
+            "bottom": 109,
+            "left": 22
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        },
+        {
+          "selector": ".settings-slider-thumb[aria-label=\"拖动灵敏度\"]",
+          "label": "拖动灵敏度",
+          "rect": {
+            "x": 563.8125,
+            "y": 162.59375,
+            "width": 44,
+            "height": 44,
+            "top": 162.59375,
+            "right": 607.8125,
+            "bottom": 206.59375,
+            "left": 563.8125
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": true,
+          "large": true
+        },
+        {
+          "selector": ".settings-footer .settings-btn--primary",
+          "label": "返回旅途 ↩",
+          "rect": {
+            "x": 697,
+            "y": 325,
+            "width": 125,
+            "height": 44,
+            "top": 325,
+            "right": 822,
+            "bottom": 369,
+            "left": 697
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        }
+      ]
+    },
+    {
+      "context": "cinematic",
+      "viewport": [
+        844,
+        390
+      ],
+      "insets": {
+        "top": 12,
+        "right": 44,
+        "bottom": 21,
+        "left": 44
+      },
+      "targets": [
+        {
+          "selector": "[data-testid=\"cinematic-screen\"] button",
+          "label": "继续探索 ◇",
+          "rect": {
+            "x": 489.140625,
+            "y": 272.390625,
+            "width": 180,
+            "height": 44,
+            "top": 272.390625,
+            "right": 669.140625,
+            "bottom": 316.390625,
+            "left": 489.140625
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": true,
+          "large": true
+        }
+      ]
+    },
+    {
+      "context": "calibration",
+      "viewport": [
+        844,
+        390
+      ],
+      "insets": {
+        "top": 12,
+        "right": 44,
+        "bottom": 21,
+        "left": 44
+      },
+      "targets": [
+        {
+          "selector": "[aria-label=\"关闭标定工坊\"]",
+          "label": "关闭标定工坊",
+          "rect": {
+            "x": 737.671875,
+            "y": 6,
+            "width": 94.328125,
+            "height": 44,
+            "top": 6,
+            "right": 832,
+            "bottom": 50,
+            "left": 737.671875
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        },
+        {
+          "selector": ".cal-tools button:nth-child(3)",
+          "label": "拖动地图P",
+          "rect": {
+            "x": 168.375,
+            "y": 63,
+            "width": 68,
+            "height": 44,
+            "top": 63,
+            "right": 236.375,
+            "bottom": 107,
+            "left": 168.375
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": true,
+          "large": true
+        },
+        {
+          "selector": ".cal-map-controls button[aria-label=\"放大地图\"]",
+          "label": "放大地图",
+          "rect": {
+            "x": 356,
+            "y": 171,
+            "width": 44,
+            "height": 44,
+            "top": 171,
+            "right": 400,
+            "bottom": 215,
+            "left": 356
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": true,
+          "large": true
+        },
+        {
+          "selector": ".cal-inspector .cal-wide-button",
+          "label": "在所选顶点后插入中点 ＋",
+          "rect": {
+            "x": 579,
+            "y": 309.53125,
+            "width": 241,
+            "height": 44,
+            "top": 309.53125,
+            "right": 820,
+            "bottom": 353.53125,
+            "left": 579
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        }
+      ]
+    },
+    {
+      "context": "menu",
+      "viewport": [
+        667,
+        375
+      ],
+      "insets": {
+        "top": 12,
+        "right": 44,
+        "bottom": 21,
+        "left": 44
+      },
+      "targets": [
+        {
+          "selector": ".menu-close",
+          "label": "返回地图",
+          "rect": {
+            "x": 4,
+            "y": 12,
+            "width": 44,
+            "height": 44,
+            "top": 12,
+            "right": 48,
+            "bottom": 56,
+            "left": 4
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        },
+        {
+          "selector": ".menu-rail-button[aria-label=\"设置\"]",
+          "label": "设置",
+          "rect": {
+            "x": 3,
+            "y": 194,
+            "width": 46,
+            "height": 46,
+            "top": 194,
+            "right": 49,
+            "bottom": 240,
+            "left": 3
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        },
+        {
+          "selector": ".menu-tile[aria-label=\"设置\"]",
+          "label": "设置",
+          "rect": {
+            "x": 286.6875,
+            "y": 200,
+            "width": 103.84375,
+            "height": 91,
+            "top": 200,
+            "right": 390.53125,
+            "bottom": 291,
+            "left": 286.6875
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": true,
+          "large": true
+        },
+        {
+          "selector": ".menu-login",
+          "label": "登录并同步旅途",
+          "rect": {
+            "x": 346.53125,
+            "y": 20,
+            "width": 44,
+            "height": 47,
+            "top": 20,
+            "right": 390.53125,
+            "bottom": 67,
+            "left": 346.53125
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": true,
+          "large": true
+        }
+      ]
+    },
+    {
+      "context": "settings",
+      "viewport": [
+        667,
+        375
+      ],
+      "insets": {
+        "top": 12,
+        "right": 44,
+        "bottom": 21,
+        "left": 44
+      },
+      "targets": [
+        {
+          "selector": ".settings-close",
+          "label": "关闭设置",
+          "rect": {
+            "x": 607,
+            "y": 12,
+            "width": 44,
+            "height": 44,
+            "top": 12,
+            "right": 651,
+            "bottom": 56,
+            "left": 607
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        },
+        {
+          "selector": "#settings-tab-control",
+          "label": "控制",
+          "rect": {
+            "x": 14,
+            "y": 65,
+            "width": 112,
+            "height": 44,
+            "top": 65,
+            "right": 126,
+            "bottom": 109,
+            "left": 14
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        },
+        {
+          "selector": ".settings-slider-thumb[aria-label=\"拖动灵敏度\"]",
+          "label": "拖动灵敏度",
+          "rect": {
+            "x": 444.296875,
+            "y": 162.59375,
+            "width": 44,
+            "height": 44,
+            "top": 162.59375,
+            "right": 488.296875,
+            "bottom": 206.59375,
+            "left": 444.296875
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": true,
+          "large": true
+        },
+        {
+          "selector": ".settings-footer .settings-btn--primary",
+          "label": "返回旅途 ↩",
+          "rect": {
+            "x": 539,
+            "y": 310,
+            "width": 112,
+            "height": 44,
+            "top": 310,
+            "right": 651,
+            "bottom": 354,
+            "left": 539
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        }
+      ]
+    },
+    {
+      "context": "cinematic",
+      "viewport": [
+        667,
+        375
+      ],
+      "insets": {
+        "top": 12,
+        "right": 44,
+        "bottom": 21,
+        "left": 44
+      },
+      "targets": [
+        {
+          "selector": "[data-testid=\"cinematic-screen\"] button",
+          "label": "继续探索 ◇",
+          "rect": {
+            "x": 388,
+            "y": 269.984375,
+            "width": 180,
+            "height": 44,
+            "top": 269.984375,
+            "right": 568,
+            "bottom": 313.984375,
+            "left": 388
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": true,
+          "large": true
+        }
+      ]
+    },
+    {
+      "context": "calibration",
+      "viewport": [
+        667,
+        375
+      ],
+      "insets": {
+        "top": 12,
+        "right": 44,
+        "bottom": 21,
+        "left": 44
+      },
+      "targets": [
+        {
+          "selector": "[aria-label=\"关闭标定工坊\"]",
+          "label": "关闭标定工坊",
+          "rect": {
+            "x": 577.171875,
+            "y": 6,
+            "width": 77.828125,
+            "height": 44,
+            "top": 6,
+            "right": 655,
+            "bottom": 50,
+            "left": 577.171875
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        },
+        {
+          "selector": ".cal-tools button:nth-child(3)",
+          "label": "拖动地图P",
+          "rect": {
+            "x": 151.515625,
+            "y": 63,
+            "width": 60,
+            "height": 44,
+            "top": 63,
+            "right": 211.515625,
+            "bottom": 107,
+            "left": 151.515625
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": true,
+          "large": true
+        },
+        {
+          "selector": ".cal-map-controls button[aria-label=\"放大地图\"]",
+          "label": "放大地图",
+          "rect": {
+            "x": 265,
+            "y": 171,
+            "width": 44,
+            "height": 44,
+            "top": 171,
+            "right": 309,
+            "bottom": 215,
+            "left": 265
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": true,
+          "large": true
+        },
+        {
+          "selector": ".cal-inspector .cal-wide-button",
+          "label": "在所选顶点后插入中点 ＋",
+          "rect": {
+            "x": 430,
+            "y": 294.53125,
+            "width": 213,
+            "height": 44,
+            "top": 294.53125,
+            "right": 643,
+            "bottom": 338.53125,
+            "left": 430
+          },
+          "enabled": true,
+          "centerUncovered": true,
+          "insideSafe": false,
+          "large": true
+        }
+      ]
+    }
+  ]
+}

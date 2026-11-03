@@ -1,0 +1,29 @@
+[Unit]
+Description=Liyun collaborative campus content studio
+After=network.target
+
+[Service]
+Type=simple
+User=liyun-author
+Group=liyun-author
+WorkingDirectory=/opt/projects/liyun-author/current
+Environment=NODE_ENV=production
+Environment=LIYUN_AUTHOR_PORT=8790
+Environment=LIYUN_AUTHOR_DATA=/var/lib/liyun-author
+Environment=LIYUN_AUTHOR_RESOURCES=/opt/projects/liyun-author/current/resources
+Environment=LIYUN_EDITOR_KEY_FILE=/var/lib/liyun-author/editor-key
+Environment=LIYUN_PUBLISHED_FILE=/var/lib/liyun-content/published.json
+Environment=LIYUN_PUBLIC_ORIGIN=https://liyun.studentop.cn:14355
+ExecStart=/opt/node24/bin/node author.mjs
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=15
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=/var/lib/liyun-author /var/lib/liyun-content
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

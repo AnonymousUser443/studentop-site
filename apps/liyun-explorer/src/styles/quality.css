@@ -2,7 +2,7 @@
    data-quality 挂在 <html>，由 app/providers.tsx 写入。 */
 html[data-quality='low'] {
   --q-blur: 0px;
-  --q-shadow: 0 1px 2px #16392d33;
+  --q-shadow: 0 1px 2px color-mix(in srgb, var(--ink-900) 20%, transparent);
   --q-ambient: 0;          /* 关闭 HUD 呼吸与纸面微尘 */
 }
 html[data-quality='high'] {

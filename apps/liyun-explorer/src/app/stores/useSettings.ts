@@ -14,7 +14,7 @@ export { DEFAULT_SETTINGS, sanitizeSettings } from '../../../shared/game-setting
 /** 把 qualityPreset 映射到 p5 层仍读取的 quality 字段（向后兼容，不删） */
 const syncLegacyQuality = (s: GameSettings): GameSettings => ({
   ...s,
-  quality: s.qualityPreset === 'low' ? 'low' : 'high',
+  quality: s.baseQualityPreset === 'low' ? 'low' : 'high',
 });
 
 interface SettingsState {
@@ -25,7 +25,7 @@ interface SettingsState {
   /** 系统偏好实时改变时只刷新渲染参数，不改写用户设置。 */
   refreshQuality: () => void;
   update: (patch: Partial<GameSettings>) => void;
-  /** 切换预设：同事清空覆盖项，并清除被动降级来源 */
+  /** 切换预设：同时清空覆盖项，并清除被动降级来源 */
   setPreset: (preset: QualityPreset) => void;
   /** 单项覆盖：自动把预设标记为 custom */
   setOverride: <K extends keyof QualitySpec>(key: K, value: QualitySpec[K] | undefined) => void;
@@ -41,7 +41,7 @@ interface SettingsState {
 
 const systemReducedMotion = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 const computeSpec = (s: GameSettings, systemReduced = systemReducedMotion()) =>
-  resolveQuality(s.qualityPreset, s.qualityOverrides, systemReduced || s.reducedMotion || s.qualityPreset === 'low');
+  resolveQuality(s.qualityPreset, s.qualityOverrides, systemReduced || s.reducedMotion || s.qualityPreset === 'low', s.baseQualityPreset);
 
 export const useSettings = create<SettingsState>((set, get) => ({
   settings: DEFAULT_SETTINGS,
@@ -62,6 +62,7 @@ export const useSettings = create<SettingsState>((set, get) => ({
     const next = syncLegacyQuality({
       ...state.settings,
       qualityPreset: preset,
+      baseQualityPreset: preset === 'custom' ? state.settings.baseQualityPreset : preset,
       qualityOverrides: preset === 'custom' ? state.settings.qualityOverrides : {},
       degradedFrom: null,
     });
@@ -72,16 +73,21 @@ export const useSettings = create<SettingsState>((set, get) => ({
   }),
 
   setOverride: (key, value) => set((state) => {
+    const basePreset = state.settings.baseQualityPreset;
     const overrides = { ...state.settings.qualityOverrides };
     if (value === undefined) delete overrides[key];
     else overrides[key] = value;
     // 覆盖项与某预设完全一致时不算自定义（由 detectPreset 判定）
-    const candidate = { ...resolveQuality(state.settings.qualityPreset, overrides), ...overrides } as QualitySpec;
+    const validated = sanitizeSettings({ ...state.settings, qualityOverrides: overrides });
+    // 只用用户选择的原始参数判定，系统减少动态的临时投影不能写回设置。
+    const candidate = resolveQuality('custom', validated.qualityOverrides, false, basePreset);
     const detected = detectPreset(candidate);
     const next = syncLegacyQuality({
       ...state.settings,
-      qualityOverrides: overrides,
+      qualityOverrides: detected === 'custom' ? validated.qualityOverrides : {},
       qualityPreset: detected,
+      baseQualityPreset: detected === 'custom' ? basePreset : detected,
+      degradedFrom: null,
     });
     const systemReduced = typeof matchMedia === 'function'
       ? matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -90,8 +96,8 @@ export const useSettings = create<SettingsState>((set, get) => ({
   }),
 
   resetOverrides: () => set((state) => {
-    const base = state.settings.qualityPreset === 'custom' ? 'high' : state.settings.qualityPreset;
-    const next = syncLegacyQuality({ ...state.settings, qualityOverrides: {}, qualityPreset: base });
+    const base = state.settings.baseQualityPreset;
+    const next = syncLegacyQuality({ ...state.settings, qualityOverrides: {}, qualityPreset: base, degradedFrom: null });
     return { settings: next, spec: computeSpec(next) };
   }),
 
@@ -104,7 +110,8 @@ export const useSettings = create<SettingsState>((set, get) => ({
     const next = syncLegacyQuality({
       ...state.settings,
       qualityPreset: target,
-      degradedFrom: from,
+      baseQualityPreset: target,
+      degradedFrom: state.settings.degradedFrom ?? from,
     });
     set({ settings: next, spec: computeSpec(next) });
     return true;
@@ -115,13 +122,14 @@ export const useSettings = create<SettingsState>((set, get) => ({
     const next = syncLegacyQuality({
       ...state.settings,
       qualityPreset: state.settings.degradedFrom,
+      baseQualityPreset: state.settings.degradedFrom,
       degradedFrom: null,
     });
     return { settings: next, spec: computeSpec(next) };
   }),
 
   hydrate: (incoming, systemReduced) => set(() => {
-    const merged = sanitizeSettings({ ...DEFAULT_SETTINGS, ...(incoming ?? {}) });
+    const merged = sanitizeSettings(incoming);
     const next = syncLegacyQuality(merged);
     return { settings: next, spec: computeSpec(next, systemReduced), hydrated: true };
   }),

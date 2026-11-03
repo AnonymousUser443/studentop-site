@@ -2,6 +2,22 @@
 
 本清单依据工程实际文件整理。素材均从本地 `public/assets/` 加载；开发和预览不依赖外部字体、图片或音频服务。已记录的版本发布见[融合发布记录](../../../docs/PR2-LOCATION-RELEASE-20261028.md)；发布记录不改变用户素材的权利归属。
 
+## 2026-11-03 新增素材与证据入口
+
+本轮新增 8 张地标 `hero.webp` 与 1 张分区墨纹，均由 ImageGen 生成，服务于剪纸 / 水墨概念占位。它们不是校园实景照片、已确认建筑外观或定位证据；演出内保留占位标注，加载失败时以程序化山水兜底。
+
+| 资源 | 使用位置 | 记录 |
+| --- | --- | --- |
+| `/assets/landmarks/{wencui,beihu,library,teaching,wenbo,sports,tower,park}/hero.webp` | 地标 / 区域 Cinematic 内容插图 | [生成元数据目录](../../../qa/ui-implementation-20261103/assets/) |
+| `/assets/regions/ink-cloud.webp` | 分区遮罩单层 / 叠层墨纹，不替代冻结底图 | [本轮素材证据目录](../../../qa/ui-implementation-20261103/assets/) |
+| 菜单 / 设置视频关键帧、连续采样 | 布局比例、悬停、选中扫光与进场对照；不作为运行时截图贴图 | [reference](../../../qa/ui-implementation-20261103/menu-settings/reference/)、[说明](../../../qa/ui-implementation-20261103/menu-settings/README.md) |
+
+8 张 hero 的实际交付尺寸均为 **768×432**，水墨云纹为 **1024×1024**，9 张合计 **637,808 字节**。原生生成尺寸为 1672×941（教学楼为1672×940）及云纹1254×1254；它们和提示请求尺寸分别记录，不能混用。原生图已经目视检查，再用本地 FFmpeg 转为 WebP；`scripts/prepare-placeholder-assets.mjs` 仅重做本地转码，不调用生成服务。提示词、源图路径、实际尺寸、压缩字节和SHA-256见[assets/index.json](../../../qa/ui-implementation-20261103/assets/index.json)，运行时校验见[asset-manifest.json](asset-manifest.json)。真理之塔为虚构游戏信标，图像不声称存在对应实体建筑。
+
+本轮分区 / 打卡候选仍为未现场确认推荐稿。地图 `map_id`、完整画幅、六份冻结输入和 `src/data.ts` 公共 UV 不因生成素材或推荐轮廓而改变；人工确认 / `--apply` 流程见[作者指南](../src/calibration/AUTHORING.md)。
+
+最终产物62文件、20,908,923B（19.9403028MiB），距既有20MiB门禁剩62,597B。首屏静态JS图gzip214,068B；p5/GSAP不在该静态图中，p5仍有动态大chunk提示。替换实景图或扩充字体后须重新执行体积/manifest门禁，不能沿用此数字。精确记录见[不变量](../../../qa/ui-implementation-20261103/invariants.json)与[14项构建检查](../../../qa/ui-implementation-20261103/checks.json)。
+
 ## 校园地图
 
 2026-10-28 FE-01 接入更新：当前 `MapScene.tsx` 直接加载 `public/assets/maps/calibrated/campus_no_labels.webp`，失败回退同目录 PNG。二者从用户指定的 v0.4 标定包原样复制，均为完整 4000×4958 画布；不再把下列增强图作为运行底图。原文件保留用于追溯。`npm run verify:map` 校验两张原图、模型、元数据及 SDK 的固定 SHA-256。映射代码在 `src/location/vendor/`，未经重拟合或修改。
@@ -64,27 +80,28 @@ pwsh -File scripts/audio-assets.ps1 -SourceDir "X:\实际原始BGM目录" -Check
 
 ## 字体
 
-2026-11-02 构建收口：`npm run build` 在 Vite 后执行 `scripts/trim-dist.mjs`，仅从生成的 `dist/` 剔除 `MaShanZheng-Regular.ttf` 与历史 `campus.png/webp`、`campus-enhanced*.webp`。源码 `public/`、素材清单和重建输入保留，当前标定 WebP/PNG、两份 WOFF2 与 OFL 必须存在；产物不得超过 20 MiB。本轮无新字形，新增固定可见文案已由 [cmap 检查](../../../../qa/hud-motion-20261102/font-coverage.json)确认覆盖。
+`npm run build` 在 Vite 后执行 `scripts/trim-dist.mjs`，从生成的 `dist/` 剔除源 TTF 与历史地图副本，保留源码资产、当前冻结标定 WebP/PNG、三份WOFF2与各自许可。2026-11-03 已按菜单、设置、区域、标定与演出的运行时文案重建子集；[cmap检查](../../../qa/ui-implementation-20261103/font-coverage.json)覆盖946个非空白字符，联合字体缺字数0。字体覆盖范围不包含任意未来用户输入。
 
-| 字体 | 来源与用途 | 运行时文件 | 许可文件 |
+| 字体 | 来源与用途 | 2026-11-03 运行时字节 | 许可文件 |
 | --- | --- | --- | --- |
-| Noto Serif SC | 本机 `C:/Windows/Fonts/NotoSerifSC-VF.ttf`；正文、数值、菜单 | `NotoSerifSC-UI.woff2`，327,384 字节 | `NotoSerifSC-OFL.txt` |
-| Ma Shan Zheng | 工程保留 `MaShanZheng-Regular.ttf`；品牌与书法标题 | `MaShanZheng-UI.woff2`，316,300 字节 | `MaShanZheng-OFL.txt` |
+| Noto Serif SC | 本机 `C:/Windows/Fonts/NotoSerifSC-VF.ttf`；正文、数值、菜单 | `NotoSerifSC-UI.woff2`，357,528 字节 | `NotoSerifSC-OFL.txt` |
+| Ma Shan Zheng | 工程保留 `MaShanZheng-Regular.ttf`；品牌与书法标题 | `MaShanZheng-UI.woff2`，357,572 字节 | `MaShanZheng-OFL.txt` |
+| Liyun Symbols | 本机DejaVu Sans的8个界面符号子集，重命名字体族；补几何/方向字符 | `LiyunSymbols-UI.woff2`，1,036 字节 | `DejaVu-LICENSE.txt`（Bitstream Vera / Arev） |
 
-2026-11-02 实测复核：上述两份子集字节数已按实际文件更正；早期记录为子集重建前的数值。
+旧版两份子集字节分别为327,384 / 316,300；它们是2026-11-02历史值，不能作为当前字体预算。
 
-文件均位于 `public/assets/fonts/`。两份许可文件均声明 SIL Open Font License 1.1；交付时应保留许可。CSS 使用本地 WOFF2 子集，不发起在线字体请求。
+文件均位于 `public/assets/fonts/`。Noto和MaShan许可声明SIL Open Font License 1.1；Liyun Symbols另保留源字体嵌入许可。关于页面可分别查看三份许可。CSS使用本地WOFF2子集，符号face限定unicode-range，不发起在线字体请求。
 
 许可文本同样参与 `docs/asset-manifest.json` 的字节数和 SHA-256 校验；`.gitattributes` 固定这两份文件使用 LF，避免 Windows/Linux 检出换行不同造成误报。素材有意变更后先审核，再运行 `node scripts/asset-manifest.mjs` 更新清单，并用 `--check` 复核。
 
-`scripts/fonts-build.ps1` 扫描 `src/` 下的 TS、TSX、CSS 与 JSON 文本，生成 `fonts-characters.txt` 并调用 fontTools 的 `pyftsubset`。新增中文文案后运行：
+`scripts/collect-font-text.mjs`通过TypeScript AST采集`src/`中的运行时字符串、JSX、模板字符串、JSON值及CSS content；包括`.mjs`运行时错误文案，排除测试、声明与注释。`fonts-build.ps1`据此生成`fonts-characters.txt`并调用fontTools的`pyftsubset`。新增中文文案后运行：
 
 ```powershell
 pwsh -File scripts/fonts-build.ps1 -SerifSource "C:/Windows/Fonts/NotoSerifSC-VF.ttf" -CheckOnly
 # 临时目录中的两份子集都成功后，去掉 -CheckOnly 才写入工程
 ```
 
-需要 `pyftsubset` 与 Brotli 支持；可用 `-SerifSource` / `-BrushSource` 显式指定源字体。脚本先验证全部输入与命令、读取源码，再暂存两份 WOFF2；任何子集失败（包括缺 Brotli）都不改项目字表/字体，`-CheckOnly` 仅验证暂存结果并清理。它不会自行安装依赖，最终复制阶段也不是多文件原子事务。子集不覆盖任意用户输入或未来所有汉字；若引入动态内容，应扩展字符范围或提供相应字体策略。
+需要`pyftsubset`与Brotli支持；可用`-SerifSource` / `-BrushSource`显式指定源字体。脚本先验证输入、读取源码，再暂存两份WOFF2；子集失败不替换工程，`-CheckOnly`仅验证暂存结果并清理。符号补集可另传`-SymbolsSource`，由`scripts/build-symbol-font.py`生成并复制嵌入许可；没有此参数时保留已有符号字体。最终复制不是多文件原子事务，脚本不自行安装依赖。若引入新动态内容，须扩展字符范围或提供相应字体策略。
 
 ## 独立图像与 SVG 界面
 
@@ -98,7 +115,7 @@ pwsh -File scripts/fonts-build.ps1 -SerifSource "C:/Windows/Fonts/NotoSerifSC-VF
 | `src/map/MapScene.tsx` | 程序内 SVG：地标菱形、真理之塔、玩家箭头与水纹 |
 | `src/effects/Atmosphere.tsx` | p5/Canvas 绘制云片、落叶、微光和发现光效 |
 
-角落前景由 Scenery 组件矢量绘制（松枝、山亭、芦苇与坡岸），不再依赖 ImageGen 位图构件。构图与艺术方向参考上层 `参考图/游戏HUD设计参考图底图/` 和 `参考图/整体风格基调的参考图/原神参考图1.png`。参考图用于布局、色块层次与剪纸语汇，运行时地图与界面来自上述实际资源。
+历史 Scenery / Ornaments 矢量构件与本地 paintings / art 前景继续按实际引用使用；本轮另有上表明确列出的 ImageGen hero 与墨纹，不应再笼统描述为“运行界面不依赖 ImageGen 位图”。用户参考图 / 视频只用于布局、色块、剪纸与交互语汇，冻结运行地图仍来自标定包原图。
 
 所有新增构件遵循利落剪影、平涂色块、分级阴影、玉绿与奶油金。后续替换图像时保持透明边界、图层位置及中央地图可读区域，并记录新来源。
 

@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "scope": "Single public guest/menu/settings smoke; no full acceptance rerun",
+  "checks": [
+    {
+      "name": "expected release served",
+      "pass": true
+    },
+    {
+      "name": "left drawer opens",
+      "pass": true
+    },
+    {
+      "name": "settings categories rendered",
+      "pass": true
+    },
+    {
+      "name": "production development bridge absent",
+      "pass": true
+    },
+    {
+      "name": "no browser errors",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "completedAt": "2026-11-03T12:08:25.925Z"
+}

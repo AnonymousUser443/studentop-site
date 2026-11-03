@@ -69,11 +69,12 @@ test('v3 HUD 设置经保存、登出和重登完整往返，未知嵌套字段�
   await withServer(async ({ request }) => {
     const credentials = { nickname: 'fixture', studentId: 'hud-v3-fixture', password: PASSWORD };
     const first = await request('/api/auth/login', { method:'POST', body:credentials });
-    const settings = { music:false, volume:.4, track:2, quality:'high', qualityPreset:'custom',
+    const settings = { music:false, volume:.4, track:2, quality:'high', qualityPreset:'custom', baseQualityPreset:'ultra',
       qualityOverrides:{backdropBlur:12,cssAmbient:false}, reducedMotion:true, autoDegrade:false,
-      degradedFrom:'ultra', uiSound:false, reduceFlash:true, hudScale:1.12 };
+      degradedFrom:'ultra', uiSound:false, reduceFlash:true, hudScale:1.12,
+      dragSensitivity:1.7, zoomLimit:3.5, doubleZoom:1.8, messageDuration:5, showCinematic:false, redDot:false };
     const saved = await request('/api/progress', { method:'PUT', token:first.data.token,
-      body:{state:{version:3,discoveredIds:['tower'],playerUV:START_UV,settings:{...settings,qualityOverrides:{...settings.qualityOverrides,rawGPS:'private-override-marker'},secret:'private-setting-marker'}}} });
+      body:{state:{version:3,discoveredIds:['tower'],unlockedRegionIds:['park','beihu','park','private-region-marker'],playerUV:START_UV,settings:{...settings,qualityOverrides:{...settings.qualityOverrides,rawGPS:'private-override-marker'},secret:'private-setting-marker'}}} });
     assert.equal(saved.status,200);
     await request('/api/auth/logout',{method:'POST',token:first.data.token});
     const second = await request('/api/auth/login',{method:'POST',body:credentials});
@@ -82,8 +83,20 @@ test('v3 HUD 设置经保存、登出和重登完整往返，未知嵌套字段�
     assert.equal(read.data.state.version,3);
     assert.deepEqual(read.data.state.settings,settings);
     assert.deepEqual(read.data.state.discoveredIds,['tower']);
+    assert.deepEqual(read.data.state.unlockedRegionIds,['park','beihu']);
     assert.deepEqual(read.data.checkins.map(row=>row.landmarkId),['tower']);
     assert.equal(JSON.stringify(read.data).includes('private-'),false);
+
+    const reset = await request('/api/progress',{method:'PUT',token:second.data.token,
+      body:{state:{version:3,discoveredIds:[],unlockedRegionIds:[],playerUV:START_UV,settings}}});
+    assert.equal(reset.status,200);
+    await request('/api/auth/logout',{method:'POST',token:second.data.token});
+    const third = await request('/api/auth/login',{method:'POST',body:credentials});
+    const afterReset = await request('/api/progress',{token:third.data.token});
+    assert.deepEqual(afterReset.data.state.discoveredIds,[]);
+    assert.deepEqual(afterReset.data.state.unlockedRegionIds,[]);
+    assert.deepEqual(afterReset.data.checkins,[]);
+    assert.deepEqual(afterReset.data.state.settings,settings);
   });
 });
 

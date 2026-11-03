@@ -1,0 +1,306 @@
+{
+  "pressedHitAreas": [
+    {
+      "id": "cinematic-continue",
+      "viewport": [
+        844,
+        390
+      ],
+      "selector": "[data-testid=\"cinematic-screen\"] button",
+      "normalRect": {
+        "x": 486.28125,
+        "y": 267.890625,
+        "width": 180,
+        "height": 44,
+        "top": 267.890625,
+        "right": 666.28125,
+        "bottom": 311.890625,
+        "left": 486.28125
+      },
+      "pressedRect": {
+        "x": 486.28125,
+        "y": 267.890625,
+        "width": 180,
+        "height": 44,
+        "top": 267.890625,
+        "right": 666.28125,
+        "bottom": 311.890625,
+        "left": 486.28125
+      },
+      "active": true,
+      "visualDifference": {
+        "count": 1,
+        "examples": [
+          {
+            "property": "0.boxShadow",
+            "from": "none",
+            "to": "rgb(138, 106, 48) 0px 0px 0px 3px inset"
+          }
+        ]
+      }
+    },
+    {
+      "id": "location-primary",
+      "viewport": [
+        844,
+        390
+      ],
+      "selector": ".location-primary",
+      "normalRect": {
+        "x": 569,
+        "y": 89,
+        "width": 172,
+        "height": 44,
+        "top": 89,
+        "right": 741,
+        "bottom": 133,
+        "left": 569
+      },
+      "pressedRect": {
+        "x": 569,
+        "y": 89,
+        "width": 172,
+        "height": 44,
+        "top": 89,
+        "right": 741,
+        "bottom": 133,
+        "left": 569
+      },
+      "active": true,
+      "visualDifference": {
+        "count": 1,
+        "examples": [
+          {
+            "property": "0.backgroundColor",
+            "from": "rgb(255, 253, 242)",
+            "to": "rgb(232, 207, 131)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "activity-primary",
+      "viewport": [
+        844,
+        390
+      ],
+      "selector": ".activity-primary",
+      "normalRect": {
+        "x": 543.53125,
+        "y": 291.984375,
+        "width": 168.46875,
+        "height": 44,
+        "top": 291.984375,
+        "right": 712,
+        "bottom": 335.984375,
+        "left": 543.53125
+      },
+      "pressedRect": {
+        "x": 543.53125,
+        "y": 291.984375,
+        "width": 168.46875,
+        "height": 44,
+        "top": 291.984375,
+        "right": 712,
+        "bottom": 335.984375,
+        "left": 543.53125
+      },
+      "active": true,
+      "visualDifference": {
+        "count": 0,
+        "examples": []
+      }
+    },
+    {
+      "id": "activity-close",
+      "viewport": [
+        844,
+        390
+      ],
+      "selector": ".activity-close",
+      "normalRect": {
+        "x": 753.4828491210938,
+        "y": 9.482858657836914,
+        "width": 49.0343017578125,
+        "height": 49.034278869628906,
+        "top": 9.482858657836914,
+        "right": 802.5171508789062,
+        "bottom": 58.51713752746582,
+        "left": 753.4828491210938
+      },
+      "pressedRect": {
+        "x": 753.4828491210938,
+        "y": 9.482858657836914,
+        "width": 49.0343017578125,
+        "height": 49.034278869628906,
+        "top": 9.482858657836914,
+        "right": 802.5171508789062,
+        "bottom": 58.51713752746582,
+        "left": 753.4828491210938
+      },
+      "active": true,
+      "visualDifference": {
+        "count": 1,
+        "examples": [
+          {
+            "property": "1.transform",
+            "from": "none",
+            "to": "matrix(0.92, 0, 0, 0.92, 0, 0)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cinematic-continue",
+      "viewport": [
+        667,
+        375
+      ],
+      "selector": "[data-testid=\"cinematic-screen\"] button",
+      "normalRect": {
+        "x": 385.140625,
+        "y": 265.484375,
+        "width": 180,
+        "height": 44,
+        "top": 265.484375,
+        "right": 565.140625,
+        "bottom": 309.484375,
+        "left": 385.140625
+      },
+      "pressedRect": {
+        "x": 385.140625,
+        "y": 265.484375,
+        "width": 180,
+        "height": 44,
+        "top": 265.484375,
+        "right": 565.140625,
+        "bottom": 309.484375,
+        "left": 385.140625
+      },
+      "active": true,
+      "visualDifference": {
+        "count": 1,
+        "examples": [
+          {
+            "property": "0.boxShadow",
+            "from": "none",
+            "to": "rgb(138, 106, 48) 0px 0px 0px 3px inset"
+          }
+        ]
+      }
+    },
+    {
+      "id": "location-primary",
+      "viewport": [
+        667,
+        375
+      ],
+      "selector": ".location-primary",
+      "normalRect": {
+        "x": 418.5625,
+        "y": 89,
+        "width": 145.4375,
+        "height": 44,
+        "top": 89,
+        "right": 564,
+        "bottom": 133,
+        "left": 418.5625
+      },
+      "pressedRect": {
+        "x": 418.5625,
+        "y": 89,
+        "width": 145.4375,
+        "height": 44,
+        "top": 89,
+        "right": 564,
+        "bottom": 133,
+        "left": 418.5625
+      },
+      "active": true,
+      "visualDifference": {
+        "count": 1,
+        "examples": [
+          {
+            "property": "0.backgroundColor",
+            "from": "rgb(255, 253, 242)",
+            "to": "rgb(232, 207, 131)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "activity-primary",
+      "viewport": [
+        667,
+        375
+      ],
+      "selector": ".activity-primary",
+      "normalRect": {
+        "x": 429.546875,
+        "y": 254.5,
+        "width": 116.0625,
+        "height": 68,
+        "top": 254.5,
+        "right": 545.609375,
+        "bottom": 322.5,
+        "left": 429.546875
+      },
+      "pressedRect": {
+        "x": 429.546875,
+        "y": 254.5,
+        "width": 116.0625,
+        "height": 68,
+        "top": 254.5,
+        "right": 545.609375,
+        "bottom": 322.5,
+        "left": 429.546875
+      },
+      "active": true,
+      "visualDifference": {
+        "count": 0,
+        "examples": []
+      }
+    },
+    {
+      "id": "activity-close",
+      "viewport": [
+        667,
+        375
+      ],
+      "selector": ".activity-close",
+      "normalRect": {
+        "x": 576.4828491210938,
+        "y": 9.482858657836914,
+        "width": 49.0343017578125,
+        "height": 49.034278869628906,
+        "top": 9.482858657836914,
+        "right": 625.5171508789062,
+        "bottom": 58.51713752746582,
+        "left": 576.4828491210938
+      },
+      "pressedRect": {
+        "x": 576.4828491210938,
+        "y": 9.482858657836914,
+        "width": 49.0343017578125,
+        "height": 49.034278869628906,
+        "top": 9.482858657836914,
+        "right": 625.5171508789062,
+        "bottom": 58.51713752746582,
+        "left": 576.4828491210938
+      },
+      "active": true,
+      "visualDifference": {
+        "count": 1,
+        "examples": [
+          {
+            "property": "1.transform",
+            "from": "none",
+            "to": "matrix(0.92, 0, 0, 0.92, 0, 0)"
+          }
+        ]
+      }
+    }
+  ],
+  "thresholdCssPx": 44,
+  "toleranceCssPx": 0.1
+}

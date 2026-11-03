@@ -1,0 +1,6187 @@
+{
+  "phase": "after",
+  "frames": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "computedMetric": "Distinct nontransparent resolved solid colors (RGBA bytes) across nine computed color properties on visible, non-inert DOM elements, including resolved SVG fill/stroke. Excludes raster pixels, gradient expansion, pseudo-elements and hidden states.",
+      "computedColorCount": 19,
+      "computedColors": [
+        "0,0,0,255",
+        "13,43,38,255",
+        "18,51,47,224",
+        "18,51,47,245",
+        "184,147,62,184",
+        "184,148,64,112",
+        "188,197,163,255",
+        "212,184,116,255",
+        "226,207,149,53",
+        "228,207,148,122",
+        "228,207,149,255",
+        "230,221,186,224",
+        "230,221,186,255",
+        "239,229,204,255",
+        "243,232,200,255",
+        "245,230,189,255",
+        "25,60,55,224",
+        "39,69,63,255",
+        "95,74,38,255"
+      ],
+      "texts": [
+        {
+          "selector": ".hud-brand-sub",
+          "text": "— 北理校园探索 —",
+          "fontSize": 10.368,
+          "weight": 400,
+          "foreground": [
+            230,
+            221,
+            186,
+            224
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 115.671875,
+              "y": 73.40625,
+              "width": 119.296875,
+              "height": 15
+            }
+          ],
+          "sampleCount": 228,
+          "minimum": 3.992497859386487,
+          "p05": 6.816709972960497,
+          "pass": true
+        },
+        {
+          "selector": ".hud-brand-season",
+          "text": "良乡 · 秋",
+          "fontSize": 10.368,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 115.671875,
+              "y": 92.40625,
+              "width": 50.984375,
+              "height": 15
+            }
+          ],
+          "sampleCount": 92,
+          "minimum": 11.144377983268425,
+          "p05": 11.158629701043232,
+          "pass": true
+        },
+        {
+          "selector": ".hud-pill strong",
+          "text": "7",
+          "fontSize": 12.672,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1234.046875,
+              "y": 45.171875,
+              "width": 7.25,
+              "height": 19
+            }
+          ],
+          "sampleCount": 5,
+          "minimum": 9.897333671098535,
+          "p05": 9.897333671098535,
+          "pass": true
+        },
+        {
+          "selector": ".hud-pill-name",
+          "text": "游客",
+          "fontSize": 12.672,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1315.984375,
+              "y": 45.171875,
+              "width": 25.34375,
+              "height": 19
+            }
+          ],
+          "sampleCount": 55,
+          "minimum": 9.699335642416099,
+          "p05": 9.714537273514116,
+          "pass": true
+        },
+        {
+          "selector": ".hud-progress-count",
+          "text": "7/8",
+          "fontSize": 10.368,
+          "weight": 400,
+          "foreground": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1374.890625,
+              "y": 832.328125,
+              "width": 5.703125,
+              "height": 15
+            },
+            {
+              "x": 1380.59375,
+              "y": 832.328125,
+              "width": 8.953125,
+              "height": 15
+            },
+            {
+              "x": 1389.546875,
+              "y": 832.328125,
+              "width": 5.78125,
+              "height": 15
+            }
+          ],
+          "sampleCount": 16,
+          "minimum": 8.398446497523318,
+          "p05": 8.398446497523318,
+          "pass": true
+        },
+        {
+          "selector": ".hud-progress-save",
+          "text": "游客 · 本机存档",
+          "fontSize": 10.368,
+          "weight": 400,
+          "foreground": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1324.46875,
+              "y": 848.328125,
+              "width": 70.859375,
+              "height": 15
+            }
+          ],
+          "sampleCount": 132,
+          "minimum": 7.305224074417695,
+          "p05": 7.418953297473958,
+          "pass": true
+        },
+        {
+          "selector": ".location-controls p",
+          "text": "开启定位，在校园地图上查看实际位置",
+          "fontSize": 10.368,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1135.328125,
+              "y": 295.984375,
+              "width": 176.125,
+              "height": 15
+            }
+          ],
+          "sampleCount": 344,
+          "minimum": 10.10197084355504,
+          "p05": 10.238275795004292,
+          "pass": true
+        },
+        {
+          "selector": ".location-primary",
+          "text": "定位到我",
+          "fontSize": 12.672,
+          "weight": 600,
+          "foreground": [
+            13,
+            43,
+            38,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1223.3125,
+              "y": 255.484375,
+              "width": 50.6875,
+              "height": 19
+            }
+          ],
+          "sampleCount": 115,
+          "minimum": 12.178493128999477,
+          "p05": 12.178493128999477,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "文萃楼",
+          "fontSize": 18,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 912.390625,
+              "y": 508,
+              "width": 56.703125,
+              "height": 26
+            }
+          ],
+          "sampleCount": 182,
+          "minimum": 7.41178577031654,
+          "p05": 7.420080711239843,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "北湖",
+          "fontSize": 18,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 552.6875,
+              "y": 253.984375,
+              "width": 37.8125,
+              "height": 26
+            }
+          ],
+          "sampleCount": 119,
+          "minimum": 7.973212461552604,
+          "p05": 7.973212461552604,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "徐特立图书馆",
+          "fontSize": 18,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 604.59375,
+              "y": 705.421875,
+              "width": 113.40625,
+              "height": 26
+            }
+          ],
+          "sampleCount": 385,
+          "minimum": 7.561105561344289,
+          "p05": 7.561105561344289,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "综合教学大楼",
+          "fontSize": 18,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 618.203125,
+              "y": 492.34375,
+              "width": 113.40625,
+              "height": 26
+            }
+          ],
+          "sampleCount": 378,
+          "minimum": 7.428249100072656,
+          "p05": 7.452513376765689,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "文博中心",
+          "fontSize": 18,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1200.71875,
+              "y": 512.59375,
+              "width": 75.609375,
+              "height": 26
+            }
+          ],
+          "sampleCount": 252,
+          "minimum": 6.779686913861021,
+          "p05": 6.971048208641392,
+          "pass": true
+        }
+      ],
+      "boundaries": [
+        {
+          "selector": ".hud-pill",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            25,
+            60,
+            55,
+            224
+          ],
+          "outside": [
+            188,
+            197,
+            163,
+            255
+          ],
+          "ratio": 4.8555743985850315,
+          "pass": true
+        },
+        {
+          "selector": ".hud-pill",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            25,
+            60,
+            55,
+            224
+          ],
+          "outside": [
+            188,
+            197,
+            163,
+            255
+          ],
+          "ratio": 4.8555743985850315,
+          "pass": true
+        },
+        {
+          "selector": ".hud-icon-button",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            25,
+            60,
+            55,
+            224
+          ],
+          "outside": [
+            188,
+            197,
+            163,
+            255
+          ],
+          "ratio": 4.8555743985850315,
+          "pass": true
+        },
+        {
+          "selector": ".hud-context-toggle",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            245
+          ],
+          "ratio": 6.310693041269771,
+          "pass": true
+        },
+        {
+          "selector": ".location-primary",
+          "kind": "filled-control",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            245
+          ],
+          "ratio": 9.798329740647125,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            39,
+            69,
+            63,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 6.797374766731429,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            39,
+            69,
+            63,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 6.797374766731429,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            39,
+            69,
+            63,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 6.797374766731429,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            39,
+            69,
+            63,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 6.797374766731429,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            39,
+            69,
+            63,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 6.797374766731429,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            95,
+            74,
+            38,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 5.476133801222779,
+          "pass": true
+        }
+      ],
+      "boxes": {
+        ".hud-frame": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        ".hud-context-card": {
+          "x": 1122.328125,
+          "y": 233.984375,
+          "width": 286,
+          "height": 91.109375
+        }
+      },
+      "name": "map-1440x900"
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "computedMetric": "Distinct nontransparent resolved solid colors (RGBA bytes) across nine computed color properties on visible, non-inert DOM elements, including resolved SVG fill/stroke. Excludes raster pixels, gradient expansion, pseudo-elements and hidden states.",
+      "computedColorCount": 20,
+      "computedColors": [
+        "0,0,0,255",
+        "13,43,38,255",
+        "18,51,47,224",
+        "18,51,47,245",
+        "184,147,62,184",
+        "184,148,64,112",
+        "188,197,163,255",
+        "191,178,138,255",
+        "212,184,116,255",
+        "226,207,149,53",
+        "228,207,148,122",
+        "228,207,149,255",
+        "230,221,186,224",
+        "230,221,186,255",
+        "239,229,204,255",
+        "243,232,200,255",
+        "245,230,189,255",
+        "25,60,55,224",
+        "75,88,77,255",
+        "95,74,38,255"
+      ],
+      "texts": [
+        {
+          "selector": ".hud-brand-sub",
+          "text": "— 北理校园探索 —",
+          "fontSize": 10.368,
+          "weight": 400,
+          "foreground": [
+            230,
+            221,
+            186,
+            224
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 115.671875,
+              "y": 73.40625,
+              "width": 119.296875,
+              "height": 15
+            }
+          ],
+          "sampleCount": 228,
+          "minimum": 3.9803611507896983,
+          "p05": 6.816709972960497,
+          "pass": true
+        },
+        {
+          "selector": ".hud-brand-season",
+          "text": "良乡 · 秋",
+          "fontSize": 10.368,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 115.671875,
+              "y": 92.40625,
+              "width": 50.984375,
+              "height": 15
+            }
+          ],
+          "sampleCount": 92,
+          "minimum": 11.144377983268425,
+          "p05": 11.158629701043232,
+          "pass": true
+        },
+        {
+          "selector": ".hud-pill strong",
+          "text": "0",
+          "fontSize": 12.672,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1233.96875,
+              "y": 45.171875,
+              "width": 7.328125,
+              "height": 19
+            }
+          ],
+          "sampleCount": 10,
+          "minimum": 9.897333671098535,
+          "p05": 9.897333671098535,
+          "pass": true
+        },
+        {
+          "selector": ".hud-pill-name",
+          "text": "游客",
+          "fontSize": 12.672,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1315.984375,
+              "y": 45.171875,
+              "width": 25.34375,
+              "height": 19
+            }
+          ],
+          "sampleCount": 55,
+          "minimum": 9.714537273514116,
+          "p05": 9.714537273514116,
+          "pass": true
+        },
+        {
+          "selector": ".hud-progress-count",
+          "text": "0/8",
+          "fontSize": 10.368,
+          "weight": 400,
+          "foreground": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1374.8125,
+              "y": 832.328125,
+              "width": 5.78125,
+              "height": 15
+            },
+            {
+              "x": 1380.59375,
+              "y": 832.328125,
+              "width": 8.953125,
+              "height": 15
+            },
+            {
+              "x": 1389.546875,
+              "y": 832.328125,
+              "width": 5.78125,
+              "height": 15
+            }
+          ],
+          "sampleCount": 16,
+          "minimum": 8.398446497523318,
+          "p05": 8.398446497523318,
+          "pass": true
+        },
+        {
+          "selector": ".hud-progress-save",
+          "text": "游客 · 本机存档",
+          "fontSize": 10.368,
+          "weight": 400,
+          "foreground": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1324.46875,
+              "y": 848.328125,
+              "width": 70.859375,
+              "height": 15
+            }
+          ],
+          "sampleCount": 132,
+          "minimum": 7.305224074417695,
+          "p05": 7.418953297473958,
+          "pass": true
+        },
+        {
+          "selector": ".location-controls p",
+          "text": "开启定位，在校园地图上查看实际位置",
+          "fontSize": 10.368,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1135.328125,
+              "y": 295.984375,
+              "width": 176.125,
+              "height": 15
+            }
+          ],
+          "sampleCount": 344,
+          "minimum": 10.091166726926211,
+          "p05": 10.091166726926211,
+          "pass": true
+        },
+        {
+          "selector": ".location-primary",
+          "text": "定位到我",
+          "fontSize": 12.672,
+          "weight": 600,
+          "foreground": [
+            13,
+            43,
+            38,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1223.3125,
+              "y": 255.484375,
+              "width": 50.6875,
+              "height": 19
+            }
+          ],
+          "sampleCount": 115,
+          "minimum": 12.178493128999477,
+          "p05": 12.178493128999477,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "文萃楼",
+          "fontSize": 18,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 912.390625,
+              "y": 499,
+              "width": 56.703125,
+              "height": 26
+            }
+          ],
+          "sampleCount": 182,
+          "minimum": 5.769301796079235,
+          "p05": 5.769301796079235,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "北湖",
+          "fontSize": 18,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 552.6875,
+              "y": 244.984375,
+              "width": 37.8125,
+              "height": 26
+            }
+          ],
+          "sampleCount": 119,
+          "minimum": 5.752614912716237,
+          "p05": 5.769301796079235,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "徐特立图书馆",
+          "fontSize": 18,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 604.59375,
+              "y": 696.421875,
+              "width": 113.40625,
+              "height": 26
+            }
+          ],
+          "sampleCount": 385,
+          "minimum": 5.939338086594298,
+          "p05": 5.939338086594298,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "综合教学大楼",
+          "fontSize": 18,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 618.203125,
+              "y": 483.34375,
+              "width": 113.40625,
+              "height": 26
+            }
+          ],
+          "sampleCount": 378,
+          "minimum": 5.8367458095383125,
+          "p05": 5.8367458095383125,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "文博中心",
+          "fontSize": 18,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1200.71875,
+              "y": 503.59375,
+              "width": 75.609375,
+              "height": 26
+            }
+          ],
+          "sampleCount": 252,
+          "minimum": 5.42372583862577,
+          "p05": 5.507863996947806,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name small",
+          "text": "待发现",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 912.390625,
+              "y": 526,
+              "width": 40.328125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 90,
+          "minimum": 5.8367458095383125,
+          "p05": 5.8367458095383125,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name small",
+          "text": "待发现",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 552.6875,
+              "y": 271.984375,
+              "width": 40.328125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 90,
+          "minimum": 5.8367458095383125,
+          "p05": 5.8367458095383125,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name small",
+          "text": "待发现",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 604.59375,
+              "y": 723.421875,
+              "width": 40.328125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 72,
+          "minimum": 5.945367531924355,
+          "p05": 5.962395521679779,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name small",
+          "text": "待发现",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 618.203125,
+              "y": 510.34375,
+              "width": 40.328125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 72,
+          "minimum": 5.769301796079235,
+          "p05": 5.769301796079235,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name small",
+          "text": "待发现",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1200.71875,
+              "y": 530.59375,
+              "width": 40.328125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 72,
+          "minimum": 5.8308474722866634,
+          "p05": 5.8308474722866634,
+          "pass": true
+        }
+      ],
+      "boundaries": [
+        {
+          "selector": ".hud-pill",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            25,
+            60,
+            55,
+            224
+          ],
+          "outside": [
+            188,
+            197,
+            163,
+            255
+          ],
+          "ratio": 4.8555743985850315,
+          "pass": true
+        },
+        {
+          "selector": ".hud-pill",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            25,
+            60,
+            55,
+            224
+          ],
+          "outside": [
+            188,
+            197,
+            163,
+            255
+          ],
+          "ratio": 4.8555743985850315,
+          "pass": true
+        },
+        {
+          "selector": ".hud-icon-button",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            25,
+            60,
+            55,
+            224
+          ],
+          "outside": [
+            188,
+            197,
+            163,
+            255
+          ],
+          "ratio": 4.8555743985850315,
+          "pass": true
+        },
+        {
+          "selector": ".hud-context-toggle",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            245
+          ],
+          "ratio": 6.310693041269771,
+          "pass": true
+        },
+        {
+          "selector": ".location-primary",
+          "kind": "filled-control",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            245
+          ],
+          "ratio": 9.798329740647125,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            191,
+            178,
+            138,
+            255
+          ],
+          "background": [
+            75,
+            88,
+            77,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 3.5509022027784467,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            191,
+            178,
+            138,
+            255
+          ],
+          "background": [
+            75,
+            88,
+            77,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 3.5509022027784467,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            191,
+            178,
+            138,
+            255
+          ],
+          "background": [
+            75,
+            88,
+            77,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 3.5509022027784467,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            191,
+            178,
+            138,
+            255
+          ],
+          "background": [
+            75,
+            88,
+            77,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 3.5509022027784467,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            191,
+            178,
+            138,
+            255
+          ],
+          "background": [
+            75,
+            88,
+            77,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 3.5509022027784467,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            95,
+            74,
+            38,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 5.476133801222779,
+          "pass": true
+        }
+      ],
+      "boxes": {
+        ".hud-frame": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        ".hud-context-card": {
+          "x": 1122.328125,
+          "y": 233.984375,
+          "width": 286,
+          "height": 91.109375
+        }
+      },
+      "name": "map-fog-1440x900"
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "computedMetric": "Distinct nontransparent resolved solid colors (RGBA bytes) across nine computed color properties on visible, non-inert DOM elements, including resolved SVG fill/stroke. Excludes raster pixels, gradient expansion, pseudo-elements and hidden states.",
+      "computedColorCount": 15,
+      "computedColors": [
+        "0,0,0,255",
+        "138,106,48,255",
+        "14,42,38,168",
+        "184,147,63,255",
+        "188,197,163,255",
+        "191,178,138,255",
+        "212,184,116,255",
+        "230,221,186,255",
+        "232,207,131,255",
+        "243,232,200,255",
+        "245,230,189,255",
+        "31,58,47,255",
+        "45,83,67,255",
+        "51,81,63,255",
+        "87,127,104,255"
+      ],
+      "texts": [
+        {
+          "selector": ".eyebrow",
+          "text": "校园记忆 · 已点亮 7 处",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 501,
+              "y": 152,
+              "width": 138.96875,
+              "height": 17
+            }
+          ],
+          "sampleCount": 335,
+          "minimum": 7.1929439417972745,
+          "p05": 7.1929439417972745,
+          "pass": true
+        },
+        {
+          "selector": ".modal-heading h2",
+          "text": "收集图鉴",
+          "fontSize": 28,
+          "weight": 650,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 3,
+          "rects": [
+            {
+              "x": 501,
+              "y": 175,
+              "width": 118.734375,
+              "height": 40
+            }
+          ],
+          "sampleCount": 627,
+          "minimum": 10.08348325362934,
+          "p05": 10.08348325362934,
+          "pass": true
+        },
+        {
+          "selector": ".collection-intro",
+          "text": "把走过的风景，珍藏成一页页记忆。",
+          "fontSize": 13,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 616,
+              "y": 259,
+              "width": 208,
+              "height": 19
+            }
+          ],
+          "sampleCount": 510,
+          "minimum": 7.1929439417972745,
+          "p05": 7.1929439417972745,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "文萃楼",
+          "fontSize": 14,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 503,
+              "y": 375.5,
+              "width": 42,
+              "height": 20
+            }
+          ],
+          "sampleCount": 114,
+          "minimum": 9.044255949550118,
+          "p05": 9.044255949550118,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "北湖",
+          "fontSize": 14,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 706,
+              "y": 375.5,
+              "width": 28,
+              "height": 20
+            }
+          ],
+          "sampleCount": 72,
+          "minimum": 9.044255949550118,
+          "p05": 9.044255949550118,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "徐特立图书馆",
+          "fontSize": 14,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 874,
+              "y": 375.5,
+              "width": 84,
+              "height": 20
+            }
+          ],
+          "sampleCount": 240,
+          "minimum": 9.044255949550118,
+          "p05": 9.044255949550118,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "综合教学大楼",
+          "fontSize": 14,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 482,
+              "y": 529.5,
+              "width": 84,
+              "height": 20
+            }
+          ],
+          "sampleCount": 240,
+          "minimum": 9.044255949550118,
+          "p05": 9.044255949550118,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "文博中心",
+          "fontSize": 14,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 692,
+              "y": 529.5,
+              "width": 56,
+              "height": 20
+            }
+          ],
+          "sampleCount": 156,
+          "minimum": 9.044255949550118,
+          "p05": 9.044255949550118,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "体育馆",
+          "fontSize": 14,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 895,
+              "y": 529.5,
+              "width": 42,
+              "height": 20
+            }
+          ],
+          "sampleCount": 114,
+          "minimum": 9.044255949550118,
+          "p05": 9.044255949550118,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "真理之塔",
+          "fontSize": 14,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 496,
+              "y": 683.5,
+              "width": 56,
+              "height": 20
+            }
+          ],
+          "sampleCount": 156,
+          "minimum": 9.044255949550118,
+          "p05": 9.044255949550118,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "国防教育主题公园",
+          "fontSize": 14,
+          "weight": 600,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 664,
+              "y": 683.5,
+              "width": 112,
+              "height": 20
+            }
+          ],
+          "sampleCount": 324,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "已收入图鉴",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 496.5,
+              "y": 404.5,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 100,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "已收入图鉴",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 692.5,
+              "y": 404.5,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 100,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "已收入图鉴",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 888.5,
+              "y": 404.5,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 100,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "已收入图鉴",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 496.5,
+              "y": 558.5,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 100,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "已收入图鉴",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 692.5,
+              "y": 558.5,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 100,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "已收入图鉴",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 888.5,
+              "y": 558.5,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 100,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "已收入图鉴",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 496.5,
+              "y": 712.5,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 100,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "待发现",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 703.5,
+              "y": 712.5,
+              "width": 33,
+              "height": 16
+            }
+          ],
+          "sampleCount": 56,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        }
+      ],
+      "boundaries": [
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        }
+      ],
+      "boxes": {
+        ".hud-modal": {
+          "x": 395,
+          "y": 121,
+          "width": 650,
+          "height": 658
+        },
+        ".collection-grid": {
+          "x": 433,
+          "y": 299,
+          "width": 574,
+          "height": 448
+        }
+      },
+      "name": "collection-1440x900"
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "computedMetric": "Distinct nontransparent resolved solid colors (RGBA bytes) across nine computed color properties on visible, non-inert DOM elements, including resolved SVG fill/stroke. Excludes raster pixels, gradient expansion, pseudo-elements and hidden states.",
+      "computedColorCount": 15,
+      "computedColors": [
+        "0,0,0,255",
+        "114,86,44,255",
+        "138,106,48,255",
+        "14,42,38,168",
+        "184,147,63,255",
+        "188,197,163,255",
+        "191,178,138,255",
+        "212,184,116,255",
+        "232,207,131,255",
+        "243,232,200,255",
+        "245,230,189,255",
+        "31,58,47,255",
+        "45,83,67,255",
+        "51,81,63,255",
+        "89,103,81,255"
+      ],
+      "texts": [
+        {
+          "selector": ".eyebrow",
+          "text": "湖光拾忆 · 水畔漫行",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 556,
+              "y": 203.046875,
+              "width": 121.921875,
+              "height": 17
+            }
+          ],
+          "sampleCount": 295,
+          "minimum": 7.1929439417972745,
+          "p05": 7.1929439417972745,
+          "pass": true
+        },
+        {
+          "selector": ".modal-heading h2",
+          "text": "北湖",
+          "fontSize": 28,
+          "weight": 650,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 3,
+          "rects": [
+            {
+              "x": 556,
+              "y": 226.046875,
+              "width": 59.375,
+              "height": 40
+            }
+          ],
+          "sampleCount": 308,
+          "minimum": 10.08348325362934,
+          "p05": 10.08348325362934,
+          "pass": true
+        },
+        {
+          "selector": ".landmark-description",
+          "text": "湖水收拢了天光，也收拢了校园四季的倒影。沿湖慢行，听风过树梢，寻找属于你的北湖记忆。",
+          "fontSize": 14,
+          "weight": 400,
+          "foreground": [
+            89,
+            103,
+            81,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 488,
+              "y": 533.9375,
+              "width": 464,
+              "height": 20
+            },
+            {
+              "x": 488,
+              "y": 561.9375,
+              "width": 126,
+              "height": 20
+            }
+          ],
+          "sampleCount": 1455,
+          "minimum": 4.933743917711204,
+          "p05": 4.933743917711204,
+          "pass": true
+        },
+        {
+          "selector": ".landmark-verse",
+          "text": "风过湖心，拾一片秋光。",
+          "fontSize": 17,
+          "weight": 400,
+          "foreground": [
+            114,
+            86,
+            44,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 622.75,
+              "y": 457.046875,
+              "width": 194.484375,
+              "height": 25
+            }
+          ],
+          "sampleCount": 665,
+          "minimum": 5.575022406728254,
+          "p05": 5.575022406728254,
+          "pass": true
+        },
+        {
+          "selector": ".landmark-reward>span",
+          "text": "这段旅途已收入记忆",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            114,
+            86,
+            44,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 625,
+              "y": 609.4375,
+              "width": 108,
+              "height": 17
+            }
+          ],
+          "sampleCount": 208,
+          "minimum": 5.575022406728254,
+          "p05": 5.575022406728254,
+          "pass": true
+        },
+        {
+          "selector": ".landmark-reward>span",
+          "text": "地标已收录",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            114,
+            86,
+            44,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 781,
+              "y": 609.4375,
+              "width": 60,
+              "height": 17
+            }
+          ],
+          "sampleCount": 112,
+          "minimum": 5.575022406728254,
+          "p05": 5.575022406728254,
+          "pass": true
+        },
+        {
+          "selector": ".hud-modal .parchment-button",
+          "text": "返回地图",
+          "fontSize": 16,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 668.578125,
+              "y": 661.4375,
+              "width": 67.84375,
+              "height": 23
+            }
+          ],
+          "sampleCount": 192,
+          "minimum": 7.0732942037120194,
+          "p05": 7.0732942037120194,
+          "pass": true
+        }
+      ],
+      "boundaries": [],
+      "boxes": {
+        ".hud-modal": {
+          "x": 450,
+          "y": 172.046875,
+          "width": 540,
+          "height": 555.890625
+        }
+      },
+      "name": "landmark-1440x900"
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "computedMetric": "Distinct nontransparent resolved solid colors (RGBA bytes) across nine computed color properties on visible, non-inert DOM elements, including resolved SVG fill/stroke. Excludes raster pixels, gradient expansion, pseudo-elements and hidden states.",
+      "computedColorCount": 17,
+      "computedColors": [
+        "0,0,0,255",
+        "102,94,76,255",
+        "110,120,90,255",
+        "114,86,44,255",
+        "138,106,48,255",
+        "138,124,80,105",
+        "138,72,58,255",
+        "184,147,63,255",
+        "188,197,163,255",
+        "212,184,116,255",
+        "228,207,149,255",
+        "243,232,200,255",
+        "245,230,189,255",
+        "255,253,242,255",
+        "31,58,47,255",
+        "51,81,63,255",
+        "89,103,81,255"
+      ],
+      "texts": [
+        {
+          "selector": ".activity-page-header p",
+          "text": "校园纪事 · 理韵寻踪",
+          "fontSize": 10.368,
+          "weight": 400,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 110.84375,
+              "y": 52.1875,
+              "width": 114.390625,
+              "height": 15
+            }
+          ],
+          "sampleCount": 220,
+          "minimum": 11.576513957734996,
+          "p05": 11.576513957734996,
+          "pass": true
+        },
+        {
+          "selector": ".activity-page-header h2",
+          "text": "活动一览",
+          "fontSize": 25.92,
+          "weight": 600,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 3,
+          "rects": [
+            {
+              "x": 110.84375,
+              "y": 70.1875,
+              "width": 120.28125,
+              "height": 37
+            }
+          ],
+          "sampleCount": 580,
+          "minimum": 11.397385068971625,
+          "p05": 11.397385068971625,
+          "pass": true
+        },
+        {
+          "selector": ".activity-scroll-caption",
+          "text": "四时有信 · 展卷寻踪",
+          "fontSize": 10.944,
+          "weight": 400,
+          "foreground": [
+            114,
+            86,
+            44,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 131.125,
+              "y": 174.390625,
+              "width": 113.5625,
+              "height": 16
+            }
+          ],
+          "sampleCount": 216,
+          "minimum": 5.2170572614789865,
+          "p05": 5.522818239979674,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab strong",
+          "text": "霜降雅集",
+          "fontSize": 21.168,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 143.6875,
+              "y": 226.265625,
+              "width": 84.640625,
+              "height": 30
+            }
+          ],
+          "sampleCount": 320,
+          "minimum": 9.8266308682778,
+          "p05": 9.8266308682778,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab strong",
+          "text": "四时寻访",
+          "fontSize": 21.168,
+          "weight": 600,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 143.6875,
+              "y": 310.859375,
+              "width": 84.640625,
+              "height": 30
+            }
+          ],
+          "sampleCount": 320,
+          "minimum": 6.972762618635142,
+          "p05": 7.294371954109791,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab strong",
+          "text": "校园异闻录",
+          "fontSize": 21.168,
+          "weight": 600,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 143.6875,
+              "y": 395.453125,
+              "width": 105.8125,
+              "height": 30
+            }
+          ],
+          "sampleCount": 408,
+          "minimum": 6.719620074187175,
+          "p05": 7.125589657355728,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab strong",
+          "text": "校园奇遇",
+          "fontSize": 21.168,
+          "weight": 600,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 143.6875,
+              "y": 480.046875,
+              "width": 84.640625,
+              "height": 30
+            }
+          ],
+          "sampleCount": 320,
+          "minimum": 6.9872105997132525,
+          "p05": 7.3174873750521465,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab strong",
+          "text": "往期纪事",
+          "fontSize": 21.168,
+          "weight": 600,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 143.6875,
+              "y": 564.640625,
+              "width": 84.640625,
+              "height": 30
+            }
+          ],
+          "sampleCount": 320,
+          "minimum": 6.912208293115916,
+          "p05": 7.242713386382478,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab small",
+          "text": "主题预告",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            89,
+            103,
+            81,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 143.6875,
+              "y": 259.90625,
+              "width": 40,
+              "height": 15
+            }
+          ],
+          "sampleCount": 72,
+          "minimum": 4.798103423659351,
+          "p05": 4.808068705871916,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab small",
+          "text": "主题预告",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            89,
+            103,
+            81,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 143.6875,
+              "y": 344.5,
+              "width": 40,
+              "height": 15
+            }
+          ],
+          "sampleCount": 72,
+          "minimum": 5.010611174805548,
+          "p05": 5.059268974502016,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab small",
+          "text": "主题预告",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            89,
+            103,
+            81,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 143.6875,
+              "y": 429.09375,
+              "width": 40,
+              "height": 15
+            }
+          ],
+          "sampleCount": 72,
+          "minimum": 5.056416025576612,
+          "p05": 5.105350023687736,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab small",
+          "text": "主题预告",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            89,
+            103,
+            81,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 143.6875,
+              "y": 513.6875,
+              "width": 40,
+              "height": 15
+            }
+          ],
+          "sampleCount": 72,
+          "minimum": 5.059268974502016,
+          "p05": 5.105350023687736,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab small",
+          "text": "个人回顾",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            89,
+            103,
+            81,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 143.6875,
+              "y": 598.28125,
+              "width": 40,
+              "height": 15
+            }
+          ],
+          "sampleCount": 72,
+          "minimum": 5.010611174805548,
+          "p05": 5.062139808211693,
+          "pass": true
+        },
+        {
+          "selector": ".activity-category",
+          "text": "时令",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            255,
+            253,
+            242,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 936.46875,
+              "y": 218.125,
+              "width": 17,
+              "height": 27.84375
+            }
+          ],
+          "sampleCount": 42,
+          "minimum": 6.707819010788516,
+          "p05": 6.707819010788516,
+          "pass": true
+        },
+        {
+          "selector": ".activity-subtitle",
+          "text": "一叶知秋 · 理韵相逢",
+          "fontSize": 19.44,
+          "weight": 600,
+          "foreground": [
+            114,
+            86,
+            44,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 998.46875,
+              "y": 285.265625,
+              "width": 188.921875,
+              "height": 28
+            }
+          ],
+          "sampleCount": 736,
+          "minimum": 5.512620081999444,
+          "p05": 5.566554876510042,
+          "pass": true
+        },
+        {
+          "selector": ".activity-summary",
+          "text": "霜降时节，北湖清辉，银杏渐染。循着落叶的轨迹，走进熟悉的校园角落，在光影与记忆之间，收藏这一季的故事。",
+          "fontSize": 16.56,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 961.46875,
+              "y": 329.859375,
+              "width": 430.5625,
+              "height": 24
+            },
+            {
+              "x": 961.46875,
+              "y": 361.328125,
+              "width": 414,
+              "height": 24
+            }
+          ],
+          "sampleCount": 2713,
+          "minimum": 6.9784082744511196,
+          "p05": 7.182019058318497,
+          "pass": true
+        },
+        {
+          "selector": ".activity-rewards h4",
+          "text": "主题奖励",
+          "fontSize": 14.832,
+          "weight": 600,
+          "foreground": [
+            114,
+            86,
+            44,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 985.46875,
+              "y": 406.984375,
+              "width": 59.328125,
+              "height": 21
+            }
+          ],
+          "sampleCount": 162,
+          "minimum": 5.47042028907465,
+          "p05": 5.47042028907465,
+          "pass": true
+        },
+        {
+          "selector": ".activity-rewards h4 small",
+          "text": "构想示意",
+          "fontSize": 10.679,
+          "weight": 400,
+          "foreground": [
+            89,
+            103,
+            81,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1052.796875,
+              "y": 409.984375,
+              "width": 42.6875,
+              "height": 15
+            }
+          ],
+          "sampleCount": 76,
+          "minimum": 4.878519549516693,
+          "p05": 4.923556947400585,
+          "pass": true
+        },
+        {
+          "selector": ".activity-availability",
+          "text": "主题预告 · 开放时间待公布",
+          "fontSize": 11.952,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 970.46875,
+              "y": 579.484375,
+              "width": 141.484375,
+              "height": 17
+            }
+          ],
+          "sampleCount": 272,
+          "minimum": 7.043295541341433,
+          "p05": 7.043295541341433,
+          "pass": true
+        },
+        {
+          "selector": ".activity-map-preview",
+          "text": "北湖地图预览",
+          "fontSize": 12.672,
+          "weight": 400,
+          "foreground": [
+            89,
+            103,
+            81,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 1131.78125,
+              "y": 673.40625,
+              "width": 76.03125,
+              "height": 19
+            }
+          ],
+          "sampleCount": 180,
+          "minimum": 4.841173875099296,
+          "p05": 4.841173875099296,
+          "pass": true
+        },
+        {
+          "selector": ".activity-page-hint span",
+          "text": "↑ ↓ 翻阅篇章",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 613.15625,
+              "y": 834.40625,
+              "width": 89.671875,
+              "height": 17
+            }
+          ],
+          "sampleCount": 168,
+          "minimum": 6.865522732819936,
+          "p05": 6.980205578837558,
+          "pass": true
+        },
+        {
+          "selector": ".activity-page-hint span",
+          "text": "Esc 收起画卷",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 744.28125,
+              "y": 834.40625,
+              "width": 82.5625,
+              "height": 17
+            }
+          ],
+          "sampleCount": 156,
+          "minimum": 7.627127858915883,
+          "p05": 7.747680251525337,
+          "pass": true
+        }
+      ],
+      "boundaries": [
+        {
+          "selector": ".activity-close",
+          "kind": "filled-control",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "outside": [
+            102,
+            94,
+            76,
+            255
+          ],
+          "ratio": 5.255509573070381,
+          "pass": true
+        },
+        {
+          "selector": ".activity-reward",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 4.107006063266308,
+          "pass": true
+        },
+        {
+          "selector": ".activity-reward",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 4.107006063266308,
+          "pass": true
+        },
+        {
+          "selector": ".activity-reward",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 4.107006063266308,
+          "pass": true
+        },
+        {
+          "selector": ".activity-reward",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 4.107006063266308,
+          "pass": true
+        }
+      ],
+      "boxes": {
+        ".activity-strip": {
+          "x": 0,
+          "y": 153,
+          "width": 1440,
+          "height": 576
+        },
+        ".activity-scroll": {
+          "x": 57.59375,
+          "y": 140.390625,
+          "width": 260.625,
+          "height": 618.296875
+        },
+        ".activity-paper": {
+          "x": 892.8125,
+          "y": 155,
+          "width": 547.1875,
+          "height": 572
+        },
+        ".activity-event-heading": {
+          "x": 958.46875,
+          "y": 185.59375,
+          "width": 438.34375,
+          "height": 127.671875
+        },
+        ".activity-information": {
+          "x": 958.46875,
+          "y": 325.859375,
+          "width": 438.34375,
+          "height": 241.03125
+        },
+        ".activity-footer": {
+          "x": 958.46875,
+          "y": 579.484375,
+          "width": 438.34375,
+          "height": 125.921875
+        }
+      },
+      "name": "activity-1440x900"
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "computedMetric": "Distinct nontransparent resolved solid colors (RGBA bytes) across nine computed color properties on visible, non-inert DOM elements, including resolved SVG fill/stroke. Excludes raster pixels, gradient expansion, pseudo-elements and hidden states.",
+      "computedColorCount": 18,
+      "computedColors": [
+        "0,0,0,255",
+        "13,43,38,255",
+        "18,51,47,224",
+        "18,51,47,245",
+        "184,147,62,184",
+        "184,148,64,112",
+        "188,197,163,255",
+        "212,184,116,255",
+        "226,207,149,53",
+        "228,207,148,122",
+        "228,207,149,255",
+        "230,221,186,255",
+        "239,229,204,255",
+        "243,232,200,255",
+        "245,230,189,255",
+        "25,60,55,224",
+        "39,69,63,255",
+        "95,74,38,255"
+      ],
+      "texts": [
+        {
+          "selector": ".hud-pill strong",
+          "text": "7",
+          "fontSize": 10,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 686.625,
+              "y": 27.5,
+              "width": 5.71875,
+              "height": 15
+            }
+          ],
+          "sampleCount": 4,
+          "minimum": 8.449707973154934,
+          "p05": 8.449707973154934,
+          "pass": true
+        },
+        {
+          "selector": ".hud-pill-name",
+          "text": "游客",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 749,
+              "y": 27.5,
+              "width": 20,
+              "height": 15
+            }
+          ],
+          "sampleCount": 32,
+          "minimum": 8.337042694883742,
+          "p05": 8.474995542036469,
+          "pass": true
+        },
+        {
+          "selector": ".hud-progress-count",
+          "text": "7/8",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 799.265625,
+              "y": 358,
+              "width": 5.5,
+              "height": 15
+            },
+            {
+              "x": 804.765625,
+              "y": 358,
+              "width": 8.640625,
+              "height": 15
+            },
+            {
+              "x": 813.40625,
+              "y": 358,
+              "width": 5.59375,
+              "height": 15
+            }
+          ],
+          "sampleCount": 12,
+          "minimum": 8.413644136556666,
+          "p05": 8.413644136556666,
+          "pass": true
+        },
+        {
+          "selector": ".location-controls p",
+          "text": "开启定位，在校园地图上查看实际位置",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 605,
+              "y": 141,
+              "width": 170,
+              "height": 15
+            }
+          ],
+          "sampleCount": 332,
+          "minimum": 10.10197084355504,
+          "p05": 10.107069459032633,
+          "pass": true
+        },
+        {
+          "selector": ".location-primary",
+          "text": "定位到我",
+          "fontSize": 12,
+          "weight": 600,
+          "foreground": [
+            13,
+            43,
+            38,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 671,
+              "y": 102.5,
+              "width": 48,
+              "height": 17
+            }
+          ],
+          "sampleCount": 88,
+          "minimum": 12.178493128999477,
+          "p05": 12.178493128999477,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "文萃楼",
+          "fontSize": 13,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 497.125,
+              "y": 215.9375,
+              "width": 40.953125,
+              "height": 19
+            }
+          ],
+          "sampleCount": 90,
+          "minimum": 7.403653528963855,
+          "p05": 7.403653528963855,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "北湖",
+          "fontSize": 13,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 341.25,
+              "y": 105.875,
+              "width": 27.3125,
+              "height": 19
+            }
+          ],
+          "sampleCount": 55,
+          "minimum": 7.865846369053167,
+          "p05": 7.883771752770019,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "徐特立图书馆",
+          "fontSize": 13,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 363.75,
+              "y": 301.5,
+              "width": 81.90625,
+              "height": 19
+            }
+          ],
+          "sampleCount": 195,
+          "minimum": 7.51991486746158,
+          "p05": 7.5364952335277815,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "综合教学大楼",
+          "fontSize": 13,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 369.640625,
+              "y": 209.15625,
+              "width": 81.90625,
+              "height": 19
+            }
+          ],
+          "sampleCount": 195,
+          "minimum": 7.313437745744954,
+          "p05": 7.403653528963855,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "文博中心",
+          "fontSize": 13,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 622.0625,
+              "y": 217.9375,
+              "width": 54.609375,
+              "height": 19
+            }
+          ],
+          "sampleCount": 125,
+          "minimum": 7.200346169557174,
+          "p05": 7.289118847920001,
+          "pass": true
+        }
+      ],
+      "boundaries": [
+        {
+          "selector": ".hud-pill",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            25,
+            60,
+            55,
+            224
+          ],
+          "outside": [
+            188,
+            197,
+            163,
+            255
+          ],
+          "ratio": 4.8555743985850315,
+          "pass": true
+        },
+        {
+          "selector": ".hud-pill",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            25,
+            60,
+            55,
+            224
+          ],
+          "outside": [
+            188,
+            197,
+            163,
+            255
+          ],
+          "ratio": 4.8555743985850315,
+          "pass": true
+        },
+        {
+          "selector": ".hud-icon-button",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            25,
+            60,
+            55,
+            224
+          ],
+          "outside": [
+            188,
+            197,
+            163,
+            255
+          ],
+          "ratio": 4.8555743985850315,
+          "pass": true
+        },
+        {
+          "selector": ".hud-context-toggle",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            245
+          ],
+          "ratio": 6.310693041269771,
+          "pass": true
+        },
+        {
+          "selector": ".location-primary",
+          "kind": "filled-control",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            245
+          ],
+          "ratio": 9.798329740647125,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            39,
+            69,
+            63,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 6.797374766731429,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            39,
+            69,
+            63,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 6.797374766731429,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            39,
+            69,
+            63,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 6.797374766731429,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            39,
+            69,
+            63,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 6.797374766731429,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            39,
+            69,
+            63,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 6.797374766731429,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            95,
+            74,
+            38,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 5.476133801222779,
+          "pass": true
+        }
+      ],
+      "boxes": {
+        ".hud-frame": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390
+        },
+        ".hud-context-card": {
+          "x": 592,
+          "y": 80,
+          "width": 240,
+          "height": 90.5
+        }
+      },
+      "name": "map-844x390"
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "computedMetric": "Distinct nontransparent resolved solid colors (RGBA bytes) across nine computed color properties on visible, non-inert DOM elements, including resolved SVG fill/stroke. Excludes raster pixels, gradient expansion, pseudo-elements and hidden states.",
+      "computedColorCount": 19,
+      "computedColors": [
+        "0,0,0,255",
+        "13,43,38,255",
+        "18,51,47,224",
+        "18,51,47,245",
+        "184,147,62,184",
+        "184,148,64,112",
+        "188,197,163,255",
+        "191,178,138,255",
+        "212,184,116,255",
+        "226,207,149,53",
+        "228,207,148,122",
+        "228,207,149,255",
+        "230,221,186,255",
+        "239,229,204,255",
+        "243,232,200,255",
+        "245,230,189,255",
+        "25,60,55,224",
+        "75,88,77,255",
+        "95,74,38,255"
+      ],
+      "texts": [
+        {
+          "selector": ".hud-pill strong",
+          "text": "0",
+          "fontSize": 10,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 686.5625,
+              "y": 27.5,
+              "width": 5.78125,
+              "height": 15
+            }
+          ],
+          "sampleCount": 4,
+          "minimum": 8.33017583865918,
+          "p05": 8.33017583865918,
+          "pass": true
+        },
+        {
+          "selector": ".hud-pill-name",
+          "text": "游客",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 749,
+              "y": 27.5,
+              "width": 20,
+              "height": 15
+            }
+          ],
+          "sampleCount": 32,
+          "minimum": 8.337042694883742,
+          "p05": 8.474995542036469,
+          "pass": true
+        },
+        {
+          "selector": ".hud-progress-count",
+          "text": "0/8",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 799.1875,
+              "y": 358,
+              "width": 5.578125,
+              "height": 15
+            },
+            {
+              "x": 804.765625,
+              "y": 358,
+              "width": 8.640625,
+              "height": 15
+            },
+            {
+              "x": 813.40625,
+              "y": 358,
+              "width": 5.59375,
+              "height": 15
+            }
+          ],
+          "sampleCount": 12,
+          "minimum": 8.413644136556666,
+          "p05": 8.413644136556666,
+          "pass": true
+        },
+        {
+          "selector": ".location-controls p",
+          "text": "开启定位，在校园地图上查看实际位置",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 605,
+              "y": 141,
+              "width": 170,
+              "height": 15
+            }
+          ],
+          "sampleCount": 332,
+          "minimum": 10.091166726926211,
+          "p05": 10.091166726926211,
+          "pass": true
+        },
+        {
+          "selector": ".location-primary",
+          "text": "定位到我",
+          "fontSize": 12,
+          "weight": 600,
+          "foreground": [
+            13,
+            43,
+            38,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 671,
+              "y": 102.5,
+              "width": 48,
+              "height": 17
+            }
+          ],
+          "sampleCount": 88,
+          "minimum": 12.178493128999477,
+          "p05": 12.178493128999477,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "文萃楼",
+          "fontSize": 13,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 540.828125,
+              "y": 208.4375,
+              "width": 40.953125,
+              "height": 19
+            }
+          ],
+          "sampleCount": 90,
+          "minimum": 5.752614912716237,
+          "p05": 5.752614912716237,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "北湖",
+          "fontSize": 13,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 369.75,
+              "y": 87.625,
+              "width": 27.3125,
+              "height": 19
+            }
+          ],
+          "sampleCount": 60,
+          "minimum": 5.853667722984344,
+          "p05": 5.853667722984344,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "徐特立图书馆",
+          "fontSize": 13,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 394.4375,
+              "y": 302.34375,
+              "width": 81.90625,
+              "height": 19
+            }
+          ],
+          "sampleCount": 195,
+          "minimum": 5.870430329659941,
+          "p05": 5.876320610857231,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "综合教学大楼",
+          "fontSize": 13,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 400.90625,
+              "y": 201,
+              "width": 81.90625,
+              "height": 19
+            }
+          ],
+          "sampleCount": 195,
+          "minimum": 5.752614912716237,
+          "p05": 5.752614912716237,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name strong",
+          "text": "文博中心",
+          "fontSize": 13,
+          "weight": 600,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 677.96875,
+              "y": 210.625,
+              "width": 54.609375,
+              "height": 19
+            }
+          ],
+          "sampleCount": 125,
+          "minimum": 5.769301796079235,
+          "p05": 5.8367458095383125,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name small",
+          "text": "待发现",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 540.828125,
+              "y": 227.9375,
+              "width": 30,
+              "height": 15
+            }
+          ],
+          "sampleCount": 52,
+          "minimum": 5.8367458095383125,
+          "p05": 5.8367458095383125,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name small",
+          "text": "待发现",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 369.75,
+              "y": 107.125,
+              "width": 30,
+              "height": 15
+            }
+          ],
+          "sampleCount": 52,
+          "minimum": 5.702532768139826,
+          "p05": 5.752614912716237,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name small",
+          "text": "待发现",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 394.4375,
+              "y": 321.84375,
+              "width": 30,
+              "height": 15
+            }
+          ],
+          "sampleCount": 52,
+          "minimum": 5.870430329659941,
+          "p05": 5.876320610857231,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name small",
+          "text": "待发现",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 400.90625,
+              "y": 220.5,
+              "width": 30,
+              "height": 15
+            }
+          ],
+          "sampleCount": 52,
+          "minimum": 5.752614912716237,
+          "p05": 5.752614912716237,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-name small",
+          "text": "待发现",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 677.96875,
+              "y": 230.125,
+              "width": 30,
+              "height": 15
+            }
+          ],
+          "sampleCount": 52,
+          "minimum": 5.77499078595116,
+          "p05": 5.785834347255084,
+          "pass": true
+        }
+      ],
+      "boundaries": [
+        {
+          "selector": ".hud-pill",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            25,
+            60,
+            55,
+            224
+          ],
+          "outside": [
+            188,
+            197,
+            163,
+            255
+          ],
+          "ratio": 4.8555743985850315,
+          "pass": true
+        },
+        {
+          "selector": ".hud-pill",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            25,
+            60,
+            55,
+            224
+          ],
+          "outside": [
+            188,
+            197,
+            163,
+            255
+          ],
+          "ratio": 4.8555743985850315,
+          "pass": true
+        },
+        {
+          "selector": ".hud-icon-button",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            25,
+            60,
+            55,
+            224
+          ],
+          "outside": [
+            188,
+            197,
+            163,
+            255
+          ],
+          "ratio": 4.8555743985850315,
+          "pass": true
+        },
+        {
+          "selector": ".hud-context-toggle",
+          "kind": "border",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            245
+          ],
+          "ratio": 6.310693041269771,
+          "pass": true
+        },
+        {
+          "selector": ".location-primary",
+          "kind": "filled-control",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "outside": [
+            18,
+            51,
+            47,
+            245
+          ],
+          "ratio": 9.798329740647125,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            191,
+            178,
+            138,
+            255
+          ],
+          "background": [
+            75,
+            88,
+            77,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 3.5509022027784467,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            191,
+            178,
+            138,
+            255
+          ],
+          "background": [
+            75,
+            88,
+            77,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 3.5509022027784467,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            191,
+            178,
+            138,
+            255
+          ],
+          "background": [
+            75,
+            88,
+            77,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 3.5509022027784467,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            191,
+            178,
+            138,
+            255
+          ],
+          "background": [
+            75,
+            88,
+            77,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 3.5509022027784467,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            191,
+            178,
+            138,
+            255
+          ],
+          "background": [
+            75,
+            88,
+            77,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 3.5509022027784467,
+          "pass": true
+        },
+        {
+          "selector": ".map-marker-gem",
+          "kind": "border",
+          "border": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "background": [
+            95,
+            74,
+            38,
+            255
+          ],
+          "outside": [
+            239,
+            229,
+            204,
+            255
+          ],
+          "ratio": 5.476133801222779,
+          "pass": true
+        }
+      ],
+      "boxes": {
+        ".hud-frame": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390
+        },
+        ".hud-context-card": {
+          "x": 592,
+          "y": 80,
+          "width": 240,
+          "height": 90.5
+        }
+      },
+      "name": "map-fog-844x390"
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "computedMetric": "Distinct nontransparent resolved solid colors (RGBA bytes) across nine computed color properties on visible, non-inert DOM elements, including resolved SVG fill/stroke. Excludes raster pixels, gradient expansion, pseudo-elements and hidden states.",
+      "computedColorCount": 15,
+      "computedColors": [
+        "0,0,0,255",
+        "138,106,48,255",
+        "14,42,38,168",
+        "184,147,63,255",
+        "188,197,163,255",
+        "191,178,138,255",
+        "212,184,116,255",
+        "230,221,186,255",
+        "232,207,131,255",
+        "243,232,200,255",
+        "245,230,189,255",
+        "31,58,47,255",
+        "45,83,67,255",
+        "51,81,63,255",
+        "87,127,104,255"
+      ],
+      "texts": [
+        {
+          "selector": ".eyebrow",
+          "text": "校园记忆 · 已点亮 7 处",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 206,
+              "y": 37,
+              "width": 127.390625,
+              "height": 16
+            }
+          ],
+          "sampleCount": 248,
+          "minimum": 7.1929439417972745,
+          "p05": 7.1929439417972745,
+          "pass": true
+        },
+        {
+          "selector": ".modal-heading h2",
+          "text": "收集图鉴",
+          "fontSize": 21,
+          "weight": 650,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 206,
+              "y": 56,
+              "width": 89.046875,
+              "height": 30
+            }
+          ],
+          "sampleCount": 344,
+          "minimum": 10.08348325362934,
+          "p05": 10.08348325362934,
+          "pass": true
+        },
+        {
+          "selector": ".collection-intro",
+          "text": "把走过的风景，珍藏成一页页记忆。",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 321,
+              "y": 114,
+              "width": 192,
+              "height": 17
+            }
+          ],
+          "sampleCount": 470,
+          "minimum": 7.1929439417972745,
+          "p05": 7.1929439417972745,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "文萃楼",
+          "fontSize": 12,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 225.328125,
+              "y": 200,
+              "width": 36,
+              "height": 17
+            }
+          ],
+          "sampleCount": 80,
+          "minimum": 9.044255949550118,
+          "p05": 9.044255949550118,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "北湖",
+          "fontSize": 12,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 404.984375,
+              "y": 200,
+              "width": 24,
+              "height": 17
+            }
+          ],
+          "sampleCount": 50,
+          "minimum": 9.044255949550118,
+          "p05": 9.044255949550118,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "徐特立图书馆",
+          "fontSize": 12,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 554.65625,
+              "y": 200,
+              "width": 72,
+              "height": 17
+            }
+          ],
+          "sampleCount": 170,
+          "minimum": 9.044255949550118,
+          "p05": 9.044255949550118,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "综合教学大楼",
+          "fontSize": 12,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 207.328125,
+              "y": 315,
+              "width": 72,
+              "height": 17
+            }
+          ],
+          "sampleCount": 170,
+          "minimum": 9.044255949550118,
+          "p05": 9.044255949550118,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "文博中心",
+          "fontSize": 12,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 392.984375,
+              "y": 315,
+              "width": 48,
+              "height": 17
+            }
+          ],
+          "sampleCount": 110,
+          "minimum": 9.044255949550118,
+          "p05": 9.044255949550118,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item strong",
+          "text": "体育馆",
+          "fontSize": 12,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 572.65625,
+              "y": 315,
+              "width": 36,
+              "height": 17
+            }
+          ],
+          "sampleCount": 80,
+          "minimum": 9.044255949550118,
+          "p05": 9.044255949550118,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "已收入图鉴",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 215.828125,
+              "y": 224,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 100,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "已收入图鉴",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 389.484375,
+              "y": 224,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 100,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "已收入图鉴",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 563.15625,
+              "y": 224,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 100,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "已收入图鉴",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 215.828125,
+              "y": 339,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 100,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "已收入图鉴",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 389.484375,
+              "y": 339,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 100,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item small",
+          "text": "已收入图鉴",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 563.15625,
+              "y": 339,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 100,
+          "minimum": 6.451622361445916,
+          "p05": 6.451622361445916,
+          "pass": true
+        }
+      ],
+      "boundaries": [
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        },
+        {
+          "selector": ".collection-item",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 3.683728438698523,
+          "pass": true
+        }
+      ],
+      "boxes": {
+        ".hud-modal": {
+          "x": 132,
+          "y": 17,
+          "width": 580,
+          "height": 356
+        },
+        ".collection-grid": {
+          "x": 161,
+          "y": 145,
+          "width": 512,
+          "height": 336
+        }
+      },
+      "name": "collection-844x390"
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "computedMetric": "Distinct nontransparent resolved solid colors (RGBA bytes) across nine computed color properties on visible, non-inert DOM elements, including resolved SVG fill/stroke. Excludes raster pixels, gradient expansion, pseudo-elements and hidden states.",
+      "computedColorCount": 15,
+      "computedColors": [
+        "0,0,0,255",
+        "114,86,44,255",
+        "138,106,48,255",
+        "14,42,38,168",
+        "184,147,63,255",
+        "188,197,163,255",
+        "191,178,138,255",
+        "212,184,116,255",
+        "232,207,131,255",
+        "243,232,200,255",
+        "245,230,189,255",
+        "31,58,47,255",
+        "45,83,67,255",
+        "51,81,63,255",
+        "89,103,81,255"
+      ],
+      "texts": [
+        {
+          "selector": ".eyebrow",
+          "text": "湖光拾忆 · 水畔漫行",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 236,
+              "y": 37,
+              "width": 111.75,
+              "height": 16
+            }
+          ],
+          "sampleCount": 216,
+          "minimum": 7.1929439417972745,
+          "p05": 7.1929439417972745,
+          "pass": true
+        },
+        {
+          "selector": ".modal-heading h2",
+          "text": "北湖",
+          "fontSize": 21,
+          "weight": 650,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 236,
+              "y": 56,
+              "width": 44.53125,
+              "height": 30
+            }
+          ],
+          "sampleCount": 160,
+          "minimum": 10.08348325362934,
+          "p05": 10.08348325362934,
+          "pass": true
+        },
+        {
+          "selector": ".landmark-description",
+          "text": "湖水收拢了天光，也收拢了校园四季的倒影。沿湖慢行，听风过树梢，寻找属于你的北湖记忆。",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            89,
+            103,
+            81,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 191,
+              "y": 276.796875,
+              "width": 452,
+              "height": 17
+            },
+            {
+              "x": 191,
+              "y": 299.59375,
+              "width": 60,
+              "height": 17
+            }
+          ],
+          "sampleCount": 1232,
+          "minimum": 4.933743917711204,
+          "p05": 4.933743917711204,
+          "pass": true
+        },
+        {
+          "selector": ".landmark-verse",
+          "text": "风过湖心，拾一片秋光。",
+          "fontSize": 14,
+          "weight": 400,
+          "foreground": [
+            114,
+            86,
+            44,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 336.90625,
+              "y": 219,
+              "width": 160.171875,
+              "height": 20
+            }
+          ],
+          "sampleCount": 390,
+          "minimum": 5.575022406728254,
+          "p05": 5.575022406728254,
+          "pass": true
+        },
+        {
+          "selector": ".landmark-reward>span",
+          "text": "这段旅途已收入记忆",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            114,
+            86,
+            44,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 331,
+              "y": 334.390625,
+              "width": 99,
+              "height": 16
+            }
+          ],
+          "sampleCount": 192,
+          "minimum": 5.575022406728254,
+          "p05": 5.575022406728254,
+          "pass": true
+        },
+        {
+          "selector": ".landmark-reward>span",
+          "text": "地标已收录",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            114,
+            86,
+            44,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 474,
+              "y": 334.390625,
+              "width": 55,
+              "height": 16
+            }
+          ],
+          "sampleCount": 104,
+          "minimum": 5.575022406728254,
+          "p05": 5.575022406728254,
+          "pass": true
+        },
+        {
+          "selector": ".hud-modal .parchment-button",
+          "text": "返回地图",
+          "fontSize": 14,
+          "weight": 400,
+          "foreground": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 369.8125,
+              "y": 379.890625,
+              "width": 59.375,
+              "height": 20
+            }
+          ],
+          "sampleCount": 84,
+          "minimum": 5.402219138062496,
+          "p05": 5.402219138062496,
+          "pass": true
+        }
+      ],
+      "boundaries": [],
+      "boxes": {
+        ".hud-modal": {
+          "x": 162,
+          "y": 17,
+          "width": 520,
+          "height": 356
+        }
+      },
+      "name": "landmark-844x390"
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "computedMetric": "Distinct nontransparent resolved solid colors (RGBA bytes) across nine computed color properties on visible, non-inert DOM elements, including resolved SVG fill/stroke. Excludes raster pixels, gradient expansion, pseudo-elements and hidden states.",
+      "computedColorCount": 16,
+      "computedColors": [
+        "0,0,0,255",
+        "102,94,76,255",
+        "110,120,90,255",
+        "114,86,44,255",
+        "138,106,48,255",
+        "138,72,58,255",
+        "184,147,63,255",
+        "188,197,163,255",
+        "212,184,116,255",
+        "228,207,149,255",
+        "243,232,200,255",
+        "245,230,189,255",
+        "255,253,242,255",
+        "31,58,47,255",
+        "51,81,63,255",
+        "89,103,81,255"
+      ],
+      "texts": [
+        {
+          "selector": ".activity-page-header h2",
+          "text": "活动一览",
+          "fontSize": 19,
+          "weight": 600,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 65.21875,
+              "y": 6.625,
+              "width": 83.609375,
+              "height": 27
+            }
+          ],
+          "sampleCount": 273,
+          "minimum": 11.550076766641931,
+          "p05": 11.67595280670059,
+          "pass": true
+        },
+        {
+          "selector": ".activity-scroll-caption",
+          "text": "四时有信 · 展卷寻踪",
+          "fontSize": 9,
+          "weight": 400,
+          "foreground": [
+            114,
+            86,
+            44,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 72.171875,
+              "y": 65.765625,
+              "width": 83.515625,
+              "height": 13
+            }
+          ],
+          "sampleCount": 117,
+          "minimum": 5.2602642289807875,
+          "p05": 5.508351917384545,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab strong",
+          "text": "霜降雅集",
+          "fontSize": 15.192,
+          "weight": 600,
+          "foreground": [
+            31,
+            58,
+            47,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 73.3125,
+              "y": 101.765625,
+              "width": 60.765625,
+              "height": 21
+            }
+          ],
+          "sampleCount": 168,
+          "minimum": 9.8266308682778,
+          "p05": 9.8266308682778,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab strong",
+          "text": "四时寻访",
+          "fontSize": 15.192,
+          "weight": 600,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 73.3125,
+              "y": 149.765625,
+              "width": 60.765625,
+              "height": 21
+            }
+          ],
+          "sampleCount": 168,
+          "minimum": 7.172578181503561,
+          "p05": 7.300901990755731,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab strong",
+          "text": "校园异闻录",
+          "fontSize": 15.192,
+          "weight": 600,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 73.3125,
+              "y": 197.765625,
+              "width": 75.953125,
+              "height": 21
+            }
+          ],
+          "sampleCount": 216,
+          "minimum": 6.854507602726004,
+          "p05": 7.172578181503561,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab strong",
+          "text": "校园奇遇",
+          "fontSize": 15.192,
+          "weight": 600,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 73.3125,
+              "y": 245.765625,
+              "width": 60.765625,
+              "height": 21
+            }
+          ],
+          "sampleCount": 168,
+          "minimum": 7.172578181503561,
+          "p05": 7.294371954109791,
+          "pass": true
+        },
+        {
+          "selector": ".activity-tab strong",
+          "text": "往期纪事",
+          "fontSize": 15.192,
+          "weight": 600,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 73.3125,
+              "y": 293.765625,
+              "width": 60.765625,
+              "height": 21
+            }
+          ],
+          "sampleCount": 168,
+          "minimum": 7.172578181503561,
+          "p05": 7.3091426274698135,
+          "pass": true
+        },
+        {
+          "selector": ".activity-category",
+          "text": "时令",
+          "fontSize": 9,
+          "weight": 400,
+          "foreground": [
+            255,
+            253,
+            242,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 526.53125,
+              "y": 75.640625,
+              "width": 13,
+              "height": 18
+            }
+          ],
+          "sampleCount": 20,
+          "minimum": 5.094458786786806,
+          "p05": 5.153287663779205,
+          "pass": true
+        },
+        {
+          "selector": ".activity-subtitle",
+          "text": "一叶知秋 · 理韵相逢",
+          "fontSize": 12,
+          "weight": 600,
+          "foreground": [
+            114,
+            86,
+            44,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 557.53125,
+              "y": 115.375,
+              "width": 106.0625,
+              "height": 17
+            }
+          ],
+          "sampleCount": 204,
+          "minimum": 5.473404392518889,
+          "p05": 5.55206307390985,
+          "pass": true
+        },
+        {
+          "selector": ".activity-summary",
+          "text": "霜降时节，北湖清辉，银杏渐染。循着落叶的轨迹，走进熟悉的校园角落，在光影与记忆之间，收藏这一季的故事。",
+          "fontSize": 13,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 546.53125,
+              "y": 141.375,
+              "width": 260,
+              "height": 19
+            },
+            {
+              "x": 546.53125,
+              "y": 163.46875,
+              "width": 260,
+              "height": 19
+            },
+            {
+              "x": 546.53125,
+              "y": 185.5625,
+              "width": 143,
+              "height": 19
+            }
+          ],
+          "sampleCount": 1625,
+          "minimum": 5.88023616548189,
+          "p05": 5.938422764215794,
+          "pass": true
+        },
+        {
+          "selector": ".activity-rewards h4",
+          "text": "主题奖励",
+          "fontSize": 12,
+          "weight": 600,
+          "foreground": [
+            114,
+            86,
+            44,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 566.53125,
+              "y": 219.65625,
+              "width": 48,
+              "height": 17
+            }
+          ],
+          "sampleCount": 88,
+          "minimum": 5.47042028907465,
+          "p05": 5.47042028907465,
+          "pass": true
+        },
+        {
+          "selector": ".activity-rewards h4 small",
+          "text": "构想示意",
+          "fontSize": 8.64,
+          "weight": 400,
+          "foreground": [
+            89,
+            103,
+            81,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 618.53125,
+              "y": 222.15625,
+              "width": 34.5625,
+              "height": 12
+            }
+          ],
+          "sampleCount": 45,
+          "minimum": 4.693085542900739,
+          "p05": 4.878519549516693,
+          "pass": true
+        },
+        {
+          "selector": ".activity-availability",
+          "text": "主题预告 · 开放时间待公布",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            51,
+            81,
+            63,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 555.53125,
+              "y": 269.984375,
+              "width": 118.390625,
+              "height": 15
+            }
+          ],
+          "sampleCount": 228,
+          "minimum": 5.816692188922205,
+          "p05": 6.072918200120662,
+          "pass": true
+        },
+        {
+          "selector": ".activity-map-preview",
+          "text": "北湖地图预览",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            89,
+            103,
+            81,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 743.75,
+              "y": 305.984375,
+              "width": 66,
+              "height": 16
+            }
+          ],
+          "sampleCount": 124,
+          "minimum": 4.831097923036633,
+          "p05": 4.831097923036633,
+          "pass": true
+        },
+        {
+          "selector": ".activity-page-hint span",
+          "text": "↑ ↓ 翻阅篇章",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 330.6328125,
+              "y": 365.640625,
+              "width": 74.734375,
+              "height": 15
+            }
+          ],
+          "sampleCount": 140,
+          "minimum": 5.613404685153362,
+          "p05": 5.814961371466391,
+          "pass": true
+        },
+        {
+          "selector": ".activity-page-hint span",
+          "text": "Esc 收起画卷",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 444.5703125,
+              "y": 365.640625,
+              "width": 68.796875,
+              "height": 15
+            }
+          ],
+          "sampleCount": 128,
+          "minimum": 6.2976998029770055,
+          "p05": 6.619496131357032,
+          "pass": true
+        }
+      ],
+      "boundaries": [
+        {
+          "selector": ".activity-close",
+          "kind": "filled-control",
+          "border": [
+            212,
+            184,
+            116,
+            255
+          ],
+          "background": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "outside": [
+            102,
+            94,
+            76,
+            255
+          ],
+          "ratio": 5.255509573070381,
+          "pass": true
+        },
+        {
+          "selector": ".activity-reward",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 4.107006063266308,
+          "pass": true
+        },
+        {
+          "selector": ".activity-reward",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 4.107006063266308,
+          "pass": true
+        },
+        {
+          "selector": ".activity-reward",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 4.107006063266308,
+          "pass": true
+        },
+        {
+          "selector": ".activity-reward",
+          "kind": "border",
+          "border": [
+            138,
+            106,
+            48,
+            255
+          ],
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "outside": [
+            243,
+            232,
+            200,
+            255
+          ],
+          "ratio": 4.107006063266308,
+          "pass": true
+        }
+      ],
+      "boxes": {
+        ".activity-strip": {
+          "x": 0,
+          "y": 46.796875,
+          "width": 844,
+          "height": 304.1875
+        },
+        ".activity-scroll": {
+          "x": 25.3125,
+          "y": 39.765625,
+          "width": 177.234375,
+          "height": 319.796875
+        },
+        ".activity-paper": {
+          "x": 506.40625,
+          "y": 48.796875,
+          "width": 337.59375,
+          "height": 300.1875
+        },
+        ".activity-event-heading": {
+          "x": 543.53125,
+          "y": 63.796875,
+          "width": 280.21875,
+          "height": 68.578125
+        },
+        ".activity-information": {
+          "x": 543.53125,
+          "y": 139.375,
+          "width": 280.21875,
+          "height": 123.609375
+        },
+        ".activity-footer": {
+          "x": 543.53125,
+          "y": 269.984375,
+          "width": 280.21875,
+          "height": 66
+        }
+      },
+      "name": "activity-844x390"
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "computedMetric": "Distinct nontransparent resolved solid colors (RGBA bytes) across nine computed color properties on visible, non-inert DOM elements, including resolved SVG fill/stroke. Excludes raster pixels, gradient expansion, pseudo-elements and hidden states.",
+      "computedColorCount": 13,
+      "computedColors": [
+        "0,0,0,255",
+        "121,145,121,255",
+        "14,43,38,148",
+        "18,51,47,255",
+        "188,197,163,255",
+        "191,178,138,255",
+        "211,199,159,255",
+        "212,184,116,255",
+        "228,207,149,255",
+        "230,221,186,255",
+        "245,230,189,255",
+        "25,60,55,237",
+        "51,81,63,255"
+      ],
+      "texts": [
+        {
+          "selector": ".entry-flourish",
+          "text": "◇良乡 · 秋日◇",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            228,
+            207,
+            149,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 626.046875,
+              "y": 220.109375,
+              "width": 11.5,
+              "height": 15
+            },
+            {
+              "x": 690.546875,
+              "y": 220.109375,
+              "width": 58.890625,
+              "height": 15
+            },
+            {
+              "x": 802.4375,
+              "y": 220.109375,
+              "width": 11.5,
+              "height": 15
+            }
+          ],
+          "sampleCount": 132,
+          "minimum": 6.121893448365202,
+          "p05": 6.121893448365202,
+          "pass": true
+        },
+        {
+          "selector": ".entry-content>small",
+          "text": "轻触启程 · 开启声音与沉浸体验",
+          "fontSize": 10,
+          "weight": 400,
+          "foreground": [
+            211,
+            199,
+            159,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 646,
+              "y": 666.890625,
+              "width": 148,
+              "height": 15
+            }
+          ],
+          "sampleCount": 288,
+          "minimum": 4.935346282381685,
+          "p05": 4.935346282381685,
+          "pass": true
+        },
+        {
+          "selector": ".entry-login label>span",
+          "text": "昵称",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            191,
+            178,
+            138,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 560,
+              "y": 328.609375,
+              "width": 26.40625,
+              "height": 17
+            }
+          ],
+          "sampleCount": 44,
+          "minimum": 5.547764396795577,
+          "p05": 5.547764396795577,
+          "pass": true
+        },
+        {
+          "selector": ".entry-login label>span",
+          "text": "学号 / ID",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            191,
+            178,
+            138,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 560,
+              "y": 384.609375,
+              "width": 56.875,
+              "height": 17
+            }
+          ],
+          "sampleCount": 104,
+          "minimum": 5.6240395934158585,
+          "p05": 5.6240395934158585,
+          "pass": true
+        },
+        {
+          "selector": ".entry-login label>span",
+          "text": "访问口令",
+          "fontSize": 12,
+          "weight": 400,
+          "foreground": [
+            191,
+            178,
+            138,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 560,
+              "y": 440.609375,
+              "width": 52.8125,
+              "height": 17
+            }
+          ],
+          "sampleCount": 96,
+          "minimum": 5.299733701455104,
+          "p05": 5.364768000364188,
+          "pass": true
+        },
+        {
+          "selector": ".entry-login-help",
+          "text": "首次使用该 ID 会创建存档与访问口令；下次须用相同口令。旧版无口令存档请联系管理员核验迁移。口令提交后即清空，不写入本机存档。",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            230,
+            221,
+            186,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 560,
+              "y": 483.109375,
+              "width": 315.5625,
+              "height": 16
+            },
+            {
+              "x": 560,
+              "y": 500.703125,
+              "width": 319,
+              "height": 16
+            },
+            {
+              "x": 560,
+              "y": 518.296875,
+              "width": 44,
+              "height": 16
+            }
+          ],
+          "sampleCount": 1336,
+          "minimum": 8.19711682618897,
+          "p05": 8.210886715699623,
+          "pass": true
+        },
+        {
+          "selector": ".entry-alt",
+          "text": "游客模式 · 进度仅保存在本机",
+          "fontSize": 11,
+          "weight": 400,
+          "foreground": [
+            245,
+            230,
+            189,
+            255
+          ],
+          "opacity": 1,
+          "threshold": 4.5,
+          "rects": [
+            {
+              "x": 646.078125,
+              "y": 626.890625,
+              "width": 147.84375,
+              "height": 16
+            }
+          ],
+          "sampleCount": 284,
+          "minimum": 8.045660576743355,
+          "p05": 8.060022649680798,
+          "pass": true
+        }
+      ],
+      "boundaries": [],
+      "boxes": {},
+      "name": "entry-1440x900"
+    }
+  ],
+  "errors": [],
+  "captureOk": true,
+  "contrastOk": true,
+  "boundaryOk": true,
+  "ok": true
+}

@@ -1,0 +1,20 @@
+{
+  "id": "park",
+  "source": "C:\\Users\\12929\\.codex\\generated_images\\01a19cdf-88b3-7880-b645-ca87f10dbd3b\\exec-d10e2596-7caa-4e6c-9d63-023ae7fa7a64.png",
+  "tool": "built-in ImageGen",
+  "prompt": "Original concept illustration for a Chinese university campus exploration game, cinematic 16:9 landscape, request large 1920x1080. Elegant hand-painted cel-shaded new Chinese landscape with layered cut-paper silhouettes and rice-paper fibers; sage jade, lake teal, warm ivory, muted autumn gold accents. Refined calm youthful game chapter art, strong foreground/middle/background depth, asymmetrical composition, no text, no signage, no logos, no UI, no borders. Stylized original architecture, explicitly a conceptual placeholder rather than a real campus photograph. A quiet university patriotic education garden: a winding stone path between pines and golden ginkgo trees, a simple unlettered pale stone memorial wall, abstract star relief and small ceremonial open lawn. Warm morning light, dignity and calm, invented non-specific memorial design, no writing, no flags or people, layered jade foliage and ivory stone.",
+  "usage": "AI-generated concept placeholder, not a campus photograph",
+  "hero": "D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\apps\\liyun-explorer\\public\\assets\\landmarks\\park\\hero.webp",
+  "visualReview": "Native output inspected; concept placeholder, not a factual campus photograph.",
+  "nativePixels": [
+    1672,
+    941
+  ],
+  "deliveredPixels": [
+    768,
+    432
+  ],
+  "encoding": "WebP quality 74; local distribution derivative",
+  "bytes": 76984,
+  "sha256": "ae6d7c0f1b569e35e5476d6b65334105aaebd50ec21e8f685eb0bd24cce2e8d7"
+}

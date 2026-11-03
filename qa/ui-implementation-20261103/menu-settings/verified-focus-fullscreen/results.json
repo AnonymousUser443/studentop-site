@@ -1,0 +1,1535 @@
+{
+  "ok": false,
+  "error": "Error: EVAL: TypeError: Cannot read properties of null (reading 'scrollIntoView')\n    at <anonymous>:1:43\n    at Object.evaluate (D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\lib.js:179:42)\n    at async s.click (D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\ui-implementation-20261103\\menu-settings\\browser.cjs:28:31)\n    at async openMenu (D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\ui-implementation-20261103\\menu-settings\\browser.cjs:35:30)\n    at async D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\qa\\ui-implementation-20261103\\menu-settings\\browser.cjs:41:24",
+  "checks": [
+    {
+      "name": "menu 1920x1080 keeps world visible",
+      "pass": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 620,
+        "height": 1080,
+        "right": 620,
+        "bottom": 1080
+      }
+    },
+    {
+      "name": "menu 1920x1080 hit areas",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "menu 1920x1080 owns focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "label": "返回地图"
+      }
+    },
+    {
+      "name": "menu Shift Tab remains trapped",
+      "pass": true,
+      "detail": "<button type=\"button\" class=\"menu-tile\" aria-label=\"关于\"><span class=\"menu-tile-icon\"><svg class=\"ly-icon \" viewBox=\"0 0 48 48\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" "
+    },
+    {
+      "name": "menu Tab wraps to close",
+      "pass": true,
+      "detail": "<button type=\"button\" class=\"menu-close\" aria-label=\"返回地图\"><svg viewBox=\"0 0 32 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" aria-hidden=\"true\"><path d=\"m13 9-7 7 7 7M6"
+    },
+    {
+      "name": "menu 1920x1080 scroll avoids footer",
+      "pass": true,
+      "detail": {
+        "scroll": {
+          "class": "menu-scroll",
+          "x": 63,
+          "y": 0,
+          "width": 556,
+          "height": 1032,
+          "right": 619,
+          "bottom": 1032,
+          "scrollHeight": 1032,
+          "clientHeight": 1032,
+          "scrollWidth": 556,
+          "clientWidth": 556,
+          "overflow": "auto"
+        },
+        "footer": {
+          "class": "menu-footer",
+          "x": 63,
+          "y": 1032,
+          "width": 556,
+          "height": 48,
+          "right": 619,
+          "bottom": 1080,
+          "scrollHeight": 47,
+          "clientHeight": 47,
+          "scrollWidth": 556,
+          "clientWidth": 556,
+          "overflow": "visible"
+        }
+      }
+    },
+    {
+      "name": "settings 1920x1080 hit areas",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "settings 1920x1080 owns focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "label": "关闭设置"
+      }
+    },
+    {
+      "name": "settings 1920x1080 panel fits",
+      "pass": true,
+      "detail": [
+        {
+          "class": "settings-rail",
+          "x": 58,
+          "y": 114,
+          "width": 415.375,
+          "height": 862,
+          "right": 473.375,
+          "bottom": 976,
+          "scrollHeight": 862,
+          "clientHeight": 862,
+          "scrollWidth": 415,
+          "clientWidth": 415,
+          "overflow": "auto"
+        },
+        {
+          "class": "settings-panel",
+          "x": 549.375,
+          "y": 114,
+          "width": 1314.625,
+          "height": 862,
+          "right": 1864,
+          "bottom": 976,
+          "scrollHeight": 862,
+          "clientHeight": 862,
+          "scrollWidth": 1315,
+          "clientWidth": 1315,
+          "overflow": "auto"
+        },
+        {
+          "class": "settings-footer",
+          "x": 0,
+          "y": 992,
+          "width": 1920,
+          "height": 88,
+          "right": 1920,
+          "bottom": 1080,
+          "scrollHeight": 87,
+          "clientHeight": 87,
+          "scrollWidth": 1920,
+          "clientWidth": 1920,
+          "overflow": "visible"
+        }
+      ]
+    },
+    {
+      "name": "return 1920x1080 restores world focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "class": "hud-brand-badge"
+      }
+    },
+    {
+      "name": "menu 1440x900 keeps world visible",
+      "pass": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 620,
+        "height": 900,
+        "right": 620,
+        "bottom": 900
+      }
+    },
+    {
+      "name": "menu 1440x900 hit areas",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "menu 1440x900 owns focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "label": "返回地图"
+      }
+    },
+    {
+      "name": "menu 1440x900 scroll avoids footer",
+      "pass": true,
+      "detail": {
+        "scroll": {
+          "class": "menu-scroll",
+          "x": 63,
+          "y": 0,
+          "width": 556,
+          "height": 852,
+          "right": 619,
+          "bottom": 852,
+          "scrollHeight": 852,
+          "clientHeight": 852,
+          "scrollWidth": 556,
+          "clientWidth": 556,
+          "overflow": "auto"
+        },
+        "footer": {
+          "class": "menu-footer",
+          "x": 63,
+          "y": 852,
+          "width": 556,
+          "height": 48,
+          "right": 619,
+          "bottom": 900,
+          "scrollHeight": 47,
+          "clientHeight": 47,
+          "scrollWidth": 556,
+          "clientWidth": 556,
+          "overflow": "visible"
+        }
+      }
+    },
+    {
+      "name": "settings 1440x900 hit areas",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "settings 1440x900 owns focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "label": "关闭设置"
+      }
+    },
+    {
+      "name": "settings 1440x900 panel fits",
+      "pass": true,
+      "detail": [
+        {
+          "class": "settings-rail",
+          "x": 58,
+          "y": 114,
+          "width": 304.96875,
+          "height": 682,
+          "right": 362.96875,
+          "bottom": 796,
+          "scrollHeight": 682,
+          "clientHeight": 682,
+          "scrollWidth": 305,
+          "clientWidth": 305,
+          "overflow": "auto"
+        },
+        {
+          "class": "settings-panel",
+          "x": 420.5625,
+          "y": 114,
+          "width": 963.4375,
+          "height": 682,
+          "right": 1384,
+          "bottom": 796,
+          "scrollHeight": 682,
+          "clientHeight": 682,
+          "scrollWidth": 963,
+          "clientWidth": 963,
+          "overflow": "auto"
+        },
+        {
+          "class": "settings-footer",
+          "x": 0,
+          "y": 812,
+          "width": 1440,
+          "height": 88,
+          "right": 1440,
+          "bottom": 900,
+          "scrollHeight": 87,
+          "clientHeight": 87,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "overflow": "visible"
+        }
+      ]
+    },
+    {
+      "name": "return 1440x900 restores world focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "class": "hud-brand-badge"
+      }
+    },
+    {
+      "name": "menu 1280x720 keeps world visible",
+      "pass": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 588.796875,
+        "height": 720,
+        "right": 588.796875,
+        "bottom": 720
+      }
+    },
+    {
+      "name": "menu 1280x720 hit areas",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "menu 1280x720 owns focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "label": "返回地图"
+      }
+    },
+    {
+      "name": "menu 1280x720 scroll avoids footer",
+      "pass": true,
+      "detail": {
+        "scroll": {
+          "class": "menu-scroll",
+          "x": 63,
+          "y": 0,
+          "width": 524.796875,
+          "height": 672,
+          "right": 587.796875,
+          "bottom": 672,
+          "scrollHeight": 675,
+          "clientHeight": 672,
+          "scrollWidth": 515,
+          "clientWidth": 515,
+          "overflow": "auto"
+        },
+        "footer": {
+          "class": "menu-footer",
+          "x": 63,
+          "y": 672,
+          "width": 524.796875,
+          "height": 48,
+          "right": 587.796875,
+          "bottom": 720,
+          "scrollHeight": 47,
+          "clientHeight": 47,
+          "scrollWidth": 525,
+          "clientWidth": 525,
+          "overflow": "visible"
+        }
+      }
+    },
+    {
+      "name": "settings 1280x720 hit areas",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "settings 1280x720 owns focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "label": "关闭设置"
+      }
+    },
+    {
+      "name": "settings 1280x720 panel fits",
+      "pass": true,
+      "detail": [
+        {
+          "class": "settings-rail",
+          "x": 58,
+          "y": 114,
+          "width": 268.171875,
+          "height": 502,
+          "right": 326.171875,
+          "bottom": 616,
+          "scrollHeight": 553,
+          "clientHeight": 502,
+          "scrollWidth": 258,
+          "clientWidth": 258,
+          "overflow": "auto"
+        },
+        {
+          "class": "settings-panel",
+          "x": 377.359375,
+          "y": 114,
+          "width": 846.640625,
+          "height": 502,
+          "right": 1224,
+          "bottom": 616,
+          "scrollHeight": 502,
+          "clientHeight": 502,
+          "scrollWidth": 847,
+          "clientWidth": 847,
+          "overflow": "auto"
+        },
+        {
+          "class": "settings-footer",
+          "x": 0,
+          "y": 632,
+          "width": 1280,
+          "height": 88,
+          "right": 1280,
+          "bottom": 720,
+          "scrollHeight": 87,
+          "clientHeight": 87,
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow": "visible"
+        }
+      ]
+    },
+    {
+      "name": "return 1280x720 restores world focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "class": "hud-brand-badge"
+      }
+    },
+    {
+      "name": "menu 1024x600 keeps world visible",
+      "pass": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 520,
+        "height": 600,
+        "right": 520,
+        "bottom": 600
+      }
+    },
+    {
+      "name": "menu 1024x600 hit areas",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "menu 1024x600 owns focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "label": "返回地图"
+      }
+    },
+    {
+      "name": "menu 1024x600 scroll avoids footer",
+      "pass": true,
+      "detail": {
+        "scroll": {
+          "class": "menu-scroll",
+          "x": 57,
+          "y": 0,
+          "width": 462,
+          "height": 552,
+          "right": 519,
+          "bottom": 552,
+          "scrollHeight": 662,
+          "clientHeight": 552,
+          "scrollWidth": 452,
+          "clientWidth": 452,
+          "overflow": "auto"
+        },
+        "footer": {
+          "class": "menu-footer",
+          "x": 57,
+          "y": 552,
+          "width": 462,
+          "height": 48,
+          "right": 519,
+          "bottom": 600,
+          "scrollHeight": 47,
+          "clientHeight": 47,
+          "scrollWidth": 462,
+          "clientWidth": 462,
+          "overflow": "visible"
+        }
+      }
+    },
+    {
+      "name": "settings 1024x600 hit areas",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "settings 1024x600 owns focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "label": "关闭设置"
+      }
+    },
+    {
+      "name": "settings 1024x600 panel fits",
+      "pass": true,
+      "detail": [
+        {
+          "class": "settings-rail",
+          "x": 30,
+          "y": 94,
+          "width": 175,
+          "height": 412,
+          "right": 205,
+          "bottom": 506,
+          "scrollHeight": 521,
+          "clientHeight": 412,
+          "scrollWidth": 165,
+          "clientWidth": 165,
+          "overflow": "auto"
+        },
+        {
+          "class": "settings-panel",
+          "x": 233,
+          "y": 94,
+          "width": 761,
+          "height": 412,
+          "right": 994,
+          "bottom": 506,
+          "scrollHeight": 435,
+          "clientHeight": 412,
+          "scrollWidth": 751,
+          "clientWidth": 751,
+          "overflow": "auto"
+        },
+        {
+          "class": "settings-footer",
+          "x": 0,
+          "y": 522,
+          "width": 1024,
+          "height": 78,
+          "right": 1024,
+          "bottom": 600,
+          "scrollHeight": 77,
+          "clientHeight": 77,
+          "scrollWidth": 1024,
+          "clientWidth": 1024,
+          "overflow": "visible"
+        }
+      ]
+    },
+    {
+      "name": "return 1024x600 restores world focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "class": "hud-brand-badge"
+      }
+    },
+    {
+      "name": "menu 844x390 keeps world visible",
+      "pass": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 470,
+        "height": 390,
+        "right": 470,
+        "bottom": 390
+      }
+    },
+    {
+      "name": "menu 844x390 hit areas",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "menu 844x390 owns focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "label": "返回地图"
+      }
+    },
+    {
+      "name": "menu 844x390 scroll avoids footer",
+      "pass": true,
+      "detail": {
+        "scroll": {
+          "class": "menu-scroll",
+          "x": 53,
+          "y": 0,
+          "width": 416,
+          "height": 353,
+          "right": 469,
+          "bottom": 353,
+          "scrollHeight": 597,
+          "clientHeight": 353,
+          "scrollWidth": 406,
+          "clientWidth": 406,
+          "overflow": "auto"
+        },
+        "footer": {
+          "class": "menu-footer",
+          "x": 53,
+          "y": 353,
+          "width": 416,
+          "height": 37,
+          "right": 469,
+          "bottom": 390,
+          "scrollHeight": 36,
+          "clientHeight": 36,
+          "scrollWidth": 416,
+          "clientWidth": 416,
+          "overflow": "visible"
+        }
+      }
+    },
+    {
+      "name": "settings 844x390 hit areas",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "settings 844x390 owns focus",
+      "pass": true,
+      "detail": {
+        "tag": "BUTTON",
+        "label": "关闭设置"
+      }
+    },
+    {
+      "name": "settings 844x390 panel fits",
+      "pass": true,
+      "detail": [
+        {
+          "class": "settings-rail",
+          "x": 22,
+          "y": 64,
+          "width": 145,
+          "height": 255,
+          "right": 167,
+          "bottom": 319,
+          "scrollHeight": 359,
+          "clientHeight": 255,
+          "scrollWidth": 135,
+          "clientWidth": 135,
+          "overflow": "auto"
+        },
+        {
+          "class": "settings-panel",
+          "x": 189,
+          "y": 64,
+          "width": 633,
+          "height": 255,
+          "right": 822,
+          "bottom": 319,
+          "scrollHeight": 352,
+          "clientHeight": 255,
+          "scrollWidth": 623,
+          "clientWidth": 623,
+          "overflow": "auto"
+        },
+        {
+          "class": "settings-footer",
+          "x": 0,
+          "y": 327,
+          "width": 844,
+          "height": 63,
+          "right": 844,
+          "bottom": 390,
+          "scrollHeight": 62,
+          "clientHeight": 62,
+          "scrollWidth": 844,
+          "clientWidth": 844,
+          "overflow": "visible"
+        }
+      ]
+    },
+    {
+      "name": "return 844x390 restores world focus",
+      "pass": false,
+      "detail": {
+        "tag": "BODY",
+        "class": ""
+      }
+    }
+  ],
+  "evidence": {
+    "mode": "Isolated Edge / CDP input, localhost:5176, QA preset only",
+    "layouts": [
+      {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "page": "menu-screen",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 620,
+          "height": 1080,
+          "right": 620,
+          "bottom": 1080
+        },
+        "focusInside": true,
+        "focus": {
+          "tag": "BUTTON",
+          "label": "返回地图"
+        },
+        "small": [],
+        "containers": [
+          {
+            "class": "menu-rail",
+            "x": 0,
+            "y": 0,
+            "width": 62,
+            "height": 1080,
+            "right": 62,
+            "bottom": 1080,
+            "scrollHeight": 1080,
+            "clientHeight": 1080,
+            "scrollWidth": 130,
+            "clientWidth": 62,
+            "overflow": "visible"
+          },
+          {
+            "class": "menu-scroll",
+            "x": 63,
+            "y": 0,
+            "width": 556,
+            "height": 1032,
+            "right": 619,
+            "bottom": 1032,
+            "scrollHeight": 1032,
+            "clientHeight": 1032,
+            "scrollWidth": 556,
+            "clientWidth": 556,
+            "overflow": "auto"
+          },
+          {
+            "class": "menu-card has-login",
+            "x": 63,
+            "y": 0,
+            "width": 556,
+            "height": 279.984375,
+            "right": 619,
+            "bottom": 279.984375,
+            "scrollHeight": 272,
+            "clientHeight": 272,
+            "scrollWidth": 556,
+            "clientWidth": 556,
+            "overflow": "hidden"
+          },
+          {
+            "class": "menu-grid",
+            "x": 83,
+            "y": 330.984375,
+            "width": 516,
+            "height": 233,
+            "right": 599,
+            "bottom": 563.984375,
+            "scrollHeight": 233,
+            "clientHeight": 233,
+            "scrollWidth": 516,
+            "clientWidth": 516,
+            "overflow": "visible"
+          },
+          {
+            "class": "menu-footer",
+            "x": 63,
+            "y": 1032,
+            "width": 556,
+            "height": 48,
+            "right": 619,
+            "bottom": 1080,
+            "scrollHeight": 47,
+            "clientHeight": 47,
+            "scrollWidth": 556,
+            "clientWidth": 556,
+            "overflow": "visible"
+          }
+        ],
+        "root": {
+          "quality": "high",
+          "ambient": "on",
+          "motion": "full",
+          "reduceFlash": "false",
+          "pageVisible": "true"
+        },
+        "blur": "none"
+      },
+      {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "page": "settings-screen",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1080,
+          "right": 1920,
+          "bottom": 1080
+        },
+        "focusInside": true,
+        "focus": {
+          "tag": "BUTTON",
+          "label": "关闭设置"
+        },
+        "small": [],
+        "containers": [
+          {
+            "class": "settings-rail",
+            "x": 58,
+            "y": 114,
+            "width": 415.375,
+            "height": 862,
+            "right": 473.375,
+            "bottom": 976,
+            "scrollHeight": 862,
+            "clientHeight": 862,
+            "scrollWidth": 415,
+            "clientWidth": 415,
+            "overflow": "auto"
+          },
+          {
+            "class": "settings-panel",
+            "x": 549.375,
+            "y": 114,
+            "width": 1314.625,
+            "height": 862,
+            "right": 1864,
+            "bottom": 976,
+            "scrollHeight": 862,
+            "clientHeight": 862,
+            "scrollWidth": 1315,
+            "clientWidth": 1315,
+            "overflow": "auto"
+          },
+          {
+            "class": "settings-footer",
+            "x": 0,
+            "y": 992,
+            "width": 1920,
+            "height": 88,
+            "right": 1920,
+            "bottom": 1080,
+            "scrollHeight": 87,
+            "clientHeight": 87,
+            "scrollWidth": 1920,
+            "clientWidth": 1920,
+            "overflow": "visible"
+          }
+        ],
+        "root": {
+          "quality": "high",
+          "ambient": "on",
+          "motion": "full",
+          "reduceFlash": "false",
+          "pageVisible": "true"
+        },
+        "blur": "blur(6px)"
+      },
+      {
+        "viewport": [
+          1440,
+          900
+        ],
+        "page": "menu-screen",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 620,
+          "height": 900,
+          "right": 620,
+          "bottom": 900
+        },
+        "focusInside": true,
+        "focus": {
+          "tag": "BUTTON",
+          "label": "返回地图"
+        },
+        "small": [],
+        "containers": [
+          {
+            "class": "menu-rail",
+            "x": 0,
+            "y": 0,
+            "width": 62,
+            "height": 900,
+            "right": 62,
+            "bottom": 900,
+            "scrollHeight": 900,
+            "clientHeight": 900,
+            "scrollWidth": 130,
+            "clientWidth": 62,
+            "overflow": "visible"
+          },
+          {
+            "class": "menu-scroll",
+            "x": 63,
+            "y": 0,
+            "width": 556,
+            "height": 852,
+            "right": 619,
+            "bottom": 852,
+            "scrollHeight": 852,
+            "clientHeight": 852,
+            "scrollWidth": 556,
+            "clientWidth": 556,
+            "overflow": "auto"
+          },
+          {
+            "class": "menu-card has-login",
+            "x": 63,
+            "y": 0,
+            "width": 556,
+            "height": 275.671875,
+            "right": 619,
+            "bottom": 275.671875,
+            "scrollHeight": 268,
+            "clientHeight": 268,
+            "scrollWidth": 556,
+            "clientWidth": 556,
+            "overflow": "hidden"
+          },
+          {
+            "class": "menu-grid",
+            "x": 83,
+            "y": 326.671875,
+            "width": 516,
+            "height": 233,
+            "right": 599,
+            "bottom": 559.671875,
+            "scrollHeight": 233,
+            "clientHeight": 233,
+            "scrollWidth": 516,
+            "clientWidth": 516,
+            "overflow": "visible"
+          },
+          {
+            "class": "menu-footer",
+            "x": 63,
+            "y": 852,
+            "width": 556,
+            "height": 48,
+            "right": 619,
+            "bottom": 900,
+            "scrollHeight": 47,
+            "clientHeight": 47,
+            "scrollWidth": 556,
+            "clientWidth": 556,
+            "overflow": "visible"
+          }
+        ],
+        "root": {
+          "quality": "high",
+          "ambient": "on",
+          "motion": "full",
+          "reduceFlash": "false",
+          "pageVisible": "true"
+        },
+        "blur": "none"
+      },
+      {
+        "viewport": [
+          1440,
+          900
+        ],
+        "page": "settings-screen",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "right": 1440,
+          "bottom": 900
+        },
+        "focusInside": true,
+        "focus": {
+          "tag": "BUTTON",
+          "label": "关闭设置"
+        },
+        "small": [],
+        "containers": [
+          {
+            "class": "settings-rail",
+            "x": 58,
+            "y": 114,
+            "width": 304.96875,
+            "height": 682,
+            "right": 362.96875,
+            "bottom": 796,
+            "scrollHeight": 682,
+            "clientHeight": 682,
+            "scrollWidth": 305,
+            "clientWidth": 305,
+            "overflow": "auto"
+          },
+          {
+            "class": "settings-panel",
+            "x": 420.5625,
+            "y": 114,
+            "width": 963.4375,
+            "height": 682,
+            "right": 1384,
+            "bottom": 796,
+            "scrollHeight": 682,
+            "clientHeight": 682,
+            "scrollWidth": 963,
+            "clientWidth": 963,
+            "overflow": "auto"
+          },
+          {
+            "class": "settings-footer",
+            "x": 0,
+            "y": 812,
+            "width": 1440,
+            "height": 88,
+            "right": 1440,
+            "bottom": 900,
+            "scrollHeight": 87,
+            "clientHeight": 87,
+            "scrollWidth": 1440,
+            "clientWidth": 1440,
+            "overflow": "visible"
+          }
+        ],
+        "root": {
+          "quality": "high",
+          "ambient": "on",
+          "motion": "full",
+          "reduceFlash": "false",
+          "pageVisible": "true"
+        },
+        "blur": "blur(6px)"
+      },
+      {
+        "viewport": [
+          1280,
+          720
+        ],
+        "page": "menu-screen",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 588.796875,
+          "height": 720,
+          "right": 588.796875,
+          "bottom": 720
+        },
+        "focusInside": true,
+        "focus": {
+          "tag": "BUTTON",
+          "label": "返回地图"
+        },
+        "small": [],
+        "containers": [
+          {
+            "class": "menu-rail",
+            "x": 0,
+            "y": 0,
+            "width": 62,
+            "height": 720,
+            "right": 62,
+            "bottom": 720,
+            "scrollHeight": 720,
+            "clientHeight": 720,
+            "scrollWidth": 130,
+            "clientWidth": 62,
+            "overflow": "visible"
+          },
+          {
+            "class": "menu-scroll",
+            "x": 63,
+            "y": 0,
+            "width": 524.796875,
+            "height": 672,
+            "right": 587.796875,
+            "bottom": 672,
+            "scrollHeight": 675,
+            "clientHeight": 672,
+            "scrollWidth": 515,
+            "clientWidth": 515,
+            "overflow": "auto"
+          },
+          {
+            "class": "menu-card has-login",
+            "x": 63,
+            "y": 0,
+            "width": 514.796875,
+            "height": 271.34375,
+            "right": 577.796875,
+            "bottom": 271.34375,
+            "scrollHeight": 263,
+            "clientHeight": 263,
+            "scrollWidth": 515,
+            "clientWidth": 515,
+            "overflow": "hidden"
+          },
+          {
+            "class": "menu-grid",
+            "x": 83,
+            "y": 322.34375,
+            "width": 474.796875,
+            "height": 233,
+            "right": 557.796875,
+            "bottom": 555.34375,
+            "scrollHeight": 233,
+            "clientHeight": 233,
+            "scrollWidth": 475,
+            "clientWidth": 475,
+            "overflow": "visible"
+          },
+          {
+            "class": "menu-footer",
+            "x": 63,
+            "y": 672,
+            "width": 524.796875,
+            "height": 48,
+            "right": 587.796875,
+            "bottom": 720,
+            "scrollHeight": 47,
+            "clientHeight": 47,
+            "scrollWidth": 525,
+            "clientWidth": 525,
+            "overflow": "visible"
+          }
+        ],
+        "root": {
+          "quality": "high",
+          "ambient": "on",
+          "motion": "full",
+          "reduceFlash": "false",
+          "pageVisible": "true"
+        },
+        "blur": "none"
+      },
+      {
+        "viewport": [
+          1280,
+          720
+        ],
+        "page": "settings-screen",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 720,
+          "right": 1280,
+          "bottom": 720
+        },
+        "focusInside": true,
+        "focus": {
+          "tag": "BUTTON",
+          "label": "关闭设置"
+        },
+        "small": [],
+        "containers": [
+          {
+            "class": "settings-rail",
+            "x": 58,
+            "y": 114,
+            "width": 268.171875,
+            "height": 502,
+            "right": 326.171875,
+            "bottom": 616,
+            "scrollHeight": 553,
+            "clientHeight": 502,
+            "scrollWidth": 258,
+            "clientWidth": 258,
+            "overflow": "auto"
+          },
+          {
+            "class": "settings-panel",
+            "x": 377.359375,
+            "y": 114,
+            "width": 846.640625,
+            "height": 502,
+            "right": 1224,
+            "bottom": 616,
+            "scrollHeight": 502,
+            "clientHeight": 502,
+            "scrollWidth": 847,
+            "clientWidth": 847,
+            "overflow": "auto"
+          },
+          {
+            "class": "settings-footer",
+            "x": 0,
+            "y": 632,
+            "width": 1280,
+            "height": 88,
+            "right": 1280,
+            "bottom": 720,
+            "scrollHeight": 87,
+            "clientHeight": 87,
+            "scrollWidth": 1280,
+            "clientWidth": 1280,
+            "overflow": "visible"
+          }
+        ],
+        "root": {
+          "quality": "high",
+          "ambient": "on",
+          "motion": "full",
+          "reduceFlash": "false",
+          "pageVisible": "true"
+        },
+        "blur": "blur(6px)"
+      },
+      {
+        "viewport": [
+          1024,
+          600
+        ],
+        "page": "menu-screen",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 520,
+          "height": 600,
+          "right": 520,
+          "bottom": 600
+        },
+        "focusInside": true,
+        "focus": {
+          "tag": "BUTTON",
+          "label": "返回地图"
+        },
+        "small": [],
+        "containers": [
+          {
+            "class": "menu-rail",
+            "x": 0,
+            "y": 0,
+            "width": 56,
+            "height": 600,
+            "right": 56,
+            "bottom": 600,
+            "scrollHeight": 600,
+            "clientHeight": 600,
+            "scrollWidth": 127,
+            "clientWidth": 56,
+            "overflow": "visible"
+          },
+          {
+            "class": "menu-scroll",
+            "x": 57,
+            "y": 0,
+            "width": 462,
+            "height": 552,
+            "right": 519,
+            "bottom": 552,
+            "scrollHeight": 662,
+            "clientHeight": 552,
+            "scrollWidth": 452,
+            "clientWidth": 452,
+            "overflow": "auto"
+          },
+          {
+            "class": "menu-card has-login",
+            "x": 57,
+            "y": 0,
+            "width": 452,
+            "height": 269.1875,
+            "right": 509,
+            "bottom": 269.1875,
+            "scrollHeight": 261,
+            "clientHeight": 261,
+            "scrollWidth": 452,
+            "clientWidth": 452,
+            "overflow": "hidden"
+          },
+          {
+            "class": "menu-grid",
+            "x": 73,
+            "y": 320.1875,
+            "width": 420,
+            "height": 222.296875,
+            "right": 493,
+            "bottom": 542.484375,
+            "scrollHeight": 222,
+            "clientHeight": 222,
+            "scrollWidth": 420,
+            "clientWidth": 420,
+            "overflow": "visible"
+          },
+          {
+            "class": "menu-footer",
+            "x": 57,
+            "y": 552,
+            "width": 462,
+            "height": 48,
+            "right": 519,
+            "bottom": 600,
+            "scrollHeight": 47,
+            "clientHeight": 47,
+            "scrollWidth": 462,
+            "clientWidth": 462,
+            "overflow": "visible"
+          }
+        ],
+        "root": {
+          "quality": "high",
+          "ambient": "on",
+          "motion": "full",
+          "reduceFlash": "false",
+          "pageVisible": "true"
+        },
+        "blur": "none"
+      },
+      {
+        "viewport": [
+          1024,
+          600
+        ],
+        "page": "settings-screen",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 600,
+          "right": 1024,
+          "bottom": 600
+        },
+        "focusInside": true,
+        "focus": {
+          "tag": "BUTTON",
+          "label": "关闭设置"
+        },
+        "small": [],
+        "containers": [
+          {
+            "class": "settings-rail",
+            "x": 30,
+            "y": 94,
+            "width": 175,
+            "height": 412,
+            "right": 205,
+            "bottom": 506,
+            "scrollHeight": 521,
+            "clientHeight": 412,
+            "scrollWidth": 165,
+            "clientWidth": 165,
+            "overflow": "auto"
+          },
+          {
+            "class": "settings-panel",
+            "x": 233,
+            "y": 94,
+            "width": 761,
+            "height": 412,
+            "right": 994,
+            "bottom": 506,
+            "scrollHeight": 435,
+            "clientHeight": 412,
+            "scrollWidth": 751,
+            "clientWidth": 751,
+            "overflow": "auto"
+          },
+          {
+            "class": "settings-footer",
+            "x": 0,
+            "y": 522,
+            "width": 1024,
+            "height": 78,
+            "right": 1024,
+            "bottom": 600,
+            "scrollHeight": 77,
+            "clientHeight": 77,
+            "scrollWidth": 1024,
+            "clientWidth": 1024,
+            "overflow": "visible"
+          }
+        ],
+        "root": {
+          "quality": "high",
+          "ambient": "on",
+          "motion": "full",
+          "reduceFlash": "false",
+          "pageVisible": "true"
+        },
+        "blur": "blur(6px)"
+      },
+      {
+        "viewport": [
+          844,
+          390
+        ],
+        "page": "menu-screen",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 470,
+          "height": 390,
+          "right": 470,
+          "bottom": 390
+        },
+        "focusInside": true,
+        "focus": {
+          "tag": "BUTTON",
+          "label": "返回地图"
+        },
+        "small": [],
+        "containers": [
+          {
+            "class": "menu-rail",
+            "x": 0,
+            "y": 0,
+            "width": 52,
+            "height": 390,
+            "right": 52,
+            "bottom": 390,
+            "scrollHeight": 390,
+            "clientHeight": 390,
+            "scrollWidth": 124,
+            "clientWidth": 52,
+            "overflow": "visible"
+          },
+          {
+            "class": "menu-scroll",
+            "x": 53,
+            "y": 0,
+            "width": 416,
+            "height": 353,
+            "right": 469,
+            "bottom": 353,
+            "scrollHeight": 597,
+            "clientHeight": 353,
+            "scrollWidth": 406,
+            "clientWidth": 406,
+            "overflow": "auto"
+          },
+          {
+            "class": "menu-card has-login",
+            "x": 53,
+            "y": 0,
+            "width": 406,
+            "height": 161,
+            "right": 459,
+            "bottom": 161,
+            "scrollHeight": 156,
+            "clientHeight": 156,
+            "scrollWidth": 406,
+            "clientWidth": 406,
+            "overflow": "hidden"
+          },
+          {
+            "class": "menu-grid",
+            "x": 65,
+            "y": 200,
+            "width": 382,
+            "height": 293.59375,
+            "right": 447,
+            "bottom": 493.59375,
+            "scrollHeight": 294,
+            "clientHeight": 294,
+            "scrollWidth": 382,
+            "clientWidth": 382,
+            "overflow": "visible"
+          },
+          {
+            "class": "menu-footer",
+            "x": 53,
+            "y": 353,
+            "width": 416,
+            "height": 37,
+            "right": 469,
+            "bottom": 390,
+            "scrollHeight": 36,
+            "clientHeight": 36,
+            "scrollWidth": 416,
+            "clientWidth": 416,
+            "overflow": "visible"
+          }
+        ],
+        "root": {
+          "quality": "high",
+          "ambient": "on",
+          "motion": "full",
+          "reduceFlash": "false",
+          "pageVisible": "true"
+        },
+        "blur": "none"
+      },
+      {
+        "viewport": [
+          844,
+          390
+        ],
+        "page": "settings-screen",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390,
+          "right": 844,
+          "bottom": 390
+        },
+        "focusInside": true,
+        "focus": {
+          "tag": "BUTTON",
+          "label": "关闭设置"
+        },
+        "small": [],
+        "containers": [
+          {
+            "class": "settings-rail",
+            "x": 22,
+            "y": 64,
+            "width": 145,
+            "height": 255,
+            "right": 167,
+            "bottom": 319,
+            "scrollHeight": 359,
+            "clientHeight": 255,
+            "scrollWidth": 135,
+            "clientWidth": 135,
+            "overflow": "auto"
+          },
+          {
+            "class": "settings-panel",
+            "x": 189,
+            "y": 64,
+            "width": 633,
+            "height": 255,
+            "right": 822,
+            "bottom": 319,
+            "scrollHeight": 352,
+            "clientHeight": 255,
+            "scrollWidth": 623,
+            "clientWidth": 623,
+            "overflow": "auto"
+          },
+          {
+            "class": "settings-footer",
+            "x": 0,
+            "y": 327,
+            "width": 844,
+            "height": 63,
+            "right": 844,
+            "bottom": 390,
+            "scrollHeight": 62,
+            "clientHeight": 62,
+            "scrollWidth": 844,
+            "clientWidth": 844,
+            "overflow": "visible"
+          }
+        ],
+        "root": {
+          "quality": "high",
+          "ambient": "on",
+          "motion": "full",
+          "reduceFlash": "false",
+          "pageVisible": "true"
+        },
+        "blur": "blur(6px)"
+      }
+    ]
+  },
+  "errors": [
+    "CONSOLE: React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks\n\n   Previous render            Next render\n   ------------------------------------------------------\n%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n App 1. useRef                     useRef\n2. useState                   useState\n3. useRef                     useRef\n4. useState                   useState\n5. useCallback                useCallback\n6. useSyncExternalStore       useSyncExternalStore\n7. useDebugValue              useDebugValue\n8. useCallback                useCallback\n9. useSyncExternalStore       useSyncExternalStore\n10. useDebugValue             useDebugValue\n11. useLayoutEffect           useLayoutEffect\n12. useEffect                 useEffect\n13. useCallback               useCallback\n14. useState                  useState\n15. useEffect                 useEffect\n16. useCallback               useCallback\n17. useCallback               useCallback\n18. useCallback               useCallback\n19. useSyncExternalStore      useSyncExternalStore\n20. useDebugValue             useDebugValue\n21. useCallback               useCallback\n22. useSyncExternalStore      useSyncExternalStore\n23. useDebugValue             useDebugValue\n24. useCallback               useCallback\n25. useSyncExternalStore      useSyncExternalStore\n26. useDebugValue             useDebugValue\n27. useState                  useState\n28. useRef                    useRef\n29. useState                  useState\n30. useRef                    useRef\n31. useRef                    useRef\n32. useRef                    useRef\n33. useState                  useState\n34. useRef                    useRef\n35. useState                  useState\n36. useRef                    useRef\n37. useEffect                 useEffect\n38. useCallback               useCallback\n39. useCallback               useCallback\n40. useState                  useState\n41. useCallback               useCallback\n42. useCallback               useCallback\n43. useCallback               useCallback\n44. useCallback               useCallback\n45. useCallback               useCallback\n46. useEffect                 useEffect\n47. useEffect                 useEffect\n48. useCallback               useCallback\n49. useCallback               useCallback\n50. useCallback               useCallback\n51. useCallback               useCallback\n52. useCallback               useCallback\n53. useCallback               useCallback\n54. useState                  useState\n55. useState                  useState\n56. useEffect                 useEffect\n57. useCallback               useCallback\n58. useSyncExternalStore      useSyncExternalStore\n59. useCallback               useCallback\n60. useSyncExternalStore      useSyncExternalStore\n61. useDebugValue             useDebugValue\n62. useCallback               useCallback\n63. useSyncExternalStore      useSyncExternalStore\n64. useDebugValue             useDebugValue\n65. useCallback               useCallback\n66. useSyncExternalStore      useSyncExternalStore\n67. useDebugValue             useDebugValue\n68. useState                  useState\n69. useRef                    useRef\n70. useRef                    useRef\n71. useRef                    useRef\n72. useRef                    useRef\n73. useRef                    useRef\n74. useRef                    useRef\n75. useRef                    useRef\n76. useRef                    useRef\n77. useRef                    useRef\n78. useRef                    useRef\n79. useRef                    useRef\n80. useCallback               useCallback\n81. useCallback               useCallback\n82. useCallback               useCallback\n83. useCallback               useCallback\n84. useCallback               useCallback\n85. useCallback               useCallback\n86. useCallback               useCallback\n87. useCallback               useCallback\n88. useCallback               useCallback\n89. useEffect                 useEffect\n90. useEffect                 useEffect\n91. useCallback               useCallback\n92. useEffect                 useEffect\n93. useCallback               useCallback\n94. useSyncExternalStore      useSyncExternalStore\n95. useDebugValue             useDebugValue\n96. useState                  useState\n97. useState                  useState\n98. useState                  useState\n99. useRef                    useState\n",
+    "EXCEPTION: Error: Should have a queue. You are likely calling Hooks conditionally, which is not allowed. (https://react.dev/link/invalid-hook-call)\n    at updateReducerImpl (http://127.0.0.1:5176/node_modules/.vite/deps/react-dom_client.js?v=30c4fb04:6164:17)\n    at updateReducer (http://127.0.0.1:5176/node_modules/.vite/deps/react-dom_client.js?v=30c4fb04:6159:16)\n    at Object.useState (http://127.0.0.1:5176/node_modules/.vite/deps/react-dom_client.js?v=30c4fb04:20745:20)\n    at exports.useState (http://127.0.0.1:5176/node_modules/.vite/deps/chunk-S76SEUHA.js?v=30c4fb04:984:36)\n    at useAccountSession (http://127.0.0.1:5176/src/app/hooks/useAccountSession.ts?t=1793654991678:10:39)\n    at useExplorerController (http://127.0.0.1:5176/src/app/useExplorerController.ts?t=1793654991678:39:19)\n    at App (http://127.0.0.1:5176/src/App.tsx?t=1793654991678:23:163)\n    at Object.react_stack_bottom_frame (http://127.0.0.1:5176/node_modules/.vite/deps/react-dom_client.js?v=30c4fb04:20259:20)\n    at renderWithHooks (http://127.0.0.1:5176/node_modules/.vite/deps/react-dom_client.js?v=30c4fb04:5918:24)\n    at updateFunctionComponent (http://127.0.0.1:5176/node_modules/.vite/deps/react-dom_client.js?v=30c4fb04:7763:21)"
+  ]
+}

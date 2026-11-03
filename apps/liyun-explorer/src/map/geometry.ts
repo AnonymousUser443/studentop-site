@@ -5,12 +5,12 @@ export const clamp = (value: number, min: number, max: number) => Math.max(min, 
 export function baseScale(viewport: Viewport): number {
   return Math.max(viewport.height / 1080 * 0.61, viewport.width / 1920 * 0.55, 0.04);
 }
-export function cameraLimits(viewport: Viewport) {
+export function cameraLimits(viewport: Viewport, zoomLimit = 2.7) {
   const base = baseScale(viewport);
-  return { min: base * 0.55, max: base * 2.7 };
+  return { min: base * 0.55, max: base * clamp(zoomLimit, 1.5, 4) };
 }
-export function clampCamera(camera: MapCamera, viewport: Viewport): MapCamera {
-  const { min, max } = cameraLimits(viewport);
+export function clampCamera(camera: MapCamera, viewport: Viewport, zoomLimit = 2.7): MapCamera {
+  const { min, max } = cameraLimits(viewport, zoomLimit);
   const scale = clamp(camera.scale, min, max);
   const width = MAP_WIDTH * scale;
   const height = MAP_HEIGHT * scale;
@@ -36,7 +36,7 @@ export function zoomAt(camera: MapCamera, factor: number, x: number, y: number, 
   const ratio = scale / camera.scale;
   return { scale, x: x - (x - camera.x) * ratio, y: y - (y - camera.y) * ratio };
 }
-export function cameraAt(uv: UV, viewport: Viewport, scale = baseScale(viewport)): MapCamera {
+export function cameraAt(uv: UV, viewport: Viewport, scale = baseScale(viewport), zoomLimit = 2.7): MapCamera {
   return clampCamera({ scale, x: viewport.width * 0.61 - uv.u * MAP_WIDTH * scale,
-    y: viewport.height * 0.52 - uv.v * MAP_HEIGHT * scale }, viewport);
+    y: viewport.height * 0.52 - uv.v * MAP_HEIGHT * scale }, viewport, zoomLimit);
 }

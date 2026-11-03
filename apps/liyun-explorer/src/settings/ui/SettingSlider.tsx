@@ -35,6 +35,7 @@ export default function SettingSlider({
         max={max}
         step={step}
         disabled={disabled}
+        aria-label={ariaLabel}
         onValueChange={next => {
           const first = next[0];
           if (first !== undefined) onChange(first);
@@ -43,7 +44,7 @@ export default function SettingSlider({
         <Slider.Track className="settings-slider-track">
           <Slider.Range className="settings-slider-range" />
         </Slider.Track>
-        <Slider.Thumb className="settings-slider-thumb" aria-label={ariaLabel} />
+        <Slider.Thumb className="settings-slider-thumb" aria-label={ariaLabel} aria-valuetext={display} />
       </Slider.Root>
       <output className="settings-slider-value">{display}</output>
       {note && <span className="settings-dev-note">{note}</span>}

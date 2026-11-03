@@ -1,0 +1,201 @@
+{
+  "file": "D:\\Users\\Desktop\\北理的文件夹\\学习相关\\软件工程导论研究型课程\\V2版本集中开发文件夹\\apps\\liyun-explorer\\src\\content\\regions.json",
+  "valid": true,
+  "errors": [],
+  "warnings": [
+    "推荐 / 草稿未经现场确认；不得当作实际校园边界或实测打卡点。",
+    "support_polygon_uv 仅为定位模型的采样覆盖范围，不能代替游戏外边界。UV 图形不是精确米制圆；候选 WGS84 在覆盖范围外属于未验证外推。"
+  ],
+  "map_id": "campus-v04-eaa124716c51375f",
+  "status": "recommended",
+  "referenceAnchorCount": 8,
+  "regions": [
+    {
+      "id": "wencui",
+      "vertices": 4,
+      "areaUV": 0.03044999999999999,
+      "originalLandmarkCovered": true
+    },
+    {
+      "id": "beihu",
+      "vertices": 4,
+      "areaUV": 0.036599999999999994,
+      "originalLandmarkCovered": true
+    },
+    {
+      "id": "library",
+      "vertices": 4,
+      "areaUV": 0.11742500000000002,
+      "originalLandmarkCovered": true
+    },
+    {
+      "id": "teaching",
+      "vertices": 4,
+      "areaUV": 0.02744999999999998,
+      "originalLandmarkCovered": true
+    },
+    {
+      "id": "wenbo",
+      "vertices": 4,
+      "areaUV": 0.011249999999999982,
+      "originalLandmarkCovered": true
+    },
+    {
+      "id": "sports",
+      "vertices": 4,
+      "areaUV": 0.11357500000000001,
+      "originalLandmarkCovered": true
+    },
+    {
+      "id": "tower",
+      "vertices": 4,
+      "areaUV": 0.020250000000000046,
+      "originalLandmarkCovered": true
+    },
+    {
+      "id": "park",
+      "vertices": 5,
+      "areaUV": 0.08524999999999999,
+      "originalLandmarkCovered": true
+    }
+  ],
+  "points": [
+    {
+      "id": "wencui",
+      "radiusM": 45,
+      "source": "existing-map-model",
+      "candidateWgs84": {
+        "latitude": 39.73179769122383,
+        "longitude": 116.1678487033811
+      },
+      "support": {
+        "mode": "transition",
+        "inside_control_hull": false,
+        "distance_outside_m": 114.02726148339839,
+        "local_weight": 0.14495315175686596,
+        "independent_accuracy_verified": false
+      },
+      "insideControlHull": false
+    },
+    {
+      "id": "beihu",
+      "radiusM": 55,
+      "source": "existing-map-model",
+      "candidateWgs84": {
+        "latitude": 39.733525857262535,
+        "longitude": 116.16447656237081
+      },
+      "support": {
+        "mode": "calibrated",
+        "inside_control_hull": true,
+        "distance_outside_m": 0,
+        "local_weight": 1,
+        "independent_accuracy_verified": false
+      },
+      "insideControlHull": true
+    },
+    {
+      "id": "library",
+      "radiusM": 45,
+      "source": "existing-map-model",
+      "candidateWgs84": {
+        "latitude": 39.730385858446745,
+        "longitude": 116.16491256492108
+      },
+      "support": {
+        "mode": "transition",
+        "inside_control_hull": false,
+        "distance_outside_m": 2.245737999225931,
+        "local_weight": 0.9993342664931167,
+        "independent_accuracy_verified": false
+      },
+      "insideControlHull": false
+    },
+    {
+      "id": "teaching",
+      "radiusM": 50,
+      "source": "existing-map-model",
+      "candidateWgs84": {
+        "latitude": 39.73187972166947,
+        "longitude": 116.16504138500325
+      },
+      "support": {
+        "mode": "calibrated",
+        "inside_control_hull": true,
+        "distance_outside_m": 0,
+        "local_weight": 1,
+        "independent_accuracy_verified": false
+      },
+      "insideControlHull": true
+    },
+    {
+      "id": "wenbo",
+      "radiusM": 55,
+      "source": "existing-map-model",
+      "candidateWgs84": {
+        "latitude": 39.73181651856106,
+        "longitude": 116.17053977691235
+      },
+      "support": {
+        "mode": "extrapolated",
+        "inside_control_hull": false,
+        "distance_outside_m": 303.4580161966334,
+        "local_weight": 0,
+        "independent_accuracy_verified": false
+      },
+      "insideControlHull": false
+    },
+    {
+      "id": "sports",
+      "radiusM": 55,
+      "source": "existing-map-model",
+      "candidateWgs84": {
+        "latitude": 39.73048027975224,
+        "longitude": 116.17107786610512
+      },
+      "support": {
+        "mode": "extrapolated",
+        "inside_control_hull": false,
+        "distance_outside_m": 425.3505727828844,
+        "local_weight": 0,
+        "independent_accuracy_verified": false
+      },
+      "insideControlHull": false
+    },
+    {
+      "id": "tower",
+      "radiusM": 35,
+      "source": "existing-map-model",
+      "candidateWgs84": {
+        "latitude": 39.73319225361861,
+        "longitude": 116.17147290426904
+      },
+      "support": {
+        "mode": "extrapolated",
+        "inside_control_hull": false,
+        "distance_outside_m": 322.80676078488574,
+        "local_weight": 0,
+        "independent_accuracy_verified": false
+      },
+      "insideControlHull": false
+    },
+    {
+      "id": "park",
+      "radiusM": 35,
+      "source": "existing-map-model",
+      "candidateWgs84": {
+        "latitude": 39.73609713758794,
+        "longitude": 116.16931293618198
+      },
+      "support": {
+        "mode": "extrapolated",
+        "inside_control_hull": false,
+        "distance_outside_m": 225.49601876943032,
+        "local_weight": 0,
+        "independent_accuracy_verified": false
+      },
+      "insideControlHull": false
+    }
+  ],
+  "hullNote": "2/8 个参考中心在定位采样凸包内；凸包不是游戏外边界。"
+}

@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "requiredCodepoints": 946,
+  "scope": "runtime literals/JSX/JSON/CSS-content collected by TypeScript parser; no tests or source comments",
+  "fonts": {
+    "NotoSerifSC-UI.woff2": {
+      "bytes": 357528,
+      "missingCjk": [],
+      "role": "primary CJK"
+    },
+    "MaShanZheng-UI.woff2": {
+      "bytes": 357572,
+      "missingCjk": [],
+      "role": "primary CJK"
+    },
+    "LiyunSymbols-UI.woff2": {
+      "bytes": 1036,
+      "missingCjk": [],
+      "role": "symbol fallback"
+    }
+  },
+  "missingAcrossPackagedFonts": []
+}
