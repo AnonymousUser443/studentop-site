@@ -62,7 +62,7 @@ try{
  for(const file of walk(oldFront))if(file!=='index.html')keep(oldFront+'/'+file,front+'/'+file);
  for(const f of m.files.filter(f=>f.path.startsWith('public/assets/releases/')))keep(work+'/'+f.path,oldFront+'/'+f.path.slice(7));
  if(!oldAuthor&&cmd('ss',['-H','-ltn','( sport = :8790 )']).trim())fail('Studio port belongs to another service');
- try{cmd('id',['-u','liyun-author']);}catch{cmd('useradd',['--system','--no-create-home','--home-dir','/nonexistent','--shell','/usr/sbin/nologin','liyun-author']);}
+ try{cmd('id',['-u','liyun-author']);}catch{let group;try{cmd('getent',['group','liyun-author']);group=['--gid','liyun-author'];}catch{group=['--user-group'];}cmd('useradd',['--system',...group,'--no-create-home','--home-dir','/nonexistent','--shell','/usr/sbin/nologin','liyun-author']);}
  cmd('install',['-d','-m','0700','-o','liyun-author','-g','liyun-author',AUTHOR_DATA]);cmd('install',['-d','-m','0755','-o','liyun-author','-g','liyun-author',CONTENT]);
  if(!fs.existsSync(AUTHOR_DATA+'/editor-key')){const key=fs.readFileSync(stage+'/editor-key','utf8').trim();if(!/^[A-Za-z0-9_-]{43}$/.test(key))fail('Invalid editor credential');fs.writeFileSync(AUTHOR_DATA+'/editor-key',key+'\n',{mode:0o600,flag:'wx'});cmd('chown',['liyun-author:liyun-author',AUTHOR_DATA+'/editor-key']);}
  gate=true;fs.writeFileSync(PROJECTS,maintenance,{mode:0o644});cmd('nginx',['-t']);cmd('systemctl',['reload','nginx']);check('account_write_gate',await waitStatus('/api/health',503));check('editor_write_gate',await waitStatus('/api/editor/health',503));
