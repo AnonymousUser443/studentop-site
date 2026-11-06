@@ -208,13 +208,13 @@ window.SITE = {
   ],
 
   /* ---------- 桌面图标（按顺序排两列） ---------- */
-  desktop: ['thispc', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'liyun-moyuan', 'rpi-task-manager', 'about', 'skills', 'contact', 'cv', 'notepad', 'terminal', 'settings', 'recycle'],
+  desktop: ['thispc', 'projects', 'zhuiguang', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'liyun-moyuan', 'rpi-task-manager', 'about', 'skills', 'contact', 'cv', 'notepad', 'terminal', 'settings', 'recycle'],
 
   /* ---------- 任务栏固定项 ---------- */
   taskbarPinned: ['thispc', 'projects', 'about', 'terminal', 'settings'],
 
   /* ---------- 开始菜单固定项 ---------- */
-  startPinned: ['about', 'projects', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'liyun-moyuan', 'rpi-task-manager', 'skills', 'contact', 'thispc', 'terminal', 'settings', 'notepad', 'photos', 'cv', 'recycle'],
+  startPinned: ['about', 'projects', 'zhuiguang', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'liyun-moyuan', 'rpi-task-manager', 'skills', 'contact', 'thispc', 'terminal', 'settings', 'notepad', 'photos', 'cv', 'recycle'],
 
   /* ---------- 开始菜单「推荐的项目」 ---------- */
   recommended: [

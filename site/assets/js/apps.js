@@ -46,6 +46,18 @@
       keywords: 'liyun moyuan 理韵 墨苑 文化 协会 活动室 体素 书法 国画 漫游 独立 快捷方式'
     });
   }
+
+  if (!defs.some(function (def) { return def.id === 'zhuiguang'; })) {
+    defs.push({
+      id: 'zhuiguang',
+      title: '追光者 · 正式演讲',
+      desktopLabel: '追光者',
+      icon: 'zhuiguang',
+      external: 'https://studentop.cn:14355/zhuiguang/?role=display&motion=on',
+      shortcutHint: '打开大屏并准备离线资源',
+      keywords: '追光者 睿信之星 演讲 主舞台 zhuiguang'
+    });
+  }
   defs.forEach(function (def) {
     if (Object.prototype.hasOwnProperty.call(projectUrls, def.id)) def.external = projectUrls[def.id];
   });

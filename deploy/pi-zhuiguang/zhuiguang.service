@@ -1,0 +1,28 @@
+[Unit]
+Description=Zhuiguangzhe live stage and audience
+After=network.target
+
+[Service]
+User=zhuiguang
+Group=zhuiguang
+WorkingDirectory=/opt/projects/zhuiguang/current
+Environment=NODE_ENV=production
+Environment=PRESENTATION_HOST=127.0.0.1
+Environment=PORT=4188
+Environment=PRESENTATION_BASE=/zhuiguang/
+Environment=PRESENTATION_PUBLIC_ORIGIN=https://studentop.cn:14355
+Environment=PRESENTATION_DATA_DIR=/var/lib/zhuiguang/data
+EnvironmentFile=/etc/zhuiguang/stage.env
+ExecStart=/opt/node24/bin/node server/index.mjs
+Restart=on-failure
+RestartSec=3s
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/zhuiguang
+SyslogIdentifier=zhuiguang
+
+[Install]
+WantedBy=multi-user.target

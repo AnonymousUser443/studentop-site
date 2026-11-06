@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily audience database backup for Zhuiguangzhe
+
+[Timer]
+OnCalendar=*-*-* 03:25:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
