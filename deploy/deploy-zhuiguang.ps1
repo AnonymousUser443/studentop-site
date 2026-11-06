@@ -24,7 +24,10 @@ if ($Check) { return }
 $remote = "/tmp/zhuiguang-$release.tar"
 scp -o BatchMode=yes -o ConnectTimeout=10 $archive "${PiHost}:$remote"
 if ($LASTEXITCODE -ne 0) { throw 'Upload failed' }
-Get-Content -Raw -Encoding UTF8 (Join-Path $PSScriptRoot 'pi-zhuiguang/apply-release.sh') |
-  ssh -o BatchMode=yes -o ConnectTimeout=10 $PiHost "sudo -n bash -s -- '$remote' '$release'"
+$apply = "/tmp/zhuiguang-$release.sh"
+scp -o BatchMode=yes -o ConnectTimeout=10 (Join-Path $PSScriptRoot 'pi-zhuiguang/apply-release.sh') "${PiHost}:$apply"
+if ($LASTEXITCODE -ne 0) { throw 'Could not upload the release command' }
+$unit = "zhuiguang-release-" + $release.Substring($release.Length - 8)
+ssh -o BatchMode=yes -o ConnectTimeout=10 -o ServerAliveInterval=10 $PiHost "sudo -n systemd-run --unit=$unit --property=Type=oneshot --wait /usr/bin/bash '$apply' '$remote' '$release'"
 if ($LASTEXITCODE -ne 0) { throw 'Remote release failed' }
 Remove-Item -LiteralPath $archive

@@ -92,11 +92,16 @@ for _ in {1..25}; do
 done
 node -e 'let h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.pages!==169||!h.persistence.database) process.exit(1)' "$work/health"
 systemctl reload nginx
-curl -fsS --max-time 10 --resolve studentop.cn:443:127.0.0.1 -H 'Host: studentop.cn:14355' https://studentop.cn/zhuiguang/api/health
-curl -fsS --max-time 10 --resolve studentop.cn:443:127.0.0.1 https://studentop.cn/version.json >/dev/null
+for _ in {1..8}; do
+  if curl -fsS --noproxy '*' --max-time 8 --resolve studentop.cn:443:127.0.0.1 -H 'Host: studentop.cn:14355' https://studentop.cn/zhuiguang/api/health >"$work/proxied" &&
+    node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.pages!==169||!h.persistence.database) process.exit(1)' "$work/proxied" 2>/dev/null; then break; fi
+  sleep 1
+done
+node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.pages!==169||!h.persistence.database) process.exit(1); console.log("TLS reverse proxy verified, " + h.pages + " pages")' "$work/proxied"
+curl -fsS --noproxy '*' --max-time 10 --resolve studentop.cn:443:127.0.0.1 https://studentop.cn/version.json | node -e 'if(!JSON.parse(require("fs").readFileSync(0)).id) process.exit(1)'
 systemctl start zhuiguang-backup.service
 systemctl enable zhuiguang.service
 systemctl enable --now zhuiguang-backup.timer
-rm -f "$archive"
+rm -f "$archive" "/tmp/zhuiguang-$release.sh"
 echo
 printf 'Release active: %s\nPrevious: %s\n' "$dir" "${previous:-none}"
