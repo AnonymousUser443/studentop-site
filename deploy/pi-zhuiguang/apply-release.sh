@@ -123,7 +123,12 @@ for _ in {1..8}; do
 done
 node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.pages!==169||!h.persistence.database) process.exit(1); console.log("TLS reverse proxy verified, " + h.pages + " pages")' "$work/proxied"
 curl -fsS --noproxy '*' --max-time 10 --resolve studentop.cn:443:127.0.0.1 https://studentop.cn/version.json | node -e 'if(!JSON.parse(require("fs").readFileSync(0)).id) process.exit(1)'
-curl -fsS --noproxy '*' --retry 3 --max-time 8 --resolve studentop.cn:443:127.0.0.1 -H 'Host: studentop.cn:14355' https://studentop.cn/zhuiguang/test/api/health | node -e 'const h=JSON.parse(require("fs").readFileSync(0)); if(!h.ok||h.mode!=="test") process.exit(1); console.log("Test room TLS proxy verified")'
+for _ in {1..8}; do
+  if curl -fsS --noproxy '*' --max-time 8 --resolve studentop.cn:443:127.0.0.1 -H 'Host: studentop.cn:14355' https://studentop.cn/zhuiguang/test/api/health >"$work/test-proxied" &&
+    node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.mode!=="test") process.exit(1)' "$work/test-proxied" 2>/dev/null; then break; fi
+  sleep 1
+done
+node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.mode!=="test") process.exit(1); console.log("Test room TLS proxy verified")' "$work/test-proxied"
 systemctl start zhuiguang-backup.service
 systemctl enable zhuiguang.service zhuiguang-test.service
 systemctl enable --now zhuiguang-backup.timer
