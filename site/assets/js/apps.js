@@ -51,11 +51,22 @@
     defs.push({
       id: 'zhuiguang',
       title: '追光者 · 正式演讲',
-      desktopLabel: '追光者',
+      desktopLabel: '追光者 · 大屏',
       icon: 'zhuiguang',
       external: 'https://studentop.cn:14355/zhuiguang/?role=display&motion=on',
       shortcutHint: '打开大屏并准备离线资源',
       keywords: '追光者 睿信之星 演讲 主舞台 zhuiguang'
+    });
+  }
+  if (!defs.some(function (def) { return def.id === 'zhuiguang-audience'; })) {
+    defs.push({
+      id: 'zhuiguang-audience',
+      title: '追光者 · 观众端',
+      desktopLabel: '追光者 · 观众',
+      icon: 'zhuiguang-audience',
+      external: 'https://studentop.cn:14355/zhuiguang/?role=audience',
+      shortcutHint: '打开正式观众端并参与现场互动',
+      keywords: '追光者 观众 互动 现场 手机'
     });
   }
   defs.forEach(function (def) {

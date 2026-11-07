@@ -6,6 +6,7 @@ release=$2
 [[ "$release" =~ ^[0-9]{8}T[0-9]{6}Z-[a-f0-9]{8}$ && "$archive" == "/tmp/zhuiguang-$release.tar" ]]
 root=/opt/projects/zhuiguang
 dir="$root/releases/$release"
+credentials=/tmp/zhuiguang-$release-credentials
 state=/var/lib/zhuiguang
 route=/etc/nginx/snippets/win11-home-projects.conf
 export PATH="/opt/node24/bin:$PATH"
@@ -44,7 +45,10 @@ if [[ ! -s /etc/zhuiguang/stage.env ]]; then
 fi
 work="$(mktemp -d /tmp/zhuiguang-rollback.XXXXXXXX)"
 cp "$route" "$work/route"
-for unit in zhuiguang.service zhuiguang-backup.service zhuiguang-backup.timer; do
+for env in stage.env test.env; do
+  if [[ -f "/etc/zhuiguang/$env" ]]; then cp "/etc/zhuiguang/$env" "$work/$env"; fi
+done
+for unit in zhuiguang.service zhuiguang-test.service zhuiguang-backup.service zhuiguang-backup.timer; do
   if [[ -f "/etc/systemd/system/$unit" ]]; then cp "/etc/systemd/system/$unit" "$work/$unit"; fi
 done
 restore() {
@@ -54,7 +58,11 @@ restore() {
     set +e
     echo 'Release check failed; restoring previous service and route' >&2
     install -m 644 "$work/route" "$route"
-    for unit in zhuiguang.service zhuiguang-backup.service zhuiguang-backup.timer; do
+    for env in stage.env test.env; do
+      if [[ -f "$work/$env" ]]; then install -m 600 "$work/$env" "/etc/zhuiguang/$env"
+      else rm -f "/etc/zhuiguang/$env"; fi
+    done
+    for unit in zhuiguang.service zhuiguang-test.service zhuiguang-backup.service zhuiguang-backup.timer; do
       if [[ -f "$work/$unit" ]]; then install -m 644 "$work/$unit" "/etc/systemd/system/$unit"
       else systemctl disable --now "$unit" >/dev/null 2>&1; rm -f "/etc/systemd/system/$unit"; fi
     done
@@ -62,19 +70,30 @@ restore() {
     if [[ -n "$previous" ]]; then
       ln -sfn "$previous" "$root/.current.new"; mv -Tf "$root/.current.new" "$root/current"
       systemctl restart zhuiguang.service
+      if [[ -f "$work/zhuiguang-test.service" ]]; then systemctl restart zhuiguang-test.service; fi
     else
       systemctl stop zhuiguang.service
       rm -f "$root/current"
     fi
     nginx -t && systemctl reload nginx
   fi
+  rm -f "$credentials/stage.env" "$credentials/test.env"
+  if [[ -d "$credentials" ]]; then rmdir "$credentials" || true; fi
   rm -rf "$work"
   exit "$rc"
 }
 trap restore EXIT
 
 if [[ -n "$previous" ]]; then systemctl start zhuiguang-backup.service; fi
-for unit in zhuiguang.service zhuiguang-backup.service zhuiguang-backup.timer; do
+for env in stage.env test.env; do
+  if [[ -f "$credentials/$env" ]]; then
+    grep -qEx 'PRESENTATION_PIN=[A-Za-z0-9-]{10,128}' "$credentials/$env"
+    install -m 600 "$credentials/$env" "/etc/zhuiguang/$env"
+  fi
+done
+test -s /etc/zhuiguang/test.env
+if cmp -s /etc/zhuiguang/stage.env /etc/zhuiguang/test.env; then echo 'Test and formal credentials must differ' >&2; exit 1; fi
+for unit in zhuiguang.service zhuiguang-test.service zhuiguang-backup.service zhuiguang-backup.timer; do
   install -m 644 "$dir/infra/$unit" "/etc/systemd/system/$unit"
 done
 awk '/^# BEGIN ZHUIGUANG$/{skip=1} !skip{print} /^# END ZHUIGUANG$/{skip=0}' "$work/route" >"$work/next"
@@ -85,12 +104,17 @@ install -m 644 "$work/next" "$route"
 nginx -t
 ln -sfn "$dir" "$root/.current.new"; mv -Tf "$root/.current.new" "$root/current"
 systemctl daemon-reload
-systemctl restart zhuiguang.service
+systemctl restart zhuiguang.service zhuiguang-test.service
 for _ in {1..25}; do
   if curl -fsS --max-time 2 http://127.0.0.1:4188/zhuiguang/api/health >"$work/health" && node -e 'let h=require("fs").readFileSync(process.argv[1]); h=JSON.parse(h); if(!h.ok||h.pages!==169||!h.persistence.database) process.exit(1)' "$work/health"; then break; fi
   sleep 1
 done
 node -e 'let h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.pages!==169||!h.persistence.database) process.exit(1)' "$work/health"
+for _ in {1..25}; do
+  if curl -fsS --max-time 2 http://127.0.0.1:4189/zhuiguang/test/api/health >"$work/test" && node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.mode!=="test") process.exit(1)' "$work/test"; then break; fi
+  sleep 1
+done
+node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.mode!=="test") process.exit(1)' "$work/test"
 systemctl reload nginx
 for _ in {1..8}; do
   if curl -fsS --noproxy '*' --max-time 8 --resolve studentop.cn:443:127.0.0.1 -H 'Host: studentop.cn:14355' https://studentop.cn/zhuiguang/api/health >"$work/proxied" &&
@@ -99,8 +123,9 @@ for _ in {1..8}; do
 done
 node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.pages!==169||!h.persistence.database) process.exit(1); console.log("TLS reverse proxy verified, " + h.pages + " pages")' "$work/proxied"
 curl -fsS --noproxy '*' --max-time 10 --resolve studentop.cn:443:127.0.0.1 https://studentop.cn/version.json | node -e 'if(!JSON.parse(require("fs").readFileSync(0)).id) process.exit(1)'
+curl -fsS --noproxy '*' --retry 3 --max-time 8 --resolve studentop.cn:443:127.0.0.1 -H 'Host: studentop.cn:14355' https://studentop.cn/zhuiguang/test/api/health | node -e 'const h=JSON.parse(require("fs").readFileSync(0)); if(!h.ok||h.mode!=="test") process.exit(1); console.log("Test room TLS proxy verified")'
 systemctl start zhuiguang-backup.service
-systemctl enable zhuiguang.service
+systemctl enable zhuiguang.service zhuiguang-test.service
 systemctl enable --now zhuiguang-backup.timer
 rm -f "$archive" "/tmp/zhuiguang-$release.sh"
 echo
