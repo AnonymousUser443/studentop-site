@@ -1,0 +1,319 @@
+{
+  "chapter": 2,
+  "motif": "灯串下的游园，掀开课程表看到真实的校园体验",
+  "palette": {
+    "paper": "#faf1d9",
+    "ink": "#173c32",
+    "accent": "#a0482e",
+    "shade": "#1e4438"
+  },
+  "art": "/assets/art/p2/cover.webp",
+  "assetSources": [
+    {
+      "path": "/assets/art/p2/cover.webp",
+      "references": [
+        "视觉风格参考图 (1).png",
+        "视觉风格参考图 (2).png"
+      ],
+      "prompt": "Original scene illustration for 16:9 Web presentation chapter opener. Directly use both attached originals as style anchors for animated-Chinese-game theatrical layout, precise foreground/midground/background hierarchy, dynamic folding-paper curves, crisp large flat cel-painted colored planes, warm side-light, cut-paper silhouettes with subtle pigment grain. Create a distinctly bright, lively early-autumn university culture fair courtyard at daytime, a metaphor for exploring real campus life beyond one's syllabus. Main vignette is entirely on the right side: stylized vermilion-and-jade folding canopy, hanging honey-gold lanterns and blank cloth streamers, at the focal point a low round table with a small teacup and folded fan; a flowing vermilion silk curve leads into the vignette, geometric jade steps and screen casting layered silhouettes. Warm ivory, apricot, red lacquer, and celadon highlights. Grounded lived-in materiality with carefully controlled detail, not a landscape or a photograph and not a collage. LEFT 54% a luminous clean warm ivory area, softly grained and only very subtle muted peach shadow, especially unobstructed x 7–52%, y 13–73%, for dark teal heading and subtitle. Concentrate shapes and shadows in right 46% and very bottom strip. No humans or mascot, no text on the paper, no text on the canopy, no letters, glyphs, symbols, logos, UI, signature, or watermarks. Single finished full-bleed wide 16:9 background artwork.",
+      "usage": "拥实章首和晚段游园呼应的背景，左侧浅纸留字"
+    }
+  ],
+  "pages": {
+    "P2-01": {
+      "layout": "cover",
+      "tone": "scene",
+      "motion": "unfurl",
+      "intent": "从暗暖回到清亮。字在左侧纸面，右边朱砂帷幔、灯串和青绿台阶构成游园入口。",
+      "side": "left",
+      "refinement": {
+        "vertical": "middle",
+        "typeSize": 152,
+        "artStrength": 1,
+        "artPosition": "full",
+        "stagger": 0.16,
+        "duration": 1.55
+      }
+    },
+    "P2-02": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "line",
+      "intent": "两行问句拉开。让「培养方案」在原句里带一点规则感，用线条做可被质疑的边界。",
+      "side": "left",
+      "focal": "培养方案",
+      "refinement": {
+        "typeSize": 90,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.88,
+        "duration": 1.1,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p2/pages/P2-02.webp"
+    },
+    "P2-03": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "unfurl",
+      "intent": "保留旧培养方案裂纸场景。表头、课程一例照原稿展示，裂纹只破坏版式，不追加虚构课程。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 48,
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 0.62,
+        "duration": 1.42,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p2/pages/P2-03.webp"
+    },
+    "P2-04": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "「要完成什么」与「还能体验什么」前后显影。两组之间留一拍空白，让后一句更亮。",
+      "side": "left",
+      "focal": "还能体验什么。",
+      "refinement": {
+        "typeSize": 76,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.78,
+        "duration": 1.4,
+        "stagger": 0.19
+      },
+      "art": "/assets/art/p2/pages/P2-04.webp"
+    },
+    "P2-05": {
+      "layout": "media",
+      "tone": "shade",
+      "motion": "focus",
+      "intent": "用已有电路与编程图片对照，保留原图尺度，说明文字沿两图共同基线读。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 39,
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 0.64,
+        "duration": 1.05,
+        "stagger": 0.08
+      },
+      "art": "/assets/art/p2/pages/P2-05.webp"
+    },
+    "P2-06": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "glow",
+      "intent": "前句仍在冷静的专业语气里，第二行把诗词、书画和传统文化亮出来，右缘轻微预热。",
+      "side": "left",
+      "focal": "诗词、书画、传统文化……",
+      "refinement": {
+        "typeSize": 81,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.84,
+        "duration": 1.31,
+        "stagger": 0.15
+      },
+      "art": "/assets/art/p2/pages/P2-06.webp"
+    },
+    "P2-07": {
+      "layout": "custom",
+      "tone": "scene",
+      "motion": "unfurl",
+      "intent": "保留暖色裂纸演出，以真实汉服照片作揭开的落点，裂开后让转折句可以在静帧完整读到。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 72,
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 0.72,
+        "duration": 1.61,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p2/pages/P2-07.webp"
+    },
+    "P2-08": {
+      "layout": "media",
+      "tone": "paper",
+      "motion": "focus",
+      "intent": "理韵文化协会汉服照片用温和装裱，标题分两行靠近人物，不挤进图内。",
+      "side": "right",
+      "refinement": {
+        "typeSize": 83,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.68,
+        "duration": 1.12,
+        "stagger": 0.11
+      },
+      "art": "/assets/art/p2/pages/P2-08.webp"
+    },
+    "P2-09": {
+      "layout": "custom",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "七艺按原顺序从一端依次点亮，字占主位，小印只作底部节拍，适合远处一眼数清。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 81,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.7,
+        "duration": 1.43,
+        "stagger": 0.17
+      },
+      "art": "/assets/art/p2/pages/P2-09.webp"
+    },
+    "P2-10": {
+      "layout": "media",
+      "tone": "paper",
+      "motion": "focus",
+      "intent": "完整展示一笺霜信的真实 Web 画面，用干净的框给截图分界，镜头变换幅度小到界面字可读。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 40,
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 0.65,
+        "duration": 1.07,
+        "stagger": 0.09
+      },
+      "art": "/assets/art/p2/pages/P2-10.webp"
+    },
+    "P2-11": {
+      "layout": "media",
+      "tone": "paper",
+      "motion": "line",
+      "intent": "左侧仍用实录截图，右侧的关卡、印章和纪念卡按游戏路径依次出现。",
+      "side": "right",
+      "focal": "关卡",
+      "refinement": {
+        "typeSize": 67,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.64,
+        "duration": 1.22,
+        "stagger": 0.13
+      },
+      "art": "/assets/art/p2/pages/P2-11.webp"
+    },
+    "P2-12": {
+      "layout": "quote",
+      "tone": "scene",
+      "motion": "glow",
+      "intent": "游园底图留在右侧，三行短句在左边。把「体验生活的工具」提亮，接住刚展示的互动实例。",
+      "side": "left",
+      "focal": "体验生活的工具。",
+      "refinement": {
+        "typeSize": 85,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.84,
+        "duration": 1.28,
+        "stagger": 0.15
+      },
+      "art": "/assets/art/p2/pages/P2-12.webp"
+    },
+    "P2-13": {
+      "layout": "media",
+      "tone": "paper",
+      "motion": "focus",
+      "intent": "真实社团视频或原有六张真实图片动态图集是整页主体。图外角标保持同一比例和位置。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 41,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.58,
+        "duration": 1.08,
+        "stagger": 0.08
+      },
+      "art": "/assets/art/p2/pages/P2-13.webp"
+    },
+    "P2-14": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "心理协会、校园新媒体和「还有更多」作为三个入口，各自保留描述，给第三个入口更大的空白。",
+      "side": "left",
+      "focal": "还有更多",
+      "refinement": {
+        "typeSize": 65,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.78,
+        "duration": 1.33,
+        "stagger": 0.16
+      },
+      "art": "/assets/art/p2/pages/P2-14.webp"
+    },
+    "P2-15": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "focus",
+      "intent": "分四行读完长句，让「在你尝试之前」成为顿点，末句不用第二个图像焦点。",
+      "side": "right",
+      "focal": "在你尝试之前，",
+      "refinement": {
+        "typeSize": 68,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.8,
+        "duration": 1.2,
+        "stagger": 0.17
+      },
+      "art": "/assets/art/p2/pages/P2-15.webp"
+    },
+    "P2-16": {
+      "layout": "stack",
+      "tone": "scene",
+      "motion": "unfurl",
+      "intent": "清亮的帷幔在右侧作回响。先显露「先去看看，先去试试」，原有末两行在左侧靠近底部收住。",
+      "side": "left",
+      "focal": "先去试试。",
+      "refinement": {
+        "typeSize": 72,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.86,
+        "duration": 1.43,
+        "stagger": 0.17
+      },
+      "art": "/assets/art/p2/pages/P2-16.webp"
+    },
+    "P2-17": {
+      "layout": "interactive",
+      "tone": "paper",
+      "motion": "pulse",
+      "intent": "保留五项实时投票。选项和柱条同列可读，计时与扫码留在边上，不把票数写死。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 54,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.6,
+        "duration": 1.05,
+        "stagger": 0.09
+      },
+      "art": "/assets/art/p2/pages/P2-17.webp"
+    },
+    "P2-18": {
+      "layout": "coda",
+      "tone": "paper",
+      "motion": "glow",
+      "intent": "把「拥实」印在暖色纸面，朱砂小印承接七艺章印，停在清楚的章节收束字。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 104,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.66,
+        "duration": 1.21,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p2/pages/P2-18.webp"
+    }
+  }
+}

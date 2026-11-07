@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dist-pi/
+server/data/
+qa/
+*.tsbuildinfo
+.env*
+验收/*.png
+验收/*.jpg
+验收/逐页/

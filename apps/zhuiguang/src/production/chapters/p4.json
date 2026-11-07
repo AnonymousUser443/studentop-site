@@ -1,0 +1,430 @@
+{
+  "chapter": 4,
+  "motif": "从刻度、接线到可交付的工程台",
+  "palette": {
+    "paper": "#edf0e8",
+    "ink": "#203843",
+    "accent": "#946127",
+    "shade": "#23363f"
+  },
+  "art": "/assets/art/p4/cover.webp",
+  "assetSources": [
+    {
+      "path": "/assets/art/p4/cover.webp",
+      "references": [
+        "视觉风格参考图 (1).png",
+        "视觉风格参考图 (2).png"
+      ],
+      "prompt": "Use the two attached original illustrations as strict style and staging references, for layered opaque color planes, sophisticated silhouette shapes, foreground/midground/background, elegant curling diagonals, controlled cel-painted highlights and warm gold edges. Transfer their graphic logic to an entirely different subject. Full-bleed horizontal 16:9 illustration, no characters, text, marks, logo, lettering, UI, presentation mockup or panel borders. Each object simplified into highly legible sculptural planes. Very subtle pigment grain. No ink wash, no mountains, no environment resembling a lake or landscape, no 3D realism. Chapter about turning effort into real results, from checking rules to connecting parts and delivering a finished system. Build a modern Chinese engineering drawing desk from broad planes. On the LEFT place three separately legible cut-paper modules and a cool slate-blue measuring straightedge; a single taut calibrated path links the modules, with an understated bronze glint where a connection snaps into place. Visual weight from upper left to lower left; clean vertical cool daylight and tightly controlled orthographic / cutaway cues, firm and measured. Use cool silver-white, blue-grey mineral ink, deep desaturated jade, minimal antique gold. Avoid black ground, neon, grid wallpaper, circuitry wallpaper, instruments that look like a real photographed object. Reserve the RIGHT 46% from y=12% to y=81% as near-white cool paper negative space for dark text, no objects or strong shadows there. Lower edge may carry one subtle layer of trace marks without numbers or lettering."
+    }
+  ],
+  "pages": {
+    "P4-01": {
+      "layout": "cover",
+      "tone": "scene",
+      "motion": "unfurl",
+      "side": "right",
+      "focal": "成效",
+      "intent": "正上方冷光先打在左侧度量台与成形部件，右侧用理性的间距展开章名。",
+      "refinement": {
+        "typeSize": 76,
+        "vertical": "upper",
+        "artPosition": "full",
+        "artStrength": 1,
+        "duration": 1.43,
+        "stagger": 0.13
+      },
+      "art": "/assets/art/p4/cover.webp"
+    },
+    "P4-02": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "focus",
+      "side": "left",
+      "focal": "你们的主场到了。",
+      "intent": "两行像开工口令从一束窄扫描光后出现，让第二行比招呼更稳。",
+      "refinement": {
+        "typeSize": 75,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.92,
+        "duration": 1.1,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p4/pages/P4-02.webp"
+    },
+    "P4-03": {
+      "layout": "interactive",
+      "tone": "paper",
+      "motion": "still",
+      "side": "center",
+      "intent": "只有原稿中的举手邀请和等待时间，画面平稳留出说话与观察空间。",
+      "refinement": {
+        "typeSize": 65,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.8,
+        "duration": 0.72,
+        "stagger": 0
+      },
+      "art": "/assets/art/p4/pages/P4-03.webp"
+    },
+    "P4-04": {
+      "layout": "data",
+      "tone": "shade",
+      "motion": "pulse",
+      "side": "center",
+      "intent": "两个既有数值分别滚至银灰 13 与亮金 7，同一基线并用细线隔开，保留专业排名与综合测评。",
+      "refinement": {
+        "typeSize": 66,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.81,
+        "duration": 1.35,
+        "stagger": 0.13
+      },
+      "art": "/assets/art/p4/pages/P4-04.webp"
+    },
+    "P4-05": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "line",
+      "side": "center",
+      "focal": "为什么不一样？",
+      "intent": "让底缘两片图纸向中间靠拢，交会处刻意留一道短缺口。问句悬在这道断线的上方。",
+      "refinement": {
+        "typeSize": 67,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.9,
+        "duration": 1.05,
+        "stagger": 0.09
+      },
+      "art": "/assets/art/p4/pages/P4-05.webp"
+    },
+    "P4-06": {
+      "layout": "data",
+      "tone": "paper",
+      "motion": "stagger",
+      "side": "center",
+      "intent": "五项评价名称按原序生长，条形只作分层提示，避免产生有精确权重的错觉。",
+      "refinement": {
+        "typeSize": 48,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.76,
+        "duration": 1.24,
+        "stagger": 0.11
+      },
+      "art": "/assets/art/p4/pages/P4-06.webp"
+    },
+    "P4-07": {
+      "layout": "quote",
+      "tone": "scene",
+      "motion": "focus",
+      "side": "right",
+      "focal": "先搞清楚规则。",
+      "intent": "左侧是一册摊开的空白规则手册，压着银色直角尺。两行活字留在右侧，在规则处停住。",
+      "refinement": {
+        "typeSize": 75,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.94,
+        "duration": 1.18,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p4/pages/P4-07.webp"
+    },
+    "P4-08": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "stagger",
+      "side": "left",
+      "intent": "三个场景按行排列，箭头在同一列，先读目标再看对应的规则入口。",
+      "refinement": {
+        "typeSize": 47,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.87,
+        "duration": 1.21,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p4/pages/P4-08.webp"
+    },
+    "P4-09": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "rise",
+      "side": "right",
+      "focal": "活动需要提前登记，",
+      "intent": "用上下两个段落区分事后发现与两项具体缺漏，最后两行保留足够阅读时间。",
+      "refinement": {
+        "typeSize": 60,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.9,
+        "duration": 1.32,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p4/pages/P4-09.webp"
+    },
+    "P4-10": {
+      "layout": "split",
+      "tone": "paper",
+      "motion": "stagger",
+      "side": "center",
+      "focal": "BIT101",
+      "intent": "三个入口同宽并列，每个入口保留原平台名称、用途与地址；地址用等宽体突出可抄录。",
+      "refinement": {
+        "typeSize": 43,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.84,
+        "duration": 1.16,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p4/pages/P4-10.webp"
+    },
+    "P4-11": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "still",
+      "side": "left",
+      "focal": "信息差本身，",
+      "intent": "在冷灰停顿页固定前两行，把多走弯路留在最后一行。",
+      "refinement": {
+        "typeSize": 73,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.91,
+        "duration": 0.84,
+        "stagger": 0
+      },
+      "art": "/assets/art/p4/pages/P4-11.webp"
+    },
+    "P4-12": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "focus",
+      "side": "right",
+      "focal": "也要积累能力。",
+      "intent": "从冷银切回暖白，用较柔的一道扫光把能力这一行推到前层。",
+      "refinement": {
+        "typeSize": 77,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.91,
+        "duration": 1.24,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p4/pages/P4-12.webp"
+    },
+    "P4-13": {
+      "layout": "process",
+      "tone": "paper",
+      "motion": "line",
+      "side": "center",
+      "intent": "硬件电路、程序控制、测试调试在同一条链上逐个点亮，连线按依赖顺序绘制。",
+      "refinement": {
+        "typeSize": 47,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.83,
+        "duration": 1.34,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p4/pages/P4-13.webp"
+    },
+    "P4-14": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "pulse",
+      "side": "center",
+      "focal": "系统寄了。",
+      "intent": "保持三个模块的空间关系，原稿落到系统寄了时短暂断线抖动一次，静帧可直接读结果。",
+      "refinement": {
+        "typeSize": 67,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.86,
+        "duration": 1.2,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p4/pages/P4-14.webp"
+    },
+    "P4-15": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "rise",
+      "side": "left",
+      "focal": "而是不会定位问题。",
+      "intent": "先呈现前半句，再把定位问题单独放在清楚的对比轴上，避免覆盖讲者节奏。",
+      "refinement": {
+        "typeSize": 68,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.93,
+        "duration": 1.15,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p4/pages/P4-15.webp"
+    },
+    "P4-16": {
+      "layout": "process",
+      "tone": "paper",
+      "motion": "line",
+      "side": "center",
+      "focal": "完整系统",
+      "intent": "按传感器、控制电机、完整系统的级次排，第二行用原稿解释每一步能做什么。",
+      "refinement": {
+        "typeSize": 48,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.9,
+        "duration": 1.38,
+        "stagger": 0.13
+      },
+      "art": "/assets/art/p4/pages/P4-16.webp"
+    },
+    "P4-17": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "stagger",
+      "side": "left",
+      "focal": "带着几个具体的问题",
+      "intent": "三条科研准备放成清晰的行序，末条落点留给具体的问题。",
+      "refinement": {
+        "typeSize": 54,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.86,
+        "duration": 1.27,
+        "stagger": 0.15
+      },
+      "art": "/assets/art/p4/pages/P4-17.webp"
+    },
+    "P4-18": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "focus",
+      "side": "right",
+      "focal": "是你做过什么。",
+      "intent": "引用和判断分开，原句末行留出侧边空隙，再把做过什么提到更大字号。",
+      "refinement": {
+        "typeSize": 64,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.9,
+        "duration": 1.32,
+        "stagger": 0.11
+      },
+      "art": "/assets/art/p4/pages/P4-18.webp"
+    },
+    "P4-19": {
+      "layout": "stack",
+      "tone": "scene",
+      "motion": "stagger",
+      "side": "right",
+      "focal": "最后把事情做出来。",
+      "intent": "左侧以新绘的装配台回扣章首，已合位的部件承接末句。规则、目标、做出来依次加重。",
+      "refinement": {
+        "typeSize": 68,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.94,
+        "duration": 1.4,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p4/pages/P4-19.webp"
+    },
+    "P4-20": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "still",
+      "side": "left",
+      "focal": "一个人的全部价值。",
+      "intent": "撤去计数与扫描纹，只留暖白纸面和一句可清楚读出的提醒。",
+      "refinement": {
+        "typeSize": 73,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.9,
+        "duration": 0.72,
+        "stagger": 0
+      },
+      "art": "/assets/art/p4/pages/P4-20.webp"
+    },
+    "P4-21": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "still",
+      "side": "center",
+      "focal": "一开始要做这件事来着？",
+      "intent": "让扫描停在这一页并保持一拍静默，避免运动抢在问题之前。",
+      "refinement": {
+        "typeSize": 72,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.86,
+        "duration": 0.72,
+        "stagger": 0
+      },
+      "art": "/assets/art/p4/pages/P4-21.webp"
+    },
+    "P4-22": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "rise",
+      "side": "right",
+      "focal": "为什么值得我们去做？",
+      "intent": "延续上页问题，换回浅底并把值得二字放到视线终点。",
+      "refinement": {
+        "typeSize": 69,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.93,
+        "duration": 1.33,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p4/pages/P4-22.webp"
+    },
+    "P4-23": {
+      "layout": "interactive",
+      "tone": "shade",
+      "motion": "stagger",
+      "intent": "保留 ddl 四项投票、情境时间、真实百分比与倒计时，当前票数和等待状态由现场数据决定。",
+      "refinement": {
+        "typeSize": 48,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.84,
+        "duration": 1.25,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p4/pages/P4-23.webp",
+      "media": [
+        {
+          "src": "/assets/art/story34/te-deadline-lanyan.png",
+          "alt": "蓝砚抱着书和闹钟，忙着安排今晚的任务"
+        }
+      ]
+    },
+    "P4-24": {
+      "layout": "coda",
+      "tone": "shade",
+      "motion": "pulse",
+      "side": "center",
+      "focal": "成效",
+      "intent": "校准线折回成为章印的下沿，纸上落成效印，冷光从上缘退出。",
+      "refinement": {
+        "typeSize": 84,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.9,
+        "duration": 1.28,
+        "stagger": 0
+      },
+      "art": "/assets/art/p4/pages/P4-24.webp"
+    }
+  }
+}

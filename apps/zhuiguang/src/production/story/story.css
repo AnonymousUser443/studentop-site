@@ -1,0 +1,11 @@
+.story-stage{position:absolute;inset:0;overflow:hidden;background:#f6efdc;color:#193e36;--story-gold:#a66e36;--story-teal:#1b655c;--story-paper:#fff2d4;isolation:isolate}
+.story-stage>div:not(.story-page-mark):not(.story-grain){position:absolute;inset:0;overflow:hidden}
+.story-stage p{margin:0;white-space:pre-line}
+.story-stage [data-story-copy]{font-family:var(--font-display);font-weight:700;line-height:1.4;letter-spacing:.015em}
+.story-stage [data-perform]{transform-origin:center;will-change:transform,opacity}
+.story-stage img{object-fit:contain}
+.story-page-mark{position:absolute;left:74px;right:74px;top:45px;z-index:30;display:flex;justify-content:space-between;pointer-events:none;font:18px var(--font-mono);letter-spacing:.12em;opacity:.6;mix-blend-mode:difference;color:#f4dfb6}
+.story-grain{position:absolute;inset:0;pointer-events:none;z-index:40;background:url('/assets/fx/noise-paper.png');opacity:.05;mix-blend-mode:multiply}
+.story-chapter-5{background:#090f12;color:#f8e7c1}
+.story-static [data-perform]{will-change:auto}
+[data-motion="off"] .story-stage *{animation:none!important;transition:none!important}

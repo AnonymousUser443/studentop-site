@@ -1,19 +1,17 @@
 # 《追光者》发布与演讲
 
-桌面上的「追光者 · 大屏」会打开 [正式舞台](https://studentop.cn:14355/zhuiguang/?role=display&motion=on)。
-[提词器](https://studentop.cn:14355/zhuiguang/?role=presenter)与[观众端](https://studentop.cn:14355/zhuiguang/?role=audience)共用同场状态。桌面的「追光者 · 观众」直达观众端。
+桌面保留「追光者 · 大屏」和「追光者 · 观众」。[提词器](https://studentop.cn:14355/zhuiguang/?role=presenter)授权后创建六位场次号，大屏和观众凭同一号码加入。大屏按 Q 投影当场二维码，手机可直接扫码加入。首次演出前让舞台预加载至「离线缓存已就绪」，再开始放映。
 
-演出路径加 `room=test` 进入隔离测试场，例如 `?role=presenter&room=test`。测试与正式的口令分别保存在树莓派私有配置里。测试使用内存数据库和独立 Cookie，重启后清空。
+P8-19 谢幕后推进至 P8-20。观众可私发一封信，只有授权提词器能读正文。按需启用抽签。最后点击「结束本场」并确认，互动关闭，记录可由提词器在场次管理器查看。旧测试入口会跳转到同一场次入口。
 
-首次在演讲电脑打开舞台时保持联网，等到显示「离线缓存已就绪」。输入正式口令，按空格开始，方向键翻页，V 播放或暂停影片，F 全屏。缓存跨次保留，联网重新打开舞台时按 SHA-256 更新变更文件。离线期间由本机放映与操作，观众端和提词器的实时同步及投递需保持联网。舞台离线准备只覆盖演讲路径。
+## 发布
 
-P8-19 掌声结束后手动推进到 P8-20，私信默认开放 30 分钟。提词器停在该页并授权即可查看。正式口令仅保存在树莓派，所有者可用 `ssh biteraiden-pi 'sudo -n cat /etc/zhuiguang/stage.env'` 查看。
+从 [演讲源码](../../apps/zhuiguang/) 执行 `npm ci`，设置 `PRESENTATION_BASE=/zhuiguang/` 和 `PRESENTATION_DIST=dist-pi`，再执行 `npm run build`。运行 `node scripts/package-pi.mjs <新暂存目录>`，随后从仓库执行 `pwsh -File deploy/deploy-zhuiguang.ps1 -PackageDirectory <同一目录>`。`-Check` 只生成本地包。首次配置或轮换口令时，`-CredentialDirectory` 可指向仓库外含有 `stage.env` 的私有目录。
 
-## 所有者发布
+发布事务校验媒体指纹、备份数据库、检查 nginx 配置、切换 release 并验证 HTTPS。探针失败会恢复上一版服务和路由。旧测试服务在新版通过验证后停止。
 
-1. 在演讲源工程执行 `node scripts/prepare-production.mjs --strict`。
-2. 设置 `PRESENTATION_BASE=/zhuiguang/` 和 `PRESENTATION_DIST=dist-pi`，运行 `npm run build`。
-3. 执行 `node scripts/package-pi.mjs <新暂存目录>`，随后在桌面仓库执行 `pwsh -File deploy/deploy-zhuiguang.ps1 -PackageDirectory <同一目录>`。`-Check` 仅生成本地包。首次配置或轮换口令时，可用 `-CredentialDirectory` 指向仓库外的私有目录，目录内各有一行 `PRESENTATION_PIN=…` 的 `stage.env` 和 `test.env`。
-4. 桌面快捷方式变更走桌面现有版本化构建和发布。服务切换与桌面发布共用服务器锁。
+## 数据与维护
 
-运行目录 `/opt/projects/zhuiguang/releases/`，私有状态与 SQLite 在 `/var/lib/zhuiguang/data`，每天本机快照写到 `/var/lib/zhuiguang/backups` 并保留最近 14 份。备份使用 SQLite 在线备份 API，落盘前做完整性检查。私信正文只在数据库和备份中，必要服务日志用 `journalctl -u zhuiguang -u zhuiguang-backup` 查看，投递与审核事件写数据库审计表。
+发布目录为 `/opt/projects/zhuiguang/releases/`。数据保存在 `/var/lib/zhuiguang/data`，场次总表是 `shows.sqlite`，留言、投票、抽签和页面进度按六位号放在 `rooms/` 下。原正式场数据归入「旧版演讲记录」。私密信只进入授权接口和 SQLite。每日备份位于 `/var/lib/zhuiguang/backups`，备份脚本验证完整性并保留最近 14 份。
+
+公网验收包含三个角色入口、场次 WebSocket、媒体 HTTP Range 与离线播放。备份和演出服务日志可由站点维护者查看。

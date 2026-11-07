@@ -1,0 +1,27 @@
+import React, { Component, Suspense, lazy } from 'react';
+import ReactDOM from 'react-dom/client';
+const DisplayApp=lazy(()=>import('./app/DisplayApp'));
+const PresenterApp=lazy(()=>import('./app/PresenterApp'));
+const AudienceApp=lazy(()=>import('./app/AudienceApp'));
+const GalleryApp=lazy(()=>import('./app/GalleryApp'));
+const RoomPortal=lazy(()=>import('./app/RoomPortal'));
+import { reducedMotion, showId } from './core/url';
+import './design/tokens.css';
+import './design/show-extras.css';
+import './design/stage.css';
+import './design/gallery.css';
+import './design/apps.css';
+import './design/rooms.css';
+import './production/stage.css';
+import './production/ti.css';
+const params=new URLSearchParams(location.search);
+document.documentElement.dataset.motion = reducedMotion ? 'off' : 'on';
+document.documentElement.dataset.calibration=params.get('calibration')||'screen';
+if(params.get('hidefx')==='1')document.documentElement.classList.add('hide-fx');
+if(params.get('clean')==='1')document.documentElement.classList.add('clean-preview');
+class Boundary extends Component<{children:React.ReactNode},{failed:boolean}>{state={failed:false};static getDerivedStateFromError(){return {failed:true}}render(){return this.state.failed?<div className="display-error-boundary"><h1>留一盏灯，等你回来。</h1><p>页面暂时未能呈现。当前进度已保存在本设备。</p><button className="secondary-button" onClick={()=>location.reload()}>重新连接舞台</button></div>:this.props.children}}
+const requestedRole=params.get('role');
+const role=requestedRole==='presenter'||requestedRole==='audience'||requestedRole==='gallery'?requestedRole:'display';
+const portal=role!=='gallery'&&!(role==='display'&&params.has('preview'))&&params.get('rehearsal')!=='1'&&(!showId||(role==='presenter'&&params.get('manage')==='1'));
+document.title=`追光者 · ${role==='presenter'?'演讲者视图':role==='audience'?'此刻在场':role==='gallery'?'全片画册':'一盏灯，八重光'}`;
+ReactDOM.createRoot(document.getElementById('root')!).render(<Boundary><Suspense fallback={<div style={{position:'fixed',inset:0,background:'#0b0f0e'}}/>}>{portal?<RoomPortal role={role as 'presenter'|'audience'|'display'}/>:role==='presenter'?<PresenterApp/>:role==='audience'?<AudienceApp/>:role==='gallery'?<GalleryApp/>:<DisplayApp/>}</Suspense></Boundary>);

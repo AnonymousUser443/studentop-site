@@ -1,0 +1,23 @@
+.display-room-status {
+  position: fixed;
+  z-index: 55;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .45rem .8rem;
+  max-width: min(24rem, calc(100vw - 2rem));
+  padding: .5rem .75rem;
+  border: 1px solid #947b4f66;
+  background: #0e1e1bed;
+  color: #f3e3ba;
+  font-size: .76rem;
+}
+.display-room-status :is(button, a) {
+  padding: 0;
+  color: #e5cb8d;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+.clean-preview .display-room-status { display: none; }

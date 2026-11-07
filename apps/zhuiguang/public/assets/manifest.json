@@ -1,0 +1,3454 @@
+[
+  {
+    "path": "/assets/art/approved/bit-building-watermark.webp",
+    "bytes": 133382,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/fe-north-lake.webp",
+    "bytes": 337412,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/fe-open-screens.webp",
+    "bytes": 154584,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/fi-inner-echo.webp",
+    "bytes": 141916,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/fi-paper-lamp.webp",
+    "bytes": 193148,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/gold-current.webp",
+    "bytes": 8986,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/jade-ink.webp",
+    "bytes": 146248,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/lanyan-hug.webp",
+    "bytes": 258508,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/lanyan-listen.webp",
+    "bytes": 195662,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/media-frame-16x9.webp",
+    "bytes": 15766,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/media-frame-4x3.webp",
+    "bytes": 15040,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/ne-lake.webp",
+    "bytes": 395892,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/north-lake-original.jpg",
+    "bytes": 405775,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/prologue-concept.jpg",
+    "bytes": 566226,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/approved/reed-corner.webp",
+    "bytes": 21810,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "已验收共用资产"
+  },
+  {
+    "path": "/assets/art/p0/campus-four-perspectives-v3.webp",
+    "bytes": 312130,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：你正在经历的大学"
+  },
+  {
+    "path": "/assets/art/p0/cover.webp",
+    "bytes": 142440,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/eight-lamp-frame-v3.webp",
+    "bytes": 181796,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：八盏灯归场"
+  },
+  {
+    "path": "/assets/art/p0/exploration-sketchbook-v3.webp",
+    "bytes": 148114,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：一张没有标准答案的探索桌"
+  },
+  {
+    "path": "/assets/art/p0/lanyan-open-curtain-v3.webp",
+    "bytes": 420730,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：今晚，大学开场"
+  },
+  {
+    "path": "/assets/art/p0/metric-crossroads-v3.webp",
+    "bytes": 210940,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：先把评价放一放"
+  },
+  {
+    "path": "/assets/art/p0/metric-ledger-v3.webp",
+    "bytes": 194846,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：先把评价放一放"
+  },
+  {
+    "path": "/assets/art/p0/metric-ribbon-v3.webp",
+    "bytes": 275106,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：先把评价放一放"
+  },
+  {
+    "path": "/assets/art/p0/metric-ruler-v3.webp",
+    "bytes": 223962,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：先把评价放一放"
+  },
+  {
+    "path": "/assets/art/p0/opening-campus-world-v2.webp",
+    "bytes": 362652,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：你正在经历的大学"
+  },
+  {
+    "path": "/assets/art/p0/opening-question-table-v2.webp",
+    "bytes": 209822,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：先把评价放一放"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-02.webp",
+    "bytes": 163758,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-03.webp",
+    "bytes": 170762,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-04.webp",
+    "bytes": 177944,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-05.webp",
+    "bytes": 153178,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-06.webp",
+    "bytes": 173460,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-07.webp",
+    "bytes": 282264,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-08.webp",
+    "bytes": 136256,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-09.webp",
+    "bytes": 140146,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-10.webp",
+    "bytes": 156610,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-11.webp",
+    "bytes": 189552,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-12.webp",
+    "bytes": 220606,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-13.webp",
+    "bytes": 139758,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-14.webp",
+    "bytes": 177186,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-15.webp",
+    "bytes": 163372,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-16.webp",
+    "bytes": 144926,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-17.webp",
+    "bytes": 165208,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/pages/P0-18.webp",
+    "bytes": 144666,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p0/review-lanyan-activities.webp",
+    "bytes": 336570,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：你正在经历的大学"
+  },
+  {
+    "path": "/assets/art/p0/review-lanyan-lake.webp",
+    "bytes": 264548,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：你正在经历的大学"
+  },
+  {
+    "path": "/assets/art/p0/review-lanyan-overwork.webp",
+    "bytes": 263854,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：你正在经历的大学"
+  },
+  {
+    "path": "/assets/art/p0/review-lanyan-perspectives.webp",
+    "bytes": 447680,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：你正在经历的大学"
+  },
+  {
+    "path": "/assets/art/p0/stage-drape-v3.webp",
+    "bytes": 105574,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：今晚，大学开场"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-02.webp",
+    "bytes": 141576,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-03.webp",
+    "bytes": 117478,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-04.webp",
+    "bytes": 111510,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-05.webp",
+    "bytes": 89998,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-06.webp",
+    "bytes": 96614,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-07.webp",
+    "bytes": 162322,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-08.webp",
+    "bytes": 136594,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-09.webp",
+    "bytes": 147586,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-10.webp",
+    "bytes": 79706,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-11.webp",
+    "bytes": 206850,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-12.webp",
+    "bytes": 155746,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-13.webp",
+    "bytes": 110410,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-14.webp",
+    "bytes": 169116,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-15.webp",
+    "bytes": 120364,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p1/pages/P1-16.webp",
+    "bytes": 173976,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/cover.webp",
+    "bytes": 314906,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-02.webp",
+    "bytes": 119264,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-03.webp",
+    "bytes": 187380,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-04.webp",
+    "bytes": 185960,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-05.webp",
+    "bytes": 119130,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-06.webp",
+    "bytes": 79326,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-07.webp",
+    "bytes": 190194,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-08.webp",
+    "bytes": 111414,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-09.webp",
+    "bytes": 62310,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-10.webp",
+    "bytes": 119186,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-11.webp",
+    "bytes": 141574,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-12.webp",
+    "bytes": 152904,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-13.webp",
+    "bytes": 77160,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-14.webp",
+    "bytes": 179134,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-15.webp",
+    "bytes": 107860,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-16.webp",
+    "bytes": 152620,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-17.webp",
+    "bytes": 69450,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p2/pages/P2-18.webp",
+    "bytes": 143456,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/cover.webp",
+    "bytes": 150142,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-02.webp",
+    "bytes": 49768,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-03.webp",
+    "bytes": 68004,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-04.webp",
+    "bytes": 116864,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-05.webp",
+    "bytes": 77876,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-06.webp",
+    "bytes": 56190,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-07.webp",
+    "bytes": 86076,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-08.webp",
+    "bytes": 115250,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-09.webp",
+    "bytes": 13952,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-10.webp",
+    "bytes": 52326,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-11.webp",
+    "bytes": 48090,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-12.webp",
+    "bytes": 176336,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-13.webp",
+    "bytes": 89594,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-14.webp",
+    "bytes": 115176,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-15.webp",
+    "bytes": 39150,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p3/pages/P3-16.webp",
+    "bytes": 119630,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/cover.webp",
+    "bytes": 155054,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-02.webp",
+    "bytes": 61654,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-03.webp",
+    "bytes": 66890,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-04.webp",
+    "bytes": 61810,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-05.webp",
+    "bytes": 76186,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-06.webp",
+    "bytes": 73818,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-07.webp",
+    "bytes": 102100,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-08.webp",
+    "bytes": 102754,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-09.webp",
+    "bytes": 88508,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-10.webp",
+    "bytes": 31184,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-11.webp",
+    "bytes": 53084,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-12.webp",
+    "bytes": 107214,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-13.webp",
+    "bytes": 76840,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-14.webp",
+    "bytes": 15412,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-15.webp",
+    "bytes": 61128,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-16.webp",
+    "bytes": 30684,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-17.webp",
+    "bytes": 55088,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-18.webp",
+    "bytes": 58000,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-19.webp",
+    "bytes": 59298,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-20.webp",
+    "bytes": 40354,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-21.webp",
+    "bytes": 21668,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-22.webp",
+    "bytes": 79864,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-23.webp",
+    "bytes": 35632,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p4/pages/P4-24.webp",
+    "bytes": 47756,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/freed-time-scroll-v3.webp",
+    "bytes": 119594,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：省下的时间交给谁"
+  },
+  {
+    "path": "/assets/art/p5/obsidian-computing-chamber-v3.webp",
+    "bytes": 53876,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：流畅的句子与事实的距离"
+  },
+  {
+    "path": "/assets/art/p5/obsidian-computing-seal-v3.webp",
+    "bytes": 172796,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：省下的时间交给谁"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-01.webp",
+    "bytes": 57954,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-02.webp",
+    "bytes": 16330,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-03.webp",
+    "bytes": 23082,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-04.webp",
+    "bytes": 45734,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-05.webp",
+    "bytes": 30726,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-06.webp",
+    "bytes": 49240,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-07.webp",
+    "bytes": 33546,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-08.webp",
+    "bytes": 78816,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-09.webp",
+    "bytes": 23014,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-10.webp",
+    "bytes": 38266,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-11.webp",
+    "bytes": 7694,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-12.webp",
+    "bytes": 25098,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-13.webp",
+    "bytes": 20148,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-14.webp",
+    "bytes": 31670,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-15.webp",
+    "bytes": 35226,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-16.webp",
+    "bytes": 38916,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-17.webp",
+    "bytes": 36882,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-18.webp",
+    "bytes": 62482,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-19.webp",
+    "bytes": 39846,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p5/pages/P5-20.webp",
+    "bytes": 47044,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-02.webp",
+    "bytes": 94406,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-03.webp",
+    "bytes": 27968,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-04.webp",
+    "bytes": 22212,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-05.webp",
+    "bytes": 70314,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-06.webp",
+    "bytes": 28370,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-07.webp",
+    "bytes": 62822,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-08.webp",
+    "bytes": 80040,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-09.webp",
+    "bytes": 70960,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-10.webp",
+    "bytes": 125838,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-11.webp",
+    "bytes": 16836,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-12.webp",
+    "bytes": 115074,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-13.webp",
+    "bytes": 22810,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-14.webp",
+    "bytes": 24374,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-15.webp",
+    "bytes": 54664,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-16.webp",
+    "bytes": 88690,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-17.webp",
+    "bytes": 40936,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-18.webp",
+    "bytes": 77580,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-19.webp",
+    "bytes": 37672,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-20.webp",
+    "bytes": 52458,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-21.webp",
+    "bytes": 27532,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p6/pages/P6-22.webp",
+    "bytes": 37802,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/overlook-at-dawn.webp",
+    "bytes": 111488,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-02.webp",
+    "bytes": 87916,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-03.webp",
+    "bytes": 87964,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-04.webp",
+    "bytes": 113132,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-05.webp",
+    "bytes": 68386,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-06.webp",
+    "bytes": 117226,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-07.webp",
+    "bytes": 46426,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-08.webp",
+    "bytes": 105726,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-09.webp",
+    "bytes": 67282,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-10.webp",
+    "bytes": 34078,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-11.webp",
+    "bytes": 51468,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-12.webp",
+    "bytes": 66852,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-13.webp",
+    "bytes": 63100,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-14.webp",
+    "bytes": 17734,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p7/pages/P7-15.webp",
+    "bytes": 94746,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/lamp-lit.webp",
+    "bytes": 96846,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-02.webp",
+    "bytes": 59596,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-03.webp",
+    "bytes": 70458,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-04.webp",
+    "bytes": 155516,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-05.webp",
+    "bytes": 76558,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-06.webp",
+    "bytes": 59032,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-07.webp",
+    "bytes": 75878,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-10.webp",
+    "bytes": 31964,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-11.webp",
+    "bytes": 33480,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-13.webp",
+    "bytes": 74422,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-15.webp",
+    "bytes": 65822,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-16.webp",
+    "bytes": 86352,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-17.webp",
+    "bytes": 64246,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-18.webp",
+    "bytes": 71346,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/pages/P8-19.webp",
+    "bytes": 25954,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/p8/rain-lane.webp",
+    "bytes": 146636,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/story12/fe-first-step-route-v2.webp",
+    "bytes": 120254,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：一步之后"
+  },
+  {
+    "path": "/assets/art/story12/fe-seats-review.webp",
+    "bytes": 273522,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把一句话交给身边的人"
+  },
+  {
+    "path": "/assets/art/story12/fe-threads-ribbons-v2.webp",
+    "bytes": 293544,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：一条主线，很多条主线"
+  },
+  {
+    "path": "/assets/art/story12/lanyan-club-welcome-review.webp",
+    "bytes": 259174,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：七艺一起登场"
+  },
+  {
+    "path": "/assets/art/story12/lanyan-course-wonder-review.webp",
+    "bytes": 189910,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：一条主线，很多条主线"
+  },
+  {
+    "path": "/assets/art/story12/lanyan-envelope-v2.webp",
+    "bytes": 291752,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把一句话交给身边的人"
+  },
+  {
+    "path": "/assets/art/story12/lanyan-film-smile-review.webp",
+    "bytes": 183448,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：相遇变成共同作品"
+  },
+  {
+    "path": "/assets/art/story12/lanyan-game-peek-review.webp",
+    "bytes": 204246,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：体验变成一场探索游戏"
+  },
+  {
+    "path": "/assets/art/story12/lanyan-meet-review.webp",
+    "bytes": 162096,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：一步之后"
+  },
+  {
+    "path": "/assets/art/story12/lanyan-practice-review.webp",
+    "bytes": 205588,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：一步之后"
+  },
+  {
+    "path": "/assets/art/story12/lanyan-radius-reflect-review.webp",
+    "bytes": 358344,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：生活半径如何扩大"
+  },
+  {
+    "path": "/assets/art/story12/lanyan-signup-review.webp",
+    "bytes": 312120,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：一步之后"
+  },
+  {
+    "path": "/assets/art/story12/lanyan-try-review.webp",
+    "bytes": 249392,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：一步之后"
+  },
+  {
+    "path": "/assets/art/story12/liyunculture-wechat-qr.png",
+    "bytes": 86065,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：七艺一起登场"
+  },
+  {
+    "path": "/assets/art/story12/private-envelope-v2.webp",
+    "bytes": 276322,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把一句话交给身边的人"
+  },
+  {
+    "path": "/assets/art/story12/se-afternoon-map-v2.webp",
+    "bytes": 296862,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：一个自由下午"
+  },
+  {
+    "path": "/assets/art/story12/se-campus-unfold-v2.webp",
+    "bytes": 329220,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把培养方案展开"
+  },
+  {
+    "path": "/assets/art/story12/se-library-counter-review.webp",
+    "bytes": 223734,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：一个自由下午"
+  },
+  {
+    "path": "/assets/art/story12/se-listen-share-v2.webp",
+    "bytes": 219888,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：一个自由下午"
+  },
+  {
+    "path": "/assets/art/story12/se-seven-arts-v2.webp",
+    "bytes": 243334,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：七艺一起登场"
+  },
+  {
+    "path": "/assets/art/story12/se-technical-shell-v2.webp",
+    "bytes": 188038,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：专业的壳，另一个自己"
+  },
+  {
+    "path": "/assets/art/story34/si-archive-cabinet.webp",
+    "bytes": 219650,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：经验可以被找到"
+  },
+  {
+    "path": "/assets/art/story34/si-archive-drawer.webp",
+    "bytes": 143732,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：经验可以被找到"
+  },
+  {
+    "path": "/assets/art/story34/si-award-medallion.webp",
+    "bytes": 270358,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：证书之外"
+  },
+  {
+    "path": "/assets/art/story34/si-certificate-folio.webp",
+    "bytes": 177716,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把系统接起来"
+  },
+  {
+    "path": "/assets/art/story34/si-circuit-board.webp",
+    "bytes": 172862,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：证书之外"
+  },
+  {
+    "path": "/assets/art/story34/si-remembering-lanyan.webp",
+    "bytes": 187320,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：经历褪色，改变留下"
+  },
+  {
+    "path": "/assets/art/story34/si-sharing-lanyan.webp",
+    "bytes": 216250,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：给后来的人一个起点"
+  },
+  {
+    "path": "/assets/art/story34/si-voting-lanyan.webp",
+    "bytes": 193646,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "节目媒体"
+  },
+  {
+    "path": "/assets/art/story34/te-building-lanyan.webp",
+    "bytes": 276262,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：带着做过的东西"
+  },
+  {
+    "path": "/assets/art/story34/te-deadline-lanyan.webp",
+    "bytes": 225484,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "节目媒体"
+  },
+  {
+    "path": "/assets/art/story34/te-guiding-lanyan.webp",
+    "bytes": 184804,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：先看规则，再走路线"
+  },
+  {
+    "path": "/assets/art/story34/te-module-control.webp",
+    "bytes": 250042,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把系统接起来"
+  },
+  {
+    "path": "/assets/art/story34/te-module-hardware.webp",
+    "bytes": 165426,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把系统接起来"
+  },
+  {
+    "path": "/assets/art/story34/te-module-test.webp",
+    "bytes": 151322,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把系统接起来"
+  },
+  {
+    "path": "/assets/art/story34/te-rally-audience.webp",
+    "bytes": 204934,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：卷王主场"
+  },
+  {
+    "path": "/assets/art/story34/te-rally-startline.webp",
+    "bytes": 82568,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：卷王主场"
+  },
+  {
+    "path": "/assets/art/story34/te-rank-measurement-stand.webp",
+    "bytes": 94208,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：一个人，两把尺"
+  },
+  {
+    "path": "/assets/art/story34/te-rulebook.webp",
+    "bytes": 166198,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：先看规则，再走路线"
+  },
+  {
+    "path": "/assets/art/story34/te-values-walker.webp",
+    "bytes": 92874,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：刻度之外"
+  },
+  {
+    "path": "/assets/art/story34/te-workbench.webp",
+    "bytes": 141658,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把系统接起来"
+  },
+  {
+    "path": "/assets/art/story678/fi-postshow-lanyan.webp",
+    "bytes": 300592,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景插画"
+  },
+  {
+    "path": "/assets/art/story678/fi-review-lanyan-farewell.webp",
+    "bytes": 263422,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：谢幕"
+  },
+  {
+    "path": "/assets/art/story678/fi-route-folio.webp",
+    "bytes": 370334,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：回到自己的选择"
+  },
+  {
+    "path": "/assets/art/story678/ne-lanyan-inspiration.webp",
+    "bytes": 408444,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把三个世界放到一起"
+  },
+  {
+    "path": "/assets/art/story678/ne-poetry.webp",
+    "bytes": 230488,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把三个世界放到一起"
+  },
+  {
+    "path": "/assets/art/story678/ne-question-origami.webp",
+    "bytes": 153334,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：换一个问题"
+  },
+  {
+    "path": "/assets/art/story678/ne-sensor.webp",
+    "bytes": 160216,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把三个世界放到一起"
+  },
+  {
+    "path": "/assets/art/story678/ne-server-gate.webp",
+    "bytes": 141234,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：让创意碰到现实"
+  },
+  {
+    "path": "/assets/art/story678/ne-world-folio.webp",
+    "bytes": 268140,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：从窗口走进世界"
+  },
+  {
+    "path": "/assets/art/story678/ni-engineering-notebook.webp",
+    "bytes": 264778,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：交换观察的位置"
+  },
+  {
+    "path": "/assets/art/story678/ni-painting-board.webp",
+    "bytes": 182406,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：交换观察的位置"
+  },
+  {
+    "path": "/assets/art/story678/ni-review-aether.webp",
+    "bytes": 253380,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：交换观察的位置"
+  },
+  {
+    "path": "/assets/art/story678/ni-review-crosscurrent.webp",
+    "bytes": 195150,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：变与不变"
+  },
+  {
+    "path": "/assets/art/story678/ni-review-lanyan-paint.webp",
+    "bytes": 352080,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：交换观察的位置"
+  },
+  {
+    "path": "/assets/art/story678/ni-ridge.webp",
+    "bytes": 157122,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把视野拉远"
+  },
+  {
+    "path": "/assets/audio/bgm/p0.m4a",
+    "bytes": 287760,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p0.opus",
+    "bytes": 328009,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p1-after-film.m4a",
+    "bytes": 1790506,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p1-after-film.opus",
+    "bytes": 1809854,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p1.m4a",
+    "bytes": 1964785,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p1.opus",
+    "bytes": 1872690,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p2.m4a",
+    "bytes": 1953602,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p2.opus",
+    "bytes": 1730391,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p3.m4a",
+    "bytes": 1214071,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p3.opus",
+    "bytes": 1115494,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p4.m4a",
+    "bytes": 3253270,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p4.opus",
+    "bytes": 2653548,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p5.m4a",
+    "bytes": 1549353,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p5.opus",
+    "bytes": 1230035,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p6.m4a",
+    "bytes": 1818314,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p6.opus",
+    "bytes": 1497832,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p7.m4a",
+    "bytes": 3140008,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p7.opus",
+    "bytes": 3035966,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p8-lamp.m4a",
+    "bytes": 2351112,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p8-lamp.opus",
+    "bytes": 2009232,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p8.m4a",
+    "bytes": 3281943,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/bgm/p8.opus",
+    "bytes": 2825936,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/audio/sfx/bonk.wav",
+    "source": "web/scripts/assets-audio.py",
+    "bytes": 12044,
+    "usable": true,
+    "attribution": "项目内原创数学合成音频",
+    "rights": "本项目原创，无第三方采样",
+    "quality": "synthesized",
+    "limitations": [
+      "非真实乐器或现场采样；现场需试听调音量"
+    ],
+    "duration": 0.25,
+    "loop": false,
+    "description": "原创合成 bonk，非真实采样"
+  },
+  {
+    "path": "/assets/audio/sfx/chime.wav",
+    "source": "web/scripts/assets-audio.py",
+    "bytes": 115244,
+    "usable": true,
+    "attribution": "项目内原创数学合成音频",
+    "rights": "本项目原创，无第三方采样",
+    "quality": "synthesized",
+    "limitations": [
+      "非真实乐器或现场采样；现场需试听调音量"
+    ],
+    "duration": 2.4,
+    "loop": false,
+    "description": "原创合成 chime，非真实采样"
+  },
+  {
+    "path": "/assets/audio/sfx/guqin-open.wav",
+    "source": "web/scripts/assets-audio.py",
+    "bytes": 192044,
+    "usable": true,
+    "attribution": "项目内原创数学合成音频",
+    "rights": "本项目原创，无第三方采样",
+    "quality": "synthesized",
+    "limitations": [
+      "非真实乐器或现场采样；现场需试听调音量"
+    ],
+    "duration": 4,
+    "loop": false,
+    "description": "原创合成 guqin-open，非真实采样"
+  },
+  {
+    "path": "/assets/audio/sfx/light-on.wav",
+    "source": "web/scripts/assets-audio.py",
+    "bytes": 57644,
+    "usable": true,
+    "attribution": "项目内原创数学合成音频",
+    "rights": "本项目原创，无第三方采样",
+    "quality": "synthesized",
+    "limitations": [
+      "非真实乐器或现场采样；现场需试听调音量"
+    ],
+    "duration": 1.2,
+    "loop": false,
+    "description": "原创合成 light-on，非真实采样"
+  },
+  {
+    "path": "/assets/audio/sfx/match.wav",
+    "source": "web/scripts/assets-audio.py",
+    "bytes": 21644,
+    "usable": true,
+    "attribution": "项目内原创数学合成音频",
+    "rights": "本项目原创，无第三方采样",
+    "quality": "synthesized",
+    "limitations": [
+      "非真实乐器或现场采样；现场需试听调音量"
+    ],
+    "duration": 0.45,
+    "loop": false,
+    "description": "原创合成 match，非真实采样"
+  },
+  {
+    "path": "/assets/audio/sfx/paper-slide.wav",
+    "source": "web/scripts/assets-audio.py",
+    "bytes": 24044,
+    "usable": true,
+    "attribution": "项目内原创数学合成音频",
+    "rights": "本项目原创，无第三方采样",
+    "quality": "synthesized",
+    "limitations": [
+      "非真实乐器或现场采样；现场需试听调音量"
+    ],
+    "duration": 0.5,
+    "loop": false,
+    "description": "原创合成 paper-slide，非真实采样"
+  },
+  {
+    "path": "/assets/audio/sfx/paper-whip.wav",
+    "source": "web/scripts/assets-audio.py",
+    "bytes": 12044,
+    "usable": true,
+    "attribution": "项目内原创数学合成音频",
+    "rights": "本项目原创，无第三方采样",
+    "quality": "synthesized",
+    "limitations": [
+      "非真实乐器或现场采样；现场需试听调音量"
+    ],
+    "duration": 0.25,
+    "loop": false,
+    "description": "原创合成 paper-whip，非真实采样"
+  },
+  {
+    "path": "/assets/audio/sfx/rain.wav",
+    "source": "web/scripts/assets-audio.py",
+    "bytes": 768044,
+    "usable": true,
+    "attribution": "项目内原创数学合成音频",
+    "rights": "本项目原创，无第三方采样",
+    "quality": "synthesized",
+    "limitations": [
+      "非真实乐器或现场采样；现场需试听调音量"
+    ],
+    "duration": 16,
+    "loop": true,
+    "description": "原创合成循环雨声，非真实采样"
+  },
+  {
+    "path": "/assets/audio/sfx/seal-stamp.wav",
+    "source": "web/scripts/assets-audio.py",
+    "bytes": 20204,
+    "usable": true,
+    "attribution": "项目内原创数学合成音频",
+    "rights": "本项目原创，无第三方采样",
+    "quality": "synthesized",
+    "limitations": [
+      "非真实乐器或现场采样；现场需试听调音量"
+    ],
+    "duration": 0.42,
+    "loop": false,
+    "description": "原创合成 seal-stamp，非真实采样"
+  },
+  {
+    "path": "/assets/audio/sfx/shatter.wav",
+    "source": "web/scripts/assets-audio.py",
+    "bytes": 52844,
+    "usable": true,
+    "attribution": "项目内原创数学合成音频",
+    "rights": "本项目原创，无第三方采样",
+    "quality": "synthesized",
+    "limitations": [
+      "非真实乐器或现场采样；现场需试听调音量"
+    ],
+    "duration": 1.1,
+    "loop": false,
+    "description": "原创合成 shatter，非真实采样"
+  },
+  {
+    "path": "/assets/audio/sfx/tear.wav",
+    "source": "web/scripts/assets-audio.py",
+    "bytes": 52844,
+    "usable": true,
+    "attribution": "项目内原创数学合成音频",
+    "rights": "本项目原创，无第三方采样",
+    "quality": "synthesized",
+    "limitations": [
+      "非真实乐器或现场采样；现场需试听调音量"
+    ],
+    "duration": 1.1,
+    "loop": false,
+    "description": "原创合成 tear，非真实采样"
+  },
+  {
+    "path": "/assets/audio/sfx/tick.wav",
+    "source": "web/scripts/assets-audio.py",
+    "bytes": 7724,
+    "usable": true,
+    "attribution": "项目内原创数学合成音频",
+    "rights": "本项目原创，无第三方采样",
+    "quality": "synthesized",
+    "limitations": [
+      "非真实乐器或现场采样；现场需试听调音量"
+    ],
+    "duration": 0.16,
+    "loop": false,
+    "description": "原创合成 tick，非真实采样"
+  },
+  {
+    "path": "/assets/fonts/noto-sans-sc-subset.woff2",
+    "source": "C:\\Windows\\Fonts\\NotoSansSC-VF.ttf",
+    "bytes": 237272,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "global typography"
+    ],
+    "fontWeight": 400,
+    "characterCount": 1618,
+    "license": "SIL Open Font License 1.1",
+    "fontFamily": "Noto Sans SC"
+  },
+  {
+    "path": "/assets/fonts/noto-serif-sc-poetry.woff2",
+    "source": "C:\\Windows\\Fonts\\NotoSerifSC-VF.ttf",
+    "bytes": 307052,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "global typography"
+    ],
+    "fontWeight": 400,
+    "characterCount": 1618,
+    "license": "SIL Open Font License 1.1",
+    "fontFamily": "Noto Serif SC"
+  },
+  {
+    "path": "/assets/fonts/noto-serif-sc-subset.woff2",
+    "source": "C:\\Windows\\Fonts\\NotoSerifSC-VF.ttf",
+    "bytes": 315884,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "global typography"
+    ],
+    "fontWeight": 700,
+    "characterCount": 1618,
+    "license": "SIL Open Font License 1.1",
+    "fontFamily": "Noto Serif SC"
+  },
+  {
+    "path": "/assets/fonts/ubuntu-mono.woff2",
+    "source": "C:\\Users\\12929\\AppData\\Local\\Microsoft\\Windows\\Fonts\\UbuntuMono[wght].ttf",
+    "bytes": 9704,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "global typography"
+    ],
+    "fontWeight": 400,
+    "characterCount": 120,
+    "license": "Ubuntu Font Licence 1.0",
+    "fontFamily": "Ubuntu Mono"
+  },
+  {
+    "path": "/assets/fx/glow-0.png",
+    "bytes": 13704,
+    "source": "web/scripts/build-paper.py",
+    "usable": true,
+    "width": 512,
+    "height": 512,
+    "rights": "Original deterministic procedural asset",
+    "quality": "pre-baked",
+    "description": "Chapter-colored radial light, Gaussian blur 48px baked into alpha",
+    "limitations": [],
+    "sceneCandidates": [
+      "P0"
+    ],
+    "accent": "#C9A961",
+    "maxAlpha": 0.13725490196078433,
+    "blurRadius": 48,
+    "transparentPerimeter": true
+  },
+  {
+    "path": "/assets/fx/glow-1.png",
+    "bytes": 13704,
+    "source": "web/scripts/build-paper.py",
+    "usable": true,
+    "width": 512,
+    "height": 512,
+    "rights": "Original deterministic procedural asset",
+    "quality": "pre-baked",
+    "description": "Chapter-colored radial light, Gaussian blur 48px baked into alpha",
+    "limitations": [],
+    "sceneCandidates": [
+      "P1"
+    ],
+    "accent": "#C97D6A",
+    "maxAlpha": 0.13725490196078433,
+    "blurRadius": 48,
+    "transparentPerimeter": true
+  },
+  {
+    "path": "/assets/fx/glow-2.png",
+    "bytes": 13704,
+    "source": "web/scripts/build-paper.py",
+    "usable": true,
+    "width": 512,
+    "height": 512,
+    "rights": "Original deterministic procedural asset",
+    "quality": "pre-baked",
+    "description": "Chapter-colored radial light, Gaussian blur 48px baked into alpha",
+    "limitations": [],
+    "sceneCandidates": [
+      "P2"
+    ],
+    "accent": "#7E9B6B",
+    "maxAlpha": 0.13725490196078433,
+    "blurRadius": 48,
+    "transparentPerimeter": true
+  },
+  {
+    "path": "/assets/fx/glow-3.png",
+    "bytes": 13704,
+    "source": "web/scripts/build-paper.py",
+    "usable": true,
+    "width": 512,
+    "height": 512,
+    "rights": "Original deterministic procedural asset",
+    "quality": "pre-baked",
+    "description": "Chapter-colored radial light, Gaussian blur 48px baked into alpha",
+    "limitations": [],
+    "sceneCandidates": [
+      "P3"
+    ],
+    "accent": "#B99A5E",
+    "maxAlpha": 0.13725490196078433,
+    "blurRadius": 48,
+    "transparentPerimeter": true
+  },
+  {
+    "path": "/assets/fx/glow-4.png",
+    "bytes": 13704,
+    "source": "web/scripts/build-paper.py",
+    "usable": true,
+    "width": 512,
+    "height": 512,
+    "rights": "Original deterministic procedural asset",
+    "quality": "pre-baked",
+    "description": "Chapter-colored radial light, Gaussian blur 48px baked into alpha",
+    "limitations": [],
+    "sceneCandidates": [
+      "P4"
+    ],
+    "accent": "#5E86AE",
+    "maxAlpha": 0.13725490196078433,
+    "blurRadius": 48,
+    "transparentPerimeter": true
+  },
+  {
+    "path": "/assets/fx/glow-5.png",
+    "bytes": 13704,
+    "source": "web/scripts/build-paper.py",
+    "usable": true,
+    "width": 512,
+    "height": 512,
+    "rights": "Original deterministic procedural asset",
+    "quality": "pre-baked",
+    "description": "Chapter-colored radial light, Gaussian blur 48px baked into alpha",
+    "limitations": [],
+    "sceneCandidates": [
+      "P5"
+    ],
+    "accent": "#8A78B8",
+    "maxAlpha": 0.13725490196078433,
+    "blurRadius": 48,
+    "transparentPerimeter": true
+  },
+  {
+    "path": "/assets/fx/glow-6.png",
+    "bytes": 13704,
+    "source": "web/scripts/build-paper.py",
+    "usable": true,
+    "width": 512,
+    "height": 512,
+    "rights": "Original deterministic procedural asset",
+    "quality": "pre-baked",
+    "description": "Chapter-colored radial light, Gaussian blur 48px baked into alpha",
+    "limitations": [],
+    "sceneCandidates": [
+      "P6"
+    ],
+    "accent": "#4FA89E",
+    "maxAlpha": 0.13725490196078433,
+    "blurRadius": 48,
+    "transparentPerimeter": true
+  },
+  {
+    "path": "/assets/fx/glow-7.png",
+    "bytes": 13704,
+    "source": "web/scripts/build-paper.py",
+    "usable": true,
+    "width": 512,
+    "height": 512,
+    "rights": "Original deterministic procedural asset",
+    "quality": "pre-baked",
+    "description": "Chapter-colored radial light, Gaussian blur 48px baked into alpha",
+    "limitations": [],
+    "sceneCandidates": [
+      "P7"
+    ],
+    "accent": "#7C9A8E",
+    "maxAlpha": 0.13725490196078433,
+    "blurRadius": 48,
+    "transparentPerimeter": true
+  },
+  {
+    "path": "/assets/fx/glow-8.png",
+    "bytes": 13704,
+    "source": "web/scripts/build-paper.py",
+    "usable": true,
+    "width": 512,
+    "height": 512,
+    "rights": "Original deterministic procedural asset",
+    "quality": "pre-baked",
+    "description": "Chapter-colored radial light, Gaussian blur 48px baked into alpha",
+    "limitations": [],
+    "sceneCandidates": [
+      "P8"
+    ],
+    "accent": "#C2554A",
+    "maxAlpha": 0.13725490196078433,
+    "blurRadius": 48,
+    "transparentPerimeter": true
+  },
+  {
+    "path": "/assets/fx/ink-edge.png",
+    "bytes": 89762,
+    "source": "web/scripts/build-paper.py",
+    "usable": true,
+    "width": 2160,
+    "height": 1320,
+    "rights": "Original deterministic procedural asset",
+    "quality": "pre-baked",
+    "description": "Opaque #07090A ink with five-octave irregular top/bottom silhouettes",
+    "limitations": [],
+    "sceneCandidates": [
+      "all transitions"
+    ],
+    "octaves": 5,
+    "alphaSoftnessPx": [
+      8,
+      20
+    ],
+    "opaqueStageRect": {
+      "x": 120,
+      "y": 120,
+      "width": 1920,
+      "height": 1080
+    },
+    "overscanPx": 120
+  },
+  {
+    "path": "/assets/fx/noise-paper.png",
+    "bytes": 252819,
+    "source": "Deterministic five-octave procedural paper texture",
+    "usable": true,
+    "width": 512,
+    "height": 512,
+    "rights": "Original procedural asset",
+    "quality": "processed",
+    "sceneCandidates": [
+      "all"
+    ],
+    "limitations": [
+      "Fractal material, not a real paper scan"
+    ]
+  },
+  {
+    "path": "/assets/img/p1/campus-film-poster.webp",
+    "source": "web\\public\\assets\\video\\genshin-campus.mp4",
+    "bytes": 144934,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P1 校园宣传片"
+    ],
+    "variant": "display-2560",
+    "sourceTimeSeconds": 3,
+    "description": "用户校园宣传片第3秒实帧，无生成式修改",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "path": "/assets/img/p1/chat-01.webp",
+    "source": "参考材料\\和学弟的对话1高考招生季节_思源1.png",
+    "bytes": 48980,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P1-11（手机框内）"
+    ],
+    "originalSize": [
+      827,
+      1106
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 827,
+    "height": 1106
+  },
+  {
+    "path": "/assets/img/p1/chat-02.webp",
+    "source": "参考材料\\和学弟的对话2高考招生季节_思源1.png",
+    "bytes": 44860,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P1-11（手机框内）"
+    ],
+    "originalSize": [
+      825,
+      1197
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 825,
+    "height": 1197
+  },
+  {
+    "path": "/assets/img/p1/siyuan-01.webp",
+    "source": "参考材料\\北理思源招生物料的一些设计和现场 (1).jpg",
+    "bytes": 135118,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P1-11"
+    ],
+    "originalSize": [
+      4096,
+      3072
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p1/siyuan-02.webp",
+    "source": "参考材料\\北理思源招生物料的一些设计和现场 (2).jpg",
+    "bytes": 319410,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P1-11"
+    ],
+    "originalSize": [
+      4096,
+      3072
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p1/siyuan-03.webp",
+    "source": "参考材料\\北理思源招生物料的一些设计和现场 (3).jpg",
+    "bytes": 701752,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P1-11"
+    ],
+    "variant": "display-2560",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p1/siyuan-04.webp",
+    "source": "参考材料\\北理思源招生物料的一些设计和现场 (4).jpg",
+    "bytes": 464246,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P1-11"
+    ],
+    "originalSize": [
+      4096,
+      3072
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p1/siyuan-05.webp",
+    "source": "参考材料\\北理思源招生物料的一些设计和现场 (5).jpg",
+    "bytes": 789788,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P1-11"
+    ],
+    "variant": "display-2560",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p1/xuanjiang-01.webp",
+    "source": "参考材料\\和学长宣讲的时候 (1).jpg",
+    "bytes": 511834,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P1-11"
+    ],
+    "originalSize": [
+      4096,
+      3072
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p1/xuanjiang-02.webp",
+    "source": "参考材料\\和学长宣讲的时候 (2).jpg",
+    "bytes": 528516,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P1-11"
+    ],
+    "originalSize": [
+      4091,
+      2724
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1705
+  },
+  {
+    "path": "/assets/img/p1/xuanjiang-03.webp",
+    "source": "参考材料\\和学长宣讲的时候 (3).jpg",
+    "bytes": 176482,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P1-11"
+    ],
+    "originalSize": [
+      4090,
+      2728
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1708
+  },
+  {
+    "path": "/assets/img/p1/xuanjiang-04.webp",
+    "source": "参考材料\\和学长宣讲的时候 (4).jpg",
+    "bytes": 534258,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P1-11"
+    ],
+    "originalSize": [
+      4092,
+      2727
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1706
+  },
+  {
+    "path": "/assets/img/p2/circuit.webp",
+    "source": "参考材料\\电赛相关 (6).heic",
+    "bytes": 266650,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P2-05"
+    ],
+    "variant": "display-crop",
+    "sourceCrop": null,
+    "description": "真实硬件连接现场",
+    "qualityNote": "从已转码原分辨率图派生；无生成式内容",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p2/code.webp",
+    "source": "参考材料\\电赛相关 (2).heic",
+    "bytes": 160326,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P2-05"
+    ],
+    "variant": "display-crop",
+    "sourceCrop": [
+      1600,
+      1040,
+      3712,
+      2336
+    ],
+    "description": "真实程序调试终端（AI辅助）",
+    "qualityNote": "从已转码原分辨率图派生；无生成式内容",
+    "width": 2112,
+    "height": 1296
+  },
+  {
+    "path": "/assets/img/p2/frost-ui-01.webp",
+    "source": "参考材料\\霜降雅集-Web交互界面演示1.png",
+    "bytes": 40318,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P2-10 / P2-11 / P2-13"
+    ],
+    "originalSize": [
+      2549,
+      1121
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2549,
+    "height": 1121
+  },
+  {
+    "path": "/assets/img/p2/frost-ui-02.webp",
+    "source": "参考材料\\霜降雅集-Web交互界面演示2.png",
+    "bytes": 32436,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P2-10 / P2-11 / P2-13"
+    ],
+    "originalSize": [
+      1077,
+      1041
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 1077,
+    "height": 1041
+  },
+  {
+    "path": "/assets/img/p2/hanfu-01.webp",
+    "source": "参考材料\\理韵文化协会的一些汉服照片 (1).heic",
+    "bytes": 188684,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P2-08 / P2-13"
+    ],
+    "originalSize": [
+      4096,
+      3072
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p2/hanfu-02.webp",
+    "source": "参考材料\\理韵文化协会的一些汉服照片 (2).heic",
+    "bytes": 439176,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P2-08 / P2-13"
+    ],
+    "originalSize": [
+      3072,
+      4096
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 1920,
+    "height": 2560
+  },
+  {
+    "path": "/assets/img/p2/hanfu-03.webp",
+    "source": "参考材料\\理韵文化协会的一些汉服照片 (3).heic",
+    "bytes": 373370,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P2-08 / P2-13"
+    ],
+    "originalSize": [
+      3072,
+      4096
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 1920,
+    "height": 2560
+  },
+  {
+    "path": "/assets/img/p2/hanfu-04.webp",
+    "source": "参考材料\\理韵文化协会的一些汉服照片 (4).heic",
+    "bytes": 289776,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P2-08 / P2-13"
+    ],
+    "originalSize": [
+      4096,
+      3072
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p2/liyunculture-film-poster.webp",
+    "bytes": 78108,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：真实社团影像"
+  },
+  {
+    "path": "/assets/img/p3/edian-01.webp",
+    "source": "参考材料\\电赛相关 (1).heic",
+    "bytes": 181288,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P3-05"
+    ],
+    "originalSize": [
+      4096,
+      3072
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p3/edian-02.webp",
+    "source": "参考材料\\电赛相关 (2).heic",
+    "bytes": 292986,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P3-05"
+    ],
+    "originalSize": [
+      4096,
+      3072
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p3/edian-03.webp",
+    "source": "参考材料\\电赛相关 (3).heic",
+    "bytes": 307116,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P3-05"
+    ],
+    "originalSize": [
+      4096,
+      3072
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p3/edian-04.webp",
+    "source": "参考材料\\电赛相关 (4).heic",
+    "bytes": 264006,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P3-05"
+    ],
+    "originalSize": [
+      4096,
+      3072
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p3/edian-05.webp",
+    "source": "参考材料\\电赛相关 (5).heic",
+    "bytes": 381572,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P3-05"
+    ],
+    "originalSize": [
+      3072,
+      4096
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 1920,
+    "height": 2560
+  },
+  {
+    "path": "/assets/img/p3/edian-06.webp",
+    "source": "参考材料\\电赛相关 (6).heic",
+    "bytes": 234136,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P3-05"
+    ],
+    "originalSize": [
+      4096,
+      3072
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p3/edian-07.webp",
+    "source": "参考材料\\电赛相关 (7).heic",
+    "bytes": 298634,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P3-05"
+    ],
+    "originalSize": [
+      4096,
+      3072
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p3/edian-group.webp",
+    "source": "参考材料\\电赛大合照.jpg",
+    "bytes": 323472,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P3-05"
+    ],
+    "originalSize": [
+      8688,
+      5792
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1707
+  },
+  {
+    "path": "/assets/img/p3/lab-805-mobile.webp",
+    "source": "参考材料\\805实验室资产管理系统相关 (1).heic",
+    "bytes": 116452,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P3-09"
+    ],
+    "originalSize": [
+      4096,
+      3072
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "path": "/assets/img/p3/lab-805-photo.webp",
+    "source": "参考材料\\805实验室资产管理系统相关 (1).jpg",
+    "bytes": 226040,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P3-09"
+    ],
+    "originalSize": [
+      3840,
+      2160
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "path": "/assets/img/p3/lab-805-ui.webp",
+    "source": "参考材料\\805实验室资产管理系统相关 (1).png",
+    "bytes": 43092,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P3-09"
+    ],
+    "originalSize": [
+      1758,
+      1074
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 1758,
+    "height": 1074
+  },
+  {
+    "path": "/assets/img/p3/lab-805.webp",
+    "source": "参考材料\\805实验室资产管理系统相关 (1).png",
+    "bytes": 43092,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P3-09"
+    ],
+    "variant": "display-2560",
+    "width": 1758,
+    "height": 1074
+  },
+  {
+    "path": "/assets/img/p4/biter-icon.webp",
+    "source": "参考材料\\小程序哔特儿.png",
+    "bytes": 1700,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P4-10（仅小图标）"
+    ],
+    "originalSize": [
+      125,
+      126
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 125,
+    "height": 126
+  },
+  {
+    "path": "/assets/img/p6/liyun-01.webp",
+    "source": "参考材料\\理韵寻踪.png",
+    "bytes": 85998,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P6-14"
+    ],
+    "originalSize": [
+      1875,
+      1176
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 1875,
+    "height": 1176
+  },
+  {
+    "path": "/assets/img/p6/liyun-02.webp",
+    "source": "参考材料\\理韵寻踪2.png",
+    "bytes": 126918,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P6-14"
+    ],
+    "originalSize": [
+      2549,
+      1191
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2549,
+    "height": 1191
+  },
+  {
+    "path": "/assets/img/p6/liyun-03.webp",
+    "source": "参考材料\\理韵寻踪3.png",
+    "bytes": 55742,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P6-14"
+    ],
+    "originalSize": [
+      2549,
+      1191
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2549,
+    "height": 1191
+  },
+  {
+    "path": "/assets/img/p6/liyun-04.webp",
+    "source": "参考材料\\理韵寻踪4.png",
+    "bytes": 231336,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P6-14"
+    ],
+    "originalSize": [
+      2549,
+      1191
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2549,
+    "height": 1191
+  },
+  {
+    "path": "/assets/img/p8/dengweiwang-01.webp",
+    "source": "参考材料\\灯未完_漫画阅读版_baseline_v01.pdf",
+    "bytes": 364976,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P8-10"
+    ],
+    "sourcePage": 3,
+    "description": "灯笼与夜城",
+    "variant": "display-2560",
+    "width": 1704,
+    "height": 942
+  },
+  {
+    "path": "/assets/img/p8/dengweiwang-02.webp",
+    "source": "参考材料\\灯未完_漫画阅读版_baseline_v01.pdf",
+    "bytes": 159088,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P8-10"
+    ],
+    "sourcePage": 2,
+    "description": "手工扎灯",
+    "variant": "display-2560",
+    "width": 1704,
+    "height": 942
+  },
+  {
+    "path": "/assets/img/p8/dengweiwang-03.webp",
+    "source": "参考材料\\灯未完_漫画阅读版_baseline_v01.pdf",
+    "bytes": 310318,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P8-10"
+    ],
+    "sourcePage": 15,
+    "description": "夜巷远景",
+    "variant": "display-2560",
+    "width": 1704,
+    "height": 942
+  },
+  {
+    "path": "/assets/img/p8/dengweiwang-04.webp",
+    "source": "参考材料\\灯未完_漫画阅读版_baseline_v01.pdf",
+    "bytes": 319440,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P8-10"
+    ],
+    "sourcePage": 10,
+    "description": "女孩剪纸",
+    "variant": "display-2560",
+    "width": 1704,
+    "height": 1107
+  },
+  {
+    "path": "/assets/img/p8/dengweiwang-05.webp",
+    "source": "参考材料\\灯未完_漫画阅读版_baseline_v01.pdf",
+    "bytes": 253224,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P8-10"
+    ],
+    "sourcePage": 15,
+    "description": "结尾：留一页给后来的人",
+    "variant": "display-2560",
+    "width": 1664,
+    "height": 940
+  },
+  {
+    "path": "/assets/img/p8/friends.webp",
+    "source": "参考材料\\我和我的哥们的搞怪照片.jpg",
+    "bytes": 135234,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "备用（剧本未明确使用）"
+    ],
+    "originalSize": [
+      4576,
+      2576
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 2560,
+    "height": 1441
+  },
+  {
+    "path": "/assets/img/reference/poll-se.webp",
+    "source": "参考材料\\互动题-Se.png",
+    "bytes": 35534,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "内容核对，屏幕用 HTML 重排"
+    ],
+    "originalSize": [
+      1185,
+      912
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 1185,
+    "height": 912
+  },
+  {
+    "path": "/assets/img/reference/poll-te.webp",
+    "source": "参考材料\\互动题-Te.png",
+    "bytes": 42482,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "内容核对，屏幕用 HTML 重排"
+    ],
+    "originalSize": [
+      1188,
+      861
+    ],
+    "variant": "display-2560",
+    "qualityNote": "运行时统一 CSS 调色，截图保留文字可读性",
+    "width": 1188,
+    "height": 861
+  },
+  {
+    "path": "/assets/img/supplement/ai-wiring-poster.webp",
+    "bytes": 110208,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：省下的时间交给谁"
+  },
+  {
+    "path": "/assets/img/supplement/audience-qr.png",
+    "bytes": 7404,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/img/supplement/edc-night-car.webp",
+    "bytes": 181104,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：暴雨夜的电赛工作台"
+  },
+  {
+    "path": "/assets/img/supplement/edc-night-code.webp",
+    "bytes": 203198,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：暴雨夜的电赛工作台"
+  },
+  {
+    "path": "/assets/img/supplement/edc-night-overhead.webp",
+    "bytes": 133098,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：暴雨夜的电赛工作台"
+  },
+  {
+    "path": "/assets/img/supplement/edc-night-second-desk.webp",
+    "bytes": 223136,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：暴雨夜的电赛工作台"
+  },
+  {
+    "path": "/assets/img/supplement/edc-night-snacks.webp",
+    "bytes": 260740,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：暴雨夜的电赛工作台"
+  },
+  {
+    "path": "/assets/img/supplement/edc-night-wide.webp",
+    "bytes": 208992,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：暴雨夜的电赛工作台"
+  },
+  {
+    "path": "/assets/img/supplement/lab-cabinet.webp",
+    "bytes": 229630,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：经验可以被找到"
+  },
+  {
+    "path": "/assets/img/supplement/lab-equipment-label.webp",
+    "bytes": 80466,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：经验可以被找到"
+  },
+  {
+    "path": "/assets/img/supplement/lab-instrument.webp",
+    "bytes": 75258,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：经验可以被找到"
+  },
+  {
+    "path": "/assets/img/supplement/lab-shelves.webp",
+    "bytes": 180392,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：经验可以被找到"
+  },
+  {
+    "path": "/assets/img/supplement/lab-storage.webp",
+    "bytes": 128492,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：经验可以被找到"
+  },
+  {
+    "path": "/assets/img/supplement/prize-back.webp",
+    "bytes": 163306,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/img/supplement/prize-front.webp",
+    "bytes": 98680,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "现场补充素材"
+  },
+  {
+    "path": "/assets/img/supplement/wires-detail.webp",
+    "bytes": 433946,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把系统接起来"
+  },
+  {
+    "path": "/assets/img/supplement/wires-wide.webp",
+    "bytes": 310778,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：把系统接起来"
+  },
+  {
+    "path": "/assets/video/ai-wiring-lab.mp4",
+    "bytes": 6733703,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：省下的时间交给谁"
+  },
+  {
+    "path": "/assets/video/genshin-campus.mp4",
+    "source": "参考材料\\《原神》主题的校园宣传视频，在学校官号上坐拥六千点赞.mp4",
+    "bytes": 15277510,
+    "usable": true,
+    "attribution": "用户提供素材",
+    "rights": "用户提供，维持原用途；未公开扩展授权",
+    "quality": "processed",
+    "limitations": [],
+    "sceneCandidates": [
+      "P2"
+    ],
+    "duration": 90.166667,
+    "codec": "H.264 / AAC",
+    "pixelFormat": "yuv420p",
+    "faststart": true,
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "path": "/assets/video/liyunculture-club.mp4",
+    "bytes": 21184771,
+    "usable": true,
+    "variant": "production-art",
+    "attribution": "场景叙事：真实社团影像"
+  }
+]

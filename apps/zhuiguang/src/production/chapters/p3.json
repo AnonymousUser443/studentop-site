@@ -1,0 +1,296 @@
+{
+  "chapter": 3,
+  "motif": "一盏照进经验抽屉的灯",
+  "palette": {
+    "paper": "#f5ebd6",
+    "ink": "#244339",
+    "accent": "#9b672d",
+    "shade": "#243d34"
+  },
+  "art": "/assets/art/p3/cover.webp",
+  "assetSources": [
+    {
+      "path": "/assets/art/p3/cover.webp",
+      "references": [
+        "视觉风格参考图 (1).png",
+        "视觉风格参考图 (2).png"
+      ],
+      "prompt": "Use the two attached original illustrations as strict style and staging references, for layered opaque color planes, sophisticated silhouette shapes, foreground/midground/background, elegant curling diagonals, controlled cel-painted highlights and warm gold edges. Transfer their graphic logic to an entirely different subject. Full-bleed horizontal 16:9 illustration, no characters, text, marks, logo, lettering, UI, presentation mockup or panel borders. Each object simplified into highly legible sculptural planes. Very subtle pigment grain. No ink wash, no mountains, no environment resembling a lake or landscape, no 3D realism. Scene for a chapter about learning from a real memory and leaving something useful to the next person. An intimate archive still life. On the RIGHT, a lacquered sage-green storage drawer slightly ajar, with folded blank ivory notes and small blank paper dividers, amber lamp light coming from the upper right and falling in a soft clean diagonal down the drawers. Three levels of layered dividers loosely suggest experience, reflection, and transfer. Restrained memory objects, precise composition, deep tea-green and pale rice-paper, tiny warm gold accents. Reserve the entire LEFT 43% from y=14% to y=77% as very clean warm ivory negative space behind future dark stage text, no contrasting elements or intrusive details. Let a fine sweep of paper curl low at bottom. Calm afternoon atmosphere."
+    }
+  ],
+  "pages": {
+    "P3-01": {
+      "layout": "cover",
+      "tone": "scene",
+      "motion": "unfurl",
+      "side": "left",
+      "focal": "惜真",
+      "intent": "纸边掀开露出柜格与未写字的纸笺，左侧章名像被右上台灯照见。",
+      "refinement": {
+        "typeSize": 76,
+        "vertical": "upper",
+        "artPosition": "full",
+        "artStrength": 1,
+        "duration": 1.45,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p3/cover.webp"
+    },
+    "P3-02": {
+      "layout": "quote",
+      "tone": "scene",
+      "motion": "focus",
+      "side": "left",
+      "focal": "它留下了什么。",
+      "intent": "桌上未题字的纸笺停在右侧灯下，左侧三行原句按停顿进入，末行将目光拉回留下来的东西。",
+      "refinement": {
+        "typeSize": 72,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.94,
+        "duration": 1.3,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p3/pages/P3-02.webp"
+    },
+    "P3-03": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "stagger",
+      "side": "left",
+      "focal": "知识忘了",
+      "intent": "三个短句各在一条窄纸带上，依次进入又各自模糊；静帧保留三句供阅读。",
+      "refinement": {
+        "typeSize": 66,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.82,
+        "duration": 1.26,
+        "stagger": 0.17
+      },
+      "art": "/assets/art/p3/pages/P3-03.webp"
+    },
+    "P3-04": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "rise",
+      "side": "right",
+      "focal": "却不一定会消失。",
+      "intent": "左侧叶片已经离开，刻面仍留一圈被光照见的印迹。右侧三行延续停顿，末句稍重。",
+      "refinement": {
+        "typeSize": 65,
+        "vertical": "upper",
+        "artPosition": "left",
+        "artStrength": 0.9,
+        "duration": 1.36,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p3/pages/P3-04.webp"
+    },
+    "P3-05": {
+      "layout": "media",
+      "tone": "shade",
+      "motion": "focus",
+      "intent": "真实电赛大合照是主画面，工作照依次显影于侧边。优先完整保留人物和工作对象，压暗外边缘即可。",
+      "refinement": {
+        "typeSize": 49,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.69,
+        "duration": 1.22,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p3/pages/P3-05.webp"
+    },
+    "P3-06": {
+      "layout": "custom",
+      "tone": "paper",
+      "motion": "line",
+      "side": "center",
+      "focal": "那块电路板",
+      "intent": "三件具体物并列像三张归档签，细金线依次划过，文字继续可辨。",
+      "refinement": {
+        "typeSize": 54,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.92,
+        "duration": 1.16,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p3/pages/P3-06.webp"
+    },
+    "P3-07": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "stagger",
+      "side": "left",
+      "focal": "时间紧张时的优先级判断",
+      "intent": "三条方法接替归档签，分别从纸底上浮，行宽齐头便于比较。",
+      "refinement": {
+        "typeSize": 54,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.9,
+        "duration": 1.35,
+        "stagger": 0.17
+      },
+      "art": "/assets/art/p3/pages/P3-07.webp"
+    },
+    "P3-08": {
+      "layout": "quote",
+      "tone": "scene",
+      "motion": "focus",
+      "side": "left",
+      "focal": "但方法论会留下来。",
+      "intent": "右侧摊开久用的空白笔记本，一道细金光穿纸而出，被石质扣环留住。左侧以更清楚的第二行落在方法论。",
+      "refinement": {
+        "typeSize": 75,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.95,
+        "duration": 1.47,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p3/pages/P3-08.webp"
+    },
+    "P3-09": {
+      "layout": "media",
+      "tone": "paper",
+      "motion": "still",
+      "side": "right",
+      "intent": "左边装裱真实 805 系统截图并保证界面可读，右边保留两行原问题，使用同一入画基线。",
+      "refinement": {
+        "typeSize": 52,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.74,
+        "duration": 0.85,
+        "stagger": 0
+      },
+      "art": "/assets/art/p3/pages/P3-09.webp"
+    },
+    "P3-10": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "focus",
+      "side": "center",
+      "focal": "少走一点相同的弯路？",
+      "intent": "问句两行居中，底缘一段曲折的纸路为弯路收尾。第二行随着遮罩打开。",
+      "refinement": {
+        "typeSize": 66,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.9,
+        "duration": 1.16,
+        "stagger": 0.09
+      },
+      "art": "/assets/art/p3/pages/P3-10.webp"
+    },
+    "P3-11": {
+      "layout": "process",
+      "tone": "paper",
+      "motion": "line",
+      "side": "center",
+      "focal": "03 号盒",
+      "intent": "维持柜子、第 3 层、03 号盒、元件名的可读层级；金线依次深入到最内侧。",
+      "refinement": {
+        "typeSize": 49,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.83,
+        "duration": 1.48,
+        "stagger": 0.13
+      },
+      "art": "/assets/art/p3/pages/P3-11.webp"
+    },
+    "P3-12": {
+      "layout": "split",
+      "tone": "paper",
+      "motion": "stagger",
+      "side": "center",
+      "focal": "少走一点弯路",
+      "intent": "将招生实践与实验室系统横向并列，使用同一末行汇合，读出把经历留给下一人的共同点。",
+      "refinement": {
+        "typeSize": 43,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.86,
+        "duration": 1.26,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p3/pages/P3-12.webp"
+    },
+    "P3-13": {
+      "layout": "quote",
+      "tone": "scene",
+      "motion": "still",
+      "side": "left",
+      "focal": "可以成为新的起点。",
+      "intent": "右侧半开的抽屉里，在旧档签旁长出一株新芽。画面保持静止，给经验的有限性留足纸面。",
+      "refinement": {
+        "typeSize": 67,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.94,
+        "duration": 1.05,
+        "stagger": 0
+      },
+      "art": "/assets/art/p3/pages/P3-13.webp"
+    },
+    "P3-14": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "focus",
+      "side": "left",
+      "focal": "转化成实实在在的成果？",
+      "intent": "以冷银细线接管暖金，压低上一章的环境亮度，把成果一词推向下一章。",
+      "refinement": {
+        "typeSize": 65,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.96,
+        "duration": 1.43,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p3/pages/P3-14.webp"
+    },
+    "P3-15": {
+      "layout": "interactive",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "保留 experience 现场单选投票、四项原选项和 55 秒计时，未开始时不预填结果。",
+      "refinement": {
+        "typeSize": 51,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.73,
+        "duration": 1.15,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p3/pages/P3-15.webp",
+      "media": [
+        {
+          "src": "/assets/art/story34/si-voting-lanyan.png",
+          "alt": "蓝砚捧着经验索引盒，请观众选择一项"
+        }
+      ]
+    },
+    "P3-16": {
+      "layout": "coda",
+      "tone": "shade",
+      "motion": "pulse",
+      "side": "center",
+      "focal": "惜真",
+      "intent": "在暗下来的纸面中央盖上惜真章，留下印面和一线暖光后退出。",
+      "refinement": {
+        "typeSize": 86,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.9,
+        "duration": 1.34,
+        "stagger": 0
+      },
+      "art": "/assets/art/p3/pages/P3-16.webp"
+    }
+  }
+}

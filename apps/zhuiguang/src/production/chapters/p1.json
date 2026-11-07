@@ -1,0 +1,286 @@
+{
+  "chapter": 1,
+  "motif": "迎向观众的拥抱、相遇和先迈出一步",
+  "palette": {
+    "paper": "#f9e8c9",
+    "ink": "#442e22",
+    "accent": "#a85d27",
+    "shade": "#372a25"
+  },
+  "art": "/assets/art/approved/fe-open-screens.webp",
+  "assetSources": [
+    {
+      "path": "/assets/art/approved/fe-open-screens.webp",
+      "references": [
+        "视觉风格参考图 (1).png",
+        "视觉风格参考图 (2).png"
+      ],
+      "provenance": "追光者-章首与资产样库/imagegen-prompts.json",
+      "usage": "已验收 Fe 底图，保留独立半身蓝砚层"
+    }
+  ],
+  "pages": {
+    "P1-01": {
+      "layout": "cover",
+      "tone": "scene",
+      "motion": "unfurl",
+      "intent": "照搬验收版 Fe 的画面关系。蓝砚半身在右侧张开双臂，米白金绸从她身后展开，标题在左侧净区。",
+      "side": "left",
+      "reuseReason": "用户已验收 Fe 米白金绸与蓝砚半身拥抱的原版，保持该页画面与透明角色。",
+      "refinement": {
+        "vertical": "middle",
+        "stagger": 0.16,
+        "artPosition": "full",
+        "duration": 1.35,
+        "typeSize": 166,
+        "artStrength": 1
+      }
+    },
+    "P1-02": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "rise",
+      "intent": "像当面聊天一样让两行字靠近左边。第二行靠前，右边空着给观众想起一个人。",
+      "side": "left",
+      "focal": "关系咋样？",
+      "refinement": {
+        "typeSize": 92,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.85,
+        "duration": 1,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p1/pages/P1-02.webp"
+    },
+    "P1-03": {
+      "layout": "interactive",
+      "tone": "paper",
+      "motion": "line",
+      "intent": "沿用私密信封与人数计数。问题和二维码保持可扫描。大屏只呈现人数，全文只进入 Presenter 授权视图。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 57,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.58,
+        "duration": 0.92,
+        "stagger": 0.08
+      },
+      "art": "/assets/art/p1/pages/P1-03.webp"
+    },
+    "P1-04": {
+      "layout": "custom",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "保留高中与大学对照场景。同一基线并排四组差异，以中轴细金线组织阅读顺序。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 53,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.57,
+        "duration": 1.35,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p1/pages/P1-04.webp"
+    },
+    "P1-05": {
+      "layout": "interactive",
+      "tone": "paper",
+      "motion": "pulse",
+      "intent": "用横向弹幕呈现获准公开的课程留言，避开扫码与提问。这一轮与前一页的私信在视觉上明确分开。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 60,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.62,
+        "duration": 1.2,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p1/pages/P1-05.webp"
+    },
+    "P1-06": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "glow",
+      "intent": "片段之间留一页安静的暖暗色静帧，单句缩近画面右侧，不提前泄露下页视频。",
+      "side": "right",
+      "focal": "这样的交流方式。",
+      "refinement": {
+        "typeSize": 79,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.86,
+        "duration": 1.2,
+        "stagger": 0.13
+      },
+      "art": "/assets/art/p1/pages/P1-06.webp"
+    },
+    "P1-07": {
+      "layout": "media",
+      "tone": "shade",
+      "motion": "focus",
+      "intent": "旧有完整校园宣传片居中，保留原声与播放控件，外圈用细暖金边框，作者分工放到片外。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 36,
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 0.78,
+        "duration": 1.01,
+        "stagger": 0.08
+      },
+      "art": "/assets/art/p1/pages/P1-07.webp"
+    },
+    "P1-08": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "片尾回到纸面。先读共同制作的完整句，再读两人的分工，保持姓名位空缺。",
+      "side": "left",
+      "focal": "我负责画面，他负责配音。",
+      "refinement": {
+        "typeSize": 74,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.79,
+        "duration": 1.08,
+        "stagger": 0.16
+      },
+      "art": "/assets/art/p1/pages/P1-08.webp"
+    },
+    "P1-09": {
+      "layout": "quote",
+      "tone": "scene",
+      "motion": "glow",
+      "intent": "回到 Fe 暖色画布，标题沿左侧净区下降，末行「相遇里」压住节奏。人物主位只在开篇使用。",
+      "side": "left",
+      "focal": "藏在没有预料到的相遇里。",
+      "refinement": {
+        "typeSize": 88,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.88,
+        "duration": 1.27,
+        "stagger": 0.15
+      },
+      "art": "/assets/art/p1/pages/P1-09.webp"
+    },
+    "P1-10": {
+      "layout": "custom",
+      "tone": "paper",
+      "motion": "line",
+      "intent": "保留幕后与台前对照。金线从左侧设计物料指向右侧的校园现场，三行文字分层呈现。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 55,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.58,
+        "duration": 1.22,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p1/pages/P1-10.webp"
+    },
+    "P1-11": {
+      "layout": "media",
+      "tone": "paper",
+      "motion": "focus",
+      "intent": "用真实的五张思源照片构成不等大的故事墙。最大图抓住现场，配文保留原句，边框不切人物。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 40,
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 0.67,
+        "duration": 1.06,
+        "stagger": 0.08
+      },
+      "art": "/assets/art/p1/pages/P1-11.webp"
+    },
+    "P1-12": {
+      "layout": "process",
+      "tone": "paper",
+      "motion": "line",
+      "intent": "从报名到走进校园，再到带团队。三站共用一条金线，节奏逐步拉开。",
+      "side": "left",
+      "focal": "带团队做招生实践",
+      "refinement": {
+        "typeSize": 65,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.68,
+        "duration": 1.25,
+        "stagger": 0.16
+      },
+      "art": "/assets/art/p1/pages/P1-12.webp"
+    },
+    "P1-13": {
+      "layout": "custom",
+      "tone": "paper",
+      "motion": "focus",
+      "intent": "四行假设从近到远，使用现有机会场景的字号递减。行距保留足够停顿，不挤成两段说明。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 61,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.68,
+        "duration": 1.34,
+        "stagger": 0.16
+      },
+      "art": "/assets/art/p1/pages/P1-13.webp"
+    },
+    "P1-14": {
+      "layout": "custom",
+      "tone": "scene",
+      "motion": "unfurl",
+      "intent": "把「先迈出一步」放在 Fe 背景左侧干净区域，细线从句下向外画出，最后接原稿行动词。",
+      "side": "left",
+      "focal": "先迈出一步。",
+      "refinement": {
+        "typeSize": 104,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.9,
+        "duration": 1.38,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p1/pages/P1-14.webp"
+    },
+    "P1-15": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "四个「去」共用同一读线，后两行略靠向右侧。每行显露后停留，邀请观众选一件今天能做的事。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 64,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.68,
+        "duration": 1.38,
+        "stagger": 0.16
+      },
+      "art": "/assets/art/p1/pages/P1-15.webp"
+    },
+    "P1-16": {
+      "layout": "coda",
+      "tone": "paper",
+      "motion": "glow",
+      "intent": "合情印收在暖白上。金色温度保留到最后半拍，转到拥实的明亮场地。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 105,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.63,
+        "duration": 1.27,
+        "stagger": 0.11
+      },
+      "art": "/assets/art/p1/pages/P1-16.webp"
+    }
+  }
+}
