@@ -199,6 +199,7 @@ window.SITE = {
 
   /* ---------- 壁纸列表（设置里可切换） ---------- */
   wallpapers: [
+    { id: 'chenyu-live', name: '沉玉谷 · 岁时祭祀（动态）', src: 'assets/img/wall-chenyu-live.webp', dark: true },
     { id: 'chenyu', name: '沉玉 · 山水之间', thumb: 'assets/img/thumb-chenyu.webp', src: 'assets/img/wall-chenyu.webp', dark: false },
     { id: 'bloom',  name: 'Bloom 蓝',   thumb: 'assets/img/thumb-bloom.jpg',  dark: false },
     { id: 'dusk',   name: 'Dusk 暮色',  thumb: 'assets/img/thumb-dusk.jpg',   dark: true },

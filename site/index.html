@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light" data-wall="chenyu" data-align="center">
+<html lang="zh-CN" data-theme="light" data-wall="chenyu-live" data-align="center">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -18,11 +18,11 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
-  <link rel="preload" as="image" href="assets/img/wall-chenyu.webp" />
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/shell.css" />
   <link rel="stylesheet" href="assets/css/apps.css" />
   <link rel="stylesheet" href="assets/css/paper.css" />
+  <link rel="stylesheet" href="assets/css/wallpaper-driver.css" />
   <link rel="stylesheet" href="assets/css/boot-lock.css" />
   <link rel="stylesheet" href="assets/css/update.css" />
   <link rel="preload" as="image" href="assets/img/aidenos-landscape.webp" />
@@ -81,7 +81,9 @@
 
   <!-- ============ 桌面 ============ -->
   <div class="desktop" id="desktop" inert aria-hidden="true">
-    <div class="wallpaper" id="wallpaper" aria-hidden="true"></div>
+    <div class="wallpaper" id="wallpaper" aria-hidden="true">
+      <video class="live-wallpaper" id="liveWallpaper" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback></video>
+    </div>
     <div class="desktop-signature" aria-hidden="true">
       <span class="signature-kicker">AIDEN / DIGITAL DESKTOP</span>
       <span class="signature-title">山水在侧，想法在手。</span>
@@ -102,6 +104,7 @@
       <div class="tb-left" id="tbLeft"></div>
       <div class="tb-center" id="tbCenter"></div>
       <div class="tb-right" id="tbRight">
+        <button type="button" class="tray-btn wallpaper-tray" id="wallpaperTray" aria-label="Aiden Wallpaper Driver" aria-haspopup="dialog" title="Aiden Wallpaper Driver"></button>
         <button class="tray-btn" id="trayTray" aria-label="系统托盘" title="系统托盘">
           <span id="trayIcons"></span>
         </button>
@@ -156,6 +159,7 @@
   <script src="assets/js/apps-about.js"></script>
   <script src="assets/js/apps-system.js"></script>
   <script src="assets/js/apps-task-manager.js"></script>
+  <script src="assets/js/wallpaper-driver.js"></script>
   <!-- 应用注册表 + 启动 -->
   <script src="assets/js/apps.js"></script>
   <script src="assets/js/main.js"></script>

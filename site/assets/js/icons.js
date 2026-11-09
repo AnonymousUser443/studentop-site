@@ -54,6 +54,9 @@
     clock: '<circle cx="12" cy="12" r="8.6"/><path d="M12 7v5.5l3.5 2"/>',
     keyboard: '<rect x="2.4" y="6.4" width="19.2" height="11.2" rx="2.2"/><path d="M6 10h.02M9.2 10h.02M12.4 10h.02M15.6 10h.02M18.8 10h.02M7 13.6h10"/>',
     display: '<rect x="3" y="4.4" width="18" height="15.2" rx="2.2"/><path d="m4 16.2 4.8-4.4 3.9 3.4 3.1-2.6 5.2 4.4"/>',
+    'wallpaper-driver': '<rect x="3" y="4.5" width="18" height="14" rx="2.5"/><path d="m4 16 5-5 3.5 3.5M9 22h6m-3-3.5V22"/><path d="m14 8 4.5 3L14 14z" fill="currentColor" stroke="none"/>',
+    play: '<path d="m8 5 11 7-11 7z" fill="currentColor" stroke="none"/>',
+    pause: '<path d="M9 6v12m6-12v12" stroke-width="2.7"/>',
     sparkle: '<path d="M12 3.2l1.9 5 5 1.9-5 1.9-1.9 5-1.9-5-5-1.9 5-1.9z"/><path d="M18.6 16.2l.8 2.1 2.1.8-2.1.8-.8 2.1-.8-2.1-2.1-.8 2.1-.8z"/>',
     pencil: '<path d="M15.4 4.6 19.4 8.6 8.6 19.4l-4.8 1 1-4.8z"/><path d="m13.6 6.4 4 4"/>',
     link: '<path d="M10 14a4.2 4.2 0 0 0 5.9 0l2.4-2.4a4.2 4.2 0 0 0-5.9-5.9L11 7.1"/><path d="M14 10a4.2 4.2 0 0 0-5.9 0l-2.4 2.4a4.2 4.2 0 0 0 5.9 5.9l1.4-1.4"/>',
@@ -66,6 +69,7 @@
 
   /* Paper-cut application icons (48 × 48). Flat cut layers, no duplicate SVG ids. */
   var A = {};
+  A['wallpaper-driver'] = '<rect x="3" y="5" width="42" height="32" rx="7" fill="#183e31" stroke="#8bac92"/><rect x="7" y="9" width="34" height="23" rx="3" fill="#e2e8cc"/><path d="M7 29 17 17l10 10 6-7 8 9v3H7Z" fill="#72a58b"/><path d="M12 32c5-4 14-7 21-6" fill="none" stroke="#346c57" stroke-width="1.5"/><path d="m28 12 9 5-9 5z" fill="#9a661d"/><path d="M24 37v5m-8 0h16" stroke="#ae925a" stroke-width="2.5" stroke-linecap="round"/>';
   A['task-manager'] = '<rect x="5" y="5" width="38" height="38" rx="7" fill="#204a5c" stroke="#bbd5d8"/><rect x="9" y="10" width="30" height="27" rx="2" fill="#d9edf0"/><path d="M10 25h6l4-12 7 20 5-13 3 5h3" fill="none" stroke="#307d9b" stroke-width="2.7" stroke-linejoin="round"/><path d="M11 39h26" stroke="#9baea8" stroke-width="2"/>';
   A.start = "<g fill=\"#173e31\" opacity=\".2\" transform=\"translate(1.5 2)\"><rect x=\"5\" y=\"5\" width=\"17\" height=\"17\" rx=\"1.5\"/><rect x=\"26\" y=\"5\" width=\"17\" height=\"17\" rx=\"1.5\"/><rect x=\"5\" y=\"26\" width=\"17\" height=\"17\" rx=\"1.5\"/><rect x=\"26\" y=\"26\" width=\"17\" height=\"17\" rx=\"1.5\"/></g><g stroke=\"#d9d8b3\" stroke-width=\".8\"><rect x=\"4\" y=\"4\" width=\"17\" height=\"17\" rx=\"1.5\" fill=\"#3d8974\"/><rect x=\"25\" y=\"4\" width=\"17\" height=\"17\" rx=\"1.5\" fill=\"#72aa8d\"/><rect x=\"4\" y=\"25\" width=\"17\" height=\"17\" rx=\"1.5\" fill=\"#246653\"/><rect x=\"25\" y=\"25\" width=\"17\" height=\"17\" rx=\"1.5\" fill=\"#43816b\"/></g>";
   A.thispc = "<path d=\"M20 32h8v8h-8z\" fill=\"#8f9b7e\"/><rect x=\"12\" y=\"40\" width=\"24\" height=\"3\" rx=\"1.5\" fill=\"#c9b77e\"/><rect x=\"3\" y=\"6\" width=\"42\" height=\"29\" rx=\"4\" fill=\"#244d3d\" stroke=\"#b6c9a8\"/><rect x=\"6\" y=\"9\" width=\"36\" height=\"21\" rx=\"1\" fill=\"#dfe7c9\"/><circle cx=\"33\" cy=\"15\" r=\"4\" fill=\"#d7b667\"/><path d=\"M6 28l12-13 10 10 7-6 7 9v2H6z\" fill=\"#9cbea2\"/><path d=\"M6 30l9-7 9 5 7-7 11 9z\" fill=\"#47826b\"/><path d=\"M8 10h32\" stroke=\"#fffbea\" opacity=\".7\"/>";

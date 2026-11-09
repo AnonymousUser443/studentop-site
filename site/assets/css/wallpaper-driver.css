@@ -1,0 +1,105 @@
+:root[data-wall="chenyu-live"] .wallpaper {
+  background: #193f33 url("../img/wall-chenyu-live.webp") center / cover no-repeat;
+}
+
+.live-wallpaper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  visibility: hidden;
+}
+:root[data-wall="chenyu-live"] .live-wallpaper[src] { visibility: visible; }
+
+.wallpaper-tray {
+  position: relative;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 38px;
+  padding: 0;
+}
+.wallpaper-tray svg { width: 19px; height: 19px; }
+.wallpaper-tray[data-playback="playing"]::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  bottom: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-ink);
+}
+
+.wallpaper-driver { gap: 0; padding: clamp(12px, 2vw, 20px); }
+.wallpaper-feature {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 28px;
+  aspect-ratio: 2.3;
+  min-height: 132px;
+  padding: clamp(14px, 2.5vw, 24px);
+  border: 1px solid var(--gold-line);
+  border-radius: 5px 5px 16px 5px;
+  background: #214235;
+  color: #fff8df;
+}
+.wallpaper-feature img, .wallpaper-feature::after {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.wallpaper-feature img { object-fit: cover; object-position: 50% 55%; }
+.wallpaper-feature::after {
+  content: "";
+  background: linear-gradient(180deg, #122c259c, transparent 42%, #122c25db);
+}
+.wallpaper-edition {
+  border: 1px solid #ead9a783;
+  border-radius: 4px;
+  padding: 4px 8px;
+  background: #152e26de;
+  font-size: 11px;
+  letter-spacing: .1em;
+}
+.wallpaper-feature h2 {
+  margin: 0;
+  font: 600 clamp(19px, 2.5vw, 28px)/1.35 var(--font-display);
+  text-shadow: 0 1px 8px #152e26;
+}
+.wallpaper-feature h2 span { color: #ebcd8a; }
+.wallpaper-controls { display: grid; gap: 14px; padding: 16px 2px 0; }
+.wallpaper-control-head, .wallpaper-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.wallpaper-control-head { justify-content: space-between; font-size: 12px; color: var(--text-secondary); }
+.wallpaper-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 9px;
+  border: 1px solid var(--stroke-2);
+  border-radius: 999px;
+  color: var(--text-primary);
+}
+.wallpaper-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--text-tertiary); }
+.wallpaper-status[data-playback="playing"] { background: var(--accent-soft); color: var(--accent-ink); }
+.wallpaper-status[data-playback="playing"]::before { background: currentColor; }
+.wallpaper-actions .btn { min-height: 38px; }
+.wallpaper-note { margin: 0; font-size: 12px; line-height: 1.6; color: var(--text-secondary); }
+
+@media (max-width: 900px) {
+  .wallpaper-tray { display: grid; width: 34px; height: 42px; }
+  .wallpaper-actions .btn { min-height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-wall="chenyu-live"] .live-wallpaper[src] { visibility: hidden; }
+}
+:root[data-motion="off"][data-wall="chenyu-live"] .live-wallpaper[src] { visibility: hidden; }
