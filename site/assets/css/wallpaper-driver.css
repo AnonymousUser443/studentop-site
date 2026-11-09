@@ -12,6 +12,7 @@
   visibility: hidden;
 }
 :root[data-wall="chenyu-live"] .live-wallpaper[src] { visibility: visible; }
+body.is-locked #liveWallpaper { visibility: hidden; }
 
 .wallpaper-tray {
   position: relative;

@@ -2,10 +2,11 @@
   'use strict';
 
   var ID = 'wallpaper-driver', LIVE = 'chenyu-live', TITLE = 'Aiden Wallpaper Driver';
-  var sources = {
-    hd: 'assets/media/chenyu-live-1080.mp4',
-    light: 'assets/media/chenyu-live-720.mp4'
-  };
+  var sources = [
+    { src: 'assets/media/chenyu-live-4k-av1.mp4', codec: 'av01.0.12M.10', width: 3840, height: 2160, bitrate: 3874619, label: '4K AV1' },
+    { src: 'assets/media/chenyu-live-1080.mp4', codec: 'avc1.640028', width: 1920, height: 1080, bitrate: 2923458, label: '1080p H.264' },
+    { src: 'assets/media/chenyu-live-720.mp4', codec: 'avc1.64001f', width: 1280, height: 720, bitrate: 1166776, label: '720p H.264' }
+  ];
   var labels = {
     locked: '桌面已锁定', static: '静态壁纸', reduced: '已减少动态效果',
     hidden: '后台已暂停', paused: '已暂停', loading: '正在加载',
@@ -15,6 +16,7 @@
   var state = 'locked', failure = '', paused = Win.store.get('wallpaperDriverPaused', false) === true;
   var staticWall = Win.store.get('wallpaperDriverStatic', 'chenyu');
   var pending = false, attempt = 0;
+  var media = null, preparing = null, nextSource = 0;
 
   function selected() { return Win.prefs.wall === LIVE; }
   function publish(next) {
@@ -28,39 +30,99 @@
     Win.bus.emit('wallpaper:playback', state);
   }
 
-  function stop(unload) {
+  function stop() {
     ++attempt;
     pending = false;
     if (!video.paused) video.pause();
-    if (unload && video.hasAttribute('src')) {
-      video.removeAttribute('src');
-      video.removeAttribute('poster');
-      video.load();
+  }
+
+  function unload() {
+    stop();
+    if (!media) return;
+    var url = media.url;
+    media = null;
+    video.removeAttribute('src');
+    video.removeAttribute('poster');
+    video.load();
+    URL.revokeObjectURL(url);
+  }
+
+  async function canDecode(source) {
+    var contentType = 'video/mp4; codecs="' + source.codec + '"';
+    if (!video.canPlayType(contentType)) return false;
+    if (!navigator.mediaCapabilities || !navigator.mediaCapabilities.decodingInfo) return true;
+    try {
+      var result = await navigator.mediaCapabilities.decodingInfo({
+        type: 'file',
+        video: { contentType: contentType, width: source.width, height: source.height, bitrate: source.bitrate, framerate: 24 }
+      });
+      return result.supported;
+    } catch (_) {
+      return true;
     }
   }
 
-  function source() {
-    var connection = navigator.connection;
-    return Win.isMobile() || (connection && (connection.saveData || /^(slow-2g|2g|3g)$/.test(connection.effectiveType)))
-      ? sources.light : sources.hd;
+  async function prepare() {
+    if (media || preparing || failure || paused || document.hidden) return;
+    var controller = new AbortController();
+    preparing = controller;
+    var signal = controller.signal;
+    while (nextSource < sources.length && !signal.aborted) {
+      var source = sources[nextSource++];
+      var supported = await canDecode(source);
+      if (signal.aborted) return;
+      if (!supported) continue;
+      try {
+        // Reading the whole response once keeps playback independent of network buffering.
+        var response = await fetch(source.src, { signal: signal });
+        if (!response.ok || response.status === 206) continue;
+        var blob = await response.blob();
+        if (signal.aborted) return;
+        if (!blob.size) continue;
+        media = { url: URL.createObjectURL(blob), label: source.label };
+      } catch (_) {
+        if (signal.aborted) return;
+        continue;
+      }
+      preparing = null;
+      video.poster = Win.wallpaperUrl(LIVE);
+      video.src = media.url;
+      video.load();
+      sync();
+      return;
+    }
+    if (signal.aborted) return;
+    preparing = null;
+    failure = 'error';
+    sync();
+  }
+
+  function tryNextSource() {
+    unload();
+    sync();
   }
 
   function sync() {
     if (!video) return;
-    if (Win.isLocked() || !selected() || Win.reduceMotion()) {
+    var locked = Win.isLocked();
+    if (!selected() || Win.reduceMotion()) {
+      if (preparing) preparing.abort();
+      preparing = null;
+      nextSource = 0;
       failure = '';
-      stop(true);
-      publish(Win.isLocked() ? 'locked' : !selected() ? 'static' : 'reduced');
-    } else if (document.hidden || paused) {
-      stop(false);
-      publish(paused ? 'paused' : 'hidden');
+      unload();
+      publish(locked ? 'locked' : !selected() ? 'static' : 'reduced');
+    } else if (locked || document.hidden || paused) {
+      stop();
+      publish(locked ? 'locked' : paused ? 'paused' : 'hidden');
+      // Startup reaches this branch before the BIOS animation. The gate owns when playback can start.
+      if (locked) void prepare();
     } else if (failure) {
       publish(failure);
+    } else if (!media) {
+      publish('loading');
+      void prepare();
     } else if (!pending && video.paused) {
-      if (!video.hasAttribute('src')) {
-        video.poster = Win.wallpaperUrl(LIVE);
-        video.src = source();
-      }
       var current = ++attempt;
       pending = true;
       publish('loading');
@@ -69,9 +131,10 @@
       }).catch(function (err) {
         if (current !== attempt) return;
         pending = false;
-        failure = err && err.name === 'NotAllowedError' ? 'blocked' : 'error';
-        if (failure === 'error') stop(true);
-        publish(failure);
+        if (err && err.name === 'NotAllowedError') {
+          failure = 'blocked';
+          publish(failure);
+        } else tryNextSource();
       });
     }
   }
@@ -86,6 +149,7 @@
   function toggle() {
     if (Win.isLocked()) return;
     if (!selected() || paused || failure) {
+      if (failure === 'error') nextSource = 0;
       failure = '';
       setPaused(false);
       Win.setPref('wall', LIVE);
@@ -119,16 +183,13 @@
       if (state === 'playing' && !video.paused) publish('loading');
     });
     video.addEventListener('pause', function () {
-      if (video.paused && (state === 'playing' || state === 'loading') && !pending) {
+      if (media && !video.error && video.paused && (state === 'playing' || state === 'loading') && !pending) {
         failure = 'blocked';
         publish(failure);
       }
     });
     video.addEventListener('error', function () {
-      if (!video.hasAttribute('src')) return;
-      failure = 'error';
-      stop(true);
-      publish(failure);
+      if (media && video.error) tryNextSource();
     });
     Win.bus.on('unlock', sync);
     Win.bus.on('lock:request-close-all', sync);
@@ -181,7 +242,7 @@
       play.disabled = Win.reduceMotion() && selected();
       still.disabled = !selected();
       var label = labels[state];
-      if (state === 'playing' && video.videoHeight) label += ' · ' + video.videoHeight + 'p';
+      if (state === 'playing' && media) label += ' · ' + media.label;
       if (status.textContent !== label) status.textContent = label;
       status.dataset.playback = state;
       note.textContent = state === 'reduced' ? '桌面或系统开启了减少动态效果，当前显示静态画面。'
