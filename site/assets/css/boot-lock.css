@@ -27,17 +27,13 @@ body.is-locked.is-gate-revealing #desktop { visibility: visible; }
 .is-boot-formed .gate-wordmark { opacity: 1; transition: opacity 350ms ease; }
 .gate-boot-tagline { position: absolute; z-index: 2; top: calc(40% + clamp(42px, 4.4vw, 71px)); left: 0; right: 0; margin: 0; text-align: center; font: 400 clamp(12px, 1.15vw, 18px)/1.6 var(--font-display); color: #e5d8b2; letter-spacing: .25em; opacity: 0; }
 .is-boot-formed .gate-boot-tagline { animation: gate-caption-reveal 850ms 300ms ease both; }
-.gate-loader { position: absolute; z-index: 5; left: 50%; bottom: max(7.6vh, 45px); transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 14px; min-width: 220px; padding: 10px 18px; color: #e2d8bb; font: 400 12px/1.5 var(--font-ui); letter-spacing: .32em; white-space: nowrap; opacity: 0; transition: color 180ms; cursor: pointer; }
+.gate-loader { position: absolute; z-index: 5; left: 50%; bottom: max(7.6vh, 45px); transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 14px; min-width: 220px; padding: 10px 18px; color: #e2d8bb; font: 400 12px/1.5 var(--font-ui); letter-spacing: .22em; white-space: nowrap; opacity: 0; font-variant-numeric: tabular-nums; }
 .is-boot-formed .gate-loader { animation: gate-caption-reveal 700ms 500ms ease both; }
-.gate-loader:hover { color: #fff5d9; }
+.is-boot-settled :is(.gate-art, .gate-boot-tagline, .gate-loader) { animation: none; opacity: 1; }
 .gate-loader-ring { width: 48px; height: 48px; overflow: visible; animation: gate-loader-spin 1450ms linear infinite; }
 .gate-loader-ring circle { fill: none; stroke-width: 2.4; }
 .gate-loader-track { stroke: rgba(136, 187, 159, .12); }
 .gate-loader-arc { stroke: url(#gateLoaderGradient); stroke-linecap: round; stroke-dasharray: 102 132; animation: gate-loader-breathe 2100ms ease-in-out infinite; }
-.gate-loader-dots { display: inline; animation: gate-dots 1500ms ease-in-out infinite; }
-.gate-skip { position: absolute; z-index: 6; right: max(25px, env(safe-area-inset-right)); bottom: max(22px, env(safe-area-inset-bottom)); display: inline-flex; align-items: center; gap: 10px; padding: 8px 0 8px 12px; color: #b4c0b5; background: none; border: 0; font: 11px/1.4 var(--font-ui); opacity: .72; }
-.gate-skip:hover { opacity: 1; color: #f4edda; }
-.gate-skip span { border: 1px solid rgba(176, 194, 178, .28); border-radius: 4px; padding: 2px 5px; font-size: 9px; }
 .gate-clock-view { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: clamp(62px, 17vh, 175px) 24px max(42px, env(safe-area-inset-bottom)); overflow: hidden; touch-action: none; color: #fff; }
 .desktop-gate .lock-inner { position: relative; flex: 0 0 auto; margin: 0; padding: 0; transform: none; background: none; color: #fff; border: 0; border-radius: 0; box-shadow: none; animation: gate-clock-in 600ms var(--ease-decel) both; text-align: center; text-shadow: 0 2px 22px rgba(0, 0, 0, .2); }
 .desktop-gate .lock-clock { font: 500 clamp(72px, 10.7vh, 118px)/1.06 var(--font-ui); letter-spacing: -.06em; font-variant-numeric: tabular-nums; }
@@ -89,7 +85,6 @@ body.is-locked.is-gate-revealing #desktop { visibility: visible; }
 @keyframes gate-caption-reveal { from { opacity: 0; } to { opacity: 1; } }
 @keyframes gate-loader-spin { to { transform: rotate(360deg); } }
 @keyframes gate-loader-breathe { 0%, 100% { stroke-dasharray: 100 132; } 50% { stroke-dasharray: 54 132; } }
-@keyframes gate-dots { 0%, 100% { opacity: .4; } 50% { opacity: 1; } }
 @keyframes gate-swipe-hint { 0%, 70%, 100% { transform: translateY(0); opacity: .65; } 85% { transform: translateY(-4px); opacity: 1; } }
 @keyframes gate-clock-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @keyframes gate-clock-out { from { opacity: 1; transform: translateY(calc(var(--gate-swipe) * -90px)); } to { opacity: 0; transform: translateY(-160px); } }
@@ -102,7 +97,6 @@ body.is-locked.is-gate-revealing #desktop { visibility: visible; }
   .gate-art-mountains { -webkit-mask-image: linear-gradient(transparent 42%, #000 53%, #000 66%, transparent 76%); mask-image: linear-gradient(transparent 42%, #000 53%, #000 66%, transparent 76%); }
   .gate-loader { bottom: 12%; font-size: 10px; gap: 12px; letter-spacing: .22em; }
   .gate-loader-ring { width: 40px; height: 40px; }
-  .gate-skip { right: 18px; bottom: max(17px, env(safe-area-inset-bottom)); font-size: 10px; }
   .gate-clock-view { padding-top: max(115px, 18vh); padding-bottom: max(45px, env(safe-area-inset-bottom)); }
   .desktop-gate .lock-clock { font-size: 84px; }
   .desktop-gate .lock-date, .desktop-gate .lock-weekday { font-size: 15px; }

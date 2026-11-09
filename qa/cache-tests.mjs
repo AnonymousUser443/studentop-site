@@ -13,7 +13,8 @@ function fixture(base){
  const src=path.join(base,'source');
  write(path.join(src,'index.html'),'<!doctype html><html><head><link rel="canonical" href="https://site.invalid/"><meta property="og:image" content="https://site.invalid/assets/img/photo.svg"><link rel="stylesheet" href="assets/css/main.css"><link rel="icon" href="assets/img/photo.svg"></head><body><img src="assets/img/photo.svg"><img srcset="assets/img/photo.svg 1x, /assets/img/photo.svg 2x"><script src="assets/js/main.js"></script></body></html>');
  write(path.join(src,'projects/index.html'),'<html><head><link rel="stylesheet" href="../assets/css/main.css"></head><body><script src="../assets/js/main.js"></script></body></html>');
- write(path.join(src,'assets/js/main.js'),'window.PICTURE="assets/img/photo.svg";window.EXTERNAL="https://other.invalid/assets/img/photo.svg";window.DATA="data:image/svg+xml,test";');
+ write(path.join(src,'assets/js/main.js'),'window.PICTURE="assets/img/photo.svg";window.VIDEO="assets/media/wallpaper.mp4";window.EXTERNAL="https://other.invalid/assets/img/photo.svg";window.DATA="data:image/svg+xml,test";');
+ write(path.join(src,'assets/media/wallpaper.mp4'),Buffer.from([0,1,2,3]));
  write(path.join(src,'assets/css/main.css'),'@font-face{src:url("../fonts/font.woff2")} .photo{background:url("../img/photo.svg")} .absolute{background:url(/assets/img/photo.svg)}');
  write(path.join(src,'assets/img/photo.svg'),'<svg xmlns="http://www.w3.org/2000/svg"><text>synthetic one</text></svg>');
  write(path.join(src,'assets/fonts/font.woff2'),Buffer.from([0,1,2,3]));
@@ -33,6 +34,7 @@ test('changed media changes id and HTML/JS URLs while retaining the previous nam
  write(path.join(src,'assets/img/photo.svg'),old.toString().replace('one','two'));const second=buildSite(src,out);assert.notEqual(first.id,second.id);assert.deepEqual(verifySiteBuild(out).releases,[second.id,first.id]);assert.deepEqual(readFileSync(path.join(out,oldURL.slice(1))),old);assert.ok(existsSync(path.join(out,'assets/img/photo.svg')));assert.ok(readFileSync(path.join(out,'index.html'),'utf8').includes('https://site.invalid/assets/releases/'+second.id+'/img/photo.svg'));
  for(const name of ['index.html','projects/index.html']){const html=readFileSync(path.join(out,name),'utf8');assert.ok(html.includes('<meta name="site-version" content="'+second.id+'">'));assert.ok(html.includes('/assets/releases/'+second.id+'/'));assert.ok(!html.includes('/assets/releases/'+first.id+'/'));}
  const js=readFileSync(path.join(out,'assets/releases/'+second.id+'/js/main.js'),'utf8');assert.ok(js.includes('"/assets/releases/'+second.id+'/img/photo.svg"'));assert.ok(js.includes('https://other.invalid/assets/img/photo.svg'));assert.ok(js.includes('data:image/svg+xml,test'));
+ assert.ok(js.includes('"/assets/releases/'+second.id+'/media/wallpaper.mp4"'));assert.deepEqual(readFileSync(path.join(out,'assets/releases',second.id,'media/wallpaper.mp4')),Buffer.from([0,1,2,3]));
  const cssURL='https://site.invalid/assets/releases/'+second.id+'/css/main.css';assert.equal(new URL('../img/photo.svg',cssURL).pathname,'/assets/releases/'+second.id+'/img/photo.svg');const css=readFileSync(path.join(out,'assets/releases/'+second.id+'/css/main.css'),'utf8');assert.ok(css.includes('../fonts/font.woff2'));assert.ok(css.includes('url(/assets/releases/'+second.id+'/img/photo.svg)'));
 }));
 test('URL rewriting preserves query and fragment but never changes remote or API URLs',()=>{

@@ -12,7 +12,6 @@ async function submit(s,text){await s.click('#gateAnswer');await s.call('Input.i
 async function signin(s,f,{navigate=true}={}){
  if(navigate)await s.navigate(f.origin+'/');
  await until(()=>s.evaluate('!!window.DesktopGate'),5000,'gate initialized');
- if(await s.evaluate('document.querySelector("#lockScreen").dataset.gateView==="boot"'))await s.click('#gateSkip');
  await phase(s,'clock');await ready(s);await s.click('#gateLogin');await phase(s,'question');await submit(s,f.answer);
  await until(()=>s.evaluate('!Win.isLocked() && !document.querySelector("#desktop").inert'),8000,'authenticated desktop');
  await sleep(250);if(await s.evaluate('!!document.querySelector(".toast-dismiss")'))await s.click('.toast-dismiss');await sleep(220);

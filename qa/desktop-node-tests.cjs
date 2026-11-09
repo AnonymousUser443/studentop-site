@@ -43,7 +43,7 @@ test('desktop store reports persistence failure but preserves in-memory values',
 });
 test('desktop preferences reject corrupt values and external open is never retried',()=>{
   const {Win,opened}=core({stored:{'win11home.v1.prefs':JSON.stringify({themeMode:'bad',motion:'false',accent:'red',align:'bad',wall:'bad'})}});
-  assert.equal(Win.prefs.themeMode,'light'); assert.equal(Win.prefs.motion,true); assert.equal(Win.prefs.wall,'chenyu');
+  assert.equal(Win.prefs.themeMode,'light'); assert.equal(Win.prefs.motion,true); assert.equal(Win.prefs.wall,'chenyu-live');
   assert.equal(Win.validPref('themeMode','dark'),true); assert.equal(Win.validPref('motion',false),true);
   for(const [key,value] of [['themeMode','DARK'],['motion','false'],['accent','red'],['unknown',true]]) assert.equal(Win.validPref(key,value),false);
   assert.equal(Win.openExternal('http://127.0.0.1:5174/'),true);

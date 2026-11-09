@@ -32,6 +32,7 @@ const TYPES = {
   '.avif': 'image/avif', '.gif': 'image/gif', '.ico': 'image/x-icon',
   '.woff2': 'font/woff2', '.woff': 'font/woff', '.ttf': 'font/ttf', '.otf': 'font/otf',
   '.mp3': 'audio/mpeg', '.opus': 'audio/ogg', '.ogg': 'audio/ogg', '.wav': 'audio/wav',
+  '.mp4': 'video/mp4',
 };
 export function within(root, candidate) {
   const relative = path.relative(root, candidate);
@@ -52,7 +53,7 @@ export function publicPath(raw) {
   if (pathname === '/task-manager' || pathname === '/task-manager/' || pathname === '/task-manager/index.html') return 'task-manager/index.html';
   if (['/assets/fonts/OFL-NotoSansSC.txt', '/assets/fonts/OFL-NotoSerifSC.txt'].includes(pathname)) return pathname.slice(1);
   // Public asset subtrees only: never workspace files, manifests, source maps or README.
-  if (!/^\/assets\/(?:css|js|img|fonts|audio)\//.test(pathname)) return null;
+  if (!/^\/assets\/(?:css|js|img|fonts|audio|media)\//.test(pathname)) return null;
   if (path.extname(pathname).toLowerCase() === '.txt' || !Object.hasOwn(TYPES, path.extname(pathname).toLowerCase())) return null;
   if (parts.some(p => /(?:^|[-_.])(secret|credentials?|private|token|password)(?:[-_.]|$)/i.test(p))) return null;
   return pathname.slice(1);

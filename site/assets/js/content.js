@@ -199,6 +199,7 @@ window.SITE = {
 
   /* ---------- 壁纸列表（设置里可切换） ---------- */
   wallpapers: [
+    { id: 'chenyu-live', name: '沉玉谷 · 岁时祭祀（动态）', src: 'assets/img/wall-chenyu-live.webp', dark: true },
     { id: 'chenyu', name: '沉玉 · 山水之间', thumb: 'assets/img/thumb-chenyu.webp', src: 'assets/img/wall-chenyu.webp', dark: false },
     { id: 'bloom',  name: 'Bloom 蓝',   thumb: 'assets/img/thumb-bloom.jpg',  dark: false },
     { id: 'dusk',   name: 'Dusk 暮色',  thumb: 'assets/img/thumb-dusk.jpg',   dark: true },
@@ -208,13 +209,13 @@ window.SITE = {
   ],
 
   /* ---------- 桌面图标（按顺序排两列） ---------- */
-  desktop: ['thispc', 'projects', 'zhuiguang', 'zhuiguang-audience', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'liyun-moyuan', 'rpi-task-manager', 'about', 'skills', 'contact', 'cv', 'notepad', 'terminal', 'settings', 'recycle'],
+  desktop: ['thispc', 'projects', 'zhuiguang-memory', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'liyun-moyuan', 'rpi-task-manager', 'about', 'skills', 'contact', 'cv', 'notepad', 'terminal', 'settings', 'recycle'],
 
   /* ---------- 任务栏固定项 ---------- */
   taskbarPinned: ['thispc', 'projects', 'about', 'terminal', 'settings'],
 
   /* ---------- 开始菜单固定项 ---------- */
-  startPinned: ['about', 'projects', 'zhuiguang', 'zhuiguang-audience', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'liyun-moyuan', 'rpi-task-manager', 'skills', 'contact', 'thispc', 'terminal', 'settings', 'notepad', 'photos', 'cv', 'recycle'],
+  startPinned: ['about', 'projects', 'zhuiguang-memory', 'frost-atlas', 'liyun-explorer', 'genshin-start', 'genshin-original', 'voxel-campus', 'liyun-moyuan', 'rpi-task-manager', 'skills', 'contact', 'thispc', 'terminal', 'settings', 'notepad', 'photos', 'cv', 'recycle'],
 
   /* ---------- 开始菜单「推荐的项目」 ---------- */
   recommended: [

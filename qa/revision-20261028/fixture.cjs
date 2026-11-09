@@ -9,7 +9,7 @@ exports.startFixture=async function({siteRoot,versionId="aaaaaaaaaaaaaaaaaaaaaaa
  const configFile=path.join(dir,'auth.json'),stateFile=path.join(dir,'rate-state.json');
  const answer='Synthetic browser visitor 72';await savePrivate(configFile,await makeConfig(answer));
  let site=await fsp.realpath(siteRoot || path.join(root,'site'));let auth,origin,offset=0,version=versionId;
- const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.webp':'image/webp','.jpg':'image/jpeg','.png':'image/png','.woff2':'font/woff2','.txt':'text/plain; charset=utf-8'};
+ const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.webp':'image/webp','.jpg':'image/jpeg','.png':'image/png','.woff2':'font/woff2','.txt':'text/plain; charset=utf-8','.mp4':'video/mp4'};
  const server=http.createServer((req,res)=>void(async()=>{
   if(req.headers.host!==new URL(origin).host){res.writeHead(403);res.end();return;}
   if(await auth.handle(req,res))return;
@@ -26,8 +26,7 @@ exports.startFixture=async function({siteRoot,versionId="aaaaaaaaaaaaaaaaaaaaaaa
 exports.login=async function(s,f){
  const {until,sleep}=require('../lib.js');await s.navigate(f.origin+'/');
  await until(()=>s.evaluate('!!window.DesktopGate && ["boot","clock"].includes(lockScreen.dataset.gateView)'),6000,'gate initialized');
- if(await s.evaluate('lockScreen.dataset.gateView==="boot"'))await s.click('#gateSkip');
- await until(()=>s.evaluate('lockScreen.dataset.gatePhase==="clock" && lockScreen.dataset.gateStatus==="ready"'),6000,'gate ready');
+ await until(()=>s.evaluate('lockScreen.dataset.gatePhase==="clock" && lockScreen.dataset.gateStatus==="ready"'),9000,'gate ready');
  await s.click('#gateLogin');await s.click('#gateAnswer');await s.call('Input.insertText',{text:f.answer});await s.click('#gateSubmit');
  await until(()=>s.evaluate('!Win.isLocked() && !document.querySelector("#desktop").inert'),6000,'server-authenticated desktop');await sleep(250);
 };

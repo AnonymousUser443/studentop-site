@@ -67,11 +67,12 @@
         resetGesture();
       }, 430);
     } else resetGesture();
-    refs.gateQuestionView.hidden = next !== 'question';
+     refs.gateQuestionView.hidden = next !== 'question';
+    if (next === 'clock' && (previous === 'pending' || previous === 'boot')) updateAppearance();
   }
   function focusPrimary() {
     if (suspended || document.visibilityState === 'hidden') return;
-    var node = view === 'boot' ? refs.gateSkip : view === 'question' ? (refs.gateAnswer.disabled ? refs.gateBack : refs.gateAnswer) : refs.gateLogin;
+    var node = view === 'boot' ? refs.lockScreen : view === 'question' ? (refs.gateAnswer.disabled ? refs.gateBack : refs.gateAnswer) : refs.gateLogin;
     if (!node || node.disabled) node = refs.lockScreen;
     node.focus({ preventScroll: true });
   }
@@ -335,22 +336,33 @@
       return !seen;
     } catch (_) { return false; }
   }
-  function playBoot() {
+  function playBoot(animate) {
     if (!locked || bootActive || revealing) return Promise.resolve();
     clearInput();
     bootActive = true;
     setView('boot');
     refs.gateBios.hidden = false;
     refs.gateLogoStage.hidden = false;
-    if (motion) motion.playBoot(reduced());
+    var intro = animate && !reduced();
+    refs.lockScreen.classList.toggle('is-boot-settled', !intro);
+    if (motion) motion.playBoot(!intro);
     else refs.lockScreen.classList.add('is-boot-formed');
-    refs.lockScreen.dataset.gatePhase = reduced() ? 'logo' : 'bios';
+    refs.lockScreen.dataset.gatePhase = intro ? 'bios' : 'logo';
+    setText(refs.gateBootStatus, 'Starting AidenOS…');
     return new Promise(function (resolve) {
-      var timer = null, settled = false;
+      var sceneTimer, introTimer, artworkTimer;
+      var settled = false, introDone = !intro, preloadDone = false;
+      var offDownload = Win.bus.on('wallpaper:download', function (progress) {
+        setText(refs.gateBootStatus, '正在缓存动态壁纸 · ' + progress.label +
+          (progress.percent === null ? '…' : ' · ' + progress.percent + '%'));
+      });
       function finish() {
         if (settled) return;
         settled = true;
-        clearTimeout(timer);
+        clearTimeout(sceneTimer);
+        clearTimeout(introTimer);
+        clearTimeout(artworkTimer);
+        offDownload();
         if (motion) motion.stopBoot();
         finishBoot = null;
         bootActive = false;
@@ -359,13 +371,34 @@
         focusPrimary();
         resolve();
       }
+      function advance() {
+        if (introDone && preloadDone) finish();
+      }
+      async function showLandscape() {
+        refs.lockScreen.dataset.gatePhase = 'logo';
+        refs.lockScreen.classList.add('is-boot-formed');
+        var art = refs.gateBootArt;
+        if (art.decode) {
+          await Promise.race([
+            art.decode().catch(function () {}),
+            new Promise(function (ready) { artworkTimer = setTimeout(ready, 8000); })
+          ]);
+          clearTimeout(artworkTimer);
+        }
+        // Give the splash a paint before the larger media request enters the network queue.
+        await new Promise(function (painted) {
+          requestAnimationFrame(function () { requestAnimationFrame(painted); });
+        });
+        if (settled) return;
+        await WallpaperDriver.preload();
+        preloadDone = true;
+        advance();
+      }
       finishBoot = finish;
       focusPrimary();
-      if (reduced()) { timer = setTimeout(finish, 160); return; }
-      timer = setTimeout(function () {
-        refs.lockScreen.dataset.gatePhase = 'logo';
-        timer = setTimeout(finish, 3300);
-      }, 1900);
+      if (!intro) { void showLandscape(); return; }
+      sceneTimer = setTimeout(showLandscape, 1900);
+      introTimer = setTimeout(function () { introDone = true; advance(); }, 5200);
     });
   }
   function visibleFocusables() {
@@ -390,8 +423,7 @@
     if (event.repeat || event.altKey || event.ctrlKey || event.metaKey) return;
     if (event.key === 'Escape') {
       event.preventDefault(); event.stopPropagation();
-      if (bootActive && finishBoot) finishBoot();
-      else if (revealing) void lock();
+      if (revealing) void lock();
       else if (view === 'question') backToClock();
       return;
     }
@@ -462,7 +494,7 @@
   }
   function wire() {
     if (wired) return;
-    var names = ['lockScreen','lockWall','lockClock','lockDate','lockWeekday','lockAvatar','lockUser','desktop','gatePending','gateBoot','gateBios','gateLogoStage','gateSkip','gateClockView','gateLogin','gateReplay','gateClockRetry','gateClockStatus','gateQuestionView','gateForm','gateFormAvatar','gateAnswer','gateReveal','gateSubmit','gateStatus','gateAttempts','gateCountdown','gateBack','gateRetry'];
+    var names = ['lockScreen','lockWall','lockClock','lockDate','lockWeekday','lockAvatar','lockUser','desktop','gatePending','gateBoot','gateBios','gateLogoStage','gateBootArt','gateBootStatus','gateClockView','gateLogin','gateReplay','gateClockRetry','gateClockStatus','gateQuestionView','gateForm','gateFormAvatar','gateAnswer','gateReveal','gateSubmit','gateStatus','gateAttempts','gateCountdown','gateBack','gateRetry'];
     names.forEach(function (id) { refs[id] = document.getElementById(id); if (!refs[id]) throw new Error('Gate markup unavailable'); });
     wired = true;
     if (window.AidenGateMotion) { try { motion = window.AidenGateMotion.create(refs.lockScreen); } catch (_) { motion = null; } }
@@ -472,18 +504,17 @@
     setText(refs.lockUser, 'Aiden');
     maskDesktop();
     updateClock(new Date());
-    updateAppearance();
     Win.bus.on('clock', updateClock);
-    Win.bus.on('prefs', function () { updateAppearance(); if (reduced() && finishBoot) finishBoot(); if (reduced() && motion && revealing) motion.cancelReveal(); });
+    Win.bus.on('prefs', function () {
+      if (view !== 'pending' && view !== 'boot') updateAppearance();
+      if (reduced() && motion && revealing) motion.cancelReveal();
+    });
     var reduceQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (reduceQuery.addEventListener) reduceQuery.addEventListener('change', function () { if (reduced() && finishBoot) finishBoot(); if (reduced() && motion && revealing) motion.cancelReveal(); });
+    if (reduceQuery.addEventListener) reduceQuery.addEventListener('change', function () { if (reduced() && motion && revealing) motion.cancelReveal(); });
     Win.startClock();
     refs.gateLogin.addEventListener('click', showQuestion);
     refs.gateBack.addEventListener('click', backToClock);
-    refs.gateSkip.addEventListener('click', function () { if (finishBoot) finishBoot(); });
-    var loader = document.getElementById('gateLoader');
-    if (loader) loader.addEventListener('click', function () { if (finishBoot) finishBoot(); });
-    refs.gateReplay.addEventListener('click', function () { if (!busy && !needsRevoke) void playBoot(); });
+    refs.gateReplay.addEventListener('click', function () { if (!busy && !needsRevoke) void playBoot(true); });
     refs.gateForm.addEventListener('submit', function (event) { void submit(event); });
     refs.gateAnswer.addEventListener('compositionstart', function () { composing = true; });
     refs.gateAnswer.addEventListener('compositionend', function () { composing = false; });
@@ -510,10 +541,11 @@
     if (initPromise) return initPromise;
     wire();
     initPromise = (async function () {
-      setView('clock');
       render();
       if (needsRevoke) { await lock(); return; }
-      if (shouldPlayFirstBoot()) await playBoot();
+      var firstBoot = shouldPlayFirstBoot();
+      if (firstBoot || WallpaperDriver.needsPreload()) await playBoot(firstBoot);
+      else setView('clock');
       if (needsRevoke) { if (revokePromise) await revokePromise; else await lock(); return; }
       await synchronize(true);
       if (locked) focusPrimary();
