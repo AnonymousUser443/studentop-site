@@ -26,8 +26,7 @@ exports.startFixture=async function({siteRoot,versionId="aaaaaaaaaaaaaaaaaaaaaaa
 exports.login=async function(s,f){
  const {until,sleep}=require('../lib.js');await s.navigate(f.origin+'/');
  await until(()=>s.evaluate('!!window.DesktopGate && ["boot","clock"].includes(lockScreen.dataset.gateView)'),6000,'gate initialized');
- if(await s.evaluate('lockScreen.dataset.gateView==="boot"'))await s.click('#gateSkip');
- await until(()=>s.evaluate('lockScreen.dataset.gatePhase==="clock" && lockScreen.dataset.gateStatus==="ready"'),6000,'gate ready');
+ await until(()=>s.evaluate('lockScreen.dataset.gatePhase==="clock" && lockScreen.dataset.gateStatus==="ready"'),9000,'gate ready');
  await s.click('#gateLogin');await s.click('#gateAnswer');await s.call('Input.insertText',{text:f.answer});await s.click('#gateSubmit');
  await until(()=>s.evaluate('!Win.isLocked() && !document.querySelector("#desktop").inert'),6000,'server-authenticated desktop');await sleep(250);
 };

@@ -16,9 +16,27 @@
   var state = 'locked', failure = '', paused = Win.store.get('wallpaperDriverPaused', false) === true;
   var staticWall = Win.store.get('wallpaperDriverStatic', 'chenyu');
   var pending = false, attempt = 0;
-  var media = null, preparing = null, nextSource = 0;
+  var media = null, preparing = null, nextSource = 0, decodeTimer = null;
+  var preloadStarted = false;
 
   function selected() { return Win.prefs.wall === LIVE; }
+  function needsPreload() { return selected() && !paused && !Win.reduceMotion(); }
+  function preloadSettled() {
+    return !needsPreload() || failure === 'error' || (media && video.readyState >= video.HAVE_CURRENT_DATA);
+  }
+  function notifyPreloadSettled() { Win.bus.emit('wallpaper:preload-settled'); }
+  function preload() {
+    preloadStarted = true;
+    if (preloadSettled()) return Promise.resolve();
+    return new Promise(function (resolve) {
+      var off = Win.bus.on('wallpaper:preload-settled', function () {
+        if (!preloadSettled()) return;
+        off();
+        resolve();
+      });
+      sync();
+    });
+  }
   function publish(next) {
     if (tray && tray.dataset.playback !== next) {
       tray.dataset.playback = next;
@@ -38,6 +56,7 @@
 
   function unload() {
     stop();
+    clearTimeout(decodeTimer);
     if (!media) return;
     var url = media.url;
     media = null;
@@ -62,6 +81,45 @@
     }
   }
 
+  async function download(source, signal) {
+    var request = new AbortController(), timer;
+    function abort() { request.abort(); }
+    function keepAlive() {
+      clearTimeout(timer);
+      timer = setTimeout(abort, 15000);
+    }
+    signal.addEventListener('abort', abort, { once: true });
+    try {
+      Win.bus.emit('wallpaper:download', { label: source.label, percent: null });
+      keepAlive();
+      var response = await fetch(source.src, { signal: request.signal });
+      if (!response.ok || response.status === 206) return null;
+      keepAlive();
+      if (!response.body || !response.body.getReader) return await response.blob();
+
+      var total = Number(response.headers.get('content-length'));
+      var reader = response.body.getReader(), chunks = [], bytes = 0, lastPercent = -1;
+      for (;;) {
+        var chunk = await reader.read();
+        if (chunk.done) break;
+        keepAlive();
+        chunks.push(chunk.value);
+        bytes += chunk.value.byteLength;
+        if (total > 0) {
+          var percent = Math.min(100, Math.floor(bytes / total * 20) * 5);
+          if (percent !== lastPercent) {
+            lastPercent = percent;
+            Win.bus.emit('wallpaper:download', { label: source.label, percent: percent });
+          }
+        }
+      }
+      return new Blob(chunks, { type: 'video/mp4' });
+    } finally {
+      clearTimeout(timer);
+      signal.removeEventListener('abort', abort);
+    }
+  }
+
   async function prepare() {
     if (media || preparing || failure || paused || document.hidden) return;
     var controller = new AbortController();
@@ -73,12 +131,9 @@
       if (signal.aborted) return;
       if (!supported) continue;
       try {
-        // Reading the whole response once keeps playback independent of network buffering.
-        var response = await fetch(source.src, { signal: signal });
-        if (!response.ok || response.status === 206) continue;
-        var blob = await response.blob();
+        var blob = await download(source, signal);
         if (signal.aborted) return;
-        if (!blob.size) continue;
+        if (!blob || !blob.size) continue;
         media = { url: URL.createObjectURL(blob), label: source.label };
       } catch (_) {
         if (signal.aborted) return;
@@ -88,6 +143,9 @@
       video.poster = Win.wallpaperUrl(LIVE);
       video.src = media.url;
       video.load();
+      decodeTimer = setTimeout(function () {
+        if (media && video.readyState < video.HAVE_CURRENT_DATA) tryNextSource();
+      }, 10000);
       sync();
       return;
     }
@@ -95,6 +153,7 @@
     preparing = null;
     failure = 'error';
     sync();
+    notifyPreloadSettled();
   }
 
   function tryNextSource() {
@@ -112,11 +171,11 @@
       failure = '';
       unload();
       publish(locked ? 'locked' : !selected() ? 'static' : 'reduced');
+      notifyPreloadSettled();
     } else if (locked || document.hidden || paused) {
       stop();
       publish(locked ? 'locked' : paused ? 'paused' : 'hidden');
-      // Startup reaches this branch before the BIOS animation. The gate owns when playback can start.
-      if (locked) void prepare();
+      if (locked && preloadStarted) void prepare();
     } else if (failure) {
       publish(failure);
     } else if (!media) {
@@ -174,6 +233,11 @@
       if (Win.isLocked()) return;
       Shell.closeFlyouts();
       WM.launch(ID);
+    });
+    video.addEventListener('loadeddata', function () {
+      if (!media || video.readyState < video.HAVE_CURRENT_DATA) return;
+      clearTimeout(decodeTimer);
+      notifyPreloadSettled();
     });
     video.addEventListener('playing', function () {
       if (!selected() || paused || Win.reduceMotion() || Win.isLocked() || document.hidden || video.paused) return;
@@ -260,5 +324,5 @@
     id: ID, title: TITLE, icon: ID, width: 548, height: 460, minWidth: 310, minHeight: 275,
     keywords: '动态壁纸 视频 桌面背景 沉玉谷 wallpaper engine', render: render
   });
-  window.WallpaperDriver = { init: init };
+  window.WallpaperDriver = { init: init, needsPreload: needsPreload, preload: preload };
 })();

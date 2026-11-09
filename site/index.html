@@ -17,6 +17,7 @@
   <link rel="canonical" href="https://studentop.cn:14355/" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <link rel="preload" as="image" fetchpriority="high" href="assets/img/aidenos-landscape.webp" />
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/shell.css" />
@@ -25,7 +26,6 @@
   <link rel="stylesheet" href="assets/css/wallpaper-driver.css" />
   <link rel="stylesheet" href="assets/css/boot-lock.css" />
   <link rel="stylesheet" href="assets/css/update.css" />
-  <link rel="preload" as="image" href="assets/img/aidenos-landscape.webp" />
 </head>
 <body class="is-locked">
   <!-- Server-authorized gate. The startup sequence never grants authorization. -->
@@ -36,18 +36,17 @@
     <section class="gate-boot" id="gateBoot" aria-label="网页启动演示" hidden>
       <div class="gate-bios" id="gateBios" aria-hidden="true"></div>
       <div class="gate-logo-stage" id="gateLogoStage" aria-hidden="true">
-        <div class="gate-art gate-art-moon"><img src="assets/img/aidenos-landscape.webp" alt="" width="1672" height="941" draggable="false"></div>
+        <div class="gate-art gate-art-moon"><img id="gateBootArt" src="assets/img/aidenos-landscape.webp" alt="" width="1672" height="941" draggable="false" fetchpriority="high"></div>
         <div class="gate-art gate-art-mountains"><img src="assets/img/aidenos-landscape.webp" alt="" width="1672" height="941" draggable="false"></div>
         <div class="gate-art gate-art-reflection"><img src="assets/img/aidenos-landscape.webp" alt="" width="1672" height="941" draggable="false"></div>
       </div>
       <canvas class="gate-boot-particles" id="gateBootParticles" aria-hidden="true"></canvas>
       <div class="gate-wordmark" id="gateWordmark" aria-label="AidenOS"><span data-boot-word="aiden">Aiden</span><span data-boot-word="os">OS</span></div>
       <p class="gate-boot-tagline">山水在侧，想法在手。</p>
-      <button type="button" class="gate-loader" id="gateLoader" aria-label="正在启动 AidenOS，点击前往锁屏">
+      <div class="gate-loader" id="gateLoader" role="status" aria-live="polite">
         <svg class="gate-loader-ring" viewBox="0 0 52 52" aria-hidden="true"><defs><linearGradient id="gateLoaderGradient"><stop stop-color="#8cc9ad"/><stop offset="1" stop-color="#f6e9c9"/></linearGradient></defs><circle class="gate-loader-track" cx="26" cy="26" r="21"/><circle class="gate-loader-arc" cx="26" cy="26" r="21"/></svg>
-        <span>Starting AidenOS<span class="gate-loader-dots">...</span></span>
-      </button>
-      <button type="button" class="gate-skip" id="gateSkip">跳过开场 <span>Esc</span></button>
+        <span id="gateBootStatus">Starting AidenOS…</span>
+      </div>
     </section>
 
     <section class="gate-clock-view" id="gateClockView" aria-label="锁屏时钟" hidden>

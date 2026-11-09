@@ -99,8 +99,8 @@ async function swipe() {
   await browser.click('#gateReplay');
   await until(() => browser.evaluate('lockScreen.classList.contains("is-boot-formed") && lockScreen.dataset.gateView==="boot"'), 4000, 'mobile opening');
   await sleep(1500); await shot('boot-mobile');
-  await browser.click('#gateLoader'); await ready();
-  await check('loading_button_is_an_actual_skip_action', 'desktop.inert && Win.isLocked() && lockScreen.dataset.gateView==="clock"');
+  await ready();
+  await check('opening_finishes_on_the_locked_clock', 'desktop.inert && Win.isLocked() && lockScreen.dataset.gateView==="clock"');
   await browser.call('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
   await browser.click('#gateReplay'); await ready();
   await check('reduced_motion_skips_long_opening', 'desktop.inert && lockScreen.dataset.gateView==="clock"');
