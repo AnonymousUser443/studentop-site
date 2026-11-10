@@ -28,7 +28,7 @@ export function createExploredState(): ExplorationState {
   return { ...state, discoveredIds: ids, unlockedRegionIds: [...new Set(LANDMARKS.filter(x => ids.includes(x.id)).map(x => x.regionId))] };
 }
 
-export function explore(state: ExplorationState, id: string, location: LocationState, now = Date.now()): ExplorationState {
+export function explore(state: ExplorationState, id: string, location: LocationState, now = performance.now()): ExplorationState {
   const place = LANDMARKS.find(x => x.id === id);
   if (!place || state.discoveredIds.includes(id) || !checkInEligibility(id, location, now).allowed) return state;
   return {

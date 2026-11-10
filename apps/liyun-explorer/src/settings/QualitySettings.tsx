@@ -36,7 +36,6 @@ export default function QualitySettings({ isFullscreen, onFullscreen }: { isFull
       {numberSlider('pixelDensity', '渲染精度', .75, 2, .05, '×')}
       <SettingRow label="光晕层数" customized={changed('glowLayers')} control={<SettingSelect value={String(configured.glowLayers)} options={options([['1', '单层 · 流畅'], ['2', '双层 · 柔和'], ['3', '三层 · 细腻']])} onChange={value => setOverride('glowLayers', Number(value) as 1 | 2 | 3)} ariaLabel="光晕层数" />} />
       <SettingRow label="云纹层数" hint={effective.inkLayers !== configured.inkLayers ? `当前保护策略下生效：${effective.inkLayers} 层` : undefined} customized={changed('inkLayers')} control={<SettingSelect value={String(configured.inkLayers)} options={options([['0', '纯色'], ['1', '单层'], ['2', '叠加']])} onChange={value => setOverride('inkLayers', Number(value) as 0 | 1 | 2)} ariaLabel="云纹层数" />} />
-      {numberSlider('fogFps', '云雾帧率', 12, 60, 1, ' fps')}
       {numberSlider('lightFps', '光效帧率', 15, 60, 1, ' fps')}
       {numberSlider('leafCount', '落叶数量', 0, 30, 1)}
       {numberSlider('moteCount', '微光粒子', 0, 60, 1)}

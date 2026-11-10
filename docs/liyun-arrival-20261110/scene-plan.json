@@ -1,0 +1,43 @@
+{
+  "states": [
+    {
+      "id": "enter",
+      "layers": [
+        "paper",
+        "landscape",
+        "compass",
+        "clouds",
+        "progress"
+      ],
+      "motion": "asynchronous clouds and trace",
+      "trigger": "HTML parsed"
+    },
+    {
+      "id": "loading",
+      "motion": "route reveals with actual resource progress",
+      "trigger": "verified asset completion"
+    },
+    {
+      "id": "ready",
+      "motion": "clouds separate, focus recedes into world",
+      "trigger": "all required assets + catalog photos ready"
+    },
+    {
+      "id": "error",
+      "motion": "still",
+      "trigger": "resource error",
+      "action": "retry"
+    },
+    {
+      "id": "reduced",
+      "motion": "progress only",
+      "trigger": "OS reduced motion or skip"
+    }
+  ],
+  "limits": {
+    "noAudioAutoplay": true,
+    "concurrentFetches": 4,
+    "fogIdleDraws": 0,
+    "maxFogBitmapSide": 2048
+  }
+}

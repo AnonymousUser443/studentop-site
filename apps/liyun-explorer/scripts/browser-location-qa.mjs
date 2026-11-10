@@ -42,6 +42,8 @@ async function open(viewport={width:1440,height:900}, mocked=false, secure=true,
       const test = { callbacks:[],clears:[],time:0, hidden:false,permissionCalls:0,permission:'granted',angle:0,order:[],activations:[],deferPermission:false,resolvePermission:null };
       const now = Date.now;
       Date.now = () => now() + test.time;
+      const elapsed = performance.now.bind(performance);
+      Object.defineProperty(performance,'now',{value:()=>elapsed()+test.time,configurable:true});
       Object.defineProperty(navigator,'geolocation',{value:{
         watchPosition(success,error,options) { test.order.push('gps');test.callbacks.push({success,error,options});return test.callbacks.length-1; },
         clearWatch(id) {test.clears.push(id);},
@@ -72,7 +74,7 @@ async function uv(page) {
 async function emit(page,gps,accuracy=5,index) {
   await page.evaluate(({gps,accuracy,index})=>{
     const t=window.__gpsTest,c=t.callbacks[index ?? t.callbacks.length-1];
-    c.success({timestamp:Date.now(),coords:{latitude:gps.latitude,longitude:gps.longitude,accuracy}});
+    c.success({timestamp:10_000,coords:{latitude:gps.latitude,longitude:gps.longitude,accuracy}});
   },{gps,accuracy,index});
 }
 async function stateIs(page,status) { await page.waitForFunction(status=>document.querySelector('.location-controls')?.getAttribute('data-status')===status,status); }

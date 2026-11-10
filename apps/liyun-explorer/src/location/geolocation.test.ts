@@ -7,18 +7,18 @@ const position = (timestamp = Date.now(), accuracy = 5): GeolocationPosition => 
   timestamp, coords: { latitude:gps.latitude, longitude:gps.longitude, accuracy,
     altitude:null, altitudeAccuracy:null, heading:null, speed:null, toJSON:()=>({}) }, toJSON:()=>({}),
 });
-function harness() {
+function harness(now?: () => number) {
   const callbacks: { success: PositionCallback; error: PositionErrorCallback | null | undefined }[] = [];
   const clearWatch = vi.fn();
   const watchPosition = vi.fn((success: PositionCallback, error?: PositionErrorCallback | null) => {
     callbacks.push({ success, error }); return callbacks.length - 1;
   });
   const update = vi.fn();
-  const session = new CampusLocationSession({watchPosition,clearWatch},update);
+  const session = new CampusLocationSession({watchPosition,clearWatch},update,true,now);
   return {session,callbacks,clearWatch,watchPosition,update};
 }
 const error = (code: number) => ({code,message:'provider error',PERMISSION_DENIED:1,POSITION_UNAVAILABLE:2,TIMEOUT:3}) as GeolocationPositionError;
-afterEach(() => { vi.clearAllTimers(); vi.useRealTimers(); });
+afterEach(() => { vi.clearAllTimers(); vi.useRealTimers(); vi.restoreAllMocks(); });
 
 describe('real location lifecycle', () => {
   it('requests no GPS before an explicit start; uses high accuracy WGS84 with no cached fix', () => {
@@ -42,24 +42,63 @@ describe('real location lifecycle', () => {
     h.callbacks[0].success(position());expect(h.session.state.status).toBe('tracking');h.session.dispose();
   });
   it('invalidates old fixes after 15 seconds without inventing movement', () => {
-    vi.useFakeTimers();const h=harness();h.session.start();h.callbacks[0].success(position());
+    vi.useFakeTimers({toFake:['Date','performance','setInterval','clearInterval']});
+    const h=harness();h.session.start();h.callbacks[0].success(position());
     const before=h.session.state.reading;vi.advanceTimersByTime(16_000);
     expect(h.session.state.status).toBe('stale');expect(h.session.state.reading).toBe(before);
     h.session.dispose();expect(vi.getTimerCount()).toBe(0);
   });
-  it('rejects invalid, future and stale device data', () => {
-    const now=Date.now();expect(()=>mapPosition(position(now-16_000),now)).toThrow('过期');
-    expect(()=>mapPosition(position(now+6000),now)).toThrow('过期');
-    expect(()=>mapPosition(position(now,NaN),now)).toThrow('无效');
+  it.each([0,10_000,40_000,-1,NaN,Infinity,Date.UTC(2000,0,1),Date.UTC(2100,0,1)])('accepts valid coordinates independently of device timestamp %s', timestamp => {
+    const reading=mapPosition(position(timestamp),1234);
+    expect(reading.receivedAt).toBe(1234);
+    expect(reading.uv.u).toBeCloseTo(.34,7);
   });
-  it('ignores out-of-order samples without replacing a newer fix', () => {
-    const h=harness();h.session.start();const now=Date.now();h.callbacks[0].success(position(now));
-    h.callbacks[0].success(position(now-1000));expect(h.session.state.reading?.timestamp).toBe(now);h.session.dispose();
+  it('never reads the provider timestamp, including for callback ordering', () => {
+    let now=100;
+    const h=harness(()=>now), fix=position();
+    Object.defineProperty(fix,'timestamp',{get:()=>{throw new Error('provider timestamp must not be read');}});
+    h.session.start();h.callbacks[0].success(fix);
+    expect(h.session.state.status).toBe('tracking');expect(h.session.state.reading?.receivedAt).toBe(100);
+    now=200;h.callbacks[0].success(fix);
+    expect(h.session.state.status).toBe('tracking');expect(h.session.state.reading?.receivedAt).toBe(200);
+    h.session.dispose();
   });
-  it('ignores an expired out-of-order sample without clearing the current valid location', () => {
-    const h=harness();h.session.start();const now=Date.now();h.callbacks[0].success(position(now));
-    h.callbacks[0].success(position(now-20_000));expect(h.session.state.status).toBe('tracking');
-    expect(h.session.state.reading?.timestamp).toBe(now);h.session.dispose();
+  it('still rejects invalid coordinates, accuracy and local receipt times', () => {
+    for(const accuracy of [0,-1,NaN,Infinity]) expect(()=>mapPosition(position(10_000,accuracy),100)).toThrow('无效');
+    for(const coords of [{latitude:NaN},{latitude:90},{longitude:Infinity},{longitude:181}]) {
+      const fix=position(10_000);Object.assign(fix.coords,coords);
+      expect(()=>mapPosition(fix,100)).toThrow('无效');
+    }
+    for(const receivedAt of [-1,NaN,Infinity]) expect(()=>mapPosition(position(10_000),receivedAt)).toThrow('无效');
+  });
+  it('refreshes on every callback even when the device timestamp stays fixed, then expires after updates stop', () => {
+    vi.useFakeTimers({toFake:['Date','performance','setInterval','clearInterval']});
+    const h=harness();h.session.start();h.callbacks[0].success(position(10_000));
+    expect(h.session.state.status).toBe('tracking');
+    vi.advanceTimersByTime(14_000);h.callbacks[0].success(position(10_000));
+    expect(h.session.state.reading?.receivedAt).toBe(14_000);
+    vi.advanceTimersByTime(14_000);expect(h.session.state.status).toBe('tracking');
+    vi.advanceTimersByTime(2000);expect(h.session.state.status).toBe('stale');
+    h.callbacks[0].success(position(40_000));expect(h.session.state.status).toBe('tracking');
+    h.session.dispose();expect(vi.getTimerCount()).toBe(0);
+  });
+  it('uses callback arrival order when device timestamps jump or run backwards', () => {
+    let now=100;
+    const h=harness(()=>now);h.session.start();
+    for(const timestamp of [Date.now(),40_000,10_000,0]) {
+      now+=100;h.callbacks[0].success(position(timestamp));
+      expect(h.session.state.status).toBe('tracking');expect(h.session.state.reading?.receivedAt).toBe(now);
+    }
+    h.session.dispose();
+  });
+  it('does not expire fresh callbacks when the system wall clock changes', () => {
+    vi.useFakeTimers({toFake:['Date','performance','setInterval','clearInterval']});
+    const h=harness();h.session.start();h.callbacks[0].success(position(10_000));
+    vi.setSystemTime(new Date('2100-01-01T00:00:00Z'));
+    vi.advanceTimersByTime(14_000);expect(h.session.state.status).toBe('tracking');
+    vi.setSystemTime(new Date('2000-01-01T00:00:00Z'));
+    vi.advanceTimersByTime(2000);expect(h.session.state.status).toBe('stale');
+    h.session.dispose();
   });
   it('keeps poor accuracy visible as a warning, not a precise fix', () => {
     const h=harness();h.session.start();h.callbacks[0].success(position(Date.now(),150));
