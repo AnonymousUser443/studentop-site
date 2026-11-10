@@ -181,7 +181,7 @@ export default function MapScene(props: MapSceneProps) {
       <img className="map-base-image" src={imageFailed ? CAMPUS_MAP_FALLBACK : CAMPUS_MAP_IMAGE} onError={() => setImageFailed(true)} draggable={false} alt="" width={MAP_WIDTH} height={MAP_HEIGHT}/>
     </div>
     <div className="map-ground-vignette" aria-hidden="true"/>
-    <RegionVeil camera={camera} unlockedIds={unlockedRegionIds} reducedMotion={reducedMotion} />
+    <RegionVeil camera={camera} unlockedIds={unlockedRegionIds} reducedMotion={reducedMotion} paused={paused} fixedTime={fixedTime} />
     <div className="map-markers">
       {landmarks.map(landmark => {
         const point = uvToScreen(landmark.uv, camera);

@@ -25,5 +25,5 @@
       "role": "body"
     }
   ],
-  "generated": "Original SVG compass and route; CSS clouds; no new raster generation needed"
+  "generated": "Original SVG compass and route; CSS clouds; 1.1.1 adds two deterministic 512px seamless procedural cloud sprites and one bounded feathered geometry mask, generated locally once without remote assets"
 }

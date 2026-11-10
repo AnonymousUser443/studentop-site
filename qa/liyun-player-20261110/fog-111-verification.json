@@ -1,0 +1,30 @@
+{
+  "after": [
+    "matrix(1.06527, -0.00480833, 0.00480833, 1.06527, -31.6377, -0.172332)",
+    "matrix(1.05702, -0.0300328, 0.0300328, 1.05702, -65.0994, -46.4059)"
+  ],
+  "alphaMaxNeighborJump": 3,
+  "before": [
+    "matrix(1.03561, -0.0250942, 0.0250942, 1.03561, -82.4639, -22.7617)",
+    "matrix(1.08206, -0.00747459, 0.00747459, 1.08206, -15.8311, -20.7454)"
+  ],
+  "bitmap": [
+    1717,
+    2048
+  ],
+  "cachedAssets": 67,
+  "canvasCallsDuring3s": {
+    "clearRect": 0,
+    "drawImage": 0,
+    "fill": 0,
+    "fillRect": 0
+  },
+  "cloudsMoving": true,
+  "fogState": "running",
+  "legacyFogCanvas": false,
+  "precacheAssets": 66,
+  "publication": 978,
+  "regions": 10,
+  "secondVisitStaticNetworkBytes": 0,
+  "version": "5525a8381621275f0f90ba77"
+}

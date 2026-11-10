@@ -32,6 +32,14 @@
       "id": "reduced",
       "motion": "progress only",
       "trigger": "OS reduced motion or skip"
+    },
+    {
+      "id": "map-idle",
+      "layers": ["paper", "feathered map", "cached coverage", "near clouds", "far clouds", "unified vignette", "markers"],
+      "motion": "two cached sprites drift in opposite directions, swell and turn at different phases; no fog canvas draw loop",
+      "trigger": "map active; high or ultra quality; no reduced-motion preference",
+      "pause": "menu, hidden tab, fixed review time or reduced motion",
+      "react": "650ms local feathered departure on region unlock"
     }
   ],
   "limits": {

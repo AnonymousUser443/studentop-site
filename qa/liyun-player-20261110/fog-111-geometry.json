@@ -1,0 +1,18 @@
+{
+  "highState": "running",
+  "lowClouds": 0,
+  "lowState": "still",
+  "menuState": "paused",
+  "synthetic": {
+    "clearedRing": 0,
+    "holeRetained": 255,
+    "outerPadding": 0,
+    "unvisited": 255
+  },
+  "unlock": {
+    "afterAlpha": 586356822,
+    "beforeAlpha": 604972899,
+    "clears": true,
+    "id": "wencui"
+  }
+}

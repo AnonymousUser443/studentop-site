@@ -1,41 +1,47 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { MAP_HEIGHT, MAP_WIDTH } from '../../data';
 import { REGIONS, type Region } from '../../content/regions';
 import type { MapCamera } from '../../types';
 import { useSettings } from '../../app/stores/useSettings';
+import { FOG_RENDER } from '../../settings/spec';
 import { polygonPath } from './geometry';
+import { cloudTextures, fogScale, fogSize, paintVeil } from './paint';
 import styles from './region-veil.module.css';
-/** One bounded bitmap; camera changes only move the cached surface. */
-export default function RegionVeil({ camera, unlockedIds, reducedMotion }: { camera: MapCamera; unlockedIds: string[]; reducedMotion?: boolean }) {
+/** Cached, feathered coverage plus two composited cloud sprites. No fog draw loop. */
+export default function RegionVeil({ camera, unlockedIds, reducedMotion, paused, fixedTime }: { camera: MapCamera; unlockedIds: string[]; reducedMotion?: boolean; paused?: boolean; fixedTime?: number }) {
  const canvas=useRef<HTMLCanvasElement>(null), previous=useRef(unlockedIds);
  const layers=useSettings(state=>state.spec.inkLayers);
  const [departing,setDeparting]=useState<Region[]>([]);
+ const [mask,setMask]=useState('');
+ const [hidden,setHidden]=useState(document.hidden);
+ const sprites=cloudTextures();
  const unlockedKey=[...unlockedIds].sort().join(',');
  useLayoutEffect(()=>{
-  const node=canvas.current!, resolution=Math.min(1,2048/Math.max(MAP_WIDTH,MAP_HEIGHT));
-  node.width=Math.ceil(MAP_WIDTH*resolution);node.height=Math.ceil(MAP_HEIGHT*resolution);
-  const ctx=node.getContext('2d')!;ctx.scale(resolution,resolution);
-  const path=new Path2D(REGIONS.filter(r=>!unlockedIds.includes(r.id)).map(polygonPath).join(' '));
-  ctx.fillStyle='#F5E6BD';ctx.fill(path);ctx.save();ctx.clip(path);
-  if(layers>0)for(let i=0;i<(layers===2?64:42);i++){
-   const x=((i*.61803398875)%1)*MAP_WIDTH,y=((i*.41421356237)%1)*MAP_HEIGHT,radius=Math.min(MAP_WIDTH,MAP_HEIGHT)*(.09+(i%5)*.018);
-   const gradient=ctx.createRadialGradient(x,y,0,x,y,radius);
-   gradient.addColorStop(0,i%3?'rgba(255,253,236,.24)':'rgba(170,148,95,.065)');gradient.addColorStop(1,'rgba(245,230,189,0)');
-   ctx.fillStyle=gradient;ctx.fillRect(x-radius,y-radius,radius*2,radius*2);
-  }
-  ctx.restore();
- },[unlockedKey,layers]);
+  setMask(paintVeil(canvas.current!,REGIONS.filter(r=>unlockedIds.includes(r.id))));
+ },[unlockedKey]);
+ useEffect(()=>{
+  const visibility=()=>setHidden(document.hidden);
+  document.addEventListener('visibilitychange',visibility);
+  return()=>document.removeEventListener('visibilitychange',visibility);
+ },[]);
  useEffect(()=>{
   const added=REGIONS.filter(r=>unlockedIds.includes(r.id)&&!previous.current.includes(r.id));previous.current=[...unlockedIds];
   if(reducedMotion||!added.length)return;
   setDeparting(added);const timer=setTimeout(()=>setDeparting([]),650);return()=>clearTimeout(timer);
  },[unlockedKey,reducedMotion]);
- return <div className={styles.veil} data-testid="region-veil" aria-hidden="true">
-  <div className={styles.world} style={{width:MAP_WIDTH,height:MAP_HEIGHT,transform:`translate3d(${camera.x}px,${camera.y}px,0) scale(${camera.scale})`}}>
+ const still=reducedMotion||layers===0;
+ return <div className={styles.veil} data-testid="region-veil" data-fog-state={still?'still':paused||hidden||fixedTime!==undefined?'paused':'running'} aria-hidden="true">
+  <div className={styles.world} style={{width:fogSize.width,height:fogSize.height,transform:`translate3d(${camera.x-FOG_RENDER.padding*camera.scale}px,${camera.y-FOG_RENDER.padding*camera.scale}px,0) scale(${camera.scale/fogScale})`}}>
    <canvas ref={canvas} className={styles.bitmap} data-testid="region-veil-base"/>
-   <svg width={MAP_WIDTH} height={MAP_HEIGHT} className={styles.labels}>
+   {mask&&layers>0&&<div className={styles.cloudMask} style={{maskImage:`url(${mask})`,WebkitMaskImage:`url(${mask})`}} data-testid="region-veil-clouds">
+    <div className={`${styles.cloud} ${styles.near}`} data-fog-cloud="near" style={{backgroundImage:`url(${sprites[0]})`,animationDelay:fixedTime===undefined?undefined:`${-fixedTime/1000}s`}}/>
+    <div className={`${styles.cloud} ${styles.far}`} data-fog-cloud="far" style={{backgroundImage:`url(${sprites[1]})`,animationDelay:fixedTime===undefined?undefined:`${-fixedTime/1000-7}s`}}/>
+   </div>}
+   <svg width={fogSize.width} height={fogSize.height} className={styles.labels}>
+    <defs><filter id="veil-unlock-feather" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation={FOG_RENDER.feather}/></filter></defs>
+    <g transform={`scale(${fogScale}) translate(${FOG_RENDER.padding},${FOG_RENDER.padding})`}>
     {!reducedMotion&&departing.map(r=><path key={r.id} d={polygonPath(r)} className={styles.departing}/>)}
     {REGIONS.filter(r=>!unlockedIds.includes(r.id)).map(r=><g key={r.id} data-region-id={r.id}/>)}
+    </g>
    </svg>
   </div>
  </div>;

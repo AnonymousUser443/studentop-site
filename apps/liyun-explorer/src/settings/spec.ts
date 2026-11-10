@@ -5,6 +5,15 @@
  */
 export type QualityPreset = 'low' | 'high' | 'ultra' | 'custom';
 
+/** Cached fog geometry and sprites; these never scale with device pixel ratio. */
+export const FOG_RENDER = {
+  maxBitmapSide: 2048,
+  padding: 480,
+  feather: 130,
+  textureSide: 512,
+  cloudPuffs: 32,
+} as const;
+
 export interface QualitySpec {
   /** p5 像素密度 */
   pixelDensity: number;
