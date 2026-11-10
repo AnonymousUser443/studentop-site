@@ -1,0 +1,29 @@
+{
+  "assets": [
+    {
+      "path": "assets/paintings/frost-frame.webp",
+      "usable": true,
+      "rights": "existing project asset",
+      "layer": "far"
+    },
+    {
+      "path": "assets/art/pine-left.webp",
+      "usable": true,
+      "rights": "existing project asset",
+      "layer": "foreground"
+    },
+    {
+      "path": "assets/fonts/MaShanZheng-UI.woff2",
+      "usable": true,
+      "rights": "OFL in project",
+      "role": "display"
+    },
+    {
+      "path": "assets/fonts/NotoSerifSC-UI.woff2",
+      "usable": true,
+      "rights": "OFL in project",
+      "role": "body"
+    }
+  ],
+  "generated": "Original SVG compass and route; CSS clouds; no new raster generation needed"
+}

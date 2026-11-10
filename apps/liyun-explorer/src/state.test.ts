@@ -22,8 +22,8 @@ describe('GPS-validated exploration save contract', () => {
     const animated={...state,playerUV:{u:358/1000.56,v:459/1240.28003}};
     expect(explore(animated,'beihu',locationAt('sports'))).toBe(animated);
   });
-  it('rechecks the actual timestamp at mutation time, even if UI was previously enabled', () => {
-    const now=Date.now(),state=createInitialState(),location=locationAt('wencui',0,5,now);
+  it('rechecks callback age at mutation time, even if UI was previously enabled', () => {
+    const now=20_000,state=createInitialState(),location=locationAt('wencui',0,5,now);
     expect(explore(state,'wencui',location,now+15001)).toBe(state);
     expect(explore(state,'wencui',location,now).discoveredIds).toEqual(['wencui']);
   });

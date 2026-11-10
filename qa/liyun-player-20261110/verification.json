@@ -1,0 +1,36 @@
+{
+  "version": "693c6943d3e39517d9dbf7f1",
+  "applicationTests": 173,
+  "workerAndReleaseTests": 6,
+  "precacheAssets": 66,
+  "publication": 978,
+  "secondVisit": {
+    "staticNetworkBytes": 0,
+    "stage": true,
+    "allCodeCurrent": true
+  },
+  "offline": {
+    "stage": true,
+    "publication": 978
+  },
+  "wheel": {
+    "before": "translate3d(-110.856px, -536.946px, 0px) scale(0.41062)",
+    "during": "translate3d(-220.133px, -650.657px, 0px) scale(0.462504)",
+    "entered": "true",
+    "fogPaints": 0,
+    "gradual": true,
+    "immediate": "translate3d(-110.856px, -536.946px, 0px) scale(0.41062)",
+    "legacyFogCanvas": false,
+    "regionCount": 10,
+    "settled": "translate3d(-378.93px, -815.897px, 0px) scale(0.537898)",
+    "settles": true,
+    "stable": "translate3d(-378.93px, -815.897px, 0px) scale(0.537898)",
+    "visible": true
+  },
+  "update": {
+    "detectedOld": "200b6a3a45cd6c039690f9be",
+    "detectedNew": "0270eae84048524a95590cbf",
+    "finalModuleIdentityVerified": true
+  },
+  "method": "Visible desktop Edge, production wrapper on loopback. Synthetic wheel input, real CacheStorage and service worker. Mobile viewport screenshots are not phone hardware tests."
+}

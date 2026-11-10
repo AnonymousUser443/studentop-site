@@ -3,22 +3,31 @@ import type { UV } from '../types';
 import type { MapSupport } from './vendor/coordinates.mjs';
 
 export type CampusReading = {
-  uv: UV; latitude: number; longitude: number; accuracy: number; timestamp: number;
+  uv: UV; latitude: number; longitude: number; accuracy: number;
+  /** Callback receipt on this page's monotonic clock; never a device timestamp or persisted value. */
+  receivedAt: number;
   insideImage: boolean; support: MapSupport; radius: { x: number; y: number };
 };
 export type LocationStatus = 'idle' | 'locating' | 'tracking' | 'stale' | 'denied' | 'error' | 'paused' | 'stopped';
 export type LocationState = { status: LocationStatus; running: boolean; reading: CampusReading | null; message: string };
 export const initialLocationState = (): LocationState => ({ status: 'idle', running: false, reading: null, message: '开启定位，在校园地图上查看实际位置' });
 
-export function mapPosition(position: GeolocationPosition, now = Date.now()): CampusReading {
+/** Providers can return fixed, relative or otherwise unusable timestamps. Freshness
+ * is only time since a callback arrived; the watch requests maximumAge: 0. */
+export function isReadingFresh(reading: CampusReading, now = performance.now()): boolean {
+  const age = now - reading.receivedAt;
+  return Number.isFinite(reading.receivedAt) && reading.receivedAt >= 0 && Number.isFinite(now)
+    && age >= 0 && age <= MAX_LOCATION_AGE_MS;
+}
+
+export function mapPosition(position: GeolocationPosition, receivedAt = performance.now()): CampusReading {
   const { latitude, longitude, accuracy } = position.coords;
-  if (![latitude, longitude, accuracy, position.timestamp].every(Number.isFinite) || accuracy <= 0 || Math.abs(latitude) > 85 || Math.abs(longitude) > 180) {
+  if (![latitude, longitude, accuracy, receivedAt].every(Number.isFinite) || receivedAt < 0 || accuracy <= 0 || Math.abs(latitude) > 85 || Math.abs(longitude) > 180) {
     throw new Error('设备返回的定位数据无效，请重试');
   }
-  if (now - position.timestamp > MAX_LOCATION_AGE_MS || position.timestamp > now + 5000) throw new Error('定位数据已过期，正在等待新的位置');
   const point = campusMap.gpsToMap(latitude, longitude);
   const uv = { u: point.u, v: point.v };
-  return { uv, latitude, longitude, accuracy, timestamp: position.timestamp,
+  return { uv, latitude, longitude, accuracy, receivedAt,
     insideImage: point.inside_image, support: point.support,
     radius: point.inside_image ? accuracyRadii(uv, latitude, longitude, accuracy) : { x: 0, y: 0 } };
 }
@@ -39,7 +48,7 @@ export class CampusLocationSession {
   private timer: ReturnType<typeof setInterval> | undefined;
   private generation = 0;
   constructor(private geo: GeoProvider | undefined, private update: (state: LocationState) => void,
-    private secure = true, private now = () => Date.now()) {}
+    private secure = true, private now = () => performance.now()) {}
   private emit(state: LocationState) { this.state = state; this.update(state); }
   private clear() {
     ++this.generation;
@@ -56,7 +65,6 @@ export class CampusLocationSession {
     try {
       const id = this.geo.watchPosition(position => {
         if (generation !== this.generation) return;
-        if (this.state.reading && Number.isFinite(position.timestamp) && position.timestamp < this.state.reading.timestamp) return;
         try {
           const reading = mapPosition(position, this.now());
           this.emit({ status: 'tracking', running: true, reading, message: readingMessage(reading) });
@@ -74,7 +82,7 @@ export class CampusLocationSession {
       this.watch = id;
       this.timer = setInterval(() => {
         const reading = this.state.reading;
-        if (reading && this.now() - reading.timestamp > MAX_LOCATION_AGE_MS && this.state.status !== 'stale') {
+        if (reading && !isReadingFresh(reading, this.now()) && this.state.status !== 'stale') {
           this.emit({ ...this.state, status: 'stale', message: '位置超过15秒未更新，标记仅代表上次位置，请重新定位' });
         }
       }, 1000);

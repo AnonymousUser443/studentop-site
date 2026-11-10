@@ -42,4 +42,7 @@
 /* 地图纸色雾晕：跟着地图一起缩放，把纸边收进雾里，不再看出是贴图 */
 .map-paper-halo{position:absolute;inset:-13% -11%;pointer-events:none;
   background:radial-gradient(closest-side,var(--paper-map) 0%,var(--paper-map) 56%,color-mix(in srgb, var(--paper-map) 94.1176%, transparent) 70%,color-mix(in srgb, var(--paper-map) 72.1569%, transparent) 82%,color-mix(in srgb, var(--paper-map) 40%, transparent) 91%,transparent 100%);
-  filter:blur(6px)}
+  opacity:.7}
+
+/* Feather the image's own rectangle, including when zoomed out into empty space. */
+.map-base-image{mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent),linear-gradient(0deg,transparent,#000 6%,#000 94%,transparent);mask-composite:intersect;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent),linear-gradient(0deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-composite:source-in}

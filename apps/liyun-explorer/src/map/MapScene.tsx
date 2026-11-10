@@ -3,6 +3,7 @@ import type { CSSProperties, PointerEvent as ReactPointerEvent } from 'react';
 import { MAP_HEIGHT, MAP_WIDTH } from '../data';
 import type { IconName, MapCamera, MapSceneProps, UV } from '../types';
 import { cameraLimits, clamp, clampCamera, screenToUV, uvToScreen, zoomAt } from './geometry';
+import { springStep } from './spring';
 import './map.css';
 import { CAMPUS_MAP_IMAGE, CAMPUS_MAP_FALLBACK, GOOD_ACCURACY_M } from '../location/campus';
 import '../location/location.css';
@@ -64,6 +65,7 @@ export default function MapScene(props: MapSceneProps) {
   const dragged = useRef(false);
   const [dragging, setDragging] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
+  const cancelWheel = useRef<() => void>(() => undefined);
 
   const localPoint = (e: {clientX: number; clientY: number}): Point => {
     const rect = surface.current!.getBoundingClientRect();
@@ -77,6 +79,7 @@ export default function MapScene(props: MapSceneProps) {
     gesture.current = { camera: currentCamera, origin, distance: list.length > 1 ? distance(list[0], list[1]) : 0, anchor: screenToUV(origin.x, origin.y, currentCamera) };
   };
   const down = (e: ReactPointerEvent<HTMLDivElement>) => {
+    cancelWheel.current();
     if (propsRef.current.disabled || (e.pointerType === 'mouse' && e.button !== 0)) return;
     pointers.current.set(e.pointerId, localPoint(e));
     if (!(e.target as Element).closest('button')) capturePointer(e.currentTarget,e.pointerId);
@@ -111,20 +114,39 @@ export default function MapScene(props: MapSceneProps) {
   };
   useEffect(() => {
     if (!disabled) return;
+    cancelWheel.current();
     pointers.current.clear(); gesture.current = null; setDragging(false);
   }, [disabled]);
   useEffect(() => {
     const element = surface.current!;
+    let frame = 0, last = 0, target: MapCamera | null = null;
+    const velocity = { x: 0, y: 0, scale: 0 };
+    const cancel = () => { cancelAnimationFrame(frame); frame=0;target=null;velocity.x=velocity.y=velocity.scale=0; };
+    cancelWheel.current = cancel;
+    const step = (now: number) => {
+      if (!target || propsRef.current.disabled || document.hidden) { cancel(); return; }
+      const dt = Math.min((now-last)/1000,.064); last=now;
+      const next = { ...gestureCamera.current };
+      for (const key of ['x','y','scale'] as const) { const spring=springStep(next[key],velocity[key],target[key],dt);next[key]=spring.value;velocity[key]=spring.velocity; }
+      const settled = Math.abs(next.x-target.x)<.04 && Math.abs(next.y-target.y)<.04 && Math.abs(next.scale-target.scale)<.00002 && Math.abs(velocity.scale)<.0001;
+      changeCamera(clampCamera(settled ? target : next,propsRef.current.viewport,controls.current.zoomLimit));
+      if (settled) cancel(); else frame=requestAnimationFrame(step);
+    };
     const wheel = (e: WheelEvent) => {
       const current = propsRef.current;
       if (current.disabled) return;
       e.preventDefault();
       const rect = element.getBoundingClientRect();
       const limits = cameraLimits(current.viewport, controls.current.zoomLimit);
-      changeCamera(clampCamera(zoomAt(gestureCamera.current, Math.exp(-clamp(e.deltaY, -200, 200) * 0.0018), e.clientX - rect.left, e.clientY - rect.top, limits.min, limits.max), current.viewport, controls.current.zoomLimit));
+      const delta = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? current.viewport.height : 1);
+      target=clampCamera(zoomAt(target??gestureCamera.current,Math.exp(-clamp(delta,-200,200)*.0018),e.clientX-rect.left,e.clientY-rect.top,limits.min,limits.max),current.viewport,controls.current.zoomLimit);
+      if (current.reducedMotion) { changeCamera(target);cancel(); }
+      else if (!frame) { last=performance.now();frame=requestAnimationFrame(step); }
     };
+    const visibility = () => { if(document.hidden)cancel(); };
     element.addEventListener('wheel', wheel, { passive: false });
-    return () => element.removeEventListener('wheel', wheel);
+    document.addEventListener('visibilitychange',visibility);
+    return () => { cancel();element.removeEventListener('wheel',wheel);document.removeEventListener('visibilitychange',visibility); };
   }, []);
   useLayoutEffect(() => {
     let raf = 0;

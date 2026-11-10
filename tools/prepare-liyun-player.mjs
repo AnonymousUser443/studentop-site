@@ -1,0 +1,12 @@
+import fs from 'node:fs';import path from 'node:path';import{createHash}from'node:crypto';import{execFileSync}from'node:child_process';import{buildLiyunRelease}from'./build-liyun-release.mjs';
+const sha=b=>createHash('sha256').update(b).digest('hex');
+const commit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+execFileSync('git',['diff','--exit-code','HEAD','--','apps/liyun-explorer','tools/build-liyun-release.mjs','deploy/apply-liyun-player.mjs']);
+const stamp=new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z'),id='liyun-player-'+stamp+'-'+commit.slice(0,10),out=path.resolve('.release-local',id);
+const release=buildLiyunRelease('apps/liyun-explorer/dist',path.join(out,'public'));
+const baseline=JSON.parse(fs.readFileSync('.release-local/liyun-player-baseline.json','utf8').replace(/^\uFEFF/,''));
+const manifest={format:1,id,commit,version:release.id,baseline,files:release.files};
+fs.writeFileSync(path.join(out,'manifest.json'),JSON.stringify(manifest,null,2));
+execFileSync('tar',['-czf',path.join(out,'bundle.tar.gz'),'-C',out,'manifest.json','public'],{windowsHide:true});
+const result={id,commit,version:release.id,out,stage:'/var/tmp/aiden-'+id,archiveSHA256:sha(fs.readFileSync(path.join(out,'bundle.tar.gz'))),operatorSHA256:sha(fs.readFileSync('deploy/apply-liyun-player.mjs')),publicBytes:release.bytes,files:release.files.length};
+fs.writeFileSync('.release-local/liyun-player-session.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));

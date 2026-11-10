@@ -3,7 +3,6 @@ import P5 from 'p5';
 import { MAP_WIDTH, MAP_HEIGHT } from '../data';
 import type { EffectsProps, Landmark } from '../types';
 import { clamp01, eventTiming, seededRandom } from './timing';
-import { FogField } from './fog';
 import './effects.css';
 
 type Leaf = { x: number; y: number; size: number; speed: number; phase: number; direction: number };
@@ -41,7 +40,6 @@ function star(ctx: CanvasRenderingContext2D, x: number, y: number, radius: numbe
 }
 
 export default function Atmosphere(props: EffectsProps) {
-  const fogHost = useRef<HTMLDivElement>(null);
   const lightHost = useRef<HTMLDivElement>(null);
   const current = useRef(props);
   const instances = useRef<P5[]>([]);
@@ -49,8 +47,7 @@ export default function Atmosphere(props: EffectsProps) {
   useLayoutEffect(()=>{current.current=props;});
 
   useEffect(() => {
-    if (!fogHost.current || !lightHost.current) return;
-    const fogField = new FogField();
+    if (!lightHost.current) return;
     const random = seededRandom((current.current.seed ?? 1386) + 17);
     const leaves: Leaf[] = Array.from({ length: 40 }, () => ({ x: random(), y: random(), size: 5 + random() * 8, speed: 0.012 + random() * 0.011, phase: random() * TAU, direction: random() > 0.5 ? 1 : -1 }));
     const motes: Mote[] = Array.from({ length: 80 }, () => ({ x: random(), y: random(), phase: random() * TAU, speed: 0.005 + random() * 0.008, size: 0.7 + random() * 1.6 }));
@@ -67,16 +64,6 @@ export default function Atmosphere(props: EffectsProps) {
       p.frameRate(label === 'fog' ? config.spec.fogFps : config.spec.lightFps);
       if (config.paused || config.fixedTime !== undefined || config.settings.reducedMotion) p.noLoop();
     }
-
-    const fog = new P5((p) => {
-      p.setup = () => prepare(p, fogHost.current!, 'fog');
-      p.draw = () => {
-        const config = current.current;
-        const now = config.fixedTime ?? performance.now();
-        const ctx = p.drawingContext as CanvasRenderingContext2D;
-        fogField.draw(ctx, config, p.pixelDensity(), now);
-      };
-    }, fogHost.current);
 
     const light = new P5((p) => {
       p.setup = () => prepare(p, lightHost.current!, 'light');
@@ -162,21 +149,21 @@ export default function Atmosphere(props: EffectsProps) {
         ctx.restore();
       };
     }, lightHost.current);
-    instances.current = [fog, light];
-    return () => { instances.current = []; readyInstances.current.clear(); fog.remove(); light.remove(); fogField.dispose(); };
+    instances.current = [light];
+    return () => { instances.current = []; readyInstances.current.clear(); light.remove(); };
   }, []);
 
   useEffect(() => {
-    for (const [index, p] of instances.current.entries()) {
+    for (const p of instances.current) {
       if (!readyInstances.current.has(p)) continue;
       const density = props.spec.pixelDensity;
       if (p.pixelDensity() !== density) p.pixelDensity(density);
       if (p.width !== props.viewport.width || p.height !== props.viewport.height) p.resizeCanvas(props.viewport.width, props.viewport.height, true);
-      p.frameRate(index === 0 ? props.spec.fogFps : props.spec.lightFps);
+      p.frameRate(props.spec.lightFps);
       if (props.paused || props.fixedTime !== undefined || (props.settings.reducedMotion && !props.event)) { p.noLoop(); p.redraw(); }
       else p.loop();
     }
   }, [props.viewport, props.camera, props.spec, props.settings.reducedMotion, props.settings.reduceFlash, props.paused, props.fixedTime, props.event, props.discoveredIds]);
 
-  return <><div className="atmosphere-layer atmosphere-fog" ref={fogHost} aria-hidden="true" /><div className="atmosphere-layer atmosphere-light" ref={lightHost} aria-hidden="true" /></>;
+  return <div className="atmosphere-layer atmosphere-light" ref={lightHost} aria-hidden="true" />;
 }
