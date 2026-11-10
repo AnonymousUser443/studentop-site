@@ -6,7 +6,10 @@ const FORMAT = 1;
 const SCHEMA = 'aiden-public-site-release-v2';
 const ID = /^[a-f0-9]{24}$/;
 const HTML = ['index.html', 'projects/index.html', 'task-manager/index.html'];
-const ASSET = /^assets\/(?:css|js|img|fonts|audio)\//;
+const ASSET_DIRS = 'css|js|img|fonts|audio|media';
+const ASSET = new RegExp('^assets/(?:' + ASSET_DIRS + ')/');
+const ASSET_URL = new RegExp('^(?:/|\\./|\\.\\./)?(assets/(?:' + ASSET_DIRS + ')/[^\\s<>]*)$');
+const QUOTED_ASSET_URL = new RegExp('(["\'\x60])((?:/|\\./|\\.\\./)?assets/(?:' + ASSET_DIRS + ')/[^"\'\x60\\s<>]*)\\1', 'g');
 const EXT = new Set(['.css','.js','.mjs','.svg','.png','.jpg','.jpeg','.webp','.avif','.gif','.ico','.bmp','.woff','.woff2','.ttf','.otf','.opus','.mp3','.ogg','.wav','.m4a','.mp4','.webm']);
 const LICENSES = new Set(['assets/fonts/OFL-NotoSansSC.txt','assets/fonts/OFL-NotoSerifSC.txt']);
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -58,14 +61,14 @@ export function siteRevision(siteRoot) { return sourceSnapshot(siteRoot).id; }
 export function releaseAssetURL(value,id) {
   if(!ID.test(id)) throw new Error('Invalid release id.');
   if(typeof value!=='string') return value;
-  const match=value.match(/^(?:\/|\.\/|\.\.\/)?(assets\/(?:css|js|img|fonts|audio)\/[^\s<>]*)$/);
+  const match=value.match(ASSET_URL);
   if(!match) return value; // Never rewrite external, data:, mailto:, API or navigation URLs.
   return '/assets/releases/'+id+'/'+match[1].slice('assets/'.length);
 }
 function rewrite(text,id) {
   // Native scripts use ordinary quoted strings for image/font/media URLs; CSS relative URLs
   // retain their folder structure under the release namespace and need no additional query.
-  let result=text.replace(/(["'\x60])((?:\/|\.\/|\.\.\/)?assets\/(?:css|js|img|fonts|audio)\/[^"'\x60\s<>]*)\1/g,
+  let result=text.replace(QUOTED_ASSET_URL,
     (_all,quote,url)=>quote+releaseAssetURL(url,id)+quote);
   result=result.replace(/url\(\s*((?:\/|\.\/|\.\.\/)?assets\/[^\s"')]+)\s*\)/gi,(_all,url)=>'url('+releaseAssetURL(url,id)+')');
   // Multiple media candidates are only meaningful in HTML srcset, not arbitrary JS strings.

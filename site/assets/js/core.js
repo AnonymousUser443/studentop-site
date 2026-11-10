@@ -63,7 +63,7 @@ window.Win = (function () {
   /* ---------------- 偏好 ---------------- */
   var defaults = {
     themeMode: 'light',   // light | dark | auto
-    wall: 'chenyu',
+    wall: 'chenyu-live',
     align: 'center',
     accent: '#28776b',
     motion: true
@@ -73,7 +73,7 @@ window.Win = (function () {
     if (key === 'align') return ['center', 'left'].indexOf(value) !== -1;
     if (key === 'motion') return typeof value === 'boolean';
     if (key === 'accent') return typeof value === 'string' && /^#[0-9a-f]{6}$/i.test(value);
-    if (key === 'wall') return typeof value === 'string' && (['chenyu', 'bloom', 'dusk', 'aurora', 'sakura', 'solid'].indexOf(value) !== -1 || ((window.SITE || {}).wallpapers || []).some(function (w) { return w.id === value; }));
+    if (key === 'wall') return typeof value === 'string' && (['chenyu-live', 'chenyu', 'bloom', 'dusk', 'aurora', 'sakura', 'solid'].indexOf(value) !== -1 || ((window.SITE || {}).wallpapers || []).some(function (w) { return w.id === value; }));
     return false;
   }
   var prefs = Object.assign({}, defaults);

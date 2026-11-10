@@ -1,0 +1,270 @@
+{
+  "chapter": 7,
+  "motif": "越过一重山影，看清风与江的方向。由局部到远眺，再回到人的选择。",
+  "palette": {
+    "paper": "#eee9d5",
+    "ink": "#233631",
+    "accent": "#8a6b32",
+    "shade": "#213e3c"
+  },
+  "art": "/assets/art/p7/overlook-at-dawn.webp",
+  "assetSources": [
+    {
+      "path": "/assets/art/p7/overlook-at-dawn.webp",
+      "references": [
+        "视觉风格参考图 (1).png",
+        "视觉风格参考图 (2).png"
+      ],
+      "prompt": "Use case: stylized-concept. Create a new wide 16:9 background illustration for the Ni chapter opener of a live Chinese web presentation. Both original reference images are required inputs for graphic language: substantial layered foreground/midground/background silhouettes, strong asymmetrical directional massing, warm rim light, a few broad color blocks, poetic illustrated new-Chinese art direction. Subject: a high human-scale overlook looking into a broad cloud-filled valley at blue dawn; high slope edges in the foreground reveal a second and third distant ridge only through pale mist, a small sun breaks through at the right, the visible river changing direction below. The idea is gaining a vantage point and reading direction through change, so preserve a single dominant sweeping diagonal from lower left to middle right and restrained parallax planes rather than many individual details. Palette cool jade, warm limestone paper and burnt gold; grounded architectural-free silhouette with no people or structures. Artwork anchor and warm light on the right half; hold left 43% predominantly deep, quiet ink-jade, sufficiently low contrast for pale live Chinese text above it. Wide landscape image, full bleed, crisp stage-read graphic illustration with subtle paper grain. No letters, no text, no logo, no frame, no interface. Do not reuse a character or layout from the input images."
+    }
+  ],
+  "pages": {
+    "P7-01": {
+      "layout": "cover",
+      "tone": "scene",
+      "motion": "unfurl",
+      "intent": "黎明云海把视线从近坡引到远处江流；左侧墨青净区置「悟势」，水平线上第一点金光轻起。",
+      "side": "left",
+      "focal": "悟势",
+      "refinement": {
+        "artStrength": 1,
+        "artPosition": "full",
+        "duration": 1.55,
+        "stagger": 0.08
+      },
+      "art": "/assets/art/p7/overlook-at-dawn.webp"
+    },
+    "P7-02": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "still",
+      "intent": "留出时间尺度。先读五年后、十年后，余下两行由字阶自然延伸；底部只留一条远岸。",
+      "side": "left",
+      "focal": "五年后、十年后，",
+      "refinement": {
+        "typeSize": 77,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.88,
+        "duration": 0.67,
+        "stagger": 0.17
+      },
+      "art": "/assets/art/p7/pages/P7-02.webp"
+    },
+    "P7-03": {
+      "layout": "custom",
+      "tone": "paper",
+      "motion": "line",
+      "intent": "将《题西林壁》放在阔幅纸面，两个句尾彼此对位。笔迹从左至右显出，单列署名。",
+      "side": "left",
+      "focal": "只缘身在此山中。",
+      "refinement": {
+        "typeSize": 74,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.87,
+        "duration": 0.96,
+        "stagger": 0.21
+      },
+      "art": "/assets/art/p7/pages/P7-03.webp"
+    },
+    "P7-04": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "orbit",
+      "intent": "完整露出从近坡到远山的叠层。把「我们在这里」作为最小观察点，远处视差放慢。",
+      "side": "left",
+      "focal": "我们在这里",
+      "refinement": {
+        "vertical": "lower",
+        "artPosition": "full",
+        "artStrength": 1,
+        "duration": 2.15,
+        "stagger": 0.1,
+        "typeSize": 41
+      },
+      "art": "/assets/art/p7/pages/P7-04.webp"
+    },
+    "P7-05": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "focus",
+      "intent": "用低对比青灰承接云海。文字贴近观察者一侧，最后一句强调眼前只是一座峰。",
+      "side": "left",
+      "focal": "眼前的一座山峰。",
+      "refinement": {
+        "typeSize": 74,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.87,
+        "duration": 0.95,
+        "stagger": 0.15
+      },
+      "art": "/assets/art/p7/pages/P7-05.webp"
+    },
+    "P7-06": {
+      "layout": "split",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "左边是自动化学生走进风景画课，右边是艺术学长使用 AI。两边保留平等字阶和完整原话。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 52,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.78,
+        "duration": 0.68,
+        "stagger": 0.19
+      },
+      "art": "/assets/art/p7/pages/P7-06.webp"
+    },
+    "P7-07": {
+      "layout": "split",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "左边先出现审美判断，右边待半拍再露出有价值的问题。两边一条细折痕相接。",
+      "side": "center",
+      "focal": "提出一个真正有价值的问题。",
+      "refinement": {
+        "typeSize": 59,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.81,
+        "duration": 0.62,
+        "stagger": 0.22
+      },
+      "art": "/assets/art/p7/pages/P7-07.webp"
+    },
+    "P7-08": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "still",
+      "intent": "让一条连续的左侧提问成为唯一焦点；在第三行留足幅宽，强调提出问题的价值。",
+      "side": "left",
+      "focal": "重新理解提出问题的价值？",
+      "refinement": {
+        "typeSize": 72,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.74,
+        "duration": 0.72,
+        "stagger": 0.19
+      },
+      "art": "/assets/art/p7/pages/P7-08.webp"
+    },
+    "P7-09": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "line",
+      "intent": "上下排出解决问题与发现问题，用细折线分开，最后一行落在两者之间。",
+      "side": "left",
+      "focal": "不是同一件事。",
+      "refinement": {
+        "typeSize": 74,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.86,
+        "duration": 0.7,
+        "stagger": 0.2
+      },
+      "art": "/assets/art/p7/pages/P7-09.webp"
+    },
+    "P7-10": {
+      "layout": "split",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "《前赤壁赋》两段同屏保留原换行，一左一右，署名落在跨列共用的低位。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 57,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.8,
+        "duration": 0.94,
+        "stagger": 0.16
+      },
+      "art": "/assets/art/p7/pages/P7-10.webp"
+    },
+    "P7-11": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "pulse",
+      "intent": "原分屏变者左，保留城市、数据、工具快流；不变者右，让江、月、人停得住。用同一条江面线衔接。",
+      "side": "center",
+      "focal": "不变者",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 0.7,
+        "duration": 1.1,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p7/pages/P7-11.webp"
+    },
+    "P7-12": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "focus",
+      "intent": "横向地平线压到低位，只让两行核心句在中央。第二行保留停顿，字距拉开。",
+      "side": "center",
+      "focal": "观势，",
+      "refinement": {
+        "typeSize": 86,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.79,
+        "duration": 0.95,
+        "stagger": 0.24
+      },
+      "art": "/assets/art/p7/pages/P7-12.webp"
+    },
+    "P7-13": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "still",
+      "intent": "把对未来的长问分为三行，位置逐行收拢。背景渐静，最后一句完全交给讲者。",
+      "side": "left",
+      "focal": "决定自己想成为一个怎样的人？",
+      "refinement": {
+        "typeSize": 71,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.73,
+        "duration": 0.8,
+        "stagger": 0.21
+      },
+      "art": "/assets/art/p7/pages/P7-13.webp"
+    },
+    "P7-14": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "still",
+      "intent": "从远眺退到江面一点微光。全页无字，无持续闪烁，静帧依然保留一个很小的可见光点。",
+      "side": "center",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 1,
+        "duration": 0.6,
+        "stagger": 0
+      },
+      "art": "/assets/art/p7/pages/P7-14.webp"
+    },
+    "P7-15": {
+      "layout": "coda",
+      "tone": "shade",
+      "motion": "glow",
+      "intent": "「悟势」印以低对比金灰轮廓停在近岸，不额外加副标题，转入 Fi 的近处光。",
+      "side": "center",
+      "focal": "悟势",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.86,
+        "duration": 1.02,
+        "stagger": 0.08
+      },
+      "art": "/assets/art/p7/pages/P7-15.webp"
+    }
+  }
+}

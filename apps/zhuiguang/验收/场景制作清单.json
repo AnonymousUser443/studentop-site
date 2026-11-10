@@ -1,0 +1,1831 @@
+{
+  "revision": "2026-11-06-story",
+  "legacyChecksAreNotVisualApproval": true,
+  "scenes": [
+    {
+      "id": "opening-unfold",
+      "beats": [
+        "P0-01",
+        "P0-02"
+      ],
+      "title": "今晚，大学开场",
+      "event": "像一座纸剧场，帷幕从中央拉开。实验室、社团集市、骑行与交谈共同进入舞台；蓝砚伸手拉帘并邀请观众看向校园。",
+      "emotion": "惊喜、明亮、欢迎",
+      "assets": [
+        "/assets/art/p0/opening-campus-world-v2.png",
+        "/assets/art/p0/lanyan-open-curtain-v3.png",
+        "/assets/art/p0/stage-drape-v3.png"
+      ],
+      "reuseReason": "同一座校园舞台从等待页开幕到问候；连续揭示不能更换背景。"
+    },
+    {
+      "id": "opening-metrics",
+      "beats": [
+        "P0-03",
+        "P0-04",
+        "P0-05",
+        "P0-06"
+      ],
+      "title": "先把评价放一放",
+      "event": "绩点账页、综测标尺、奖学金绶带和未来路标从四个方向聚到桌面；承认重要后整体让到两侧，把视野交还大学生活。",
+      "emotion": "熟悉的压力被轻轻打开",
+      "assets": [
+        "/assets/art/p0/opening-question-table-v2.png",
+        "/assets/art/p0/metric-ledger-v3.png",
+        "/assets/art/p0/metric-ruler-v3.png",
+        "/assets/art/p0/metric-ribbon-v3.png",
+        "/assets/art/p0/metric-crossroads-v3.png"
+      ],
+      "reuseReason": "四个评价对象从提问到退场保持身份；这四个ID是连续表演的节拍。"
+    },
+    {
+      "id": "opening-campus",
+      "beats": [
+        "P0-07",
+        "P0-08",
+        "P0-09",
+        "P0-10",
+        "P0-11",
+        "P0-12"
+      ],
+      "title": "你正在经历的大学",
+      "event": "校园世界铺开；现场公开留言落在校园的不同地点并聚成声音。四种大学体验以不同视角展开，同一世界从全景转为多面。",
+      "emotion": "热闹、参与、允许不同感受",
+      "assets": [
+        "/assets/art/p0/opening-campus-world-v2.png",
+        "/assets/art/p0/campus-four-perspectives-v3.png",
+        "/assets/art/p0/review-lanyan-lake.png",
+        "/assets/art/p0/review-lanyan-activities.png",
+        "/assets/art/p0/review-lanyan-overwork.png",
+        "/assets/art/p0/review-lanyan-perspectives.png"
+      ],
+      "reuseReason": "同一校园由观众的声音改变；地图、地点与留言需要连续存在，不用六张互不相关背景。"
+    },
+    {
+      "id": "opening-exploration",
+      "beats": [
+        "P0-13",
+        "P0-14",
+        "P0-15"
+      ],
+      "title": "一张没有标准答案的探索桌",
+      "event": "真实的电赛、社团和实践记录从行囊中展开，构成讲者走过的路径；随后这些经历让到侧边，把中心位置留给尚未写完的答案。",
+      "emotion": "坦诚、丰富、邀请探索",
+      "assets": [
+        "/assets/art/p0/exploration-sketchbook-v3.png",
+        "/assets/img/p3/edian-group.webp",
+        "/assets/img/p2/hanfu-02.webp",
+        "/assets/img/p1/siyuan-01.webp"
+      ],
+      "reuseReason": "讲者的三类真实经历在同一探索桌展开再让出中心，保持照片身份，绝不AI替代事实。"
+    },
+    {
+      "id": "opening-eight",
+      "beats": [
+        "P0-16",
+        "P0-17",
+        "P0-18"
+      ],
+      "title": "八重光，不止一条路",
+      "event": "八盏不同的灯由中心展开，每盏装着对应章节的真实视觉；镜头转向Fe，其余七个方向退后，邀请从连接开始。",
+      "emotion": "期待与启程",
+      "assets": [
+        "/assets/art/p0/eight-lamp-frame-v3.png",
+        "/assets/art/approved/fe-open-screens.webp",
+        "/assets/art/p2/cover.webp",
+        "/assets/art/p3/cover.webp",
+        "/assets/art/p4/cover.webp",
+        "/assets/art/p5/pages/P5-01.webp",
+        "/assets/art/approved/ne-lake.webp",
+        "/assets/art/p7/overlook-at-dawn.webp",
+        "/assets/art/approved/fi-inner-echo.webp"
+      ],
+      "reuseReason": "八个章节视觉作为可辨识的目录窗口，在三个节拍连续展开与聚焦。"
+    },
+    {
+      "id": "fe-letter",
+      "beats": [
+        "P1-02",
+        "P1-03"
+      ],
+      "title": "把一句话交给身边的人",
+      "event": "蓝砚把一封信递向两把手绘邻座；信封移到台前后，真实来信计数带动纸片飞入、封面泛光，公屏只显示收到数量。",
+      "emotion": "亲切，轻轻打开现场的距离。",
+      "assets": [
+        "/assets/art/story12/lanyan-envelope-v2.png",
+        "/assets/art/story12/private-envelope-v2.png",
+        "/assets/art/story12/fe-seats-review.png"
+      ],
+      "reuseReason": "P1-02 蓝砚递出信；P1-03 保留递信对象与角色退场的连续运动，独立封闭信封接住视线。验收拥抱仍仅在 Fe 章首。"
+    },
+    {
+      "id": "fe-threads",
+      "beats": [
+        "P1-04",
+        "P1-05",
+        "P1-06"
+      ],
+      "title": "一条主线，很多条主线",
+      "event": "高中与大学分两拍出现，真实课程留言从上方逐张落入路线末端；蓝砚捧着课程笔记把注意力接回交流。",
+      "emotion": "从熟悉的秩序走向人与人的可能。",
+      "assets": [
+        "/assets/art/story12/fe-threads-ribbons-v2.png",
+        "/assets/art/story12/lanyan-course-wonder-review.png"
+      ],
+      "reuseReason": "P1-04 一条主线展开为多条纸路，P1-05 同一路网向真实课名靠近，P1-06 退后让交流成为中心；留言仅使用 course-memory 真实公开数据。"
+    },
+    {
+      "id": "fe-duet",
+      "beats": [
+        "P1-08",
+        "P1-09"
+      ],
+      "title": "相遇变成共同作品",
+      "event": "真实影片海报从画面轨道与声音轨道中合成，两个作者角色彼此靠近，作品成为下一次相遇的窗口。",
+      "emotion": "轻快、合作的暖意。",
+      "assets": [
+        "/assets/img/p1/campus-film-poster.webp",
+        "/assets/art/story12/lanyan-film-smile-review.png"
+      ],
+      "reuseReason": "延续刚播放的真实影片，保持共同作品与真实经历的对应关系。"
+    },
+    {
+      "id": "fe-radius",
+      "beats": [
+        "P1-10",
+        "P1-11",
+        "P1-12",
+        "P1-13"
+      ],
+      "title": "生活半径如何扩大",
+      "event": "六张真实实践照片逐张拉近再回到合照墙；团队、宣讲和实践站点展开，蓝砚携笔记回看一路遇见的人。",
+      "emotion": "从独自制作到看见许多具体的人。",
+      "assets": [
+        "/assets/img/p1/siyuan-01.webp",
+        "/assets/img/p1/xuanjiang-01.webp",
+        "/assets/img/p1/siyuan-02.webp",
+        "/assets/img/p1/siyuan-03.webp",
+        "/assets/img/p1/siyuan-04.webp",
+        "/assets/img/p1/siyuan-05.webp",
+        "/assets/art/story12/lanyan-radius-reflect-review.png"
+      ],
+      "reuseReason": "四个节拍讲同一段思源实践成长，照片作为同一段经历的持续舞台道具，不重复重置。"
+    },
+    {
+      "id": "fe-first-step",
+      "beats": [
+        "P1-14",
+        "P1-15",
+        "P1-16"
+      ],
+      "title": "一步之后",
+      "event": "一个脚步跨出起点，蓝砚以四个不同动作给出行动入口，最终“合情”一章落定。",
+      "emotion": "有鼓励而没有说教，轻盈收束。",
+      "assets": [
+        "/assets/art/story12/fe-first-step-route-v2.png",
+        "/assets/img/p1/xuanjiang-01.webp",
+        "/assets/art/story12/lanyan-signup-review.png",
+        "/assets/art/story12/lanyan-practice-review.png",
+        "/assets/art/story12/lanyan-meet-review.png",
+        "/assets/art/story12/lanyan-try-review.png"
+      ],
+      "reuseReason": "P1-14 以真实实践连接第一步，P1-15 同一条金纸路展开四个行动入口，P1-16 该路退成印下淡影；保持同一行动的因果与运动方向。"
+    },
+    {
+      "id": "se-open",
+      "beats": [
+        "P2-01",
+        "P2-02",
+        "P2-03",
+        "P2-04"
+      ],
+      "title": "把培养方案展开",
+      "event": "游园画卷先亮相，复核者提供的十二门课程在培养方案里逐列显现；表格折向一边，露出校园体验入口。",
+      "emotion": "明亮、好奇，先设规则再打开边界。",
+      "assets": [
+        "/assets/art/story12/se-campus-unfold-v2.png",
+        "/assets/img/p2/hanfu-03.webp"
+      ],
+      "reuseReason": "四个节拍是同一张培养方案与同一个游园的遮挡关系变化，不更换装饰背景。"
+    },
+    {
+      "id": "se-shell",
+      "beats": [
+        "P2-05",
+        "P2-06",
+        "P2-07"
+      ],
+      "title": "专业的壳，另一个自己",
+      "event": "电路和代码构成两片专业外壳；文化活动实拍从缝隙透出，外壳向两侧分开，成为真实经历的画框。",
+      "emotion": "专业身份的反差，鲜活地打开自己。",
+      "assets": [
+        "/assets/art/story12/se-technical-shell-v2.png",
+        "/assets/img/p2/circuit.webp",
+        "/assets/img/p2/code.webp",
+        "/assets/img/p2/hanfu-01.webp"
+      ],
+      "reuseReason": "P2-05 将真实电路与编程画面装入同一件闭合技术外壳；P2-06 由该外壳的接缝开合；P2-07 同一对叶片退到侧幕、真实活动居中。两叶共用一个有中央接缝的完整插画，保持闭合边缘精确连续。"
+    },
+    {
+      "id": "se-arts",
+      "beats": [
+        "P2-08",
+        "P2-09"
+      ],
+      "title": "七艺一起登场",
+      "event": "协会的真实合影亮相，蓝砚携原入群码放下一幅可收起的招新卷；下一节拍的七艺实物台面展开。",
+      "emotion": "热闹、可亲近，传统文化可以参与。",
+      "assets": [
+        "/assets/img/p2/hanfu-02.webp",
+        "/assets/art/story12/se-seven-arts-v2.png",
+        "/assets/art/story12/lanyan-club-welcome-review.png",
+        "/assets/art/story12/liyunculture-wechat-qr.png"
+      ],
+      "reuseReason": "P2-08 真实合影为主，七件器物在同一张竹案上于侧前景预告；P2-09 竹案整体推近，七艺名称在相应器物上方逐个落下。实物共案承托，不能被割成拼贴方块。"
+    },
+    {
+      "id": "se-game",
+      "beats": [
+        "P2-10",
+        "P2-11",
+        "P2-12"
+      ],
+      "title": "体验变成一场探索游戏",
+      "event": "真实雅集界面成为游戏台；关卡到印章再到纪念卡依次连通，蓝砚从真实图片框背后探头。",
+      "emotion": "动手创造的兴奋，技术融入生活。",
+      "assets": [
+        "/assets/img/p2/frost-ui-01.webp",
+        "/assets/img/p2/frost-ui-02.webp",
+        "/assets/art/story12/lanyan-game-peek-review.png"
+      ],
+      "reuseReason": "同一个真实项目的两张界面及同一条探索路径持续演出，不能被AI替换。"
+    },
+    {
+      "id": "se-club-film",
+      "beats": [
+        "P2-13"
+      ],
+      "title": "真实社团影像",
+      "event": "带独立相框的社团原片进入舞台，讲者手动播放或暂停。",
+      "emotion": "把校园体验交还给真实发生的活动。",
+      "assets": [
+        "/assets/video/liyunculture-club.mp4",
+        "/assets/img/p2/liyunculture-film-poster.webp",
+        "/assets/art/approved/media-frame-16x9.png"
+      ],
+      "reuseReason": "单节拍真实视频；沿用验收媒体框，影片使用用户提供的原画面和声音，不以人工合成图替代。"
+    },
+    {
+      "id": "se-afternoon",
+      "beats": [
+        "P2-14",
+        "P2-15",
+        "P2-16",
+        "P2-17",
+        "P2-18"
+      ],
+      "title": "一个自由下午",
+      "event": "不同校园入口展开为一张体验地图；行动路线逐步点亮，五个投票地点用对齐基线的柱条显示实时票数，最终落在“拥实”。",
+      "emotion": "多彩、开放，给观众真实的选择感。",
+      "assets": [
+        "/assets/art/story12/se-listen-share-v2.png",
+        "/assets/art/story12/se-afternoon-map-v2.png",
+        "/assets/art/story12/se-library-counter-review.png"
+      ],
+      "reuseReason": "P2-14 两类社团在同一校园长廊发生，P2-15 同景退远让“还不知道会不会喜欢”留白；P2-16 新的五站地图打开探索，P2-17 同一五站切到等宽数据比较；P2-18 归到章印。投票来自 free-afternoon。"
+    },
+    {
+      "id": "si-memory",
+      "beats": [
+        "P3-02",
+        "P3-03",
+        "P3-04"
+      ],
+      "title": "经历褪色，改变留下",
+      "event": "真实电赛照片像记忆叠在桌上；细节漂离并失焦，底下的方法、协作和判断仍然清楚。蓝砚在 P3-02 捧着纪念物，先把视线引向照片。",
+      "emotion": "带一点笑意的回望，转为笃定",
+      "assets": [
+        "/assets/art/story34/si-remembering-lanyan.png",
+        "/assets/img/p3/edian-group.webp",
+        "/assets/img/p3/edian-04.webp",
+        "/assets/img/p3/edian-06.webp"
+      ],
+      "reuseReason": "三个节拍是同一组记忆的连续消退与留下，照片保持身份与空间连续。"
+    },
+    {
+      "id": "si-contest-night",
+      "beats": [
+        "P3-05"
+      ],
+      "title": "暴雨夜的电赛工作台",
+      "event": "暴雨前夜的六张实拍逐张放大，供观众看清桌面、程序和小车，再沿不同方向缩回真实工作台的相册。",
+      "emotion": "具体、紧张、带一点回望",
+      "assets": [
+        "/assets/img/supplement/edc-night-wide.webp",
+        "/assets/img/supplement/edc-night-code.webp",
+        "/assets/img/supplement/edc-night-overhead.webp",
+        "/assets/img/supplement/edc-night-snacks.webp",
+        "/assets/img/supplement/edc-night-second-desk.webp",
+        "/assets/img/supplement/edc-night-car.webp"
+      ],
+      "reuseReason": "用户提供的真实比赛记录，使用独立实拍构图。"
+    },
+    {
+      "id": "si-method",
+      "beats": [
+        "P3-06",
+        "P3-07",
+        "P3-08"
+      ],
+      "title": "证书之外",
+      "event": "电路板、奖章、证书三个独立插画被归档到上缘；真正留下来的三条方法从物件下方抽出，最后合为一条可再次使用的路径；翻向 805 实验室时，三张方法卡依次落出台面。",
+      "emotion": "从具体成果转向内在能力",
+      "assets": [
+        "/assets/art/story34/si-circuit-board.png",
+        "/assets/art/story34/si-award-medallion.png",
+        "/assets/art/story34/si-certificate-folio.png"
+      ],
+      "reuseReason": "P3-06 三个独立成果道具入场；P3-07 同物件归档上移，让方法浮出；P3-08 道具压淡为残影，保持具体成果到留下能力的连续关系。"
+    },
+    {
+      "id": "si-archive",
+      "beats": [
+        "P3-09",
+        "P3-10",
+        "P3-11"
+      ],
+      "title": "经验可以被找到",
+      "event": "系统界面和五张实验室实拍并置。储物区与信号源、器材和层架、资产标签分三拍逐张放大再归位，对应柜体、层和盒子的定位叙事。",
+      "emotion": "可靠、可交给下一人",
+      "assets": [
+        "/assets/img/p3/lab-805-ui.webp",
+        "/assets/img/supplement/lab-storage.webp",
+        "/assets/img/supplement/lab-instrument.webp",
+        "/assets/img/supplement/lab-cabinet.webp",
+        "/assets/img/supplement/lab-shelves.webp",
+        "/assets/img/supplement/lab-equipment-label.webp",
+        "/assets/art/story34/si-archive-cabinet.png",
+        "/assets/art/story34/si-archive-drawer.png"
+      ],
+      "reuseReason": "P3-09 以真实界面、储物区和信号源建立现场；P3-10 同一档案柜台前出现真实柜内和层架；P3-11 真实资产标签归入定位链旁，保留同一柜体和独立抽屉示意。"
+    },
+    {
+      "id": "si-relay",
+      "beats": [
+        "P3-12",
+        "P3-13",
+        "P3-14"
+      ],
+      "title": "给后来的人一个起点",
+      "event": "实践与实验室两条经验路径汇合；旧路折向新的起点，再将光递给捧着经历册的蓝砚，问出下一章的成果问题。",
+      "emotion": "温暖但不把经验当标准答案",
+      "assets": [
+        "/assets/art/story34/si-sharing-lanyan.png",
+        "/assets/img/p1/siyuan-01.webp",
+        "/assets/img/p3/lab-805-ui.webp"
+      ],
+      "reuseReason": "两件真实经历沿同一条传递路径变换角色，连续演出必须保持物体身份。"
+    },
+    {
+      "id": "te-rally",
+      "beats": [
+        "P4-02",
+        "P4-03"
+      ],
+      "title": "卷王主场",
+      "event": "起跑线打开主场；同一舞台上，独立举手剪影随邀请出现，动效结束后等待真实回应。",
+      "emotion": "轻快、调侃、现场参与",
+      "assets": [
+        "/assets/art/story34/te-rally-startline.png",
+        "/assets/art/story34/te-rally-audience.png"
+      ],
+      "reuseReason": "P4-02 起跑线先建立现场；P4-03 同一赛道维持空间，独立举手剪影进场让出等待观众回应的时间。"
+    },
+    {
+      "id": "te-rank",
+      "beats": [
+        "P4-04",
+        "P4-05",
+        "P4-06"
+      ],
+      "title": "一个人，两把尺",
+      "event": "13与7以两把不同尺度出现；尺子分开，课程与竞赛等五个评价维度展开，不编造权重或分数。",
+      "emotion": "好奇与恍然",
+      "assets": [
+        "/assets/art/story34/te-rank-measurement-stand.png"
+      ],
+      "reuseReason": "P4-04 同台比较真实 13 与 7；P4-05 同一标尺保留比较与问句；P4-06 同台上收并列出五个评价类别，未增加排名、权重或分数。"
+    },
+    {
+      "id": "te-rules",
+      "beats": [
+        "P4-07",
+        "P4-08",
+        "P4-09",
+        "P4-10",
+        "P4-11"
+      ],
+      "title": "先看规则，再走路线",
+      "event": "规则手册展开三条目标路线；缺失的登记与材料形成断桥；三个信息入口接通路径，蓝砚拿路线图比较信息不全与提前准备的差别。",
+      "emotion": "实用、警醒、明确",
+      "assets": [
+        "/assets/art/story34/te-guiding-lanyan.png",
+        "/assets/art/story34/te-rulebook.png"
+      ],
+      "reuseReason": "P4-07 建立规则手册；P4-08 同册引出目标路线；P4-09 断桥、P4-10 信息入口依次发生在同一张路线图；P4-11 同册退场，蓝砚与两条路径呈现信息差的代价。"
+    },
+    {
+      "id": "te-workshop",
+      "beats": [
+        "P4-12",
+        "P4-13",
+        "P4-14",
+        "P4-15",
+        "P4-16"
+      ],
+      "title": "把系统接起来",
+      "event": "证书退到侧边，硬件、程序和测试模块拼接；连接突然失效，探针定位断点，再由传感器到电机搭成可工作的完整系统。",
+      "emotion": "带感、幽默、可动手",
+      "assets": [
+        "/assets/art/story34/te-workbench.png",
+        "/assets/img/supplement/wires-wide.webp",
+        "/assets/img/supplement/wires-detail.webp",
+        "/assets/art/story34/si-certificate-folio.png",
+        "/assets/art/story34/te-module-hardware.png",
+        "/assets/art/story34/te-module-control.png",
+        "/assets/art/story34/te-module-test.png"
+      ],
+      "reuseReason": "P4-12 证书退出工程台；P4-13 三独立模块接通；P4-14 同一控制模块失效；P4-15 探针查断点时，两张电力电子课走线实拍依次放大再回到工作台下；P4-16 同一传感、驱动、测试道具收束成整套系统。"
+    },
+    {
+      "id": "te-proof",
+      "beats": [
+        "P4-17",
+        "P4-18",
+        "P4-19"
+      ],
+      "title": "带着做过的东西",
+      "event": "研究方向、动手项目和具体问题组成去实验室的行囊；泛泛表态退后，实际作品来到前景，蓝砚举起原型示意，最后落成规则、目标、行动的路径。",
+      "emotion": "务实、自信",
+      "assets": [
+        "/assets/art/story34/te-building-lanyan.png",
+        "/assets/img/p3/lab-805-ui.webp",
+        "/assets/img/p3/edian-06.webp"
+      ],
+      "reuseReason": "同一份准备资料连续整理成可展示的作品，真实项目不被AI替换。"
+    },
+    {
+      "id": "te-value",
+      "beats": [
+        "P4-20",
+        "P4-21",
+        "P4-22"
+      ],
+      "title": "刻度之外",
+      "event": "评价尺和成果档案向四周退出，中央保留人的轮廓与一条尚未选择的路；问题出现时一切停止。",
+      "emotion": "从效率刹车，回到动机",
+      "assets": [
+        "/assets/art/story34/te-values-walker.png"
+      ],
+      "reuseReason": "P4-20 刻度与学生同场，P4-21 刻度撤退保留同一人物，P4-22 方向分岔给提问留出停顿。"
+    },
+    {
+      "id": "ti-machine",
+      "beats": [
+        "P5-02",
+        "P5-03",
+        "P5-04",
+        "P5-05"
+      ],
+      "title": "机器走上舞台",
+      "event": "黑曜门扇打开，鎏金计算核心被点亮；编程、资料、问答三个使用通道接入，越来越密的线路让速度变得可见。",
+      "emotion": "带感、好奇、技术的速度",
+      "assets": [
+        "/assets/art/p5/obsidian-computing-chamber-v3.png",
+        "/assets/art/p5/obsidian-computing-seal-v3.png"
+      ],
+      "reuseReason": "同一计算核心由画风切换推进到日常使用与技术加速，线路持续存在。"
+    },
+    {
+      "id": "ti-context-truth",
+      "beats": [
+        "P5-08",
+        "P5-09",
+        "P5-10",
+        "P5-11",
+        "P5-12",
+        "P5-13",
+        "P5-14"
+      ],
+      "title": "流畅的句子与事实的距离",
+      "event": "语词轨道汇聚到上下文核心，关联形成网络；输出看似连贯的文字后，可信校验处产生裂缝。流畅和正确两条轨道分离，明确流畅不等于事实。",
+      "emotion": "从惊叹到警醒",
+      "assets": [
+        "/assets/art/p5/obsidian-computing-chamber-v3.png",
+        "/assets/art/p5/obsidian-computing-seal-v3.png"
+      ],
+      "reuseReason": "Token与关联对象在同一机器舞台连续运算、输出、校验与分离，目的性极简用于结论。"
+    },
+    {
+      "id": "ti-freed-time",
+      "beats": [
+        "P5-15",
+        "P5-16",
+        "P5-17",
+        "P5-18"
+      ],
+      "title": "省下的时间交给谁",
+      "event": "任务页进入计算核心后压缩，省出的时间以空白时间带出现；机械指针停下，留给观众决定如何使用新的空白。",
+      "emotion": "技术快感转向人的选择",
+      "assets": [
+        "/assets/art/p5/pages/P5-16.webp",
+        "/assets/art/p5/obsidian-computing-seal-v3.png",
+        "/assets/art/p5/freed-time-scroll-v3.png",
+        "/assets/video/ai-wiring-lab.mp4",
+        "/assets/img/supplement/ai-wiring-poster.webp"
+      ],
+      "reuseReason": "同一任务带由计算压缩到时间释放，保持因果与对象连续；停顿服务于提问。"
+    },
+    {
+      "id": "ne-combination",
+      "beats": [
+        "P6-02",
+        "P6-03",
+        "P6-04",
+        "P6-05",
+        "P6-06",
+        "P6-07",
+        "P6-08",
+        "P6-09"
+      ],
+      "title": "把三个世界放到一起",
+      "event": "灵感蓝砚握住折纸，评价签和角色先后退场；北湖实拍、风速传感器和古诗词先展开再聚拢。真实观众脑洞进入同一个输入网络。",
+      "emotion": "顽皮、鲜亮、联想爆发",
+      "assets": [
+        "/assets/art/approved/north-lake-original.jpg",
+        "/assets/art/story678/ne-sensor.png",
+        "/assets/art/story678/ne-poetry.png",
+        "/assets/art/story678/ne-lanyan-inspiration.png"
+      ],
+      "reuseReason": "北湖实拍、风速传感器和古诗词三件同一语义对象跨八个节拍连续聚散；灵感蓝砚仅在预告出场。"
+    },
+    {
+      "id": "ne-cultural-door",
+      "beats": [
+        "P6-10",
+        "P6-11",
+        "P6-12",
+        "P6-13",
+        "P6-14"
+      ],
+      "title": "从窗口走进世界",
+      "event": "真实软件视窗放大；同一折页从半露到展开，长成琴、灯、屏风、桥的想象世界。最后四个真实界面依次投到中央放大阅读，再退入同一张图谱。",
+      "emotion": "惊喜、邀请、进入",
+      "assets": [
+        "/assets/img/p6/liyun-01.webp",
+        "/assets/img/p6/liyun-02.webp",
+        "/assets/img/p6/liyun-03.webp",
+        "/assets/img/p6/liyun-04.webp",
+        "/assets/art/story678/ne-world-folio.png"
+      ],
+      "reuseReason": "折页在同一场景前三拍逐层揭开；《理韵寻踪》的真实画面从想法到可参与的界面持续在场，保持真实。"
+    },
+    {
+      "id": "ne-build",
+      "beats": [
+        "P6-15",
+        "P6-16",
+        "P6-17",
+        "P6-18"
+      ],
+      "title": "让创意碰到现实",
+      "event": "网页、Three.js、声音、交互四个模块组装成作品；虚线路径随模块换位渐退再接通。门打开后服务器门闩落下，最后把陌生知识接进作品。",
+      "emotion": "带感、幽默、探索",
+      "assets": [
+        "/assets/img/p6/liyun-01.webp",
+        "/assets/art/story678/ne-server-gate.png"
+      ],
+      "reuseReason": "同一个真实作品与四个技术模块在四拍中组装；新生成服务器柜体跨后两拍表示同一部署关口，门闩独立运动。"
+    },
+    {
+      "id": "ne-question-paths",
+      "beats": [
+        "P6-19",
+        "P6-20",
+        "P6-21"
+      ],
+      "title": "换一个问题",
+      "event": "同一个折纸中心展开四个方向，四条问题由各折页延伸；随后线路退掉，留下可追问的折纸中心与是否值得实现的关口。",
+      "emotion": "开放后收束",
+      "assets": [
+        "/assets/art/story678/ne-question-origami.png"
+      ],
+      "reuseReason": "同一折纸机关先展开四个问题，然后收掉线路与现成路径，把注意力交还选择。"
+    },
+    {
+      "id": "ni-perspective",
+      "beats": [
+        "P7-02",
+        "P7-03",
+        "P7-04",
+        "P7-05"
+      ],
+      "title": "把视野拉远",
+      "event": "近景山峰遮住全貌，三片独立遮罩随镜头渐变，拉远后在同一锚点持续标出我们所在的位置。",
+      "emotion": "安静、开阔",
+      "assets": [
+        "/assets/art/p7/pages/P7-04.webp",
+        "/assets/art/story678/ni-ridge.png"
+      ],
+      "reuseReason": "同一独立透明近景山脊和既有河谷远景跨四拍移动，保持遮挡关系和空间连续性。"
+    },
+    {
+      "id": "ni-exchange",
+      "beats": [
+        "P7-06",
+        "P7-07",
+        "P7-08",
+        "P7-09"
+      ],
+      "title": "交换观察的位置",
+      "event": "画画的蓝砚与拿电脑的旅行者空彼此交流，后续把两个视角留在交换位置的笔记和画布上。答案被批量生成，值得追问的问题仍需人来选择。",
+      "emotion": "好奇、思辨",
+      "assets": [
+        "/assets/art/story678/ni-engineering-notebook.png",
+        "/assets/art/story678/ni-painting-board.png",
+        "/assets/art/story678/ni-review-lanyan-paint.png",
+        "/assets/art/story678/ni-review-aether.png"
+      ],
+      "reuseReason": "独立工程笔记和画板是同一对视角，跨四拍交叉换位、连接并退场，保留身份。"
+    },
+    {
+      "id": "ni-change",
+      "beats": [
+        "P7-10",
+        "P7-11",
+        "P7-12",
+        "P7-13",
+        "P7-14",
+        "P7-15"
+      ],
+      "title": "变与不变",
+      "event": "工具之流退出，江面金色倒影为小船标出方向。镜头沿同一片水面收至船灯，静默一拍，悟势印在相同暗面落下。",
+      "emotion": "沉静、有方向",
+      "assets": [
+        "/assets/art/p7/pages/P7-10.webp",
+        "/assets/art/story678/ni-review-crosscurrent.png"
+      ],
+      "reuseReason": "同一江月支撑苏轼诗句的变与不变；后一段使用同一幅江水、渡船与灯位实现镜头推进、收光与收束，14 无口播展示文字。"
+    },
+    {
+      "id": "fi-intro",
+      "beats": [
+        "P8-01"
+      ],
+      "title": "循心",
+      "event": "保留验收章首，暗色幕层渐退，独立蓝砚和问句逐次进入并稳定留在同一光级。",
+      "emotion": "收声、宁静",
+      "assets": [
+        "/assets/art/approved/fi-inner-echo.webp",
+        "/assets/art/approved/lanyan-listen.png"
+      ],
+      "reuseReason": "保留已验收的 Fi 合十独立透明角色及章首布局。"
+    },
+    {
+      "id": "fi-inner",
+      "beats": [
+        "P8-02",
+        "P8-03",
+        "P8-04",
+        "P8-05",
+        "P8-06",
+        "P8-07"
+      ],
+      "title": "卸下外在的刻度",
+      "event": "外在指标围绕蓝砚，逐个离开；画面压暗只剩问题。随后几种真实的在意重新点亮空出来的位置。",
+      "emotion": "收回目光、剥离、真诚",
+      "assets": [
+        "/assets/art/approved/lanyan-listen.png"
+      ],
+      "reuseReason": "同一角色与外在尺度持续剥离，验收透明角色复用保持身份一致。"
+    },
+    {
+      "id": "fi-lamp",
+      "beats": [
+        "P8-08",
+        "P8-09",
+        "P8-10",
+        "P8-11",
+        "P8-12",
+        "P8-13"
+      ],
+      "title": "让过去拥有未来",
+      "event": "同一盏灯点亮，真实灯未完五帧沿时间展开，旧画格让位给未来，三条真实项目传承路径汇到灯下。",
+      "emotion": "温暖、珍重、延续",
+      "assets": [
+        "/assets/art/p8/lamp-lit.webp",
+        "/assets/img/p8/dengweiwang-01.webp",
+        "/assets/img/p8/dengweiwang-02.webp",
+        "/assets/img/p8/dengweiwang-03.webp",
+        "/assets/img/p8/dengweiwang-04.webp",
+        "/assets/img/p8/dengweiwang-05.webp",
+        "/assets/img/p1/siyuan-01.webp",
+        "/assets/img/p3/lab-805-ui.webp",
+        "/assets/img/p6/liyun-01.webp"
+      ],
+      "reuseReason": "同一盏灯贯穿六个节拍，以真实作品承载记忆与传承，不重复生成灯。"
+    },
+    {
+      "id": "fi-rain-to-day",
+      "beats": [
+        "P8-14",
+        "P8-15"
+      ],
+      "title": "经过风雨",
+      "event": "细雨随诗句缓缓流动；两页共享竹径与诗行对象，正反向都用柔和光线切换，从雨后天色引出人生的选择。",
+      "emotion": "清醒、从容",
+      "assets": [
+        "/assets/art/p8/rain-lane.webp",
+        "/assets/art/p8/pages/P8-15.webp"
+      ],
+      "reuseReason": "相邻两页共用同一竹径与雨幕，保留次页原稿及纸面插画，支持正反向连续显影。"
+    },
+    {
+      "id": "fi-eight-lights",
+      "beats": [
+        "P8-16"
+      ],
+      "title": "八盏灯归场",
+      "event": "八章灯笼从画面外聚成一环，按到达时机发声，中间留下讲者原句。",
+      "emotion": "丰盈、回望",
+      "assets": [
+        "/assets/art/p8/pages/P8-16.webp",
+        "/assets/art/p0/eight-lamp-frame-v3.png"
+      ],
+      "reuseReason": "采用序章同一个灯笼外框，让八章回归在视觉上明确回扣开场。"
+    },
+    {
+      "id": "fi-choice-map",
+      "beats": [
+        "P8-17",
+        "P8-18"
+      ],
+      "title": "回到自己的选择",
+      "event": "升级路线和探索地图从同一起点长出，最后两条路径都收进自己的选择，留一束暖光。",
+      "emotion": "释然、自由、温柔坚定",
+      "assets": [
+        "/assets/art/story678/fi-route-folio.png"
+      ],
+      "reuseReason": "同一图册两条路共用一个起点；下个节拍让图册和路径退到远处，将起点留给自己的选择。"
+    },
+    {
+      "id": "fi-farewell",
+      "beats": [
+        "P8-19"
+      ],
+      "title": "谢幕",
+      "event": "八重灯火收至一点，原祝愿短暂停留；落幕题字、署名和捧灯蓝砚依次显现。",
+      "emotion": "感谢、温柔",
+      "assets": [
+        "/assets/art/p8/pages/P8-19.webp",
+        "/assets/art/story678/fi-review-lanyan-farewell.png"
+      ],
+      "reuseReason": "保留独立生成的片尾夜幕，以新生成的道谢蓝砚承接原定的一点光。"
+    },
+    {
+      "id": "fi-postshow-letter",
+      "beats": [
+        "P8-20"
+      ],
+      "title": "散场前的一封信",
+      "event": "暖色信纸舒展，蓝砚递出信封，观众从手机寄给主讲人。",
+      "emotion": "轻松，愿意倾听",
+      "assets": [
+        "/assets/art/story678/fi-postshow-lanyan.png"
+      ],
+      "reuseReason": "舞台与观众端表单在同一互动中使用同一角色动作。"
+    }
+  ],
+  "summary": {
+    "scenes": 45,
+    "beats": 153,
+    "retained": 16
+  },
+  "beats": [
+    {
+      "id": "P0-01",
+      "scene": "opening-unfold",
+      "beat": 0,
+      "reason": "同一座校园舞台从等待页开幕到问候；连续揭示不能更换背景。"
+    },
+    {
+      "id": "P0-02",
+      "scene": "opening-unfold",
+      "beat": 1,
+      "reason": "同一座校园舞台从等待页开幕到问候；连续揭示不能更换背景。"
+    },
+    {
+      "id": "P0-03",
+      "scene": "opening-metrics",
+      "beat": 0,
+      "reason": "四个评价对象从提问到退场保持身份；这四个ID是连续表演的节拍。"
+    },
+    {
+      "id": "P0-04",
+      "scene": "opening-metrics",
+      "beat": 1,
+      "reason": "四个评价对象从提问到退场保持身份；这四个ID是连续表演的节拍。"
+    },
+    {
+      "id": "P0-05",
+      "scene": "opening-metrics",
+      "beat": 2,
+      "reason": "四个评价对象从提问到退场保持身份；这四个ID是连续表演的节拍。"
+    },
+    {
+      "id": "P0-06",
+      "scene": "opening-metrics",
+      "beat": 3,
+      "reason": "四个评价对象从提问到退场保持身份；这四个ID是连续表演的节拍。"
+    },
+    {
+      "id": "P0-07",
+      "scene": "opening-campus",
+      "beat": 0,
+      "reason": "同一校园由观众的声音改变；地图、地点与留言需要连续存在，不用六张互不相关背景。"
+    },
+    {
+      "id": "P0-08",
+      "scene": "opening-campus",
+      "beat": 1,
+      "reason": "同一校园由观众的声音改变；地图、地点与留言需要连续存在，不用六张互不相关背景。"
+    },
+    {
+      "id": "P0-09",
+      "scene": "opening-campus",
+      "beat": 2,
+      "reason": "同一校园由观众的声音改变；地图、地点与留言需要连续存在，不用六张互不相关背景。"
+    },
+    {
+      "id": "P0-10",
+      "scene": "opening-campus",
+      "beat": 3,
+      "reason": "同一校园由观众的声音改变；地图、地点与留言需要连续存在，不用六张互不相关背景。"
+    },
+    {
+      "id": "P0-11",
+      "scene": "opening-campus",
+      "beat": 4,
+      "reason": "同一校园由观众的声音改变；地图、地点与留言需要连续存在，不用六张互不相关背景。"
+    },
+    {
+      "id": "P0-12",
+      "scene": "opening-campus",
+      "beat": 5,
+      "reason": "同一校园由观众的声音改变；地图、地点与留言需要连续存在，不用六张互不相关背景。"
+    },
+    {
+      "id": "P0-13",
+      "scene": "opening-exploration",
+      "beat": 0,
+      "reason": "讲者的三类真实经历在同一探索桌展开再让出中心，保持照片身份，绝不AI替代事实。"
+    },
+    {
+      "id": "P0-14",
+      "scene": "opening-exploration",
+      "beat": 1,
+      "reason": "讲者的三类真实经历在同一探索桌展开再让出中心，保持照片身份，绝不AI替代事实。"
+    },
+    {
+      "id": "P0-15",
+      "scene": "opening-exploration",
+      "beat": 2,
+      "reason": "讲者的三类真实经历在同一探索桌展开再让出中心，保持照片身份，绝不AI替代事实。"
+    },
+    {
+      "id": "P0-16",
+      "scene": "opening-eight",
+      "beat": 0,
+      "reason": "八个章节视觉作为可辨识的目录窗口，在三个节拍连续展开与聚焦。"
+    },
+    {
+      "id": "P0-17",
+      "scene": "opening-eight",
+      "beat": 1,
+      "reason": "八个章节视觉作为可辨识的目录窗口，在三个节拍连续展开与聚焦。"
+    },
+    {
+      "id": "P0-18",
+      "scene": "opening-eight",
+      "beat": 2,
+      "reason": "八个章节视觉作为可辨识的目录窗口，在三个节拍连续展开与聚焦。"
+    },
+    {
+      "id": "P1-01",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P1-02",
+      "scene": "fe-letter",
+      "beat": 0,
+      "reason": "P1-02 蓝砚递出信；P1-03 保留递信对象与角色退场的连续运动，独立封闭信封接住视线。验收拥抱仍仅在 Fe 章首。"
+    },
+    {
+      "id": "P1-03",
+      "scene": "fe-letter",
+      "beat": 1,
+      "reason": "P1-02 蓝砚递出信；P1-03 保留递信对象与角色退场的连续运动，独立封闭信封接住视线。验收拥抱仍仅在 Fe 章首。"
+    },
+    {
+      "id": "P1-04",
+      "scene": "fe-threads",
+      "beat": 0,
+      "reason": "P1-04 一条主线展开为多条纸路，P1-05 同一路网向真实课名靠近，P1-06 退后让交流成为中心；留言仅使用 course-memory 真实公开数据。"
+    },
+    {
+      "id": "P1-05",
+      "scene": "fe-threads",
+      "beat": 1,
+      "reason": "P1-04 一条主线展开为多条纸路，P1-05 同一路网向真实课名靠近，P1-06 退后让交流成为中心；留言仅使用 course-memory 真实公开数据。"
+    },
+    {
+      "id": "P1-06",
+      "scene": "fe-threads",
+      "beat": 2,
+      "reason": "P1-04 一条主线展开为多条纸路，P1-05 同一路网向真实课名靠近，P1-06 退后让交流成为中心；留言仅使用 course-memory 真实公开数据。"
+    },
+    {
+      "id": "P1-07",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P1-08",
+      "scene": "fe-duet",
+      "beat": 0,
+      "reason": "延续刚播放的真实影片，保持共同作品与真实经历的对应关系。"
+    },
+    {
+      "id": "P1-09",
+      "scene": "fe-duet",
+      "beat": 1,
+      "reason": "延续刚播放的真实影片，保持共同作品与真实经历的对应关系。"
+    },
+    {
+      "id": "P1-10",
+      "scene": "fe-radius",
+      "beat": 0,
+      "reason": "四个节拍讲同一段思源实践成长，照片作为同一段经历的持续舞台道具，不重复重置。"
+    },
+    {
+      "id": "P1-11",
+      "scene": "fe-radius",
+      "beat": 1,
+      "reason": "四个节拍讲同一段思源实践成长，照片作为同一段经历的持续舞台道具，不重复重置。"
+    },
+    {
+      "id": "P1-12",
+      "scene": "fe-radius",
+      "beat": 2,
+      "reason": "四个节拍讲同一段思源实践成长，照片作为同一段经历的持续舞台道具，不重复重置。"
+    },
+    {
+      "id": "P1-13",
+      "scene": "fe-radius",
+      "beat": 3,
+      "reason": "四个节拍讲同一段思源实践成长，照片作为同一段经历的持续舞台道具，不重复重置。"
+    },
+    {
+      "id": "P1-14",
+      "scene": "fe-first-step",
+      "beat": 0,
+      "reason": "P1-14 以真实实践连接第一步，P1-15 同一条金纸路展开四个行动入口，P1-16 该路退成印下淡影；保持同一行动的因果与运动方向。"
+    },
+    {
+      "id": "P1-15",
+      "scene": "fe-first-step",
+      "beat": 1,
+      "reason": "P1-14 以真实实践连接第一步，P1-15 同一条金纸路展开四个行动入口，P1-16 该路退成印下淡影；保持同一行动的因果与运动方向。"
+    },
+    {
+      "id": "P1-16",
+      "scene": "fe-first-step",
+      "beat": 2,
+      "reason": "P1-14 以真实实践连接第一步，P1-15 同一条金纸路展开四个行动入口，P1-16 该路退成印下淡影；保持同一行动的因果与运动方向。"
+    },
+    {
+      "id": "P2-01",
+      "scene": "se-open",
+      "beat": 0,
+      "reason": "四个节拍是同一张培养方案与同一个游园的遮挡关系变化，不更换装饰背景。"
+    },
+    {
+      "id": "P2-02",
+      "scene": "se-open",
+      "beat": 1,
+      "reason": "四个节拍是同一张培养方案与同一个游园的遮挡关系变化，不更换装饰背景。"
+    },
+    {
+      "id": "P2-03",
+      "scene": "se-open",
+      "beat": 2,
+      "reason": "四个节拍是同一张培养方案与同一个游园的遮挡关系变化，不更换装饰背景。"
+    },
+    {
+      "id": "P2-04",
+      "scene": "se-open",
+      "beat": 3,
+      "reason": "四个节拍是同一张培养方案与同一个游园的遮挡关系变化，不更换装饰背景。"
+    },
+    {
+      "id": "P2-05",
+      "scene": "se-shell",
+      "beat": 0,
+      "reason": "P2-05 将真实电路与编程画面装入同一件闭合技术外壳；P2-06 由该外壳的接缝开合；P2-07 同一对叶片退到侧幕、真实活动居中。两叶共用一个有中央接缝的完整插画，保持闭合边缘精确连续。"
+    },
+    {
+      "id": "P2-06",
+      "scene": "se-shell",
+      "beat": 1,
+      "reason": "P2-05 将真实电路与编程画面装入同一件闭合技术外壳；P2-06 由该外壳的接缝开合；P2-07 同一对叶片退到侧幕、真实活动居中。两叶共用一个有中央接缝的完整插画，保持闭合边缘精确连续。"
+    },
+    {
+      "id": "P2-07",
+      "scene": "se-shell",
+      "beat": 2,
+      "reason": "P2-05 将真实电路与编程画面装入同一件闭合技术外壳；P2-06 由该外壳的接缝开合；P2-07 同一对叶片退到侧幕、真实活动居中。两叶共用一个有中央接缝的完整插画，保持闭合边缘精确连续。"
+    },
+    {
+      "id": "P2-08",
+      "scene": "se-arts",
+      "beat": 0,
+      "reason": "P2-08 真实合影为主，七件器物在同一张竹案上于侧前景预告；P2-09 竹案整体推近，七艺名称在相应器物上方逐个落下。实物共案承托，不能被割成拼贴方块。"
+    },
+    {
+      "id": "P2-09",
+      "scene": "se-arts",
+      "beat": 1,
+      "reason": "P2-08 真实合影为主，七件器物在同一张竹案上于侧前景预告；P2-09 竹案整体推近，七艺名称在相应器物上方逐个落下。实物共案承托，不能被割成拼贴方块。"
+    },
+    {
+      "id": "P2-10",
+      "scene": "se-game",
+      "beat": 0,
+      "reason": "同一个真实项目的两张界面及同一条探索路径持续演出，不能被AI替换。"
+    },
+    {
+      "id": "P2-11",
+      "scene": "se-game",
+      "beat": 1,
+      "reason": "同一个真实项目的两张界面及同一条探索路径持续演出，不能被AI替换。"
+    },
+    {
+      "id": "P2-12",
+      "scene": "se-game",
+      "beat": 2,
+      "reason": "同一个真实项目的两张界面及同一条探索路径持续演出，不能被AI替换。"
+    },
+    {
+      "id": "P2-13",
+      "scene": "se-club-film",
+      "beat": 0,
+      "reason": "单节拍真实视频；沿用验收媒体框，影片使用用户提供的原画面和声音，不以人工合成图替代。"
+    },
+    {
+      "id": "P2-14",
+      "scene": "se-afternoon",
+      "beat": 0,
+      "reason": "P2-14 两类社团在同一校园长廊发生，P2-15 同景退远让“还不知道会不会喜欢”留白；P2-16 新的五站地图打开探索，P2-17 同一五站切到等宽数据比较；P2-18 归到章印。投票来自 free-afternoon。"
+    },
+    {
+      "id": "P2-15",
+      "scene": "se-afternoon",
+      "beat": 1,
+      "reason": "P2-14 两类社团在同一校园长廊发生，P2-15 同景退远让“还不知道会不会喜欢”留白；P2-16 新的五站地图打开探索，P2-17 同一五站切到等宽数据比较；P2-18 归到章印。投票来自 free-afternoon。"
+    },
+    {
+      "id": "P2-16",
+      "scene": "se-afternoon",
+      "beat": 2,
+      "reason": "P2-14 两类社团在同一校园长廊发生，P2-15 同景退远让“还不知道会不会喜欢”留白；P2-16 新的五站地图打开探索，P2-17 同一五站切到等宽数据比较；P2-18 归到章印。投票来自 free-afternoon。"
+    },
+    {
+      "id": "P2-17",
+      "scene": "se-afternoon",
+      "beat": 3,
+      "reason": "P2-14 两类社团在同一校园长廊发生，P2-15 同景退远让“还不知道会不会喜欢”留白；P2-16 新的五站地图打开探索，P2-17 同一五站切到等宽数据比较；P2-18 归到章印。投票来自 free-afternoon。"
+    },
+    {
+      "id": "P2-18",
+      "scene": "se-afternoon",
+      "beat": 4,
+      "reason": "P2-14 两类社团在同一校园长廊发生，P2-15 同景退远让“还不知道会不会喜欢”留白；P2-16 新的五站地图打开探索，P2-17 同一五站切到等宽数据比较；P2-18 归到章印。投票来自 free-afternoon。"
+    },
+    {
+      "id": "P3-01",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P3-02",
+      "scene": "si-memory",
+      "beat": 0,
+      "reason": "三个节拍是同一组记忆的连续消退与留下，照片保持身份与空间连续。"
+    },
+    {
+      "id": "P3-03",
+      "scene": "si-memory",
+      "beat": 1,
+      "reason": "三个节拍是同一组记忆的连续消退与留下，照片保持身份与空间连续。"
+    },
+    {
+      "id": "P3-04",
+      "scene": "si-memory",
+      "beat": 2,
+      "reason": "三个节拍是同一组记忆的连续消退与留下，照片保持身份与空间连续。"
+    },
+    {
+      "id": "P3-05",
+      "scene": "si-contest-night",
+      "beat": 0,
+      "reason": "用户提供的真实比赛记录，使用独立实拍构图。"
+    },
+    {
+      "id": "P3-06",
+      "scene": "si-method",
+      "beat": 0,
+      "reason": "P3-06 三个独立成果道具入场；P3-07 同物件归档上移，让方法浮出；P3-08 道具压淡为残影，保持具体成果到留下能力的连续关系。"
+    },
+    {
+      "id": "P3-07",
+      "scene": "si-method",
+      "beat": 1,
+      "reason": "P3-06 三个独立成果道具入场；P3-07 同物件归档上移，让方法浮出；P3-08 道具压淡为残影，保持具体成果到留下能力的连续关系。"
+    },
+    {
+      "id": "P3-08",
+      "scene": "si-method",
+      "beat": 2,
+      "reason": "P3-06 三个独立成果道具入场；P3-07 同物件归档上移，让方法浮出；P3-08 道具压淡为残影，保持具体成果到留下能力的连续关系。"
+    },
+    {
+      "id": "P3-09",
+      "scene": "si-archive",
+      "beat": 0,
+      "reason": "P3-09 以真实界面、储物区和信号源建立现场；P3-10 同一档案柜台前出现真实柜内和层架；P3-11 真实资产标签归入定位链旁，保留同一柜体和独立抽屉示意。"
+    },
+    {
+      "id": "P3-10",
+      "scene": "si-archive",
+      "beat": 1,
+      "reason": "P3-09 以真实界面、储物区和信号源建立现场；P3-10 同一档案柜台前出现真实柜内和层架；P3-11 真实资产标签归入定位链旁，保留同一柜体和独立抽屉示意。"
+    },
+    {
+      "id": "P3-11",
+      "scene": "si-archive",
+      "beat": 2,
+      "reason": "P3-09 以真实界面、储物区和信号源建立现场；P3-10 同一档案柜台前出现真实柜内和层架；P3-11 真实资产标签归入定位链旁，保留同一柜体和独立抽屉示意。"
+    },
+    {
+      "id": "P3-12",
+      "scene": "si-relay",
+      "beat": 0,
+      "reason": "两件真实经历沿同一条传递路径变换角色，连续演出必须保持物体身份。"
+    },
+    {
+      "id": "P3-13",
+      "scene": "si-relay",
+      "beat": 1,
+      "reason": "两件真实经历沿同一条传递路径变换角色，连续演出必须保持物体身份。"
+    },
+    {
+      "id": "P3-14",
+      "scene": "si-relay",
+      "beat": 2,
+      "reason": "两件真实经历沿同一条传递路径变换角色，连续演出必须保持物体身份。"
+    },
+    {
+      "id": "P3-15",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P3-16",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P4-01",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P4-02",
+      "scene": "te-rally",
+      "beat": 0,
+      "reason": "P4-02 起跑线先建立现场；P4-03 同一赛道维持空间，独立举手剪影进场让出等待观众回应的时间。"
+    },
+    {
+      "id": "P4-03",
+      "scene": "te-rally",
+      "beat": 1,
+      "reason": "P4-02 起跑线先建立现场；P4-03 同一赛道维持空间，独立举手剪影进场让出等待观众回应的时间。"
+    },
+    {
+      "id": "P4-04",
+      "scene": "te-rank",
+      "beat": 0,
+      "reason": "P4-04 同台比较真实 13 与 7；P4-05 同一标尺保留比较与问句；P4-06 同台上收并列出五个评价类别，未增加排名、权重或分数。"
+    },
+    {
+      "id": "P4-05",
+      "scene": "te-rank",
+      "beat": 1,
+      "reason": "P4-04 同台比较真实 13 与 7；P4-05 同一标尺保留比较与问句；P4-06 同台上收并列出五个评价类别，未增加排名、权重或分数。"
+    },
+    {
+      "id": "P4-06",
+      "scene": "te-rank",
+      "beat": 2,
+      "reason": "P4-04 同台比较真实 13 与 7；P4-05 同一标尺保留比较与问句；P4-06 同台上收并列出五个评价类别，未增加排名、权重或分数。"
+    },
+    {
+      "id": "P4-07",
+      "scene": "te-rules",
+      "beat": 0,
+      "reason": "P4-07 建立规则手册；P4-08 同册引出目标路线；P4-09 断桥、P4-10 信息入口依次发生在同一张路线图；P4-11 同册退场，蓝砚与两条路径呈现信息差的代价。"
+    },
+    {
+      "id": "P4-08",
+      "scene": "te-rules",
+      "beat": 1,
+      "reason": "P4-07 建立规则手册；P4-08 同册引出目标路线；P4-09 断桥、P4-10 信息入口依次发生在同一张路线图；P4-11 同册退场，蓝砚与两条路径呈现信息差的代价。"
+    },
+    {
+      "id": "P4-09",
+      "scene": "te-rules",
+      "beat": 2,
+      "reason": "P4-07 建立规则手册；P4-08 同册引出目标路线；P4-09 断桥、P4-10 信息入口依次发生在同一张路线图；P4-11 同册退场，蓝砚与两条路径呈现信息差的代价。"
+    },
+    {
+      "id": "P4-10",
+      "scene": "te-rules",
+      "beat": 3,
+      "reason": "P4-07 建立规则手册；P4-08 同册引出目标路线；P4-09 断桥、P4-10 信息入口依次发生在同一张路线图；P4-11 同册退场，蓝砚与两条路径呈现信息差的代价。"
+    },
+    {
+      "id": "P4-11",
+      "scene": "te-rules",
+      "beat": 4,
+      "reason": "P4-07 建立规则手册；P4-08 同册引出目标路线；P4-09 断桥、P4-10 信息入口依次发生在同一张路线图；P4-11 同册退场，蓝砚与两条路径呈现信息差的代价。"
+    },
+    {
+      "id": "P4-12",
+      "scene": "te-workshop",
+      "beat": 0,
+      "reason": "P4-12 证书退出工程台；P4-13 三独立模块接通；P4-14 同一控制模块失效；P4-15 探针查断点时，两张电力电子课走线实拍依次放大再回到工作台下；P4-16 同一传感、驱动、测试道具收束成整套系统。"
+    },
+    {
+      "id": "P4-13",
+      "scene": "te-workshop",
+      "beat": 1,
+      "reason": "P4-12 证书退出工程台；P4-13 三独立模块接通；P4-14 同一控制模块失效；P4-15 探针查断点时，两张电力电子课走线实拍依次放大再回到工作台下；P4-16 同一传感、驱动、测试道具收束成整套系统。"
+    },
+    {
+      "id": "P4-14",
+      "scene": "te-workshop",
+      "beat": 2,
+      "reason": "P4-12 证书退出工程台；P4-13 三独立模块接通；P4-14 同一控制模块失效；P4-15 探针查断点时，两张电力电子课走线实拍依次放大再回到工作台下；P4-16 同一传感、驱动、测试道具收束成整套系统。"
+    },
+    {
+      "id": "P4-15",
+      "scene": "te-workshop",
+      "beat": 3,
+      "reason": "P4-12 证书退出工程台；P4-13 三独立模块接通；P4-14 同一控制模块失效；P4-15 探针查断点时，两张电力电子课走线实拍依次放大再回到工作台下；P4-16 同一传感、驱动、测试道具收束成整套系统。"
+    },
+    {
+      "id": "P4-16",
+      "scene": "te-workshop",
+      "beat": 4,
+      "reason": "P4-12 证书退出工程台；P4-13 三独立模块接通；P4-14 同一控制模块失效；P4-15 探针查断点时，两张电力电子课走线实拍依次放大再回到工作台下；P4-16 同一传感、驱动、测试道具收束成整套系统。"
+    },
+    {
+      "id": "P4-17",
+      "scene": "te-proof",
+      "beat": 0,
+      "reason": "同一份准备资料连续整理成可展示的作品，真实项目不被AI替换。"
+    },
+    {
+      "id": "P4-18",
+      "scene": "te-proof",
+      "beat": 1,
+      "reason": "同一份准备资料连续整理成可展示的作品，真实项目不被AI替换。"
+    },
+    {
+      "id": "P4-19",
+      "scene": "te-proof",
+      "beat": 2,
+      "reason": "同一份准备资料连续整理成可展示的作品，真实项目不被AI替换。"
+    },
+    {
+      "id": "P4-20",
+      "scene": "te-value",
+      "beat": 0,
+      "reason": "P4-20 刻度与学生同场，P4-21 刻度撤退保留同一人物，P4-22 方向分岔给提问留出停顿。"
+    },
+    {
+      "id": "P4-21",
+      "scene": "te-value",
+      "beat": 1,
+      "reason": "P4-20 刻度与学生同场，P4-21 刻度撤退保留同一人物，P4-22 方向分岔给提问留出停顿。"
+    },
+    {
+      "id": "P4-22",
+      "scene": "te-value",
+      "beat": 2,
+      "reason": "P4-20 刻度与学生同场，P4-21 刻度撤退保留同一人物，P4-22 方向分岔给提问留出停顿。"
+    },
+    {
+      "id": "P4-23",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P4-24",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P5-01",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P5-02",
+      "scene": "ti-machine",
+      "beat": 0,
+      "reason": "同一计算核心由画风切换推进到日常使用与技术加速，线路持续存在。"
+    },
+    {
+      "id": "P5-03",
+      "scene": "ti-machine",
+      "beat": 1,
+      "reason": "同一计算核心由画风切换推进到日常使用与技术加速，线路持续存在。"
+    },
+    {
+      "id": "P5-04",
+      "scene": "ti-machine",
+      "beat": 2,
+      "reason": "同一计算核心由画风切换推进到日常使用与技术加速，线路持续存在。"
+    },
+    {
+      "id": "P5-05",
+      "scene": "ti-machine",
+      "beat": 3,
+      "reason": "同一计算核心由画风切换推进到日常使用与技术加速，线路持续存在。"
+    },
+    {
+      "id": "P5-06",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P5-07",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P5-08",
+      "scene": "ti-context-truth",
+      "beat": 0,
+      "reason": "Token与关联对象在同一机器舞台连续运算、输出、校验与分离，目的性极简用于结论。"
+    },
+    {
+      "id": "P5-09",
+      "scene": "ti-context-truth",
+      "beat": 1,
+      "reason": "Token与关联对象在同一机器舞台连续运算、输出、校验与分离，目的性极简用于结论。"
+    },
+    {
+      "id": "P5-10",
+      "scene": "ti-context-truth",
+      "beat": 2,
+      "reason": "Token与关联对象在同一机器舞台连续运算、输出、校验与分离，目的性极简用于结论。"
+    },
+    {
+      "id": "P5-11",
+      "scene": "ti-context-truth",
+      "beat": 3,
+      "reason": "Token与关联对象在同一机器舞台连续运算、输出、校验与分离，目的性极简用于结论。"
+    },
+    {
+      "id": "P5-12",
+      "scene": "ti-context-truth",
+      "beat": 4,
+      "reason": "Token与关联对象在同一机器舞台连续运算、输出、校验与分离，目的性极简用于结论。"
+    },
+    {
+      "id": "P5-13",
+      "scene": "ti-context-truth",
+      "beat": 5,
+      "reason": "Token与关联对象在同一机器舞台连续运算、输出、校验与分离，目的性极简用于结论。"
+    },
+    {
+      "id": "P5-14",
+      "scene": "ti-context-truth",
+      "beat": 6,
+      "reason": "Token与关联对象在同一机器舞台连续运算、输出、校验与分离，目的性极简用于结论。"
+    },
+    {
+      "id": "P5-15",
+      "scene": "ti-freed-time",
+      "beat": 0,
+      "reason": "同一任务带由计算压缩到时间释放，保持因果与对象连续；停顿服务于提问。"
+    },
+    {
+      "id": "P5-16",
+      "scene": "ti-freed-time",
+      "beat": 1,
+      "reason": "同一任务带由计算压缩到时间释放，保持因果与对象连续；停顿服务于提问。"
+    },
+    {
+      "id": "P5-17",
+      "scene": "ti-freed-time",
+      "beat": 2,
+      "reason": "同一任务带由计算压缩到时间释放，保持因果与对象连续；停顿服务于提问。"
+    },
+    {
+      "id": "P5-18",
+      "scene": "ti-freed-time",
+      "beat": 3,
+      "reason": "同一任务带由计算压缩到时间释放，保持因果与对象连续；停顿服务于提问。"
+    },
+    {
+      "id": "P5-19",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P5-20",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P6-01",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P6-02",
+      "scene": "ne-combination",
+      "beat": 0,
+      "reason": "北湖实拍、风速传感器和古诗词三件同一语义对象跨八个节拍连续聚散；灵感蓝砚仅在预告出场。"
+    },
+    {
+      "id": "P6-03",
+      "scene": "ne-combination",
+      "beat": 1,
+      "reason": "北湖实拍、风速传感器和古诗词三件同一语义对象跨八个节拍连续聚散；灵感蓝砚仅在预告出场。"
+    },
+    {
+      "id": "P6-04",
+      "scene": "ne-combination",
+      "beat": 2,
+      "reason": "北湖实拍、风速传感器和古诗词三件同一语义对象跨八个节拍连续聚散；灵感蓝砚仅在预告出场。"
+    },
+    {
+      "id": "P6-05",
+      "scene": "ne-combination",
+      "beat": 3,
+      "reason": "北湖实拍、风速传感器和古诗词三件同一语义对象跨八个节拍连续聚散；灵感蓝砚仅在预告出场。"
+    },
+    {
+      "id": "P6-06",
+      "scene": "ne-combination",
+      "beat": 4,
+      "reason": "北湖实拍、风速传感器和古诗词三件同一语义对象跨八个节拍连续聚散；灵感蓝砚仅在预告出场。"
+    },
+    {
+      "id": "P6-07",
+      "scene": "ne-combination",
+      "beat": 5,
+      "reason": "北湖实拍、风速传感器和古诗词三件同一语义对象跨八个节拍连续聚散；灵感蓝砚仅在预告出场。"
+    },
+    {
+      "id": "P6-08",
+      "scene": "ne-combination",
+      "beat": 6,
+      "reason": "北湖实拍、风速传感器和古诗词三件同一语义对象跨八个节拍连续聚散；灵感蓝砚仅在预告出场。"
+    },
+    {
+      "id": "P6-09",
+      "scene": "ne-combination",
+      "beat": 7,
+      "reason": "北湖实拍、风速传感器和古诗词三件同一语义对象跨八个节拍连续聚散；灵感蓝砚仅在预告出场。"
+    },
+    {
+      "id": "P6-10",
+      "scene": "ne-cultural-door",
+      "beat": 0,
+      "reason": "折页在同一场景前三拍逐层揭开；《理韵寻踪》的真实画面从想法到可参与的界面持续在场，保持真实。"
+    },
+    {
+      "id": "P6-11",
+      "scene": "ne-cultural-door",
+      "beat": 1,
+      "reason": "折页在同一场景前三拍逐层揭开；《理韵寻踪》的真实画面从想法到可参与的界面持续在场，保持真实。"
+    },
+    {
+      "id": "P6-12",
+      "scene": "ne-cultural-door",
+      "beat": 2,
+      "reason": "折页在同一场景前三拍逐层揭开；《理韵寻踪》的真实画面从想法到可参与的界面持续在场，保持真实。"
+    },
+    {
+      "id": "P6-13",
+      "scene": "ne-cultural-door",
+      "beat": 3,
+      "reason": "折页在同一场景前三拍逐层揭开；《理韵寻踪》的真实画面从想法到可参与的界面持续在场，保持真实。"
+    },
+    {
+      "id": "P6-14",
+      "scene": "ne-cultural-door",
+      "beat": 4,
+      "reason": "折页在同一场景前三拍逐层揭开；《理韵寻踪》的真实画面从想法到可参与的界面持续在场，保持真实。"
+    },
+    {
+      "id": "P6-15",
+      "scene": "ne-build",
+      "beat": 0,
+      "reason": "同一个真实作品与四个技术模块在四拍中组装；新生成服务器柜体跨后两拍表示同一部署关口，门闩独立运动。"
+    },
+    {
+      "id": "P6-16",
+      "scene": "ne-build",
+      "beat": 1,
+      "reason": "同一个真实作品与四个技术模块在四拍中组装；新生成服务器柜体跨后两拍表示同一部署关口，门闩独立运动。"
+    },
+    {
+      "id": "P6-17",
+      "scene": "ne-build",
+      "beat": 2,
+      "reason": "同一个真实作品与四个技术模块在四拍中组装；新生成服务器柜体跨后两拍表示同一部署关口，门闩独立运动。"
+    },
+    {
+      "id": "P6-18",
+      "scene": "ne-build",
+      "beat": 3,
+      "reason": "同一个真实作品与四个技术模块在四拍中组装；新生成服务器柜体跨后两拍表示同一部署关口，门闩独立运动。"
+    },
+    {
+      "id": "P6-19",
+      "scene": "ne-question-paths",
+      "beat": 0,
+      "reason": "同一折纸机关先展开四个问题，然后收掉线路与现成路径，把注意力交还选择。"
+    },
+    {
+      "id": "P6-20",
+      "scene": "ne-question-paths",
+      "beat": 1,
+      "reason": "同一折纸机关先展开四个问题，然后收掉线路与现成路径，把注意力交还选择。"
+    },
+    {
+      "id": "P6-21",
+      "scene": "ne-question-paths",
+      "beat": 2,
+      "reason": "同一折纸机关先展开四个问题，然后收掉线路与现成路径，把注意力交还选择。"
+    },
+    {
+      "id": "P6-22",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P7-01",
+      "scene": null,
+      "beat": null,
+      "reason": "保留原章首、真实媒体、互动、章节印记或有目的极简演出；需新一轮复核。"
+    },
+    {
+      "id": "P7-02",
+      "scene": "ni-perspective",
+      "beat": 0,
+      "reason": "同一独立透明近景山脊和既有河谷远景跨四拍移动，保持遮挡关系和空间连续性。"
+    },
+    {
+      "id": "P7-03",
+      "scene": "ni-perspective",
+      "beat": 1,
+      "reason": "同一独立透明近景山脊和既有河谷远景跨四拍移动，保持遮挡关系和空间连续性。"
+    },
+    {
+      "id": "P7-04",
+      "scene": "ni-perspective",
+      "beat": 2,
+      "reason": "同一独立透明近景山脊和既有河谷远景跨四拍移动，保持遮挡关系和空间连续性。"
+    },
+    {
+      "id": "P7-05",
+      "scene": "ni-perspective",
+      "beat": 3,
+      "reason": "同一独立透明近景山脊和既有河谷远景跨四拍移动，保持遮挡关系和空间连续性。"
+    },
+    {
+      "id": "P7-06",
+      "scene": "ni-exchange",
+      "beat": 0,
+      "reason": "独立工程笔记和画板是同一对视角，跨四拍交叉换位、连接并退场，保留身份。"
+    },
+    {
+      "id": "P7-07",
+      "scene": "ni-exchange",
+      "beat": 1,
+      "reason": "独立工程笔记和画板是同一对视角，跨四拍交叉换位、连接并退场，保留身份。"
+    },
+    {
+      "id": "P7-08",
+      "scene": "ni-exchange",
+      "beat": 2,
+      "reason": "独立工程笔记和画板是同一对视角，跨四拍交叉换位、连接并退场，保留身份。"
+    },
+    {
+      "id": "P7-09",
+      "scene": "ni-exchange",
+      "beat": 3,
+      "reason": "独立工程笔记和画板是同一对视角，跨四拍交叉换位、连接并退场，保留身份。"
+    },
+    {
+      "id": "P7-10",
+      "scene": "ni-change",
+      "beat": 0,
+      "reason": "同一江月支撑苏轼诗句的变与不变；后一段使用同一幅江水、渡船与灯位实现镜头推进、收光与收束，14 无口播展示文字。"
+    },
+    {
+      "id": "P7-11",
+      "scene": "ni-change",
+      "beat": 1,
+      "reason": "同一江月支撑苏轼诗句的变与不变；后一段使用同一幅江水、渡船与灯位实现镜头推进、收光与收束，14 无口播展示文字。"
+    },
+    {
+      "id": "P7-12",
+      "scene": "ni-change",
+      "beat": 2,
+      "reason": "同一江月支撑苏轼诗句的变与不变；后一段使用同一幅江水、渡船与灯位实现镜头推进、收光与收束，14 无口播展示文字。"
+    },
+    {
+      "id": "P7-13",
+      "scene": "ni-change",
+      "beat": 3,
+      "reason": "同一江月支撑苏轼诗句的变与不变；后一段使用同一幅江水、渡船与灯位实现镜头推进、收光与收束，14 无口播展示文字。"
+    },
+    {
+      "id": "P7-14",
+      "scene": "ni-change",
+      "beat": 4,
+      "reason": "同一江月支撑苏轼诗句的变与不变；后一段使用同一幅江水、渡船与灯位实现镜头推进、收光与收束，14 无口播展示文字。"
+    },
+    {
+      "id": "P7-15",
+      "scene": "ni-change",
+      "beat": 5,
+      "reason": "同一江月支撑苏轼诗句的变与不变；后一段使用同一幅江水、渡船与灯位实现镜头推进、收光与收束，14 无口播展示文字。"
+    },
+    {
+      "id": "P8-01",
+      "scene": "fi-intro",
+      "beat": 0,
+      "reason": "保留已验收的 Fi 合十独立透明角色及章首布局。"
+    },
+    {
+      "id": "P8-02",
+      "scene": "fi-inner",
+      "beat": 0,
+      "reason": "同一角色与外在尺度持续剥离，验收透明角色复用保持身份一致。"
+    },
+    {
+      "id": "P8-03",
+      "scene": "fi-inner",
+      "beat": 1,
+      "reason": "同一角色与外在尺度持续剥离，验收透明角色复用保持身份一致。"
+    },
+    {
+      "id": "P8-04",
+      "scene": "fi-inner",
+      "beat": 2,
+      "reason": "同一角色与外在尺度持续剥离，验收透明角色复用保持身份一致。"
+    },
+    {
+      "id": "P8-05",
+      "scene": "fi-inner",
+      "beat": 3,
+      "reason": "同一角色与外在尺度持续剥离，验收透明角色复用保持身份一致。"
+    },
+    {
+      "id": "P8-06",
+      "scene": "fi-inner",
+      "beat": 4,
+      "reason": "同一角色与外在尺度持续剥离，验收透明角色复用保持身份一致。"
+    },
+    {
+      "id": "P8-07",
+      "scene": "fi-inner",
+      "beat": 5,
+      "reason": "同一角色与外在尺度持续剥离，验收透明角色复用保持身份一致。"
+    },
+    {
+      "id": "P8-08",
+      "scene": "fi-lamp",
+      "beat": 0,
+      "reason": "同一盏灯贯穿六个节拍，以真实作品承载记忆与传承，不重复生成灯。"
+    },
+    {
+      "id": "P8-09",
+      "scene": "fi-lamp",
+      "beat": 1,
+      "reason": "同一盏灯贯穿六个节拍，以真实作品承载记忆与传承，不重复生成灯。"
+    },
+    {
+      "id": "P8-10",
+      "scene": "fi-lamp",
+      "beat": 2,
+      "reason": "同一盏灯贯穿六个节拍，以真实作品承载记忆与传承，不重复生成灯。"
+    },
+    {
+      "id": "P8-11",
+      "scene": "fi-lamp",
+      "beat": 3,
+      "reason": "同一盏灯贯穿六个节拍，以真实作品承载记忆与传承，不重复生成灯。"
+    },
+    {
+      "id": "P8-12",
+      "scene": "fi-lamp",
+      "beat": 4,
+      "reason": "同一盏灯贯穿六个节拍，以真实作品承载记忆与传承，不重复生成灯。"
+    },
+    {
+      "id": "P8-13",
+      "scene": "fi-lamp",
+      "beat": 5,
+      "reason": "同一盏灯贯穿六个节拍，以真实作品承载记忆与传承，不重复生成灯。"
+    },
+    {
+      "id": "P8-14",
+      "scene": "fi-rain-to-day",
+      "beat": 0,
+      "reason": "相邻两页共用同一竹径与雨幕，保留次页原稿及纸面插画，支持正反向连续显影。"
+    },
+    {
+      "id": "P8-15",
+      "scene": "fi-rain-to-day",
+      "beat": 1,
+      "reason": "相邻两页共用同一竹径与雨幕，保留次页原稿及纸面插画，支持正反向连续显影。"
+    },
+    {
+      "id": "P8-16",
+      "scene": "fi-eight-lights",
+      "beat": 0,
+      "reason": "采用序章同一个灯笼外框，让八章回归在视觉上明确回扣开场。"
+    },
+    {
+      "id": "P8-17",
+      "scene": "fi-choice-map",
+      "beat": 0,
+      "reason": "同一图册两条路共用一个起点；下个节拍让图册和路径退到远处，将起点留给自己的选择。"
+    },
+    {
+      "id": "P8-18",
+      "scene": "fi-choice-map",
+      "beat": 1,
+      "reason": "同一图册两条路共用一个起点；下个节拍让图册和路径退到远处，将起点留给自己的选择。"
+    },
+    {
+      "id": "P8-19",
+      "scene": "fi-farewell",
+      "beat": 0,
+      "reason": "保留独立生成的片尾夜幕，以新生成的道谢蓝砚承接原定的一点光。"
+    },
+    {
+      "id": "P8-20",
+      "scene": "fi-postshow-letter",
+      "beat": 0,
+      "reason": "舞台与观众端表单在同一互动中使用同一角色动作。"
+    }
+  ],
+  "problems": []
+}

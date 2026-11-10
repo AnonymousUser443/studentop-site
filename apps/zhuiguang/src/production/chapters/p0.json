@@ -1,0 +1,321 @@
+{
+  "chapter": 0,
+  "motif": "纸卷未展，远灯先亮，观众的声音合成八个侧面",
+  "palette": {
+    "paper": "#f6efdc",
+    "ink": "#213a30",
+    "accent": "#a46932",
+    "shade": "#17352d"
+  },
+  "art": "/assets/art/p0/cover.webp",
+  "assetSources": [
+    {
+      "path": "/assets/art/p0/cover.webp",
+      "references": [
+        "视觉风格参考图 (1).png",
+        "视觉风格参考图 (2).png"
+      ],
+      "prompt": "Scene illustration for a 16:9 horizontal Web stage background. Both attached originals are direct references for the layered, stylized Chinese aesthetic: borrow their precise combination of outlined cut-paper silhouettes, sweeping flat graphic folds, carefully separated foreground/midground/background, sculptural teal shapes and warm luminous accents, NOT their specific characters or wording. Original scene: before a university lecture begins, a pale rice-paper scroll slowly opens from right to left inside an imagined jade-toned theater. A tiny warm amber point of stage light is visible through layered architectural shapes at 73% x, 48% y, the one focal point. Folded jade and ink-green silhouettes frame the upper right and lower right, with a warm translucent rice-paper curve lifting along the right edge. The left 60% of the entire frame, especially x 8–54% and y 12–78%, is a quiet mid-dark desaturated deep jade near #18362e, almost uniform but richly fine-grained, reserved for ivory live headings. Keep strong brightest areas strictly in the right third. One gorgeous focal gesture, a spacious atmosphere, slight depth, restrained mist and gold reflecting from the folded paper, warm anticipatory mood, graphic illustration not photograph. Natural dark green rather than pure black. Full bleed 16:9. No people, mascot, lettering, glyphs, logo, icons, interface, watermark, pictogram, or text of any kind. Artwork only.",
+      "usage": "序场及章节呼应的舞台背景，左侧深青留字"
+    }
+  ],
+  "pages": {
+    "P0-01": {
+      "layout": "custom",
+      "tone": "scene",
+      "motion": "unfurl",
+      "intent": "加载等待时保留既有资源进度。纸卷和小灯置于右侧，左边给活动名和进度线，开场不抢讲者声音。",
+      "side": "left",
+      "refinement": {
+        "duration": 2.0,
+        "vertical": "middle",
+        "artPosition": "full",
+        "typeSize": 148,
+        "artStrength": 1,
+        "stagger": 0.17
+      }
+    },
+    "P0-02": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "still",
+      "intent": "问候贴近左下的安静空域，远处小灯留在右侧。短句出现后停住，等讲者开口。",
+      "side": "left",
+      "focal": "大家晚上好。",
+      "refinement": {
+        "typeSize": 66,
+        "vertical": "lower",
+        "artPosition": "right",
+        "artStrength": 0.88,
+        "duration": 0.75,
+        "stagger": 0.07
+      },
+      "art": "/assets/art/p0/pages/P0-02.webp"
+    },
+    "P0-03": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "rise",
+      "intent": "主句从左下提到左中。「一个问题」独立成行，先读到停顿，再抬头看提问。",
+      "side": "left",
+      "focal": "一个问题",
+      "refinement": {
+        "typeSize": 92,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.89,
+        "duration": 1.2,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p0/pages/P0-03.webp"
+    },
+    "P0-04": {
+      "layout": "stack",
+      "tone": "shade",
+      "motion": "stagger",
+      "intent": "前三行像并列选项，由短到长，末行「还是……未来？」接在更深的停顿之后。",
+      "side": "left",
+      "focal": "还是……未来？",
+      "refinement": {
+        "typeSize": 65,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.8,
+        "duration": 1.4,
+        "stagger": 0.18
+      },
+      "art": "/assets/art/p0/pages/P0-04.webp"
+    },
+    "P0-05": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "focus",
+      "intent": "让两句如实相邻。镜头从上一页的问题收拢到「都很重要」，第二句退成小一层。",
+      "side": "right",
+      "focal": "这些当然都很重要。",
+      "refinement": {
+        "typeSize": 74,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.83,
+        "duration": 1.05,
+        "stagger": 0.13
+      },
+      "art": "/assets/art/p0/pages/P0-05.webp"
+    },
+    "P0-06": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "line",
+      "intent": "淡纸上把原句分成前奏和动作两行。「放一放」落下后让出空白，准备把话题交给观众。",
+      "side": "left",
+      "focal": "放一放。",
+      "refinement": {
+        "typeSize": 85,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.8,
+        "duration": 1,
+        "stagger": 0.15
+      },
+      "art": "/assets/art/p0/pages/P0-06.webp"
+    },
+    "P0-07": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "unfurl",
+      "intent": "三行字放在舞台中央偏左的宽幅安全区，提问末行最大。笔画展开后停在「怎样的大学」。",
+      "side": "left",
+      "focal": "怎样的大学？",
+      "refinement": {
+        "typeSize": 105,
+        "vertical": "upper",
+        "artPosition": "right",
+        "artStrength": 0.85,
+        "duration": 1.5,
+        "stagger": 0.18
+      },
+      "art": "/assets/art/p0/pages/P0-07.webp"
+    },
+    "P0-08": {
+      "layout": "interactive",
+      "tone": "paper",
+      "motion": "pulse",
+      "intent": "二维码、提问和九十秒计时分开。给公开留言预留完整的大面积水面，二维码不压内容。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 65,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.66,
+        "duration": 1.04,
+        "stagger": 0.09
+      },
+      "art": "/assets/art/p0/pages/P0-08.webp"
+    },
+    "P0-09": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "glow",
+      "intent": "保留初印象互动结果渲染。现场公开留言由上落向画面下沿，选出的词与原句共处，静帧仍有清楚的文字落点。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 59,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.75,
+        "duration": 1.75,
+        "stagger": 0.15
+      },
+      "art": "/assets/art/p0/pages/P0-09.webp"
+    },
+    "P0-10": {
+      "layout": "custom",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "保留初印象互动的结果数据。讲稿中的三个印象依次浮现，公开留言出现时避开这三句。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 54,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.58,
+        "duration": 1.18,
+        "stagger": 0.11
+      },
+      "art": "/assets/art/p0/pages/P0-10.webp"
+    },
+    "P0-11": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "glow",
+      "intent": "左侧长句分三层，首句落在近处，末句「完全不同」向远灯靠近，照应共同空间里的不同感受。",
+      "side": "left",
+      "focal": "完全不同的东西。",
+      "refinement": {
+        "typeSize": 85,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.83,
+        "duration": 1.16,
+        "stagger": 0.16
+      },
+      "art": "/assets/art/p0/pages/P0-11.webp"
+    },
+    "P0-12": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "四种校园处境依次入场，统一起笔和阅读方向，等量留白。避免把竞争压力和适应问题当成配角。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 57,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.66,
+        "duration": 1.42,
+        "stagger": 0.16
+      },
+      "art": "/assets/art/p0/pages/P0-12.webp"
+    },
+    "P0-13": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "focus",
+      "intent": "两句缩回近景，右下留给轻微章印或纹理。「一开始就知道」之后保留安静停顿。",
+      "side": "right",
+      "focal": "一开始就知道的",
+      "refinement": {
+        "typeSize": 92,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.8,
+        "duration": 1.02,
+        "stagger": 0.17
+      },
+      "art": "/assets/art/p0/pages/P0-13.webp"
+    },
+    "P0-14": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "把科研竞赛、社团和认识的人分成三组，组标题压住例子，依次向右伸展。",
+      "side": "left",
+      "focal": "认识的人",
+      "refinement": {
+        "typeSize": 47,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.68,
+        "duration": 1.36,
+        "stagger": 0.13
+      },
+      "art": "/assets/art/p0/pages/P0-14.webp"
+    },
+    "P0-15": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "unfurl",
+      "intent": "只用两行，近处文字和空白拉开。强调「标准答案的提供者」，为目录页留一次停顿。",
+      "side": "left",
+      "focal": "标准答案的提供者。",
+      "refinement": {
+        "typeSize": 90,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.78,
+        "duration": 1.1,
+        "stagger": 0.16
+      },
+      "art": "/assets/art/p0/pages/P0-15.webp"
+    },
+    "P0-16": {
+      "layout": "chapter-map",
+      "tone": "shade",
+      "motion": "orbit",
+      "intent": "八个方向围着同一盏中心灯慢慢成形，环形次序与原节目单一致，每处保留可辨识的章名。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 62,
+        "vertical": "upper",
+        "artPosition": "full",
+        "artStrength": 0.69,
+        "duration": 1.8,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p0/pages/P0-16.webp"
+    },
+    "P0-17": {
+      "layout": "chapter-map",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "两行原句安定在上方，八个侧面在下方逐一出现。确保标签与形态都能辨认，不能只靠颜色。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 56,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.58,
+        "duration": 1.52,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p0/pages/P0-17.webp"
+    },
+    "P0-18": {
+      "layout": "chapter-map",
+      "tone": "shade",
+      "motion": "glow",
+      "intent": "八点收拢到连接的方向，为 Fe 暖亮章首接光。画面停留时能读到走向下一章的原句。",
+      "side": "center",
+      "refinement": {
+        "typeSize": 68,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.72,
+        "duration": 1.63,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p0/pages/P0-18.webp"
+    }
+  }
+}

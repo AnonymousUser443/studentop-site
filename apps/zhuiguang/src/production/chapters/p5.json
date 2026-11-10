@@ -1,0 +1,339 @@
+{
+  "chapter": 5,
+  "motif": "黑曜刻面上的鎏金电路。由一束落点进入模型内部，再从问号回到创造。",
+  "palette": {
+    "paper": "#eee3cd",
+    "ink": "#1b201d",
+    "accent": "#c8a457",
+    "shade": "#101113"
+  },
+  "pages": {
+    "P5-01": {
+      "layout": "cover",
+      "tone": "shade",
+      "motion": "unfurl",
+      "intent": "数据雨像细金屑落在黑曜底上，聚成章名。台口保留干净字面，光点让路给「界义」。",
+      "side": "left",
+      "focal": "界义",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 1,
+        "duration": 1.24,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p5/pages/P5-01.webp"
+    },
+    "P5-02": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "focus",
+      "intent": "在刚完成的信息密度之后切一帧净黑曜。两行独句居中偏左，第二行落下后保持稳定。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 82,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.76,
+        "duration": 0.95,
+        "stagger": 0.21
+      },
+      "art": "/assets/art/p5/pages/P5-02.webp"
+    },
+    "P5-03": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "glow",
+      "intent": "把「人工智能。」立在中央，以细竖缝开场。文字静止后只留一层轻薄鎏金光。",
+      "side": "center",
+      "focal": "人工智能。",
+      "refinement": {
+        "typeSize": 110,
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 0.7,
+        "duration": 1.42,
+        "stagger": 0.04
+      },
+      "art": "/assets/art/p5/pages/P5-03.webp"
+    },
+    "P5-04": {
+      "layout": "stack",
+      "tone": "shade",
+      "motion": "stagger",
+      "intent": "代码、资料、偶尔问问是三条逐次递进的生活用例。用三个细小金色落点托起三行文字。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 64,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.82,
+        "duration": 0.52,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p5/pages/P5-04.webp"
+    },
+    "P5-05": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "still",
+      "intent": "讲电路题时给讲者留时间。两行字靠左，句尾停在一条尚未连通的暗金线前。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 77,
+        "vertical": "lower",
+        "artPosition": "right",
+        "artStrength": 0.7,
+        "duration": 0.6,
+        "stagger": 0
+      },
+      "art": "/assets/art/p5/pages/P5-05.webp"
+    },
+    "P5-06": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "pulse",
+      "intent": "保留原 Token 峰值页。原句先清晰落在左侧，随后拆解为六个可辨的 Token，再沿右侧鎏金线路进入模型。",
+      "side": "left",
+      "focal": "我是山里灵活的狗",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 0.62,
+        "duration": 0.7,
+        "stagger": 0.06
+      },
+      "art": "/assets/art/p5/pages/P5-06.webp"
+    },
+    "P5-07": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "line",
+      "intent": "保留原 Attention 弧线和权重粗细。灰金普通词与亮金「神里绫华」分层，连线展开期间保持文字稳定。",
+      "side": "center",
+      "focal": "神里绫华",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.72,
+        "duration": 0.66,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p5/pages/P5-07.webp"
+    },
+    "P5-08": {
+      "layout": "data",
+      "tone": "shade",
+      "motion": "focus",
+      "intent": "把 2017 放成台口时间刻度，与 Transformer 和注意力机制分层。让数字只标时间，不被误读为度量值。",
+      "side": "left",
+      "focal": "2017",
+      "refinement": {
+        "typeSize": 79,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.74,
+        "duration": 0.69,
+        "stagger": 0.18
+      },
+      "art": "/assets/art/p5/pages/P5-08.webp"
+    },
+    "P5-09": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "rise",
+      "intent": "先留「疯狂星期四……」的等待位，再让「V我50」从右侧飞入。保留原来的笑点，不填满空白。",
+      "side": "left",
+      "focal": "V我50",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.74,
+        "duration": 0.55,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p5/pages/P5-09.webp"
+    },
+    "P5-10": {
+      "layout": "process",
+      "tone": "shade",
+      "motion": "stagger",
+      "intent": "让语法、语义、知识关联、复杂规律沿四级印刻层阶展开，递进而不造一条技术因果链。",
+      "side": "left",
+      "focal": "复杂规律",
+      "refinement": {
+        "typeSize": 54,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.78,
+        "duration": 0.51,
+        "stagger": 0.18
+      },
+      "art": "/assets/art/p5/pages/P5-10.webp"
+    },
+    "P5-11": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "still",
+      "intent": "训练目标两行左对齐。「符合上下文」亮一级，舞台停止粒子，给内容留余量。",
+      "side": "left",
+      "focal": "符合上下文",
+      "refinement": {
+        "typeSize": 76,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.74,
+        "duration": 0.5,
+        "stagger": 0
+      },
+      "art": "/assets/art/p5/pages/P5-11.webp"
+    },
+    "P5-12": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "line",
+      "intent": "原裂纹沿右侧黑曜亮面缓绘。先让反问完整可读，裂纹终止在字外，形成真假之间的视觉停顿。",
+      "side": "left",
+      "focal": "就一定是真的吗？",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.84,
+        "duration": 0.78,
+        "stagger": 0.08
+      },
+      "art": "/assets/art/p5/pages/P5-12.webp"
+    },
+    "P5-13": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "focus",
+      "intent": "先落下「≠」，再分别亮出流畅与正确。两端字号等重，整页保持稳定以便讲者停顿。",
+      "side": "center",
+      "focal": "≠",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.7,
+        "duration": 0.69,
+        "stagger": 0.16
+      },
+      "art": "/assets/art/p5/pages/P5-13.webp"
+    },
+    "P5-14": {
+      "layout": "stack",
+      "tone": "shade",
+      "motion": "stagger",
+      "intent": "把工具价值与事实边界排成上下两层。「但」以换行和空间而非警告色建立转折。",
+      "side": "left",
+      "focal": "并不天然等于事实正确。",
+      "refinement": {
+        "typeSize": 75,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.73,
+        "duration": 0.76,
+        "stagger": 0.19
+      },
+      "art": "/assets/art/p5/pages/P5-14.webp"
+    },
+    "P5-15": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "still",
+      "intent": "让学习问题独占屏幕，撤去雨点和线路，使用中轴靠左的二行大字。",
+      "side": "left",
+      "focal": "我们究竟应该怎样学习？",
+      "refinement": {
+        "typeSize": 87,
+        "vertical": "upper",
+        "artPosition": "right",
+        "artStrength": 0.7,
+        "duration": 0.75,
+        "stagger": 0.16
+      },
+      "art": "/assets/art/p5/pages/P5-15.webp"
+    },
+    "P5-16": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "rise",
+      "intent": "先呈条件再读结果。三行沿底层刻度逐步露出，最后一行保持完整，不以省略号自动翻页。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 64,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.81,
+        "duration": 0.55,
+        "stagger": 0.2
+      },
+      "art": "/assets/art/p5/pages/P5-16.webp"
+    },
+    "P5-17": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "still",
+      "intent": "把省下的时间留在画面里。两行低位居中，第二行放大但不跳动，为现场留足静默。",
+      "side": "center",
+      "focal": "去做什么？",
+      "refinement": {
+        "typeSize": 83,
+        "vertical": "lower",
+        "artPosition": "bottom",
+        "artStrength": 0.67,
+        "duration": 0.94,
+        "stagger": 0.21
+      },
+      "art": "/assets/art/p5/pages/P5-17.webp"
+    },
+    "P5-18": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "pulse",
+      "intent": "原歪印作为唯一突发动作，从角落斜落约八度，主句仍在同一安全区。彩蛋一响即止。",
+      "side": "left",
+      "focal": "减少了！",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.69,
+        "duration": 0.53,
+        "stagger": 0.06
+      },
+      "art": "/assets/art/p5/pages/P5-18.webp"
+    },
+    "P5-19": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "orbit",
+      "intent": "保留数据点汇聚问号。背景粒子只向中心收拢，问题形成后停住，静帧显示完整问号。",
+      "side": "center",
+      "focal": "？",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 0.66,
+        "duration": 0.72,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p5/pages/P5-19.webp"
+    },
+    "P5-20": {
+      "layout": "coda",
+      "tone": "shade",
+      "motion": "unfurl",
+      "intent": "问号散开为金粉后，界义印落下，低处保留「创造新的可能。」并交给 Ne 的暖亮入场。",
+      "side": "center",
+      "focal": "界义",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.81,
+        "duration": 1.3,
+        "stagger": 0.08
+      },
+      "art": "/assets/art/p5/pages/P5-20.webp"
+    }
+  }
+}

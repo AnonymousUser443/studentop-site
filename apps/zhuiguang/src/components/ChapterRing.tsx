@@ -1,0 +1,2 @@
+import { chapters } from '../core/deck';
+export function ChapterRing({active=0,large=false,seals=false}:{active?:number;large?:boolean;seals?:boolean}){return <div className={`chapter-ring ${large?'large':''} ${seals?'with-seals':''}`}>{chapters.filter(c=>c.id>0).map((c,i)=>{const a=(-90+i*45)*Math.PI/180,r=[260,248,272,255,268,244,262,250][i];return <div className={`ring-node ${active===c.id?'active':''}`} key={c.id} style={{left:320+Math.cos(a)*r,top:320+Math.sin(a)*r,'--node-color':c.accent} as React.CSSProperties}><i/><span>{c.code} · {c.name}</span></div>})}</div>}

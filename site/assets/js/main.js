@@ -33,6 +33,7 @@
     });
     WM.init();
     Shell.init();
+    WallpaperDriver.init();
 
     var welcomed = false;
     Win.bus.on('unlock', function (e) {

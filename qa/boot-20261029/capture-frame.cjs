@@ -10,8 +10,7 @@ let browser, fixture;
   fixture = await startFixture(); browser = await newSession();
   await browser.navigate(fixture.origin + '/');
   await until(() => browser.evaluate('window.DesktopGate && lockScreen.dataset.gateView==="boot"'), 5000, 'boot');
-  await browser.click('#gateSkip');
-  await until(() => browser.evaluate('lockScreen.dataset.gateStatus==="ready"'), 5000, 'ready');
+  await until(() => browser.evaluate('lockScreen.dataset.gateStatus==="ready"'), 9000, 'ready');
   await browser.click('#gateLogin'); await browser.click('#gateAnswer');
   // Hold only animation callbacks so the screenshot encoder cannot skip the frame.
   await browser.evaluate('window.__visualRAF=[];window.requestAnimationFrame=fn=>(__visualRAF.push(fn),__visualRAF.length)');

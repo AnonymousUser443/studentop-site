@@ -45,7 +45,11 @@ if [[ ! -s /etc/zhuiguang/stage.env ]]; then
 fi
 work="$(mktemp -d /tmp/zhuiguang-rollback.XXXXXXXX)"
 cp "$route" "$work/route"
-for env in stage.env test.env; do
+test_was_active=false
+test_was_enabled=false
+if systemctl is-active --quiet zhuiguang-test.service; then test_was_active=true; fi
+if systemctl is-enabled --quiet zhuiguang-test.service; then test_was_enabled=true; fi
+for env in stage.env; do
   if [[ -f "/etc/zhuiguang/$env" ]]; then cp "/etc/zhuiguang/$env" "$work/$env"; fi
 done
 for unit in zhuiguang.service zhuiguang-test.service zhuiguang-backup.service zhuiguang-backup.timer; do
@@ -58,7 +62,7 @@ restore() {
     set +e
     echo 'Release check failed; restoring previous service and route' >&2
     install -m 644 "$work/route" "$route"
-    for env in stage.env test.env; do
+    for env in stage.env; do
       if [[ -f "$work/$env" ]]; then install -m 600 "$work/$env" "/etc/zhuiguang/$env"
       else rm -f "/etc/zhuiguang/$env"; fi
     done
@@ -70,14 +74,15 @@ restore() {
     if [[ -n "$previous" ]]; then
       ln -sfn "$previous" "$root/.current.new"; mv -Tf "$root/.current.new" "$root/current"
       systemctl restart zhuiguang.service
-      if [[ -f "$work/zhuiguang-test.service" ]]; then systemctl restart zhuiguang-test.service; fi
+      if "$test_was_enabled"; then systemctl enable zhuiguang-test.service; fi
+      if "$test_was_active"; then systemctl restart zhuiguang-test.service; fi
     else
       systemctl stop zhuiguang.service
       rm -f "$root/current"
     fi
     nginx -t && systemctl reload nginx
   fi
-  rm -f "$credentials/stage.env" "$credentials/test.env"
+  rm -f "$credentials/stage.env"
   if [[ -d "$credentials" ]]; then rmdir "$credentials" || true; fi
   rm -rf "$work"
   exit "$rc"
@@ -85,15 +90,13 @@ restore() {
 trap restore EXIT
 
 if [[ -n "$previous" ]]; then systemctl start zhuiguang-backup.service; fi
-for env in stage.env test.env; do
+for env in stage.env; do
   if [[ -f "$credentials/$env" ]]; then
     grep -qEx 'PRESENTATION_PIN=[A-Za-z0-9-]{10,128}' "$credentials/$env"
     install -m 600 "$credentials/$env" "/etc/zhuiguang/$env"
   fi
 done
-test -s /etc/zhuiguang/test.env
-if cmp -s /etc/zhuiguang/stage.env /etc/zhuiguang/test.env; then echo 'Test and formal credentials must differ' >&2; exit 1; fi
-for unit in zhuiguang.service zhuiguang-test.service zhuiguang-backup.service zhuiguang-backup.timer; do
+for unit in zhuiguang.service zhuiguang-backup.service zhuiguang-backup.timer; do
   install -m 644 "$dir/infra/$unit" "/etc/systemd/system/$unit"
 done
 awk '/^# BEGIN ZHUIGUANG$/{skip=1} !skip{print} /^# END ZHUIGUANG$/{skip=0}' "$work/route" >"$work/next"
@@ -104,34 +107,25 @@ install -m 644 "$work/next" "$route"
 nginx -t
 ln -sfn "$dir" "$root/.current.new"; mv -Tf "$root/.current.new" "$root/current"
 systemctl daemon-reload
-systemctl restart zhuiguang.service zhuiguang-test.service
+systemctl restart zhuiguang.service
 for _ in {1..25}; do
-  if curl -fsS --max-time 2 http://127.0.0.1:4188/zhuiguang/api/health >"$work/health" && node -e 'let h=require("fs").readFileSync(process.argv[1]); h=JSON.parse(h); if(!h.ok||h.pages!==169||!h.persistence.database) process.exit(1)' "$work/health"; then break; fi
+  if curl -fsS --max-time 2 http://127.0.0.1:4188/zhuiguang/api/health >"$work/health" && node -e 'let h=require("fs").readFileSync(process.argv[1]); h=JSON.parse(h); if(!h.ok||h.mode!=="rooms"||h.pages!==169||!h.persistence.database) process.exit(1)' "$work/health"; then break; fi
   sleep 1
 done
-node -e 'let h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.pages!==169||!h.persistence.database) process.exit(1)' "$work/health"
-for _ in {1..25}; do
-  if curl -fsS --max-time 2 http://127.0.0.1:4189/zhuiguang/test/api/health >"$work/test" && node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.mode!=="test") process.exit(1)' "$work/test"; then break; fi
-  sleep 1
-done
-node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.mode!=="test") process.exit(1)' "$work/test"
+node -e 'let h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.mode!=="rooms"||h.pages!==169||!h.persistence.database) process.exit(1)' "$work/health"
 systemctl reload nginx
 for _ in {1..8}; do
   if curl -fsS --noproxy '*' --max-time 8 --resolve studentop.cn:443:127.0.0.1 -H 'Host: studentop.cn:14355' https://studentop.cn/zhuiguang/api/health >"$work/proxied" &&
-    node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.pages!==169||!h.persistence.database) process.exit(1)' "$work/proxied" 2>/dev/null; then break; fi
+    node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.mode!=="rooms"||h.pages!==169||!h.persistence.database) process.exit(1)' "$work/proxied" 2>/dev/null; then break; fi
   sleep 1
 done
-node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.pages!==169||!h.persistence.database) process.exit(1); console.log("TLS reverse proxy verified, " + h.pages + " pages")' "$work/proxied"
+node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.mode!=="rooms"||h.pages!==169||!h.persistence.database) process.exit(1); console.log("TLS reverse proxy verified, " + h.pages + " pages")' "$work/proxied"
 curl -fsS --noproxy '*' --max-time 10 --resolve studentop.cn:443:127.0.0.1 https://studentop.cn/version.json | node -e 'if(!JSON.parse(require("fs").readFileSync(0)).id) process.exit(1)'
-for _ in {1..8}; do
-  if curl -fsS --noproxy '*' --max-time 8 --resolve studentop.cn:443:127.0.0.1 -H 'Host: studentop.cn:14355' https://studentop.cn/zhuiguang/test/api/health >"$work/test-proxied" &&
-    node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.mode!=="test") process.exit(1)' "$work/test-proxied" 2>/dev/null; then break; fi
-  sleep 1
-done
-node -e 'const h=JSON.parse(require("fs").readFileSync(process.argv[1])); if(!h.ok||h.mode!=="test") process.exit(1); console.log("Test room TLS proxy verified")' "$work/test-proxied"
+test "$(curl -sS --noproxy '*' --max-time 10 --resolve studentop.cn:443:127.0.0.1 -o /dev/null -w '%{http_code}' https://studentop.cn/zhuiguang/test/)" = 302
 systemctl start zhuiguang-backup.service
-systemctl enable zhuiguang.service zhuiguang-test.service
+systemctl enable zhuiguang.service
 systemctl enable --now zhuiguang-backup.timer
+if "$test_was_active" || "$test_was_enabled"; then systemctl disable --now zhuiguang-test.service; fi
 rm -f "$archive" "/tmp/zhuiguang-$release.sh"
 echo
 printf 'Release active: %s\nPrevious: %s\n' "$dir" "${previous:-none}"

@@ -1,0 +1,378 @@
+{
+  "chapter": 6,
+  "motif": "纸外溢出的青碧灵感",
+  "palette": {
+    "paper": "#f1eed9",
+    "ink": "#193f35",
+    "accent": "#876329",
+    "shade": "#234d43"
+  },
+  "art": "/assets/art/approved/ne-lake.webp",
+  "pages": {
+    "P6-01": {
+      "layout": "cover",
+      "tone": "scene",
+      "motion": "unfurl",
+      "side": "left",
+      "focal": "拓新",
+      "intent": "沿用验收的青碧溢出版。水墨从左下舒展，章节活字停在净区，不将标题烘焙入底图。",
+      "refinement": {
+        "typeSize": 76,
+        "vertical": "upper",
+        "artPosition": "full",
+        "artStrength": 1,
+        "duration": 1.42,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/approved/ne-lake.webp",
+      "reuseReason": "按用户验收保留 Ne 章首青碧湖景与溢出构图，确保进入本节时沿用已验收的开场视觉。"
+    },
+    "P6-02": {
+      "layout": "quote",
+      "tone": "scene",
+      "motion": "focus",
+      "side": "left",
+      "focal": "现在真的有机会被做出来了。",
+      "intent": "纸种从右侧折屏后飘出，凝成一块小小的玉质造物。左侧三行接住灵感，末行比前两行更清晰。",
+      "refinement": {
+        "typeSize": 65,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.94,
+        "duration": 1.32,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p6/pages/P6-02.webp"
+    },
+    "P6-03": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "stagger",
+      "side": "left",
+      "focal": "暂时忘掉",
+      "intent": "先保留指令，列举内容轻一点再逐字松散；减少动态时保留完整字句。",
+      "refinement": {
+        "typeSize": 50,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.83,
+        "duration": 1.28,
+        "stagger": 0.16
+      },
+      "art": "/assets/art/p6/pages/P6-03.webp"
+    },
+    "P6-04": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "rise",
+      "side": "center",
+      "focal": "不太正经的。",
+      "intent": "两行分开，让口气在第二行变得俏皮，停在进入脑洞互动之前。",
+      "refinement": {
+        "typeSize": 72,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.86,
+        "duration": 1.14,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p6/pages/P6-04.webp"
+    },
+    "P6-05": {
+      "layout": "custom",
+      "tone": "scene",
+      "motion": "unfurl",
+      "side": "left",
+      "intent": "北湖、传感器、古诗词在底部依次显影。三件东西之间保留空隙，把组合留到下一页。",
+      "refinement": {
+        "typeSize": 70,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.98,
+        "duration": 1.58,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p6/pages/P6-05.webp"
+    },
+    "P6-06": {
+      "layout": "interactive",
+      "tone": "paper",
+      "motion": "pulse",
+      "intent": "三个题眼留在上部，保留 creative 提交入口和 20 秒倒计时。作答区从空白等候现场输入。",
+      "refinement": {
+        "typeSize": 47,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.78,
+        "duration": 1.1,
+        "stagger": 0.13
+      },
+      "art": "/assets/art/p6/pages/P6-06.webp"
+    },
+    "P6-07": {
+      "layout": "interactive",
+      "tone": "shade",
+      "motion": "orbit",
+      "intent": "真实提交沿星图排列，遵循 creative 结果页权限。现场提取两条时优先显示原文和足够阅读面积。",
+      "refinement": {
+        "typeSize": 59,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.87,
+        "duration": 1.47,
+        "stagger": 0.13
+      },
+      "art": "/assets/art/p6/pages/P6-07.webp"
+    },
+    "P6-08": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "still",
+      "side": "left",
+      "focal": "没有唯一正确答案。",
+      "intent": "创意墙退下后，停一拍再让答案一句完整可见。",
+      "refinement": {
+        "typeSize": 70,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.9,
+        "duration": 0.72,
+        "stagger": 0
+      },
+      "art": "/assets/art/p6/pages/P6-08.webp"
+    },
+    "P6-09": {
+      "layout": "quote",
+      "tone": "scene",
+      "motion": "focus",
+      "side": "left",
+      "focal": "问题究竟是什么。",
+      "intent": "左侧原句立在安静的纸面上，右侧分岔的纸路导向新开口，视线顺着折角落到真正的问题。",
+      "refinement": {
+        "typeSize": 68,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.95,
+        "duration": 1.32,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p6/pages/P6-09.webp"
+    },
+    "P6-10": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "rise",
+      "side": "right",
+      "focal": "我自己冒出来的脑洞。",
+      "intent": "由观众的想法过渡到讲者项目，让脑洞一句先离开居中位置，朝项目证据的方向打开。",
+      "refinement": {
+        "typeSize": 66,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.9,
+        "duration": 1.18,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p6/pages/P6-10.webp"
+    },
+    "P6-11": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "still",
+      "side": "left",
+      "focal": "和传统文化有关的软件……",
+      "intent": "保留省略号与停顿，一行纸带从画幅左侧延伸到尚未出现的项目一侧。",
+      "refinement": {
+        "typeSize": 69,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.88,
+        "duration": 0.8,
+        "stagger": 0
+      },
+      "art": "/assets/art/p6/pages/P6-11.webp"
+    },
+    "P6-12": {
+      "layout": "quote",
+      "tone": "scene",
+      "motion": "focus",
+      "side": "left",
+      "focal": "构成的世界？",
+      "intent": "问题沿用纸面一侧，另一半青碧插画只作进入新世界的过渡，不充当产品截图。",
+      "refinement": {
+        "typeSize": 67,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.95,
+        "duration": 1.37,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/p6/pages/P6-12.webp"
+    },
+    "P6-13": {
+      "layout": "media",
+      "tone": "shade",
+      "motion": "pulse",
+      "focal": "理韵寻踪",
+      "intent": "用真实游戏首图承担全幅主画面，标题做落印但避开界面关键区。",
+      "refinement": {
+        "typeSize": 57,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.72,
+        "duration": 1.15,
+        "stagger": 0.11
+      },
+      "art": "/assets/art/p6/pages/P6-13.webp"
+    },
+    "P6-14": {
+      "layout": "media",
+      "tone": "paper",
+      "motion": "focus",
+      "intent": "保留真实游戏四张截图，以 2×2 原比例装裱，轻显影依次出现，不以图效压住页面中的文字。",
+      "refinement": {
+        "typeSize": 48,
+        "vertical": "upper",
+        "artPosition": "bottom",
+        "artStrength": 0.74,
+        "duration": 1.1,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p6/pages/P6-14.webp"
+    },
+    "P6-15": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "stagger",
+      "side": "left",
+      "focal": "Three.js",
+      "intent": "网页技术、Three.js、声音与交互设计按原序分四行，技术名与中文有一致基线。",
+      "refinement": {
+        "typeSize": 53,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.88,
+        "duration": 1.31,
+        "stagger": 0.16
+      },
+      "art": "/assets/art/p6/pages/P6-15.webp"
+    },
+    "P6-16": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "rise",
+      "side": "right",
+      "focal": "做传统文化游戏。",
+      "intent": "原稿三段轻重递增，第三行抬到前景，点出专业与作品之间的反差。",
+      "refinement": {
+        "typeSize": 62,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.92,
+        "duration": 1.27,
+        "stagger": 0.12
+      },
+      "art": "/assets/art/p6/pages/P6-16.webp"
+    },
+    "P6-17": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "pulse",
+      "side": "center",
+      "intent": "保留开门、卡住、轻撞的一次性喜剧节奏，台词完整，静帧停在门口。",
+      "refinement": {
+        "typeSize": 64,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.84,
+        "duration": 1.15,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p6/pages/P6-17.webp"
+    },
+    "P6-18": {
+      "layout": "quote",
+      "tone": "scene",
+      "motion": "focus",
+      "side": "left",
+      "focal": "才开始创造。",
+      "intent": "右侧的小雕塑已经立起，零散的纸片仍在后方汇拢。左侧三行收在创造一词。",
+      "refinement": {
+        "typeSize": 70,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.95,
+        "duration": 1.36,
+        "stagger": 0.13
+      },
+      "art": "/assets/art/p6/pages/P6-18.webp"
+    },
+    "P6-19": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "stagger",
+      "side": "left",
+      "intent": "四个如果按原句依次显露，字距只在行首变化，最后一个问法在下缘停住。",
+      "refinement": {
+        "typeSize": 49,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.9,
+        "duration": 1.46,
+        "stagger": 0.17
+      },
+      "art": "/assets/art/p6/pages/P6-19.webp"
+    },
+    "P6-20": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "still",
+      "side": "center",
+      "focal": "还可以这样提问。",
+      "intent": "两行居中给出一个完整停顿，避免连续动效削弱最后这句话。",
+      "refinement": {
+        "typeSize": 76,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.88,
+        "duration": 0.75,
+        "stagger": 0
+      },
+      "art": "/assets/art/p6/pages/P6-20.webp"
+    },
+    "P6-21": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "focus",
+      "side": "right",
+      "focal": "都值得花时间去实现？",
+      "intent": "余墨和光退到边缘，把是否值得的反问留给讲者收束。",
+      "refinement": {
+        "typeSize": 67,
+        "vertical": "middle",
+        "artPosition": "left",
+        "artStrength": 0.93,
+        "duration": 1.32,
+        "stagger": 0.11
+      },
+      "art": "/assets/art/p6/pages/P6-21.webp"
+    },
+    "P6-22": {
+      "layout": "coda",
+      "tone": "scene",
+      "motion": "unfurl",
+      "side": "left",
+      "focal": "拓新",
+      "intent": "拓新章印落在左侧净区，翡翠色纸边在右下收卷，接向下一章。",
+      "refinement": {
+        "typeSize": 82,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.95,
+        "duration": 1.44,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p6/pages/P6-22.webp"
+    }
+  }
+}

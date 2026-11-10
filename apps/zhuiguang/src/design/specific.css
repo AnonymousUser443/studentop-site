@@ -1,0 +1,118 @@
+.specific-slide{position:absolute;inset:0;isolation:isolate}
+.specific-reveal{display:block;overflow:hidden;padding:.12em 0;margin:-.12em 0}
+.specific-reveal>[data-reveal]{display:inline-block;white-space:pre;vertical-align:top}
+.specific-slide h1,.specific-slide h2,.specific-slide p{margin:0}
+
+/* P1-04 — two lives on the same baseline, with room between them. */
+.comparison-column{position:absolute;top:280px;width:680px}
+.comparison-column.column-0{left:120px;color:var(--ash-300)}
+.comparison-column.column-1{left:880px;width:920px;color:var(--paper-100)}
+.comparison-column h2{font:500 48px/1.3 var(--font-display);letter-spacing:.08em;color:var(--paper-200)}
+.column-0 h2{color:var(--ash-300)}
+.comparison-rows{margin-top:58px}
+.comparison-rows p{font:400 34px/2 var(--font-body);letter-spacing:.02em}
+.comparison-divider{position:absolute;left:820px;top:340px;width:1px;height:400px;background:var(--ink-600);transform-origin:center}
+
+/* P1-10 — the light travels from making material to meeting people. */
+.practice-column{position:absolute;top:300px;width:760px}
+.practice-column.behind-scenes{left:120px;color:var(--ash-300)}
+.practice-column.on-stage{left:1000px;color:var(--paper-100)}
+.practice-column>.eyebrow{display:block;color:var(--ash-400);font-size:15px;letter-spacing:.22em}
+.practice-column h2{font:700 72px/1.3 var(--font-display);letter-spacing:.12em;margin-top:54px;margin-bottom:42px;color:var(--paper-200)}
+.practice-column.on-stage h2{color:var(--gold-200)}
+.practice-column p{font:400 34px/2 var(--font-body);letter-spacing:.02em}
+.practice-path{position:absolute;left:940px;top:300px;width:1px;height:500px;background:linear-gradient(0deg,var(--gold-500),var(--gold-200),var(--gold-500));transform-origin:bottom}
+.practice-path i{position:absolute;left:-2px;top:240px;width:5px;height:5px;border-radius:50%;background:var(--gold-100);box-shadow:0 0 20px 4px #e3c88e40}
+
+/* P1-13 — the counterfactual recedes, rather than filling the stage. */
+.opportunities{left:120px;top:300px;right:120px;bottom:auto}
+.opportunity-line{font-family:var(--font-display);font-weight:700;line-height:1.5;letter-spacing:.01em;white-space:pre}
+.opportunity-line:not(:last-child){margin-bottom:26px}
+.opportunity-0{font-size:96px;color:var(--paper-100)}
+.opportunity-1{font-size:84px;color:var(--paper-200)}
+.opportunity-2{font-size:72px;color:var(--paper-200)}
+.opportunity-3{font-size:64px;color:var(--paper-300)}
+
+/* P1-14 — one assertion, one underline, four small possible beginnings. */
+.first-step h1{position:absolute;left:120px;top:380px;font:700 128px/1.2 var(--font-display);letter-spacing:.02em;color:var(--gold-100)}
+.first-step-line{position:absolute;left:120px;top:720px;width:480px}
+.first-step-possibilities{position:absolute;left:120px;top:780px;display:flex;align-items:center;gap:28px;color:var(--ash-300);font:400 24px/1.5 var(--font-body);letter-spacing:.3em}
+.first-step-possibilities>span{display:flex;gap:28px;white-space:nowrap}
+.first-step-possibilities i{font-style:normal;color:var(--gold-500)}
+
+/* P2-03 — both halves contain a complete table, clipped to the torn edges. */
+.curriculum-sheet{position:absolute;left:380px;top:100px;width:620px;height:877px;perspective:1200px}
+.curriculum-half{position:absolute;inset:0;transform-style:preserve-3d;backface-visibility:hidden}
+.curriculum-left{clip-path:polygon(0 0,50% 0,48.2% 4.6%,51.8% 9.1%,48.5% 13.7%,51.5% 18.2%,47.8% 22.8%,50.3% 27.4%,48.4% 31.9%,52.2% 36.5%,49.4% 41%,51.6% 45.6%,48.1% 50.2%,50.8% 54.7%,48.5% 59.3%,51.8% 63.9%,47.8% 68.4%,50.6% 73%,48.9% 77.5%,51.8% 82.1%,48.4% 86.7%,50.8% 91.2%,49% 95.8%,50% 100%,0 100%);transform-origin:left center}
+.curriculum-right{clip-path:polygon(50% 0,100% 0,100% 100%,50% 100%,49% 95.8%,50.8% 91.2%,48.4% 86.7%,51.8% 82.1%,48.9% 77.5%,50.6% 73%,47.8% 68.4%,51.8% 63.9%,48.5% 59.3%,50.8% 54.7%,48.1% 50.2%,51.6% 45.6%,49.4% 41%,52.2% 36.5%,48.4% 31.9%,50.3% 27.4%,47.8% 22.8%,51.5% 18.2%,48.5% 13.7%,51.8% 9.1%,48.2% 4.6%);transform-origin:right center}
+.curriculum-document{height:100%;padding:36px 32px;background:#1a1f1d;border:1px solid #2a302d;color:var(--ash-400);opacity:.65;font-family:var(--font-mono)}
+.curriculum-document-top{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.12em;white-space:nowrap}
+.curriculum-document h2{font:400 30px/1.4 var(--font-display);letter-spacing:.22em;text-align:center;padding:34px 0 32px}
+.curriculum-document table{width:100%;border-collapse:collapse;table-layout:fixed;font:400 14px/1.6 var(--font-mono)}
+.curriculum-document caption{caption-side:bottom;text-align:left;margin-top:26px;font-size:12px;letter-spacing:.04em;color:var(--ash-500)}
+.curriculum-document th,.curriculum-document td{font-weight:400;text-align:center;border:1px solid #2a302d;padding:16px 8px;height:58px}
+.curriculum-document th:first-child{width:44%;text-align:left;padding-left:16px}
+.curriculum-document thead th{font-size:14px;color:var(--ash-300);height:52px}
+.curriculum-footer{position:absolute;left:32px;right:32px;bottom:32px;display:flex;align-items:center;justify-content:space-between;font-size:12px;letter-spacing:.12em;color:var(--ash-500)}
+.curriculum-crack{position:absolute;inset:0;width:620px;height:877px;pointer-events:none;overflow:visible}
+.curriculum-crack path{fill:none;stroke:var(--gold-100);stroke-width:1;stroke-linecap:round;opacity:.48}
+.curriculum-seam-light{position:absolute;left:292px;top:0;width:36px;height:877px;background:linear-gradient(90deg,transparent,#f6e4bc10,transparent);filter:blur(12px);pointer-events:none}
+.curriculum-open-space{position:absolute;left:1180px;top:396px;width:560px}
+.curriculum-open-space>.eyebrow{display:block;font-size:15px;color:var(--ash-400)}
+.curriculum-open-space p{font:700 64px/1.5 var(--font-display);color:var(--paper-200);margin-top:42px;white-space:nowrap}
+.curriculum-open-space .gold-line{display:block;width:120px;margin-top:48px;opacity:.65}
+
+/* P3-11 — a location is a depth, not a four-step process. */
+.storage-level{position:absolute}
+.storage-level>svg{position:absolute;inset:0;width:100%;height:100%;fill:none;pointer-events:none}
+.storage-level rect{stroke-width:1;vector-effect:non-scaling-stroke}
+.storage-cabinet rect{stroke:var(--ink-600);opacity:.4}
+.storage-shelf rect{stroke:var(--ink-600);opacity:.6}
+.storage-box rect{stroke:var(--gold-500);opacity:.8}
+.storage-label{position:absolute;left:28px;top:24px;font-size:15px;letter-spacing:.16em;color:var(--ash-400)}
+.storage-box p{position:absolute;left:0;right:0;top:192px;text-align:center;font:400 28px/1.7 var(--font-body);letter-spacing:.08em;color:var(--paper-100)}
+
+/* P4-06 — lengths show composition, with no invented numeric weights. */
+.evaluation-composition h2{position:absolute;left:120px;top:250px;font:500 48px/1.3 var(--font-display);letter-spacing:.04em;color:var(--paper-200)}
+.evaluation-rule{position:absolute;left:120px;top:334px;width:1200px;height:1px;background:var(--ink-600)}
+.evaluation-list{position:absolute;left:120px;top:350px;width:1480px}
+.evaluation-row{height:90px;display:flex;align-items:center;gap:40px}
+.evaluation-row>span{display:block;flex:none;width:220px;font:400 28px/1.7 var(--font-body);letter-spacing:.02em}
+.evaluation-bar{height:24px;flex:none;transform-origin:left;background:linear-gradient(90deg,#5e86ae,#7fa8cc);opacity:.85}
+.evaluation-note{position:absolute;left:120px;top:864px;font:400 22px/1.6 var(--font-body);color:var(--ash-400);letter-spacing:.04em}
+
+/* P4-14 — the visible resting frame is the failure after the short glitch. */
+.fault-copy{position:absolute;left:120px;top:180px;font:700 56px/1.35 var(--font-display);letter-spacing:.02em;color:var(--paper-200)}
+.fault-modules{position:absolute;left:120px;top:440px;display:flex;gap:100px}
+.fault-module{position:relative;width:380px;height:160px;display:flex;align-items:center;justify-content:center;border:1px solid var(--ink-600);background:var(--ink-850);color:var(--ash-300);font:500 36px/1.4 var(--font-display)}
+.fault-wire{position:absolute;left:100%;top:-1px;width:100px;height:160px;fill:none;overflow:visible}
+.fault-wire path{stroke:var(--gold-500);stroke-width:1}
+.fault-wire .fault-wire-gap{stroke:var(--ash-500);opacity:.5}
+.fault-wire circle{fill:var(--gold-400);stroke:none}
+.fault-result{position:absolute;left:120px;top:680px;transform:rotate(1.5deg);transform-origin:left center;font:900 96px/1.2 var(--font-body);color:var(--cinnabar-300);letter-spacing:.02em;overflow:hidden;padding:.12em 0}
+.fault-result>[data-reveal]{display:inline-block}
+.system-failure.fault-overload .fault-wire path{stroke:var(--paper-100);stroke-width:3}
+.system-failure.fault-glitch .fault-result{text-shadow:6px 0 #ff0040,-6px 0 #00e0ff}
+
+/* Poetry is the large text; the author stays in its own small margin. */
+.specific-poem-lines{position:absolute;left:120px;font-family:var(--font-kai);font-weight:400;color:var(--paper-200);white-space:pre}
+.specific-poem-lines>div{position:relative}
+.specific-poem-lines [data-ink]{display:inline-block}
+.specific-poem-mountain .specific-poem-lines{top:380px;font-size:64px;line-height:2.2}
+.specific-poem-rain .specific-poem-lines{top:360px;font-size:80px;line-height:2.4}
+.specific-poem-rain .poem-question{letter-spacing:.14em}
+.specific-poem-credit{position:absolute;left:1400px;top:760px;font:400 22px/1.6 var(--font-kai);color:var(--ash-400);white-space:nowrap}
+.specific-poem-rain .specific-poem-credit{top:820px}
+
+/* P6-17 — the final still shows the door rebounding against a real wall. */
+.door-copy{position:absolute;left:120px;top:380px;font:700 64px/1.5 var(--font-display);letter-spacing:.02em;color:var(--paper-100)}
+.door-copy-pause{height:40px}
+.door-copy p{white-space:pre}
+.joke-door-frame{position:absolute;left:1500px;top:300px;width:200px;height:320px;border:1px solid var(--gold-500);perspective:1200px;transform-style:preserve-3d}
+.joke-door-wall{position:absolute;inset:1px;background:var(--ink-700);box-shadow:inset 0 0 32px #07090a55}
+.joke-door-wall:after{content:'';position:absolute;left:0;right:0;top:58%;height:1px;background:#95a39d0d}
+.joke-door-panel{position:absolute;left:-1px;top:-1px;width:200px;height:320px;background:var(--ink-900);transform-origin:left center;transform:rotateY(-55deg);backface-visibility:hidden;transform-style:preserve-3d}
+.joke-door-panel>svg{display:block;width:200px;height:320px;fill:none;stroke:var(--gold-400);stroke-width:1}
+.joke-door-panel path{stroke:var(--gold-300);stroke-width:1.5}
+
+[data-motion="off"] .specific-slide *,[data-motion="off"] .specific-slide *:before,[data-motion="off"] .specific-slide *:after{animation:none!important;transition:none!important}

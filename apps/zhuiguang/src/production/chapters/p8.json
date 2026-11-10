@@ -1,0 +1,368 @@
+{
+  "chapter": 8,
+  "motif": "从外在刻度收回到一盏灯，再由灯、雨和八枚印回到自己的生活。",
+  "palette": {
+    "paper": "#f2e6cf",
+    "ink": "#263932",
+    "accent": "#9a692e",
+    "shade": "#243b33"
+  },
+  "art": "/assets/art/approved/fi-inner-echo.webp",
+  "assetSources": [
+    {
+      "path": "/assets/art/approved/fi-inner-echo.webp",
+      "references": [],
+      "prompt": "沿用验收通过的 Fi 章首光环背景。角色为独立透明资产。"
+    },
+    {
+      "path": "/assets/art/p8/lamp-lit.webp",
+      "references": [
+        "视觉风格参考图 (1).png",
+        "视觉风格参考图 (2).png"
+      ],
+      "prompt": "Use case: stylized-concept. A new wide 16:9 Chinese stage illustration for a presentation beat on one lamp burning after the noise recedes. Use both original reference images for their distinct layered silhouette planes, confident geometric color masses, rim lighting and visual elegance, not their subjects. In a quiet ink-dark lacquered interior, one small authentic lit Chinese lantern sits on a simple low wooden ledge, its practical flame warming the folds of translucent paper and causing one amber pool on the wood, with distant planes of folded reed screen fading into deep jade. Center the lantern at 62 percent of width and 60 percent of height; left 45 percent stays dark and quiet for optional live typography. Nothing else should compete, small light in generous negative space, elegant hand-painted curves, edge detail where light strikes, clear depth, subtle paper grain. No people, landscape, calligraphy, labels, letters, frame, typography or interface. Full-bleed 16:9 art intended as a layered chapter background, deep warm black and honey gold rather than photorealism."
+    },
+    {
+      "path": "/assets/art/p8/rain-lane.webp",
+      "references": [
+        "视觉风格参考图 (1).png",
+        "视觉风格参考图 (2).png"
+      ],
+      "prompt": "Use case: stylized-concept. New original 16:9 full-bleed illustrated stage background for Su Shi's rain poem in a Chinese web presentation. Use both supplied original reference images specifically for deep foreground/midground/background layers, bold stylized silhouettes, broad cut-paper color planes and restrained edge lighting. A late spring rain in a narrow bamboo lane, the near edge of a wet stone path and one low bend on the RIGHT lead into a luminous pale gap in the right background. Dark bamboo silhouettes at the extreme edges, rain diagonal and fine, overlapping jade-green tonal planes, tiny silver-green reflections, a slight opening of soft gold under a dissipating cloud. Calm and resilient, not ominous, enough atmospheric depth for three animation planes. LEFT 48 percent must remain smooth medium-deep verdigris/ink with no busy subjects for white readable verse. No people, costume, umbrellas, lanterns, characters, text, symbols, logos, frame, or interface. Poetic stylized concept art, not photography."
+    }
+  ],
+  "pages": {
+    "P8-01": {
+      "layout": "cover",
+      "tone": "scene",
+      "motion": "glow",
+      "intent": "复用验收版 Fi 合十构图，独立透明蓝砚左置，右侧章名问句。回响亮度缓起，不叠加其他元素。",
+      "side": "right",
+      "focal": "循心",
+      "refinement": {
+        "artStrength": 1,
+        "artPosition": "full",
+        "duration": 1.77,
+        "stagger": 0.14
+      },
+      "art": "/assets/art/approved/fi-inner-echo.webp",
+      "reuseReason": "保留用户验收的 Fi 章首光环和独立蓝砚合十姿态及其相对位置。"
+    },
+    "P8-02": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "still",
+      "intent": "撤掉远景，目光回到近处。两行内聚，左下留一块余白，不提前揭示灯。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 81,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.79,
+        "duration": 0.97,
+        "stagger": 0.22
+      },
+      "art": "/assets/art/p8/pages/P8-02.webp"
+    },
+    "P8-03": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "stagger",
+      "intent": "「回到今天。」先落在上部，「回到我们自己。」过半拍再落在下部。保持视线低位收束。",
+      "side": "left",
+      "focal": "回到我们自己。",
+      "refinement": {
+        "typeSize": 86,
+        "vertical": "lower",
+        "artPosition": "right",
+        "artStrength": 0.8,
+        "duration": 0.76,
+        "stagger": 0.23
+      },
+      "art": "/assets/art/p8/pages/P8-03.webp"
+    },
+    "P8-04": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "line",
+      "intent": "沿竖向排列外部评价。逐项细线划过但保留所有文字可读，以最后的省略号进入思考。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 64,
+        "vertical": "upper",
+        "artPosition": "right",
+        "artStrength": 0.78,
+        "duration": 0.5,
+        "stagger": 0.17
+      },
+      "art": "/assets/art/p8/pages/P8-04.webp"
+    },
+    "P8-05": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "still",
+      "intent": "用静止的三行问题接住三秒静默。色差足以读全句，保持画面无持续动画。",
+      "side": "center",
+      "focal": "认真地付出时间？",
+      "refinement": {
+        "typeSize": 75,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.74,
+        "duration": 0.5,
+        "stagger": 0
+      },
+      "art": "/assets/art/p8/pages/P8-05.webp"
+    },
+    "P8-06": {
+      "layout": "stack",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "四个为什么各占一段，分层但不做答案卡片。保持原有换行并给每条留完整宽度。",
+      "side": "left",
+      "focal": "为什么我要去做这些事情？",
+      "refinement": {
+        "typeSize": 60,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.79,
+        "duration": 0.55,
+        "stagger": 0.17
+      },
+      "art": "/assets/art/p8/pages/P8-06.webp"
+    },
+    "P8-07": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "still",
+      "intent": "外在指标留在最后一行，墨色渐深。章名只作小号页眉，余白留给讲者。",
+      "side": "left",
+      "refinement": {
+        "typeSize": 76,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.78,
+        "duration": 0.8,
+        "stagger": 0.19
+      },
+      "art": "/assets/art/p8/pages/P8-07.webp"
+    },
+    "P8-08": {
+      "layout": "custom",
+      "tone": "scene",
+      "motion": "glow",
+      "intent": "插画里的唯一灯火取代线框灯，画面由暗到明；灯旁保持净空，此页无台词字幕。",
+      "side": "center",
+      "art": "/assets/art/p8/lamp-lit.webp",
+      "refinement": {
+        "artStrength": 1,
+        "artPosition": "full",
+        "duration": 2.12,
+        "stagger": 0
+      }
+    },
+    "P8-09": {
+      "layout": "quote",
+      "tone": "scene",
+      "motion": "focus",
+      "intent": "保留上页原灯不跳位，《灯未完》在左侧暗处缓现；让标题先于任何署名。",
+      "side": "left",
+      "focal": "《灯未完》。",
+      "art": "/assets/art/p8/lamp-lit.webp",
+      "refinement": {
+        "artPosition": "full",
+        "stagger": 0.1,
+        "duration": 0.95,
+        "vertical": "middle",
+        "artStrength": 0.95,
+        "typeSize": 109
+      },
+      "reuseReason": "和上一页原位连演，观众在同一盏灯、同一光位上第一次看见片名。"
+    },
+    "P8-10": {
+      "layout": "media",
+      "tone": "shade",
+      "motion": "stagger",
+      "intent": "使用真实《灯未完》五帧，以灯笼、雨、巷、手、结尾的顺序装裱成连环画。小幅缓现保证画面为主体。",
+      "side": "center",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 0.74,
+        "duration": 0.76,
+        "stagger": 0.18
+      },
+      "art": "/assets/art/p8/pages/P8-10.webp"
+    },
+    "P8-11": {
+      "layout": "quote",
+      "tone": "shade",
+      "motion": "still",
+      "intent": "给有关永恒的三行完整宽幅。保留原句停顿，正文安静后才切回灯火。",
+      "side": "left",
+      "focal": "永远停留在原来的样子。",
+      "refinement": {
+        "typeSize": 72,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.83,
+        "duration": 1.02,
+        "stagger": 0.23
+      },
+      "art": "/assets/art/p8/pages/P8-11.webp"
+    },
+    "P8-12": {
+      "layout": "quote",
+      "tone": "scene",
+      "motion": "focus",
+      "intent": "核心句两行以暖金显影；同一盏灯居右，文字从暗部移入净区，切勿遮灯。",
+      "side": "left",
+      "focal": "拥有未来。",
+      "art": "/assets/art/p8/lamp-lit.webp",
+      "refinement": {
+        "artPosition": "full",
+        "stagger": 0.23,
+        "duration": 1.2,
+        "vertical": "middle",
+        "artStrength": 0.93,
+        "typeSize": 72
+      },
+      "reuseReason": "回扣 P8-08/P8-09 的同一盏灯与固定光位，保留故事中灯火的视觉指代。"
+    },
+    "P8-13": {
+      "layout": "media",
+      "tone": "paper",
+      "motion": "stagger",
+      "intent": "三个真实案例从左到右各一帧。保留原文三条解释，以同一窄边框让观众辨认各章回声。",
+      "side": "center",
+      "media": [
+        {
+          "src": "/assets/img/p1/siyuan-01.webp",
+          "alt": "思源实践实拍"
+        },
+        {
+          "src": "/assets/img/p3/lab-805-ui.webp",
+          "alt": "805 实验室项目界面"
+        },
+        {
+          "src": "/assets/img/p6/liyun-01.webp",
+          "alt": "理韵寻踪实际作品画面"
+        }
+      ],
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.74,
+        "duration": 0.62,
+        "stagger": 0.15
+      },
+      "art": "/assets/art/p8/pages/P8-13.webp"
+    },
+    "P8-14": {
+      "layout": "custom",
+      "tone": "scene",
+      "motion": "line",
+      "intent": "原《定风波》楷书和署名置于雨巷左侧，细雨在字后横斜经过，「谁怕？」留一拍。",
+      "side": "left",
+      "focal": "一蓑烟雨任平生。",
+      "art": "/assets/art/p8/rain-lane.webp",
+      "refinement": {
+        "artStrength": 0.92,
+        "artPosition": "full",
+        "duration": 1.39,
+        "stagger": 0.16
+      }
+    },
+    "P8-15": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "still",
+      "intent": "将诗页的雨声收去，两行正文回到纸面，无装饰问号或试卷拟物。",
+      "side": "left",
+      "focal": "只有唯一标准答案的试题。",
+      "refinement": {
+        "typeSize": 79,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.82,
+        "duration": 0.76,
+        "stagger": 0.15
+      },
+      "art": "/assets/art/p8/pages/P8-15.webp"
+    },
+    "P8-16": {
+      "layout": "custom",
+      "tone": "shade",
+      "motion": "orbit",
+      "intent": "保留八印聚合和中央金句。印章从边缘回归同一环，句子静定后让声音先收。",
+      "side": "center",
+      "focal": "值得回望的光。",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 0.7,
+        "duration": 1.28,
+        "stagger": 0.1
+      },
+      "art": "/assets/art/p8/pages/P8-16.webp"
+    },
+    "P8-17": {
+      "layout": "split",
+      "tone": "paper",
+      "motion": "line",
+      "intent": "让升级路线和探索地图占纸面的两翼，使用并置文字及不同方向的细线，不引入奖惩评分。",
+      "side": "center",
+      "focal": "探索地图。",
+      "refinement": {
+        "typeSize": 63,
+        "vertical": "middle",
+        "artPosition": "bottom",
+        "artStrength": 0.88,
+        "duration": 0.77,
+        "stagger": 0.17
+      },
+      "art": "/assets/art/p8/pages/P8-17.webp"
+    },
+    "P8-18": {
+      "layout": "quote",
+      "tone": "paper",
+      "motion": "still",
+      "intent": "两行从大幅对照退回单一焦点。让「自己想不想」独占听众注意，保持自然停顿。",
+      "side": "center",
+      "focal": "或许是自己想不想。",
+      "refinement": {
+        "typeSize": 88,
+        "vertical": "middle",
+        "artPosition": "right",
+        "artStrength": 0.82,
+        "duration": 0.95,
+        "stagger": 0.21
+      },
+      "art": "/assets/art/p8/pages/P8-18.webp"
+    },
+    "P8-19": {
+      "layout": "coda",
+      "tone": "shade",
+      "motion": "glow",
+      "intent": "八印收为一点光的原终章动效保留。单独生成的夜色为大字留出安静的中部，静帧保留「追光者」和原祝愿。",
+      "side": "center",
+      "focal": "追光者",
+      "refinement": {
+        "vertical": "middle",
+        "artPosition": "full",
+        "artStrength": 0.78,
+        "duration": 1.38,
+        "stagger": 0.11
+      },
+      "art": "/assets/art/p8/pages/P8-19.webp"
+    },
+    "P8-20": {
+      "layout": "interactive",
+      "tone": "paper",
+      "motion": "unfurl",
+      "intent": "蓝砚伸手邀请观众写一封只给主讲人的信。暖金信纸逐层展开，舞台只显示入口和计数。",
+      "art": "/assets/art/story678/fi-postshow-lanyan.png",
+      "refinement": {"typeSize": 78, "artPosition": "right", "duration": 1.1}
+    }
+  }
+}

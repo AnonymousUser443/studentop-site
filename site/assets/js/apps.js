@@ -47,26 +47,15 @@
     });
   }
 
-  if (!defs.some(function (def) { return def.id === 'zhuiguang'; })) {
+  if (!defs.some(function (def) { return def.id === 'zhuiguang-memory'; })) {
     defs.push({
-      id: 'zhuiguang',
-      title: '追光者 · 正式演讲',
-      desktopLabel: '追光者 · 大屏',
-      icon: 'zhuiguang',
-      external: 'https://studentop.cn:14355/zhuiguang/?role=display&motion=on',
-      shortcutHint: '打开大屏并准备离线资源',
-      keywords: '追光者 睿信之星 演讲 主舞台 zhuiguang'
-    });
-  }
-  if (!defs.some(function (def) { return def.id === 'zhuiguang-audience'; })) {
-    defs.push({
-      id: 'zhuiguang-audience',
-      title: '追光者 · 观众端',
-      desktopLabel: '追光者 · 观众',
-      icon: 'zhuiguang-audience',
-      external: 'https://studentop.cn:14355/zhuiguang/?role=audience',
-      shortcutHint: '打开正式观众端并参与现场互动',
-      keywords: '追光者 观众 互动 现场 手机'
+      id: 'zhuiguang-memory',
+      title: '追光者 · 活动记忆',
+      desktopLabel: '追光者 · 活动记忆',
+      icon: 'zhuiguang-memory',
+      external: 'https://studentop.cn:14355/zhuiguang/memory/',
+      shortcutHint: '回放演讲与现场互动',
+      keywords: '追光者 睿信之星 演讲 回放 活动记忆 现场 互动 zhuiguang'
     });
   }
   defs.forEach(function (def) {

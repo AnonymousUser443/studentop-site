@@ -1,0 +1,1239 @@
+{
+  "summary": {
+    "pages": 169,
+    "generated": 164,
+    "reused": 5,
+    "refined": 169
+  },
+  "problems": [],
+  "chapters": [
+    {
+      "id": 0,
+      "pages": [
+        {
+          "id": "P0-01",
+          "status": "generated",
+          "art": "/assets/art/p0/cover.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P0-02",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-02.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P0-03",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-03.webp",
+          "refined": true,
+          "motion": "rise"
+        },
+        {
+          "id": "P0-04",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-04.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P0-05",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-05.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P0-06",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-06.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P0-07",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-07.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P0-08",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-08.webp",
+          "refined": true,
+          "motion": "pulse"
+        },
+        {
+          "id": "P0-09",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-09.webp",
+          "refined": true,
+          "motion": "glow"
+        },
+        {
+          "id": "P0-10",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-10.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P0-11",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-11.webp",
+          "refined": true,
+          "motion": "glow"
+        },
+        {
+          "id": "P0-12",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-12.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P0-13",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-13.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P0-14",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-14.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P0-15",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-15.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P0-16",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-16.webp",
+          "refined": true,
+          "motion": "orbit"
+        },
+        {
+          "id": "P0-17",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-17.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P0-18",
+          "status": "generated",
+          "art": "/assets/art/p0/pages/P0-18.webp",
+          "refined": true,
+          "motion": "glow"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "pages": [
+        {
+          "id": "P1-01",
+          "status": "reused",
+          "art": "/assets/art/approved/fe-open-screens.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P1-02",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-02.webp",
+          "refined": true,
+          "motion": "rise"
+        },
+        {
+          "id": "P1-03",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-03.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P1-04",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-04.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P1-05",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-05.webp",
+          "refined": true,
+          "motion": "pulse"
+        },
+        {
+          "id": "P1-06",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-06.webp",
+          "refined": true,
+          "motion": "glow"
+        },
+        {
+          "id": "P1-07",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-07.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P1-08",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-08.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P1-09",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-09.webp",
+          "refined": true,
+          "motion": "glow"
+        },
+        {
+          "id": "P1-10",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-10.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P1-11",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-11.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P1-12",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-12.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P1-13",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-13.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P1-14",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-14.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P1-15",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-15.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P1-16",
+          "status": "generated",
+          "art": "/assets/art/p1/pages/P1-16.webp",
+          "refined": true,
+          "motion": "glow"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "pages": [
+        {
+          "id": "P2-01",
+          "status": "generated",
+          "art": "/assets/art/p2/cover.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P2-02",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-02.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P2-03",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-03.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P2-04",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-04.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P2-05",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-05.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P2-06",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-06.webp",
+          "refined": true,
+          "motion": "glow"
+        },
+        {
+          "id": "P2-07",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-07.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P2-08",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-08.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P2-09",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-09.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P2-10",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-10.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P2-11",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-11.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P2-12",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-12.webp",
+          "refined": true,
+          "motion": "glow"
+        },
+        {
+          "id": "P2-13",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-13.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P2-14",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-14.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P2-15",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-15.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P2-16",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-16.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P2-17",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-17.webp",
+          "refined": true,
+          "motion": "pulse"
+        },
+        {
+          "id": "P2-18",
+          "status": "generated",
+          "art": "/assets/art/p2/pages/P2-18.webp",
+          "refined": true,
+          "motion": "glow"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "pages": [
+        {
+          "id": "P3-01",
+          "status": "generated",
+          "art": "/assets/art/p3/cover.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P3-02",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-02.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P3-03",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-03.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P3-04",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-04.webp",
+          "refined": true,
+          "motion": "rise"
+        },
+        {
+          "id": "P3-05",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-05.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P3-06",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-06.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P3-07",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-07.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P3-08",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-08.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P3-09",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-09.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P3-10",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-10.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P3-11",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-11.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P3-12",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-12.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P3-13",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-13.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P3-14",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-14.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P3-15",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-15.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P3-16",
+          "status": "generated",
+          "art": "/assets/art/p3/pages/P3-16.webp",
+          "refined": true,
+          "motion": "pulse"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "pages": [
+        {
+          "id": "P4-01",
+          "status": "generated",
+          "art": "/assets/art/p4/cover.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P4-02",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-02.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P4-03",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-03.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P4-04",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-04.webp",
+          "refined": true,
+          "motion": "pulse"
+        },
+        {
+          "id": "P4-05",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-05.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P4-06",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-06.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P4-07",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-07.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P4-08",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-08.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P4-09",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-09.webp",
+          "refined": true,
+          "motion": "rise"
+        },
+        {
+          "id": "P4-10",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-10.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P4-11",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-11.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P4-12",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-12.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P4-13",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-13.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P4-14",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-14.webp",
+          "refined": true,
+          "motion": "pulse"
+        },
+        {
+          "id": "P4-15",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-15.webp",
+          "refined": true,
+          "motion": "rise"
+        },
+        {
+          "id": "P4-16",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-16.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P4-17",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-17.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P4-18",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-18.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P4-19",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-19.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P4-20",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-20.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P4-21",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-21.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P4-22",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-22.webp",
+          "refined": true,
+          "motion": "rise"
+        },
+        {
+          "id": "P4-23",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-23.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P4-24",
+          "status": "generated",
+          "art": "/assets/art/p4/pages/P4-24.webp",
+          "refined": true,
+          "motion": "pulse"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "pages": [
+        {
+          "id": "P5-01",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-01.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P5-02",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-02.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P5-03",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-03.webp",
+          "refined": true,
+          "motion": "glow"
+        },
+        {
+          "id": "P5-04",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-04.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P5-05",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-05.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P5-06",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-06.webp",
+          "refined": true,
+          "motion": "pulse"
+        },
+        {
+          "id": "P5-07",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-07.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P5-08",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-08.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P5-09",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-09.webp",
+          "refined": true,
+          "motion": "rise"
+        },
+        {
+          "id": "P5-10",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-10.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P5-11",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-11.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P5-12",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-12.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P5-13",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-13.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P5-14",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-14.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P5-15",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-15.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P5-16",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-16.webp",
+          "refined": true,
+          "motion": "rise"
+        },
+        {
+          "id": "P5-17",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-17.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P5-18",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-18.webp",
+          "refined": true,
+          "motion": "pulse"
+        },
+        {
+          "id": "P5-19",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-19.webp",
+          "refined": true,
+          "motion": "orbit"
+        },
+        {
+          "id": "P5-20",
+          "status": "generated",
+          "art": "/assets/art/p5/pages/P5-20.webp",
+          "refined": true,
+          "motion": "unfurl"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "pages": [
+        {
+          "id": "P6-01",
+          "status": "reused",
+          "art": "/assets/art/approved/ne-lake.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P6-02",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-02.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P6-03",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-03.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P6-04",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-04.webp",
+          "refined": true,
+          "motion": "rise"
+        },
+        {
+          "id": "P6-05",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-05.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P6-06",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-06.webp",
+          "refined": true,
+          "motion": "pulse"
+        },
+        {
+          "id": "P6-07",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-07.webp",
+          "refined": true,
+          "motion": "orbit"
+        },
+        {
+          "id": "P6-08",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-08.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P6-09",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-09.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P6-10",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-10.webp",
+          "refined": true,
+          "motion": "rise"
+        },
+        {
+          "id": "P6-11",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-11.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P6-12",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-12.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P6-13",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-13.webp",
+          "refined": true,
+          "motion": "pulse"
+        },
+        {
+          "id": "P6-14",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-14.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P6-15",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-15.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P6-16",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-16.webp",
+          "refined": true,
+          "motion": "rise"
+        },
+        {
+          "id": "P6-17",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-17.webp",
+          "refined": true,
+          "motion": "pulse"
+        },
+        {
+          "id": "P6-18",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-18.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P6-19",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-19.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P6-20",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-20.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P6-21",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-21.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P6-22",
+          "status": "generated",
+          "art": "/assets/art/p6/pages/P6-22.webp",
+          "refined": true,
+          "motion": "unfurl"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "pages": [
+        {
+          "id": "P7-01",
+          "status": "generated",
+          "art": "/assets/art/p7/overlook-at-dawn.webp",
+          "refined": true,
+          "motion": "unfurl"
+        },
+        {
+          "id": "P7-02",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-02.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P7-03",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-03.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P7-04",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-04.webp",
+          "refined": true,
+          "motion": "orbit"
+        },
+        {
+          "id": "P7-05",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-05.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P7-06",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-06.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P7-07",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-07.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P7-08",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-08.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P7-09",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-09.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P7-10",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-10.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P7-11",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-11.webp",
+          "refined": true,
+          "motion": "pulse"
+        },
+        {
+          "id": "P7-12",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-12.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P7-13",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-13.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P7-14",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-14.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P7-15",
+          "status": "generated",
+          "art": "/assets/art/p7/pages/P7-15.webp",
+          "refined": true,
+          "motion": "glow"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "pages": [
+        {
+          "id": "P8-01",
+          "status": "reused",
+          "art": "/assets/art/approved/fi-inner-echo.webp",
+          "refined": true,
+          "motion": "glow"
+        },
+        {
+          "id": "P8-02",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-02.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P8-03",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-03.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P8-04",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-04.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P8-05",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-05.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P8-06",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-06.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P8-07",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-07.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P8-08",
+          "status": "generated",
+          "art": "/assets/art/p8/lamp-lit.webp",
+          "refined": true,
+          "motion": "glow"
+        },
+        {
+          "id": "P8-09",
+          "status": "reused",
+          "art": "/assets/art/p8/lamp-lit.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P8-10",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-10.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P8-11",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-11.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P8-12",
+          "status": "reused",
+          "art": "/assets/art/p8/lamp-lit.webp",
+          "refined": true,
+          "motion": "focus"
+        },
+        {
+          "id": "P8-13",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-13.webp",
+          "refined": true,
+          "motion": "stagger"
+        },
+        {
+          "id": "P8-14",
+          "status": "generated",
+          "art": "/assets/art/p8/rain-lane.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P8-15",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-15.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P8-16",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-16.webp",
+          "refined": true,
+          "motion": "orbit"
+        },
+        {
+          "id": "P8-17",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-17.webp",
+          "refined": true,
+          "motion": "line"
+        },
+        {
+          "id": "P8-18",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-18.webp",
+          "refined": true,
+          "motion": "still"
+        },
+        {
+          "id": "P8-19",
+          "status": "generated",
+          "art": "/assets/art/p8/pages/P8-19.webp",
+          "refined": true,
+          "motion": "glow"
+        },
+        {
+          "id": "P8-20",
+          "status": "generated",
+          "art": "/assets/art/story678/fi-postshow-lanyan.png",
+          "refined": true,
+          "motion": "unfurl"
+        }
+      ]
+    }
+  ]
+}

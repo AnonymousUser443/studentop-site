@@ -14,7 +14,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $package 'dist/assets/manifest.json'
   throw 'Build and stage the presentation with scripts/package-pi.mjs first.'
 }
 New-Item -ItemType Directory -Path $infra -Force | Out-Null
-foreach ($name in @('zhuiguang.service','zhuiguang-test.service','zhuiguang-backup.service','zhuiguang-backup.timer')) {
+foreach ($name in @('zhuiguang.service','zhuiguang-backup.service','zhuiguang-backup.timer')) {
   Copy-Item -LiteralPath (Join-Path $PSScriptRoot "pi-zhuiguang/$name") -Destination $infra
 }
 Copy-Item -LiteralPath $route -Destination (Join-Path $infra 'route.conf')
@@ -33,7 +33,7 @@ if ($CredentialDirectory) {
   $remoteSecrets = "/tmp/zhuiguang-$release-credentials"
   ssh -o BatchMode=yes $PiHost "umask 077; mkdir '$remoteSecrets'"
   if ($LASTEXITCODE -ne 0) { throw 'Could not prepare private credential transfer' }
-  scp -o BatchMode=yes (Join-Path $secrets 'stage.env') (Join-Path $secrets 'test.env') "${PiHost}:$remoteSecrets/"
+  scp -o BatchMode=yes (Join-Path $secrets 'stage.env') "${PiHost}:$remoteSecrets/"
   if ($LASTEXITCODE -ne 0) { throw 'Could not upload private credentials' }
 }
 $unit = "zhuiguang-release-" + $release.Substring($release.Length - 8)

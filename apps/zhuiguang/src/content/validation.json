@@ -1,0 +1,78 @@
+{
+  "pages": 168,
+  "uniqueIds": 168,
+  "chapters": [
+    {
+      "id": 0,
+      "pages": 18,
+      "duration": 306
+    },
+    {
+      "id": 1,
+      "pages": 16,
+      "duration": 392
+    },
+    {
+      "id": 2,
+      "pages": 18,
+      "duration": 374.2
+    },
+    {
+      "id": 3,
+      "pages": 16,
+      "duration": 259
+    },
+    {
+      "id": 4,
+      "pages": 24,
+      "duration": 393
+    },
+    {
+      "id": 5,
+      "pages": 20,
+      "duration": 201.20000000000002
+    },
+    {
+      "id": 6,
+      "pages": 22,
+      "duration": 348.4
+    },
+    {
+      "id": 7,
+      "pages": 15,
+      "duration": 213.4
+    },
+    {
+      "id": 8,
+      "pages": 19,
+      "duration": 289.6
+    }
+  ],
+  "layers": {
+    "MAIN": 153,
+    "FLEX": 15
+  },
+  "peaks": [
+    "P0-09",
+    "P2-07",
+    "P4-04",
+    "P5-06",
+    "P5-07",
+    "P6-05",
+    "P7-11",
+    "P8-16"
+  ],
+  "interactionIds": [
+    "initial-impression",
+    "private-letter",
+    "course-memory",
+    "free-afternoon",
+    "experience",
+    "ddl",
+    "creative"
+  ],
+  "totalDuration": 2776.8,
+  "emptySpeakerNotes": [],
+  "missingAnchors": [],
+  "presenterNotesWithinLimit": true
+}
