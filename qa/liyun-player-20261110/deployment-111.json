@@ -1,0 +1,341 @@
+{
+  "ok": true,
+  "id": "liyun-player-20261110T130109Z-5e93d422b4",
+  "commit": "5e93d422b43e71b5e3a2ff8479a687247b374ad0",
+  "version": "5525a8381621275f0f90ba77",
+  "current": "/opt/projects/liyun/releases/liyun-player-20261110T130109Z-5e93d422b4",
+  "previous": "/opt/projects/liyun/releases/liyun-player-20261110T122036Z-066fb6294e",
+  "publicationUnchanged": true,
+  "servicesUnchanged": true,
+  "checks": [
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/activity/ambient-room-blur.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/activity/ginkgo-bough.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/activity/reward-ginkgo.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/activity/reward-journal.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/activity/reward-seal.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/activity/reward-starlight.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/activity/travel-journal.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/ActivityScreen-Bvy7FPqy.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/ActivityScreen-Dq4SUgNA.css",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/App-BlnQlz-V.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/App-CMwKSOlQ.css",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/arrival.css",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/art/mountain-right.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/art/pine-left.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/Atmosphere-is3iuFtg.css",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/Atmosphere-mT8B7gia.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/audio/bgm1.mp3",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/audio/bgm1.opus",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/audio/bgm2.mp3",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/audio/bgm2.opus",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/audio/bgm3.mp3",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/audio/bgm3.opus",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/audio/manifest.json",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/CinematicScreen-BI4N43Ks.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/CinematicScreen-CWr660i0.css",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/CollectionPanel-DKOhs_Wd.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/fonts/DejaVu-LICENSE.txt",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/fonts/LiyunSymbols-UI.woff2",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/fonts/MaShanZheng-OFL.txt",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/fonts/MaShanZheng-UI.woff2",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/fonts/NotoSerifSC-OFL.txt",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/fonts/NotoSerifSC-UI.woff2",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/index-Ce9jmFR4.css",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/index-CgmulY_x.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/LandmarkPanel-zTWWCvNt.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/landmarks/beihu/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/landmarks/library/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/landmarks/park/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/landmarks/sports/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/landmarks/teaching/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/landmarks/tower/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/landmarks/wenbo/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/landmarks/wencui/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/maps/calibrated/campus_no_labels.png",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/maps/calibrated/campus_no_labels.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/maps/metadata.json",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/MenuScreen-BVwQRhRR.css",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/MenuScreen-D44GqYVC.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/modalFocus-mRA0_N-G.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/paintings/frost-frame.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/paintings/library.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/paintings/north-lake.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/paintings/waterbirds.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/panels-8ab73yCT.css",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/providers-k8t7T3JS.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/regions/ink-cloud.webp",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/SettingsScreen-CgLEe8yz.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/SettingsScreen-CPMZUtMq.css",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/useMotionPreferences-dNITY8lk.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/vendor-gsap-CgAXP8uT.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/vendor-misc-C8ArBquh.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/vendor-motion-CMh-u6xo.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/vendor-p5-BCiYGq3I.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/vendor-react-BBqAYxPs.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/vendor-state-DtEomig4.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/favicon.svg",
+      "pass": true
+    },
+    {
+      "name": "bytes:index.html",
+      "pass": true
+    },
+    {
+      "name": "bytes:sw.js",
+      "pass": true
+    },
+    {
+      "name": "bytes:assets/releases/5525a8381621275f0f90ba77/precache.json",
+      "pass": true
+    },
+    {
+      "name": "bytes:version.json",
+      "pass": true
+    },
+    {
+      "name": "revalidate:/version.json",
+      "pass": true
+    },
+    {
+      "name": "revalidate:/sw.js",
+      "pass": true
+    },
+    {
+      "name": "publication_unchanged",
+      "pass": true
+    },
+    {
+      "name": "service_unchanged:liyun-account",
+      "pass": true
+    },
+    {
+      "name": "service_unchanged:liyun-author",
+      "pass": true
+    },
+    {
+      "name": "service_unchanged:frpc",
+      "pass": true
+    },
+    {
+      "name": "pointer_unchanged:/opt/win11-home",
+      "pass": true
+    },
+    {
+      "name": "pointer_unchanged:/opt/projects/genshin",
+      "pass": true
+    },
+    {
+      "name": "pointer_unchanged:/opt/projects/frost",
+      "pass": true
+    },
+    {
+      "name": "neighbor:studentop.cn",
+      "pass": true
+    },
+    {
+      "name": "neighbor:genshin.studentop.cn",
+      "pass": true
+    },
+    {
+      "name": "neighbor:frost.studentop.cn",
+      "pass": true
+    }
+  ],
+  "completedAt": "2026-11-10T13:03:49.125Z"
+}

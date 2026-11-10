@@ -1,0 +1,16 @@
+{
+  "cachedAssets": 67,
+  "cloudsMoving": true,
+  "codeVersions": [
+    "5525a8381621275f0f90ba77"
+  ],
+  "entered": "true",
+  "fogDrawsDuring3s": 0,
+  "fogState": "running",
+  "publication": 978,
+  "regions": 10,
+  "stage": true,
+  "staticNetworkBytes": 0,
+  "version": "5525a8381621275f0f90ba77",
+  "worker": "https://liyun.studentop.cn:14355/sw.js"
+}
