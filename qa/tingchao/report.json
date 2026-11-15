@@ -1,7 +1,7 @@
 {
   "date": "2026-11-16",
   "baselineCommit": "825f1b99d35384aecc65ae4990bb0f9970d4beab",
-  "homeVersion": "f50951a175876232dd7ef5d8",
+  "homeVersion": "c42cb87995f41571115b136b",
   "automatedTests": {
     "passed": 120,
     "suites": [
@@ -39,7 +39,7 @@
   "runs": [
     {
       "phase": "bootstrap",
-      "at": "2026-11-15T23:28:19.125Z",
+      "at": "2026-11-15T23:55:09.458Z",
       "checks": [
         {
           "name": "music framework and artwork lazy before launch",
@@ -59,7 +59,7 @@
       ],
       "state": {
         "id": "3",
-        "position": 1966.785,
+        "position": 1997.4050000000002,
         "queue": 8,
         "status": "paused"
       }

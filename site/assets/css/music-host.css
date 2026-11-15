@@ -2,7 +2,7 @@
 .tingchao-host{height:100%;min-height:0;isolation:isolate;container-type:inline-size}
 .music-loading{height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:#f3f0e7;background:#101e2c;font-family:var(--font-ui)}
 .music-loading>span{font:500 34px var(--font-display);letter-spacing:.24em;color:#d5bd86}.music-loading p{font-size:13px;opacity:.65}
-.lock-music-controls{position:absolute;z-index:4;left:50%;top:48%;transform:translate(-50%,-50%);width:min(430px,calc(100% - 36px));pointer-events:auto;touch-action:manipulation}
+.lock-music-controls{position:absolute;z-index:4;left:50%;top:48%;transform:translate(-50%,-50%);width:min(430px,calc(100% - 36px));display:flex;justify-content:center;pointer-events:auto;touch-action:manipulation}
 .music-desktop-surface{position:absolute;inset:0;z-index:1050;pointer-events:none}.music-desktop-surface>*,.music-desktop-surface button{pointer-events:auto}
 .music-tray{display:flex;align-items:center;max-width:170px;min-width:32px}
 .music-desktop-surface[hidden],.lock-music-controls[hidden],.music-tray[hidden]{display:none!important}

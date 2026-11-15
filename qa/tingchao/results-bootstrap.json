@@ -1,6 +1,6 @@
 {
   "phase": "bootstrap",
-  "at": "2026-11-15T23:28:19.125Z",
+  "at": "2026-11-15T23:55:09.458Z",
   "checks": [
     {
       "name": "music framework and artwork lazy before launch",
@@ -20,7 +20,7 @@
   ],
   "state": {
     "id": "3",
-    "position": 1966.785,
+    "position": 1997.4050000000002,
     "queue": 8,
     "status": "paused"
   }

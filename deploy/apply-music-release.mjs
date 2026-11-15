@@ -210,9 +210,9 @@ function request({secure=true,url,port=secure?443:8900,timeout=5000}) {
     });req.on('error',reject);req.on('timeout',()=>req.destroy(Error('Probe timeout')));
   });
 }
-async function waitHealthy(url,port,predicate,signal) {
+async function waitHealthy(url,port,predicate,signal,secure=false) {
   const until=Date.now()+20000;
-  while(Date.now()<until){signal?.throwIfAborted();try{if(predicate(await request({secure:false,url,port,timeout:1500})))return true;}catch{}await new Promise(resolve=>setTimeout(resolve,250));}
+  while(Date.now()<until){signal?.throwIfAborted();try{if(predicate(await request({secure,url,port,timeout:1500})))return true;}catch{}await new Promise(resolve=>setTimeout(resolve,250));}
   return false;
 }
 
@@ -278,8 +278,9 @@ export async function applyMusicRelease(artifact,{signal}={}) {
     check('home_entry_matches',home.status===200&&sha256(home.body)===sha256(buffers.get('home/index.html')));
     check('home_version_matches',version.status===200&&JSON.parse(version.body).id===m.homeVersion);
     const gate=await request({url:'/__desktop/auth'});check('public_auth_configured',gate.status===200&&JSON.parse(gate.body).configured===true);
-    const denied=await request({url:'/__desktop/music/v1/session'});
-    check('public_music_requires_desktop',denied.status===401&&JSON.parse(denied.body).error?.code==='authentication_required'&&/no-store/.test(denied.headers['cache-control']||''));
+    // nginx reload returns before old workers finish serving. Its old fallback
+    // can briefly return the new HTML at this newly added route; await the gate.
+    check('public_music_requires_desktop',await waitHealthy('/__desktop/music/v1/session',443,denied=>denied.status===401&&JSON.parse(denied.body).error?.code==='authentication_required'&&/no-store/.test(denied.headers['cache-control']||''),signal,true));
     check('private_build_index_denied',(await request({url:'/site-build.json'})).status===403);
     let publicFiles=0;
     for(const file of m.files.filter(file=>file.path.startsWith('home/assets/releases/'+m.homeVersion+'/')&&/\/(?:js\/(?:music\/|apps-music\.js)|css\/(?:music\/|music-host\.css|music-fonts\.css)|img\/music\/|fonts\/music\/)/.test(file.path))){
