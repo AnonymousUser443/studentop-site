@@ -420,6 +420,7 @@
       else if (!event.shiftKey && (document.activeElement === last || document.activeElement === refs.lockScreen)) { event.preventDefault(); first.focus(); }
       return;
     }
+    if (event.target.closest('[data-music-controls]')) return;
     if (event.repeat || event.altKey || event.ctrlKey || event.metaKey) return;
     if (event.key === 'Escape') {
       event.preventDefault(); event.stopPropagation();
@@ -438,6 +439,7 @@
     if (refs.lockScreen.style.setProperty) refs.lockScreen.style.setProperty('--gate-swipe', '0');
   }
   function gestureStart(event) {
+    if (event.target.closest('[data-music-controls]')) return;
     if (view !== 'clock' || !locked || busy || revealing || needsRevoke || bootActive || (event.button !== undefined && event.button !== 0)) return;
     if (event.target.closest('button') || event.target.closest('input') || event.target.closest('a')) return;
     gesture = { id: event.pointerId, x: event.clientX, y: event.clientY, travel: 0 };
@@ -463,6 +465,7 @@
     else resetGesture();
   }
   function wheel(event) {
+    if (event.target.closest('[data-music-controls]')) return;
     if (view !== 'clock' || busy || revealing || needsRevoke || bootActive || !locked) return;
     if (event.deltaY <= 0) { wheelTravel = 0; return; }
     event.preventDefault();

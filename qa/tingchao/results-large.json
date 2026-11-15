@@ -1,0 +1,27 @@
+{
+  "phase": "large",
+  "at": "2026-11-15T23:14:04.906Z",
+  "checks": [
+    {
+      "name": "230-track search is virtualized",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "230-track queue is virtualized",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "virtualized last track reachable",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "state": {
+    "id": "192",
+    "position": 4634.673000000001,
+    "queue": 230,
+    "status": "playing"
+  }
+}

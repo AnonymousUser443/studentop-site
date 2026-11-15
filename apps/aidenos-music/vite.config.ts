@@ -1,0 +1,2 @@
+import {defineConfig} from 'vitest/config';
+export default defineConfig({define:{'process.env.NODE_ENV':JSON.stringify('production')},build:{lib:{entry:'src/index.tsx',formats:['es'],fileName:()=> 'entry.js',cssFileName:'tingchao'},outDir:'dist',emptyOutDir:true,sourcemap:false,assetsInlineLimit:0,rollupOptions:{output:{chunkFileNames:'chunks/[name]-[hash].js'}}},test:{environment:'node',include:['src/**/*.test.ts']}});

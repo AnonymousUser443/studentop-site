@@ -1,0 +1,27 @@
+{
+  "phase": "bootstrap",
+  "at": "2026-11-15T23:28:19.125Z",
+  "checks": [
+    {
+      "name": "music framework and artwork lazy before launch",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "native single window and single audio",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "day theme illustration visible",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "state": {
+    "id": "3",
+    "position": 1966.785,
+    "queue": 8,
+    "status": "paused"
+  }
+}
