@@ -1,8 +1,10 @@
+import { memo } from 'react';
 import type { IconName } from '../types';
 
-export function Icon({ name, className = '' }: { name: IconName; className?: string }) {
-  const common = { fill: 'none', stroke: 'currentColor', strokeWidth: 2.1, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
-  const shapes: Record<IconName, React.ReactNode> = {
+const common = { fill: 'none', stroke: 'currentColor', strokeWidth: 2.1, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
+// SVG paths are immutable. Creating all 19 glyphs per rendered icon was
+// especially costly when opening the journal/list or reacting to GPS updates.
+const shapes: Record<IconName, React.ReactNode> = {
     book: <><path d="M5 9c7-2 12-1 19 3v28c-7-4-12-5-19-3zM43 9c-7-2-12-1-19 3v28c7-4 12-5 19-3z"/><path d="M10 15v16m5-14v12m18-12v12m5-14v16"/><path d="M24 5v7"/></>,
     flower: <><path d="M24 23C7 16 17 2 24 8c7-6 17 8 0 15ZM25 25c2-18 19-13 16-4 8 5-1 17-16 4ZM24 27c17-4 18 13 8 13-2 9-17 4-8-13ZM21 27c8 16-8 21-10 11-10 0-8-16 10-11ZM21 23C8 35-1 20 8 16c-2-10 14-11 13 7Z" fill="currentColor" strokeWidth=".8"/><circle cx="24" cy="24" r="3" fill="#c5ac72" stroke="none"/></>,
     leaf: <><path d="m24 3 5 12 10-6-4 14 10 2-14 11-7-5-8 5L3 25l10-2L9 9l10 6z" fill="currentColor" strokeWidth=".5"/><path d="m24 12-1 33M13 22l10 10 12-10" stroke="#a26c35" strokeWidth="1.2"/></>,
@@ -22,6 +24,8 @@ export function Icon({ name, className = '' }: { name: IconName; className?: str
     sound: <><path d="m6 18 9 0 11-9v30L15 30H6z"/><path d="M32 17c5 4 5 10 0 14m5-20c9 7 9 19 0 26"/></>,
     fullscreen: <><path d="M7 19V7h12m10 0h12v12M7 29v12h12m10 0h12V29M7 7l12 12M41 7 29 19M7 41l12-12m22 12L29 29" strokeWidth="3"/></>,
     plus: <path d="M24 9v30M9 24h30" strokeWidth="4"/>
-  };
+};
+
+export const Icon = memo(function Icon({ name, className = '' }: { name: IconName; className?: string }) {
   return <svg className={`ly-icon ${className}`} viewBox="0 0 48 48" aria-hidden="true" {...common}>{shapes[name]}</svg>;
-}
+});

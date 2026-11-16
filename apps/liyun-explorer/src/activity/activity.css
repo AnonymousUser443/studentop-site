@@ -22,7 +22,6 @@
   overscroll-behavior: contain;
   font-family: var(--font-ui);
 }
-.activity-screen[hidden] { display: none; }
 .activity-screen button { color: inherit; touch-action: manipulation; }
 .activity-screen button:focus-visible { outline: 2px solid var(--jade-600); outline-offset: 3px; }
 .activity-screen .activity-close:focus-visible { outline-color: var(--gold-soft); }
@@ -90,11 +89,7 @@
 .activity-strip-border { position: absolute; inset: 0; z-index: 4; pointer-events: none; box-shadow: inset 0 5px 0 color-mix(in srgb, var(--gold-200) 13.7255%, transparent), inset 0 -5px 0 color-mix(in srgb, var(--gold-200) 13.7255%, transparent); }
 .activity-strip::before { content: ''; position: absolute; z-index: 3; inset: 0 auto 0 0; width: 22%; pointer-events: none; background: repeating-radial-gradient(ellipse at 0% 10%, transparent 0 22px, color-mix(in srgb, var(--gold-400) 23.9216%, transparent) 23px 24px, transparent 25px 34px), linear-gradient(90deg, color-mix(in srgb, var(--jade-700) 86.6667%, transparent), color-mix(in srgb, var(--ink-700) 41.9608%, transparent)); }
 .activity-art-host { position: absolute; inset: 0 auto 0 0; width: 74%; overflow: hidden; }
-.activity-art-current, .activity-art-previous { position: absolute; inset: 0; }
-.activity-art-current { z-index: 1; }
-.activity-art-previous { z-index: 0; }
-.activity-art-current.is-changing { animation: activity-art-in 500ms var(--activity-ease) both; }
-.activity-art-previous { animation: activity-art-out 520ms ease-out both; }
+.activity-art-current { position: absolute; inset: 0; z-index: 1; }
 
 .activity-paper {
   position: absolute;
@@ -248,7 +243,7 @@
 .activity-screen[data-phase='opening'] .activity-scroll-paper { animation: activity-scroll-in 550ms 150ms var(--activity-ease) both; }
 .activity-screen[data-phase='opening'] .activity-scroll-hardware { animation: activity-axis-in 420ms 100ms var(--activity-ease) both; }
 .activity-screen[data-phase='opening'] .activity-scroll-hardware.is-lower { animation-delay: 350ms; }
-.activity-screen[data-phase='opening'] .activity-tassel { animation: activity-tassel-settle 950ms 200ms ease-out both; }
+.activity-screen[data-phase='opening'] .activity-tassel { animation: activity-tassel-settle 660ms 200ms ease-out both; }
 .activity-screen[data-phase='opening'] .activity-tassel.is-right { animation-delay: 290ms; }
 .activity-screen[data-phase='opening'] .activity-art-current { animation: activity-art-in 600ms 220ms var(--activity-ease) both; }
 .activity-screen[data-phase='opening'] .activity-event-heading { animation: activity-copy-in 400ms 400ms var(--activity-ease) both; }
@@ -283,7 +278,6 @@
 @keyframes activity-axis-in { from { opacity: 0; transform: rotateX(10deg); } to { opacity: 1; transform: none; } }
 @keyframes activity-tassel-settle { 0% { opacity: 0; transform: rotate(-4deg); } 30% { opacity: 1; transform: rotate(3deg); } 65% { transform: rotate(-1.4deg); } 100% { opacity: 1; transform: rotate(0); } }
 @keyframes activity-art-in { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: none; } }
-@keyframes activity-art-out { to { opacity: 0; transform: translateX(-6px); } }
 @keyframes activity-copy-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes activity-reward-in { from { opacity: 0; transform: translateY(5px) scale(.96); } to { opacity: 1; transform: none; } }
 @keyframes activity-chapter-in { 0%, 10% { opacity: 0; transform: translateX(10px); } 100% { opacity: 1; transform: none; } }
@@ -379,7 +373,7 @@
 }
 @media (pointer: coarse) { .activity-page-hint span:first-child { display: none; } .activity-page-hint i { display: none; } }
 .activity-screen.is-reduced *, .activity-screen.is-reduced *::before, .activity-screen.is-reduced *::after { animation: none !important; transition-duration: 0ms !important; scroll-behavior: auto !important; }
-.activity-screen.is-paused *, .activity-screen.is-paused *::before, .activity-screen.is-paused *::after { animation-play-state: paused !important; }
+html[data-page-visible='false'] .activity-screen *, html[data-page-visible='false'] .activity-screen *::before, html[data-page-visible='false'] .activity-screen *::after { animation-play-state: paused !important; }
 @media (prefers-reduced-motion: reduce) { .activity-screen *, .activity-screen *::before, .activity-screen *::after { animation: none !important; transition-duration: 0ms !important; } }
 .activity-reward-art { object-fit: contain; }
 .activity-reward-art.activity-reward-fallback { display: grid; place-items: center; }

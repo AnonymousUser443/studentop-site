@@ -30,16 +30,16 @@ export function writeToken(token: string | null): void {
   catch { /* 隐私模式下会话仅存活于内存 */ }
 }
 
-type ApiOptions = { method?: string; token?: string | null; body?: unknown };
+type ApiOptions = { method?: string; token?: string | null; body?: unknown; signal?: AbortSignal };
 
 async function api<T>(path: string, options: ApiOptions = {}): Promise<T> {
-  const { method = 'GET', token, body } = options;
+  const { method = 'GET', token, body, signal } = options;
   const headers: Record<string, string> = {};
   if (body !== undefined) headers['Content-Type'] = 'application/json';
   if (token) headers.Authorization = `Bearer ${token}`;
   let res: Response;
   try {
-    res = await fetch(API_BASE + path, { method, headers, body: body !== undefined ? JSON.stringify(body) : undefined, credentials: 'same-origin', cache: 'no-store', redirect: 'error', referrerPolicy: 'no-referrer' });
+    res = await fetch(API_BASE + path, { method, headers, body: body !== undefined ? JSON.stringify(body) : undefined, credentials: 'same-origin', cache: 'no-store', redirect: 'error', referrerPolicy: 'no-referrer', signal });
   }
   catch (error) {
     // 后端不可达（未部署 / 网络断开 / 静态托管无接口）时原样抛出，便于上层降级。
@@ -69,12 +69,12 @@ export function logout(token: string): Promise<{ ok: boolean }> {
   return api('/auth/logout', { method: 'POST', token });
 }
 
-export function fetchMe(token: string): Promise<{ user: AccountUser }> {
-  return api('/auth/me', { token });
+export function fetchMe(token: string, signal?: AbortSignal): Promise<{ user: AccountUser }> {
+  return api('/auth/me', { token, signal });
 }
 
-export async function fetchProgress(token: string): Promise<ServerProgress> {
-  const data = await api<ServerProgress>('/progress', { token });
+export async function fetchProgress(token: string, signal?: AbortSignal): Promise<ServerProgress> {
+  const data = await api<ServerProgress>('/progress', { token, signal });
   const state = data.state ? sanitizeCloudState(data.state) : null;
   const ids = new Set(state?.discoveredIds ?? []);
   return {
@@ -109,6 +109,6 @@ export function sanitizeCloudState(value: unknown): ExplorationState {
   };
 }
 
-export function saveProgress(token: string, state: ExplorationState): Promise<{ updatedAt: string }> {
-  return api('/progress', { method: 'PUT', token, body: { state: sanitizeCloudState(state) } });
+export function saveProgress(token: string, state: ExplorationState, signal?: AbortSignal): Promise<{ updatedAt: string }> {
+  return api('/progress', { method: 'PUT', token, body: { state: sanitizeCloudState(state) }, signal });
 }

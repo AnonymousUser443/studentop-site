@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useEffectEvent } from 'react';
 
 export interface HotkeyActions {
   onActivities: () => void;
@@ -24,6 +24,7 @@ const isTypingTarget = (target: EventTarget | null): boolean => {
 };
 
 export function useHotkeys(actions: HotkeyActions, enabled: boolean): void {
+  const run = useEffectEvent((key: keyof HotkeyActions) => actions[key]());
   useEffect(() => {
     if (!enabled) return;
     const onKeyDown = (event: KeyboardEvent) => {
@@ -32,15 +33,15 @@ export function useHotkeys(actions: HotkeyActions, enabled: boolean): void {
       if (isTypingTarget(event.target)) return;
 
       switch (event.key.toLowerCase()) {
-        case 'a': event.preventDefault(); actions.onActivities(); break;
-        case 'c': event.preventDefault(); actions.onCollection(); break;
-        case 'm': event.preventDefault(); actions.onCenter(); break;
-        case 'f': event.preventDefault(); actions.onFullscreen(); break;
-        case 'l': event.preventDefault(); actions.onLocate(); break;
+        case 'a': event.preventDefault(); run('onActivities'); break;
+        case 'c': event.preventDefault(); run('onCollection'); break;
+        case 'm': event.preventDefault(); run('onCenter'); break;
+        case 'f': event.preventDefault(); run('onFullscreen'); break;
+        case 'l': event.preventDefault(); run('onLocate'); break;
         default: break;
       }
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [actions, enabled]);
+  }, [enabled]);
 }

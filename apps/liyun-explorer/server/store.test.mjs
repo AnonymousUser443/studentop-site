@@ -13,27 +13,27 @@ function tempStore() {
   return { store, dir };
 }
 
-test('学号唯一：首次建档、重复登录复用并更新昵称', () => {
+test('学号唯一：首次建档、重复登录复用并更新昵称', async () => {
   const { store, dir } = tempStore();
   try {
-    const first = store.upsertUser({ nickname: '小理', studentId: '20240001', password: PASSWORD });
+    const first = await store.upsertUser({ nickname: '小理', studentId: '20240001', password: PASSWORD });
     assert.equal(first.studentId, '20240001');
     assert.equal(first.nickname, '小理');
     assert.match(first.uid, /^LY[0-9A-F]{8}$/);
 
-    const again = store.upsertUser({ nickname: '理小韵', studentId: '20240001', password: PASSWORD });
+    const again = await store.upsertUser({ nickname: '理小韵', studentId: '20240001', password: PASSWORD });
     assert.equal(again.id, first.id);
     assert.equal(again.nickname, '理小韵');
 
-    const other = store.upsertUser({ nickname: '阿北', studentId: '20240002', password: PASSWORD });
+    const other = await store.upsertUser({ nickname: '阿北', studentId: '20240002', password: PASSWORD });
     assert.notEqual(other.id, first.id);
   } finally { store.close(); rmSync(dir, { recursive: true, force: true }); }
 });
 
-test('会话：签发、解析、登出与过期', () => {
+test('会话：签发、解析、登出与过期', async () => {
   const { store, dir } = tempStore();
   try {
-    const user = store.upsertUser({ nickname: '小理', studentId: '20240001', password: PASSWORD });
+    const user = await store.upsertUser({ nickname: '小理', studentId: '20240001', password: PASSWORD });
     const token = store.createSession(user.id);
     const session = store.resolveSession(token);
     assert.equal(session.userId, user.id);
@@ -45,10 +45,26 @@ test('会话：签发、解析、登出与过期', () => {
   } finally { store.close(); rmSync(dir, { recursive: true, force: true }); }
 });
 
-test('进度：保存并读回快照与打卡台账', () => {
+test('两个连接争用同一个新 ID 时只接受胜出的凭据', async () => {
+  const { store, dir } = tempStore();
+  const other = openStore({ dataDir: dir });
+  try {
+    const credentials = [PASSWORD, 'second-fixture-password'];
+    const results = await Promise.allSettled([store, other].map((db, i) => db.upsertUser({
+      nickname: 'fixture-' + i, studentId: 'concurrent-new-id', password: credentials[i],
+    })));
+    assert.equal(results.filter(r => r.status === 'fulfilled').length, 1);
+    assert.equal(results.find(r => r.status === 'rejected').reason.status, 401);
+    const winner = results.findIndex(r => r.status === 'fulfilled');
+    const again = await store.upsertUser({ nickname: 'fixture', studentId: 'concurrent-new-id', password: credentials[winner] });
+    assert.equal(again.id, results[winner].value.id);
+  } finally { other.close(); store.close(); rmSync(dir, { recursive: true, force: true }); }
+});
+
+test('进度：保存并读回快照与打卡台账', async () => {
   const { store, dir } = tempStore();
   try {
-    const user = store.upsertUser({ nickname: '小理', studentId: '20240001', password: PASSWORD });
+    const user = await store.upsertUser({ nickname: '小理', studentId: '20240001', password: PASSWORD });
     assert.equal(store.getProgress(user.id), null);
 
     const state = { version: 2, discoveredIds: ['wencui', 'tower'], unlockedRegionIds: ['wencui', 'tower'], playerUV: { u: 0.5, v: 0.5 }, settings: { music: true } };
@@ -62,10 +78,10 @@ test('进度：保存并读回快照与打卡台账', () => {
   } finally { store.close(); rmSync(dir, { recursive: true, force: true }); }
 });
 
-test('打卡台账：保留首次时间，重置进度时移除并允许重新打卡', () => {
+test('打卡台账：保留首次时间，重置进度时移除并允许重新打卡', async () => {
   const { store, dir } = tempStore();
   try {
-    const user = store.upsertUser({ nickname: '小理', studentId: '20240001', password: PASSWORD });
+    const user = await store.upsertUser({ nickname: '小理', studentId: '20240001', password: PASSWORD });
     store.saveProgress(user.id, { version: 2, discoveredIds: ['wencui', 'tower'] });
     const first = store.getCheckins(user.id).find(c => c.landmarkId === 'tower').discoveredAt;
 
@@ -85,19 +101,19 @@ test('打卡台账：保留首次时间，重置进度时移除并允许重新�
   } finally { store.close(); rmSync(dir, { recursive: true, force: true }); }
 });
 
-test('错误口令不能接管同一学号，身份、进度、会话均不改变；盐随机且不暴露凭证', () => {
+test('错误口令不能接管同一学号，身份、进度、会话均不改变；盐随机且不暴露凭证', async () => {
   const { store, dir } = tempStore();
   try {
-    const user = store.upsertUser({ nickname: 'fixture-one', studentId: 'demo-one', password: PASSWORD });
+    const user = await store.upsertUser({ nickname: 'fixture-one', studentId: 'demo-one', password: PASSWORD });
     store.saveProgress(user.id, { version: 2, discoveredIds: ['tower'], playerUV: LANDMARK_UVS.tower });
     const before = store.getProgress(user.id);
     const row = store.db.prepare('SELECT * FROM users WHERE id = ?').get(user.id);
-    assert.throws(() => store.upsertUser({ nickname: 'attacker', studentId: 'demo-one', password: 'wrong-passphrase' }), e => e.status === 401);
+    await assert.rejects(() => store.upsertUser({ nickname: 'attacker', studentId: 'demo-one', password: 'wrong-passphrase' }), e => e.status === 401);
     assert.equal(store.publicUser(user.id).nickname, 'fixture-one');
     assert.deepEqual(store.getProgress(user.id), before);
     assert.equal(store.db.prepare('SELECT COUNT(*) AS n FROM sessions').get().n, 0);
     assert.equal(store.db.prepare('SELECT last_login_at FROM users WHERE id = ?').get(user.id).last_login_at, row.last_login_at);
-    const other = store.upsertUser({ nickname: 'fixture-two', studentId: 'demo-two', password: PASSWORD });
+    const other = await store.upsertUser({ nickname: 'fixture-two', studentId: 'demo-two', password: PASSWORD });
     const second = store.db.prepare('SELECT password_salt, password_hash FROM users WHERE id = ?').get(other.id);
     assert.match(row.password_salt, /^[a-f0-9]{32}$/);
     assert.match(row.password_hash, /^[a-f0-9]{128}$/);
@@ -105,20 +121,20 @@ test('错误口令不能接管同一学号，身份、进度、会话均不改�
     assert.notEqual(row.password_hash, second.password_hash);
     assert.deepEqual(Object.keys(user).sort(), ['id', 'nickname', 'studentId', 'uid']);
     assert.equal(JSON.stringify(row).includes(PASSWORD), false);
-    const authenticated = store.upsertUser({ nickname: 'new-name', studentId: 'demo-one', password: PASSWORD });
+    const authenticated = await store.upsertUser({ nickname: 'new-name', studentId: 'demo-one', password: PASSWORD });
     assert.equal(authenticated.id, user.id);
     assert.equal(authenticated.nickname, 'new-name');
   } finally { store.close(); rmSync(dir, { recursive: true, force: true }); }
 });
 
-test('口令类型与长度、会话高熵和过期', () => {
+test('口令类型与长度、会话高熵和过期', async () => {
   const { store, dir } = tempStore();
   try {
     for (const password of [undefined, null, 12345678, {}, 'short', 'x'.repeat(129)]) {
-      assert.throws(() => store.upsertUser({ nickname: 'fixture', studentId: 'demo', password }), e => e.status === 400);
+      await assert.rejects(() => store.upsertUser({ nickname: 'fixture', studentId: 'demo', password }), e => e.status === 400);
     }
     for (const n of [8, 128]) {
-      const user = store.upsertUser({ nickname: 'fixture', studentId: 'demo-' + n, password: 'x'.repeat(n) });
+      const user = await store.upsertUser({ nickname: 'fixture', studentId: 'demo-' + n, password: 'x'.repeat(n) });
       const token = store.createSession(user.id);
       assert.match(token, /^[A-Za-z0-9_-]{43}$/);
       assert.equal(JSON.stringify(store.db.prepare('SELECT * FROM sessions').all()).includes(token), false);
@@ -128,11 +144,11 @@ test('口令类型与长度、会话高熵和过期', () => {
   } finally { store.close(); rmSync(dir, { recursive: true, force: true }); }
 });
 
-test('schema1 自动锁定、旧令牌失效，只有离线管理员可迁移，旧演示记录不升级', () => {
+test('schema1 自动锁定、旧令牌失效，只有离线管理员可迁移，旧演示记录不升级', async () => {
   const { store: original, dir } = tempStore();
   let migrated;
   try {
-    const user = original.upsertUser({ nickname: 'old-fixture', studentId: 'old-demo', password: PASSWORD });
+    const user = await original.upsertUser({ nickname: 'old-fixture', studentId: 'old-demo', password: PASSWORD });
     const token = original.createSession(user.id);
     original.saveProgress(user.id, { version: 2, discoveredIds: ['tower'] });
     original.db.prepare('UPDATE progress SET state_json = ? WHERE user_id = ?').run(JSON.stringify({ version: 1, discoveredIds: ['tower'], rawGPS: 'private-gps-marker', password: 'private-password-marker', settings: { volume: 0.7, secret: 'private-setting-marker' } }), user.id);
@@ -141,7 +157,7 @@ test('schema1 自动锁定、旧令牌失效，只有离线管理员可迁移，
     migrated = openStore({ dataDir: dir });
     assert.equal(migrated.db.prepare('PRAGMA user_version').get().user_version, 2);
     assert.equal(migrated.resolveSession(token), null);
-    assert.throws(() => migrated.upsertUser({ nickname: 'takeover', studentId: 'old-demo', password: PASSWORD }), e => e.status === 423);
+    await assert.rejects(() => migrated.upsertUser({ nickname: 'takeover', studentId: 'old-demo', password: PASSWORD }), e => e.status === 423);
     assert.equal(migrated.publicUser(user.id).nickname, 'old-fixture');
     assert.throws(() => migrated.createSession(user.id), e => e.status === 423);
     assert.deepEqual(migrated.getProgress(user.id).state.discoveredIds, []);
@@ -150,15 +166,15 @@ test('schema1 自动锁定、旧令牌失效，只有离线管理员可迁移，
     const disk = migrated.db.prepare('SELECT state_json FROM progress').get().state_json;
     assert.equal(disk.includes('private-'), false);
     migrated.migrateLegacyPassword(user.id, 'migrated-fixture-pass');
-    assert.equal(migrated.upsertUser({ nickname: 'recovered', studentId: 'old-demo', password: 'migrated-fixture-pass' }).id, user.id);
+    assert.equal((await migrated.upsertUser({ nickname: 'recovered', studentId: 'old-demo', password: 'migrated-fixture-pass' })).id, user.id);
     assert.throws(() => migrated.migrateLegacyPassword(user.id, PASSWORD), e => e.status === 409);
   } finally { if (migrated) migrated.close(); else { try { original.close(); } catch {} } rmSync(dir, { recursive: true, force: true }); }
 });
 
-test('严格白名单：敏感字段不落盘，UV仅允许起点或已发现固定地标', () => {
+test('严格白名单：敏感字段不落盘，UV仅允许起点或已发现固定地标', async () => {
   const { store, dir } = tempStore();
   try {
-    const user = store.upsertUser({ nickname: 'fixture', studentId: 'privacy-demo', password: PASSWORD });
+    const user = await store.upsertUser({ nickname: 'fixture', studentId: 'privacy-demo', password: PASSWORD });
     const state = { version: 2, discoveredIds: ['tower', 'tower', 'private-id-marker'], unlockedRegionIds: ['private-region-marker'], playerUV: { u: 0.123456, v: 0.654321, rawGPS: 'private-uv-marker' }, rawGPS: { latitude: 'private-gps-marker' }, password: 'private-password-marker', settings: { volume: 5, quality: 'unknown', track: 99, secret: 'private-setting-marker' } };
     store.saveProgress(user.id, state);
     const raw = store.db.prepare('SELECT state_json FROM progress WHERE user_id = ?').get(user.id).state_json;

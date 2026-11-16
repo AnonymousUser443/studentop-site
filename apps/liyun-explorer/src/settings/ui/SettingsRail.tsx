@@ -1,7 +1,5 @@
-import { useRef, type KeyboardEvent } from 'react';
-import { motion } from 'framer-motion';
+import { memo, useRef, type KeyboardEvent } from 'react';
 import { useMotionPreferences } from '../../motion/useMotionPreferences';
-import { tween } from '../../motion/transitions';
 
 export const SETTINGS_CATEGORIES = [
   { id: 'control', label: '控制' },
@@ -21,8 +19,8 @@ interface SettingsRailProps {
   onChange: (id: SettingsCategoryId) => void;
 }
 
-/** 左侧分类栏：◆ 标记 + 金色选中线，方向键在 tab 间循环 */
-export default function SettingsRail({ active, onChange }: SettingsRailProps) {
+/** 选中时留一缕流光，方印内沿对角切开的三角轻移。 */
+export default memo(function SettingsRail({ active, onChange }: SettingsRailProps) {
   const buttons = useRef<(HTMLButtonElement | null)[]>([]);
   const { reducedMotion, reduceFlash } = useMotionPreferences();
 
@@ -53,13 +51,12 @@ export default function SettingsRail({ active, onChange }: SettingsRailProps) {
             onClick={() => onChange(category.id)}
             onKeyDown={event => move(event, index)}
           >
-            {selected && <motion.span layoutId="settings-category-highlight" className="settings-rail-selected" transition={reducedMotion ? tween.tap : tween.base} aria-hidden="true" />}
             {selected && !reducedMotion && !reduceFlash && <span key={active} className="settings-rail-sweep" aria-hidden="true"><i /><i /><i /></span>}
-            <span className="settings-rail-diamond" aria-hidden="true" />
+            <span className="settings-rail-emblem" aria-hidden="true"><span /></span>
             <span className="settings-rail-label">{category.label}</span>
           </button>
         );
       })}
     </nav>
   );
-}
+});

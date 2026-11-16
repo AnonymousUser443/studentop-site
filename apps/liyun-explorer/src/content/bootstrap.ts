@@ -1,5 +1,8 @@
 import {validPublication} from '../../shared/published.mjs';
 const CACHE='liyun.content.published.v1';
+function remember(value:unknown){
+ try{localStorage.setItem(CACHE,JSON.stringify(value));}catch{/* Browsers may disable persistent storage. */}
+}
 export async function loadPublication(){
  const query=new URLSearchParams(location.search),preview=query.get('contentPreview');
  if(preview!==null){
@@ -9,15 +12,28 @@ export async function loadPublication(){
   window.__LIYUN_CONTENT__=body.published;return;
  }
  if(query.get('tool')==='calibration')return;
- let cached:unknown;try{cached=JSON.parse(localStorage.getItem(CACHE)??'null');}catch{/* Optional public catalog cache. */}
+ let cached:unknown,knownDefault=false;
+ try{
+  const raw=localStorage.getItem(CACHE);
+  // A previously confirmed empty catalog is different from no cached response.
+  // The first uses the built-in map even when the content API cannot be reached.
+  knownDefault=raw==='null';
+  if(raw&&!knownDefault)cached=JSON.parse(raw);
+ }catch{/* Optional public catalog cache. */}
+ const previous=validPublication(cached)?cached:undefined;
+ const recover=()=>{
+  if(previous)window.__LIYUN_CONTENT__=previous;
+  return !!previous||knownDefault;
+ };
+ if(navigator.onLine===false&&recover())return;
  try{
   const response=await fetch('/api/content/published',{cache:'no-store',credentials:'same-origin',signal:AbortSignal.timeout(3500)});
   if(!response.ok)throw Error('地图内容服务暂不可用');const body=await response.json();
-  if(body.published===null){if(validPublication(cached))window.__LIYUN_CONTENT__=cached;return;}
+  if(body.published===null){if(!recover())remember(null);return;}
   if(!validPublication(body.published))throw Error('地图内容版本无效');window.__LIYUN_CONTENT__=body.published;
-  try{localStorage.setItem(CACHE,JSON.stringify(body.published));}catch{/* Browsers may disable persistent storage. */}
+  if(body.published.revision!==previous?.revision)remember(body.published);
  }catch(error){
-  if(validPublication(cached)){window.__LIYUN_CONTENT__=cached;return;}
+  if(recover())return;
   if(['127.0.0.1','localhost','[::1]'].includes(location.hostname))return;
   throw error;
  }

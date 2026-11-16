@@ -70,9 +70,31 @@ function loginThrottle(now) {
     fail(key) { get(key).count += 1; }, clear(key) { buckets.delete(key); },
   };
 }
+// Keep the worker pool and memory bounded, including when many first-time
+// visitors log in together. A single account may have only one accepted job,
+// so concurrent requests cannot bypass its failed-attempt window.
+function loginQueue() {
+  let active = 0;
+  const waiting = [], accounts = new Set();
+  return async (key, run) => {
+    if (accounts.has(key)) throw new HttpError(429, '账号正在登录，请稍后重试', 1);
+    if (waiting.length >= 24) throw new HttpError(503, '登录请求较多，请稍后重试', 2);
+    accounts.add(key);
+    if (active < 2) active++;
+    else await new Promise(resolve => waiting.push(resolve));
+    try { return await run(); }
+    finally {
+      accounts.delete(key);
+      const next = waiting.shift();
+      if (next) next();
+      else active--;
+    }
+  };
+}
 export function createApiServer(store, { publicOrigin = process.env.LIYUN_PUBLIC_ORIGIN, production = process.env.NODE_ENV === 'production', now = Date.now } = {}) {
   const allowedOrigin = configureOrigin(publicOrigin, production);
   const throttle = loginThrottle(now);
+  const queueLogin = loginQueue();
   const server = createServer(async (req, res) => {
     try {
       const route = new URL(req.url ?? '/', 'http://localhost').pathname;
@@ -88,13 +110,18 @@ export function createApiServer(store, { publicOrigin = process.env.LIYUN_PUBLIC
           const nickname = cleanText(body.nickname, '昵称', 24);
           const studentId = cleanText(body.studentId, '学号 / 游戏 ID', 32);
           accountKey = 'account:' + sha256(studentId);
-          // Recheck after async parsing, before the synchronous credential check.
+          // Recheck after parsing, and again when a queued login starts.
           throttle.check(peerKey, 600); throttle.check(accountKey, 5);
           validatePassword(body.password);
-          const user = store.upsertUser({ nickname, studentId, password: body.password });
-          const token = store.createSession(user.id);
-          throttle.clear(accountKey);
-          return sendJson(res, 200, { token, user });
+          return await queueLogin(accountKey, async () => {
+            if (res.destroyed) return;
+            throttle.check(peerKey, 600); throttle.check(accountKey, 5);
+            const user = await store.upsertUser({ nickname, studentId, password: body.password });
+            if (res.destroyed) return;
+            const token = store.createSession(user.id);
+            throttle.clear(accountKey);
+            return sendJson(res, 200, { token, user });
+          });
         } catch (error) {
           if ([400, 401, 413, 415, 423].includes(error.status)) { throttle.fail(peerKey); if (accountKey) throttle.fail(accountKey); }
           throw error;

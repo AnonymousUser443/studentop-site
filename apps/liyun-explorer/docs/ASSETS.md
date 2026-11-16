@@ -20,14 +20,23 @@
 
 ## 校园地图
 
-2026-10-28 FE-01 接入更新：当前 `MapScene.tsx` 直接加载 `public/assets/maps/calibrated/campus_no_labels.webp`，失败回退同目录 PNG。二者从用户指定的 v0.4 标定包原样复制，均为完整 4000×4958 画布；不再把下列增强图作为运行底图。原文件保留用于追溯。`npm run verify:map` 校验两张原图、模型、元数据及 SDK 的固定 SHA-256。映射代码在 `src/location/vendor/`，未经重拟合或修改。
+玩家端 `MapScene.tsx` 使用宣纸设色版 `campus-xuan.webp`，失败时回退原标定 WebP。校准页与 Studio 仍使用原底图。标定 WebP 和 PNG 均从 v0.4 标定包原样保留，完整画布为 4000×4958。`npm run verify:map` 校验两张原图、模型、元数据及 SDK 的固定 SHA-256；映射代码未经重拟合或修改。
+
+宣纸设色版由 `node scripts/prepare-map-art.mjs`（需要 ImageMagick）从原标定 PNG 逐像素生成：北湖与河道用青玉色，植被用松石绿，路面采用暖象牙色，建筑保留石色和原描边。在同一像素位置着色，保持原画幅；从画布四边识别连通的空白纸色，仅处理外缘羽化，校内道路、建筑、定位和图钉坐标均沿用原图。`--check` 校验输出尺寸与最终 Alpha。纸纹和边缘均已烘进 WebP，无需运行时迷雾或实时模糊。
+
+未解锁区域使用 `xuan-watermarked.webp`：`node scripts/prepare-watermarked-paper.mjs` 把现有宣纸纤维、浅色套方纹、祥云线稿和来自本地《霜降雅集》信笺页的校徽小印烘成一张平铺纹理。遮盖与短时揭纸演出使用同一套纹样及地图坐标；纸沿软化只用于绘制，不改分区多边形、判定或标记。
+
+构建后可用 `node scripts/browser-location-qa.mjs --map-only` 检查玩家端解码、标定原图回退和模拟 GPS 对齐。该检查需要 Playwright 和 Edge，不代表现场测量。
+
+ImageGen 只生成纸材颗粒，未参与绘制地形。输入直接包含 `原神参考图3.png`；提示指定仅借鉴柔和矿物颜料和细纤维、无方向性明暗、无任何线条或地理内容。输出原件 1254×1254（生成文件 `exec-c5aacb96-137f-4e97-b68b-bb5d2e6bfe15.png`），中央裁切并转成 768×768 灰度纹理 `scripts/assets/map-xuan-grain.webp`，只在离线制作时使用。
 
 迁移前记录的原始包为外部素材 `图片资产/其他预置资产/liyun-map-v04-calibrated-20261026T122237Z.zip`；它未随当前源码迁入，不再假定相邻目录存在。其中 `assets/maps/campus_no_labels.webp` 与 `campus_no_labels.png` 已分别作为本项目的 `campus.webp` 与 `campus.png` 保留；原包同时包含 SVG、校准与控制点记录。`scripts/map-source.svg` 是地图装饰处理的源文件。
 
 | 本地文件 | 用途 |
 | --- | --- |
-| `public/assets/maps/calibrated/campus_no_labels.webp` | 当前运行底图，4000×4958；保留标定包原始字节 |
-| `public/assets/maps/calibrated/campus_no_labels.png` | 当前运行底图的 PNG 回退，4000×4958 |
+| `public/assets/maps/campus-xuan.webp` | 玩家端宣纸设色版，4000×4958 |
+| `public/assets/maps/calibrated/campus_no_labels.webp` | 4000×4958 原标定底图；用于校准、Studio 和玩家端回退 |
+| `public/assets/maps/calibrated/campus_no_labels.png` | 同画幅无损原件；用于派生图制作、开发回退和标定校验，不复制到玩家发行包 |
 | `public/assets/maps/campus-enhanced.webp` | 历史增强桌面图，4000×4958，约 560 KiB；当前不作为运行底图 |
 | `public/assets/maps/campus-enhanced-mobile.webp` | 历史增强移动图，2000×2479，约 213 KiB；当前不作为运行底图 |
 | `public/assets/maps/campus.webp` | 历史完整无字原图，4000×4958；保留用于追溯 |

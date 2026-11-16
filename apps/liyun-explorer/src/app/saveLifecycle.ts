@@ -23,14 +23,18 @@ export const exportSnapshot = (state: ExplorationState): string => JSON.stringif
 
 /** Serialize cloud writes so an older debounced PUT cannot arrive after a reset. */
 export function createCloudWriter(
-  save: (token: string, state: ExplorationState) => Promise<unknown>,
+  save: (token: string, state: ExplorationState, signal?: AbortSignal) => Promise<unknown>,
   currentToken: () => string | null,
 ) {
   let tail = Promise.resolve();
-  return (token: string, state: ExplorationState): Promise<void> => {
+  return (token: string, state: ExplorationState, signal?: AbortSignal): Promise<void> => {
     const snapshot = sanitizeCloudState(state);
     const task = tail.catch(() => undefined).then(async () => {
-      if (currentToken() === token) await save(token, snapshot);
+      signal?.throwIfAborted();
+      if (currentToken() === token) {
+        if (signal) await save(token, snapshot, signal);
+        else await save(token, snapshot);
+      }
     });
     tail = task;
     return task;

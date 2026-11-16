@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-02T22:00:20.894Z",
+  "generatedAt": "2026-11-14T19:02:53.081Z",
   "mapId": "campus-v04-eaa124716c51375f",
   "logicalCanvas": [
     4000,
     4958
   ],
-  "totalBytes": 28610537,
+  "totalBytes": 28942574,
   "files": [
     {
       "path": "public/assets/activity/ambient-room-blur.webp",
@@ -41,6 +41,11 @@
       "path": "public/assets/activity/travel-journal.webp",
       "bytes": 452158,
       "sha256": "845743499fc46ef2cb6723d52e70da0fdcc40571237f2cb9b94ae82f622a0583"
+    },
+    {
+      "path": "public/assets/arrival.css",
+      "bytes": 5575,
+      "sha256": "3fc43cc60577aab31121009d4f6666b718b665c1174b57101192ac60c5a7d417"
     },
     {
       "path": "public/assets/art/mountain-right.webp",
@@ -183,6 +188,11 @@
       "sha256": "31cf0e8547893453e04c45d6ebe2ddf57a24b8f102202c0477af43daa615abd4"
     },
     {
+      "path": "public/assets/maps/campus-xuan.webp",
+      "bytes": 310314,
+      "sha256": "e99ed3be3138c33646fda62931bf80e9e6222db5cb8808a13d9f5cef7d747f82"
+    },
+    {
       "path": "public/assets/maps/campus.png",
       "bytes": 1973144,
       "sha256": "ed9fae1e1ef6fea0d0998abf7a2d586d1a15bd3058411c06cd1b9268be5e447f"
@@ -221,6 +231,16 @@
       "path": "public/assets/regions/ink-cloud.webp",
       "bytes": 61868,
       "sha256": "17d09d25b05626fe11d123a168e44bd5b00348c1a3a8be8b1530846d4218ecf8"
+    },
+    {
+      "path": "public/assets/regions/xuan-paper.webp",
+      "bytes": 6390,
+      "sha256": "2bc65c6c6695ab58980b2aee53f9adb8a0a3c08e0b46f6352454431b0a8f0025"
+    },
+    {
+      "path": "public/assets/regions/xuan-watermarked.webp",
+      "bytes": 9758,
+      "sha256": "702de7db840bf054c7375ecd500d804d88c9023447e46a9ab22efc65d8069d4d"
     }
   ]
 }

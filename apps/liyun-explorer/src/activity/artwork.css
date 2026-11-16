@@ -17,8 +17,8 @@
   background: linear-gradient(160deg, var(--sage-200), var(--sage-300) 43%, var(--jade-400));
 }
 .activity-artwork-fallback svg { width: 100%; height: 100%; }
-.activity-artwork-landscape { z-index: 1; opacity: 1; transition: opacity 220ms ease; }
-.activity-artwork-landscape[data-image-failed="true"] { opacity: 0; }
+.activity-artwork-landscape { z-index: 1; overflow: hidden; }
+.artwork-photo-slot { position: absolute; inset: 0; overflow: hidden; }
 .activity-artwork-photo {
   position: absolute;
   width: 100%;
@@ -26,7 +26,8 @@
   object-fit: cover;
   object-position: center;
 }
-.artwork-photo-current { animation: artwork-landscape-reveal 420ms cubic-bezier(.22, 1, .36, 1) both; }
+.artwork-photo-current { --artwork-reveal: 420ms cubic-bezier(.22, 1, .36, 1) both; animation: artwork-landscape-window var(--artwork-reveal); }
+.artwork-photo-current .activity-artwork-photo { animation: artwork-landscape-reveal var(--artwork-reveal); }
 .artwork-photo-old { z-index: -1; }
 .activity-artwork-wash {
   z-index: 2;
@@ -94,19 +95,6 @@
 .artwork-theme-mystery .activity-artwork-journal { filter: saturate(.65); }
 .artwork-theme-archive .activity-artwork-journal { filter: saturate(.6) sepia(.18); }
 .activity-artwork-branch[hidden], .activity-artwork-journal[hidden] { display: none; }
-.activity-artwork-load-state {
-  position: absolute;
-  z-index: 11;
-  left: 36%;
-  top: 53%;
-  padding: 5px 10px;
-  border: 1px solid color-mix(in srgb, var(--gold-soft) 50.1961%, transparent);
-  border-radius: 3px;
-  background: color-mix(in srgb, var(--jade-700) 85.098%, transparent);
-  color: var(--gold-200);
-  font-size: 12px;
-  letter-spacing: .12em;
-}
 .activity-artwork-glint {
   position: absolute;
   z-index: 6;
@@ -129,13 +117,17 @@
 .activity-artwork[data-reduced="true"] * { animation-play-state: paused !important; }
 .activity-artwork[data-reduced="true"] .activity-artwork-leaves,
 .activity-artwork[data-reduced="true"] .activity-artwork-glint { display: none; }
-.activity-artwork[data-reduced="true"] .artwork-photo-current { animation: none; }
+.activity-artwork[data-reduced="true"] .artwork-photo-current,
+.activity-artwork[data-reduced="true"] .artwork-photo-current .activity-artwork-photo { animation: none; }
 .activity-artwork[data-reduced="true"] .activity-artwork-branch,
 .activity-artwork[data-reduced="true"] .activity-artwork-water i { animation: none; }
 .activity-artwork[data-quality="low"] .activity-artwork-glint,
 .activity-artwork[data-quality="low"] .activity-artwork-water i:nth-child(3) { display: none; }
 .activity-artwork[data-quality="low"] .activity-artwork-branch { animation: none; }
-@keyframes artwork-landscape-reveal { from { opacity: 0; } to { opacity: 1; } }
+/* The window and photo move in opposite directions. The picture remains
+   registered to the scrollbar without animating a full-size paint clip. */
+@keyframes artwork-landscape-window { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+@keyframes artwork-landscape-reveal { from { transform: translateX(98.8%) scale(1.025); } to { transform: translateX(0) scale(1); } }
 @keyframes artwork-branch-breathe { from { transform: rotate(-.14deg) translateY(-1px); } to { transform: rotate(.22deg) translateY(2px); } }
 @keyframes artwork-leaf-drift {
   0% { opacity: 0; transform: translate3d(0, -2vh, 0) rotate(-18deg) scale(.9); }

@@ -7,9 +7,11 @@ const dist = realpathSync(join(root, 'dist'));
 if (dist !== join(root, 'dist')) throw new Error('Refusing an unexpected dist target.');
 const sourceOnly = [
   'calibrate.html',
+  'assets/regions/ink-cloud.webp',
   'assets/fonts/MaShanZheng-Regular.ttf',
   'assets/maps/campus.png', 'assets/maps/campus.webp',
   'assets/maps/campus-enhanced.webp', 'assets/maps/campus-enhanced-mobile.webp',
+  'assets/maps/calibrated/campus_no_labels.png',
 ];
 let removedBytes = 0;
 for (const name of sourceOnly) {
@@ -21,7 +23,7 @@ for (const name of sourceOnly) {
   removedBytes += stat.size;
   unlinkSync(file);
 }
-for (const name of ['index.html','assets/maps/calibrated/campus_no_labels.webp','assets/maps/calibrated/campus_no_labels.png',
+for (const name of ['index.html','assets/maps/campus-xuan.webp','assets/maps/calibrated/campus_no_labels.webp','assets/regions/xuan-paper.webp','assets/regions/xuan-watermarked.webp',
   'assets/fonts/NotoSerifSC-UI.woff2','assets/fonts/MaShanZheng-UI.woff2','assets/fonts/NotoSerifSC-OFL.txt','assets/fonts/MaShanZheng-OFL.txt']) {
   if (!existsSync(join(dist, name))) throw new Error('Missing runtime asset: ' + name);
 }

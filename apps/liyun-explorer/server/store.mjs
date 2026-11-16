@@ -1,7 +1,8 @@
 import { DatabaseSync } from 'node:sqlite';
 import { mkdirSync } from 'node:fs';
 import path from 'node:path';
-import { createHash, randomBytes, randomUUID, scryptSync, timingSafeEqual } from 'node:crypto';
+import { createHash, randomBytes, randomUUID, scrypt, scryptSync, timingSafeEqual } from 'node:crypto';
+import { promisify } from 'node:util';
 import { sanitizeProgress } from './progress.mjs';
 
 // 理韵寻踪账号与进度存储层。零 npm 依赖，只用 Node 内置 SQLite（与北湖霜降雅集一致）。
@@ -27,10 +28,8 @@ const makeCredential = password => {
   const salt = randomBytes(16).toString('hex');
   return { salt, hash: scryptSync(password, salt, 64).toString('hex') };
 };
-const matchesPassword = (password, row) => {
-  if (!/^[a-f0-9]{32}$/.test(row.password_salt ?? '') || !/^[a-f0-9]{128}$/.test(row.password_hash ?? '')) return false;
-  return timingSafeEqual(scryptSync(password, row.password_salt, 64), Buffer.from(row.password_hash, 'hex'));
-};
+const derivePassword = promisify(scrypt);
+const sameCredential = (a, b) => a?.id === b?.id && a?.password_salt === b?.password_salt && a?.password_hash === b?.password_hash;
 
 const iso = () => new Date().toISOString();
 
@@ -102,24 +101,38 @@ export function openStore({ dataDir }) {
   const getUser = id => db.prepare('SELECT id, nickname, student_id, created_at, last_login_at FROM users WHERE id = ?').get(id);
   const publicUser = id => { const row = getUser(id); return row ? toPublicUser(row) : null; };
 
-  // Registration and credential verification are one transaction; failed login never mutates identity.
-  const upsertUser = ({ nickname, studentId, password }) => {
+  const findCredential = db.prepare('SELECT id, password_salt, password_hash FROM users WHERE student_id = ?');
+  const updateLogin = db.prepare('UPDATE users SET nickname = ?, last_login_at = ? WHERE id = ?');
+  const insertUser = db.prepare('INSERT INTO users(id, nickname, student_id, password_salt, password_hash, created_at, last_login_at) VALUES(?,?,?,?,?,?,?)');
+
+  // Hash off the request thread, with no open write transaction. Recheck the
+  // exact credential on commit so a concurrent registration/migration cannot
+  // authorize a login with a stale read.
+  const upsertUser = async ({ nickname, studentId, password }) => {
     validatePassword(password);
-    return transaction(() => {
-      const at = iso();
-      const existing = db.prepare('SELECT id, password_salt, password_hash FROM users WHERE student_id = ?').get(studentId);
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const existing = findCredential.get(studentId);
+      const salt = existing ? existing.password_salt : randomBytes(16).toString('hex');
       if (existing) {
-        if (!existing.password_salt || !existing.password_hash) throw new AccountError(423, '旧版存档已锁定，请联系管理员核验后迁移');
-        if (!matchesPassword(password, existing)) throw new AccountError(401, '学号或访问口令不正确');
-        db.prepare('UPDATE users SET nickname = ?, last_login_at = ? WHERE id = ?').run(nickname, at, existing.id);
-        return publicUser(existing.id);
+        if (!salt || !existing.password_hash) throw new AccountError(423, '旧版存档已锁定，请联系管理员核验后迁移');
+        if (!/^[a-f0-9]{32}$/.test(salt) || !/^[a-f0-9]{128}$/.test(existing.password_hash)) throw new AccountError(401, '学号或访问口令不正确');
       }
-      const id = randomUUID();
-      const credential = makeCredential(password);
-      db.prepare('INSERT INTO users(id, nickname, student_id, password_salt, password_hash, created_at, last_login_at) VALUES(?,?,?,?,?,?,?)')
-        .run(id, nickname, studentId, credential.salt, credential.hash, at, at);
-      return publicUser(id);
-    });
+      const derived = await derivePassword(password, salt, 64);
+      const user = transaction(() => {
+        if (!sameCredential(existing, findCredential.get(studentId))) return null;
+        const at = iso();
+        if (existing) {
+          if (!timingSafeEqual(derived, Buffer.from(existing.password_hash, 'hex'))) throw new AccountError(401, '学号或访问口令不正确');
+          updateLogin.run(nickname, at, existing.id);
+          return publicUser(existing.id);
+        }
+        const id = randomUUID();
+        insertUser.run(id, nickname, studentId, salt, derived.toString('hex'), at, at);
+        return publicUser(id);
+      });
+      if (user) return user;
+    }
+    throw new AccountError(409, '账号正在更新，请重试');
   };
 
   // Offline administrator operation ONLY, never exposed by HTTP. Verify ownership out-of-band first.
@@ -144,24 +157,33 @@ export function openStore({ dataDir }) {
   };
 
   // 会话只在服务端存哈希，令牌原文只交给客户端一次。
+  const findSession = db.prepare(`SELECT s.user_id, s.expires_at, u.id, u.nickname, u.student_id
+    FROM sessions s JOIN users u ON u.id = s.user_id WHERE s.token_hash = ? AND u.password_salt IS NOT NULL AND u.password_hash IS NOT NULL`);
+  const removeSession = db.prepare('DELETE FROM sessions WHERE token_hash = ?');
   const resolveSession = token => {
     if (typeof token !== 'string' || !/^[A-Za-z0-9_-]{43}$/.test(token)) return null;
-    const row = db.prepare(`SELECT s.user_id, s.expires_at, u.id, u.nickname, u.student_id
-      FROM sessions s JOIN users u ON u.id = s.user_id WHERE s.token_hash = ? AND u.password_salt IS NOT NULL AND u.password_hash IS NOT NULL`).get(sha256(token));
+    const key = sha256(token);
+    const row = findSession.get(key);
     if (!row) return null;
-    if (row.expires_at <= Date.now()) { db.prepare('DELETE FROM sessions WHERE token_hash = ?').run(sha256(token)); return null; }
+    if (row.expires_at <= Date.now()) { removeSession.run(key); return null; }
     return { userId: row.user_id, user: toPublicUser(row) };
   };
 
-  const deleteSession = token => { if (token) db.prepare('DELETE FROM sessions WHERE token_hash = ?').run(sha256(token)); };
+  const deleteSession = token => { if (token) removeSession.run(sha256(token)); };
 
+  const findProgress = db.prepare('SELECT state_json, updated_at FROM progress WHERE user_id = ?');
   const getProgress = userId => {
-    const row = db.prepare('SELECT state_json, updated_at FROM progress WHERE user_id = ?').get(userId);
+    const row = findProgress.get(userId);
     if (!row) return null;
     return { state: sanitizeProgress(JSON.parse(row.state_json)), updatedAt: row.updated_at };
   };
 
-  const getCheckins = userId => db.prepare('SELECT landmark_id, discovered_at FROM checkins WHERE user_id = ? ORDER BY discovered_at ASC')
+  const listCheckins = db.prepare('SELECT landmark_id, discovered_at FROM checkins WHERE user_id = ? ORDER BY discovered_at ASC');
+  const writeProgress = db.prepare(`INSERT INTO progress(user_id, state_json, updated_at) VALUES(?,?,?)
+    ON CONFLICT(user_id) DO UPDATE SET state_json = excluded.state_json, updated_at = excluded.updated_at`);
+  const addCheckin = db.prepare('INSERT OR IGNORE INTO checkins(user_id, landmark_id, discovered_at) VALUES(?,?,?)');
+  const removeCheckin = db.prepare('DELETE FROM checkins WHERE user_id = ? AND landmark_id = ?');
+  const getCheckins = userId => listCheckins
     .all(userId).map(r => ({ landmarkId: r.landmark_id, discoveredAt: r.discovered_at }));
 
   // 保存收集进度快照，并把打卡台账对齐到当前 discoveredIds：
@@ -171,14 +193,10 @@ export function openStore({ dataDir }) {
     const idSet = new Set(state.discoveredIds);
     const at = iso();
     transaction(() => {
-      db.prepare(`INSERT INTO progress(user_id, state_json, updated_at) VALUES(?,?,?)
-        ON CONFLICT(user_id) DO UPDATE SET state_json = excluded.state_json, updated_at = excluded.updated_at`)
-        .run(userId, JSON.stringify(state), at);
-      for (const id of idSet) {
-        db.prepare('INSERT OR IGNORE INTO checkins(user_id, landmark_id, discovered_at) VALUES(?,?,?)').run(userId, id, at);
-      }
+      writeProgress.run(userId, JSON.stringify(state), at);
+      for (const id of idSet) addCheckin.run(userId, id, at);
       for (const existing of getCheckins(userId)) {
-        if (!idSet.has(existing.landmarkId)) db.prepare('DELETE FROM checkins WHERE user_id = ? AND landmark_id = ?').run(userId, existing.landmarkId);
+        if (!idSet.has(existing.landmarkId)) removeCheckin.run(userId, existing.landmarkId);
       }
     });
     return at;
@@ -193,7 +211,7 @@ export function openStore({ dataDir }) {
       const json = JSON.stringify(state);
       if (json !== row.state_json) db.prepare('UPDATE progress SET state_json = ? WHERE user_id = ?').run(json, row.user_id);
       for (const checkin of getCheckins(row.user_id)) {
-        if (!state.discoveredIds.includes(checkin.landmarkId)) db.prepare('DELETE FROM checkins WHERE user_id = ? AND landmark_id = ?').run(row.user_id, checkin.landmarkId);
+        if (!state.discoveredIds.includes(checkin.landmarkId)) removeCheckin.run(row.user_id, checkin.landmarkId);
       }
     }
   });

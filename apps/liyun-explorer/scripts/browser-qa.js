@@ -60,7 +60,7 @@
   const marker = document.querySelector('[data-testid="poi-wencui"]');
   const world = new DOMMatrix(getComputedStyle(document.querySelector('.map-world')).transform);
   const point = {x:world.e+Number(marker.dataset.u)*4000*world.a,y:world.f+Number(marker.dataset.v)*4958*world.d};
-  check('Hotspot stays aligned after zoom', Math.abs(parseFloat(marker.style.left)-point.x)<.01 && Math.abs(parseFloat(marker.style.top)-point.y)<.01,point);
+  check('Hotspot stays aligned after zoom', Math.abs(parseFloat(marker.style.getPropertyValue('--pin-x'))-point.x)<.01 && Math.abs(parseFloat(marker.style.getPropertyValue('--pin-y'))-point.y)<.01,point);
   qa().flushSync(() => qa().setCamera(old)); await frames();
   document.querySelector('[data-testid="poi-tower"]').click(); await frames();
   check('Landmark click opens details', dialog()?.getAttribute('aria-label') === '真理之塔');
@@ -70,7 +70,8 @@
   const saved = JSON.stringify(qa().getState());
   qa().flushSync(() => qa().discover('tower')); await frames();
   check('Repeated discovery is idempotent', JSON.stringify(qa().getState()) === saved);
-  check('p5 layers are transparent non-interactive overlays', document.querySelectorAll('canvas').length === 2 && [...document.querySelectorAll('.atmosphere-layer')].every(x => getComputedStyle(x).pointerEvents === 'none'));
+  const lights = [...document.querySelectorAll('canvas[data-effect-layer]')];
+  check('Atmosphere is a non-interactive overlay', lights.length === 1 && lights.every(x => getComputedStyle(x).pointerEvents === 'none'));
   window.__qaResults = {timestamp:new Date().toISOString(), viewport:{width:innerWidth,height:innerHeight},results};
   return window.__qaResults;
 })()

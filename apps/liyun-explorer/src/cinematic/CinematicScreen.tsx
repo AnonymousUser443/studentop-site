@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { getRegion } from '../content/regions';
 import { LANDMARKS } from '../content/catalog';
@@ -9,19 +9,21 @@ import type { gsap as Gsap } from 'gsap';
 
 type Props = { payload: CinematicPayload | null; onComplete: (id: number) => void };
 
-export default function CinematicScreen({ payload, onComplete }: Props) {
+export default memo(function CinematicScreen({ payload, onComplete }: Props) {
   return payload ? <Presentation key={payload.id} payload={payload} onComplete={onComplete} /> : null;
-}
+});
 
 function Presentation({ payload, onComplete }: { payload: CinematicPayload; onComplete: Props['onComplete'] }) {
   const host = useRef<HTMLDivElement>(null);
   const continueButton = useRef<HTMLButtonElement>(null);
   const timeline = useRef<gsap.core.Timeline | null>(null);
+  const heroMotion = useRef<gsap.core.Tween | null>(null);
+  const exitMotion = useRef<gsap.core.Tween | null>(null);
+  const delta = useRef<HTMLElement>(null);
   const engine = useRef<typeof Gsap | null>(null);
   const closing = useRef(false);
   const { reducedMotion, reduceFlash } = useMotionPreferences();
   const [imageFailed, setImageFailed] = useState(false);
-  const [shownDelta, setShownDelta] = useState(0);
   const region = getRegion(payload.contentId);
   const landmark = LANDMARKS.find(item => item.id === payload.contentId);
   const title = region?.name ?? landmark?.name ?? '校园新章';
@@ -36,18 +38,28 @@ function Presentation({ payload, onComplete }: { payload: CinematicPayload; onCo
   const close = useCallback(() => {
     if (closing.current) return;
     closing.current = true;
-    timeline.current?.seek(timeline.current.duration());
+    // Leave from the current composition: seeking first reveals unfinished
+    // elements just before the fade and does unnecessary style/text writes.
+    timeline.current?.pause();
+    heroMotion.current?.pause();
     const element = host.current;
     const finish = () => onComplete(payload.id);
     window.dispatchEvent(new CustomEvent('liyun:ui-sfx', { detail: 'cancel' }));
-    if (element && engine.current) engine.current.to(element, {
+    if (element && engine.current) exitMotion.current = engine.current.to(element, {
       opacity: 0, duration: reducedMotion ? 0.12 : 0.32, ease: 'power2.in', onComplete: finish,
     });
     else finish();
   }, [onComplete, payload.id, reducedMotion]);
 
   useLayoutEffect(() => {
-    if (reducedMotion) setShownDelta(payload.progressDelta);
+    const showDelta = (value: number) => {
+      // Radix's portal can attach after this layout effect; read the live ref
+      // when the tween updates rather than capturing its initial null.
+      const numberNode = delta.current?.firstChild as Text | null | undefined;
+      if (!numberNode) return;
+      const text = String(Math.round(value));
+      if (numberNode.data !== text) numberNode.data = text;
+    };
     let disposed = false;
     let context: gsap.Context | undefined;
     void import('gsap').then(({ gsap }) => {
@@ -62,6 +74,7 @@ function Presentation({ payload, onComplete }: { payload: CinematicPayload; onCo
         const tl = gsap.timeline();
         timeline.current = tl;
         if (reducedMotion) {
+          showDelta(payload.progressDelta);
           tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: .2 });
           tl.to({}, { duration: Math.max(0, duration - .2) });
         } else {
@@ -73,20 +86,22 @@ function Presentation({ payload, onComplete }: { payload: CinematicPayload; onCo
             .fromTo(rule, { scaleX: 0 }, { scaleX: 1, duration: .8 * speed, ease: 'power2.inOut' }, .8 * speed);
           const number = { value: 0 };
           tl.to(number, { value: payload.progressDelta, duration: .72 * speed,
-            onUpdate: () => setShownDelta(Math.round(number.value)), ease: 'power2.out' }, 1.3 * speed);
+            onUpdate: () => showDelta(number.value), ease: 'power2.out' }, 1.3 * speed);
           tl.to({}, { duration: Math.max(0, duration - tl.duration()) });
           // Independent child visual, never sharing transform ownership with framer.
-          if (!reduceFlash) gsap.fromTo(root.querySelector('[data-cinema-hero]'), { scale: 1.025 }, { scale: 1.075, duration: 8, ease: 'none' });
+          if (!reduceFlash) heroMotion.current = gsap.fromTo(root.querySelector('[data-cinema-hero]'), { scale: 1.025 }, { scale: 1.075, duration: 8, ease: 'none' });
         }
         root.dataset.timelineReady = 'true';
         root.dataset.timelineDuration = String(tl.duration());
       }, host);
       window.dispatchEvent(new CustomEvent('liyun:ui-sfx', { detail: 'confirm' }));
     }).catch(() => {
-      if (!disposed && host.current) { host.current.style.opacity = '1'; setShownDelta(payload.progressDelta); }
+      if (!disposed && host.current) { host.current.style.opacity = '1'; showDelta(payload.progressDelta); }
     });
-    return () => { disposed = true; context?.revert(); timeline.current = null; };
+    return () => { disposed = true; context?.revert(); timeline.current = null; heroMotion.current = null; };
   }, [duration, payload.progressDelta, payload.quick, reduceFlash, reducedMotion]);
+
+  useLayoutEffect(() => () => { exitMotion.current?.kill(); }, []);
 
   useEffect(() => {
     const handler = (event: KeyboardEvent) => {
@@ -106,7 +121,7 @@ function Presentation({ payload, onComplete }: { payload: CinematicPayload; onCo
           data-duration={duration} data-quick={payload.quick || undefined} onClick={close}>
           <Dialog.Description className="sr-only">打卡进度已保存。点击任意处、按空格或 Escape 继续探索，跳过演出不会改变记录。</Dialog.Description>
           <header className={styles.header}>
-            <span>{chapter}</span><span className={styles.gain}>{payload.progressDelta ? <>探索度 +<b>{shownDelta}</b>%</> : '新区域已启'}</span>
+            <span>{chapter}</span><span className={styles.gain}>{payload.progressDelta ? <>探索度 +<b ref={delta}>{reducedMotion ? payload.progressDelta : 0}</b>%</> : '新区域已启'}</span>
           </header>
           <div className={styles.layout}>
             <figure className={styles.art} data-cinema-art data-art-state={imageFailed ? 'fallback' : 'hero'}>

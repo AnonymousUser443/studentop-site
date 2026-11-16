@@ -124,8 +124,8 @@
 }
 
 /* 弹窗进退场仍由 framer 管理，CSS 不再同时写同一元素的 transform。 */
-.hud-modal-backdrop { animation: none; backdrop-filter: blur(var(--q-blur)); -webkit-backdrop-filter: blur(var(--q-blur)); }
-.hud-modal { animation: none; transform-origin: 50% 35%; }
+.hud-modal-backdrop { animation: none; }
+.hud-modal { animation: none; transform-origin: 50% 50%; }
 .hud-modal .modal-heading, .hud-modal .modal-body { animation: none; }
 
 html[data-motion='reduced'] .hud-frame *,
