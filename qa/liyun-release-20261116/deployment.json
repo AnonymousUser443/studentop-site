@@ -1,0 +1,423 @@
+{
+  "ok": true,
+  "id": "liyun-ui-20261116T052314Z-429bae22a4",
+  "version": "120d72ebe81a05e65d7be417",
+  "commit": "429bae22a40e9cc4f720d075dcdb562aad2c16d5",
+  "sourceSnapshot": "96752300f8c62f7b6a0c1a6aea739170ba46ea3c8cbf2b1dc0d1ed68f42a2d59",
+  "sourceBaseCommit": "429bae22a40e9cc4f720d075dcdb562aad2c16d5",
+  "sourceStatus": "clean reviewed commit",
+  "previous": {
+    "frontend": "/opt/projects/liyun/releases/liyun-player-20261110T130109Z-5e93d422b4",
+    "api": "/opt/projects/liyun-api/releases/liyun-studio-20261103T150729Z-96390a540a"
+  },
+  "current": {
+    "frontend": "/opt/projects/liyun/releases/liyun-ui-20261116T052314Z-429bae22a4",
+    "api": "/opt/projects/liyun-api/releases/liyun-ui-20261116T052314Z-429bae22a4"
+  },
+  "backup": "/var/lib/aiden-release-history/liyun-ui-20261116T052314Z-429bae22a4",
+  "checks": [
+    {
+      "name": "v3_independent_region_and_settings_whitelist",
+      "pass": true
+    },
+    {
+      "name": "public_api_write_gate_active",
+      "pass": true
+    },
+    {
+      "name": "new_account_service_healthy",
+      "pass": true
+    },
+    {
+      "name": "existing_account_rows_and_schema_preserved",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/activity/ambient-room-blur.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/activity/ginkgo-bough.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/activity/reward-ginkgo.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/activity/reward-journal.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/activity/reward-seal.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/activity/reward-starlight.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/activity/travel-journal.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/App-BO7NRXAq.css",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/App-BY3TyWhC.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/arrival.css",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/arrivalBake-BPYQomFy.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/arrivalBake.worker-CYKtpb8o.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/art/mountain-right.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/art/pine-left.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/Atmosphere-CkVqltkF.css",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/Atmosphere-e6MwTpOx.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/audio/bgm1.mp3",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/audio/bgm1.opus",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/audio/bgm2.mp3",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/audio/bgm2.opus",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/audio/bgm3.mp3",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/audio/bgm3.opus",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/audio/manifest.json",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/CinematicScreen-CWr660i0.css",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/CinematicScreen-XGDrJuKm.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/favicon.svg",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/fonts/DejaVu-LICENSE.txt",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/fonts/LiyunSymbols-UI.woff2",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/fonts/MaShanZheng-OFL.txt",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/fonts/MaShanZheng-UI.woff2",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/fonts/NotoSerifSC-OFL.txt",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/fonts/NotoSerifSC-UI.woff2",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/index-Cb5vB2Ra.css",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/index-CPh5OC0N.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/landmarks/beihu/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/landmarks/library/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/landmarks/park/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/landmarks/sports/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/landmarks/teaching/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/landmarks/tower/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/landmarks/wenbo/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/landmarks/wencui/hero.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/maps/calibrated/campus_no_labels.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/maps/campus-xuan.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/maps/metadata.json",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/paintings/frost-frame.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/paintings/library.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/paintings/north-lake.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/paintings/waterbirds.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/precache.json",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/providers-vZAEFt4j.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/regions/xuan-paper.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/regions/xuan-watermarked.webp",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/useMotionPreferences-Bd-ATgqd.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/vendor-gsap-CgAXP8uT.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/vendor-misc-C8ArBquh.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/vendor-motion-CGrUnsRb.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/vendor-react-C0qqafyj.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/assets/releases/120d72ebe81a05e65d7be417/vendor-state-CZv0dIC1.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/index.html",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/sw.js",
+      "pass": true
+    },
+    {
+      "name": "published_bytes:public/version.json",
+      "pass": true
+    },
+    {
+      "name": "direct_anonymous_progress_denied",
+      "pass": true
+    },
+    {
+      "name": "neighbor:studentop.cn",
+      "pass": true
+    },
+    {
+      "name": "neighbor:frost.studentop.cn",
+      "pass": true
+    },
+    {
+      "name": "neighbor:genshin.studentop.cn",
+      "pass": true
+    },
+    {
+      "name": "unchanged_pointer:/opt/win11-home",
+      "pass": true
+    },
+    {
+      "name": "unchanged_pointer:/opt/projects/aidenos-music",
+      "pass": true
+    },
+    {
+      "name": "unchanged_pointer:/opt/projects/campus-entry",
+      "pass": true
+    },
+    {
+      "name": "unchanged_pointer:/opt/projects/culture-reborn",
+      "pass": true
+    },
+    {
+      "name": "unchanged_pointer:/opt/projects/desktop-auth",
+      "pass": true
+    },
+    {
+      "name": "unchanged_pointer:/opt/projects/frost",
+      "pass": true
+    },
+    {
+      "name": "unchanged_pointer:/opt/projects/genshin",
+      "pass": true
+    },
+    {
+      "name": "unchanged_pointer:/opt/projects/liyun-author",
+      "pass": true
+    },
+    {
+      "name": "unchanged_pointer:/opt/projects/liyun-moyuan",
+      "pass": true
+    },
+    {
+      "name": "unchanged_pointer:/opt/projects/voxel-campus",
+      "pass": true
+    },
+    {
+      "name": "unchanged_pointer:/opt/projects/zhuiguang",
+      "pass": true
+    },
+    {
+      "name": "unchanged_config:/etc/nginx/nginx.conf",
+      "pass": true
+    },
+    {
+      "name": "unchanged_config:/etc/nginx/sites-available/win11-home",
+      "pass": true
+    },
+    {
+      "name": "unchanged_config:/etc/nginx/snippets/win11-home-app.conf",
+      "pass": true
+    },
+    {
+      "name": "unchanged_config:/etc/nginx/snippets/win11-home-projects.conf",
+      "pass": true
+    },
+    {
+      "name": "unchanged_config:/etc/systemd/system/liyun-account.service",
+      "pass": true
+    },
+    {
+      "name": "service_state:nginx",
+      "pass": true
+    },
+    {
+      "name": "service_state:frpc",
+      "pass": true
+    },
+    {
+      "name": "service_state:frost-atlas",
+      "pass": true
+    },
+    {
+      "name": "service_state:desktop-auth",
+      "pass": true
+    },
+    {
+      "name": "service_state:rpi-monitor",
+      "pass": true
+    },
+    {
+      "name": "service_state:liyun-account",
+      "pass": true
+    },
+    {
+      "name": "service_state:liyun-author",
+      "pass": true
+    },
+    {
+      "name": "service_state:aidenos-music",
+      "pass": true
+    },
+    {
+      "name": "expected_nginx_config",
+      "pass": true
+    },
+    {
+      "name": "publication_unchanged",
+      "pass": true
+    },
+    {
+      "name": "restored_nginx_config",
+      "pass": true
+    },
+    {
+      "name": "public_api_healthy",
+      "pass": true
+    },
+    {
+      "name": "anonymous_progress_denied",
+      "pass": true
+    }
+  ],
+  "apiRestarted": true,
+  "databaseUnchanged": true,
+  "nginxReloaded": true,
+  "nginxConfigurationUnchanged": true,
+  "dnsCertificateFrpUnchanged": true,
+  "existingAccountCountsPreserved": true,
+  "completedAt": "2026-11-16T05:24:27.053Z"
+}
