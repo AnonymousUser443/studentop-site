@@ -14,6 +14,6 @@ for the exact dependency graph. Existing font licenses remain with the packaged
 fonts; album artwork, lyrics and recordings belong to their respective owners.
 
 `tools/build-music.mjs` keeps bundled legal comments and embeds the complete
-AGPL and the two new MIT notices in the native entry artifact. This does not
-publish the private repository or substitute for corresponding-source delivery
-if the application is distributed to other users.
+AGPL and the two new MIT notices in the native entry artifact. Corresponding
+source and build instructions are in the [studentop-site repository](https://github.com/AnonymousUser443/studentop-site).
+See the [release record](../../docs/tingchao-vnext/RELEASE-20261116.md) for the exact deployed commit.

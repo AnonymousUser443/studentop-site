@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "at": "2026-11-16T11:07:58.357Z",
+  "checks": [
+    {
+      "name": "actual_systemd_service_health",
+      "pass": true
+    },
+    {
+      "name": "official_guest_catalog",
+      "pass": true,
+      "tracks": 12,
+      "playlists": 12
+    },
+    {
+      "name": "official_playback_resolved",
+      "pass": true,
+      "quality": "standard",
+      "availability": "full"
+    },
+    {
+      "name": "official_audio_range",
+      "pass": true,
+      "status": 206,
+      "contentType": "audio/mpeg; charset=UTF-8",
+      "bytesObserved": 1024,
+      "host": "m801.music.126.net"
+    },
+    {
+      "name": "official_lyrics_payload",
+      "pass": true
+    }
+  ],
+  "isolatedMemorySession": true,
+  "realAccountWrites": false
+}

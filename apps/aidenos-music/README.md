@@ -51,4 +51,4 @@ node --test qa/music-proxy-tests.mjs qa/music-workspace-tests.mjs qa/music-relea
 
 字体清单与 Noto 许可、原创素材清单分别位于 `docs/tingchao/font-manifest.json`、`site/assets/fonts/OFL-Noto*.txt` 和 `docs/tingchao/asset-manifest.json`。动态中文通过 unicode-range 分片加载。
 
-下一版包含云盘歌曲读取、歌曲评论与点赞回复、本人私密歌单、官方心动歌单、可选桌面歌词，以及 Folia Sonnet / Tilt 歌词呈现。列表入场共用 `ListEntrance`，按滚动可见范围触发，虚拟列表保持稳定行高；夜间基色为 `#153A30`。云盘暂不提供上传或删除。桌面歌词位于 AidenOS 浏览器桌面内。实施和实际验收记录见 `docs/tingchao-vnext/`。
+本版包含云盘歌曲读取、歌曲评论与点赞回复、本人私密歌单、官方心动歌单、可选桌面歌词，以及 Folia Sonnet / Tilt 歌词呈现。窗口打开后，最小化、最大化／还原和关闭位于内容区右上角，顶部空白处仍可拖动或双击最大化。列表入场共用 `ListEntrance`，按滚动可见范围触发，虚拟列表保持稳定行高；夜间基色为 `#153A30`。云盘暂不提供上传或删除。桌面歌词位于 AidenOS 浏览器桌面内。见[验收记录](../../docs/tingchao-vnext/QA.md)和[生产发布记录](../../docs/tingchao-vnext/RELEASE-20261116.md)。

@@ -12,6 +12,7 @@ async function request(route){
  return {status:reply.status,headers:reply.headers,body:Buffer.from(await reply.arrayBuffer())};
 }
 function check(name,pass,detail={}){checks.push({name,pass:!!pass,...detail});assert(pass,name);}
+let completed=false;
 try{
  const home=await request('/');
  check('public_home_matches_reviewed_bytes',home.status===200&&sha256(home.body)===manifest.files.find(f=>f.path==='home/index.html').sha256);
@@ -29,8 +30,9 @@ try{
   check('immutable_bytes:'+file.path.slice(prefix.length),reply.status===200&&reply.body.length===file.bytes&&sha256(reply.body)===file.sha256&&/immutable/.test(reply.headers.get('cache-control')||''),{status:reply.status,bytes:reply.body.length,sha256:file.sha256});
  }
  check('renderer_chunks_verified',files.some(f=>/TiltStage-/.test(f.path))&&files.some(f=>/FoliaStage-/.test(f.path)));
+ completed=true;
 }finally{
- const result={ok:checks.length>0&&checks.every(c=>c.pass),at:new Date().toISOString(),release:metadata.id,commit:metadata.commit,homeVersion:metadata.homeVersion,checks};
+ const result={ok:completed&&checks.every(c=>c.pass),at:new Date().toISOString(),release:metadata.id,commit:metadata.commit,homeVersion:metadata.homeVersion,checks};
  await fs.writeFile('docs/tingchao-vnext/public-checks.json',JSON.stringify(result,null,2)+'\n');
  console.log(JSON.stringify({ok:result.ok,checks:checks.length,homeVersion:metadata.homeVersion}));
 }

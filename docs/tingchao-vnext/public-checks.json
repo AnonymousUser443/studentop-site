@@ -1,0 +1,145 @@
+{
+  "ok": true,
+  "at": "2026-11-16T11:07:42.427Z",
+  "release": "music-20261116T110412Z-b5ef807cef",
+  "commit": "b5ef807cef739ddbc2406c781ddb41ebf91f9c7d",
+  "homeVersion": "1e4dda74824967391ba952b9",
+  "checks": [
+    {
+      "name": "public_home_matches_reviewed_bytes",
+      "pass": true
+    },
+    {
+      "name": "public_version_matches",
+      "pass": true
+    },
+    {
+      "name": "desktop_gate_configured",
+      "pass": true
+    },
+    {
+      "name": "music_requires_desktop_and_is_not_cached",
+      "pass": true
+    },
+    {
+      "name": "private_build_index_denied",
+      "pass": true
+    },
+    {
+      "name": "immutable_bytes:css/music-host.css",
+      "pass": true,
+      "status": 200,
+      "bytes": 1482,
+      "sha256": "714ed463b73ff0e1d6783be57dfd90d1b72a1b456254f1ac5d881b8829191410"
+    },
+    {
+      "name": "immutable_bytes:css/music/tingchao.css",
+      "pass": true,
+      "status": 200,
+      "bytes": 114123,
+      "sha256": "6bc06ea1509ca0192a60985e9c8d317a0d465f799683ac56992a4f36d572a424"
+    },
+    {
+      "name": "immutable_bytes:css/paper.css",
+      "pass": true,
+      "status": 200,
+      "bytes": 37214,
+      "sha256": "ac25f005865cda8a4d3fb91536bdb1f00aedb5d5b781c760ad6705681f1164ee"
+    },
+    {
+      "name": "immutable_bytes:css/shell.css",
+      "pass": true,
+      "status": 200,
+      "bytes": 34190,
+      "sha256": "ac1d92068c631b0b1b89f769cbe28b4b8ff7531a782a44be1267f159c971c2ab"
+    },
+    {
+      "name": "immutable_bytes:js/apps-music.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 6814,
+      "sha256": "0f613c7b03a91c36b37d936210b796b1e7bcce51cb43370a9683c0abf63005b6"
+    },
+    {
+      "name": "immutable_bytes:js/music/chunks/FoliaStage-BR2D93du.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 10922,
+      "sha256": "8881438efdd622062ca2516c9d2dce0f12b2824ebd0b6b5f8ef81247949ad07e"
+    },
+    {
+      "name": "immutable_bytes:js/music/chunks/TiltStage-PO0s6_dA.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 16621,
+      "sha256": "3c5aa88ac2edbbd78a55feab931e8a51c800ea3578fd9aa367082eee40e899a4"
+    },
+    {
+      "name": "immutable_bytes:js/music/chunks/browserAll-DVEqbJcR.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 297,
+      "sha256": "1a9b94cf33968ee55c6473c20ec62e012bf5d6e6fb1fde62dafed51300abd537"
+    },
+    {
+      "name": "immutable_bytes:js/music/chunks/createSonnetPixiRuntime-CTLvuKdF.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 248302,
+      "sha256": "51809c8af2a6c53435e349469d36bf81b685361a8611528d8809901abacb13b8"
+    },
+    {
+      "name": "immutable_bytes:js/music/chunks/foliaAdapter-CpP6pDol.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 4680,
+      "sha256": "42225ec1fe8553a18fbd9b12467f00efb8c085d732d9f31df3bc052fab00f09d"
+    },
+    {
+      "name": "immutable_bytes:js/music/chunks/fontStacks-DlEQcSWE.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 45094,
+      "sha256": "5e08c0ec6b36ffa166baff9a0982e62c154415c81350b1af11f2accb82d19886"
+    },
+    {
+      "name": "immutable_bytes:js/music/chunks/index-z2opKGcZ.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 527877,
+      "sha256": "6ec16b3ae164d5b5e0f1a983779c9f3f9bda523fac4c68620f55eb0a47bef66c"
+    },
+    {
+      "name": "immutable_bytes:js/music/chunks/lib-B7vzNb9q.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 808628,
+      "sha256": "559f14a85e86d44a5410910143da4bf82ff0f5c6807c70c1784e5660c623fd0d"
+    },
+    {
+      "name": "immutable_bytes:js/music/chunks/webworkerAll-C0xw2vPU.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 168,
+      "sha256": "ad68f27ddf82cc2d9bb8ae0ef3c9509a338118168f7fa9396e3b4237b9c79e32"
+    },
+    {
+      "name": "immutable_bytes:js/music/entry.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 37069,
+      "sha256": "096f618d89f2b8052b4b5342a0df84a9c3d8223ab4a9c1848161ffa70f9a90ac"
+    },
+    {
+      "name": "immutable_bytes:js/wm.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 35583,
+      "sha256": "c29ab21af8fa3c49794d0a35473551da333ec135741a41bbdfcfe9f6f7d9e942"
+    },
+    {
+      "name": "renderer_chunks_verified",
+      "pass": true
+    }
+  ]
+}
