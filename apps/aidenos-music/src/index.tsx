@@ -45,7 +45,7 @@ export function mountMusicApp(container: HTMLElement, host: MusicHost) {
 export function mountMusicSurface(
   container: HTMLElement,
   host: MusicHost,
-  type: "mini" | "lock" | "tray",
+  type: "mini" | "lock" | "tray" | "lyrics",
 ) {
   const { runtime } = ensureMusicRuntime();
   const root: Root = createRoot(container);

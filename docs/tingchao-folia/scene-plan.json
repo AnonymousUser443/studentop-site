@@ -1,0 +1,20 @@
+{
+  "scene": "tide-lyric-performance",
+  "layers": [
+    {"name":"far","source":"existing day-depth / tide-depth artwork","motion":"existing GSAP scene entry"},
+    {"name":"atmosphere","source":"existing theme veil and tide glow","motion":"low amplitude, disabled when hidden"},
+    {"name":"subject","source":"Folia Sonnet deterministic lyric timeline","motion":"absolute playback time; gentle camera and typography"},
+    {"name":"foreground","source":"existing day-foreground / tide-foreground artwork","motion":"existing pointer parallax"},
+    {"name":"ui","source":"Tingchao controls, current subtitle, compact track identity","motion":"host owns layout; renderer never owns playback"}
+  ],
+  "states": {
+    "enter":"lazy load renderer, wait for active lyric fonts, show current readable lyrics meanwhile",
+    "playing":"advance visual MotionValue from runtime anchors",
+    "paused":"stop ticker; redraw only on seek, theme or resize",
+    "hidden":"cancel visual clock, abort initialization, destroy renderer",
+    "seek":"jump absolute time; no replay of expired animation",
+    "exit":"abort handoff, disconnect observer, destroy Pixi scene resources",
+    "fallback":"existing lyric scroll for reduced motion, small stage or renderer failure"
+  },
+  "safeAreas":{"desktop":"reserve top controls and lower-left track identity","narrow":"fall back to readable scroll below 420px stage width or 250px height"}
+}

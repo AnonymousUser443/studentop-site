@@ -79,6 +79,41 @@ export function track(raw = {}, privilege) {
     alias: text((raw.alia ?? raw.alias ?? []).join?.(" / "), 200),
   };
 }
+/** Cloud rows wrap normal tracks in simpleSong and also include uploaded metadata for unmatched files. */
+export function cloudTrack(raw = {}) {
+  const song = raw.simpleSong && typeof raw.simpleSong === "object" ? raw.simpleSong : {};
+  const artists = song.ar ?? song.artists;
+  const record = song.al ?? song.album;
+  return track({
+    ...song,
+    id: Number(song.id) > 0 ? song.id : raw.songId,
+    name: song.name || raw.songName || String(raw.fileName ?? "").split(/[\\/]/).at(-1),
+    ar: Array.isArray(artists) && artists.length ? artists : (typeof raw.artist === "string" && raw.artist ? [{ name: raw.artist }] : []),
+    al: record && typeof record === "object" ? record : {
+      name: typeof raw.album === "string" ? raw.album : "云盘音乐",
+      picUrl: raw.coverUrl,
+    },
+    dt: song.dt ?? song.duration ?? raw.duration,
+  });
+}
+export function trackComment(raw = {}) {
+  return {
+    id: id(raw.commentId ?? raw.id),
+    user: user(raw.user ?? {}),
+    content: text(raw.content, 4000),
+    createdAt: integer(raw.time),
+    liked: raw.liked === true,
+    likeCount: integer(raw.likedCount),
+    replies: (Array.isArray(raw.beReplied) ? raw.beReplied : []).filter((reply) => reply && typeof reply === "object").slice(0, 8).map((reply) => {
+      const commentId = id(reply.beRepliedCommentId ?? reply.commentId);
+      return {
+        id: /^[1-9][0-9]{0,19}$/.test(commentId) ? commentId : null,
+        user: user(reply.user ?? {}),
+        content: text(reply.content, 4000),
+      };
+    }),
+  };
+}
 export function playlist(raw = {}, ownerId = null) {
   const creator = user(raw.creator ?? raw.user ?? {});
   return {

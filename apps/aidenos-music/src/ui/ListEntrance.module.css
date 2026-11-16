@@ -1,0 +1,16 @@
+.pending {
+  opacity: 0;
+  transform: translate3d(calc(-1 * var(--list-enter-distance, 24px)), 0, 0);
+}
+
+.pending:focus-within {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pending {
+    opacity: 1;
+    transform: none;
+  }
+}

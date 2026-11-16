@@ -1,0 +1,74 @@
+{
+  "phase": "bootstrap",
+  "checks": [
+    {
+      "name": "music bundle remains lazy before launch",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "jade dark base uses requested color",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "renderer modules remain lazy on home",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "quality popup shows actual quality and account constraints",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "desktop lyric toggle creates independent surface",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "private and full sidebar playlists are accessible",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "sidebar scroll reaches last playlist without clipping",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "state": {
+    "audio": [
+      {
+        "duration": null,
+        "paused": true,
+        "sourceOrigin": "http://127.0.0.1:38963",
+        "time": 0
+      }
+    ],
+    "errors": [],
+    "iframes": 0,
+    "locked": false,
+    "root": "dark",
+    "snapshot": {
+      "position": 0,
+      "queue": 0,
+      "status": "idle"
+    },
+    "url": "http://127.0.0.1:38963/?vnext=1794825553246",
+    "viewport": [
+      1258,
+      727
+    ],
+    "window": {
+      "bottom": 635,
+      "height": 627,
+      "left": 8,
+      "right": 1218,
+      "top": 8,
+      "width": 1210,
+      "x": 8,
+      "y": 8
+    }
+  }
+}

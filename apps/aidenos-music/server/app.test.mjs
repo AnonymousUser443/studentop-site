@@ -33,6 +33,17 @@ const rawPlaylist = (id = "101", owner = "11", extra = {}) => ({
   description: "沿着潮水听下去",
   ...extra,
 });
+const rawComment = (id = "701", owner = "11", extra = {}) => ({
+  commentId: id,
+  user: { userId: owner, nickname: "评论者 " + owner, avatarUrl: image, cookie: "NEVER_FORWARD" },
+  content: "潮声还在。",
+  time: 1700000000000,
+  liked: false,
+  likedCount: 3,
+  beReplied: [{ beRepliedCommentId: "700", user: { userId: "22", nickname: "回复对象" }, content: "原评论" }],
+  cookie: "NEVER_FORWARD",
+  ...extra,
+});
 function fakeSdk() {
   const calls = [];
   let keys = 0;
@@ -112,6 +123,15 @@ function fakeSdk() {
           rawPlaylist("105", "11", { specialType: 5 }),
         ],
       }),
+    user_playlist_create: () => result({ playlist: [rawPlaylist(), rawPlaylist("105", "11", { specialType: 5 })], more: false }),
+    user_cloud: () => result({ count: 72, hasMore: true, data: [
+      { songId: 1, simpleSong: rawSong(1), fileName: "uploaded.mp3", upstreamSecret: "NEVER_FORWARD" },
+      { songId: 9, songName: "未匹配的手录", artist: "录音者", album: "云盘音乐", duration: 123000, simpleSong: { id: 0 } },
+    ] }),
+    comment_music: () => result({ comments: [rawComment()], hotComments: [rawComment("702")], total: 72, more: true }),
+    comment_like: () => result({}),
+    comment: () => result({ comment: rawComment("703") }),
+    playmode_intelligence_list: () => result({ data: [{ songInfo: rawSong(1) }, { songInfo: rawSong(2) }] }),
     likelist: () => result({ ids: [1, 2] }),
     like: () => result({}),
     playlist_create: (p) =>
@@ -651,4 +671,124 @@ test("cookie key is mandatory and duplicate music cookies fail closed", async (t
     },
   });
   assert.equal(duplicate.status, 400);
+});
+
+test("cloud pages require the account, retain canonical tracks and scope every request to that browser", async (t) => {
+  const f = await fixture(t), a = f.client(), b = f.client();
+  assert.equal((await a.request("cloud")).status, 401);
+  await f.login(a);await f.login(b);
+  const page = await a.request("cloud?offset=50");
+  assert.equal(page.status, 200);assert.equal(page.body.data.offset, 50);assert.equal(page.body.data.limit, 50);
+  assert.equal(page.body.data.hasMore, true);assert.equal(page.body.data.items[0].id, "1");
+  assert.match(page.body.data.items[0].coverUrl, /^https:\/\/p1\.music\.126\.net\//);
+  assert.equal(page.body.data.items[1].id, "9");assert.equal(page.body.data.items[1].title, "未匹配的手录");
+  assert.equal(page.body.data.items[1].artists[0].name, "录音者");assert.equal(page.body.data.items[1].availability, "unknown");
+  assert.equal(page.body.data.items[1].durationMs, 123000);assert.equal(JSON.stringify(page.body).includes("NEVER_FORWARD"), false);
+  const firstCookie = f.calls.at(-1).params.cookie.MUSIC_U;
+  await b.request("cloud");assert.notEqual(f.calls.at(-1).params.cookie.MUSIC_U, firstCookie);
+  assert.equal(f.calls.at(-1).params.unblock, false);assert.equal(f.calls.at(-1).params.cookie.os, "pc");
+  const before = f.calls.length;
+  for (const route of ["cloud?offset=-1", "cloud?offset=1.5", "cloud?uid=22", "cloud?offset=0&offset=50"])
+    assert.equal((await a.request(route)).status, 400);
+  assert.equal((await a.request("cloud", { access: "playback" })).status, 403);assert.equal(f.calls.length, before);
+});
+
+test("comments normalize latest, hot and reply quotes without exposing upstream fields", async (t) => {
+  const f = await fixture(t), a = f.client();
+  const first = await a.request("comments/1");assert.equal(first.status, 200);
+  const page = first.body.data, comment = page.items[0];
+  assert.equal(page.trackId, "1");assert.equal(page.limit, 20);assert.equal(page.total, 72);assert.equal(page.hasMore, true);
+  assert.equal(page.hot.length, 1);assert.equal(page.nextBefore, 1700000000000);
+  assert.deepEqual(Object.keys(comment).sort(), ["content", "createdAt", "id", "likeCount", "liked", "replies", "user"]);
+  assert.equal(comment.id, "701");assert.equal(comment.user.id, "11");assert.equal(comment.replies[0].id, "700");
+  assert.equal(comment.replies[0].content, "原评论");assert.equal(JSON.stringify(first.body).includes("NEVER_FORWARD"), false);
+  assert.equal((await a.request("comments/1?offset=20")).body.data.hot.length, 0);
+  assert.equal(f.calls.at(-1).params.offset, 20);assert.equal(f.calls.at(-1).params.limit, 20);
+  f.methods.comment_music = () => ({ body: { code: 200, comments: [rawComment("701", "11", { user: null, beReplied: [null, { user: null, content: null }] })], total: 1, more: false } });
+  const deletedUser = await a.request("comments/1");assert.equal(deletedUser.status, 200);
+  assert.equal(deletedUser.body.data.items[0].replies[0].id, null);assert.equal(deletedUser.body.data.hasMore, false);
+});
+
+test("deep comment pages require a validated time cursor and preserve the logical offset", async (t) => {
+  const f = await fixture(t), a = f.client();const before = f.calls.length;
+  for (const route of ["comments/1?offset=5000", "comments/1?offset=5000&before=no", "comments/1?offset=0&before=1700000000000", "comments/1?type=1", "comments/1?offset=0&offset=20"])
+    assert.equal((await a.request(route)).status, 400);
+  assert.equal(f.calls.length, before);
+  const deep = await a.request("comments/1?offset=5000&before=1700000000000");
+  assert.equal(deep.status, 200);assert.equal(deep.body.data.offset, 5000);assert.equal(deep.body.data.hot.length, 0);
+  assert.equal(f.calls.at(-1).params.offset, 0);assert.equal(f.calls.at(-1).params.before, 1700000000000);
+  assert.equal((await a.request("comments/1", { access: "playback" })).status, 403);
+});
+
+test("comment writes accept only explicit song likes, sends and replies with account-scoped SDK parameters", async (t) => {
+  const f = await fixture(t), a = f.client();
+  assert.equal((await a.request("comments/1", { method: "POST", body: { content: "海" } })).status, 401);
+  assert.equal((await a.request("comments/1/like", { method: "POST", body: { commentId: "701", liked: true } })).status, 401);
+  await f.login(a);
+  for (const liked of [true, false]) {
+    assert.equal((await a.request("comments/1/like", { method: "POST", body: { commentId: "701", liked } })).status, 200);
+    const call = f.calls.at(-1);assert.equal(call.name, "comment_like");assert.equal(call.params.id, "1");assert.equal(call.params.cid, "701");
+    assert.equal(call.params.type, 0);assert.equal(call.params.t, liked ? 1 : 0);assert.equal(call.params.unblock, false);
+  }
+  assert.equal((await a.request("comments/1", { method: "POST", body: { content: "  潮声\r\n还在  " } })).status, 200);
+  assert.equal(f.calls.at(-1).name, "comment");assert.equal(f.calls.at(-1).params.content, "潮声\n还在");assert.equal(f.calls.at(-1).params.t, 1);
+  assert.equal(Object.hasOwn(f.calls.at(-1).params, "commentId"), false);
+  assert.equal((await a.request("comments/1", { method: "POST", body: { content: "回你一句", replyTo: "701" } })).status, 200);
+  assert.equal(f.calls.at(-1).params.t, 2);assert.equal(f.calls.at(-1).params.type, 0);assert.equal(f.calls.at(-1).params.commentId, "701");
+  assert.match(f.calls.at(-1).params.cookie.MUSIC_U, /^VERY_PRIVATE_TOKEN/);
+});
+
+test("invalid comment capabilities and content cannot reach SDK and failed writes are never retried", async (t) => {
+  const f = await fixture(t), a = f.client();await f.login(a);const before = f.calls.length;
+  for (const body of [{ content: "" }, { content: "   " }, { content: "x".repeat(501) }, { content: "bad\u0000" }, { content: "x", replyTo: "0" }, { content: "x", type: 1 }, { content: "x", t: 0 }, { content: "x", threadId: "arbitrary" }, { content: "x", cookie: "other" }])
+    assert.equal((await a.request("comments/1", { method: "POST", body })).status, 400);
+  for (const body of [{ commentId: "701", liked: "yes" }, { commentId: "0", liked: true }, { commentId: "701", liked: true, type: 1 }])
+    assert.equal((await a.request("comments/1/like", { method: "POST", body })).status, 400);
+  assert.equal((await a.request("comments/1", { method: "POST", body: { content: "x" }, access: "playback" })).status, 403);
+  assert.equal((await a.request("comments/1", { method: "POST", body: { content: "x" }, headers: { Origin: "https://foreign.example" } })).status, 403);
+  assert.equal(f.calls.length, before);
+  assert.equal((await a.request("comments/1", { method: "POST", body: { content: "🌊".repeat(500) } })).status, 200);
+  f.methods.comment = () => ({ status: 200, body: { body: { code: 403, message: "NEVER_FORWARD_COMMENT_FAILURE" } } });
+  const failed = await a.request("comments/1", { method: "POST", body: { content: "一次提交" } });
+  assert.equal(failed.status, 403);assert.equal(JSON.stringify(failed.body).includes("NEVER_FORWARD"), false);
+  assert.equal(f.calls.filter((call) => call.name === "comment").length, 2);
+});
+
+test("library supplements and paginates the owner's create-list so private playlists remain visible", async (t) => {
+  const f = await fixture(t), a = f.client();await f.login(a);
+  f.methods.user_playlist_create = (p) => ({ body: { code: 200, data: { list: p.offset === 0 ? [
+    rawPlaylist("101", "11", { name: "私密版夜航", privacy: 10 }),
+    rawPlaylist("808", "11", { privacy: 10 }),
+  ] : [rawPlaylist("809", "11", { privacy: 10, creator: undefined }), rawPlaylist("999", "22", { privacy: 10 })], hasMore: p.offset === 0 } } });
+  const library = (await a.request("library")).body.data;
+  assert.equal(library.created.filter((item) => item.id === "101").length, 1);
+  assert.equal(library.created.find((item) => item.id === "101").title, "私密版夜航");
+  for (const id of ["101", "808", "809"]) {
+    const playlist = library.created.find((item) => item.id === id);assert.equal(playlist.privacy, "private");assert.equal(playlist.creator.id, "11");
+  }
+  assert.equal(library.created.some((item) => item.id === "999"), false);assert.equal(library.collected.some((item) => item.id === "999"), false);
+  assert.equal(library.likedPlaylistId, "105");
+  const pages = f.calls.filter((call) => call.name === "user_playlist_create");assert.deepEqual(pages.map((call) => call.params.offset), [0, 2]);
+  assert(pages.every((call) => call.params.uid === "11" && call.params.limit === 100 && call.params.cookie.MUSIC_U));
+  assert.equal((await a.request("library?uid=22")).status, 400);
+});
+
+test("a repeated create-list page fails closed instead of spinning or returning duplicated private data", async (t) => {
+  const f = await fixture(t), a = f.client();await f.login(a);
+  f.methods.user_playlist_create = () => ({ body: { code: 200, playlist: [rawPlaylist()], more: true } });
+  assert.equal((await a.request("library")).body.error.code, "upstream_error");
+  assert.equal(f.calls.filter((call) => call.name === "user_playlist_create").length, 2);
+});
+
+test("heart mode reads the official seed/context list only and normalizes returned song info", async (t) => {
+  const f = await fixture(t), a = f.client();assert.equal((await a.request("heart-mode?trackId=1&playlistId=101")).status, 401);
+  await f.login(a);const before = f.calls.length;
+  for (const route of ["heart-mode?trackId=bad&playlistId=101", "heart-mode?trackId=1&playlistId=101&count=99"])
+    assert.equal((await a.request(route)).status, 400);
+  assert.equal(f.calls.length, before);
+  f.methods.playmode_intelligence_list = () => ({ body: { code: 200, data: [{ songInfo: rawSong(1) }, { songInfo: rawSong(1) }, { songInfo: rawSong(2) }, { id: 0 }] } });
+  const result = await a.request("heart-mode?trackId=1&playlistId=101");assert.equal(result.status, 200);
+  assert.deepEqual(result.body.data.map((track) => track.id), ["1", "2"]);
+  const call = f.calls.at(-1);assert.equal(call.name, "playmode_intelligence_list");assert.equal(call.params.id, "1");assert.equal(call.params.pid, "101");assert.equal(call.params.sid, "1");assert.equal(call.params.count, 30);
+  assert.equal((await a.request("heart-mode?trackId=1&playlistId=101", { access: "playback" })).status, 403);
 });

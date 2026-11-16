@@ -1,0 +1,7 @@
+{
+  "artwork":"No new bitmap artwork. Reuse Tingchao's original night/day sea layers.",
+  "fonts":"Reuse existing packaged Jade Serif / Tingchao UI font faces and their retained licenses.",
+  "code":{"source":"Folia Sonnet","revision":"1f73b512e27ea640a045451c8af7ef2082264788","license":"AGPL-3.0","provenance":"apps/aidenos-music/src/vendor/folia/UPSTREAM.json"},
+  "excluded":["upstream theme artwork","Lucide theme particles","music recordings","model weights","account/session data"],
+  "limitations":["No model-based beat analysis","Line-only lyrics do not gain authentic word timing or duet information"]
+}

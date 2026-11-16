@@ -1,0 +1,62 @@
+.chrome {
+  --tc-caption-width: 44px;
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: 34px;
+  display: flex;
+  pointer-events: none;
+}
+.dragRegion {
+  flex: 1;
+  min-width: 0;
+  height: 28px;
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+}
+.captionSlot {
+  flex: 0 0 calc(var(--tc-caption-width) * 3);
+  height: 34px;
+  pointer-events: auto;
+}
+.captionSlot :global(.captions) {
+  display: flex;
+  height: 34px;
+}
+.captionSlot :global(.caption-btn) {
+  width: var(--tc-caption-width);
+  height: 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--tc-muted);
+  background: transparent;
+  cursor: default;
+}
+.captionSlot :global(.caption-btn:hover:not(:disabled)) {
+  color: var(--tc-text);
+  background: var(--tc-hover);
+}
+.captionSlot :global(.caption-btn:active:not(:disabled)) {
+  background: var(--tc-strong-line);
+}
+.captionSlot :global(.caption-close:hover:not(:disabled)),
+.captionSlot :global(.caption-close:active:not(:disabled)) {
+  color: #fff;
+  background: #a64e3e;
+}
+.captionSlot :global(.caption-btn:focus-visible) {
+  outline: 2px solid var(--tc-teal);
+  outline-offset: -4px;
+}
+.captionSlot :global(.caption-btn:disabled) {
+  opacity: 0.35;
+}
+@container music (max-width: 550px) {
+  .chrome {
+    --tc-caption-width: 40px;
+  }
+}

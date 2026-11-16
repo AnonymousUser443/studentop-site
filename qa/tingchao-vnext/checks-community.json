@@ -1,0 +1,76 @@
+{
+  "phase": "community",
+  "checks": [
+    {
+      "name": "cloud uses normalized track table",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "cloud pagination appends all 73 synthetic tracks",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "track text grew fifty percent",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "comments include normalized quotes and dates",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "reply stays in isolated fixture and uses reply API action",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "heart mode plays only official endpoint results",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "list rows use real staggered viewport entries",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "state": {
+    "audio": [
+      {
+        "duration": 120,
+        "paused": false,
+        "sourceOrigin": "http://127.0.0.1:38963",
+        "time": 2.570377
+      }
+    ],
+    "errors": [],
+    "iframes": 0,
+    "locked": false,
+    "root": "dark",
+    "snapshot": {
+      "lyrics": 4,
+      "position": 2332.188,
+      "queue": 8,
+      "status": "playing",
+      "track": "潮生 · 隔离测试音轨"
+    },
+    "url": "http://127.0.0.1:38963/?vnext=1794825553246",
+    "viewport": [
+      1258,
+      727
+    ],
+    "window": {
+      "bottom": 667,
+      "height": 627,
+      "left": 8,
+      "right": 728,
+      "top": 40,
+      "width": 720,
+      "x": 8,
+      "y": 40
+    }
+  }
+}

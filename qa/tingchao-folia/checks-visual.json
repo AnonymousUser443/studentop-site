@@ -1,0 +1,56 @@
+{
+  "phase": "visual",
+  "checks": [
+    {
+      "name": "night CSS tokens match artwork and lyric text",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "day theme and saved performance preference survive remount",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "clicking current subtitle seeks without resuming paused audio",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "inspection": {
+    "audio": [
+      {
+        "duration": 120,
+        "paused": true,
+        "sourceOrigin": "http://127.0.0.1:25231",
+        "time": 8
+      }
+    ],
+    "errors": [],
+    "iframes": 0,
+    "locked": false,
+    "root": "light",
+    "snapshot": {
+      "lyrics": 4,
+      "position": 8000,
+      "queue": 8,
+      "status": "paused",
+      "track": "潮生 · 隔离测试音轨"
+    },
+    "url": "http://127.0.0.1:25231/?foliaQa=1794818780335",
+    "viewport": [
+      1258,
+      727
+    ],
+    "window": {
+      "bottom": 635,
+      "height": 627,
+      "left": 8,
+      "right": 1218,
+      "top": 8,
+      "width": 1210,
+      "x": 8,
+      "y": 8
+    }
+  }
+}

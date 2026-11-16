@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type {
   Album,
   Artist,
@@ -26,11 +26,13 @@ import { TrackTable, type TrackActions } from "./TrackTable";
 import { formatCount, formatTime, useResource } from "./hooks";
 import s from "./music.module.css";
 import { useScrollMemory, useViewState } from "./cache";
+import { useListEntrance } from "./ListEntrance";
 
 export type Route =
   | { kind: "home" }
   | { kind: "search"; query: string; type: SearchType }
   | { kind: "library" }
+  | { kind: "cloud" }
   | { kind: "playlist"; id: string }
   | { kind: "album"; id: string }
   | { kind: "artist"; id: string }
@@ -67,6 +69,7 @@ export function routeLabel(route: Route) {
     home: "听潮漫游",
     search: "寻找声音",
     library: "我的歌单",
+    cloud: "我的云盘",
     playlist: "歌单",
     album: "专辑",
     artist: "歌手",
@@ -82,6 +85,46 @@ function uniquePlaylists(data: HomeData) {
     return true;
   });
 }
+
+function pageIdentity(props: PageProps, view: string) {
+  return `${view}:${props.session.user?.id || "guest"}`;
+}
+
+// A view introduces its artwork, then its identity/navigation, then its lists.
+// Existing semantic nodes are animated directly so grids and tables keep their layout.
+const PAGE_STAGES: [string, string, number][] = [
+  [`.${s.hero}`, "hero", 0],
+  [`.${s.collectionCover},.${s.libraryGuestArt},.${s.searchIllustration}`, "art", 0],
+  [`.${s.collectionMeta}`, "identity", 80],
+  [`.${s.searchHeading},.${s.libraryHeader},.${s.simplePageHeader}`, "heading", 0],
+  [`.${s.searchLanding}>h1,.${s.libraryGuest}>h1`, "intro-title", 70],
+  [`.${s.searchLanding}>p,.${s.libraryGuest}>p`, "intro-copy", 130],
+  [`.${s.libraryGuest}>button`, "intro-action", 190],
+  [`.${s.discoveryTags}`, "discovery", 100],
+  [`.${s.likedBanner}`, "liked", 90],
+  [`.${s.resultTabs}`, "search-tabs", 110],
+  [`.${s.libraryTabs}`, "library-tabs", 160],
+  [`.${s.sectionHeading},.${s.collectionListHeading}`, "section-heading", 150],
+];
+
+function usePageEntrance(key: string, active: boolean) {
+  const ref = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    for (const [selector, name, phase] of PAGE_STAGES) {
+      root.querySelectorAll<HTMLElement>(selector).forEach((node, index) => {
+        if (!node.hasAttribute("data-list-item")) node.dataset.listItem = "";
+        if (node.dataset.listKey !== `stage:${name}:${index}`) node.dataset.listKey = `stage:${name}:${index}`;
+        if (node.dataset.listPhase !== String(phase)) node.dataset.listPhase = String(phase);
+        if (node.dataset.listIndex !== String(phase)) node.dataset.listIndex = String(phase);
+      });
+    }
+  });
+  useListEntrance(ref, { key, active, stagger: 230, distance: 24 });
+  return ref;
+}
+
 export function PlaylistCard({
   playlist,
   onClick,
@@ -92,7 +135,8 @@ export function PlaylistCard({
   index?: number;
 }) {
   return (
-    <button className={s.playlistCard} type="button" onClick={onClick}>
+    <button className={s.playlistCard} type="button" onClick={onClick}
+      data-list-item data-list-key={`playlist:${playlist.id}`} data-list-index={index} data-list-phase={220}>
       <span className={s.playlistArt}>
         <Cover src={playlist.coverUrl} />
         <span className={s.playlistArtShade} />
@@ -118,6 +162,7 @@ export function PlaylistCard({
   );
 }
 export function HomePage(props: PageProps) {
+  const entrance = usePageEntrance(pageIdentity(props, "home"), props.visible);
   const resource = useResource(
       (signal) => props.service.home(signal),
       `home-${props.revision}-${props.session.user?.id || "guest"}`,
@@ -132,7 +177,7 @@ export function HomePage(props: PageProps) {
   };
   const date = new Date();
   return (
-    <div className={s.homePage}>
+    <div className={s.homePage} ref={entrance}>
       <section className={`${s.hero} ${props.light ? s.dayHero : ""}`}>
         <img
           className={s.heroImage}
@@ -264,6 +309,7 @@ export function HomePage(props: PageProps) {
               />
               <TrackTable
                 compact
+                entranceKey={pageIdentity(props, "home-tracks")}
                 tracks={data.tracks.slice(0, 8)}
                 runtime={props.runtime}
                 actions={props.actions}
@@ -301,6 +347,7 @@ export function HomePage(props: PageProps) {
   );
 }
 export function PlaylistPage(props: PageProps & { id: string }) {
+  const entrance = usePageEntrance(pageIdentity(props, `playlist:${props.id}`), props.visible);
   const resource = useResource(
     (signal) => props.service.playlist(props.id, 0, signal),
     `playlist-${props.id}-${props.revision}`,
@@ -428,7 +475,7 @@ export function PlaylistPage(props: PageProps & { id: string }) {
         : {}),
     };
   return (
-    <div className={s.collectionPage}>
+    <div className={s.collectionPage} ref={entrance}>
       <header className={s.collectionHeader}>
         <div className={s.collectionCover}>
           <Cover src={playlist.coverUrl} eager />
@@ -505,6 +552,7 @@ export function PlaylistPage(props: PageProps & { id: string }) {
       </div>
       {detail.tracks.items.length ? (
         <TrackTable
+          entranceKey={pageIdentity(props, `playlist-tracks:${props.id}`)}
           tracks={detail.tracks.items}
           runtime={props.runtime}
           likedIds={props.likedIds}
@@ -537,6 +585,7 @@ export function PlaylistPage(props: PageProps & { id: string }) {
 export function SearchPage(
   props: PageProps & { query: string; type: SearchType },
 ) {
+  const entrance = usePageEntrance(pageIdentity(props, `search:${props.type}:${props.query}`), props.visible);
   const [result, setResult] = useViewState<SearchResult | null>(
       `search-results:${props.type}:${props.query}:${props.revision}`,
       null,
@@ -598,7 +647,7 @@ export function SearchPage(
   };
   if (!props.query)
     return (
-      <div className={s.searchLanding}>
+      <div className={s.searchLanding} ref={entrance}>
         <div className={s.searchIllustration}>
           <Icon name="search" size={36} />
           <span />
@@ -620,6 +669,7 @@ export function SearchPage(
                 <button
                   type="button"
                   key={query}
+                  data-list-item data-list-key={`history:${query}`} data-list-phase={220}
                   onClick={() => props.search(query)}
                 >
                   <Icon name="clock" size={13} />
@@ -638,6 +688,7 @@ export function SearchPage(
                 <button
                   type="button"
                   key={query}
+                  data-list-item data-list-key={`suggestion:${query}`} data-list-phase={220}
                   onClick={() => props.search(query)}
                 >
                   {query}
@@ -650,7 +701,7 @@ export function SearchPage(
       </div>
     );
   return (
-    <div className={s.searchPage}>
+    <div className={s.searchPage} ref={entrance}>
       <header className={s.searchHeading}>
         <span className={s.eyebrow}>SEARCH / 循声而来</span>
         <h1>
@@ -696,6 +747,7 @@ export function SearchPage(
         <>
           {props.type === "tracks" ? (
             <TrackTable
+              entranceKey={pageIdentity(props, `search-tracks:${props.query}`)}
               tracks={result.tracks}
               runtime={props.runtime}
               likedIds={props.likedIds}
@@ -721,10 +773,11 @@ export function SearchPage(
                 </div>
               ) : props.type === "albums" ? (
                 <div className={s.resultCoverGrid}>
-                  {result.albums.map((album) => (
+                  {result.albums.map((album, index) => (
                     <AlbumCard
                       key={album.id}
                       album={album}
+                      index={index}
                       onClick={() =>
                         props.navigate({ kind: "album", id: album.id })
                       }
@@ -733,10 +786,11 @@ export function SearchPage(
                 </div>
               ) : (
                 <div className={s.artistGrid}>
-                  {result.artists.map((artist) => (
+                  {result.artists.map((artist, index) => (
                     <ArtistCard
                       key={artist.id}
                       artist={artist}
+                      index={index}
                       onClick={() =>
                         props.navigate({ kind: "artist", id: artist.id })
                       }
@@ -762,9 +816,10 @@ export function SearchPage(
     </div>
   );
 }
-function AlbumCard({ album, onClick }: { album: Album; onClick: () => void }) {
+function AlbumCard({ album, onClick, index = 0 }: { album: Album; onClick: () => void; index?: number }) {
   return (
-    <button type="button" className={s.playlistCard} onClick={onClick}>
+    <button type="button" className={s.playlistCard} onClick={onClick}
+      data-list-item data-list-key={`album:${album.id}`} data-list-index={index} data-list-phase={220}>
       <span className={s.playlistArt}>
         <Cover src={album.coverUrl} />
         <span className={s.cardPlay}>
@@ -781,12 +836,15 @@ function AlbumCard({ album, onClick }: { album: Album; onClick: () => void }) {
 function ArtistCard({
   artist,
   onClick,
+  index = 0,
 }: {
   artist: Artist;
   onClick: () => void;
+  index?: number;
 }) {
   return (
-    <button type="button" className={s.artistCard} onClick={onClick}>
+    <button type="button" className={s.artistCard} onClick={onClick}
+      data-list-item data-list-key={`artist:${artist.id}`} data-list-index={index} data-list-phase={220}>
       <Cover src={artist.coverUrl} />
       <strong>{artist.name}</strong>
       <small>
@@ -798,6 +856,7 @@ function ArtistCard({
 export function DetailPage(
   props: PageProps & { kind: "album" | "artist"; id: string },
 ) {
+  const entrance = usePageEntrance(pageIdentity(props, `${props.kind}:${props.id}`), props.visible);
   const resource = useResource(
     async (signal) =>
       props.kind === "album"
@@ -825,7 +884,7 @@ export function DetailPage(
         : data.value.artist.coverUrl,
     tracks = data.value.tracks;
   return (
-    <div className={s.collectionPage}>
+    <div className={s.collectionPage} ref={entrance}>
       <header className={s.collectionHeader}>
         <div
           className={`${s.collectionCover} ${data.kind === "artist" ? s.artistDetailCover : ""}`}
@@ -876,6 +935,7 @@ export function DetailPage(
       </div>
       {tracks.length ? (
         <TrackTable
+          entranceKey={pageIdentity(props, `${props.kind}-tracks:${props.id}`)}
           tracks={tracks}
           runtime={props.runtime}
           actions={props.actions}
@@ -889,6 +949,7 @@ export function DetailPage(
 }
 export function LibraryPage(props: PageProps) {
   const [tab, setTab] = useState<"created" | "collected">("created");
+  const entrance = usePageEntrance(pageIdentity(props, `library:${tab}`), props.visible);
   const resource = useResource(
     (signal) => props.service.library(signal),
     `library-${props.revision}`,
@@ -896,7 +957,7 @@ export function LibraryPage(props: PageProps) {
   );
   if (!props.session.authenticated)
     return (
-      <div className={s.libraryGuest}>
+      <div className={s.libraryGuest} ref={entrance}>
         <div className={s.libraryGuestArt}>
           <Icon name="library" size={55} />
           <span />
@@ -922,7 +983,7 @@ export function LibraryPage(props: PageProps) {
   const data = resource.value || props.library,
     playlists = data?.[tab] || [];
   return (
-    <div className={s.libraryPage}>
+    <div className={s.libraryPage} ref={entrance}>
       <header className={s.libraryHeader}>
         <div>
           <span className={s.eyebrow}>COLLECT WHAT MOVES YOU</span>
@@ -1021,8 +1082,9 @@ export function LibraryPage(props: PageProps) {
   );
 }
 export function RecentPage(props: PageProps) {
+  const entrance = usePageEntrance(pageIdentity(props, "recent"), props.visible);
   return (
-    <div className={s.collectionPage}>
+    <div className={s.collectionPage} ref={entrance}>
       <header className={s.simplePageHeader}>
         <span className={s.eyebrow}>ECHOES OF YOUR DAYS</span>
         <h1>最近听过</h1>
@@ -1044,6 +1106,7 @@ export function RecentPage(props: PageProps) {
             </button>
           </div>
           <TrackTable
+            entranceKey={pageIdentity(props, "recent-tracks")}
             tracks={props.recent}
             runtime={props.runtime}
             actions={props.actions}

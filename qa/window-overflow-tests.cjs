@@ -195,6 +195,72 @@ test('pointer drag allows overflow and pointerup outside clears stale edge snapp
   document.fire('pointerup',{pointerId:7,clientX:-30,clientY:300});
   assert.ok(win.rect.x < 0); assert.equal(win.state,'normal'); assert.equal(win.snapZone,undefined);
 });
+
+function clientChrome(document, WM, win) {
+  const chrome = document.createElement('div'), drag = document.createElement('div'), slot = document.createElement('div');
+  drag.setAttribute('data-window-drag-region', ''); drag.style.height = '28px';
+  chrome.appendChild(drag); chrome.appendChild(slot); win.bodyEl.appendChild(chrome);
+  return {drag, slot, release: WM.mountWindowControls(win, slot)};
+}
+
+test('client chrome moves the same native controls and keeps minimize, restore, title and close ownership', () => {
+  const {WM, document, flush} = desktop(); const win = WM.open('notes'); flush();
+  const titlebar = win.el.querySelector('.titlebar'), captions = win.el.querySelector('.captions');
+  const min = win.el.querySelector('.caption-min'), max = win.el.querySelector('.caption-max'), close = win.el.querySelector('.caption-close');
+  const {slot, release} = clientChrome(document, WM, win);
+  assert.equal(slot.firstChild, captions); assert.equal(titlebar.querySelector('.captions'), null);
+  assert.equal(win.el.querySelectorAll('.caption-close').length, 1); assert.equal(win.el.querySelector('.caption-close'), close);
+  assert.equal(win.el.classList.contains('has-client-chrome'), true);
+  WM.setTitle(win, '正在播放'); assert.equal(win.el.getAttribute('aria-label'), '正在播放');
+  min.click(); assert.equal(win.state, 'min'); WM.restore(win); flush(); assert.equal(win.state, 'normal');
+  max.click(); assert.equal(win.state, 'max'); assert.equal(max.getAttribute('aria-label'), '向下还原');
+  max.click(); assert.equal(win.state, 'normal'); assert.equal(max.getAttribute('aria-label'), '最大化');
+  let disposed = 0; win.dispose = () => {disposed++; release();};
+  close.click(); assert.equal(win.state, 'closed'); assert.equal(disposed, 1);
+  assert.equal(titlebar.querySelector('.captions'), captions); assert.equal(win.el.classList.contains('has-client-chrome'), false);
+  WM.close(win); assert.equal(disposed, 1); release();
+});
+
+test('client drag reuses WM movement, double-click maximize and edge snap, while form controls stay interactive', () => {
+  const {WM, document, flush} = desktop(); const win = WM.open('notes'); flush(); win.rect = {x:100,y:100,w:900,h:600};
+  const {drag} = clientChrome(document, WM, win);
+  drag.fire('pointerdown', {button:0,pointerId:71,clientX:400,clientY:112});
+  document.fire('pointermove', {pointerId:71,clientX:450,clientY:142}); document.fire('pointerup', {pointerId:71,clientX:450,clientY:142});
+  assert.deepEqual(plain(win.rect), {x:150,y:130,w:900,h:600});
+  drag.fire('dblclick'); assert.equal(win.state, 'max'); drag.fire('dblclick'); assert.equal(win.state, 'normal');
+  for (const tag of ['input','button','select','label']) {
+    const control = document.createElement(tag); drag.appendChild(control);
+    control.fire('pointerdown', {button:0,pointerId:72,clientX:400,clientY:142}); assert.equal(win.cancelGesture, null);
+    control.fire('dblclick'); assert.equal(win.state, 'normal');
+  }
+  drag.fire('pointerdown', {button:0,pointerId:73,clientX:450,clientY:142});
+  document.fire('pointermove', {pointerId:73,clientX:0,clientY:300}); document.fire('pointerup', {pointerId:73,clientX:0,clientY:300});
+  assert.equal(win.snapZone, 'left'); assert.equal(win.rect.w, 720);
+});
+
+test('relocated native maximize retains snap keyboard controls and cleanup cancels an active drag', () => {
+  const {WM, document, key, q, flush} = desktop(); const win = WM.open('notes'); flush();
+  const {drag, release} = clientChrome(document, WM, win), max = win.el.querySelector('.caption-max');
+  max.focus(); key(max, 'ArrowDown'); assert.equal(max.getAttribute('aria-expanded'), 'true');
+  assert.equal(q('[data-flyout="snap"]')._button, max);
+  q('[data-flyout="snap"]').querySelector('[data-snap="right"]').click(); assert.equal(win.snapZone, 'right');
+  WM.restoreLayout(win); flush();
+  drag.fire('pointerdown', {button:0,pointerId:74,clientX:450,clientY:142}); assert.equal(typeof win.cancelGesture, 'function');
+  release(); assert.equal(win.cancelGesture, null); assert.equal(win.clientChrome, null);
+  const rect = plain(win.rect); document.fire('pointermove', {pointerId:74,clientX:600,clientY:200});
+  assert.deepEqual(plain(win.rect), rect); assert.equal(win.el.querySelectorAll('.caption-max').length, 1);
+});
+
+test('client chrome keeps the real 28px drag strip reachable and mobile maximize policy intact', () => {
+  const {WM, document, window, flush} = desktop(); const win = WM.open('notes'); flush(); clientChrome(document, WM, win);
+  win.rect = {x:10000,y:-10000,w:900,h:600}; window.fire('resize');
+  assert.ok(Math.min(vp.w, win.rect.x + 758) - Math.max(0, win.rect.x + 4) >= 120);
+  assert.ok(Math.min(vp.h, win.rect.y + 26) - Math.max(0, win.rect.y + 4) >= 20);
+  const mobile = desktop(390,844), small = mobile.WM.open('notes'); clientChrome(mobile.document, mobile.WM, small);
+  const max = small.el.querySelector('.caption-max');
+  assert.equal(max.disabled, true); max.click(); assert.equal(small.state, 'max');
+  small.el.querySelector('.caption-min').click(); assert.equal(small.state, 'min'); mobile.WM.restore(small); assert.equal(small.state, 'max');
+});
 test('resizing an overflowing window does not constrain its far edge to the viewport', () => {
   const { WM, document, flush } = desktop(); const win = WM.open('notes'); flush(); win.rect = {x:1200,y:700,w:900,h:600};
   win.el.querySelector('[data-dir="e"]').fire('pointerdown',{button:0,pointerId:8,clientX:1400,clientY:720});

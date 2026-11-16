@@ -1,0 +1,71 @@
+{
+  "phase": "lifecycle",
+  "checks": [
+    {
+      "name": "rapid next-next leaves only latest track and canvas",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "minimize destroys visual renderer while playback continues",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "closing window keeps one playing audio and mini surface",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "lock-screen next uses existing runtime without a lyric canvas",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "unlock and reopen retain pause and single audio",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "no uncaught renderer or runtime errors",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "inspection": {
+    "audio": [
+      {
+        "duration": 120,
+        "paused": true,
+        "sourceOrigin": "http://127.0.0.1:25231",
+        "time": 2.045686
+      }
+    ],
+    "errors": [],
+    "iframes": 0,
+    "locked": false,
+    "root": "dark",
+    "snapshot": {
+      "lyrics": 4,
+      "position": 2045.686,
+      "queue": 8,
+      "status": "paused",
+      "track": "风从水岸来"
+    },
+    "url": "http://127.0.0.1:25231/?foliaQa=1794818024574",
+    "viewport": [
+      1258,
+      727
+    ],
+    "window": {
+      "bottom": 635,
+      "height": 627,
+      "left": 8,
+      "right": 1218,
+      "top": 8,
+      "width": 1210,
+      "x": 8,
+      "y": 8
+    }
+  }
+}

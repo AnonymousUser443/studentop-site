@@ -31,6 +31,9 @@ import {
 import { Icon, TideMark } from "./icons";
 import { Brand, Cover, Dialog, EmptyState, IconButton } from "./shared";
 import { Player } from "./Player";
+import { WindowChrome } from "./WindowChrome";
+import { CloudPage, CommentsDialog } from "./Community";
+import { useListEntrance } from "./ListEntrance";
 import { Immersive } from "./Immersive";
 import {
   AddToPlaylistDialog,
@@ -74,11 +77,13 @@ type Modal =
   | { type: "add"; tracks: Track[] }
   | { type: "track"; track: Track }
   | { type: "account" }
+  | { type: "comments"; track: Track }
   | null;
 interface Notice {
   message: string;
   error: boolean;
 }
+const EMPTY_LIKES = new Set<string>();
 function MusicAppContent({
   runtime,
   service,
@@ -103,14 +108,30 @@ function MusicAppContent({
       authenticated: false,
       user: null,
     }),
-    [library, setLibrary] = useState<LibraryData | null>(null);
+    [storedLibrary, setLibrary] = useState<LibraryData | null>(null),
+    [libraryOwner, setLibraryOwner] = useState<string | null>(null);
   const [modal, setModal] = useState<Modal>(null),
     [queueOpen, setQueueOpen] = useState(false),
     [immersive, setImmersive] = useState(false),
     [notice, setNotice] = useState<Notice | null>(null),
     [navOpen, setNavOpen] = useState(false),
-    [likedIds, setLikedIds] = useState<Set<string>>(new Set());
+    [storedLikedIds, setLikedIds] = useState<Set<string>>(new Set());
+  const ownsLibrary = !!session.user?.id && libraryOwner === session.user.id;
+  const library = ownsLibrary ? storedLibrary : null;
+  const likedIds = ownsLibrary ? storedLikedIds : EMPTY_LIKES;
   const likePending = useRef(new Set<string>());
+  useEffect(() => {
+    host.setDesktopLyricsSuppressed?.("dialog", (!!modal || queueOpen) && active);
+    return () => host.setDesktopLyricsSuppressed?.("dialog", false);
+  }, [host, !!modal, queueOpen, active]);
+  useEffect(() => {
+    host.setDesktopLyricsSuppressed?.("immersive", immersive && active);
+    return () => host.setDesktopLyricsSuppressed?.("immersive", false);
+  }, [host, immersive, active]);
+  const heartRequest = useRef<AbortController | null>(null);
+  const [heartBusy, setHeartBusy] = useState(false);
+  useListEntrance(root, { key: `sidebar:${session.user?.id || "guest"}`, selector: "[data-sidebar-item]", active, phase: 80 });
+  useEffect(() => () => { heartRequest.current?.abort(); }, [session.user?.id]);
   const [searches, setSearches] = useState<string[]>(() => {
       const saved = readStored<unknown>("tingchao.searches", []);
       return Array.isArray(saved)
@@ -149,15 +170,15 @@ function MusicAppContent({
   useEffect(() => {
     if (libraryResource.value) {
       setLibrary(libraryResource.value);
+      setLibraryOwner(session.user?.id || null);
       setLikedIds(new Set(libraryResource.value.likedIds));
     }
-  }, [libraryResource.value]);
+  }, [libraryResource.value, session.user?.id]);
   useEffect(() => {
-    if (!session.authenticated) {
-      setLibrary(null);
-      setLikedIds(new Set());
-    }
-  }, [session.authenticated]);
+    setLibrary(null);
+    setLibraryOwner(null);
+    setLikedIds(new Set());
+  }, [session.authenticated, session.user?.id]);
   useEffect(() => {
     const values = readStored<Track[]>(
       `tingchao.recent.${session.user?.id || "guest"}`,
@@ -282,6 +303,23 @@ function MusicAppContent({
   };
   const createPlaylist = () =>
     setModal(session.authenticated ? { type: "create" } : { type: "login" });
+  const startHeartMode = async () => {
+    if (!session.authenticated) { setModal({ type: "login" }); return; }
+    const seed = current.track && likedIds.has(current.track.id) ? current.track.id : library?.likedIds[0];
+    if (!seed || !library?.likedPlaylistId) {
+      setNotice({ message: "先喜欢一首歌曲，再从心动模式出发。", error: false }); return;
+    }
+    if (heartRequest.current) return;
+    const controller = new AbortController(); heartRequest.current = controller; setHeartBusy(true);
+    try {
+      const tracks = await service.heartMode(seed, library.likedPlaylistId, controller.signal);
+      if (controller.signal.aborted) return;
+      if (!tracks.length) { setNotice({ message: "这次心动模式没有返回歌曲，请稍后再试。", error: false }); return; }
+      await runtime.playTracks(tracks);
+      setNotice({ message: `已接续网易云心动模式返回的 ${tracks.length} 首歌曲。`, error: false });
+    } catch (error) { if (!controller.signal.aborted) handleError(error); }
+    finally { if (heartRequest.current === controller) { heartRequest.current = null; setHeartBusy(false); } }
+  };
   const pageProps: PageProps = {
     service,
     runtime,
@@ -346,6 +384,7 @@ function MusicAppContent({
             data-music-theme={host.theme()}
             data-reduced-motion={reduced ? "true" : "false"}
             data-visible={active ? "true" : "false"}
+            data-window-chrome={host.mountWindowControls ? "true" : undefined}
             onKeyDown={(event) => {
               const target = event.target as HTMLElement;
               if (
@@ -367,6 +406,7 @@ function MusicAppContent({
               }
             }}
           >
+            <WindowChrome host={host} />
             <div className={s.appWorkspace} inert={!!modal}>
               <aside className={`${s.sidebar} ${navOpen ? s.sidebarOpen : ""}`}>
                 <Brand />
@@ -405,6 +445,8 @@ function MusicAppContent({
                     active={route.kind === "library"}
                     onClick={() => navigate({ kind: "library" })}
                   />
+                  <NavItem icon="album" label="我的云盘" active={route.kind === "cloud"} onClick={() => navigate({ kind: "cloud" })} />
+                  <button type="button" className={s.navItem} onClick={() => void startHeartMode()} disabled={heartBusy || (session.authenticated && !library)} title="使用喜欢歌曲作为种子，接续网易云心动模式返回的曲目"><Icon name={heartBusy ? "refresh" : "heart"} size={19} /><span>{heartBusy ? "寻找心动…" : "心动模式"}</span></button>
                 </nav>
                 <div className={s.sidebarCollections}>
                   <div>
@@ -416,9 +458,10 @@ function MusicAppContent({
                     />
                   </div>
                   {library?.created.length ? (
-                    library.created.slice(0, 5).map((playlist) => (
+                    library.created.map((playlist) => (
                       <button
                         key={playlist.id}
+                        data-sidebar-item data-list-key={playlist.id}
                         type="button"
                         title={playlist.title}
                         className={
@@ -459,16 +502,7 @@ function MusicAppContent({
                       <small>扫码接入你的音乐世界</small>
                       <Icon name="forward" size={14} />
                     </button>
-                  ) : (
-                    <div className={s.listeningSignature}>
-                      <span className={s.signatureLine} />
-                      <span>
-                        你的每一次心动，
-                        <br />
-                        这里都有回声。
-                      </span>
-                    </div>
-                  )}
+                  ) : null}
                   <span className={s.sidebarCredit}>AidenOS Music / 听潮</span>
                 </div>
               </aside>
@@ -533,6 +567,8 @@ function MusicAppContent({
                     </button>
                   </form>
                   <div className={s.topBarEnd}>
+                    {host.setDesktopLyricsEnabled && <IconButton icon="lyrics" label="桌面歌词" active={host.desktopLyricsEnabled?.() ?? false} aria-pressed={host.desktopLyricsEnabled?.() ?? false} onClick={() => host.setDesktopLyricsEnabled?.(!(host.desktopLyricsEnabled?.() ?? false))} />}
+                    <IconButton icon="more" label="当前歌曲评论" disabled={!current.track} onClick={() => current.track && setModal({ type: "comments", track: current.track })} />
                     <label className={s.themeChoice} title="听潮外观">
                       <Icon name="sun" size={16} />
                       <select
@@ -625,6 +661,8 @@ function MusicAppContent({
                           <LibraryPage {...pageProps} />
                         ) : route.kind === "liked" ? (
                           <LikedPage {...pageProps} />
+                        ) : route.kind === "cloud" ? (
+                          <CloudPage key={`${session.user?.id}:${revision}`} {...pageProps} />
                         ) : (
                           <RecentPage {...pageProps} />
                         )}
@@ -758,7 +796,10 @@ function MusicAppContent({
                     actions.artist(modal.track.artists[0])
                   }
                   onAlbum={() => actions.album(modal.track.album.id)}
+                  onComments={() => setModal({ type: "comments", track: modal.track })}
                 />
+              ) : modal?.type === "comments" ? (
+                <CommentsDialog key={`comments:${modal.track.id}:${session.user?.id || "guest"}`} track={modal.track} service={service} visible={active} authenticated={session.authenticated} login={() => setModal({ type: "login" })} onClose={() => setModal(null)} />
               ) : modal?.type === "account" ? (
                 <Dialog
                   key="account"
@@ -832,6 +873,8 @@ function ListeningRail({
   onQueue: () => void;
   play: (tracks: Track[], index: number) => void;
 }) {
+  const rail = useRef<HTMLElement>(null);
+  useListEntrance(rail, { key: "listening-rail", phase: 160 });
   const state = usePlayback(
     runtime,
     (v) => ({
@@ -844,7 +887,7 @@ function ListeningRail({
   );
   const upcoming = state.queue.slice(state.index + 1, state.index + 4);
   return (
-    <aside className={s.listeningRail} aria-label="此刻正在听">
+    <aside className={s.listeningRail} aria-label="此刻正在听" ref={rail}>
       <div className={s.railHeading}>
         <span className={s.eyebrow}>HERE & NOW</span>
         <span className={s.railStatus}>
@@ -892,6 +935,7 @@ function ListeningRail({
             <button
               type="button"
               key={item.queueId}
+              data-list-item data-list-key={item.queueId} data-list-index={i}
               onClick={() =>
                 play(
                   state.queue.map((x) => x.track),
@@ -917,14 +961,6 @@ function ListeningRail({
           由你决定。
         </p>
       )}
-      <div className={s.railFooter}>
-        <TideMark size={22} />
-        <span>
-          听见此刻，
-          <br />
-          也听见自己。
-        </span>
-      </div>
     </aside>
   );
 }
@@ -965,6 +1001,7 @@ function QueuePanel({
   );
   const scroll = useRef<HTMLDivElement>(null),
     [viewport, setViewport] = useState({ top: 0, height: 500 });
+  useListEntrance(scroll, { key: "play-queue", phase: 120 });
   useEffect(() => {
     const node = scroll.current;
     if (!node) return;
@@ -978,13 +1015,13 @@ function QueuePanel({
     start = virtual
       ? Math.max(
           0,
-          Math.min(state.queue.length - 1, Math.floor(viewport.top / 62) - 6),
+          Math.min(state.queue.length - 1, Math.floor(viewport.top / 96) - 6),
         )
       : 0,
     end = virtual
       ? Math.min(
           state.queue.length,
-          start + Math.ceil(viewport.height / 62) + 13,
+          start + Math.ceil(viewport.height / 96) + 13,
         )
       : state.queue.length;
   return (
@@ -1035,15 +1072,16 @@ function QueuePanel({
           className={s.queueRows}
           ref={scroll}
           onScroll={(event) => {
+            const top = event.currentTarget.scrollTop;
             if (virtual)
               setViewport((v) => ({
                 ...v,
-                top: event.currentTarget.scrollTop,
+                top,
               }));
           }}
         >
           {start > 0 && (
-            <div style={{ height: start * 62 }} aria-hidden="true" />
+            <div style={{ height: start * 96 }} aria-hidden="true" />
           )}
           {state.queue.length ? (
             state.queue.slice(start, end).map((item, relativeIndex) => {
@@ -1051,6 +1089,7 @@ function QueuePanel({
               return (
                 <div
                   key={item.queueId}
+                  data-list-item data-list-key={item.queueId} data-list-index={index}
                   className={`${s.queueRow} ${index === state.index ? s.queueCurrent : ""}`}
                 >
                   <button
@@ -1124,7 +1163,7 @@ function QueuePanel({
           )}
           {end < state.queue.length && (
             <div
-              style={{ height: (state.queue.length - end) * 62 }}
+              style={{ height: (state.queue.length - end) * 96 }}
               aria-hidden="true"
             />
           )}

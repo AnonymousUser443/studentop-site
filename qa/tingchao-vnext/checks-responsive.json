@@ -1,0 +1,76 @@
+{
+  "phase": "responsive",
+  "checks": [
+    {
+      "name": "quality popup stays inside narrow window",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "narrow track list has no horizontal overflow",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "long track list virtualizes rows at fixed enlarged height",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "scrolled virtual rows enter without premature overscan animation",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "200-item queue remains virtual and stable during deep scroll",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "final UI has no removed slogans or unhandled errors",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "390px music container retains readable track rows",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "state": {
+    "audio": [
+      {
+        "duration": 120,
+        "paused": false,
+        "sourceOrigin": "http://127.0.0.1:38963",
+        "time": 9.786139
+      }
+    ],
+    "errors": [],
+    "iframes": 0,
+    "locked": false,
+    "root": "light",
+    "snapshot": {
+      "lyrics": 4,
+      "position": 9653.112000000001,
+      "queue": 200,
+      "status": "playing",
+      "track": "回声在远处"
+    },
+    "url": "http://127.0.0.1:38963/?vnext=1794825553246",
+    "viewport": [
+      1258,
+      727
+    ],
+    "window": {
+      "bottom": 635,
+      "height": 627,
+      "left": 8,
+      "right": 728,
+      "top": 8,
+      "width": 720,
+      "x": 8,
+      "y": 8
+    }
+  }
+}

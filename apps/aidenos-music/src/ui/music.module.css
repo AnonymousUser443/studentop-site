@@ -1,36 +1,36 @@
 .palette {
-  --tc-page: #101e2c;
-  --tc-sidebar: #0d1b27;
-  --tc-panel: #152734;
-  --tc-raised: #1c3340;
-  --tc-hover: rgba(121, 182, 172, 0.09);
+  --tc-page: #153a30;
+  --tc-sidebar: #103127;
+  --tc-panel: #1a4438;
+  --tc-raised: #235345;
+  --tc-hover: rgba(140, 204, 170, 0.1);
   --tc-text: #f3f0e7;
-  --tc-muted: #a1b5b9;
-  --tc-subtle: #66858d;
+  --tc-muted: #b2c7b7;
+  --tc-subtle: #8eafa0;
   --tc-teal: #64c7b4;
-  --tc-on-teal: #102b2b;
+  --tc-on-teal: #12372c;
   --tc-gold: #d5bd86;
-  --tc-line: rgba(180, 214, 211, 0.1);
-  --tc-strong-line: rgba(174, 209, 204, 0.2);
-  --tc-shadow: 0 20px 60px rgba(0, 9, 18, 0.36);
-  --tc-glass: rgba(16, 34, 46, 0.92);
-  --tc-player: #10232f;
+  --tc-line: rgba(185, 216, 186, 0.12);
+  --tc-strong-line: rgba(185, 216, 186, 0.24);
+  --tc-shadow: 0 20px 60px rgba(3, 21, 14, 0.36);
+  --tc-glass: rgba(21, 58, 48, 0.96);
+  --tc-player: #12352b;
   --tc-hero-text: #f3f3df;
   --tc-error: #f0b3a0;
   --tc-hero-shade: linear-gradient(
     90deg,
-    rgba(7, 27, 34, 0.82),
-    rgba(10, 31, 38, 0.38) 48%,
-    rgba(14, 38, 46, 0.04)
+    rgba(12, 45, 33, 0.85),
+    rgba(19, 51, 39, 0.4) 48%,
+    rgba(24, 59, 44, 0.04)
   );
-  --tc-lyric-bg: #102630;
+  --tc-lyric-bg: #143d32;
   --tc-lyric-text: #f3f0e7;
   --tc-lyric-dim: rgba(223, 237, 231, 0.3);
   --tc-scene-veil: linear-gradient(
     90deg,
-    rgba(9, 26, 36, 0.48),
-    rgba(9, 26, 36, 0.78) 53%,
-    rgba(9, 26, 36, 0.84)
+    rgba(13, 44, 32, 0.48),
+    rgba(16, 49, 37, 0.78) 53%,
+    rgba(17, 52, 40, 0.84)
   );
   color: var(--tc-text);
   font-family:
@@ -176,6 +176,14 @@
   border-right: 1px solid var(--tc-line);
   padding: 22px 12px 12px;
   z-index: 12;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+.sidebar > * {
+  flex-shrink: 0;
 }
 .brand {
   display: flex;
@@ -249,9 +257,9 @@
 .sidebarCollections {
   margin: 23px 1px 0;
   padding: 0 10px;
-  overflow: hidden;
+  overflow: visible;
   min-height: 48px;
-  flex-shrink: 1;
+  flex-shrink: 0;
 }
 .sidebarCollections > div {
   display: flex;
@@ -1052,11 +1060,11 @@
   flex-shrink: 0;
 }
 .railQueueHeading h3 {
-  font-size: 11px;
+  font-size: 16.5px;
   font-weight: 500;
 }
 .railQueueHeading .textButton {
-  font-size: 8px !important;
+  font-size: 12px !important;
 }
 .railQueue {
   margin-top: 7px;
@@ -1080,7 +1088,7 @@
 }
 .railQueue strong {
   display: block;
-  font-size: 9px;
+  font-size: 13.5px;
   font-weight: 400;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1089,7 +1097,7 @@
 .railQueue small {
   display: block;
   color: var(--tc-subtle);
-  font-size: 8px;
+  font-size: 12px;
   margin-top: 2px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1134,19 +1142,19 @@
 .trackHead,
 .trackRow {
   display: grid;
-  grid-template-columns: 24px 36px minmax(125px, 1.25fr) minmax(
+  grid-template-columns: 30px 48px minmax(0, 1.25fr) minmax(
       85px,
       0.8fr
-    ) 42px 92px;
+    ) 48px 98px;
   gap: 11px;
   align-items: center;
   padding: 0 12px;
 }
 .trackHead {
-  font-size: 8px;
+  font-size: 12px;
   color: var(--tc-subtle);
-  height: 32px;
-  flex: 0 0 32px;
+  height: 48px;
+  flex: 0 0 48px;
   border-bottom: 1px solid var(--tc-line);
 }
 .trackHead > span:first-child {
@@ -1165,8 +1173,8 @@
   scrollbar-gutter: stable;
 }
 .trackRow {
-  height: 60px;
-  min-height: 60px;
+  height: 90px;
+  min-height: 90px;
   border-bottom: 1px solid var(--tc-line);
   border-radius: 5px;
   color: var(--tc-muted);
@@ -1184,8 +1192,8 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 19px;
-  bottom: 19px;
+  top: 29px;
+  bottom: 29px;
   width: 2px;
   background: var(--tc-teal);
   border-radius: 2px;
@@ -1194,7 +1202,7 @@
   color: var(--tc-teal);
 }
 .trackIndex {
-  font-size: 9px;
+  font-size: 13.5px;
   color: var(--tc-subtle);
   position: relative;
   text-align: center;
@@ -1218,8 +1226,8 @@
 }
 .trackCoverButton {
   position: relative;
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   border-radius: 4px !important;
   overflow: hidden;
 }
@@ -1248,7 +1256,7 @@
   display: block;
   max-width: 100%;
   color: var(--tc-text) !important;
-  font-size: 10px !important;
+  font-size: 15px !important;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1260,7 +1268,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 8px !important;
+  font-size: 12px !important;
   color: var(--tc-subtle) !important;
   line-height: 1.6 !important;
   margin-top: 3px !important;
@@ -1268,6 +1276,11 @@
 .artistLink:hover,
 .albumLink:hover {
   color: var(--tc-teal) !important;
+}
+.artistLink:disabled,
+.albumLink:disabled {
+  opacity: 1;
+  cursor: default;
 }
 .artistLink > span {
   opacity: 0.7;
@@ -1277,12 +1290,12 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   color: var(--tc-subtle) !important;
-  font-size: 9px !important;
+  font-size: 13.5px !important;
   max-width: 100%;
   text-align: left !important;
 }
 .trackDuration {
-  font-size: 9px;
+  font-size: 13.5px;
   color: var(--tc-subtle);
   font-variant-numeric: tabular-nums;
 }
@@ -1293,8 +1306,8 @@
   gap: 1px;
 }
 .trackActions .iconButton {
-  width: 28px;
-  height: 27px;
+  width: 32px;
+  height: 32px;
 }
 .trackActions svg {
   width: 14px;
@@ -1314,7 +1327,7 @@
   display: inline-flex;
   border: 1px solid var(--tc-strong-line);
   color: var(--tc-gold);
-  font-size: 6px;
+  font-size: 9px;
   line-height: 1.2;
   padding: 1px 3px;
   border-radius: 2px;
@@ -1358,24 +1371,24 @@
   overflow: visible;
 }
 .compactTable .trackRow {
-  grid-template-columns: 22px 34px minmax(90px, 1fr) 39px 58px;
+  grid-template-columns: 28px 44px minmax(0, 1fr) 48px 66px;
   padding: 0 6px;
   gap: 10px;
-  height: 56px;
-  min-height: 56px;
+  height: 84px;
+  min-height: 84px;
 }
 .compactTable .trackCoverButton {
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
 }
 .compactTable .albumColumn {
   display: none;
 }
 .compactTable .trackTitle {
-  font-size: 10px !important;
+  font-size: 15px !important;
 }
 .compactTable .trackActions .iconButton {
-  width: 26px;
+  width: 32px;
 }
 .loadMore {
   display: flex !important;
@@ -1384,7 +1397,7 @@
   gap: 8px;
   width: 100%;
   padding: 15px !important;
-  font-size: 10px !important;
+  font-size: 15px !important;
   color: var(--tc-muted) !important;
   background: transparent !important;
 }
@@ -2343,13 +2356,13 @@
 }
 .queuePanel > header h2 {
   font-family: "Jade Serif", "Noto Serif SC", serif;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 500;
 }
 .queuePanel > header h2 small {
   font-family: "Jade UI", "Tingchao UI", sans-serif;
   color: var(--tc-subtle);
-  font-size: 10px;
+  font-size: 15px;
   margin-left: 5px;
 }
 .queueSummary {
@@ -2359,11 +2372,11 @@
   margin: 0 22px 10px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--tc-line);
-  font-size: 9px;
+  font-size: 13.5px;
   color: var(--tc-subtle);
 }
 .queueSummary .textButton {
-  font-size: 8px !important;
+  font-size: 12px !important;
 }
 .queueRows {
   overflow: auto;
@@ -2377,17 +2390,17 @@
   gap: 10px;
   padding: 9px 11px;
   border-radius: 5px;
-  min-height: 62px;
-  height: 62px;
+  min-height: 96px;
+  height: 96px;
 }
 .queueRow:hover {
   background: var(--tc-hover);
 }
 .queueRowPlay {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   position: relative;
-  flex: 0 0 36px;
+  flex: 0 0 48px;
   overflow: hidden;
   border-radius: 4px !important;
 }
@@ -2419,7 +2432,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 10px !important;
+  font-size: 15px !important;
   line-height: 1.6 !important;
 }
 .queueRow > div:nth-child(2) > span {
@@ -2429,7 +2442,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--tc-subtle);
-  font-size: 8px;
+  font-size: 12px;
   margin-top: 4px;
 }
 .queueCurrent .queueTrackTitle {
@@ -2461,7 +2474,7 @@
   padding: 14px 16px;
   border-top: 1px solid var(--tc-line);
   color: var(--tc-subtle);
-  font-size: 8px;
+  font-size: 12px;
 }
 .immersive {
   position: absolute;
@@ -2538,6 +2551,58 @@
   display: flex;
   gap: 14px;
   align-items: center;
+}
+.lyricModes {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--tc-strong-line);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--tc-lyric-bg) 72%, transparent);
+}
+.lyricModes > button {
+  padding: 3px 11px !important;
+  border-radius: 16px !important;
+  font-size: 10px !important;
+  color: var(--tc-muted) !important;
+}
+.lyricModes > button[aria-pressed="true"] {
+  color: var(--tc-on-teal) !important;
+  background: var(--tc-teal) !important;
+}
+.performance .immersiveContent { display: block; }
+.performance .lyricStage { width: 100%; height: 100%; padding: 0 22px; }
+.performance .albumStage {
+  position: absolute;
+  z-index: 3;
+  left: 30px;
+  bottom: 18px;
+  width: 23%;
+  padding: 0;
+  flex-direction: row;
+  gap: 14px;
+  justify-content: flex-start;
+  pointer-events: none;
+}
+.performance .albumHalo, .performance .albumCorner, .performance .immersiveIdentity > .eyebrow,
+.performance .albumSubtitle, .performance .immersiveLike { display: none !important; }
+.performance .albumArtwork { width: 50px; flex: 0 0 50px; border-radius: 5px; }
+.performance .immersiveCover { border-radius: 4px; }
+.performance .immersiveIdentity { text-align: left; margin: 0; min-width: 0; }
+.performance .immersiveIdentity h1 { font-size: 14px; }
+.performance .immersiveIdentity > p { margin-top: 3px; font-size: 9px; }
+.lyricCredits { position: absolute; right: 20px; bottom: 9px; z-index: 6; font-size: 9px; color: var(--tc-muted); }
+.lyricCredits summary { cursor: pointer; list-style: none; }
+.lyricCredits summary::-webkit-details-marker { display: none; }
+.lyricCredits > div { position: absolute; bottom: 24px; right: 0; width: min(285px, 75cqw); padding: 18px; line-height: 1.8; border: 1px solid var(--tc-strong-line); border-radius: 12px; background: var(--tc-glass); box-shadow: var(--tc-shadow); }
+.lyricCredits strong { display: block; font-weight: 500; color: var(--tc-text); }
+.lyricCredits p { margin: 7px 0 !important; }
+.lyricCredits a { color: var(--tc-teal); }
+.lyricCredits > div > span { display: block; margin-top: 8px; font-size: 8px; }
+@container music (max-width: 700px) {
+  .performance .albumStage { width: 80%; bottom: 12px; left: 24px; }
+  .lyricModes > button { padding: 3px 9px !important; }
 }
 .translationToggle {
   font-size: 10px !important;
@@ -3644,16 +3709,13 @@
   }
   .trackHead,
   .trackRow {
-    grid-template-columns: 20px 33px minmax(95px, 1.1fr) minmax(
-        65px,
-        0.7fr
-      ) 36px 80px;
+    grid-template-columns: 26px 44px minmax(0, 1.1fr) minmax(60px, 0.7fr) 46px 92px;
     gap: 8px;
     padding-inline: 7px;
   }
   .trackCoverButton {
-    width: 33px;
-    height: 33px;
+    width: 44px;
+    height: 44px;
   }
   .trackActions > .iconButton {
     width: 25px;
@@ -4305,7 +4367,7 @@
   .playerCenter > .progressRow {
     grid-column: 1 / -1;
     grid-row: 2;
-    padding-right: 35px;
+    padding-right: 100px;
     padding-top: 1px;
   }
   .playerTools {
@@ -4344,7 +4406,7 @@
     padding: 21px 18px 14px;
   }
   .queuePanel > header h2 {
-    font-size: 19px;
+    font-size: 28.5px;
   }
   .queueSummary {
     margin-inline: 18px;
@@ -4425,7 +4487,7 @@
   }
   .trackHead,
   .trackRow {
-    grid-template-columns: 18px 33px minmax(0, 1fr) 38px 77px;
+    grid-template-columns: 24px 44px minmax(0, 1fr) 42px 77px;
     gap: 7px;
     padding-inline: 3px;
   }
@@ -4434,21 +4496,21 @@
   }
   .trackActions > .iconButton {
     width: 25px;
-    height: 26px;
+    height: 32px;
   }
   .trackTitle {
-    font-size: 11px !important;
+    font-size: 16.5px !important;
   }
   .artistLink {
-    font-size: 8px !important;
+    font-size: 12px !important;
   }
   .trackDuration {
-    font-size: 8px;
+    font-size: 12px;
   }
   .trackHead {
-    font-size: 7px;
-    height: 28px;
-    flex-basis: 28px;
+    font-size: 10.5px;
+    height: 42px;
+    flex-basis: 42px;
   }
   .trackActions .iconButton:not(.iconActive) {
     opacity: 0.7;
@@ -4457,19 +4519,23 @@
     color: var(--tc-teal);
   }
   .compactTable .trackRow {
-    grid-template-columns: 19px 32px minmax(80px, 1fr) 33px 53px;
+    grid-template-columns: 24px 44px minmax(0, 1fr) 42px 53px;
     gap: 7px;
     padding-inline: 3px;
-    height: 57px;
-    min-height: 57px;
+    height: 84px;
+    min-height: 84px;
+  }
+  .compactTable .trackActions .iconButton {
+    width: 25px;
+    height: 32px;
   }
   .trackRow {
-    height: 60px;
-    min-height: 60px;
+    height: 90px;
+    min-height: 90px;
   }
   .trackCoverButton {
-    width: 33px;
-    height: 33px;
+    width: 44px;
+    height: 44px;
   }
   .searchHeading {
     padding-bottom: 15px;
@@ -4795,10 +4861,10 @@
     gap: 10px;
   }
   .trackIndex {
-    font-size: 8px;
+    font-size: 12px;
   }
   .previewTag {
-    font-size: 5px;
+    font-size: 7.5px;
     margin-left: 4px;
   }
 }
@@ -4884,7 +4950,7 @@
   }
   .trackHead,
   .trackRow {
-    grid-template-columns: 16px 31px minmax(0, 1fr) 32px 68px;
+    grid-template-columns: 22px 40px minmax(0, 1fr) 38px 68px;
     gap: 6px;
   }
   .trackActions > .iconButton {
@@ -4894,15 +4960,22 @@
     width: 12px;
   }
   .trackCoverButton {
-    width: 31px;
-    height: 31px;
+    width: 40px;
+    height: 40px;
   }
   .trackTitle {
-    font-size: 10px !important;
+    font-size: 15px !important;
   }
   .compactTable .trackRow {
-    grid-template-columns: 16px 30px minmax(80px, 1fr) 30px 45px;
+    grid-template-columns: 22px 40px minmax(0, 1fr) 38px 45px;
     gap: 6px;
+  }
+  .compactTable .trackActions .iconButton {
+    width: 22px;
+  }
+  .compactTable .trackCoverButton {
+    width: 40px;
+    height: 40px;
   }
   .libraryHeader h1 {
     font-size: 23px;
@@ -4980,6 +5053,21 @@
 @container music (max-width:760px) {
   .qualityControl {
     display: none;
+  }
+}
+/* The application toolbar and immersive scene share WM's original caption controls.
+   Its transparent upper band is a real 28px drag target, above every input/button. */
+.appRoot[data-window-chrome="true"] .topBar,
+.appRoot[data-window-chrome="true"] .immersiveTop {
+  height: 88px;
+  min-height: 88px;
+  padding-top: 28px;
+}
+@container music (max-width: 550px) {
+  .appRoot[data-window-chrome="true"] .topBar,
+  .appRoot[data-window-chrome="true"] .immersiveTop {
+    height: 83px;
+    min-height: 83px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

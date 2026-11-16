@@ -1,0 +1,44 @@
+{
+  "ok": true,
+  "at": "2026-11-16T11:07:52.337Z",
+  "release": "music-20261116T110412Z-b5ef807cef",
+  "checks": [
+    {
+      "name": "frpc",
+      "pass": true
+    },
+    {
+      "name": "tunnel_tcp",
+      "pass": true
+    },
+    {
+      "name": "public_dns",
+      "pass": true
+    },
+    {
+      "name": "tls_certificate",
+      "pass": true
+    },
+    {
+      "name": "home",
+      "pass": true
+    },
+    {
+      "name": "frost",
+      "pass": true
+    },
+    {
+      "name": "liyun",
+      "pass": true
+    },
+    {
+      "name": "genshin",
+      "pass": true
+    }
+  ],
+  "rollbackPointersVerified": true,
+  "activePointersVerified": true,
+  "adjacentPointersUnchanged": true,
+  "adjacentServiceProcessesUnchanged": true,
+  "adjacentConfigurationUnchanged": true
+}

@@ -1,0 +1,158 @@
+.desktopLyrics {
+  --dl-surface: rgba(21, 58, 48, 0.96);
+  --dl-text: #e9eadc;
+  --dl-muted: #a1b8a7;
+  --dl-highlight: #bce4aa;
+  --dl-gold: #d8c68d;
+  position: fixed;
+  z-index: 1060;
+  width: min(680px, calc(100vw - 24px));
+  min-width: 0;
+  max-height: calc(100dvh - 86px);
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid rgba(201, 218, 173, 0.25);
+  border-radius: 12px;
+  color: var(--dl-text);
+  background: linear-gradient(118deg, rgba(155, 188, 133, 0.08), transparent 65%), var(--dl-surface);
+  box-shadow: 0 15px 42px rgba(9, 34, 23, 0.23), inset 0 1px rgba(242, 246, 218, 0.07);
+  backdrop-filter: blur(18px);
+  isolation: isolate;
+  pointer-events: auto;
+  user-select: none;
+}
+.desktopLyrics[hidden] { display: none; }
+.desktopLyrics[data-theme="light"] {
+  --dl-surface: rgba(247, 247, 231, 0.96);
+  --dl-text: #486b56;
+  --dl-muted: #5d7463;
+  --dl-highlight: #194d35;
+  --dl-gold: #866b30;
+  border-color: rgba(67, 107, 72, 0.26);
+  box-shadow: 0 14px 38px rgba(33, 65, 42, 0.17), inset 0 1px #fffef5;
+  background-image: linear-gradient(118deg, rgba(193, 214, 176, 0.25), transparent 65%);
+}
+.desktopLyrics::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 22px;
+  right: 22px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(215, 197, 138, 0.65), transparent);
+  pointer-events: none;
+}
+.toolbar {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 9px 0 13px;
+  box-sizing: border-box;
+}
+.dragHandle {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 29px;
+  padding: 0 4px;
+  color: var(--dl-muted);
+  border-radius: 4px;
+  cursor: grab;
+  touch-action: none;
+  font-size: 10px;
+  letter-spacing: 0.055em;
+}
+.dragHandle > svg { color: var(--dl-gold); }
+.dragging .dragHandle { cursor: grabbing; }
+.grip {
+  width: 6px;
+  height: 12px;
+  margin-right: 1px;
+  background: radial-gradient(circle, currentColor 0.8px, transparent 1px) 0 0 / 3px 4px;
+  opacity: 0.6;
+}
+.trackIdentity {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 10px;
+  color: var(--dl-muted);
+  opacity: 0.8;
+}
+.trackIdentity > i {
+  display: inline-block;
+  width: 2px;
+  height: 2px;
+  vertical-align: middle;
+  margin: 0 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.controls { display: flex; gap: 3px; flex: 0 0 auto; }
+.controls > button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  color: var(--dl-muted);
+  border-radius: 5px;
+}
+.controls > button > svg { width: 13px; height: 13px; }
+.controls > button:hover, .dragHandle:hover { color: var(--dl-highlight); background: rgba(135, 167, 116, 0.12); }
+.controls > button:focus-visible, .dragHandle:focus-visible { outline: 2px solid var(--dl-gold); outline-offset: 1px; }
+.lyricBody { padding: 9px 28px 23px; text-align: center; }
+.currentLine {
+  margin: 0;
+  min-height: 1.5em;
+  max-height: 4.5em;
+  overflow: auto;
+  scrollbar-width: thin;
+  font-family: "Jade Serif", "Tingchao Display", "Noto Serif SC", serif;
+  font-size: clamp(22px, 2.15vw, 31px);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.045em;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+.word {
+  background-image: linear-gradient(90deg, var(--dl-highlight) var(--word-fill, 0%), var(--dl-text) var(--word-fill, 0%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.secondaryLine {
+  margin: 7px 0 0;
+  min-height: 1.5em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--dl-muted);
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.025em;
+}
+.edgeMark { position: absolute; right: 16px; bottom: 10px; display: flex; align-items: center; gap: 5px; color: var(--dl-gold); opacity: 0.65; pointer-events: none; }
+.edgeMark > i { width: 15px; height: 1px; background: currentColor; }
+@media (max-width: 590px) {
+  .toolbar { gap: 7px; padding-left: 9px; }
+  .dragHandle { font-size: 9px; gap: 4px; }
+  .trackIdentity { font-size: 9px; }
+  .lyricBody { padding: 10px 17px 22px; }
+  .currentLine { font-size: 23px; letter-spacing: 0.02em; }
+  .secondaryLine { font-size: 11px; }
+}
+@media (max-width: 360px) {
+  .trackIdentity { display: none; }
+  .controls { margin-left: auto; }
+  .currentLine { font-size: 21px; }
+}
+@media (forced-colors: active) {
+  .desktopLyrics { border: 1px solid CanvasText; background: Canvas; color: CanvasText; }
+  .word { background: none; color: CanvasText; }
+  .secondaryLine, .trackIdentity, .dragHandle, .controls > button { color: CanvasText; }
+}

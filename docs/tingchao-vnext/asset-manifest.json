@@ -1,0 +1,8 @@
+{
+  "artwork":"Existing Tingchao original day/night sea layers and missing-cover illustration; no new raster assets needed.",
+  "fonts":"Existing packaged Tingchao UI / Jade UI / Jade Serif and retained font licenses.",
+  "code":{"source":"Folia Sonnet and Tilt","revision":"1f73b512e27ea640a045451c8af7ef2082264788","license":"AGPL-3.0-only","provenance":"apps/aidenos-music/src/vendor/folia/UPSTREAM.json","auditedFiles":74},
+  "api":"Pinned SDK 4.41.1; fixed module contract tests; account data remains in server sessions.",
+  "qa":"Synthetic account, locally generated quiet WAV, local fake comments/cloud/library; no real user comment or like writes.",
+  "limitations":["No model beat analysis","No invented LRC word timing","No OS-wide overlay outside AidenOS browser desktop","No cloud upload/delete"]
+}

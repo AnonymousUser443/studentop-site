@@ -6,7 +6,7 @@
 
 ## 本地启动（推荐入口）
 
-新增原生音乐窗口[听潮 · AidenOS Music](apps/aidenos-music/README.md)：日光／夜航主题、网易云扫码、音乐库、队列、沉浸歌词、关窗续播和锁屏媒体控制。安装该独立工程依赖后，使用 `node tools/dev-workspace.mjs --site-only --music` 在桌面内联调；可将 `--music` 加到完整模式。听潮的源码、后端与部署说明见应用 README。
+新增原生音乐窗口[听潮 · AidenOS Music](apps/aidenos-music/README.md)：日光／夜航主题、网易云扫码、音乐库、队列、沉浸歌词与可选 Folia 演出模式、关窗续播和锁屏媒体控制。安装该独立工程依赖后，使用 `node tools/dev-workspace.mjs --site-only --music` 在桌面内联调；可将 `--music` 加到完整模式。听潮的源码、后端与部署说明见应用 README。
 
 最新本地开发加入[理韵活动一览](apps/liyun-explorer/docs/activity/QA.md)和[桌面任务管理器窗口](docs/TASK-MANAGER.md)。活动由左下入口打开；任务管理器复用既有回环监控，通过桌面会话保护的同源只读接口读取，不增加启动器服务或自动创建隧道。这些改动现已由所有者当次授权发布到树莓派，真实监控、缓存兼容与回滚记录见[本次生产发布](docs/ACTIVITY-MONITOR-RELEASE-20261029.md)。
 
@@ -135,6 +135,6 @@ npm --prefix apps/liyun-moyuan run build
 
 ## 版权与素材
 
-- 本站原创部分遵循根 [LICENSE](LICENSE)。
+- 本站原创源码采用 **AGPL-3.0-only**，完整条款见根 [LICENSE](LICENSE)，适用范围与第三方例外见 [许可范围](LICENSE-SCOPE.md)。仓库可见性不因许可变更而改变。
 - 校园入场保留上游 www-genshin（TEAM.x.y.z / gamemcu）的 [MIT 许可](apps/genshin-start/LICENSE)。旧《原神》素材权利归原权利人；程序化校园造型并非官方数字孪生。差异见 [入场改造说明](apps/genshin-start/DEPLOY-NOTES.md)。
 - 理韵课程源码与用户地图 / 音频 / 美术素材应分别核对授权；字体许可及重建条件见 [素材说明](apps/liyun-explorer/docs/ASSETS.md)。

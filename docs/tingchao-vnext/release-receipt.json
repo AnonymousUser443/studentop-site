@@ -1,0 +1,394 @@
+{
+  "ok": true,
+  "id": "music-20261116T110412Z-b5ef807cef",
+  "commit": "b5ef807cef739ddbc2406c781ddb41ebf91f9c7d",
+  "homeVersion": "1e4dda74824967391ba952b9",
+  "archiveSHA256": "2dc876c5069e76bb068f41f716496e42f83bcd1f0b7c305b1b9655562243e5ec",
+  "manifestSHA256": "ce72ebd5e01325b53a8b921f193fb3538e8bb13278c3bc78111782e9e1eaa2e0",
+  "previous": {
+    "home": "/opt/win11-home/releases/music-20261115T235756Z-886ae011e5",
+    "auth": "/opt/projects/desktop-auth/releases/music-20261115T235756Z-886ae011e5",
+    "music": "/opt/projects/aidenos-music/releases/music-20261115T235756Z-886ae011e5"
+  },
+  "current": {
+    "home": "/opt/win11-home/releases/music-20261116T110412Z-b5ef807cef",
+    "auth": "/opt/projects/desktop-auth/releases/music-20261116T110412Z-b5ef807cef",
+    "music": "/opt/projects/aidenos-music/releases/music-20261116T110412Z-b5ef807cef"
+  },
+  "checks": [
+    {
+      "name": "node24_runtime",
+      "pass": true
+    },
+    {
+      "name": "music_internal_health",
+      "pass": true
+    },
+    {
+      "name": "desktop_auth_configured",
+      "pass": true
+    },
+    {
+      "name": "home_entry_matches",
+      "pass": true
+    },
+    {
+      "name": "home_version_matches",
+      "pass": true
+    },
+    {
+      "name": "public_auth_configured",
+      "pass": true
+    },
+    {
+      "name": "public_music_requires_desktop",
+      "pass": true
+    },
+    {
+      "name": "private_build_index_denied",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/css/music-fonts.css",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/css/music-host.css",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/css/music/tingchao.css",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-base-000.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-000.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-001.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-002.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-003.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-004.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-005.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-006.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-007.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-008.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-009.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-010.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-011.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-012.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-013.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-014.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-015.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-016.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-017.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-018.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-019.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-020.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-021.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-022.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-023.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-024.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-025.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-026.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-027.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-028.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-029.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-030.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-031.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-032.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-033.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-034.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-035.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-036.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-037.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-038.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-039.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-040.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-041.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-042.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-043.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-044.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-045.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-046.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-047.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-048.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-049.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-050.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-051.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-052.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-053.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-054.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-055.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-056.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-057.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-058.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/fonts/music/tingchao-ui-full-059.woff2",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/img/music/cover-fallback.webp",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/img/music/day-depth.webp",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/img/music/day-foreground.webp",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/img/music/day-tide.webp",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/img/music/night-tide.webp",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/img/music/tide-depth.webp",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/img/music/tide-foreground.webp",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/js/apps-music.js",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/js/music/chunks/FoliaStage-BR2D93du.js",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/js/music/chunks/TiltStage-PO0s6_dA.js",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/js/music/chunks/browserAll-DVEqbJcR.js",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/js/music/chunks/createSonnetPixiRuntime-CTLvuKdF.js",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/js/music/chunks/foliaAdapter-CpP6pDol.js",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/js/music/chunks/fontStacks-DlEQcSWE.js",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/js/music/chunks/index-z2opKGcZ.js",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/js/music/chunks/lib-B7vzNb9q.js",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/js/music/chunks/webworkerAll-C0xw2vPU.js",
+      "pass": true
+    },
+    {
+      "name": "music_public_bytes:home/assets/releases/1e4dda74824967391ba952b9/js/music/entry.js",
+      "pass": true
+    },
+    {
+      "name": "music_public_assets_checked",
+      "pass": true
+    },
+    {
+      "name": "music_service_active",
+      "pass": true
+    }
+  ],
+  "checkedMusicPublicFiles": 82,
+  "privateKeysCreatedOnPi": false,
+  "privateConfigurationTransferred": false,
+  "unrelatedServicesRestarted": false,
+  "backup": "/var/lib/aiden-release-history/music-20261116T110412Z-b5ef807cef",
+  "completedAt": "2026-11-16T11:07:17.473Z"
+}

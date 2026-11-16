@@ -37,6 +37,12 @@
 site/assets/fonts/OFL-*.txt -whitespace
 apps/genshin-start/public/campus/fonts/OFL-*.txt -whitespace
 apps/genshin-start/scripts/licenses/Apache-2.0.txt -whitespace
+LICENSE text eol=lf -whitespace
+apps/aidenos-music/src/vendor/folia/LICENSE text eol=lf -whitespace
+apps/aidenos-music/licenses/*.txt text eol=lf -whitespace
+# Preserve provenance hashes and whitespace inside generated shader literals.
+apps/aidenos-music/src/vendor/folia/** text eol=lf -whitespace
+site/assets/js/music/chunks/*.js text eol=lf -whitespace
 # Asset manifests hash license bytes too; make Windows/Linux checkouts identical.
 apps/liyun-explorer/public/assets/fonts/*-OFL.txt text eol=lf -whitespace
 apps/liyun-moyuan/public/fonts/OFL-*.txt text eol=lf -whitespace
