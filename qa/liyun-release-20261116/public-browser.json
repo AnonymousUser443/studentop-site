@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "version": "120d72ebe81a05e65d7be417",
+  "checks": [
+    {
+      "name": "live_release_version",
+      "pass": true
+    },
+    {
+      "name": "static_paper_visible",
+      "pass": true
+    },
+    {
+      "name": "paper_idle_without_canvas",
+      "pass": true
+    },
+    {
+      "name": "collection_opens_with_10_published_sites",
+      "pass": true
+    },
+    {
+      "name": "no_failed_versioned_assets",
+      "pass": true
+    },
+    {
+      "name": "collection_exit_unmounts",
+      "pass": true
+    },
+    {
+      "name": "focus_returns_to_collection",
+      "pass": true
+    }
+  ],
+  "screenshots": "private local .release-local/live-map.png and live-collection.png; visually inspected",
+  "accountEditsOrCheckins": false
+}

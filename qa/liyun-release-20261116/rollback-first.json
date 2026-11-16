@@ -1,0 +1,5 @@
+{
+  "rolledBack": true,
+  "error": "Cannot find module '/opt/projects/liyun-api/releases/liyun-ui-20261116T051835Z-2928298bc9/published-content.mjs' imported from /opt/projects/liyun-api/releases/liyun-ui-20261116T051835Z-2928298bc9/progress.mjs",
+  "at": "2026-11-16T05:21:19.931Z"
+}

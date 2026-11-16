@@ -1,0 +1,81 @@
+{
+  "ok": true,
+  "commit": "429bae22a40e9cc4f720d075dcdb562aad2c16d5",
+  "version": "120d72ebe81a05e65d7be417",
+  "appVersion": "1.2.0",
+  "at": "2026-11-16T05:24:59.625Z",
+  "checks": [
+    {
+      "name": "public_hash:/assets/releases/120d72ebe81a05e65d7be417/App-BO7NRXAq.css",
+      "pass": true
+    },
+    {
+      "name": "public_hash:/assets/releases/120d72ebe81a05e65d7be417/App-BY3TyWhC.js",
+      "pass": true
+    },
+    {
+      "name": "public_hash:/assets/releases/120d72ebe81a05e65d7be417/arrivalBake.worker-CYKtpb8o.js",
+      "pass": true
+    },
+    {
+      "name": "public_hash:/assets/releases/120d72ebe81a05e65d7be417/index-CPh5OC0N.js",
+      "pass": true
+    },
+    {
+      "name": "public_hash:/assets/releases/120d72ebe81a05e65d7be417/maps/campus-xuan.webp",
+      "pass": true
+    },
+    {
+      "name": "public_hash:/assets/releases/120d72ebe81a05e65d7be417/precache.json",
+      "pass": true
+    },
+    {
+      "name": "public_hash:/",
+      "pass": true
+    },
+    {
+      "name": "public_hash:/sw.js",
+      "pass": true
+    },
+    {
+      "name": "cache_policy:/sw.js",
+      "pass": true
+    },
+    {
+      "name": "public_hash:/version.json",
+      "pass": true
+    },
+    {
+      "name": "version_1.2.0",
+      "pass": true
+    },
+    {
+      "name": "cache_policy:/version.json",
+      "pass": true
+    },
+    {
+      "name": "API_health",
+      "pass": true
+    },
+    {
+      "name": "anonymous_progress_denied",
+      "pass": true
+    },
+    {
+      "name": "old_immutable_release_preserved",
+      "pass": true
+    },
+    {
+      "name": "neighbor:studentop.cn",
+      "pass": true
+    },
+    {
+      "name": "neighbor:frost.studentop.cn",
+      "pass": true
+    },
+    {
+      "name": "neighbor:genshin.studentop.cn",
+      "pass": true
+    }
+  ]
+}

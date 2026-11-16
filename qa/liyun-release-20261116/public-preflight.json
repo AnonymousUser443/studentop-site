@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "dateAsiaShanghai": "2026-11-16",
+  "passed": 8,
+  "failed": 0,
+  "checks": ["frpc_control_connection", "Pi_to_node_TCP", "public_DNS", "TLS_certificate", "home_HTTP_200", "frost_HTTP_and_health", "liyun_HTTP_and_entry_JS", "genshin_HTTP_and_entry_JS"],
+  "source": "rpi-site-publish deploy/preflight-public.sh; raw log retained in ignored .release-local/public-preflight.log"
+}
