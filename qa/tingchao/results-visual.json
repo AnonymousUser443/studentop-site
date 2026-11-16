@@ -1,0 +1,41 @@
+{
+  "phase": "visual",
+  "at": "2026-11-15T23:14:29.404Z",
+  "checks": [
+    {
+      "name": "real responsive containers at all capture sizes",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "auto theme follows desktop",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "immersive frame sampling (observed machine)",
+      "pass": true,
+      "detail": {
+        "averageMs": 16.666666666666668,
+        "frames": 72,
+        "p95Ms": 16.900000000023283
+      }
+    },
+    {
+      "name": "hidden window freezes progress while audio advances",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "reduced motion propagated",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "state": {
+    "id": "192",
+    "position": 29182.929,
+    "queue": 230,
+    "status": "playing"
+  }
+}

@@ -1,0 +1,85 @@
+[
+  {
+    "id": "night-tide",
+    "path": "/assets/img/music/night-tide.webp",
+    "width": 1942,
+    "height": 809,
+    "alpha": null,
+    "bytes": 106964,
+    "sha256": "f74dae0d51b5ce1e358735fab12c5f6de32797b129e358c809ac9bc1530b8126",
+    "source": "ImageGen original; style references local skill",
+    "original": "exec-a917bbf3-6e10-43d6-868e-799ca13f68e8.png"
+  },
+  {
+    "id": "tide-depth",
+    "path": "/assets/img/music/tide-depth.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": null,
+    "bytes": 49504,
+    "sha256": "38d1b0ed3cfdedb5d7d46b681652042c54fe74c94a191d20a2ad16cae1c95640",
+    "source": "ImageGen original; style references local skill",
+    "original": "exec-77ba8d25-1c68-4938-8231-71eba9274480.png"
+  },
+  {
+    "id": "tide-foreground",
+    "path": "/assets/img/music/tide-foreground.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": [
+      0,
+      255
+    ],
+    "bytes": 93752,
+    "sha256": "9e5f11c7b42281f01f5a76c15326f26b518b8112ca406d4f2d4b13cb34353073",
+    "source": "ImageGen original; style references local skill",
+    "original": "exec-41d7e9b8-6bf9-4f00-bcb0-1e5cd7c89bbd.png"
+  },
+  {
+    "id": "cover-fallback",
+    "path": "/assets/img/music/cover-fallback.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": null,
+    "bytes": 282976,
+    "sha256": "6b24d7c92755dda5df379f3aac7ab5c71b128e1d19f154ecc2ee0ead03744029",
+    "source": "ImageGen original; style references local skill",
+    "original": "exec-33da756d-c08f-4003-92aa-2bc3bf3407e4.png"
+  },
+  {
+    "id": "day-tide",
+    "path": "/assets/img/music/day-tide.webp",
+    "width": 1920,
+    "height": 819,
+    "alpha": null,
+    "bytes": 111272,
+    "sha256": "d29b4e593c3221d912eef2c7e41c1ea958a974824957f8bd23b64c9790bbe374",
+    "source": "ImageGen original with local style reference",
+    "original": "exec-580e66f2-36a9-463b-b7d5-c25f4900a939.png"
+  },
+  {
+    "id": "day-depth",
+    "path": "/assets/img/music/day-depth.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": null,
+    "bytes": 59704,
+    "sha256": "6e1463114131aec716976f5bc2939342da48bc95e1f8d470b7e35e029adcd799",
+    "source": "ImageGen original with local style reference",
+    "original": "exec-2e52ea62-e02d-4d33-ab1a-a4eaf873c84e.png"
+  },
+  {
+    "id": "day-foreground",
+    "path": "/assets/img/music/day-foreground.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": [
+      0,
+      255
+    ],
+    "bytes": 140452,
+    "sha256": "3577f7f4375f051d7865e6403afa3dc5ec5746e9a7a8acfc73558415ae8dafa1",
+    "source": "ImageGen original with local style reference",
+    "original": "exec-10297be0-2d3b-4946-8263-748cd167c289.png"
+  }
+]

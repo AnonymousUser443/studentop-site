@@ -1,0 +1,46 @@
+{
+  "ok": false,
+  "id": "music-20261115T233310Z-55cccd8f36",
+  "previous": {
+    "home": "/opt/win11-home/releases/20261109T165733Z",
+    "auth": "/opt/projects/desktop-auth/releases/activity-monitor-20261029T154940Z-f320dadbb9",
+    "music": null
+  },
+  "activated": true,
+  "rolledBack": true,
+  "error": "public_music_requires_desktop",
+  "rollbackErrors": [],
+  "checks": [
+    {
+      "name": "node24_runtime",
+      "pass": true
+    },
+    {
+      "name": "music_internal_health",
+      "pass": true
+    },
+    {
+      "name": "desktop_auth_configured",
+      "pass": true
+    },
+    {
+      "name": "home_entry_matches",
+      "pass": true
+    },
+    {
+      "name": "home_version_matches",
+      "pass": true
+    },
+    {
+      "name": "public_auth_configured",
+      "pass": true
+    },
+    {
+      "name": "public_music_requires_desktop",
+      "pass": false
+    }
+  ],
+  "privateKeysCreatedOnPi": true,
+  "keysRetainedForRetry": true,
+  "completedAt": "2026-11-15T23:47:43.202Z"
+}

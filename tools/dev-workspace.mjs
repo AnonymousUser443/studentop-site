@@ -2,13 +2,14 @@
 /** Local-only runner: no install, deployment, browser launch or external process killing. */
 import http from 'node:http';
 import { createReadStream } from 'node:fs';
-import { readFile, realpath, stat } from 'node:fs/promises';
+import { readFile, realpath, stat, lstat, mkdir, writeFile, chmod } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { createHash, randomUUID } from 'node:crypto';
+import { createHash, randomUUID, randomBytes } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import { createDesktopAuth, acquireAuthLease } from './desktop-auth.mjs';
 import { createTaskManagerProxy } from './task-manager-proxy.mjs';
+import { createMusicProxy } from './music-proxy.mjs';
 import { siteRevision } from './site-release.mjs';
 
 const SELF = fileURLToPath(import.meta.url);
@@ -23,6 +24,9 @@ export const APPS = Object.freeze([
 ]);
 export const ACCOUNT_API = Object.freeze({
   id: 'liyun-api', root: path.join(ROOT, 'apps/liyun-explorer'), port: 8787,
+});
+export const MUSIC_APP = Object.freeze({
+  id: 'music', root: path.join(ROOT, 'apps/aidenos-music'), port: 8901,
 });
 const TYPES = {
   '.txt': 'text/plain; charset=utf-8',
@@ -65,7 +69,7 @@ function json(res, code, body, head = false) {
   res.writeHead(code, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' });
   res.end(head ? undefined : JSON.stringify(body, null, 2) + '\n');
 }
-export async function preflight(siteOnly = false) {
+export async function preflight(siteOnly = false, { music = false } = {}) {
   const [major, minor] = process.versions.node.split('.').map(Number);
   if (major < 22 || (major === 22 && minor < 12)) throw new Error('Node.js >=22.12 is required.');
   const workspace = await realpath(ROOT);
@@ -94,7 +98,51 @@ export async function preflight(siteOnly = false) {
     }
     api = { ...ACCOUNT_API, root };
   }
-  return { workspace, site, apps, api };
+  let musicApp = null;
+  if (music) {
+    const root = await realpath(MUSIC_APP.root);
+    if (!within(workspace, root)) throw new Error('music: app root escapes workspace.');
+    const pkg = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'));
+    const required = ['server/index.mjs', 'src/index.tsx', 'node_modules/vite/dist/node/index.js',
+      'node_modules/typescript/bin/tsc', 'node_modules/@neteasecloudmusicapienhanced/api/main.js'];
+    for (const name of required) {
+      try {
+        const entry = await realpath(path.join(root, name));
+        if (!within(workspace, entry) || !(await stat(entry)).isFile()) throw new Error('invalid entry');
+      } catch { throw new Error('music: module/server dependency missing; install the app using its own lockfile.'); }
+    }
+    const installed = JSON.parse(await readFile(path.join(root, 'node_modules/@neteasecloudmusicapienhanced/api/package.json'), 'utf8'));
+    if (installed.version !== pkg.dependencies['@neteasecloudmusicapienhanced/api']) throw new Error('music: installed SDK differs from the pinned dependency.');
+    const { DatabaseSync } = await import('node:sqlite');
+    if (typeof DatabaseSync !== 'function') throw new Error('music: node:sqlite is required; use Node.js 24.');
+    musicApp = { ...MUSIC_APP, root };
+  }
+  return { workspace, site, apps, api, ...(music ? { music: musicApp } : {}) };
+}
+
+/** Only called after --check has returned. Credentials never enter status or stdout. */
+export async function ensureMusicDevConfig(directory = path.join(ROOT, '.private/music-dev')) {
+  const parent = path.dirname(directory);
+  for (const folder of [parent, directory]) {
+    await mkdir(folder, {recursive:true, mode:0o700});
+    if ((await lstat(folder)).isSymbolicLink() || !(await stat(folder)).isDirectory()) throw new Error('music: private configuration directory must be a real directory.');
+    await chmod(folder, 0o700);
+  }
+  const file = path.join(directory, 'config.json');
+  try {
+    await writeFile(file, JSON.stringify({version:1, gatewayKey:randomBytes(32).toString('hex'), cookieKey:randomBytes(32).toString('hex')}) + '\n', {flag:'wx', mode:0o600});
+  } catch (error) { if (error.code !== 'EEXIST') throw error; }
+  if ((await lstat(file)).isSymbolicLink() || !(await stat(file)).isFile()) throw new Error('music: invalid private configuration file.');
+  await chmod(file, 0o600);
+  const content = await readFile(file, 'utf8');
+  let config;
+  try { config = JSON.parse(content); } catch { throw new Error('music: private configuration is invalid.'); }
+  if (content.length > 4096 || config?.version !== 1 || !/^[a-f0-9]{64}$/.test(config.gatewayKey || '') || !/^[a-f0-9]{64}$/.test(config.cookieKey || '')) throw new Error('music: private configuration is invalid.');
+  const dataDir = path.join(directory, 'data');
+  await mkdir(dataDir, {recursive:true, mode:0o700});
+  if ((await lstat(dataDir)).isSymbolicLink()) throw new Error('music: private data directory must be a real directory.');
+  await chmod(dataDir, 0o700);
+  return {gatewayKey:config.gatewayKey, cookieKey:config.cookieKey, dataDir};
 }
 /** Probe only the local account health endpoint; never send credentials or follow redirects. */
 export function accountApiHealthy(port = ACCOUNT_API.port, timeout = 1500) {
@@ -117,6 +165,23 @@ export function accountApiHealthy(port = ACCOUNT_API.port, timeout = 1500) {
       });
       res.on('error', () => finish(false));
       res.on('aborted', () => finish(false));
+    });
+    const timer = setTimeout(() => finish(false), timeout);
+    request.on('error', () => finish(false));
+  });
+}
+/** The SDK health probe is local and never sends cookies or requests external music content. */
+export function musicApiHealthy(port = MUSIC_APP.port, timeout = 1500) {
+  return new Promise(resolve => {
+    let finished = false;
+    const finish = ok => { if (finished) return; finished = true; clearTimeout(timer); request.destroy(); resolve(ok); };
+    const request = http.get({host:HOST, port, path:'/health', agent:false}, res => {
+      if (res.statusCode !== 200) { finish(false); return; }
+      let body = '';
+      res.setEncoding('utf8');
+      res.on('data', chunk => { body += chunk; if (body.length > 1024) finish(false); });
+      res.on('end', () => { try { const value = JSON.parse(body); finish(value.ok === true && value.app === 'aidenos-music' && value.version === 1); } catch { finish(false); } });
+      res.on('error', () => finish(false)); res.on('aborted', () => finish(false));
     });
     const timer = setTimeout(() => finish(false), timeout);
     request.on('error', () => finish(false));
@@ -206,24 +271,26 @@ async function apiChild(requestedPort) {
   }
 }
 // Programmatic ports/cache support isolated fixtures; the CLI has no such overrides.
-export async function run(argv = process.argv.slice(2), { ports = {}, cacheRoot } = {}) {
+export async function run(argv = process.argv.slice(2), { ports = {}, cacheRoot, musicDevRoot } = {}) {
   if (argv[0] === '--vite-child') return viteChild(argv[1], argv[2], argv[3], argv[4]);
   if (argv[0] === '--api-child') return apiChild(argv[1]);
-  const allowed = new Set(['--site-only', '--check', '--help']);
+  const allowed = new Set(['--site-only', '--music', '--check', '--help']);
   if (argv.some(a => !allowed.has(a))) throw new Error('Unknown option. Use --help.');
   if (argv.includes('--help')) {
-    console.log('node tools/dev-workspace.mjs [--site-only] [--check]\n--check: filesystem/dependency preflight only; no sockets, servers, database writes or install.\nFull mode: site 8899, liyun-api 8787, liyun 5174, campus 8081, voxel 5180, moyuan 5181 (127.0.0.1, strict).');
+    console.log('node tools/dev-workspace.mjs [--site-only] [--music] [--check]\n--check: filesystem/dependency preflight only; no sockets, servers, database writes or install.\nFull mode: site 8899, liyun-api 8787, liyun 5174, campus 8081, voxel 5180, moyuan 5181 (127.0.0.1, strict).\n--music adds the native module build watcher and music SDK on 127.0.0.1:8901.');
     return;
   }
   const siteOnly = argv.includes('--site-only');
+  const musicEnabled = argv.includes('--music');
   const sitePort = managedPort(ports.site, SITE_PORT);
-  const checked = await preflight(siteOnly);
+  const checked = await preflight(siteOnly, {music:musicEnabled});
   const workspace = identity(checked.workspace);
-  const services = checked.api ? [checked.api, ...checked.apps].map(service => ({
+  const services = [...(checked.api ? [checked.api, ...checked.apps] : []), ...(checked.music ? [checked.music] : [])].map(service => ({
     ...service, port: managedPort(ports[service.id], service.port),
-  })) : [];
+  }));
   if (new Set([sitePort, ...services.map(s => s.port)]).size !== services.length + 1) throw new Error('Workspace service ports must be distinct.');
   const apiPort = services.find(s => s.id === ACCOUNT_API.id)?.port;
+  const musicPort = services.find(s => s.id === MUSIC_APP.id)?.port;
   if (argv.includes('--check')) {
     console.log(JSON.stringify({ ok: true, mode: 'check', workspace, siteRoot: 'site',
       planned: [{ id: 'site', port: sitePort }, ...services.map(({id, port}) => ({id, port}))],
@@ -239,6 +306,7 @@ export async function run(argv = process.argv.slice(2), { ports = {}, cacheRoot 
     service: 'dev-workspace', workspace, instance, startedAt,
     mode: siteOnly ? 'site-only' : 'full', siteRoot: 'site', services: states });
   let healthCheck;
+  let musicHealthCheck;
   const liveStatus = async () => {
     const api = states.find(s => s.id === ACCOUNT_API.id);
     if (!stopping && api && ['ready', 'unhealthy'].includes(api.status)) {
@@ -246,13 +314,23 @@ export async function run(argv = process.argv.slice(2), { ports = {}, cacheRoot 
       const healthy = await healthCheck;
       if (!stopping) api.status = healthy ? 'ready' : 'unhealthy';
     }
+    const music = states.find(s => s.id === MUSIC_APP.id);
+    if (!stopping && music && ['ready', 'unhealthy'].includes(music.status)) {
+      musicHealthCheck ??= musicApiHealthy(musicPort).finally(() => { musicHealthCheck = undefined; });
+      const healthy = await musicHealthCheck;
+      if (!stopping) music.status = healthy && music.build !== 'failed' ? 'ready' : 'unhealthy';
+    }
     return status();
   };
   const releaseAuthLease = await acquireAuthLease(ROOT);
-  let auth, taskManager;
+  let auth, taskManager, musicProxy, musicConfig;
   try {
     auth = await createDesktopAuth({ root: ROOT, origin: req => 'http://' + req.headers.host });
     taskManager = createTaskManagerProxy({ auth });
+    if (musicEnabled) {
+      musicConfig = await ensureMusicDevConfig(musicDevRoot);
+      musicProxy = createMusicProxy({auth, port:musicPort, gatewayKey:musicConfig.gatewayKey, origin:req=>'http://'+req.headers.host});
+    }
   }
   catch (error) { await releaseAuthLease(); throw error; }
   const server = http.createServer((req, res) => {
@@ -261,6 +339,7 @@ export async function run(argv = process.argv.slice(2), { ports = {}, cacheRoot 
       if (!validHost(req.headers.host, sitePort)) return json(res, 403, { error: 'Invalid Host' }, head);
       if (await auth.handle(req, res)) return;
       if (await taskManager.handle(req, res)) return;
+      if (musicProxy && await musicProxy.handle(req, res)) return;
       if (req.method !== 'GET' && !head) { res.setHeader('Allow', 'GET, HEAD'); return json(res, 405, {error:'Method not allowed'}); }
       const rawPath = req.url?.split('?')[0];
       if (rawPath === '/version.json') return json(res, 200, {id:siteRevision(checked.site)}, head);
@@ -297,6 +376,7 @@ export async function run(argv = process.argv.slice(2), { ports = {}, cacheRoot 
     for (const state of states) state.status = 'stopping';
     server.close();
     await taskManager.drain();
+    await musicProxy?.drain();
     server.closeAllConnections();
     await auth.drain();
     await Promise.all(children.map(child => new Promise(resolve => {
@@ -326,8 +406,14 @@ export async function run(argv = process.argv.slice(2), { ports = {}, cacheRoot 
     for (const app of services) {
       if (stopping) break;
       const state = states.find(s => s.id === app.id);
-      const child = spawn(process.execPath, [SELF, ...(app.id === ACCOUNT_API.id ? ['--api-child', String(app.port)] : ['--vite-child', app.id, String(app.port), String(apiPort), ...(cacheRoot ? [path.resolve(cacheRoot, app.id)] : [])])], {
+      const musicService = app.id === MUSIC_APP.id;
+      const command = musicService
+        ? [path.join(ROOT, 'tools/music-watch.mjs'), String(app.port), ...(cacheRoot ? [path.resolve(cacheRoot, app.id)] : [])]
+        : [SELF, ...(app.id === ACCOUNT_API.id ? ['--api-child', String(app.port)] : ['--vite-child', app.id, String(app.port), String(apiPort), ...(cacheRoot ? [path.resolve(cacheRoot, app.id)] : [])])];
+      const child = spawn(process.execPath, command, {
         cwd: app.root, stdio: ['ignore', 'inherit', 'inherit', 'ipc'], windowsHide: true,
+        ...(musicService ? {env:{...process.env, MUSIC_PORT:String(app.port), MUSIC_PUBLIC_ORIGIN:'http://'+HOST+':'+sitePort,
+          MUSIC_GATEWAY_KEY:musicConfig.gatewayKey, MUSIC_COOKIE_KEY:musicConfig.cookieKey, MUSIC_DATA_DIR:musicConfig.dataDir, MUSIC_SECURE_COOKIES:'false'}} : {}),
       });
       children.push(child);
       await new Promise((resolve, reject) => {
@@ -344,12 +430,14 @@ export async function run(argv = process.argv.slice(2), { ports = {}, cacheRoot 
           else reject(new Error(app.id + ': startup interrupted'));
         });
         child.on('message', message => {
+          if (musicService && message?.type === 'music-build') state.build = message.ok ? 'ready' : 'failed';
           if (message?.type === 'ready' && message.id === app.id && message.port === app.port) {
             clearTimeout(timer); resolve();
           }
         });
       });
       if (app.id === ACCOUNT_API.id && !await accountApiHealthy(apiPort)) throw new Error('liyun-api: health check failed.');
+      if (musicService && !await musicApiHealthy(musicPort)) throw new Error('music: health check failed.');
       if (!stopping) state.status = 'ready';
     }
     if (!stopping) {
