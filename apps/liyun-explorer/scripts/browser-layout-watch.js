@@ -13,7 +13,7 @@
     }
     if(w>h)window.__layoutResults.sizes[key]={width:w,height:h,buttonCount:boxes.length,smallTargets,clipped,overlaps};
     const gate=document.querySelector('.orientation-gate');
-    if(gate&&w<=h)window.__layoutResults.portrait={width:w,height:h,gate:gate.getAttribute('aria-label'),message:gate.textContent,hudInert:document.querySelector('.hud-layer').inert,mapDisabled:[...document.querySelectorAll('.map-marker')].every(x=>x.disabled),effectsPaused:[...document.querySelectorAll('canvas')].every(x=>x.__liyunP5&&!x.__liyunP5.isLooping())};
+    if(gate&&w<=h)window.__layoutResults.portrait={width:w,height:h,gate:gate.getAttribute('aria-label'),message:gate.textContent,hudInert:document.querySelector('.hud-layer').inert,mapDisabled:[...document.querySelectorAll('.map-marker')].every(x=>x.disabled),effectsPaused:[...document.querySelectorAll('canvas[data-effect-layer]')].every(x=>x.__liyunLight&&!x.__liyunLight.isLooping())};
   };
   const resize=new ResizeObserver(capture);resize.observe(document.querySelector('.game-stage'));
   const mutations=new MutationObserver(capture);mutations.observe(document.querySelector('.game-stage'),{subtree:true,childList:true,attributes:true,attributeFilter:['inert','disabled']});

@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { memo, useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Icon } from '../hud/Icon';
 import { EVENTS, REWARDS, STATUS_LABELS, previewMapTarget, recordedLandmarkCount, resolveEventAction, type EventEntry } from './events';
 import ThemeArtwork from './ThemeArtwork';
+import { ACTIVITY_REWARDS } from './artworkAssets';
 import './activity.css';
 
 type Phase = 'closed' | 'opening' | 'open' | 'switching' | 'navigating' | 'closing';
@@ -38,18 +39,19 @@ function Tassel({ right = false }: { right?: boolean }) {
   </svg>;
 }
 
-function RewardEmblem({ kind }: { kind: string }) {
+const RewardEmblem = memo(function RewardEmblem({ kind }: { kind: string }) {
   const [failedKind, setFailedKind] = useState<string | null>(null);
   const reward = REWARDS[kind];
-  if (!reward || failedKind === kind) return <span className="activity-reward-art activity-reward-fallback" aria-hidden="true" data-image-unavailable="true"><Icon name={reward?.icon ?? 'star'}/></span>;
-  return <img className={`activity-reward-art reward-${kind}`} src={`/assets/activity/reward-${kind}.webp`} width="512" height="512" alt="" aria-hidden="true" decoding="async" draggable={false} onError={() => setFailedKind(kind)}/>;
-}
+  const src = ACTIVITY_REWARDS[kind];
+  if (!reward || !src || failedKind === kind) return <span className="activity-reward-art activity-reward-fallback" aria-hidden="true" data-image-unavailable="true"><Icon name={reward?.icon ?? 'star'}/></span>;
+  return <img className={`activity-reward-art reward-${kind}`} src={src} width="512" height="512" alt="" aria-hidden="true" decoding="async" draggable={false} onError={() => setFailedKind(kind)}/>;
+});
 
 function EventMark({ entry }: { entry: EventEntry }) {
   return entry.themeKey === 'frost' ? <RewardEmblem kind="ginkgo"/> : <Icon name={entry.iconKey}/>;
 }
 
-export default function ActivityScreen(props: ActivityScreenProps) {
+export default memo(function ActivityScreen(props: ActivityScreenProps) {
   const { open, reducedMotion, quality, discoveredIds } = props;
   const callbacks = useRef(props); callbacks.current = props;
   const screen = useRef<HTMLElement>(null);
@@ -66,8 +68,6 @@ export default function ActivityScreen(props: ActivityScreenProps) {
   const generation = useRef(0);
   const openRef = useRef(open); openRef.current = open;
   const reducedRef = useRef(reducedMotion);
-  const [systemReduced, setSystemReduced] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
-  const [hidden, setHidden] = useState(document.hidden);
   const [chapterKey, setChapterKey] = useState(0);
   const [rewardId, setRewardId] = useState<string | null>(null);
   const [hoverRewardId, setHoverRewardId] = useState<string | null>(null);
@@ -75,7 +75,7 @@ export default function ActivityScreen(props: ActivityScreenProps) {
   const [navigationError, setNavigationError] = useState<string | null>(null);
   const hasOpened = useRef(false);
   const [returning, setReturning] = useState(false);
-  const reduced = reducedMotion || systemReduced;
+  const reduced = reducedMotion;
   reducedRef.current = reduced;
 
   const changePhase = useCallback((next: Phase) => { phaseRef.current = next; setPhase(next); }, []);
@@ -95,15 +95,6 @@ export default function ActivityScreen(props: ActivityScreenProps) {
     cancel(); setRewardId(null); setHoverRewardId(null); changePhase('closing');
     later(420, finishClose);
   }, [cancel, changePhase, finishClose, later]);
-
-  useEffect(() => {
-    const media = matchMedia('(prefers-reduced-motion: reduce)');
-    const mediaChange = () => setSystemReduced(media.matches);
-    const visibility = () => setHidden(document.hidden);
-    media.addEventListener('change', mediaChange);
-    document.addEventListener('visibilitychange', visibility);
-    return () => { media.removeEventListener('change', mediaChange); document.removeEventListener('visibilitychange', visibility); };
-  }, []);
 
   useEffect(() => {
     cancel(); setRewardId(null); setHoverRewardId(null); setNavigationError(null);
@@ -154,12 +145,13 @@ export default function ActivityScreen(props: ActivityScreenProps) {
     return () => document.removeEventListener('keydown', onKey, true);
   }, [open, rewardId, hoverRewardId, close]);
 
+  // Keep the chapter and scroll position in this controller, but leave no hidden
+  // tab, reward or paper subtree to reconcile while exploring the map.
+  if (!open && phase === 'closed') return null;
   const selectedIndex = Math.max(0, EVENTS.findIndex(item => item.id === selectedId));
   const entry = EVENTS[selectedIndex];
   const action = resolveEventAction(entry);
   const mapPreview = previewMapTarget(entry);
-  const recorded = recordedLandmarkCount(discoveredIds);
-  const present = open || phase !== 'closed';
   const busy = phase === 'navigating' || phase === 'closing';
   const visibleRewardId = rewardId ?? hoverRewardId;
 
@@ -197,9 +189,9 @@ export default function ActivityScreen(props: ActivityScreenProps) {
     else setNotice(previous => previous === nextAction.message ? null : nextAction.message);
   };
 
-  return <section ref={screen} className={`activity-screen ${reduced ? 'is-reduced' : ''} ${hidden ? 'is-paused' : ''} ${returning ? 'is-returning' : ''}`}
-    hidden={!present} role="dialog" aria-modal="true" aria-labelledby="activity-screen-title" tabIndex={-1}
-    data-testid="activity-screen" data-phase={phase} data-event-id={entry.id} data-theme={entry.themeKey}
+  return <section ref={screen} className={`activity-screen ${reduced ? 'is-reduced' : ''} ${returning || (phase === 'closed' && hasOpened.current) ? 'is-returning' : ''}`}
+    role="dialog" aria-modal="true" aria-labelledby="activity-screen-title" tabIndex={-1}
+    data-testid="activity-screen" data-phase={phase === 'closed' ? 'opening' : phase} data-event-id={entry.id} data-theme={entry.themeKey}
     aria-busy={phase === 'navigating' || phase === 'switching'}
     onPointerDown={event => { event.stopPropagation(); if (!(event.target as HTMLElement).closest('.activity-rewards')) setRewardId(null); }}
     onWheel={event => event.stopPropagation()}>
@@ -211,14 +203,14 @@ export default function ActivityScreen(props: ActivityScreenProps) {
     <div className="activity-strip">
       <div className="activity-strip-border" aria-hidden="true"/>
       <div className="activity-art-host">
-        {present && <div className={`activity-art-current ${phase === 'switching' ? 'is-changing' : ''}`}><ThemeArtwork themeKey={entry.themeKey} reducedMotion={reduced} quality={quality} paused={hidden || phase === 'closing' || phase === 'navigating'}/></div>}
+        <div className="activity-art-current"><ThemeArtwork themeKey={entry.themeKey} reducedMotion={reduced} quality={quality} paused={phase === 'closing' || phase === 'navigating'}/></div>
       </div>
       <article className={`activity-paper ${entry.title.length > 4 ? 'has-long-title' : ''}`} aria-labelledby="activity-event-title" id="activity-event-panel" role="tabpanel" aria-live="polite">
         <div className="activity-paper-inner" key={`paper-${chapterKey}`}>
           <div className="activity-event-heading"><span className="activity-category">{entry.category}</span><h3 id="activity-event-title">{entry.title}</h3><p className="activity-subtitle"><span/>{entry.subtitle}<span/></p></div>
           <div className="activity-information">
             <p className="activity-summary">{entry.summary}</p>
-            {entry.themeKey === 'archive' && <p className="activity-record-count">已点亮 <strong>{recorded}</strong> 处地标<span>真实探索记录 · 未点亮的地标仍待你抵达</span></p>}
+            {entry.themeKey === 'archive' && <p className="activity-record-count">已点亮 <strong>{recordedLandmarkCount(discoveredIds)}</strong> 处地标<span>真实探索记录 · 未点亮的地标仍待你抵达</span></p>}
             {entry.rewardKeys.length > 0 && <div className="activity-rewards">
               <h4><span>◇</span> 主题奖励 <small>构想示意</small><i/></h4>
               <div className="activity-reward-row">{entry.rewardKeys.map((key, index) => {
@@ -271,4 +263,4 @@ export default function ActivityScreen(props: ActivityScreenProps) {
     <p className="activity-page-hint"><span>↑ ↓ 翻阅篇章</span><i>◇</i><span>Esc 收起画卷</span></p>
     <div className="activity-transition-veil" aria-hidden="true"><span/><span/><span/></div>
   </section>;
-}
+});

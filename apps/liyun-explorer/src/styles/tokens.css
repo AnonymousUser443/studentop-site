@@ -104,7 +104,7 @@
 
   /* ── 层级（与 docs/SCENE.md 图层表对应，禁止就地写 z-index 数字） ── */
   --z-map: 1;
-  --z-veil: 3;        /* 分区水墨遮罩 */
+  --z-veil: 3;        /* 地图宣纸与局部揭景 */
   --z-atmosphere: 3;
   --z-markers: 7;     /* Keep functional pin labels above ambient leaves/light. */
   --z-locate: 6;

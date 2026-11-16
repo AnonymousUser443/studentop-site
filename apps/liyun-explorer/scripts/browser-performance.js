@@ -6,8 +6,8 @@
     Object.assign(stage.style,{width:width+'px',height:height+'px'});
     await wait(150);
     if (document.hidden) { samples.push({width,height,status:'not measured: page hidden'}); break; }
-    const layers = [...document.querySelectorAll('canvas')].map(canvas => ({name:canvas.dataset.effectLayer,p:canvas.__liyunP5}));
-    if (layers.some(x => !x.p)) { samples.push({width,height,status:'not measured: effects not ready'}); break; }
+    const layers = [...document.querySelectorAll('canvas[data-effect-layer]')].map(canvas => ({name:canvas.dataset.effectLayer,p:canvas.__liyunLight}));
+    if (!layers.length || layers.some(x => !x.p)) { samples.push({width,height,status:'not measured: effects not ready'}); break; }
     const before = layers.map(x=>x.p.frameCount);
     let ticks=0, elapsed=0, aborted=false;
     const began=performance.now();

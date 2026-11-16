@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
  * 分包策略（见 docs/UI-REFACTOR-PLAN-V2.md 3.3）：
  *  - vendor-react：React + Radix（Radix 强依赖 React，拆开会形成循环 chunk）
  *  - vendor-motion：framer-motion，首屏 HUD 过渡要用
- *  - vendor-p5 / vendor-gsap：环境层与时间轴，由页面动态 import 延后拉取
+ *  - vendor-gsap：由页面动态 import 延后拉取的演出时间轴
  */
 export default defineConfig({
   plugins: [react()],
@@ -22,7 +22,6 @@ export default defineConfig({
           }
           if (id.includes('/framer-motion/') || id.includes('/motion-dom/') || id.includes('/motion-utils/')) return 'vendor-motion';
           if (id.includes('/gsap/') || id.includes('/@gsap/')) return 'vendor-gsap';
-          if (id.includes('/p5/')) return 'vendor-p5';
           if (id.includes('/zustand/')) return 'vendor-state';
           return 'vendor-misc';
         },
@@ -38,7 +37,8 @@ export default defineConfig({
       '/api/content': { target: `http://127.0.0.1:${process.env.LIYUN_AUTHOR_PORT ?? 8790}`, changeOrigin: true },
       '/api': { target: 'http://127.0.0.1:8787', changeOrigin: true },
     },
-    watch: { usePolling: true, interval: 200,
+    // Use OS file notifications on local drives. Mounted drives can opt in to polling.
+    watch: { ...(process.env.LIYUN_VITE_POLL === '1' ? { usePolling: true, interval: 200 } : {}),
       ignored: ['**/*.tmpdir', '**/*.tmpdir/**', '**/*.tmp', /(^|[/\\])[^/\\]*\.tmpdir([/\\]|$)/, /\.tmp$/] },
   },
   preview: { host: '127.0.0.1', port: 4174, strictPort: true },

@@ -9,8 +9,8 @@
 /* 纸浪背景：与底部纸浪同一套语言 */
 
 
-/* 地图层：叠在纸浪背景之上，边缘渐隐融入纸面 */
-.map-layer{position:absolute;inset:0;z-index:1;mask-image:radial-gradient(ellipse 54% 52% at 50% 48%,var(--mask-ink) 70%,color-mix(in srgb, var(--mask-ink) 85.098%, transparent) 82%,color-mix(in srgb, var(--mask-ink) 50.1961%, transparent) 92%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 54% 52% at 50% 48%,var(--mask-ink) 70%,color-mix(in srgb, var(--mask-ink) 85.098%, transparent) 82%,color-mix(in srgb, var(--mask-ink) 50.1961%, transparent) 92%,transparent 100%)}
+/* 基础地图的羽化已烘入贴图。背景自行着色，不给整个运动世界做合成遮罩。 */
+.map-layer{position:absolute;inset:0;z-index:1}
 
 /* 插画底图（墨色调）+ 奶油雾池，让地图边缘化进画里 */
 .scene-painting{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}

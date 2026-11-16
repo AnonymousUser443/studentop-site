@@ -1,0 +1,77 @@
+.scroll-surface {
+  --letter-ink: #294a3c;
+  --letter-line: #a0874f55;
+  --letter-edge: #c6ae73;
+  --letter-paper: #f7efd8;
+  --letter-seal: #9a4e38;
+  isolation: isolate;
+  transform-origin: 50% 36%;
+}
+.scroll-surface[data-scroll-state='closing'], .settings-confirm-overlay[data-scroll-state='closing'] { pointer-events: none; }
+.scroll-paper-edge {
+  position: absolute; inset: 0; z-index: 4; pointer-events: none;
+}
+.scroll-paper-edge::before {
+  content: ''; position: absolute; inset: -3px 0 auto; height: 3px; color: var(--letter-edge);
+  background: linear-gradient(90deg, transparent, currentColor 14% 86%, transparent);
+  box-shadow: 0 -3px 7px #6147163a;
+}
+.letter-fretwork { position: absolute; inset: 5px; z-index: 0; pointer-events: none; color: #8b6c37; }
+.letter-fretwork svg { position: absolute; display: block; overflow: visible; fill: none; stroke: currentColor; }
+.letter-fret-outline { inset: 1px; width: calc(100% - 2px); height: calc(100% - 2px); stroke-width: 1; opacity: .33; }
+.letter-fret-corner { width: 39px; height: 39px; stroke-width: 1.12; stroke-linejoin: round; opacity: .92; }
+.letter-fret-tl { top: 0; left: 0; }
+.letter-fret-tr { top: 0; right: 0; transform: scaleX(-1); }
+.letter-fret-bl { bottom: 0; left: 0; transform: scaleY(-1); }
+.letter-fret-br { bottom: 0; right: 0; transform: scale(-1); }
+.letter-fretwork[data-draw] path { stroke-dashoffset: 1; }
+.scroll-surface[data-letter-ready] .letter-fretwork[data-draw] path {
+  stroke-dashoffset: 0; transition: stroke-dashoffset var(--fret-duration) var(--e-soft) var(--fret-in);
+}
+.scroll-surface[data-letter-ready][data-scroll-state='closing'] .letter-fretwork[data-draw] path {
+  stroke-dashoffset: 1; transition: stroke-dashoffset .17s var(--e-in-out) var(--fret-out);
+}
+.hud-modal.scroll-surface, .settings-confirm.scroll-surface, .entry-card.scroll-surface {
+  color: var(--letter-ink);
+  background-color: var(--letter-paper);
+  background-image: linear-gradient(105deg, #f7efd8ed, #f7efd8df 62%, #f1e7c9ec), url('/assets/regions/xuan-paper.webp');
+  background-size: auto, 360px;
+  border: 1px solid var(--letter-edge);
+  border-radius: 1px;
+  box-shadow: 0 16px 27px #071e1a57, inset 0 0 0 6px #d8c59525;
+}
+.scroll-glyph, .scroll-copy-whole { display: inline-block; }
+.scroll-glyph { opacity: 0; transform: translate(-4px, 8px); }
+.scroll-surface[data-letter-ready] .scroll-glyph {
+  opacity: 1; transform: translate(0, 0);
+  transition: transform .25s cubic-bezier(.22, .87, .36, 1) var(--glyph-in), opacity .25s cubic-bezier(.22, .87, .36, 1) var(--glyph-in);
+}
+.scroll-surface[data-scroll-state='closing'] .scroll-glyph {
+  opacity: 0; transform: translate(-1.8px, -4.8px);
+  transition: transform .13s var(--e-soft) var(--glyph-out), opacity .13s var(--e-soft) var(--glyph-out);
+}
+.scroll-copy-whole { max-width: 100%; }
+.entry-scene-motion { position: absolute; inset: 0; pointer-events: none; }
+.entry-card.scroll-surface .entry-flourish { color: #806b3b; }
+.entry-card.scroll-surface .entry-flourish > span { background: var(--letter-line); }
+.entry-card.scroll-surface .entry-scene { opacity: .12; }
+.entry-card.scroll-surface .entry-content > small,
+.entry-card.scroll-surface .entry-login-help,
+.entry-card.scroll-surface .entry-login label > span { color: var(--ink-700); }
+.entry-card.scroll-surface .entry-login input {
+  color: var(--letter-ink); border: 1px solid var(--letter-line);
+  background-color: #fffaeb99;
+}
+.entry-card.scroll-surface .entry-login input::placeholder { color: #626951; }
+.entry-card.scroll-surface .entry-login input:focus { border-color: #52705a; box-shadow: 0 0 0 1px #52705a; }
+.entry-card.scroll-surface .enter-campus { background: var(--jade-700); color: var(--paper-100)!important; box-shadow: none; border: 1px solid var(--jade-700); }
+.entry-card.scroll-surface .enter-campus .ly-icon { color: var(--gold-300); }
+.entry-card.scroll-surface .enter-campus:not(:disabled):hover { background: var(--jade-600); }
+.entry-card.scroll-surface .entry-alt:not(:disabled):hover { color: var(--letter-seal); }
+.entry-card.scroll-surface .entry-error { color: var(--state-danger); }
+
+@media (max-height: 560px) {
+  .letter-fret-corner { width: 29px; height: 29px; stroke-width: 1.17; }
+  .settings-confirm.scroll-surface .settings-confirm-emblem { display: grid; width: 30px; height: 30px; margin-bottom: 7px; }
+  .settings-confirm.scroll-surface .settings-confirm-emblem .ly-icon { width: 27px; height: 27px; }
+}

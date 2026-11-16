@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "1.0",
+  "project": {
+    "title": "理韵寻踪 · 一纸见校园",
+    "format": "interactive-h5",
+    "fps": 30,
+    "durationSeconds": 12,
+    "emotionalThesis": "一方校园先被纸藏起，重新踏入时，走过的路从纸背亮出来。"
+  },
+  "world": {
+    "audienceRole": "用脚步解开校园的旅人",
+    "narrativeObject": "带折痕和印格的校园手卷",
+    "motifs": [
+      "宣纸",
+      "风向",
+      "套方纹"
+    ],
+    "palette": [
+      "#eee0ba",
+      "#21493e",
+      "#c3924e"
+    ],
+    "materialRules": "地图本身是真实方位；宣纸不透明、暖、哑光。炭线和火星只沿揭景进度出现。弹窗纹样用线条绘制。"
+  },
+  "assetsReviewed": [
+    {
+      "id": "map",
+      "path": "public/assets/maps/calibrated/campus_no_labels.webp",
+      "sourceType": "illustration",
+      "usable": true,
+      "rights": "original"
+    },
+    {
+      "id": "xuan",
+      "path": "public/assets/regions/xuan-paper.webp",
+      "sourceType": "graphic",
+      "usable": true,
+      "rights": "original"
+    },
+    {
+      "id": "activity",
+      "path": "public/assets/activity/",
+      "sourceType": "illustration",
+      "usable": true,
+      "rights": "original"
+    },
+    {
+      "id": "ref",
+      "path": "原神参考图3.png",
+      "sourceType": "graphic",
+      "usable": false,
+      "rights": "reference-only",
+      "note": "只作为生成输入，不进入发布包。"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "return",
+      "startSeconds": 0,
+      "endSeconds": 3,
+      "reasonToExist": "让旧旅程在重新进入时有一个可见重逢。",
+      "viewerGains": "纸撤去的位置对应账号里的已访问区域。",
+      "emotionBefore": 22,
+      "emotionAfter": 46,
+      "layers": [
+        {
+          "id": "campus",
+          "depth": "background",
+          "role": "已标定地图",
+          "assetId": "map",
+          "origin": "original-illustration",
+          "moving": false
+        },
+        {
+          "id": "paper",
+          "depth": "subject",
+          "role": "有位置含义的遮挡与噪声燃蚀",
+          "assetId": "xuan",
+          "origin": "generated-abstract",
+          "moving": true
+        }
+      ],
+      "motions": [
+        {
+          "actor": "宣纸",
+          "trigger": "账号与入场画面一同就绪",
+          "purpose": "显示走过的地方",
+          "startSeconds": 0.55,
+          "endSeconds": 2.3,
+          "motion": "暖线起火，沿风向与纹理进展，带走少量碎纸，退出动画表面。",
+          "settleState": "已解锁区域直接显示地图，锁区静止。"
+        }
+      ],
+      "sound": "沿用当前旅途背景音乐。",
+      "transitionOut": "燃边离开后交还地图操作。"
+    },
+    {
+      "id": "discovery",
+      "startSeconds": 3,
+      "endSeconds": 7,
+      "reasonToExist": "把打卡结果变成地图真正发生的改变。",
+      "viewerGains": "看得到本次解锁前后的边界。",
+      "emotionBefore": 42,
+      "emotionAfter": 75,
+      "layers": [
+        {
+          "id": "map",
+          "depth": "background",
+          "role": "空间锚点",
+          "assetId": "map",
+          "origin": "original-illustration",
+          "moving": true
+        },
+        {
+          "id": "burn",
+          "depth": "foreground",
+          "role": "局部揭开地图",
+          "assetId": "xuan",
+          "origin": "generated-abstract",
+          "moving": true
+        }
+      ],
+      "motions": [
+        {
+          "actor": "局部宣纸",
+          "trigger": "打卡成立后镜头到达区域",
+          "purpose": "让地图呈现新的探索成果",
+          "startSeconds": 4.2,
+          "endSeconds": 5.5,
+          "motion": "带噪声的蚀边打开，碎片向同一风向卷走。",
+          "settleState": "停止绘制，保留已解锁地图。"
+        }
+      ],
+      "sound": "沿用既有打卡声音。",
+      "transitionOut": "保持原镜头位置，地标成为接下来的交互点。"
+    },
+    {
+      "id": "read",
+      "startSeconds": 7,
+      "endSeconds": 12,
+      "reasonToExist": "让查看景点与收藏像取一张手记。",
+      "viewerGains": "首开按下就能进入，阅读后仍回到同一个地方。",
+      "emotionBefore": 36,
+      "emotionAfter": 51,
+      "layers": [
+        {
+          "id": "map",
+          "depth": "far",
+          "role": "弹窗下的地图",
+          "assetId": "map",
+          "origin": "original-illustration",
+          "moving": false
+        },
+        {
+          "id": "corners",
+          "depth": "ui",
+          "role": "套方纹与内容",
+          "assetId": null,
+          "origin": "effect",
+          "moving": true
+        }
+      ],
+      "motions": [
+        {
+          "actor": "套方纹、图标、文字",
+          "trigger": "点击地标或图鉴",
+          "purpose": "按视觉层级组织阅读",
+          "startSeconds": 7,
+          "endSeconds": 7.8,
+          "motion": "展纸、描四角、图标弧入、题字分拍、内容跟随。",
+          "settleState": "内容可读可用。"
+        },
+        {
+          "actor": "整卷窗",
+          "trigger": "关闭、返回或 Esc",
+          "purpose": "交还地图焦点",
+          "startSeconds": 10.5,
+          "endSeconds": 11.2,
+          "motion": "回收线纹，纸面沿卷轴折合，坠出下沿。",
+          "settleState": "弹层卸载，焦点回到触发处。"
+        }
+      ],
+      "sound": "复用现有按键声，不增加常驻声轨。",
+      "transitionOut": "地图是开合两个方向的共同背景。"
+    }
+  ]
+}

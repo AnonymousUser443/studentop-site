@@ -11,7 +11,7 @@ import { detectPreset, resolveQuality, type QualityPreset, type QualitySpec } fr
 import { DEFAULT_SETTINGS, sanitizeSettings } from '../../../shared/game-settings.mjs';
 export { DEFAULT_SETTINGS, sanitizeSettings } from '../../../shared/game-settings.mjs';
 
-/** 把 qualityPreset 映射到 p5 层仍读取的 quality 字段（向后兼容，不删） */
+/** 把 qualityPreset 映射到兼容旧存档的 quality 字段 */
 const syncLegacyQuality = (s: GameSettings): GameSettings => ({
   ...s,
   quality: s.baseQualityPreset === 'low' ? 'low' : 'high',

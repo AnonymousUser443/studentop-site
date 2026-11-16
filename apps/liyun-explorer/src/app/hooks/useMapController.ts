@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type RefObject } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react';
 import { MAP_HEIGHT, MAP_WIDTH, START_UV } from '../../data';
 import { DISPLAY_LANDMARKS as LANDMARKS } from '../../map/displayLandmarks';
 import { cameraAt, clampCamera, initialCamera, uvToScreen } from '../../map/geometry';
@@ -6,6 +6,7 @@ import { campusLandmarks, distanceMeters, GOOD_ACCURACY_M, headingOnMap, nearest
 import { useCampusLocation } from '../../location/useCampusLocation';
 import type { Landmark, MapCamera, UV, Viewport } from '../../types';
 import { useSettings } from '../stores/useSettings';
+import { createCameraStore } from '../cameraStore';
 
 const zoomLimit = () => useSettings.getState().settings.zoomLimit;
 
@@ -13,10 +14,11 @@ const zoomLimit = () => useSettings.getState().settings.zoomLimit;
 export function useMapController(stage: RefObject<HTMLDivElement | null>, selected: Landmark | null, discoveredIds: string[]) {
   const [viewport, setViewport] = useState<Viewport>({ width: innerWidth, height: innerHeight });
   const viewportRef = useRef(viewport);
-  const [camera, setCamera] = useState<MapCamera>(() => initialCamera(viewport));
+  const [cameraStore] = useState(() => createCameraStore(initialCamera(viewport)));
+  const setCamera = cameraStore.set;
   const frame = useRef<number | undefined>(undefined);
-  const visual = useRef({ uv: { ...START_UV }, camera });
-  const landscape = useRef({ viewport, camera });
+  const visual = useRef({ uv: { ...START_UV }, camera: cameraStore.getSnapshot() });
+  const landscape = useRef({ viewport, camera: cameraStore.getSnapshot() });
   const location = useCampusLocation();
   const [following, setFollowing] = useState(false);
   const cancelMotion = useCallback(() => {
@@ -24,7 +26,7 @@ export function useMapController(stage: RefObject<HTMLDivElement | null>, select
     frame.current = undefined;
   }, []);
   const rememberVisual = useCallback((uv: UV, current: MapCamera) => { visual.current = { uv, camera: current }; }, []);
-  const moveCamera = useCallback((next: MapCamera) => { cancelMotion(); setFollowing(false); setCamera(next); }, [cancelMotion]);
+  const moveCamera = useCallback((next: MapCamera) => { cancelMotion(); setFollowing(false); setCamera(next); }, [cancelMotion, setCamera]);
   const focusPlace = useCallback((id: string) => {
     const place = LANDMARKS.find(item => item.id === id);
     if (place) moveCamera(cameraAt(place.uv, viewportRef.current, visual.current.camera.scale, zoomLimit()));
@@ -43,7 +45,7 @@ export function useMapController(stage: RefObject<HTMLDivElement | null>, select
       else frame.current = undefined;
     };
     frame.current = requestAnimationFrame(step);
-  }, [cancelMotion]);
+  }, [cancelMotion, setCamera]);
 
   useEffect(() => {
     if (!stage.current) return;
@@ -62,37 +64,38 @@ export function useMapController(stage: RefObject<HTMLDivElement | null>, select
     });
     observer.observe(stage.current);
     return () => { observer.disconnect(); cancelMotion(); };
-  }, [stage, cancelMotion]);
+  }, [stage, cancelMotion, setCamera]);
   useEffect(() => {
     const reading = location.state.reading;
     if (!following || location.state.status !== 'tracking' || !reading?.insideImage) return;
     cancelMotion();
     setCamera(current => cameraAt(reading.uv, viewportRef.current, current.scale, zoomLimit()));
-  }, [following, location.state.reading, location.state.status, cancelMotion]);
+  }, [following, location.state.reading, location.state.status, cancelMotion, setCamera]);
   const locate = useCallback(() => {
     location.start(); setFollowing(true);
     const reading = location.state.reading;
     if (location.state.status === 'tracking' && reading?.insideImage) setCamera(current => cameraAt(reading.uv, viewportRef.current, current.scale, zoomLimit()));
-  }, [location.start, location.state]);
+  }, [location.start, location.state, setCamera]);
   const center = useCallback(() => {
     const reading = location.state.reading;
     if (location.state.status === 'tracking' && reading?.insideImage) {
       cancelMotion(); setFollowing(true); setCamera(current => cameraAt(reading.uv, viewportRef.current, current.scale, zoomLimit()));
     } else moveCamera(initialCamera(viewportRef.current));
-  }, [location.state, cancelMotion, moveCamera]);
+  }, [location.state, cancelMotion, moveCamera, setCamera]);
   const resetCamera = useCallback(() => moveCamera(initialCamera(viewportRef.current)), [moveCamera]);
   const stopFollowing = useCallback(() => { cancelMotion(); setFollowing(false); }, [cancelMotion]);
   const stopLocation = useCallback(() => { stopFollowing(); location.stop(); }, [stopFollowing, location.stop]);
   const reading = location.state.reading, freshLocation = location.state.status === 'tracking';
   const headingAngle = freshLocation && reading?.insideImage && reading.accuracy <= GOOD_ACCURACY_M && location.heading.status === 'active' && location.heading.bearing !== null
     ? headingOnMap(reading, location.heading.bearing) : null;
-  let distanceLabel = '';
-  if (reading?.insideImage && freshLocation && reading.accuracy <= GOOD_ACCURACY_M) {
+  const distanceLabel = useMemo(() => {
+    if (!reading?.insideImage || !freshLocation || reading.accuracy > GOOD_ACCURACY_M) return '';
     const target = selected ? campusLandmarks.find(place => place.id === selected.id) : nearestLandmark(reading);
     if (target && !target.isBeacon) {
       const distance = distanceMeters(reading, target);
-      distanceLabel = `${selected ? '所选点位' : '最近点位'}：${discoveredIds.includes(target.id) ? target.name : '未知地标'} · 直线约 ${distance >= 1000 ? `${(distance / 1000).toFixed(1)} 千米` : `${Math.round(distance)} 米`}`;
-    } else if (target?.isBeacon) distanceLabel = '所选信标为虚构玩法点，不提供真实目的地距离';
-  }
-  return { viewport, camera, setCamera, visual, rememberVisual, moveCamera, frameDiscovery, focusPlace, resetCamera, stopFollowing, location, reading, freshLocation, headingAngle, following, locate, center, stopLocation, distanceLabel, portrait: viewport.width <= viewport.height };
+      return `${selected ? '所选点位' : '最近点位'}：${discoveredIds.includes(target.id) ? target.name : '未知地标'} · 直线约 ${distance >= 1000 ? `${(distance / 1000).toFixed(1)} 千米` : `${Math.round(distance)} 米`}`;
+    }
+    return target?.isBeacon ? '所选信标为虚构玩法点，不提供真实目的地距离' : '';
+  }, [reading, freshLocation, selected, discoveredIds]);
+  return { viewport, cameraStore, setCamera, visual, rememberVisual, moveCamera, frameDiscovery, focusPlace, resetCamera, stopFollowing, location, reading, freshLocation, headingAngle, following, locate, center, stopLocation, distanceLabel, portrait: viewport.width <= viewport.height };
 }

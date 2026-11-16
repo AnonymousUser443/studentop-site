@@ -5,19 +5,10 @@
  */
 export type QualityPreset = 'low' | 'high' | 'ultra' | 'custom';
 
-/** Cached fog geometry and sprites; these never scale with device pixel ratio. */
-export const FOG_RENDER = {
-  maxBitmapSide: 2048,
-  padding: 480,
-  feather: 130,
-  textureSide: 512,
-  cloudPuffs: 32,
-} as const;
-
 export interface QualitySpec {
-  /** p5 像素密度 */
+  /** Canvas 像素密度 */
   pixelDensity: number;
-  /** 云雾层帧率 */
+  /** 旧存档兼容字段，不再驱动地图渲染 */
   fogFps: number;
   /** 光效层帧率 */
   lightFps: number;
@@ -25,17 +16,17 @@ export interface QualitySpec {
   leafCount: number;
   /** 微光粒子数量 */
   moteCount: number;
-  /** 分区云纹层数 0=纯色 1=单层 2=叠加湍流 */
+  /** 旧存档兼容字段，不再驱动地图渲染 */
   inkLayers: 0 | 1 | 2;
   /** 面板毛玻璃半径 px，0 = 关闭 */
   backdropBlur: number;
-  /** 墨散解锁保真度 */
+  /** 宣纸揭景细节（沿用旧存档字段名） */
   inkRevealFidelity: 'simple' | 'full';
   /** HUD 呼吸 + 纸面微尘 */
   cssAmbient: boolean;
   /** 阴影层级 */
   dropShadows: 'flat' | 'soft' | 'rich';
-  /** 阴影质量：是否启用 p5 多层光晕 */
+  /** 阴影质量：是否启用多层光晕 */
   glowLayers: 1 | 2 | 3;
 }
 

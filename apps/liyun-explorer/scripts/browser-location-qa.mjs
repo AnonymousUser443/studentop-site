@@ -10,7 +10,7 @@ const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = resolve(root, 'dist');
-const out = resolve(root, 'qa/location');
+const out = resolve(process.env.LIYUN_QA_OUT || resolve(root, 'qa/location'));
 mkdirSync(out, { recursive:true });
 const metadata = JSON.parse(readFileSync(resolve(root,'src/location/data/map.json')));
 const artifact = JSON.parse(readFileSync(resolve(root,'src/location/data/selected_model.json')));
@@ -20,9 +20,11 @@ const nextGps = map.uvToGeo(.35,.50);
 const checks = [];
 const consoleErrors = [];
 let activePage;
+const enterCampus = page => page.getByRole('button',{name:'游客模式 · 进度仅保存在本机',exact:true}).click();
+const mapOnly = process.argv.includes('--map-only');
 const check = (name, value) => { assert.ok(value,name);checks.push(name); };
 const browser = await chromium.launch({ channel:'msedge',headless:true });
-const mime = { '.js':'text/javascript','.css':'text/css','.html':'text/html','.json':'application/json','.webp':'image/webp','.png':'image/png','.woff2':'font/woff2','.mp3':'audio/mpeg' };
+const mime = { '.js':'text/javascript','.css':'text/css','.html':'text/html','.json':'application/json','.webp':'image/webp','.png':'image/png','.woff2':'font/woff2','.mp3':'audio/mpeg','.svg':'image/svg+xml' };
 
 async function open(viewport={width:1440,height:900}, mocked=false, secure=true, legacy=true) {
   const context = await browser.newContext({ viewport, reducedMotion:'reduce',
@@ -30,6 +32,7 @@ async function open(viewport={width:1440,height:900}, mocked=false, secure=true,
   await context.route('**/*', async route => {
     const url = new URL(route.request().url());
     if (url.hostname !== 'campus-location.test') return route.abort();
+    if (url.pathname === '/api/content/published') return route.fulfill({json:{published:null}});
     const path = resolve(dist, '.' + decodeURIComponent(url.pathname === '/' ? '/index.html' : url.pathname));
     if (!path.startsWith(dist+sep) || !existsSync(path)) return route.fulfill({status:404,body:'Not found'});
     return route.fulfill({path,contentType:mime[extname(path)] || 'application/octet-stream'});
@@ -64,7 +67,7 @@ async function open(viewport={width:1440,height:900}, mocked=false, secure=true,
   activePage = page;
   page.on('pageerror',error=>consoleErrors.push(error.message));
   await page.goto('https://campus-location.test/',{waitUntil:'networkidle'});
-  await page.getByRole('button',{name:'进入校园',exact:true}).click();
+  await enterCampus(page);
   return {context,page};
 }
 const marker = page => page.getByTestId('real-location-marker');
@@ -85,18 +88,27 @@ async function emitHeading(page,bearing=35,accuracy=5) {
 const sector = page=>page.getByTestId('heading-sector');
 const checkInButton = page=>page.getByTestId('check-in-button');
 async function selectPlace(page,name) {
-  await page.locator('.utility-nav button').filter({hasText:'收集图鉴'}).click();
+  await page.getByTestId('dock-collection').click();
   await page.locator('.collection-item').filter({hasText:name}).click();
 }
 async function checkInReason(page,reason) { await page.waitForFunction(reason=>document.querySelector('[data-testid=check-in-status]')?.getAttribute('data-reason')===reason,reason); }
 
-try {
+async function checkMapImage(page, pathname) {
+  const displayedMap = await page.locator('.map-base-image').evaluate(async img => {
+    await img.decode();
+    return { src: img.getAttribute('src'), width: img.naturalWidth, height: img.naturalHeight };
+  });
+  check('Uses ' + pathname + ' on the intact calibrated canvas',
+    displayedMap.src === pathname && displayedMap.width === metadata.image.width && displayedMap.height === metadata.image.height);
+}
+
+async function checkLocationAndMap() {
   const {page,context} = await open();
   check('No fake/persisted player marker before GPS authorization',await marker(page).count()===0);
   check('Legacy auto-completed Wencui migrates to zero initial progress',await page.getByTestId('game-stage').getAttribute('data-progress')==='0');
-  check('Migrated save has no discovered or unlocked points',await page.evaluate(()=>{const s=JSON.parse(localStorage.getItem('liyun.exploration.v2'));return s.version===2 && s.discoveredIds.length===0 && s.unlockedRegionIds.length===0;}));
+  check('Migrated save has no discovered or unlocked points',await page.evaluate(()=>{const s=JSON.parse(localStorage.getItem('liyun.exploration.v2'));return s.version===3 && s.discoveredIds.length===0 && s.unlockedRegionIds.length===0;}));
   check('Legacy data and audio settings survive migration',await page.evaluate(()=>JSON.parse(localStorage.getItem('liyun.exploration.v1')).discoveredIds[0]==='wencui' && JSON.parse(localStorage.getItem('liyun.exploration.v2')).settings.music===false));
-  check('Uses exact calibrated full-canvas map',await page.locator('.map-base-image').getAttribute('src')==='/assets/maps/calibrated/campus_no_labels.webp');
+  await checkMapImage(page, '/assets/maps/campus-xuan.webp');
   await page.getByRole('button',{name:'定位到我',exact:true}).click();
   await stateIs(page,'tracking');
   let value=await uv(page);
@@ -108,6 +120,12 @@ try {
   check('Walking updates native geolocation marker',true);
   await page.mouse.move(740,450);await page.mouse.down();await page.mouse.move(800,500,{steps:4});await page.mouse.up();
   check('Panning preserves GPS coordinates',Math.abs((await uv(page)).u-.35)<1e-7);
+  return {page,context};
+}
+
+async function runFullLocationQa() {
+  const {page,context} = await checkLocationAndMap();
+  let value;
   await selectPlace(page,'北湖');await checkInReason(page,'out-of-range');
   check('Far-away landmark cannot be completed by clicking',await checkInButton(page).isDisabled());
   await checkInButton(page).evaluate(button=>button.click());
@@ -125,7 +143,7 @@ try {
   check('Live GPS is not persisted as a user position',!(await page.evaluate(()=>localStorage.getItem('liyun.exploration.v2'))).includes(String(nearBeihu.latitude)));
   await page.getByRole('button',{name:'停止定位',exact:true}).click();await stateIs(page,'stopped');
   check('Stop removes the live marker',await marker(page).count()===0);
-  await page.reload({waitUntil:'networkidle'});await page.getByRole('button',{name:'进入校园',exact:true}).click();
+  await page.reload({waitUntil:'networkidle'});await enterCampus(page);
   check('Reload preserves a validated check-in without adding Wencui',await page.evaluate(()=>JSON.stringify(JSON.parse(localStorage.getItem('liyun.exploration.v2')).discoveredIds)==='["beihu"]'));
   check('Reload does not reuse saved GPS as a fresh fix',await marker(page).count()===0);
   await context.close();
@@ -154,9 +172,11 @@ try {
   await emit(a,wencui,5);await checkInReason(a,'ready');await checkInButton(a).click();
   await a.waitForFunction(()=>JSON.parse(localStorage.getItem('liyun.exploration.v2')).discoveredIds.includes('wencui'));
   check('Wencui is completed only after an actual arrival confirmation',await a.getByTestId('game-stage').getAttribute('data-progress')==='3');
-  await a.locator('.utility-nav button').filter({hasText:'设置'}).click();
+  await a.getByRole('button',{name:'打开旅途菜单',exact:true}).first().click();
+  await a.getByRole('button',{name:/设置/}).first().click();
+  await a.getByRole('tab',{name:'数据',exact:true}).click();
   await a.getByRole('button',{name:'重置探索进度',exact:true}).click();
-  await a.getByRole('button',{name:'确认重新出发',exact:true}).click();
+  await a.locator('.settings-confirm').getByRole('button',{name:'重置探索进度',exact:true}).click();
   check('Reset also returns to zero rather than auto-unlocking Wencui',await a.getByTestId('game-stage').getAttribute('data-progress')==='0');
   await arrival.context.close();
 
@@ -198,7 +218,7 @@ try {
   check('Stale fix clearly marked as last position',await mobile.page.locator('.map-location-label').innerText()==='上次位置');
   await emitHeading(mobile.page);await headingIs(mobile.page,'active');
   check('Fresh heading cannot make a stale position look reliable',await sector(mobile.page).count()===0);
-  await mobile.page.getByRole('button',{name:'定位到我',exact:true}).click();await emit(mobile.page,gps);await stateIs(mobile.page,'tracking');
+  await mobile.page.locator('.location-primary').click();await emit(mobile.page,gps);await stateIs(mobile.page,'tracking');
   await mobile.page.evaluate(()=>{window.__gpsTest.hidden=true;document.dispatchEvent(new Event('visibilitychange'));});await stateIs(mobile.page,'paused');
   await headingIs(mobile.page,'paused');
   check('Background clears active GPS watch',await mobile.page.evaluate(()=>window.__gpsTest.clears.includes(1)));
@@ -257,9 +277,24 @@ try {
   const insecure=await open(undefined,true,false);
   await insecure.page.getByRole('button',{name:'定位到我',exact:true}).click();await stateIs(insecure.page,'error');
   check('Insecure context explains HTTPS requirement',await insecure.page.locator('.location-controls').innerText().then(text=>text.includes('HTTPS')));
+}
+
+try {
+  if (mapOnly) {
+    const {page,context} = await checkLocationAndMap();
+    await page.route('**/maps/campus-xuan.webp', route => route.fulfill({status:404,body:'Simulated missing styled asset'}));
+    await page.reload({waitUntil:'networkidle'});
+    await enterCampus(page);
+    const fallback = '/assets/maps/calibrated/campus_no_labels.webp';
+    await page.waitForFunction(src => document.querySelector('.map-base-image')?.getAttribute('src') === src, fallback);
+    await checkMapImage(page, fallback);
+    await context.close();
+  } else {
+    await runFullLocationQa();
+  }
   check('No browser runtime errors',consoleErrors.length===0);
-  writeFileSync(resolve(out,'report.json'),JSON.stringify({passed:true,simulated_gps:true,field_tested:false,local_server_started:false,checks,consoleErrors},null,2));
-  console.log(JSON.stringify({passed:true,checks:checks.length,simulated_gps:true,field_tested:false,local_server_started:false}));
+  writeFileSync(resolve(out,mapOnly ? 'map-report.json' : 'report.json'),JSON.stringify({passed:true,mapOnly,simulated_gps:true,field_tested:false,local_server_started:false,checks,consoleErrors},null,2));
+  console.log(JSON.stringify({passed:true,mapOnly,checks:checks.length,simulated_gps:true,field_tested:false,local_server_started:false}));
 } catch (error) {
   if (activePage && !activePage.isClosed()) {
     await activePage.screenshot({path:resolve(out,'failure.png')}).catch(()=>{});

@@ -12,6 +12,7 @@ export function useAccountSession({ isolated, suspended = false, replace, messag
   const [syncedToken, setSyncedToken] = useState<string | null>(null);
   const [loginBusy, setLoginBusy] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
+  const [restoring, setRestoring] = useState(() => !isolated && Boolean(readToken()));
   const token = useRef<string | null>(null);
   const lifecycle = useRef(0);
   const localIntent = useRef(0);
@@ -27,16 +28,17 @@ export function useAccountSession({ isolated, suspended = false, replace, messag
     setSyncedToken(null);
     setLoginBusy(false);
     setLoginError(null);
+    setRestoring(false);
     if (!isolated) writeToken(null);
     if (previous && !isolated) await logout(previous).catch(() => undefined);
   }, [isolated, clearPending]);
 
-  const syncRemote = useCallback(async (sessionToken: string, generation: number, intent: number, quiet = false) => {
+  const syncRemote = useCallback(async (sessionToken: string, generation: number, intent: number, quiet = false, signal?: AbortSignal) => {
     try {
-      const progress = await fetchProgress(sessionToken);
+      const progress = await fetchProgress(sessionToken, signal);
       if (lifecycle.current !== generation || token.current !== sessionToken) return false;
       if (progress.state && localIntent.current === intent) replace(progress.state);
-      else if (!progress.state) await writer.current(sessionToken, useExploration.getState().state);
+      else if (!progress.state) await writer.current(sessionToken, useExploration.getState().state, signal);
       if (lifecycle.current !== generation || token.current !== sessionToken) return false;
       setSyncedToken(sessionToken);
       return true;
@@ -50,20 +52,26 @@ export function useAccountSession({ isolated, suspended = false, replace, messag
   useEffect(() => {
     if (isolated) return;
     const sessionToken = readToken();
-    if (!sessionToken) return;
+    if (!sessionToken) { setRestoring(false); return; }
     token.current = sessionToken;
     const generation = ++lifecycle.current, intent = localIntent.current;
+    const request = new AbortController();
+    const timeout = setTimeout(() => request.abort(), 6500);
+    setRestoring(true);
     void (async () => {
       try {
-        const { user } = await fetchMe(sessionToken);
+        const { user } = await fetchMe(sessionToken, request.signal);
         if (lifecycle.current !== generation) return;
-        await syncRemote(sessionToken, generation, intent);
+        await syncRemote(sessionToken, generation, intent, false, request.signal);
         if (lifecycle.current === generation) setAccount(user);
       } catch (error) {
         if (lifecycle.current === generation && isAuthError(error)) void detach();
+      } finally {
+        clearTimeout(timeout);
+        if (lifecycle.current === generation) setRestoring(false);
       }
     })();
-    return () => { lifecycle.current += 1; clearPending(); };
+    return () => { lifecycle.current += 1; clearTimeout(timeout); request.abort(); clearPending(); };
   }, [isolated, syncRemote, detach, clearPending]);
 
   useEffect(() => {
@@ -133,5 +141,5 @@ export function useAccountSession({ isolated, suspended = false, replace, messag
     catch (error) { if (isAuthError(error) && token.current === sessionToken) void detach(); throw error; }
   }, [isolated, clearPending, detach]);
 
-  return { account, loginBusy, loginError, login: handleLogin, detach, persistNow, clearError: () => setLoginError(null) };
+  return { account, restoring, loginBusy, loginError, login: handleLogin, detach, persistNow, clearError: () => setLoginError(null) };
 }

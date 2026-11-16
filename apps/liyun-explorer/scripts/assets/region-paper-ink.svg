@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <g fill="none" stroke="#907343" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+    <g transform="translate(302 602)" opacity=".21">
+      <circle r="41"/><circle r="44" stroke-dasharray="23 4 4 5"/>
+    </g>
+    <path d="M8 41h56c10 0 10-14 0-14H52c-2-13-17-15-24-7-7-4-15 0-16 8H8c-9 0-9 13 0 13Zm11 9h40m-30 6h20" transform="translate(601 136) rotate(-8)" stroke-width="2.3" opacity=".28"/>
+    <path d="M8 41h56c10 0 10-14 0-14H52c-2-13-17-15-24-7-7-4-15 0-16 8H8c-9 0-9 13 0 13Zm11 9h40m-30 6h20" transform="translate(350 699) scale(.87)" stroke-width="2.4" opacity=".24"/>
+    <path d="M8 41h56c10 0 10-14 0-14H52c-2-13-17-15-24-7-7-4-15 0-16 8H8c-9 0-9 13 0 13Zm11 9h40m-30 6h20" transform="translate(864 832) rotate(-6) scale(.74)" stroke-width="2.4" opacity=".21"/>
+    <path d="M-16 4v-21h21v6h10v26H-9V-9H8V8H-2V-2H3 M-20 10h7v9H9" transform="translate(799 392) rotate(45) scale(1.26)" stroke-width="2" opacity=".27"/>
+    <path d="M-16 4v-21h21v6h10v26H-9V-9H8V8H-2V-2H3 M-20 10h7v9H9" transform="translate(123 483) rotate(45) scale(.86)" stroke-width="2.2" opacity=".22"/>
+    <path d="M-16 4v-21h21v6h10v26H-9V-9H8V8H-2V-2H3 M-20 10h7v9H9" transform="translate(633 892) rotate(45) scale(.64)" stroke-width="2.4" opacity=".21"/>
+  </g>
+</svg>

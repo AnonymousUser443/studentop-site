@@ -33,6 +33,30 @@ function withServer(fn, options = {}) {
   });
 }
 
+test('一个学号的排队登录不能阻塞已登录访客的存档读取', async () => {
+  await withServer(async ({ request, store }) => {
+    const login = body => request('/api/auth/login', { method: 'POST', body });
+    const body = { nickname: 'fixture', studentId: 'busy-fixture-id', password: PASSWORD };
+    const signed = await login(body);
+    assert.equal(signed.status, 200);
+    const upsert = store.upsertUser;
+    const entered = Promise.withResolvers();
+    const gate = Promise.withResolvers();
+    store.upsertUser = async args => { entered.resolve(); await gate.promise; return upsert(args); };
+    const active = login(body);
+    try {
+      await entered.promise;
+      const second = await login({ ...body, password: 'another-fixture-password' });
+      assert.equal(second.status, 429);
+      assert.equal(second.headers.get('retry-after'), '1');
+      assert.equal((await request('/api/progress', { token: signed.data.token })).status, 200);
+    } finally {
+      gate.resolve();
+      assert.equal((await active).status, 200);
+    }
+  });
+});
+
 test('登录 → 读我 → 保存进度 → 读回 → 登出', async () => {
   await withServer(async ({ request }) => {
     const login = await request('/api/auth/login', { method: 'POST', body: { nickname: '小理', studentId: '20240001', password: PASSWORD } });

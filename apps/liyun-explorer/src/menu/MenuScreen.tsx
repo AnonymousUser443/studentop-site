@@ -25,7 +25,7 @@ export default function MenuScreen({ open = true, onClose, onNavigate, onLoginPr
         {open && <Dialog.Portal forceMount>
           <Dialog.Overlay forceMount asChild><motion.div className="menu-world-scrim" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={tween.fast} /></Dialog.Overlay>
           <Dialog.Content forceMount asChild {...focus} onEscapeKeyDown={event => { event.stopPropagation(); }}>
-            <motion.section className="menu-screen" initial={reducedMotion ? { opacity: 0 } : { x: '-102%', opacity: 0.5 }} animate={{ x: 0, opacity: 1 }} exit={reducedMotion ? { opacity: 0 } : { x: '-102%', opacity: 0 }} transition={reducedMotion ? tween.tap : tween.page}>
+            <motion.section className="menu-screen" initial={reducedMotion ? { clipPath: 'inset(0 100% 0 0)' } : { x: '-102%' }} animate={reducedMotion ? { clipPath: 'inset(0 0% 0 0)' } : { x: 0 }} exit={reducedMotion ? { clipPath: 'inset(0 100% 0 0)' } : { x: '-102%' }} transition={reducedMotion ? tween.tap : tween.page}>
               <Dialog.Title className="menu-sr-only">旅途菜单</Dialog.Title>
               <Dialog.Description className="menu-sr-only">查看旅途进度，进入图鉴、活动和设置。按 Escape 或点击右侧校园返回。</Dialog.Description>
               <button ref={closeRef} type="button" className="menu-close" aria-label="返回地图" onClick={onClose}><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="m13 9-7 7 7 7M6 16h11a8 8 0 1 1 0 16" transform="translate(0 -4)" /></svg></button>

@@ -1,0 +1,12 @@
+{
+  "asset": "public/assets/regions/xuan-paper.webp",
+  "width": 512,
+  "height": 512,
+  "bytes": 6390,
+  "origin": "built-in ImageGen",
+  "reference": "原神参考图3.png",
+  "referenceUse": "仅颜色与材质参考；不复刻人物、UI、图标或文字，不分发参考原图。",
+  "sourceOutput": "exec-19827c94-a6ad-41e2-8248-10a39ce4c50b.png",
+  "optimization": "ImageMagick, 512 × 512, WebP q84",
+  "prompt": "Create one square, flat, completely opaque PBR-style albedo texture tile of fine warm ivory handmade Chinese xuan paper (rice paper), for a polished original Chinese campus exploration game. The supplied image is a visual style reference ONLY: take the soft warm cream in its layered paper forms against dark jade, and its restraint. Do not reproduce a single character, scene, element, UI, title, lettering, logo, emblem, or silhouette from it. Macro paper fibers should be genuinely believable, very fine nearly translucent straw lint, understated irregular nearly cream-on-cream flecks, matte uncoated surface, no big fibers, crease, edge, frame, vignetting, gradient, shadows, painted texture, landscape or motif. The whole image is the same material with even diffuse light and uniform brightness from edge to edge; ideally seamlessly repeatable. Base color warm ivory around #eee0ba, not yellow or beige brown. Low contrast so it can cover adjoining map regions cleanly and paths can trace the burn later. No marks or burn damage baked into the image, the game animates that separately. Output the new artwork only."
+}

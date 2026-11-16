@@ -1,0 +1,13 @@
+.cover, .sheet { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.burn { position: absolute; pointer-events: none; contain: layout style; }
+.burn canvas, .debris { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.burn canvas { transform: translateZ(0); }
+.fragment {
+  position: absolute;
+  width: var(--fragment);
+  height: calc(var(--fragment) * .67);
+  clip-path: polygon(0 21%, 18% 18%, 54% 0, 78% 20%, 100% 13%, 82% 55%, 69% 100%, 37% 78%, 20% 85%);
+  background: linear-gradient(136deg, #f7dec0 24%, #ddb281 55%, #9e5f41 71%, #643b2b);
+  transform-origin: 40% 45%;
+}
+.fragment:nth-child(3n) { background: linear-gradient(138deg, #ebbb85 18%, #a65f3e 55%, #633727 81%); }

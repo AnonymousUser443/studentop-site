@@ -161,6 +161,8 @@
   animation: hud-gold-breath calc(var(--d-cinema) * 4) var(--e-in-out) infinite;
 }
 @keyframes hud-gold-breath { 0%, 100% { opacity: .08; } 50% { opacity: .48; } }
+/* Don't invalidate the blurred world backdrop from a covered dock. */
+.hud-layer[inert] .hud-dock-button::before, .hud-frame[inert] .hud-dock-button::before { animation-play-state: paused; }
 html[data-ambient='off'] .hud-dock-button::before { display: none; }
 .hud-frame button:disabled { opacity: .42; filter: saturate(.4); cursor: default; }
 .hud-frame button:disabled::before, .hud-frame button:disabled::after { display: none; }

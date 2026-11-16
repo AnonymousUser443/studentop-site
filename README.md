@@ -1,5 +1,7 @@
 # studentop.cn · 集中开发工作区
 
+快速导航：[应用目录](apps/README.md) · [文档索引](docs/README.md) · [验收入口](qa/README.md) · [部署说明](deploy/README.md)。
+
 个人主页是原生 Windows 风格网页桌面，锁屏由同源私密 Node 服务校验；理韵寻踪、校园入场、体素校园与理韵墨苑是四个独立 Vite 应用，另在校园应用中保留原版开场独立入口。交互与安全设计见 [10月28日修订](<docs/REVISION-20261028.md>)；主页、校园与体素的发布见 [发布记录](docs/RELEASE-20261028.md)，理韵定位与账号的后续发布见 [融合发布记录](docs/PR2-LOCATION-RELEASE-20261028.md)。这些是历史发布证据，后续改动仍须重新验收和授权发布。升级范围见 [本地升级计划](docs/UPGRADE-PLAN.md)，团队日常操作见 [贡献指南](CONTRIBUTING.md)。
 
 ## 本地启动（推荐入口）
@@ -59,16 +61,21 @@ node tools/dev-workspace.mjs --site-only
 
 ~~~text
 site/                       静态主页发布源：HTML / CSS / JS / 本地资源
+apps/aidenos-music/          听潮原生音乐窗口、音频运行时与独立后端
 apps/liyun-explorer/         理韵源码与自己的 package-lock
 apps/genshin-start/          校园入场源码与自己的 package-lock
 apps/liangxiang-cloudwalk/   体素校园源码与自己的 package-lock
 apps/liyun-moyuan/           理韵墨苑活动室体素复原与自己的 package-lock
-qa/                         验收脚本；根目录已有 PNG 均为历史截图
-qa/upgrade-20261027/         第一轮历史日志、截图与结果
-qa/revision-20261028/        体素接入前历史证据（服务数量为3，不改写）
+apps/zhuiguang/              追光者互动演讲及其独立服务
+qa/                         公共验收脚本；各轮证据按主题或日期分目录
+qa/archive/legacy-desktop/  从 QA 根目录归档的旧桌面截图
 tools/dev-workspace.mjs      安全本地启动器
 deploy/                     部署脚本与配置；仅由获授权的Lead执行
-docs/UPGRADE-PLAN.md         V2 范围与验收矩阵
+docs/                       架构与发布记录；从 README.md 索引进入
+.local/                     仅本机资料归档（Git 忽略，不参与构建）
+.tmp/                       临时验收、工具中间产物与隔离 worktree
+.release-local/             仅本机发布暂存与操作收据（Git 忽略）
+dist-site/                  可重建的主站发布产物（Git 忽略）
 ~~~
 
 详见 [应用目录说明](apps/README.md)、[主页说明](site/README.md)、[理韵说明](apps/liyun-explorer/README.md)、[校园入场说明](apps/genshin-start/README.md)。迁移前的工作副本不作为当前源码或服务的依据。
@@ -99,7 +106,7 @@ npm --prefix apps/liyun-moyuan run build
 
 | 历史主页 | 历史项目窗口 |
 | --- | --- |
-| ![历史桌面](qa/live-desktop-3.png) | ![历史项目窗口](qa/final-projects-window.png) |
+| ![历史桌面](qa/archive/legacy-desktop/live-desktop-3.png) | ![历史项目窗口](qa/archive/legacy-desktop/final-projects-window.png) |
 
 ## 线上地址（以最近发布记录为依据）
 
