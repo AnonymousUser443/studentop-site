@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "tool": "rpi-site-publish public-entry preflight",
+  "dateAsiaShanghai": "2026-11-16",
+  "passed": 8,
+  "failed": 0,
+  "checks": [
+    { "name": "frpc_service_and_control_connection", "pass": true },
+    { "name": "Pi_to_frp_node_TCP", "pass": true },
+    { "name": "public_DNS_matches_node", "pass": true },
+    { "name": "valid_Lets_Encrypt_certificate_for_main_site", "pass": true },
+    { "name": "main_site_HTTP_200", "pass": true },
+    { "name": "frost_HTTP_200_and_API_health", "pass": true },
+    { "name": "liyun_HTTP_200_and_entry_JS", "pass": true },
+    { "name": "genshin_HTTP_200_and_entry_JS", "pass": true }
+  ],
+  "source": "sanitized summary of .release-local/music-public-preflight.log",
+  "privateValuesIncluded": false
+}
