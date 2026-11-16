@@ -76,7 +76,7 @@ a { color: var(--accent-ink); }
 .avatar-fallback { display: grid; width: 100%; height: 100%; place-items: center; }
 
 /* Desktop icons retain the monitor/folder/start silhouettes, cut from paper. */
-.desktop-icons { top: 10px; left: 10px; gap: 4px; grid-template-rows: repeat(auto-fill, 96px); }
+.desktop-icons { top: 10px; left: 10px; gap: 4px; grid-template-rows: repeat(auto-fill, 108px); }
 .desktop-icon { border-radius: 5px; gap: 5px; }
 .desktop-icon .di-icon { width: 44px; height: 44px; filter: drop-shadow(0 2px 0 rgba(14, 49, 32, .2)) drop-shadow(0 4px 5px rgba(14, 49, 32, .16)); }
 .desktop-icon .di-icon svg { width: 44px; height: 44px; }
@@ -434,7 +434,7 @@ a { color: var(--accent-ink); }
   .notif-btn { display: grid; width: 30px; height: 42px; }
   .taskbar > .tb-show-desktop, .taskbar[data-align="left"] > .tb-show-desktop { grid-area: 1 / 3; width: 8px; min-width: 8px; margin-left: 0; }
   .desktop-icons { top: max(10px, env(safe-area-inset-top)); left: 6px; right: 6px; bottom: calc(var(--taskbar-h) + 8px); max-width: none; padding: 4px; grid-auto-flow: row; grid-template-rows: none; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 6px 0; overflow-y: auto; overscroll-behavior: contain; }
-  .desktop-icon { justify-self: center; width: 84px; height: 90px; }
+  .desktop-icon { justify-self: center; width: 100%; max-width: 88px; height: 106px; }
   .window { top: max(6px, env(safe-area-inset-top)) !important; height: calc(100dvh - var(--taskbar-h) - max(6px, env(safe-area-inset-top)) - 6px) !important; min-height: 0; }
   .window.is-maximized { border-radius: 8px; border: 1px solid var(--gold-line); }
   .caption-btn { width: 40px; }

@@ -129,12 +129,14 @@ export function Dialog({
   onClose,
   wide = false,
   label,
+  className = "",
 }: {
   title: string;
   children: ReactNode;
   onClose: () => void;
   wide?: boolean;
   label?: string;
+  className?: string;
 }) {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -143,7 +145,7 @@ export function Dialog({
     const focusables = () =>
       Array.from(
         node?.querySelectorAll<HTMLElement>(
-          'button:not([disabled]),input:not([disabled]),select:not([disabled]),[tabindex="0"]',
+          'button:not([disabled]),input:not([disabled]),textarea:not([disabled]),select:not([disabled]),[tabindex="0"]',
         ) || [],
       ).filter((x) => !x.hidden);
     const focusTimer = window.setTimeout(() => {
@@ -171,7 +173,7 @@ export function Dialog({
     >
       <m.section
         ref={ref}
-        className={`${s.dialog} ${wide ? s.dialogWide : ""}`}
+        className={`${s.dialog} ${wide ? s.dialogWide : ""} ${className}`}
         role="dialog"
         aria-modal="true"
         aria-label={label || title}
@@ -189,7 +191,7 @@ export function Dialog({
           if (event.key === "Tab") {
             const items = Array.from(
               ref.current?.querySelectorAll<HTMLElement>(
-                'button:not([disabled]),input:not([disabled]),select:not([disabled]),[tabindex="0"]',
+                'button:not([disabled]),input:not([disabled]),textarea:not([disabled]),select:not([disabled]),[tabindex="0"]',
               ) || [],
             ).filter((x) => x.offsetParent !== null);
             if (!items.length) {

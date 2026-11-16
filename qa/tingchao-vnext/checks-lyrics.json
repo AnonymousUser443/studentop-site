@@ -1,0 +1,81 @@
+{
+  "phase": "lyrics",
+  "checks": [
+    {
+      "name": "Tilt renders embedded typography with one audio",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "Tilt inherits day palette",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "reduced motion falls back to readable lyrics",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "closing main window keeps desktop lyrics and pause",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "lock hides overlay and preserves pause",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "reopen retains desktop toggle and unique runtime",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "desktop lyric keyboard movement stays reachable",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "no unhandled errors",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "state": {
+    "audio": [
+      {
+        "duration": 120,
+        "paused": true,
+        "sourceOrigin": "http://127.0.0.1:38963",
+        "time": 8.5
+      }
+    ],
+    "errors": [],
+    "iframes": 0,
+    "locked": false,
+    "root": "light",
+    "snapshot": {
+      "lyrics": 4,
+      "position": 8500,
+      "queue": 8,
+      "status": "paused",
+      "track": "潮生 · 隔离测试音轨"
+    },
+    "url": "http://127.0.0.1:38963/?vnext=1794825553246",
+    "viewport": [
+      1258,
+      727
+    ],
+    "window": {
+      "bottom": 635,
+      "height": 627,
+      "left": 8,
+      "right": 1218,
+      "top": 8,
+      "width": 1210,
+      "x": 8,
+      "y": 8
+    }
+  }
+}

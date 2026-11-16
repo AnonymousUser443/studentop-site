@@ -1,4 +1,6 @@
 import {
+  lazy,
+  Suspense,
   memo,
   useEffect,
   useLayoutEffect,
@@ -15,10 +17,15 @@ import {
   useDocumentVisible,
   shallowEqual,
   formatTime,
+  readStored,
+  writeStored,
 } from "./hooks";
 import { Cover, IconButton } from "./shared";
 import { Icon } from "./icons";
 import s from "./music.module.css";
+
+const FoliaStage = lazy(() => import("../lyrics/FoliaStage"));
+const TiltStage = lazy(() => import("../lyrics/TiltStage"));
 
 function currentLine(lines: LyricLine[], position: number) {
   let low = 0,
@@ -60,7 +67,13 @@ export function Immersive({
     active,
   );
   const [translation, setTranslation] = useState(true),
-    [offset, setOffset] = useState(0);
+    [offset, setOffset] = useState(0),
+    [mode, setMode] = useState<"scroll" | "performance" | "tilt">(() => {
+      const saved = readStored<string>("tingchao.lyric-mode", "scroll");
+      return saved === "performance" || saved === "tilt" ? saved : "scroll";
+    });
+  const performanceMode = mode === "performance" && !reduced && Boolean(state.lyrics?.lines.length);
+  const fallback = <LyricScroll runtime={runtime} translation={translation} offset={offset} reduced={reduced} active={active} />;
   useLayoutEffect(() => {
     if (!active || reduced || !root.current) return;
     const context = gsap.context(() => {
@@ -141,7 +154,8 @@ export function Immersive({
   return (
     <m.div
       ref={root}
-      className={s.immersive}
+      className={`${s.immersive} ${performanceMode ? s.performance : ""}`}
+      data-lyric-mode={!reduced && state.lyrics?.lines.length ? mode : "scroll"}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -179,6 +193,15 @@ export function Immersive({
         </button>
         <span className={s.eyebrow}>LET THE MUSIC FIND YOU</span>
         <div className={s.lyricTools}>
+          <div className={s.lyricModes} role="group" aria-label="歌词呈现方式">
+            {([['scroll', '随行'], ['performance', '演出'], ['tilt', '错落']] as const).map(([value, label]) => (
+              <button type="button" key={value} aria-pressed={mode === value}
+                title={value === "performance" ? "潮汐演出 · Folia Sonnet" : value === "tilt" ? "错落排字 · Folia Tilt" : "随行逐字歌词"}
+                onClick={() => { setMode(value); writeStored("tingchao.lyric-mode", value); }}>
+                {label}
+              </button>
+            ))}
+          </div>
           <button
             type="button"
             className={`${s.translationToggle} ${translation ? s.toggleActive : ""}`}
@@ -235,19 +258,29 @@ export function Immersive({
           </div>
         </section>
         <div className={s.lyricStage} data-lyric-stage>
-          <LyricScroll
-            runtime={runtime}
-            translation={translation}
-            offset={offset}
-            reduced={reduced}
-            active={active}
-          />
+          {mode === "tilt" && !reduced && state.lyrics?.lines.length ? (
+            <Suspense fallback={fallback}><TiltStage runtime={runtime} translation={translation} offset={offset} active={active} appearance={host.theme()} fallback={fallback} /></Suspense>
+          ) : performanceMode ? (
+            <Suspense fallback={fallback}>
+              <FoliaStage runtime={runtime} translation={translation} offset={offset}
+                active={active} appearance={host.theme()} fallback={fallback} />
+            </Suspense>
+          ) : fallback}
         </div>
       </div>
       <div className={s.immersiveFoot}>
         <span className={s.tideLine} />
-        <span>声音抵达的地方，自有回响。</span>
+        <span>{mode !== "scroll" && reduced ? "已按减少动态效果使用随行歌词" : "声音抵达的地方，自有回响。"}</span>
         <span className={s.tideLine} />
+        <details className={s.lyricCredits}>
+          <summary>歌词引擎</summary>
+          <div>
+            <strong>潮汐演出 / 错落排字 × Folia Sonnet / Tilt</strong>
+            <p>Folia contributors · AGPL-3.0。听潮适配昼夜主题、播放时钟与窗口生命周期。</p>
+            <a href="https://github.com/chthollyphile/folia-major/tree/1f73b512e27ea640a045451c8af7ef2082264788" target="_blank" rel="noreferrer">上游源码与许可</a>
+            <span>听潮对应源码：studentop-site / apps/aidenos-music；许可见仓库 LICENSE。</span>
+          </div>
+        </details>
       </div>
     </m.div>
   );

@@ -37,3 +37,24 @@ node apps/aidenos-music/server/guest-smoke.mjs
 2026-11-16：隔离测试 10 项及 Service Adapter 7 项通过；真实游客首页、搜索、歌词和播放解析通过。扫码实际授权与真实个人歌单写入仍需由用户在听潮中操作验收。
 
 服务在 IPC 模式下发出 `{type:'ready',id:'music',port}`，接受 `{type:'shutdown'}` 并在父进程断开时清理自身；独立 systemd 模式使用 SIGTERM 停止。
+
+## 云盘、评论与心动模式
+
+本轮核验固定官方标签 `v4.41.1`（提交 `2db6684453297ee86dec0492842f2320b08182d9`）的模块源码及随包 `public/docs/home.md`，没有升级 SDK。
+
+| 同源接口 | 固定 SDK 能力 | 边界 |
+| --- | --- | --- |
+| `GET cloud?offset=` | `user_cloud` | 音乐账号登录后读取，每页 50 首，归一化为 `Track` |
+| `GET comments/:trackId?offset=&before=` | `comment_music` | 每页 20 条；首屏附热评，5000 条后改用上一页时间游标 |
+| `POST comments/:trackId/like` | `comment_like` | 只允许歌曲资源 `type:0`，白名单字段为 `commentId`、`liked` |
+| `POST comments/:trackId` | `comment` | 只允许发送或回复，白名单字段为 `content`、可选 `replyTo`，1–500 字 |
+| `GET heart-mode?trackId=&playlistId=` | `playmode_intelligence_list` | 仅使用官方种子／歌单上下文获取最多 30 首歌曲 |
+| `GET library` | `user_playlist`、`user_playlist_create`、`likelist` | 只向 SDK 传会话所属账号 uid，合并本人创建列表中公开列表缺失的私密歌单 |
+
+上述接口仍由桌面网关验证解锁状态，写入还必须通过桌面 CSRF；锁屏播放租约不能读取或修改这些内容。评论写入只会在 UI 显式调用方法时发出，服务和 Adapter 不自动重试。评论正文按文本返回，不透传上游账号字段。点赞刷新读缓存并保留分页游标；发送评论和账号变化清除游标。时间游标仅驻留浏览器内存，直接跳入深页或刷新后需从前一页继续。
+
+云盘上传条目缺少匹配信息时回退上传歌曲 ID 与有限元数据，播放继续走既有官方地址解析；`unknown` 状态不代表保证可播。心动模式不推断官方未公开的推荐算法。音乐库最多读取每个来源 20 页，每页 100 项，无法完整读取时返回错误，避免静默丢失或重复私密歌单。
+
+核验来源：官方标签下的 [云盘](https://github.com/NeteaseCloudMusicApiEnhanced/api-enhanced/blob/v4.41.1/module/user_cloud.js)、[创建歌单列表](https://github.com/NeteaseCloudMusicApiEnhanced/api-enhanced/blob/v4.41.1/module/user_playlist_create.js)、[歌曲评论](https://github.com/NeteaseCloudMusicApiEnhanced/api-enhanced/blob/v4.41.1/module/comment_music.js)、[评论点赞](https://github.com/NeteaseCloudMusicApiEnhanced/api-enhanced/blob/v4.41.1/module/comment_like.js)、[发送与回复](https://github.com/NeteaseCloudMusicApiEnhanced/api-enhanced/blob/v4.41.1/module/comment.js)、[心动模式](https://github.com/NeteaseCloudMusicApiEnhanced/api-enhanced/blob/v4.41.1/module/playmode_intelligence_list.js)。`sdk-contract.test.mjs` 实际加载这些固定模块并以录制 transport 校验请求，不连接上游。
+
+本轮隔离测试覆盖云盘和账号边界、评论读写白名单及深分页、私密歌单合并／分页、心动上下文、业务失败以及禁止自动重发。真实云盘可播性、真实账号的私密歌单返回与评论权限仍由用户在 UI 中操作验收；本轮不执行真实账号写入。

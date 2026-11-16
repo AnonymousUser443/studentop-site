@@ -1,0 +1,23 @@
+{
+  "scene": "jade-tide-browse-and-type",
+  "palette": {"nightBase":"#153A30","day":"existing warm paper and jade tokens"},
+  "layers": [
+    {"name":"far","source":"existing original day/night sea illustrations","motion":"existing GSAP entry and parallax; stopped while hidden"},
+    {"name":"subject","source":"album art, page heading or lyric typography","motion":"subject at 0ms, identity at 80ms, navigation at 110–160ms"},
+    {"name":"content","source":"track rows, playlist grids, queue and comments","motion":"viewport intersection; nonlinear bounded stagger; shared Motion adapter"},
+    {"name":"lyric-subject","source":"pinned Folia Tilt core","motion":"seeded segmentation and alternating character placement, current-line-only React updates"},
+    {"name":"overlay","source":"desktop lyrics and dialog/menu controls","motion":"lyrics pause visual subscription when hidden and yield to dialogs or quality menu"}
+  ],
+  "states": {
+    "enter":"artwork/heading, then secondary navigation, then visible content",
+    "scroll":"animate only newly visible unseen items; overscan stays pending",
+    "virtual-remount":"stable identity prevents replay and bounds the history cache",
+    "pause":"audio state unchanged; stop continuous lyric clock",
+    "hidden":"cancel visual observers, Motion animations, lyric RAF and subscriptions",
+    "reduce-motion":"render complete content immediately and use readable scroll lyrics",
+    "dialog":"fixed dialog title and pagination, independent comment scrolling; temporarily hide desktop lyrics",
+    "close-window":"remove main view; retain audio and optional desktop lyric surface",
+    "lock":"retain playback/pause; hide desktop lyrics; use compact lock media card"
+  },
+  "safeAreas":{"desktop":"quality menu constrained to native window; desktop lyrics default above mini player","narrow":"responsive drawer, larger fixed-height rows, accessible compact quality trigger"}
+}

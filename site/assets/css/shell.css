@@ -212,15 +212,15 @@ svg { display: block; }
   bottom: calc(var(--taskbar-h) + 4px);
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(auto-fill, 96px);
+  grid-template-rows: repeat(auto-fill, 108px);
   align-content: start;
   padding: 6px;
   gap: 0;
   max-width: 60vw;
 }
 .desktop-icon {
-  width: 88px;
-  height: 94px;
+  width: 94px;
+  height: 106px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -238,6 +238,7 @@ svg { display: block; }
 .desktop-icon.is-selected { background: rgba(255, 255, 255, 0.18); border-color: rgba(255, 255, 255, 0.34); }
 .desktop-icon.is-selected:hover { background: rgba(255, 255, 255, 0.22); }
 .desktop-icon .di-icon {
+  flex: none;
   width: 42px;
   height: 42px;
   display: grid;
@@ -261,7 +262,9 @@ svg { display: block; }
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 .desktop-icon .di-label {
-  max-width: 84px;
+  flex: 0 0 auto;
+  min-width: 0;
+  max-width: 100%;
   font-size: 12px;
   line-height: 1.3;
   text-align: center;
@@ -1006,7 +1009,7 @@ svg { display: block; }
   .desktop-icons {
     grid-auto-flow: row;
     grid-template-rows: none;
-    grid-template-columns: repeat(auto-fill, 86px);
+    grid-template-columns: repeat(auto-fill, 94px);
     align-content: start;
     max-width: 100vw;
   }
@@ -1045,8 +1048,8 @@ svg { display: block; }
   .lock-tip { bottom: 36px; }
 }
 @media (max-width: 520px) {
-  .desktop-icon { width: 78px; height: 88px; }
-  .desktop-icons { grid-template-rows: repeat(auto-fill, 88px); }
+  .desktop-icon { width: 84px; height: 106px; }
+  .desktop-icons { grid-template-rows: repeat(auto-fill, 108px); }
   .start-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .tb-center .tb-btn[data-hide-sm] { display: none; }
 }

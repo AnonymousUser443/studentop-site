@@ -11,6 +11,9 @@ import type {
   AlbumDetail,
   ArtistDetail,
   LibraryData,
+  Page,
+  Track,
+  CommentPage,
   Playlist,
   RawLyrics,
   Quality,
@@ -60,7 +63,8 @@ export function createMusicService(options: ServiceOptions = {}): MusicService {
   const fetcher = options.fetcher ?? globalThis.fetch.bind(globalThis),
     now = options.now ?? Date.now;
   const cache = new Map<string, { value: unknown; expiresAt: number }>(),
-    pending = new Map<string, Pending>();
+    pending = new Map<string, Pending>(),
+    commentCursors = new Map<string, number>();
   let generation = 0,
     accountId: string | null = null,
     lease: Lease | null = null,
@@ -78,11 +82,15 @@ export function createMusicService(options: ServiceOptions = {}): MusicService {
     lease = null;
     accountId = id;
   };
-  function invalidate() {
+  function invalidateReads(preserveCommentCursors = false) {
     generation += 1;
     cache.clear();
+    if (!preserveCommentCursors) commentCursors.clear();
     for (const item of pending.values()) item.controller.abort();
     pending.clear();
+  }
+  function invalidate() {
+    invalidateReads();
   }
   async function response<T>(path: string, init: RequestInit): Promise<T> {
     let result: Response;
@@ -135,6 +143,7 @@ export function createMusicService(options: ServiceOptions = {}): MusicService {
         lease = null;
         generation += 1;
         cache.clear();
+        commentCursors.clear();
       }
       const fallback =
         code === "authentication_required"
@@ -283,6 +292,22 @@ export function createMusicService(options: ServiceOptions = {}): MusicService {
     changeAccount(value.authenticated ? value.user!.id : null);
     return value;
   }
+  function numericId(value: string): string {
+    if (typeof value !== "string" || !/^[1-9][0-9]{0,19}$/.test(value))
+      throw new MusicError("invalid_request", "音乐内容标识不正确。");
+    return value;
+  }
+  function validOffset(value: number): number {
+    if (!Number.isSafeInteger(value) || value < 0 || value > 1000000)
+      throw new MusicError("invalid_request", "分页位置不正确。");
+    return value;
+  }
+  function commentContent(value: string): string {
+    const content = typeof value === "string" ? value.replace(/\r\n?/g, "\n").trim() : "";
+    if (!content || [...content].length > 500 || /[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/.test(content))
+      throw new MusicError("invalid_request", "评论需为 1–500 字，请检查后再发送。");
+    return content;
+  }
   return {
     async session(signal) {
       return validSession(await read<MusicSession>("session", signal));
@@ -346,6 +371,47 @@ export function createMusicService(options: ServiceOptions = {}): MusicService {
     },
     library(signal) {
       return read<LibraryData>("library", signal, 15000);
+    },
+    cloud(offset = 0, signal) {
+      return read<Page<Track>>("cloud?offset=" + validOffset(offset), signal, 15000);
+    },
+    async comments(trackId, offset = 0, signal) {
+      const id = numericId(trackId), pageOffset = validOffset(offset),
+        cursor = commentCursors.get(id + ":" + pageOffset),
+        started = generation;
+      if (pageOffset >= 5000 && !cursor)
+        throw new MusicError("invalid_request", "请从上一页继续查看更早的评论。");
+      const query = new URLSearchParams({ offset: String(pageOffset) });
+      if (pageOffset >= 5000) query.set("before", String(cursor));
+      const value = await read<CommentPage>("comments/" + id + "?" + query, signal, 10000);
+      if (started !== generation) throw aborted();
+      if (!value || value.trackId !== id || value.offset !== pageOffset || value.limit !== 20 ||
+        !Array.isArray(value.items) || !Array.isArray(value.hot) ||
+        !(value.nextBefore === null || (Number.isSafeInteger(value.nextBefore) && value.nextBefore > 0)))
+        return rejectInvalid();
+      if (value.hasMore && value.nextBefore !== null) {
+        commentCursors.set(id + ":" + (pageOffset + value.limit), value.nextBefore);
+        while (commentCursors.size > 1024) commentCursors.delete(commentCursors.keys().next().value!);
+      }
+      return value;
+    },
+    async setCommentLike(trackId, commentId, liked) {
+      const id = numericId(trackId), cid = numericId(commentId);
+      if (typeof liked !== "boolean") throw new MusicError("invalid_request", "评论点赞状态不正确。");
+      await write("comments/" + id + "/like", { commentId: cid, liked }, "POST", undefined, false);
+      // Liking does not reorder latest comments; keep the page-time cursor while refreshing liked state.
+      invalidateReads(true);
+    },
+    async sendComment(trackId, content, replyTo) {
+      const id = numericId(trackId), body = {
+        content: commentContent(content),
+        ...(replyTo === undefined ? {} : { replyTo: numericId(replyTo) }),
+      };
+      await write("comments/" + id, body);
+    },
+    heartMode(trackId, playlistId, signal) {
+      const query = new URLSearchParams({ trackId: numericId(trackId), playlistId: numericId(playlistId) });
+      return read<Track[]>("heart-mode?" + query, signal);
     },
     async setLike(trackId, liked) {
       await write("likes", { trackId, liked });

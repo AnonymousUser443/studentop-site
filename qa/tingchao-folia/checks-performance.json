@@ -1,0 +1,51 @@
+{
+  "phase": "performance",
+  "checks": [
+    {
+      "name": "active lyrics produce real WebGL draw calls",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "paused Sonnet stops continuous GPU rendering",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "inspection": {
+    "audio": [
+      {
+        "duration": 120,
+        "paused": true,
+        "sourceOrigin": "http://127.0.0.1:25231",
+        "time": 4.69976
+      }
+    ],
+    "errors": [],
+    "iframes": 0,
+    "locked": false,
+    "root": "light",
+    "snapshot": {
+      "lyrics": 4,
+      "position": 4699.76,
+      "queue": 8,
+      "status": "paused",
+      "track": "潮生 · 隔离测试音轨"
+    },
+    "url": "http://127.0.0.1:25231/?foliaQa=1794818780335",
+    "viewport": [
+      1258,
+      727
+    ],
+    "window": {
+      "bottom": 675,
+      "height": 675,
+      "left": 0,
+      "right": 1258,
+      "top": 0,
+      "width": 1258,
+      "x": 0,
+      "y": 0
+    }
+  }
+}

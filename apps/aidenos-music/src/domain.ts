@@ -89,6 +89,26 @@ export interface LibraryData {
   likedIds: string[];
   likedPlaylistId: string | null;
 }
+export interface CommentReply {
+  id: string | null;
+  user: MusicUser;
+  content: string;
+}
+export interface TrackComment {
+  id: string;
+  user: MusicUser;
+  content: string;
+  createdAt: number;
+  liked: boolean;
+  likeCount: number;
+  replies: CommentReply[];
+}
+export interface CommentPage extends Page<TrackComment> {
+  trackId: string;
+  hot: TrackComment[];
+  /** Time cursor for sequential pages beyond the upstream 5,000-comment offset window. */
+  nextBefore: number | null;
+}
 export interface MusicSession {
   authenticated: boolean;
   user: MusicUser | null;
@@ -176,6 +196,27 @@ export interface MusicService {
   album(id: string, signal?: AbortSignal): Promise<AlbumDetail>;
   artist(id: string, signal?: AbortSignal): Promise<ArtistDetail>;
   library(signal?: AbortSignal): Promise<LibraryData>;
+  cloud(offset?: number, signal?: AbortSignal): Promise<Page<Track>>;
+  comments(
+    trackId: string,
+    offset?: number,
+    signal?: AbortSignal,
+  ): Promise<CommentPage>;
+  setCommentLike(
+    trackId: string,
+    commentId: string,
+    liked: boolean,
+  ): Promise<void>;
+  sendComment(
+    trackId: string,
+    content: string,
+    replyTo?: string,
+  ): Promise<void>;
+  heartMode(
+    trackId: string,
+    playlistId: string,
+    signal?: AbortSignal,
+  ): Promise<Track[]>;
   setLike(trackId: string, liked: boolean): Promise<void>;
   createPlaylist(
     name: string,
@@ -243,6 +284,10 @@ export interface MusicHost {
   setThemeMode(mode: "auto" | "light" | "dark"): void;
   isLocked(): boolean;
   reducedMotion(): boolean;
+  desktopLyricsEnabled?(): boolean;
+  setDesktopLyricsEnabled?(value: boolean): void;
+  setDesktopLyricsSuppressed?(reason: "dialog" | "quality" | "immersive", value: boolean): void;
+  mountWindowControls?(container: HTMLElement): () => void;
   openMain(): void;
   setTitle(title: string): void;
   notify(message: string): void;

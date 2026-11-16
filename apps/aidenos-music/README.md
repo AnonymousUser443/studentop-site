@@ -4,6 +4,8 @@
 
 界面提供首页、四类搜索、歌单／专辑／歌手详情、个人音乐库、播放队列、逐字歌词、悬浮迷你播放器和锁屏媒体卡。日光、夜航均有原创分层插画，也可跟随桌面外观。真实账号通过网易云 App 扫码连接，各浏览器独立。支持喜欢歌曲、普通／私密歌单创建和本人歌单曲目增删。
 
+沉浸歌词可切换“随行／演出”。“潮汐演出”移植 Folia Sonnet 的文字 PV 渲染，按需加载 PixiJS，并直接使用听潮的昼夜配色和既有字库。小窗口、减少动态效果、WebGL 初始化失败或上下文丢失时回到随行歌词；隐藏时释放画布，暂停时停止连续 GPU 绘制。首版不包含上游模型节拍分析、主题库和账号播放器。来源、适配边界与许可见 [THIRD_PARTY.md](THIRD_PARTY.md) 和[迁移记录](../../docs/tingchao-folia/QA.md)。
+
 ## 本地开发
 
 使用 Node.js 24，从仓库根目录运行：
@@ -48,3 +50,5 @@ node --test qa/music-proxy-tests.mjs qa/music-workspace-tests.mjs qa/music-relea
 发布须遵守仓库部署授权与 `rpi-site-publish` 流程。专用 prepare/apply 脚本打包主页、认证网关与音乐服务，检查已审查提交、双层哈希和线上基线，持有共享发布锁后原子切换。树莓派在本机生成私有密钥；失败恢复原指针、配置及服务。音乐 SDK 只监听回环，无新增域名。
 
 字体清单与 Noto 许可、原创素材清单分别位于 `docs/tingchao/font-manifest.json`、`site/assets/fonts/OFL-Noto*.txt` 和 `docs/tingchao/asset-manifest.json`。动态中文通过 unicode-range 分片加载。
+
+下一版包含云盘歌曲读取、歌曲评论与点赞回复、本人私密歌单、官方心动歌单、可选桌面歌词，以及 Folia Sonnet / Tilt 歌词呈现。列表入场共用 `ListEntrance`，按滚动可见范围触发，虚拟列表保持稳定行高；夜间基色为 `#153A30`。云盘暂不提供上传或删除。桌面歌词位于 AidenOS 浏览器桌面内。实施和实际验收记录见 `docs/tingchao-vnext/`。

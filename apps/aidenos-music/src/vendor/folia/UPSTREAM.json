@@ -1,0 +1,484 @@
+{
+  "repository": "https://github.com/chthollyphile/folia-major",
+  "revision": "1f73b512e27ea640a045451c8af7ef2082264788",
+  "license": "AGPL-3.0-only",
+  "files": [
+    {
+      "path": "src/components/visualizer/colorMix.ts",
+      "sha256": "4299d90fed4be18474e5f63c3ad8b6ca1cdc841a1ef334e717135546ecd148bb",
+      "modified": false,
+      "portedSha256": "e2f65f2c1e53e9e57d8c26e0a82d9ba606e0b36ea785bc8136b1fa1378570545"
+    },
+    {
+      "path": "src/components/visualizer/pixi/loadPixi.ts",
+      "sha256": "073a5283c7f013216aba65886edd351a1f18628a4c5c1c24e6e81f8834d22900",
+      "modified": false,
+      "portedSha256": "bc820ff4f643f748e805a716e25cc148d6706b0066060e6caeb9908411ec39ac"
+    },
+    {
+      "path": "src/components/visualizer/pixi/pixiDisplayResources.ts",
+      "sha256": "37d102244a5ad2301fa0dd34f9298f40640734f87eef0d4b190acfe82eb87d3b",
+      "modified": false,
+      "portedSha256": "627e3ebeb50dfb68227d40f10b6e340f4a93507988329adddf8279d8580df3be"
+    },
+    {
+      "path": "src/components/visualizer/pixi/pixiFilterPoolCompat.ts",
+      "sha256": "55e9bd58fd1ae43825d50794ff16733d9a888861535e20dfd52b2ed739bc699c",
+      "modified": false,
+      "portedSha256": "0d8843e4beea224bbba4b527a245ceee17a6d366823338b1d4b1b3465447a680"
+    },
+    {
+      "path": "src/components/visualizer/pixi/pixiProgramLinks.ts",
+      "sha256": "fb856017fbb55f877111556f70dbe32f36d4e1d4810edb5eaa9f1346a6a3e8a0",
+      "modified": false,
+      "portedSha256": "1147362ee44f0d57d5d36b5e43d40106d523426a2f296cc50c975b409dff8f3e"
+    },
+    {
+      "path": "src/components/visualizer/pixi/pixiTextureBudget.ts",
+      "sha256": "65c493390ee9061feb8833ee68f58ece98d60cc40aaebbebcd396b16d860e471",
+      "modified": false,
+      "portedSha256": "c77f0acc235f437ab11e21162cb9788c6f4eecf20744e470a0a315d8feaec54e"
+    },
+    {
+      "path": "src/components/visualizer/pixi/pixiWebGLContext.ts",
+      "sha256": "245fd6144b662a65eea340f4ce9ad3431c07100a32bde675585b17417cbc3b75",
+      "modified": false,
+      "portedSha256": "f34ae65f6db26f8d100ad93ba48804b6369b378d5147eddcafe9c42ecfdb1533"
+    },
+    {
+      "path": "src/components/visualizer/pixiFilterVertex.ts",
+      "sha256": "62e5153c73c290fc9431189ac05317ee040726f6901507d57e7f85a41b29e727",
+      "modified": false,
+      "portedSha256": "0f2353fa7f6081bafb7d2a07b634ca33abcb29bf4b31ffda7cb5ea766b3d4865"
+    },
+    {
+      "path": "src/components/visualizer/pixiSceneCache.ts",
+      "sha256": "c4f1730bd3367781573b2e8015295778a37e140c579966f1b17c426d6a155ac0",
+      "modified": false,
+      "portedSha256": "dc8e037cc87d6c3a77d995dbd5dd0d451128be644dfade61085b9d9e5e9b7934"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/createSonnetPixiRuntime.ts",
+      "sha256": "956b379ec8e33a4a4668a3be5012724ba5ab3cf4421d145744360d378493896b",
+      "modified": true,
+      "portedSha256": "03c0de319384f562e294e4482cf7e8a8a80d57fb343186d613450cfe6340be2c"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetAdditionalShotMg.ts",
+      "sha256": "950518fa877b0546c6d8b0e5f3e3683e1bc8d39e9da1e1c09cc233e52af018e0",
+      "modified": false,
+      "portedSha256": "f12edca3315e171ad112c69ad41fa8aa01d104be4ec678bbed515f8ef27f99a6"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetAnimatedGraphics.ts",
+      "sha256": "10cada7b750c80f3ad8d365c67ae1b77d695ea121fce8fa2e9b5e6831cbc7145",
+      "modified": false,
+      "portedSha256": "44419d9d4f22985bbf6a681cc2323213f0175c6398d7eeb189e536a75dbf7795"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetBackgroundDecor.ts",
+      "sha256": "20fb6fc7df5cd4174df37aae57bb14724b1b939d9a2c46e82de245c9fb11a6f5",
+      "modified": false,
+      "portedSha256": "3bb8e40888d591e80843f66fa8195cb5598bebb07f076a019dff047fe5bcdeeb"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetBackgroundMgVariants.ts",
+      "sha256": "fc5fdc08c4462924fb77001c32a9a0dd596b5e08aa63b9c2feb0753d05051240",
+      "modified": false,
+      "portedSha256": "e69cc13c6e99f29b149d5bf8aa33f1009b18cfa448884ee3012736387d19561b"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetBeatFx.ts",
+      "sha256": "639fff1e0469c9e40991b9b29d05d32740520b29a96f1ba4c8ed8cfc41e1ec5b",
+      "modified": false,
+      "portedSha256": "72b9f4d5448243f5d2d4d160978ef6cffdbd7582f44facd15df0b19328d6c57a"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetCameraTracking.ts",
+      "sha256": "a461a102987fde096e3fa9fcf0cab8900f411f46a4624c0555650403ddb3e90e",
+      "modified": false,
+      "portedSha256": "cba02eab43754d0992ba5d6a31b8ee9bff6dd62c007c819cbe790323beb38c00"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetCredits.ts",
+      "sha256": "786f25359426db09f18aea1fbcae9bb9465d0c65b5722e2db747083d0eca84c3",
+      "modified": false,
+      "portedSha256": "db2c58f9bcad3758fbaef429aceb74e257daa49ee3116b6aee3ccaed855c0ff7"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetDebug.ts",
+      "sha256": "f81c253c779bd5f7e7d1833281ee559711b6aa6f6ee985318c75679726367f57",
+      "modified": false,
+      "portedSha256": "9f8b54e8991e3ef03d1af08034d611279d28637054638863caaa52bc3042eceb"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetExtendedShotMg.ts",
+      "sha256": "1568cf8accb66f51b09d631b88083f34779e410c8d90b3564443315d3f758045",
+      "modified": false,
+      "portedSha256": "eb196751baaa4ed69acd1a668121d0918cd61e4402fd8134046354b6d20f3a36"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetFixedGeoVariants.ts",
+      "sha256": "b1502252de38d537867e0cde74c96a7917a9c710f0aab2d608c85fae423a64d0",
+      "modified": false,
+      "portedSha256": "499fe8b98c86da49da14253bca3971b7622dabf28253e4daeb63959396f74a61"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetFrameDecor.ts",
+      "sha256": "a29e58bb880908bd8dd85e6dc6c42e5deea529ce213820183ff44b604df4c7de",
+      "modified": false,
+      "portedSha256": "9ee058b3733a7f3e4e4c3aa01757452d2c226ebffc4b5eb4a79eeee0134bbf77"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetFrameOverlay.ts",
+      "sha256": "d066b926f8937ae5043ee2ab91c518e40282364c60a67b8bccc1896bac3b001c",
+      "modified": false,
+      "portedSha256": "c2009dac49c8e9c17a4c65ad90e5273ac642f77fbed5f19c1d8e44608ed5c7f9"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetGlitchFilter.ts",
+      "sha256": "f5262868ef58733238a6fbf765b1afead7ec06148c3b15dab5c373346b9c55c5",
+      "modified": false,
+      "portedSha256": "58d64dfa74e011998db4d1aa8bf684c3e7405bbe880cfe07ab049cbbe3370d6d"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetGlyphLayout.ts",
+      "sha256": "c6737255202dbd2d51537e7b930b9f57fa706d6279357ebdb03a2be20f1a12e8",
+      "modified": false,
+      "portedSha256": "60aee0100328a1539306c2e188ab117d5b4289374d0d8f7a5ff1621f2787d174"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetGuides.ts",
+      "sha256": "af8b3625b7ae4be91f405dedefcac1b981d68ce86834d9bdcad24b60ac8f3065",
+      "modified": false,
+      "portedSha256": "9b6b3ccb370166138c0a90522491c645109c04c9a0e754d67d11995f26433971"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetIconTextures.ts",
+      "sha256": "2efaa6d4ed3793612f74593af4cf4e39b7fbe6e02128c80852c8fcf83523a8d8",
+      "modified": false,
+      "portedSha256": "f23016e142dcbcc31697df357ec53dee98575f37a10b33f0e2a8c3bf4abd3ba6"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetIcons.ts",
+      "sha256": "86a40088225ed7b6ead4d2f4040e7465c08d808d89597752ebb0f0b34f2b5f13",
+      "modified": true,
+      "portedSha256": "021ac942bc0f2f433e03d66c62318ec1fca1dcacab56450b7f8245aff7fa0f8e"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetLensFilter.ts",
+      "sha256": "c9557cdbfc2d85a32b919d0107ea0b6ae9906ad87f200c76250acec174ef474b",
+      "modified": false,
+      "portedSha256": "15e59d6bbf77ee50dc23cdfa762199cfe0abc010eb616510ecd844c36d8a5671"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetMotion.ts",
+      "sha256": "45a699c600d9a38e0327179cd00eda1190409be0b699dcc04dc3eb191f630f41",
+      "modified": false,
+      "portedSha256": "90bd3ac473384452de5e4cb3637b6d1f4f197cd1f9bb1dca48aa6c725a7b61a0"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetOpenFrameShotMg.ts",
+      "sha256": "38f49032648f3218ff7f11e04646c50611caaae16a0d0a3000613e53220798ca",
+      "modified": false,
+      "portedSha256": "b606970b0361d1b7f0954ff5b29a8067a718c927c58971a82241ac7d3f6f25ee"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetOutroBlur.ts",
+      "sha256": "d4073343412c643474a096618a44f082ef6794244c04ed02094129d05f339b7d",
+      "modified": false,
+      "portedSha256": "20829c73bff4f14d7807e66d3fed60227b87b90d65341cf41b2946ead4859cac"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetPixiResources.ts",
+      "sha256": "01e1b18fbf0c98c35aa7e894670fa66fe3c62a2c8730a732b8153ed78e43bed9",
+      "modified": false,
+      "portedSha256": "0410afd5d70694fbadcf27ae4d151266110876acf0b5d45b451d01099478d231"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetPostProcess.ts",
+      "sha256": "f4b29607b9547cff4b328c886494675bab4cb2e749ccec3a6d4ac9305a8c2d1f",
+      "modified": true,
+      "portedSha256": "c9acbb3046ff01d3ffb9536060d002c3f7b19f34ad1717d432796dc74eea5978"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetPosterBlocksLayout.ts",
+      "sha256": "9e58443110c9f126d32c1e88d2adbcb3abd74f2640e3d702f99224618b54ae89",
+      "modified": false,
+      "portedSha256": "7696faf960c2d39c70db34082f0e0fa1b71658dc3bb08b2eb75a46a37fe106d1"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetPrintFilters.ts",
+      "sha256": "484ef9b815a937d57a69bf1d8269fedc814dfdf5171be5a6aca5482fb49c0dcb",
+      "modified": false,
+      "portedSha256": "6fa45ce3edb6ae25c721f8355d1f2fdb1816467422ba57987fe7426f11f517e5"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetProgram.ts",
+      "sha256": "49871d8029679ee4930cd51b425271c7c2b46c06e7dfd4979fd1914930e75004",
+      "modified": false,
+      "portedSha256": "b34d7907f65ffa13468c562315cb998bbf7d2168e843c4ffe9ba4338d4f9ff7d"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetRandom.ts",
+      "sha256": "6eae502cd707606ce117932ff7d29506aef5d8f1f270dd0b2386ecfdb905168d",
+      "modified": false,
+      "portedSha256": "fb4b18335a8ba6d512ea6944897938152f248ae187b86be8eaffb5d8c29d8f9b"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetSceneBuilder.ts",
+      "sha256": "41aa7c9bd0e198221725b00bdf5fb8a7786c4f8b8aac3c56ea56e6d5095cc6ba",
+      "modified": true,
+      "portedSha256": "3d16ed5434e7f1a7a6d656462bd0d5d4db69e9c7d988447ed6e873d1b59fff0a"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetSceneFrame.ts",
+      "sha256": "8f2d6c20660370bc0899ffa164e4d68fe7cc5af95166bf4d4604549c3030e1d3",
+      "modified": false,
+      "portedSha256": "67b69a7e10c498eb1d8f5fcbcb53f9942df33b07775e0ca08f18d3b2173dd645"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetSemantic.ts",
+      "sha256": "6bec2e32026c031e91a9fea818ad0350d08efd01c0a78d5bb141d3a9cd95baed",
+      "modified": false,
+      "portedSha256": "606b90c92593d3f1ba45765af0f1d4676a512b0510ba064ca51bf4763b89dad0"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetShotFlowLayouts.ts",
+      "sha256": "923678bbb88172ff13caddcc7ef5162c28d09535e346a4829890c54aa7e20637",
+      "modified": false,
+      "portedSha256": "032e03191d8265ef1ba0a98fa6ea9a6214466f9ec9f794479014c932f9435eb8"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetShotFrame.ts",
+      "sha256": "cd45ec753f2a5751888c12c1bf265730e01791cb452edd95b90c0aea9b609579",
+      "modified": true,
+      "portedSha256": "1cf872ab1e4a202df8d33176e3219ddc3e203db5a326252348a783ac8b3ccb2f"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetShotMg.ts",
+      "sha256": "96527cca51b354c54b3cf6c7b1fb7a1ee61b9dee2d7a59be2ffea8d879a2f4da",
+      "modified": false,
+      "portedSha256": "44ad1f871d36f3d821b1df0ed6b3b20e3619f0bd2d59ba038558f7d7e7765f7d"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetShotMgArchitecture.ts",
+      "sha256": "06432ed9084f9a6eba15e5dfeb82a96af3145552e070acfd192a7f941faf9ee6",
+      "modified": false,
+      "portedSha256": "6e391367b9d5ec176ef9fa60df79bf531e811828a02f7b706bfbc11c8df7df21"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetShotMgBotanical.ts",
+      "sha256": "f8e4d1e90465283551312a1a71a73829deff6112cd759272ddb8e60fb5b28cae",
+      "modified": false,
+      "portedSha256": "3e036593ac3bc188fd57634f3107f640f2616d3266703d09e25076a1147c4b53"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetShotMgCelestial.ts",
+      "sha256": "51ec1ace0e751aba23445cb44d20515036f34c1bbc6440a8df2db1b8d95e66ee",
+      "modified": false,
+      "portedSha256": "4b6d4a028f6dc0eebf4d4ca9449ea5da0dbaf7f0ccf96a45feb6da95d85b38fc"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetShotMgCraft.ts",
+      "sha256": "7f3825f5e84921b97a59c2ab2a01b0690c7b87cc80efab0d88a4a51816c635ba",
+      "modified": false,
+      "portedSha256": "4cdca856694b9e3a509ecfbe6bae5937ad0de57a0dcb71b6d602b6bcd285b026"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetShotMgFlora.ts",
+      "sha256": "29059a4ec1204b498384ad56f30de60bc011f2efc81cb81bb5302458a1e41fdb",
+      "modified": false,
+      "portedSha256": "12ec96620cd7ac30aa995a6f17ef830b84b6e20ec1832b0fa729d59b3de60711"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetShotMgKinetic.ts",
+      "sha256": "61feea33ca6014556a8221aba8337afcaf22e9217c258daedcebcd7da83ddb2c",
+      "modified": false,
+      "portedSha256": "f50f966f878d012760810072c0995b6886e566c9b63b901eac17428d8e7dbe1d"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetShotMgLandscape.ts",
+      "sha256": "3208e2ec88f8548af05f109928187204686e93fe1c04cabe5a8e7e9d0e6b6794",
+      "modified": false,
+      "portedSha256": "ee60c9211f8e6a0fd6f482c3c13e7bc1d1295eec87d1551a6de9861535330891"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetShotMgMarine.ts",
+      "sha256": "c85c7224b93d47dbfffed1b8a28cb4fb8f61ba1a6dd7ee5af4ead685f2f3e350",
+      "modified": false,
+      "portedSha256": "79f5453674669aad667e11e16583c330ea7c14bc76655d18e0a53ea4d449b19e"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetShotMgMusic.ts",
+      "sha256": "0c0d7c85a3a0ce0cb2ba59810b7b8817bfad2244644c69f24431b08acf50d441",
+      "modified": false,
+      "portedSha256": "90a5d1777b971ffdee1ba13ac4a00dd469dd9df97d21edb66d17eb26550ea3c0"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetShotMgViewport.ts",
+      "sha256": "ca38d5ce183a138cdccb3f783649d2f52a26b20697887be452a851513a51cf96",
+      "modified": false,
+      "portedSha256": "ba78335f8d51ef7e0ed3bf345b5123f42d2220bf5a7798e2c167b1285a8b9328"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetSpatialMgGeometry.ts",
+      "sha256": "c3a22d9bb2c56fafb657f2757fa07dbaf7989609d105825b4bbdec6a346b4efe",
+      "modified": false,
+      "portedSha256": "b3ef6e2bc8dddba8aae8f9bad02d1d93ddfe8cea9c593570b70cb72382fc693f"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetStaffNotation.ts",
+      "sha256": "a325fedf35f9799c47f2d6f6ff51333781745c0eee465a974ec591e76220ecee",
+      "modified": false,
+      "portedSha256": "e488ecc7277931b4596b80b3b8ee2d4829b2ff46843c0e0dd518bfbfbb9f1613"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetStaffView.ts",
+      "sha256": "1e04c2ed033586ecd021fde6a4d659266e3d46d401b4dd53404dbf15fc90aa06",
+      "modified": false,
+      "portedSha256": "94d7fc5c9bb36546498811d19b6168500ea6b54ac61d170f8f7ca7aede95ac47"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetTextFixedGeo.ts",
+      "sha256": "710c6276bdd35ff0772481ed772809f754229c5a3485957a0e8463550620ef50",
+      "modified": false,
+      "portedSha256": "d63d4fd164e4e60d077d75a394d5a7ad88746145fc787bc0fd92665263ba4989"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetTextViewBuilder.ts",
+      "sha256": "2d89d7b6d08386eaa5237f6bb94a2cdccf9119a615ba380372aafc948b5da213",
+      "modified": true,
+      "portedSha256": "3f370b3576ea4f792fd3491477e906c3e4e5a42fa46bf34c88be7464d87ad9ae"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetTexturePool.ts",
+      "sha256": "560a56509118ef9d044531b172b9c1d5174e083f3231d36b40c91015523e3d43",
+      "modified": false,
+      "portedSha256": "c40122e662f1b13bdb4deda632028f9f64d1e4da0ac2479b4276e9fc6332371a"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetThemedShotMg.ts",
+      "sha256": "caf666b7944e4435f68758c51df47b8b0889f09c7da968370e7c2dedffc93c9a",
+      "modified": false,
+      "portedSha256": "0b49abe068e4f384689ee9fb8462b8096358dc108fc04c95f0f0ec9f7adb674a"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetThemedShotMgPrimitives.ts",
+      "sha256": "f6f77e4e58b41ef44954ac9643d39df0ceccc31562094f6b8bda481294091ec0",
+      "modified": false,
+      "portedSha256": "6bc23b8c41713051e9d5e76b03366f6089c4a85e7ecdf0a3beabc20a37cf2eeb"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetTransitions.ts",
+      "sha256": "50a7e306a6163942371bd36007847ebbd353d4437b47ef90e4a3126f0e193463",
+      "modified": false,
+      "portedSha256": "5e007fbcbd952a7b68f37fe8a814a83a2585ce30bd20aff916a616db3b47967e"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetTypographyLayout.ts",
+      "sha256": "19b0fc30e9964e46965a4ee470232f8fc6d00ffb246d09981caaad147d95c69b",
+      "modified": false,
+      "portedSha256": "921b679983bf01b3a62ebc1c62b5943a4cf36cb2ce9c50189a06afab391a77dc"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/sonnetTypographyRoles.ts",
+      "sha256": "5438eb25f23c29b8acfbce4c149dc7a24df97de08f59da31d93e6b942142340b",
+      "modified": false,
+      "portedSha256": "7c4914c9839100b632f09203a3d22b991e6f6c1a82a904269e6d59919d6021fe"
+    },
+    {
+      "path": "src/components/visualizer/sonnet/types.ts",
+      "sha256": "21643a8b47c747eb125a7785519e03b48b624f0190af349309fe32fd1f45006c",
+      "modified": false,
+      "portedSha256": "57d6ba7d5d19b67eb6fbda9a5a31f9173a16df978de9105e5a0ed74a585f3a75"
+    },
+    {
+      "path": "src/components/visualizer/textMeasureCache.ts",
+      "sha256": "6c08e5469611a06c97ffbebb8096d90935bdf963b769dbd7c534a215e1edcd82",
+      "modified": false,
+      "portedSha256": "7415911a0df674369d47b646aea20ad516a6e386724636ae2ce4e30345b55981"
+    },
+    {
+      "path": "src/components/visualizer/visualizerSeedHash.ts",
+      "sha256": "c0979fdcaf18506f780f6ac8f0deb92942d19ae2f34892d1b3499210b1545bdc",
+      "modified": false,
+      "portedSha256": "426ed264d8a9d3ab6403f86217e5993e487cc70d735bab18719053f66c9305aa"
+    },
+    {
+      "path": "src/utils/fontStacks.ts",
+      "sha256": "2f7e3f0a97e73fdc57e9a76a14f06a2cf94648737ae4b14670b00ff1282c702f",
+      "modified": false,
+      "portedSha256": "382e5b06fff648fa03cc612ff9c5ee1b7df4930b9e01ed393b9aa502deb347d9"
+    },
+    {
+      "path": "src/utils/lyricRenderQuality.ts",
+      "sha256": "e294ced40dcff02fc3b0173747b6342cc04b3f9b82bb5a9b35d4595b82811c10",
+      "modified": false,
+      "portedSha256": "08c17668da003fd675782187e96cadc1f10f17d55f646ac8057d525f8ffc8440"
+    },
+    {
+      "path": "src/utils/lyrics/graphemeTiming.ts",
+      "sha256": "76ca4929c7658486a793545114c249b5c7178d4ac6fa905a2d06b066576ede35",
+      "modified": false,
+      "portedSha256": "9cf5b0e38900fa35b5051e3d9381ef82dccb685e0acd47933c9220eb704c2a11"
+    },
+    {
+      "path": "src/utils/lyrics/renderHints.ts",
+      "sha256": "aca7b0f65815f24ecb3332a0215f3b5dfd80c8448f602c1c5bf8df650d855006",
+      "modified": false,
+      "portedSha256": "2de887a1245b58e3b8b6bb463b26706f5cf9ad6663d78dbf604f26262769bf71"
+    },
+    {
+      "path": "src/utils/lyrics/wordSegmentation.ts",
+      "sha256": "2cad89ab8c89d27e030d1af7745c7b08d6ce6982cec703d75eedaa8c0036fc76",
+      "modified": false,
+      "portedSha256": "718fb45ac0ccba03a2c1a36938405388b566fb2bfc8603b764261a969ed8b2bb"
+    },
+    {
+      "path": "src/components/visualizer/tilt/VisualizerTilt.tsx",
+      "localPath": "components/visualizer/tilt/Typography.tsx",
+      "sha256": "e962ab13d5cb6509d37b1c118f93a3500fe52ff497d0bb7de7f2cf7ca947bf85",
+      "modified": true,
+      "portedSha256": "d90c73ca3d3f0dbbd0983fbdb90ec7ea5e9f2ae5a1273ac19aa50e26d3aae191"
+    },
+    {
+      "path": "src/utils/lyrics/sentenceLayout.ts",
+      "sha256": "d2604ebe66dc6b9b1e802d7bfeaed035a252a262ffd5557e3d9ecc91949f1239",
+      "modified": true,
+      "portedSha256": "93d181b7e588920090e45ae3401f53237be69f4dee977d449b6f5f4d1cca24c0"
+    }
+  ],
+  "adaptedBoundaries": [
+    "src/types.ts",
+    "src/services/beatFx/beatFxLive.ts",
+    "src/services/beatFx/clock.ts",
+    "src/stores/motionSignals.ts"
+  ],
+  "omitted": [
+    "src/services/lucideIconResolver.ts"
+  ],
+  "boundarySources": [
+    {
+      "path": "src/types.ts",
+      "sha256": "cde935afa63498fc1ae3f6a1756676aa215cdd0b68a053983db18565beaeebba",
+      "portedSha256": "27c1a4a26a4cea472d9d34797dd12b07f9c28ede1987f8362e180a717131f6c0"
+    },
+    {
+      "path": "src/services/beatFx/beatFxLive.ts",
+      "sha256": "9be680d9d666abeb86a2bce5e5c8ba0151bc883fcb606b722203c7fbeeeeeba2",
+      "portedSha256": "79f4e73605e389b11a52d48df8a4b758e241354d761bcda68cadd5dd96380f8e"
+    },
+    {
+      "path": "src/services/beatFx/clock.ts",
+      "sha256": "606c1dd7c0072dfd5bb2fcc9f01b12f10958a5199ad9a01a674b45332ed18e4f",
+      "portedSha256": "73d0a67d9c88d214f5563f3a2a150793f59068f77bbb3f400a30c63d684763a1"
+    },
+    {
+      "path": "src/stores/motionSignals.ts",
+      "sha256": "d51daf1b345401fb799fb5be33238cbe70d563582387c9764f6f2e35aa47fd42",
+      "portedSha256": "312214d6e62ecc6d36f30a13c21604ce8239f08a43ff5c140dc1d7176a6325b4"
+    }
+  ],
+  "licenseSha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+}

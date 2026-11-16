@@ -4,6 +4,7 @@ import { usePlayback, formatTime } from "./hooks";
 import { Cover, IconButton } from "./shared";
 import { Icon } from "./icons";
 import { useScrollMemory } from "./cache";
+import { useListEntrance } from "./ListEntrance";
 import s from "./music.module.css";
 
 export interface TrackActions {
@@ -26,8 +27,11 @@ interface TrackTableProps {
   loadingMore?: boolean;
   onMore?: () => void;
   className?: string;
+  entranceKey?: string;
+  entrancePhase?: number;
 }
-const ROW_HEIGHT = 60;
+export const TRACK_ROW_HEIGHT = 90;
+const ROW_HEIGHT = TRACK_ROW_HEIGHT;
 export function TrackTable({
   tracks,
   runtime,
@@ -39,6 +43,8 @@ export function TrackTable({
   loadingMore = false,
   onMore,
   className = "",
+  entranceKey,
+  entrancePhase = 220,
 }: TrackTableProps) {
   const playingId = usePlayback(
     runtime,
@@ -47,6 +53,12 @@ export function TrackTable({
   const scroll = useRef<HTMLDivElement>(null),
     [view, setView] = useState({ top: 0, height: 600 });
   useScrollMemory(scroll, "tracks", tracks.length);
+  useListEntrance(scroll, {
+    key: entranceKey || `tracks:${compact ? "compact" : "full"}:${tracks[0]?.id || "empty"}`,
+    phase: entrancePhase,
+    stagger: 220,
+    distance: 26,
+  });
   useEffect(() => {
     const node = scroll.current;
     if (!node) return;
@@ -72,7 +84,7 @@ export function TrackTable({
       aria-rowcount={tracks.length + 1}
     >
       {!compact && (
-        <div className={s.trackHead} role="row">
+        <div className={s.trackHead} role="row" data-list-item data-list-key="track-heading" data-list-phase={170}>
           <span role="columnheader">#</span>
           <span />
           <span role="columnheader">歌曲 / 歌手</span>
@@ -91,8 +103,9 @@ export function TrackTable({
         className={s.trackRows}
         ref={scroll}
         onScroll={(event) => {
+          const top = event.currentTarget.scrollTop;
           if (virtual)
-            setView((v) => ({ ...v, top: event.currentTarget.scrollTop }));
+            setView((v) => ({ ...v, top }));
         }}
       >
         {start > 0 && (
@@ -171,11 +184,16 @@ const TrackRow = memo(function TrackRow({
   onRemove?: () => void;
 }) {
   const unavailable = track.availability === "unavailable";
+  const hasArtist = /^[1-9][0-9]*$/.test(track.artists[0]?.id || "");
+  const hasAlbum = /^[1-9][0-9]*$/.test(track.album.id);
   return (
     <div
       className={`${s.trackRow} ${active ? s.trackCurrent : ""} ${unavailable ? s.trackUnavailable : ""}`}
       role="row"
       aria-rowindex={index + 2}
+      data-list-item
+      data-list-key={`track:${track.id}:${index}`}
+      data-list-index={index}
       tabIndex={0}
       onDoubleClick={(event) => {
         if (!(event.target as HTMLElement).closest("button")) onPlay();
@@ -241,6 +259,7 @@ const TrackRow = memo(function TrackRow({
         <button
           className={s.artistLink}
           type="button"
+          disabled={!hasArtist}
           onClick={onArtist}
           title={track.artists.map((x) => x.name).join(" / ")}
         >
@@ -251,6 +270,7 @@ const TrackRow = memo(function TrackRow({
       <button
         className={`${s.albumLink} ${s.albumColumn}`}
         type="button"
+        disabled={!hasAlbum}
         onClick={onAlbum}
         title={track.album.title}
       >

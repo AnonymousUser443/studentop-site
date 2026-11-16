@@ -1,8 +1,8 @@
 /** Narrow same-origin bridge. Upstream SDK and account cookies live in the music service. */
 import http from 'node:http';
 const PREFIX='/__desktop/music/v1/';
-const GET=/^(?:session|home|search|library|auth\/qr\/[A-Za-z0-9_-]{1,128}|(?:playlists|albums|artists|lyrics)\/[0-9]{1,24})$/;
-const POST=/^(?:auth\/qr|likes|playlists|playlists\/[0-9]{1,24}\/tracks|playback\/(?:lease|resolve))$/;
+const GET=/^(?:session|home|search|library|cloud|heart-mode|comments\/[0-9]{1,24}|auth\/qr\/[A-Za-z0-9_-]{1,128}|(?:playlists|albums|artists|lyrics)\/[0-9]{1,24})$/;
+const POST=/^(?:auth\/qr|likes|playlists|comments\/[0-9]{1,24}(?:\/like)?|playlists\/[0-9]{1,24}\/tracks|playback\/(?:lease|resolve))$/;
 export function createMusicProxy({auth,port=Number(process.env.MUSIC_PORT||8901),gatewayKey=process.env.MUSIC_GATEWAY_KEY,origin}={}){
  if(!auth?.authorizeRead||!auth?.authorizeWrite)throw Error('Music requires desktop authorization.');
  if(!Number.isSafeInteger(port)||port<1024||port>65535)throw Error('Invalid music port.');

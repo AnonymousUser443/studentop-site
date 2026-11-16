@@ -9,6 +9,7 @@ import type { MusicHost, MusicRuntime, Track } from "../domain";
 import { Icon, TideMark } from "./icons";
 import { Cover, IconButton } from "./shared";
 import { Progress, Transport } from "./Player";
+import { DesktopLyrics } from "./DesktopLyrics";
 import {
   formatTime,
   readStored,
@@ -29,7 +30,7 @@ export function MusicSurface({
 }: {
   runtime: MusicRuntime;
   host: MusicHost;
-  type: "mini" | "lock" | "tray";
+  type: "mini" | "lock" | "tray" | "lyrics";
   visible?: boolean;
 }) {
   const { locked, reduced } = useHost(host),
@@ -67,6 +68,10 @@ export function MusicSurface({
                 host={host}
                 active={documentVisible}
               />
+            )
+          ) : type === "lyrics" ? (
+            !locked && host.desktopLyricsEnabled?.() === true && (
+              <DesktopLyrics runtime={runtime} host={host} active={documentVisible}/>
             )
           ) : type === "lock" ? (
             locked && (

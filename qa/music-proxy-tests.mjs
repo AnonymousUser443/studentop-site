@@ -121,7 +121,7 @@ async function fixture(t, options = {}) {
 
 test('locked normal music endpoints deny access before reaching the backend', async t => {
   const f = await fixture(t);
-  for (const operation of ['session', 'home', 'library', 'search?q=moon&type=tracks', 'playlists/123', 'lyrics/123']) {
+  for (const operation of ['session', 'home', 'library', 'cloud?offset=0', 'comments/123?offset=0', 'heart-mode?trackId=1&playlistId=101', 'search?q=moon&type=tracks', 'playlists/123', 'lyrics/123']) {
     const response = await f.request(operation);
     assert.equal(response.status, 401, operation);
     assert.equal(response.data.error.code, 'authentication_required');
@@ -129,6 +129,27 @@ test('locked normal music endpoints deny access before reaching the backend', as
   }
   assert.equal((await f.request('likes', {method: 'POST', headers: {Origin: f.origin}, body: '{"trackId":"1","liked":true}'})).status, 401);
   assert.equal(f.received.length, 0);
+});
+
+test('community and cloud routes use the desktop gate and comment writes require current CSRF', async t => {
+  const f = await fixture(t), signed = await f.login();
+  for (const endpoint of ['cloud?offset=50', 'comments/123?offset=20', 'heart-mode?trackId=1&playlistId=101']) {
+    const response = await f.request(endpoint, {headers:signed});
+    assert.equal(response.status, 200, endpoint);
+    assert.equal(f.received.at(-1).headers['x-music-access'], 'desktop');
+  }
+  for (const endpoint of ['comments/123', 'comments/123/like']) {
+    const count=f.received.length;
+    assert.equal((await f.request(endpoint, {method:'POST',headers:{Cookie:signed.Cookie,Origin:f.origin},body:'{}'})).status,403);
+    assert.equal(f.received.length,count);
+    assert.equal((await f.request(endpoint, {method:'POST',headers:signed,body:'{}'})).status,200);
+    assert.equal(f.received.at(-1).headers['x-music-access'],'desktop');
+  }
+  for (const endpoint of ['cloud/upload', 'comments/123/delete', 'comments/all', 'heart-mode/resolve']) {
+    assert.equal((await f.request(endpoint,{headers:signed})).status,404,endpoint);
+  }
+  await f.revoke(signed);
+  assert.equal((await f.request('comments/123',{method:'POST',headers:signed,body:'{}'})).status,401);
 });
 
 test('authorizeWrite shares the current desktop lease and demands exact origin plus current CSRF', async t => {

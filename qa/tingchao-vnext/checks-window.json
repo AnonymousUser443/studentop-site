@@ -1,0 +1,85 @@
+{
+  "checks": [
+    {
+      "name": "only original three captions are embedded inside music",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "captions align to content upper right",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "double click uses existing maximize and restore state",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "native pointer drag moves the music window",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "original snap menu remains reachable from embedded maximize",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "minimize preserves runtime and one audio element",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "immersive lyrics retain original controls and drag region",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "390px toolbar controls do not overlap native captions",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "no window lifecycle or browser errors",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "state": {
+    "audio": [
+      {
+        "duration": 120,
+        "paused": false,
+        "sourceOrigin": "http://127.0.0.1:38963",
+        "time": 73.167679
+      }
+    ],
+    "errors": [],
+    "iframes": 0,
+    "locked": false,
+    "root": "dark",
+    "snapshot": {
+      "lyrics": 4,
+      "position": 72990.904,
+      "queue": 8,
+      "status": "playing",
+      "track": "月色经过海面"
+    },
+    "url": "http://127.0.0.1:38963/?vnext=1794825553246",
+    "viewport": [
+      1258,
+      727
+    ],
+    "window": {
+      "bottom": 667,
+      "height": 627,
+      "left": 8,
+      "right": 728,
+      "top": 40,
+      "width": 720,
+      "x": 8,
+      "y": 40
+    }
+  }
+}

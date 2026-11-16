@@ -22,6 +22,9 @@ import * as normalize from "./normalize.mjs";
 
 export const PREFIX = "/__desktop/music/v1/";
 export const PAGE_SIZE = 50;
+export const COMMENTS_PAGE_SIZE = 20;
+const LIBRARY_PAGE_SIZE = 100;
+const MAX_LIBRARY_PAGES = 20;
 const QR_TTL = 3 * 60 * 1000;
 const NO_CACHE = {
   "Cache-Control": "no-store, private",
@@ -44,6 +47,26 @@ function offsetParam(url) {
   if (!/^(0|[1-9][0-9]{0,6})$/.test(raw) || Number(raw) > 1000000)
     throw new MusicFailure("invalid_request", "分页位置不正确。", 400);
   return Number(raw);
+}
+function queryKeys(url, allowed) {
+  for (const key of url.searchParams.keys())
+    if (!allowed.includes(key) || url.searchParams.getAll(key).length !== 1)
+      throw new MusicFailure("invalid_request", "请求参数不正确。", 400);
+}
+function bodyKeys(body, allowed) {
+  if (Object.keys(body).some((key) => !allowed.includes(key)))
+    throw new MusicFailure("invalid_request", "请求参数不正确。", 400);
+}
+function beforeParam(url, offset) {
+  const raw = url.searchParams.get("before");
+  if (raw === null && offset < 5000) return null;
+  if (offset < 5000 || !/^[1-9][0-9]{0,15}$/.test(raw ?? "") || !Number.isSafeInteger(Number(raw)))
+    throw new MusicFailure("invalid_request", "请从上一页继续查看更早的评论。", 400);
+  return Number(raw);
+}
+function positiveCount(value, fallback = 0) {
+  const number = Number(value);
+  return Number.isSafeInteger(number) && number >= 0 ? number : fallback;
 }
 function sameSecret(left, right) {
   const a = Buffer.from(String(left ?? "")),
@@ -293,6 +316,28 @@ export function createMusicServer(options = {}) {
   }
   async function playlistRaw(id, session) {
     return (await call("playlist_detail", { id, s: 0 }, session)).body.playlist;
+  }
+  async function libraryPlaylists(name, session) {
+    const output = [], seen = new Set();let offset = 0;
+    for (let page = 0; page < MAX_LIBRARY_PAGES; page++) {
+      const { body } = await call(name, { uid: session.user.id, limit: LIBRARY_PAGE_SIZE, offset }, session);
+      const rows = [body.playlist, body.playlists, body.playList, body.data,
+        body.data?.playlist, body.data?.playlists, body.data?.list].find(Array.isArray);
+      if (!rows) throw upstreamFailure();
+      let added = 0;
+      for (const entry of rows) {
+        const raw = entry?.playlist ?? entry;
+        if (!raw || !numericId(String(raw.id)) || seen.has(String(raw.id))) continue;
+        seen.add(String(raw.id));output.push(raw);added++;
+      }
+      const flag = body.more ?? body.hasMore ?? body.data?.hasMore;
+      const total = positiveCount(body.count ?? body.total ?? body.data?.count ?? body.data?.total);
+      const more = typeof flag === "boolean" ? flag : total ? offset + rows.length < total : rows.length === LIBRARY_PAGE_SIZE;
+      if (!more) return output;
+      if (!rows.length || !added) throw upstreamFailure();
+      offset += rows.length;
+    }
+    throw new MusicFailure("upstream_error", "歌单较多，音乐库暂未能完整载入，请稍后再试。", 503, true);
   }
   async function route(req, res) {
     const cookies = [];
@@ -587,15 +632,17 @@ export function createMusicServer(options = {}) {
         };
       } else if (req.method === "GET" && route === "library") {
         requireLogin(session);
-        const [lists, likes] = await Promise.all([
-          call(
-            "user_playlist",
-            { uid: session.user.id, limit: 1000, offset: 0 },
-            session,
-          ),
+        queryKeys(url, []);
+        const [lists, created, likes] = await Promise.all([
+          libraryPlaylists("user_playlist", session),
+          libraryPlaylists("user_playlist_create", session),
           call("likelist", { uid: session.user.id }, session),
         ]);
-        const raw = lists.body.playlist ?? [],
+        const ownCreated = created.map((raw) => ({ ...raw, creator: raw.creator ?? {
+          userId: session.user.id, nickname: session.user.name, avatarUrl: session.user.avatarUrl,
+        }})).filter((raw) => String(raw.creator?.userId ?? raw.creator?.id) === session.user.id);
+        // The account's create-list includes private entries omitted by the public user-list.
+        const raw = [...new Map([...lists, ...ownCreated].map((item) => [String(item.id), item])).values()],
           all = raw.map((item) => normalize.playlist(item, session.user.id));
         const liked = raw.find(
           (item) =>
@@ -605,9 +652,57 @@ export function createMusicServer(options = {}) {
         data = {
           created: all.filter((item) => item.creator.id === session.user.id),
           collected: all.filter((item) => item.creator.id !== session.user.id),
-          likedIds: (likes.body.ids ?? []).map(String),
+          likedIds: (likes.body.ids ?? []).map(String).filter(numericId),
           likedPlaylistId: liked ? String(liked.id) : null,
         };
+      } else if (req.method === "GET" && route === "cloud") {
+        requireLogin(session);queryKeys(url, ["offset"]);
+        const offset = offsetParam(url), { body } = await call("user_cloud", { limit: PAGE_SIZE, offset }, session);
+        if (!Array.isArray(body.data)) throw upstreamFailure();
+        const items = body.data.slice(0, PAGE_SIZE).filter((raw) => raw && typeof raw === "object")
+          .map(normalize.cloudTrack).filter((track) => numericId(track.id));
+        const total = positiveCount(body.count ?? body.total, offset + items.length);
+        data = { items, total, offset, limit: PAGE_SIZE,
+          hasMore: items.length > 0 && (typeof body.hasMore === "boolean" ? body.hasMore : offset + items.length < total) };
+      } else if (req.method === "GET" && /^comments\/[0-9]+$/.test(route)) {
+        queryKeys(url, ["offset", "before"]);
+        const id = identifier(route.split("/")[1]), offset = offsetParam(url), before = beforeParam(url, offset);
+        const { body } = await call("comment_music", { id, limit: COMMENTS_PAGE_SIZE, offset: before === null ? offset : 0,
+          ...(before === null ? {} : { before }) }, session);
+        if (!Array.isArray(body.comments)) throw upstreamFailure();
+        const comments = (rows) => rows.filter((raw) => raw && typeof raw === "object").map(normalize.trackComment).filter((comment) => numericId(comment.id));
+        const items = comments(body.comments.slice(0, COMMENTS_PAGE_SIZE)),
+          total = positiveCount(body.total, offset + items.length),
+          nextBefore = items.at(-1)?.createdAt || null;
+        data = { trackId: id, items, hot: offset === 0 && Array.isArray(body.hotComments) ? comments(body.hotComments.slice(0, 20)) : [],
+          total, offset, limit: COMMENTS_PAGE_SIZE, nextBefore,
+          hasMore: items.length > 0 && (typeof body.more === "boolean" ? body.more : offset + items.length < total) &&
+            (offset + COMMENTS_PAGE_SIZE < 5000 || nextBefore !== null) };
+      } else if (req.method === "POST" && /^comments\/[0-9]+\/like$/.test(route)) {
+        requireLogin(session);queryKeys(url, []);
+        const id = identifier(route.split("/")[1]), body = await readBody(req);
+        bodyKeys(body, ["commentId", "liked"]);
+        const cid = identifier(body.commentId);
+        if (typeof body.liked !== "boolean") throw new MusicFailure("invalid_request", "评论点赞状态不正确。", 400);
+        await call("comment_like", { id, cid, type: 0, t: body.liked ? 1 : 0 }, session);data = null;
+      } else if (req.method === "POST" && /^comments\/[0-9]+$/.test(route)) {
+        requireLogin(session);queryKeys(url, []);
+        const id = identifier(route.split("/")[1]), body = await readBody(req);
+        bodyKeys(body, ["content", "replyTo"]);
+        const content = typeof body.content === "string" ? body.content.replace(/\r\n?/g, "\n").trim() : "";
+        if (!content || [...content].length > 500 || /[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/.test(content))
+          throw new MusicFailure("invalid_request", "评论需为 1–500 字，请检查后再发送。", 400);
+        const replyTo = body.replyTo === undefined ? null : identifier(body.replyTo);
+        await call("comment", { id, content, type: 0, t: replyTo === null ? 1 : 2,
+          ...(replyTo === null ? {} : { commentId: replyTo }) }, session);data = null;
+      } else if (req.method === "GET" && route === "heart-mode") {
+        requireLogin(session);queryKeys(url, ["trackId", "playlistId"]);
+        const id = identifier(url.searchParams.get("trackId")), pid = identifier(url.searchParams.get("playlistId"));
+        const { body } = await call("playmode_intelligence_list", { id, pid, sid: id, count: 30 }, session);
+        if (!Array.isArray(body.data)) throw upstreamFailure();
+        const tracks = body.data.slice(0, 30).map((row) => row?.songInfo ?? row?.song ?? row)
+          .filter((raw) => raw && typeof raw === "object" && (raw.name || raw.title)).map((raw) => normalize.track(raw));
+        data = [...new Map(tracks.filter((track) => numericId(track.id)).map((track) => [track.id, track])).values()];
       } else if (req.method === "POST" && route === "likes") {
         requireLogin(session);
         const body = await readBody(req),

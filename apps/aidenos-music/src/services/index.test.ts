@@ -22,6 +22,10 @@ const emptyHome = {
   tracks: [],
   personalized: false,
 };
+const commentPage = (trackId = "1", offset = 0) => ({
+  trackId, items: [], hot: [], total: 10000, offset, limit: 20,
+  hasMore: true, nextBefore: 1700000000000 - offset,
+});
 
 describe("music service transport", () => {
   it("deduplicates reads, caches per generation, and invalidates after a library write", async () => {
@@ -237,5 +241,113 @@ describe("music service transport", () => {
       service.search("海", "tracks", 0, controller.signal),
     ).rejects.toMatchObject({ name: "AbortError" });
     expect(fetcher).not.toHaveBeenCalled();
+  });
+
+  it("deduplicates cloud, comment and heart-mode reads through the same-origin account adapter", async () => {
+    const fetcher = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      expect(init?.credentials).toBe("same-origin");expect(init?.cache).toBe("no-store");
+      expect(new Headers(init?.headers).get("Cookie")).toBe(null);
+      const url = String(input);
+      if (url.includes("/comments/")) return ok(commentPage());
+      return ok(url.includes("/cloud?") ? { items: [], total: 0, offset: 50, limit: 50, hasMore: false } : []);
+    });
+    const service = createMusicService({ fetcher });
+    await Promise.all([service.cloud(50), service.cloud(50), service.comments("1"), service.comments("1"), service.heartMode("1", "101"), service.heartMode("1", "101")]);
+    expect(fetcher).toHaveBeenCalledTimes(3);
+    expect(fetcher.mock.calls.map((call) => String(call[0])).sort()).toEqual([
+      "/__desktop/music/v1/cloud?offset=50", "/__desktop/music/v1/comments/1?offset=0", "/__desktop/music/v1/heart-mode?trackId=1&playlistId=101",
+    ]);
+  });
+
+  it("stores deep comment time cursors only in account memory and clears them on invalidation", async () => {
+    const fetcher = vi.fn(async (input: RequestInfo | URL) => {
+      const url = new URL(String(input), "https://test.invalid");
+      return ok(commentPage("1", Number(url.searchParams.get("offset"))));
+    });
+    const service = createMusicService({ fetcher });
+    await service.comments("1", 4980);await service.comments("1", 5000);
+    expect(String(fetcher.mock.calls[1][0])).toBe("/__desktop/music/v1/comments/1?offset=5000&before=1699999995020");
+    await service.comments("1", 5000);expect(fetcher).toHaveBeenCalledTimes(2);
+    service.invalidate();
+    await expect(service.comments("1", 5000)).rejects.toMatchObject({ code: "invalid_request" });
+    expect(fetcher).toHaveBeenCalledTimes(2);
+  });
+
+  it("late comment responses cannot seed another account's cursor or cache", async () => {
+    let userId = "11", complete: (response: Response) => void = () => {};
+    const fetcher = vi.fn((input: RequestInfo | URL) => {
+      if (String(input).endsWith("/session")) return Promise.resolve(ok({ authenticated: true, user: { id: userId, name: "测试听者", avatarUrl: "" } }));
+      return new Promise<Response>((resolve) => { complete = resolve; });
+    });
+    const service = createMusicService({ fetcher });await service.session();
+    const pending = service.comments("1", 4980), rejected = expect(pending).rejects.toMatchObject({ name: "AbortError" });
+    await Promise.resolve();userId = "22";await service.session();complete(ok(commentPage("1", 4980)));await rejected;
+    await expect(service.comments("1", 5000)).rejects.toMatchObject({ code: "invalid_request" });
+    expect(fetcher).toHaveBeenCalledTimes(3);
+  });
+
+  it("liking a deep-page comment refreshes cached state and preserves the next time cursor", async () => {
+    const fetcher = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      if (String(input) === "/__desktop/auth") return new Response(JSON.stringify({ authenticated: true, csrfToken: csrf }));
+      if (init?.method === "POST") return ok(null);
+      const url = new URL(String(input), "https://test.invalid");
+      return ok(commentPage("1", Number(url.searchParams.get("offset"))));
+    });
+    const service = createMusicService({ fetcher });
+    await service.comments("1", 4980);await service.comments("1", 5000);
+    await service.setCommentLike("1", "701", true);
+    await service.comments("1", 5020);
+    expect(String(fetcher.mock.calls.at(-1)![0])).toBe("/__desktop/music/v1/comments/1?offset=5020&before=1699999995000");
+    await service.comments("1", 5000);
+    expect(fetcher).toHaveBeenCalledTimes(6);
+    expect(String(fetcher.mock.calls.at(-1)![0])).toBe("/__desktop/music/v1/comments/1?offset=5000&before=1699999995020");
+    await service.sendComment("1", "发送后回到第一页");
+    await expect(service.comments("1", 5040)).rejects.toMatchObject({ code: "invalid_request" });
+  });
+
+  it("comment likes, sends and replies need fresh desktop CSRF and invalidate cached comment reads", async () => {
+    const fetcher = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (url === "/__desktop/auth") return new Response(JSON.stringify({ authenticated: true, csrfToken: csrf }));
+      if (init?.method === "GET") return ok(commentPage());
+      expect(new Headers(init?.headers).get("X-Desktop-CSRF")).toBe(csrf);
+      expect(new Headers(init?.headers).get("X-Music-Playback-CSRF")).toBe(null);
+      return ok(null);
+    });
+    const service = createMusicService({ fetcher });
+    await service.comments("1");await service.comments("1");expect(fetcher).toHaveBeenCalledTimes(1);
+    await service.setCommentLike("1", "701", true);expect(fetcher).toHaveBeenCalledTimes(3);
+    await service.comments("1");expect(fetcher).toHaveBeenCalledTimes(4);
+    await service.sendComment("1", "  潮声\r\n还在  ");await service.sendComment("1", "回你一句", "701");
+    const writes = fetcher.mock.calls.filter((call) => call[1]?.method === "POST");
+    expect(writes.map((call) => [String(call[0]), JSON.parse(String(call[1]?.body))])).toEqual([
+      ["/__desktop/music/v1/comments/1/like", { commentId: "701", liked: true }],
+      ["/__desktop/music/v1/comments/1", { content: "潮声\n还在" }],
+      ["/__desktop/music/v1/comments/1", { content: "回你一句", replyTo: "701" }],
+    ]);
+  });
+
+  it("invalid community parameters never issue transport requests", async () => {
+    const fetcher = vi.fn(async () => ok(null)), service = createMusicService({ fetcher });
+    const operations: Array<() => Promise<unknown>> = [
+      () => service.cloud(-1), () => service.cloud(0.5), () => service.comments("bad"),
+      () => service.setCommentLike("1", "0", true), () => service.sendComment("1", " "),
+      () => service.sendComment("1", "x".repeat(501)), () => service.sendComment("1", "x\0"),
+      () => service.sendComment("1", "reply", "bad"), () => service.heartMode("1", "bad"),
+    ];
+    for (const operation of operations) await expect(Promise.resolve().then(operation)).rejects.toMatchObject({ code: "invalid_request" });
+    expect(fetcher).not.toHaveBeenCalled();
+  });
+
+  it("locked comments cannot write, and nested business failures never trigger an automatic resend", async () => {
+    const locked = vi.fn(async () => new Response(JSON.stringify({ authenticated: false, csrfToken: csrf })));
+    const service = createMusicService({ fetcher: locked });
+    await expect(service.sendComment("1", "海")).rejects.toMatchObject({ code: "authentication_required" });
+    expect(locked).toHaveBeenCalledTimes(1);
+    const fetcher = vi.fn(async (input: RequestInfo | URL) => String(input) === "/__desktop/auth"
+      ? new Response(JSON.stringify({ authenticated: true, csrfToken: csrf }))
+      : new Response(JSON.stringify({ ok: false, error: { code: "forbidden", message: "无法发送", retryable: false } }), { status: 200 }));
+    await expect(createMusicService({ fetcher }).sendComment("1", "一次提交")).rejects.toMatchObject({ code: "forbidden" });
+    expect(fetcher).toHaveBeenCalledTimes(2);
   });
 });

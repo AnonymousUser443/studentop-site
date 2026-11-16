@@ -55,6 +55,12 @@ window.WM = (function () {
   function titleMetrics(win) {
     var old = win.dragMetrics || {}, title = win.el.querySelector('.titlebar');
     var captions = win.el.querySelector('.captions'), app = win.el.querySelector('.tb-app'), icon = win.el.querySelector('.tb-icon');
+    var clientDrag = win.clientChrome && win.el.querySelector('[data-window-drag-region]');
+    if (clientDrag && clientDrag.offsetHeight) {
+      win.dragMetrics = { titleHeight: clientDrag.offsetHeight, captionWidth: captions && captions.offsetWidth || 138,
+        leftInset: 4, rightInset: 4, topInset: 4, bottomInset: 2 };
+      return win.dragMetrics;
+    }
     var style = app ? getComputedStyle(app) : {};
     var height = title && title.offsetHeight;
     var captionWidth = captions && captions.offsetWidth;
@@ -218,6 +224,30 @@ window.WM = (function () {
     win.el.querySelector('.tb-title').textContent = title;
     win.el.setAttribute('aria-label', title);
     emit('title', win);
+  }
+
+  // Reparent the existing controls; all caption actions and snap-menu listeners stay owned by WM.
+  // The application owns only the slot and opt-in drag region, and returns the controls on unmount.
+  function mountWindowControls(win, container) {
+    if (!win || win.state === 'closed' || !container || !win.el.contains(container)) return function () {};
+    if (win.clientChrome) win.clientChrome.release();
+    var titlebar = win.el.querySelector('.titlebar'), captions = win.el.querySelector('.captions');
+    if (!titlebar || !captions) return function () {};
+    var binding = { release: release };
+    container.appendChild(captions);
+    win.clientChrome = binding;
+    win.el.classList.add('has-client-chrome');
+    updateMaxButton(win);
+    function release() {
+      if (win.clientChrome !== binding) return;
+      if (win.cancelGesture) win.cancelGesture();
+      closeSnapLayouts();
+      titlebar.appendChild(captions);
+      win.clientChrome = null;
+      win.dragMetrics = null;
+      win.el.classList.remove('has-client-chrome');
+    }
+    return release;
   }
 
   /* ---------------- 关闭 ---------------- */
@@ -425,19 +455,24 @@ window.WM = (function () {
   /* ---------------- 拖动 / 缩放 ---------------- */
   function bindWindow(win) {
     var el = win.el;
-    var titlebar = el.querySelector('.titlebar');
     var maxBtn = el.querySelector('.caption-max');
+
+    function isDragRegion(target) {
+      if (target.closest('.titlebar')) return true;
+      if (!win.clientChrome || !target.closest('[data-window-drag-region]')) return false;
+      return !target.closest('button,input,textarea,select,a,label,[contenteditable],[role="button"],[role="slider"],[data-window-no-drag]');
+    }
 
     el.addEventListener('pointerdown', function (e) {
       if (win.state === 'closed') return;
       if (!el.classList.contains('is-active')) focus(win, false);
       if (e.target.closest('.captions')) return;
       if (e.target.closest('.rs-handle')) return;
-      if (e.target.closest('.titlebar') && !isMobile() && e.button === 0 && e.isPrimary !== false) startDrag(e, win);
+      if (isDragRegion(e.target) && !isMobile() && e.button === 0 && e.isPrimary !== false) startDrag(e, win);
     }, true);
 
-    titlebar.addEventListener('dblclick', function (e) {
-      if (e.target.closest('.captions')) return;
+    el.addEventListener('dblclick', function (e) {
+      if (e.target.closest('.captions') || !isDragRegion(e.target)) return;
       toggleMaximize(win);
     });
 
@@ -781,6 +816,7 @@ window.WM = (function () {
     isRunning: function (appId) { return byApp(appId).length > 0; },
     isActiveApp: function (appId) { var w = activeWin(); return !!w && w.appId === appId; },
     setTitle: setTitle,
+    mountWindowControls: mountWindowControls,
     closeAll: function () { Object.keys(wins).slice().forEach(function (id) { close(wins[id]); }); }
   };
 

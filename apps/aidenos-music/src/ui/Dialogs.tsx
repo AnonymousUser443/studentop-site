@@ -11,6 +11,7 @@ import { Dialog, Cover, IconButton, Loading, EmptyState } from "./shared";
 import { Icon } from "./icons";
 import { useResource } from "./hooks";
 import s from "./music.module.css";
+import { useListEntrance } from "./ListEntrance";
 
 export function LoginDialog({
   service,
@@ -299,6 +300,8 @@ export function AddToPlaylistDialog({
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
   const mounted = useRef(true);
+  const picker = useRef<HTMLDivElement>(null);
+  useListEntrance(picker, { key: "playlist-picker", active: visible, phase: 100 });
   useEffect(
     () => () => {
       mounted.current = false;
@@ -389,7 +392,7 @@ export function AddToPlaylistDialog({
           )}
         </div>
       ) : (
-        <div className={s.playlistPicker}>
+        <div className={s.playlistPicker} ref={picker}>
           {library.loading && !library.value ? (
             <Loading compact />
           ) : library.error ? (
@@ -411,6 +414,7 @@ export function AddToPlaylistDialog({
               <button
                 type="button"
                 key={playlist.id}
+                data-list-item data-list-key={playlist.id}
                 className={`${s.playlistOption} ${selected === playlist.id ? s.playlistSelected : ""}`}
                 onClick={() => setSelected(playlist.id)}
               >
@@ -462,6 +466,7 @@ export function TrackMenuDialog({
   onAdd,
   onArtist,
   onAlbum,
+  onComments,
 }: {
   track: Track;
   onClose: () => void;
@@ -470,7 +475,10 @@ export function TrackMenuDialog({
   onAdd: () => void;
   onArtist: () => void;
   onAlbum: () => void;
+  onComments: () => void;
 }) {
+  const items = useRef<HTMLDivElement>(null);
+  useListEntrance(items, { key: `track-menu:${track.id}`, phase: 100 });
   const choose = (action: () => void) => {
     onClose();
     action();
@@ -484,29 +492,34 @@ export function TrackMenuDialog({
           <span>{track.artists.map((x) => x.name).join(" / ")}</span>
         </div>
       </div>
-      <div className={s.trackMenuActions}>
-        <button onClick={() => choose(onNext)}>
+      <div className={s.trackMenuActions} ref={items}>
+        <button data-list-item data-list-key="comments" onClick={() => choose(onComments)}>
+          <Icon name="lyrics" />
+          查看评论与回复
+          <Icon name="forward" size={15} />
+        </button>
+        <button data-list-item data-list-key="next" onClick={() => choose(onNext)}>
           <Icon name="next" />
           下一首播放
           <Icon name="forward" size={15} />
         </button>
-        <button onClick={() => choose(onEnqueue)}>
+        <button data-list-item data-list-key="enqueue" onClick={() => choose(onEnqueue)}>
           <Icon name="queue" />
           加入播放队列
           <Icon name="forward" size={15} />
         </button>
-        <button onClick={() => choose(onAdd)}>
+        <button data-list-item data-list-key="add" onClick={() => choose(onAdd)}>
           <Icon name="plus" />
           收藏到歌单
           <Icon name="forward" size={15} />
         </button>
         <span />
-        <button onClick={() => choose(onArtist)}>
+        <button data-list-item data-list-key="artist" disabled={!/^[1-9][0-9]*$/.test(track.artists[0]?.id || "")} onClick={() => choose(onArtist)}>
           <Icon name="artist" />
           查看歌手
           <Icon name="forward" size={15} />
         </button>
-        <button onClick={() => choose(onAlbum)}>
+        <button data-list-item data-list-key="album" disabled={!/^[1-9][0-9]*$/.test(track.album.id)} onClick={() => choose(onAlbum)}>
           <Icon name="album" />
           查看专辑
           <Icon name="forward" size={15} />

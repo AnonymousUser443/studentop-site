@@ -1,0 +1,61 @@
+{
+  "phase": "fallback",
+  "checks": [
+    {
+      "name": "narrow window uses readable scroll without a GPU canvas",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "reduced motion destroys Sonnet and retains lyrics and pause state",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "WebGL context loss falls back without changing audio state",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "unavailable WebGL initialization leaves no attached canvas or playback change",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "inspection": {
+    "audio": [
+      {
+        "duration": 120,
+        "paused": true,
+        "sourceOrigin": "http://127.0.0.1:25231",
+        "time": 5.5
+      }
+    ],
+    "errors": [],
+    "iframes": 0,
+    "locked": false,
+    "root": "light",
+    "snapshot": {
+      "lyrics": 4,
+      "position": 5500,
+      "queue": 8,
+      "status": "paused",
+      "track": "潮生 · 隔离测试音轨"
+    },
+    "url": "http://127.0.0.1:25231/?foliaQa=1794818780335",
+    "viewport": [
+      1258,
+      727
+    ],
+    "window": {
+      "bottom": 675,
+      "height": 675,
+      "left": 0,
+      "right": 1258,
+      "top": 0,
+      "width": 1258,
+      "x": 0,
+      "y": 0
+    }
+  }
+}
