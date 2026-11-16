@@ -1,0 +1,6 @@
+{
+  "name":"aidenos-music","version":"1.0.0","private":true,"type":"module",
+  "scripts":{"build":"tsc --noEmit && vite build","test":"vitest run","server":"node server/index.mjs"},
+  "dependencies":{"react":"^19.2.0","react-dom":"^19.2.0","motion":"^12.23.24","gsap":"^3.13.0","@neteasecloudmusicapienhanced/api":"4.41.1"},
+  "devDependencies":{"@types/react":"^19.2.0","@types/react-dom":"^19.2.0","@types/node":"^24.10.0","typescript":"~5.9.3","vite":"^7.2.2","vitest":"^4.0.9"}
+}

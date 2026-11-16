@@ -7,6 +7,7 @@
 
   /* ---------------- 单色 UI 图标（24 × 24，stroke = currentColor） ---------------- */
   var G = {
+    music: '<path d="M9 18V6l11-2v12M9 9l11-2"/><ellipse cx="6" cy="18" rx="3" ry="2"/><ellipse cx="17" cy="16" rx="3" ry="2"/>',
     search: '<circle cx="10.5" cy="10.5" r="6.6"/><path d="M15.3 15.3 20.5 20.5"/>',
     taskview: '<rect x="3" y="5" width="12.5" height="15" rx="2.2"/><path d="M18 8.5v9.8a2.2 2.2 0 0 1-2.2 2.2H7.5"/>',
     wifi: '<path d="M3 9.4a13.4 13.4 0 0 1 18 0"/><path d="M6 12.6a9 9 0 0 1 12 0"/><path d="M8.9 15.8a4.7 4.7 0 0 1 6.2 0"/><circle cx="12" cy="19" r="1.25" fill="currentColor" stroke="none"/>',
@@ -69,6 +70,7 @@
 
   /* Paper-cut application icons (48 × 48). Flat cut layers, no duplicate SVG ids. */
   var A = {};
+  A.tingchao = '<rect x="3" y="3" width="42" height="42" rx="12" fill="#183f48"/><circle cx="33" cy="15" r="6" fill="#e6d19b"/><path d="M7 28c7-9 12 9 20 0s12-5 15-2M7 35c7-9 12 8 20 0s12-5 15-2" fill="none" stroke="#73d3bf" stroke-width="3" stroke-linecap="round"/><path d="M8 39c10-6 14 3 23-2" fill="none" stroke="#d8c38e" stroke-width="1.4"/>';
   A['wallpaper-driver'] = '<rect x="3" y="5" width="42" height="32" rx="7" fill="#183e31" stroke="#8bac92"/><rect x="7" y="9" width="34" height="23" rx="3" fill="#e2e8cc"/><path d="M7 29 17 17l10 10 6-7 8 9v3H7Z" fill="#72a58b"/><path d="M12 32c5-4 14-7 21-6" fill="none" stroke="#346c57" stroke-width="1.5"/><path d="m28 12 9 5-9 5z" fill="#9a661d"/><path d="M24 37v5m-8 0h16" stroke="#ae925a" stroke-width="2.5" stroke-linecap="round"/>';
   A['task-manager'] = '<rect x="5" y="5" width="38" height="38" rx="7" fill="#204a5c" stroke="#bbd5d8"/><rect x="9" y="10" width="30" height="27" rx="2" fill="#d9edf0"/><path d="M10 25h6l4-12 7 20 5-13 3 5h3" fill="none" stroke="#307d9b" stroke-width="2.7" stroke-linejoin="round"/><path d="M11 39h26" stroke="#9baea8" stroke-width="2"/>';
   A.start = "<g fill=\"#173e31\" opacity=\".2\" transform=\"translate(1.5 2)\"><rect x=\"5\" y=\"5\" width=\"17\" height=\"17\" rx=\"1.5\"/><rect x=\"26\" y=\"5\" width=\"17\" height=\"17\" rx=\"1.5\"/><rect x=\"5\" y=\"26\" width=\"17\" height=\"17\" rx=\"1.5\"/><rect x=\"26\" y=\"26\" width=\"17\" height=\"17\" rx=\"1.5\"/></g><g stroke=\"#d9d8b3\" stroke-width=\".8\"><rect x=\"4\" y=\"4\" width=\"17\" height=\"17\" rx=\"1.5\" fill=\"#3d8974\"/><rect x=\"25\" y=\"4\" width=\"17\" height=\"17\" rx=\"1.5\" fill=\"#72aa8d\"/><rect x=\"4\" y=\"25\" width=\"17\" height=\"17\" rx=\"1.5\" fill=\"#246653\"/><rect x=\"25\" y=\"25\" width=\"17\" height=\"17\" rx=\"1.5\" fill=\"#43816b\"/></g>";

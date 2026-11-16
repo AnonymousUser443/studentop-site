@@ -1,0 +1,41 @@
+{
+  "ok": true,
+  "at": "2026-11-16T00:02:13.660Z",
+  "checks": [
+    {
+      "name": "systemd_guest_session",
+      "pass": true
+    },
+    {
+      "name": "Pi_official_guest_catalog",
+      "pass": true,
+      "tracks": 12,
+      "playlists": 8
+    },
+    {
+      "name": "Pi_CDN_audio_range_with_public_referrer",
+      "pass": true,
+      "status": 206,
+      "contentType": "audio/mpeg; charset=UTF-8",
+      "bytesObserved": 1024,
+      "host": "m801.music.126.net",
+      "quality": "standard",
+      "availability": "full"
+    },
+    {
+      "name": "required_services_active",
+      "pass": true
+    },
+    {
+      "name": "private_permissions",
+      "pass": true
+    }
+  ],
+  "services": {
+    "nginx": "active",
+    "desktop-auth": "active",
+    "aidenos-music": "active",
+    "frpc": "active"
+  },
+  "privateValuesPrinted": false
+}

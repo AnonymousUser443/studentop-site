@@ -239,7 +239,16 @@ export async function createDesktopAuth({root, configFile, stateFile, origin, se
     if (!isValid()) return {ok:false,status:401,error:'authentication_required'};
     return Object.freeze({ok:true,sessionId:id,isValid});
   }
-  return {handle:guardedHandle, authorizeRead, configured:!!config && healthy, async drain(){closing=true;await Promise.allSettled([...inflight]);await queue;}};
+  function authorizeWrite(req) {
+    if (!['POST','DELETE','PATCH'].includes(req.method)) return {ok:false,status:405,error:'method_not_allowed'};
+    const lease=authorizeRead({method:'GET',headers:req.headers});
+    if(!lease.ok)return lease;
+    const expected=typeof origin==='function'?origin(req):origin;
+    const session=sessionFor(req);
+    if(req.headers.origin!==expected || !session || req.headers['x-desktop-csrf']!==session.value.csrf) return {ok:false,status:403,error:'request_rejected'};
+    return lease;
+  }
+  return {handle:guardedHandle, authorizeRead, authorizeWrite, configured:!!config && healthy, async drain(){closing=true;await Promise.allSettled([...inflight]);await queue;}};
 }
 /** OS-owned loopback listener is an exclusive lease, released automatically on process death.
  * A deterministic port collision fails closed; never kills or attaches to another listener.

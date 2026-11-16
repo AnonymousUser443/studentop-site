@@ -1,0 +1,57 @@
+{
+  "phase": "lifecycle",
+  "at": "2026-11-15T23:29:01.477Z",
+  "checks": [
+    {
+      "name": "close preserves playback and exposes mini",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "reopen keeps one audio and current position",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "minimize preserves playback",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "lock preserves playing state and clock view",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "lock next resolves through existing playback lease",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "lock pause does not trigger unlock",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "locked library edit denied",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "unlock retains paused state",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "paused before lock remains paused",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "state": {
+    "id": "3",
+    "position": 1997.4050000000002,
+    "queue": 8,
+    "status": "paused"
+  }
+}

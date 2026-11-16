@@ -1,0 +1,62 @@
+{
+  "phase": "queue",
+  "at": "2026-11-15T22:54:01.742Z",
+  "checks": [
+    {
+      "name": "mode shuffle",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "mode repeat-one",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "mode sequence",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "volume is applied to audio",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "mute",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "queue reorder retains current track",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "queue remove",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "next insertion permits duplicate songs with distinct ids",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "clear queue clears playback and metadata",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "play all loads complete paged playlist",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "state": {
+    "id": "1",
+    "position": 1767.376,
+    "queue": 80,
+    "status": "playing"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "phase": "search",
+  "at": "2026-11-15T22:53:01.876Z",
+  "checks": [
+    {
+      "name": "search pagination appends complete result",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "back restores search pagination and scroll",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "search detail 1",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "search detail 2",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "search detail 3",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "state": {
+    "position": 0,
+    "queue": 0,
+    "status": "idle"
+  }
+}

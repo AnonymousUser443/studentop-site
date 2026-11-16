@@ -1,0 +1,31 @@
+{
+  "phase": "account",
+  "at": "2026-11-15T22:51:26.964Z",
+  "checks": [
+    {
+      "name": "QR login reaches isolated account",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "private playlist created through UI",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "add selected track to own playlist",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "remove track updates own playlist",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "state": {
+    "position": 0,
+    "queue": 0,
+    "status": "idle"
+  }
+}

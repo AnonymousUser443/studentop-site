@@ -1,0 +1,77 @@
+{
+  "ok": true,
+  "at": "2026-11-16T00:04:02.640Z",
+  "homeVersion": "c42cb87995f41571115b136b",
+  "checks": [
+    {
+      "name": "public_home_version",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "public_version_endpoint",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "public_immutable:js/apps-music.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 5272,
+      "sha256": "d92d092635ae248efe293881d93d92ad0e2a0e480a0aca90efde66dd3d76877c"
+    },
+    {
+      "name": "public_immutable:fonts/music/tingchao-ui-base-000.woff2",
+      "pass": true,
+      "status": 200,
+      "bytes": 151992,
+      "sha256": "7ef2a9a49b475a5ee0e0b56ec61f5f3001bf8e8ed175363f548a862c6326002f"
+    },
+    {
+      "name": "public_immutable:css/music/tingchao.css",
+      "pass": true,
+      "status": 200,
+      "bytes": 93949,
+      "sha256": "ec2b449d504983b20eb44f9614c48f8d90b278ac23e671b8232277d24852a84b"
+    },
+    {
+      "name": "public_immutable:img/music/day-tide.webp",
+      "pass": true,
+      "status": 200,
+      "bytes": 111272,
+      "sha256": "d29b4e593c3221d912eef2c7e41c1ea958a974824957f8bd23b64c9790bbe374"
+    },
+    {
+      "name": "public_immutable:js/music/entry.js",
+      "pass": true,
+      "status": 200,
+      "bytes": 488765,
+      "sha256": "ce0861fcff85941d0e18a4a5dd0b623b07e780af5efd64f5e3e7719799b539c6"
+    },
+    {
+      "name": "music_requires_desktop_and_no_cache",
+      "pass": true,
+      "status": 401
+    },
+    {
+      "name": "private_build_manifest_denied",
+      "pass": true,
+      "status": 403
+    },
+    {
+      "name": "neighbor:/liyun-moyuan/",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "neighbor:/voxel-campus/",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "neighbor:/campus-entry/",
+      "pass": true,
+      "status": 200
+    }
+  ]
+}

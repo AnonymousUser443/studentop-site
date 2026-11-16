@@ -1,0 +1,36 @@
+[Unit]
+Description=AidenOS Music private account and playback service
+After=network.target
+
+[Service]
+Type=simple
+User=aidenos-music
+Group=aidenos-music
+WorkingDirectory=/opt/projects/aidenos-music/current
+Environment=NODE_ENV=production
+Environment=PATH=/opt/node24/bin:/usr/bin:/bin
+EnvironmentFile=/etc/aidenos-music.env
+ExecStart=/opt/node24/bin/node server/index.mjs
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=20
+KillMode=control-group
+UMask=0077
+StateDirectory=aidenos-music
+StateDirectoryMode=0700
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+ReadWritePaths=/var/lib/aidenos-music
+
+[Install]
+WantedBy=multi-user.target

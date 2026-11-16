@@ -4,6 +4,8 @@
 
 ## 本地启动（推荐入口）
 
+新增原生音乐窗口[听潮 · AidenOS Music](apps/aidenos-music/README.md)：日光／夜航主题、网易云扫码、音乐库、队列、沉浸歌词、关窗续播和锁屏媒体控制。安装该独立工程依赖后，使用 `node tools/dev-workspace.mjs --site-only --music` 在桌面内联调；可将 `--music` 加到完整模式。听潮的源码、后端与部署说明见应用 README。
+
 最新本地开发加入[理韵活动一览](apps/liyun-explorer/docs/activity/QA.md)和[桌面任务管理器窗口](docs/TASK-MANAGER.md)。活动由左下入口打开；任务管理器复用既有回环监控，通过桌面会话保护的同源只读接口读取，不增加启动器服务或自动创建隧道。这些改动现已由所有者当次授权发布到树莓派，真实监控、缓存兼容与回滚记录见[本次生产发布](docs/ACTIVITY-MONITOR-RELEASE-20261029.md)。
 
 2026-10-29 早前的 AidenOS 开场单独发布见[历史收据](docs/AIDENOS-RELEASE-20261029.md)。理韵活动页和真实监控接入见[活动与监控生产发布](docs/ACTIVITY-MONITOR-RELEASE-20261029.md)，主页随后于2026-10-31发布下述手机端修复；体素BGM修复于2026-10-30独立更新，见[体素发布收据](docs/VOXEL-RELEASE-20261030.md)。校园入场、霜降与原版站点沿用各自原 release。

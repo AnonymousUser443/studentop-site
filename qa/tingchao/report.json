@@ -1,0 +1,419 @@
+{
+  "date": "2026-11-16",
+  "baselineCommit": "825f1b99d35384aecc65ae4990bb0f9970d4beab",
+  "homeVersion": "c42cb87995f41571115b136b",
+  "automatedTests": {
+    "passed": 120,
+    "suites": [
+      {
+        "name": "runtime,lyrics,Service",
+        "passed": 33
+      },
+      {
+        "name": "backend HTTP/SQLite",
+        "passed": 10
+      },
+      {
+        "name": "music gateway",
+        "passed": 14
+      },
+      {
+        "name": "music workspace launcher",
+        "passed": 5
+      },
+      {
+        "name": "original node,desktop,ports",
+        "passed": 12
+      },
+      {
+        "name": "original auth and task manager proxy",
+        "passed": 32
+      },
+      {
+        "name": "release transaction artifacts",
+        "passed": 14
+      }
+    ]
+  },
+  "browserChecks": 47,
+  "runs": [
+    {
+      "phase": "bootstrap",
+      "at": "2026-11-15T23:55:09.458Z",
+      "checks": [
+        {
+          "name": "music framework and artwork lazy before launch",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "native single window and single audio",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "day theme illustration visible",
+          "pass": true,
+          "detail": true
+        }
+      ],
+      "state": {
+        "id": "3",
+        "position": 1997.4050000000002,
+        "queue": 8,
+        "status": "paused"
+      }
+    },
+    {
+      "phase": "play",
+      "at": "2026-11-15T23:28:29.736Z",
+      "checks": [
+        {
+          "name": "real local audio and runtime clocks advance",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "seek keeps playing",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "next track uses same audio",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "lyrics parsed and word timing available",
+          "pass": true,
+          "detail": true
+        }
+      ],
+      "state": {
+        "id": "2",
+        "position": 5778.512,
+        "queue": 8,
+        "status": "playing"
+      }
+    },
+    {
+      "phase": "lifecycle",
+      "at": "2026-11-15T23:29:01.477Z",
+      "checks": [
+        {
+          "name": "close preserves playback and exposes mini",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "reopen keeps one audio and current position",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "minimize preserves playback",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "lock preserves playing state and clock view",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "lock next resolves through existing playback lease",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "lock pause does not trigger unlock",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "locked library edit denied",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "unlock retains paused state",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "paused before lock remains paused",
+          "pass": true,
+          "detail": true
+        }
+      ],
+      "state": {
+        "id": "3",
+        "position": 1997.4050000000002,
+        "queue": 8,
+        "status": "paused"
+      }
+    },
+    {
+      "phase": "account",
+      "at": "2026-11-15T22:51:26.964Z",
+      "checks": [
+        {
+          "name": "QR login reaches isolated account",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "private playlist created through UI",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "add selected track to own playlist",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "remove track updates own playlist",
+          "pass": true,
+          "detail": true
+        }
+      ],
+      "state": {
+        "position": 0,
+        "queue": 0,
+        "status": "idle"
+      }
+    },
+    {
+      "phase": "search",
+      "at": "2026-11-15T22:53:01.876Z",
+      "checks": [
+        {
+          "name": "search pagination appends complete result",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "back restores search pagination and scroll",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "search detail 1",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "search detail 2",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "search detail 3",
+          "pass": true,
+          "detail": true
+        }
+      ],
+      "state": {
+        "position": 0,
+        "queue": 0,
+        "status": "idle"
+      }
+    },
+    {
+      "phase": "queue",
+      "at": "2026-11-15T22:54:01.742Z",
+      "checks": [
+        {
+          "name": "mode shuffle",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "mode repeat-one",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "mode sequence",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "volume is applied to audio",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "mute",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "queue reorder retains current track",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "queue remove",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "next insertion permits duplicate songs with distinct ids",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "clear queue clears playback and metadata",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "play all loads complete paged playlist",
+          "pass": true,
+          "detail": true
+        }
+      ],
+      "state": {
+        "id": "1",
+        "position": 1767.376,
+        "queue": 80,
+        "status": "playing"
+      }
+    },
+    {
+      "phase": "large",
+      "at": "2026-11-15T23:14:04.906Z",
+      "checks": [
+        {
+          "name": "230-track search is virtualized",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "230-track queue is virtualized",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "virtualized last track reachable",
+          "pass": true,
+          "detail": true
+        }
+      ],
+      "state": {
+        "id": "192",
+        "position": 4634.673000000001,
+        "queue": 230,
+        "status": "playing"
+      }
+    },
+    {
+      "phase": "visual",
+      "at": "2026-11-15T23:14:29.404Z",
+      "checks": [
+        {
+          "name": "real responsive containers at all capture sizes",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "auto theme follows desktop",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "immersive frame sampling (observed machine)",
+          "pass": true,
+          "detail": {
+            "averageMs": 16.666666666666668,
+            "frames": 72,
+            "p95Ms": 16.900000000023283
+          }
+        },
+        {
+          "name": "hidden window freezes progress while audio advances",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "reduced motion propagated",
+          "pass": true,
+          "detail": true
+        }
+      ],
+      "state": {
+        "id": "192",
+        "position": 29182.929,
+        "queue": 230,
+        "status": "playing"
+      }
+    },
+    {
+      "phase": "live",
+      "at": "2026-11-15T23:03:39.386Z",
+      "checks": [
+        {
+          "name": "official guest source decodes and advances",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "actual official source and media metadata",
+          "pass": true,
+          "detail": {
+            "availability": "full",
+            "buffered": 1,
+            "decodedDuration": 216.993469,
+            "mediaSessionTitle": "Hong Kong (feat. 王菲季候风)",
+            "preview": null,
+            "quality": "exhigh",
+            "sourceHost": "m801.music.126.net",
+            "track": "Hong Kong (feat. 王菲季候风)"
+          }
+        },
+        {
+          "name": "live lyrics or instrumental fallback available",
+          "pass": true,
+          "detail": true
+        },
+        {
+          "name": "real stream continues after close",
+          "pass": true,
+          "detail": true
+        }
+      ],
+      "state": {
+        "id": "3456047164",
+        "position": 8743.775,
+        "queue": 12,
+        "status": "paused"
+      }
+    }
+  ],
+  "upstreamGuestSmoke": {
+    "passed": 12
+  },
+  "limits": [
+    "Real account QR authorization and personal writes are reserved for the owner in the delivered UI. Synthetic writes were tested.",
+    "The unrelated full-workspace suite stopped 5 of 7 scenarios at missing neighboring Liyun Vite dependencies; 2 passed. No neighboring packages were installed.",
+    "Frame sampling describes this Windows/Chrome machine, not a hardware-independent FPS guarantee."
+  ],
+  "scope": {
+    "publicBaselineCanonicalFilesMatched": 53,
+    "authBaselineFilesMatched": 3,
+    "unrelatedWorktreeChangesIncluded": false,
+    "thirdPartyAudioUrlsPersisted": false
+  },
+  "bundle": {
+    "site/assets/js/music/entry.js": {
+      "bytes": 488527,
+      "gzipBytes": 162737
+    },
+    "site/assets/css/music/tingchao.css": {
+      "bytes": 93949,
+      "gzipBytes": 17956
+    }
+  }
+}

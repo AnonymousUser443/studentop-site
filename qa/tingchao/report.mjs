@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {gzipSync} from 'node:zlib';
+const phases=['bootstrap','play','lifecycle','account','search','queue','large','visual','live'];
+const runs=phases.map(phase=>JSON.parse(fs.readFileSync(`qa/tingchao/results-${phase}.json`,'utf8')));
+if(runs.some(run=>!run.checks.length||run.checks.some(check=>check.pass!==true)))throw Error('Incomplete browser evidence');
+const report={date:'2026-11-16',baselineCommit:'825f1b99d35384aecc65ae4990bb0f9970d4beab',homeVersion:JSON.parse(fs.readFileSync('dist-site/version.json','utf8')).id,automatedTests:{passed:120,suites:[{name:'runtime,lyrics,Service',passed:33},{name:'backend HTTP/SQLite',passed:10},{name:'music gateway',passed:14},{name:'music workspace launcher',passed:5},{name:'original node,desktop,ports',passed:12},{name:'original auth and task manager proxy',passed:32},{name:'release transaction artifacts',passed:14}]},browserChecks:runs.reduce((n,run)=>n+run.checks.length,0),runs,upstreamGuestSmoke:{passed:12},limits:['Real account QR authorization and personal writes are reserved for the owner in the delivered UI. Synthetic writes were tested.','The unrelated full-workspace suite stopped 5 of 7 scenarios at missing neighboring Liyun Vite dependencies; 2 passed. No neighboring packages were installed.','Frame sampling describes this Windows/Chrome machine, not a hardware-independent FPS guarantee.'],scope:{publicBaselineCanonicalFilesMatched:53,authBaselineFilesMatched:3,unrelatedWorktreeChangesIncluded:false,thirdPartyAudioUrlsPersisted:false}};
+report.bundle=Object.fromEntries(['site/assets/js/music/entry.js','site/assets/css/music/tingchao.css'].map(file=>{const bytes=fs.readFileSync(file);return[file,{bytes:bytes.length,gzipBytes:gzipSync(bytes).length}];}));
+fs.writeFileSync('qa/tingchao/report.json',JSON.stringify(report,null,2)+'\n');
+const diagnostics=path.resolve('.tmp/tingchao-browser-diagnostics');fs.mkdirSync(diagnostics,{recursive:true});
+for(const name of fs.readdirSync('qa/tingchao').filter(name=>name.startsWith('failure-')||name==='first-home-light.png')){const source=path.resolve('qa/tingchao',name),target=path.join(diagnostics,Date.now()+'-'+name);if(path.dirname(source)!==path.resolve('qa/tingchao')||path.dirname(target)!==diagnostics)throw Error('Unexpected evidence path');fs.renameSync(source,target);}
+console.log(JSON.stringify({ok:true,homeVersion:report.homeVersion,automatedTests:report.automatedTests.passed,browserChecks:report.browserChecks,phases:runs.length,bundle:report.bundle}));

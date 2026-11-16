@@ -6,6 +6,7 @@ import {fileURLToPath} from 'node:url';
 import {isIP} from 'node:net';
 import {createDesktopAuth,acquireAuthLease} from './desktop-auth.mjs';
 import {createTaskManagerProxy} from './task-manager-proxy.mjs';
+import {createMusicProxy} from './music-proxy.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 let releaseLease;
 try {
@@ -21,18 +22,20 @@ try {
   const auth = await createDesktopAuth({root,origin:raw,secure:true,trustedProxies});
   if (!auth.configured) throw new Error('Private configuration/state unavailable; refusing to start.');
   const taskManager = createTaskManagerProxy({auth});
+  const music=createMusicProxy({auth,origin:raw});
   const server = http.createServer((req,res) => {
     if (req.headers.host !== origin.host) { res.writeHead(403); res.end(); return; }
     void (async()=>{
       if(await auth.handle(req,res))return;
       if(await taskManager.handle(req,res))return;
+      if(await music.handle(req,res))return;
       res.writeHead(404);res.end();
     })().catch(()=>{if(!res.headersSent)res.writeHead(503);res.end();});
   });
   server.requestTimeout=15000; server.headersTimeout=10000;
   server.listen({host:'127.0.0.1',port,exclusive:true},()=>console.log('Desktop auth companion ready on loopback.'));
   let stopping=false;
-  const close=()=>{if(stopping)return;stopping=true;server.close();void taskManager.drain();server.closeAllConnections();void auth.drain().then(()=>releaseLease()).catch(()=>{console.error('Private auth shutdown failed.');process.exitCode=1;});};
+  const close=()=>{if(stopping)return;stopping=true;server.close();void taskManager.drain();void music.drain();server.closeAllConnections();void auth.drain().then(()=>releaseLease()).catch(()=>{console.error('Private auth shutdown failed.');process.exitCode=1;});};
   server.on('error',()=>{console.error('Auth listener unavailable.');process.exitCode=1;close();});
   process.once('SIGINT',close);process.once('SIGTERM',close);
 } catch(e) {if(releaseLease)await releaseLease();console.error(e.message);process.exitCode=1;}
