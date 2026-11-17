@@ -68,7 +68,9 @@ export interface BeatThisModelAsset {
   /** URL of a browser-compatible ONNX Runtime module, loaded only on demand. */
   runtimeUrl?: string;
   /** Passed through to ONNX Runtime Web when the WASM provider is selected. */
-  wasmBaseUrl?: string;
+  wasmBaseUrl?:
+    | string
+    | { mjs: string; wasm: string };
   /** WebGPU is optional; the adapter falls back to WASM when unavailable. */
   preferredExecutionProvider?: BeatThisExecutionProvider;
   input: BeatThisModelInput;

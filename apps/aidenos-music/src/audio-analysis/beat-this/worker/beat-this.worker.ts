@@ -21,7 +21,13 @@ interface OrtSession {
 }
 
 interface OrtRuntime {
-  env?: { wasm?: { wasmPaths?: string } };
+  env?: {
+    wasm?: {
+      wasmPaths?:
+        | string
+        | { mjs: string; wasm: string };
+    };
+  };
   Tensor?: new (type: string, data: Float32Array, dims: number[]) => unknown;
   InferenceSession?: {
     create(url: string, options?: { executionProviders?: string[] }): Promise<OrtSession>;

@@ -4,8 +4,11 @@ import type { BeatThisModelAsset } from "./types";
 export const BEAT_THIS_SMALL0_MODEL: BeatThisModelAsset = {
   format: "onnx",
   modelUrl: "/assets/media/beat-this/small0.onnx",
-  runtimeUrl: "/assets/media/beat-this/ort.min.mjs",
-  wasmBaseUrl: "/assets/media/beat-this/",
+  runtimeUrl: "/assets/media/beat-this/ort.min.js",
+  wasmBaseUrl: {
+    mjs: "/assets/media/beat-this/ort-wasm-simd-threaded.js",
+    wasm: "/assets/media/beat-this/ort-wasm-simd-threaded.wasm",
+  },
   preferredExecutionProvider: "wasm",
   input: {
     kind: "mono-pcm",
