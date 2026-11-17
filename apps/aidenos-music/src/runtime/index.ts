@@ -272,7 +272,7 @@ export function createMusicRuntime(
     return id;
   };
   const audio = options.audio ?? options.createAudio?.() ?? defaultAudio();
-  if (audio.crossOrigin === undefined || audio.crossOrigin === "") {
+  if (audio.crossOrigin == null || audio.crossOrigin === "") {
     try {
       audio.crossOrigin = "anonymous";
     } catch {

@@ -715,4 +715,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
-import{e as s,d as u,f as a}from"./chunks/index-DIFBz_m7.js";export{s as ensureMusicRuntime,u as mountMusicApp,a as mountMusicSurface};
+import{e as s,d as u,f as a}from"./chunks/index-DXGoXgO5.js";export{s as ensureMusicRuntime,u as mountMusicApp,a as mountMusicSurface};
