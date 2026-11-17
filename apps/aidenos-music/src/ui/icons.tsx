@@ -36,6 +36,8 @@ export type IconName =
   | "headphones"
   | "chevron"
   | "external"
+  | "waveform"
+  | "pulse"
   | "settings";
 const paths: Record<
   Exclude<IconName, "play" | "pause" | "next" | "previous">,
@@ -177,6 +179,15 @@ const paths: Record<
   external: (
     <>
       <path d="M13 3h8v8m-1-7L10 14M9 4H4v16h16v-5" />
+    </>
+  ),
+  waveform: (
+    <path d="M3 12h2l2-6 3 12 3-9 2 5h6" />
+  ),
+  pulse: (
+    <>
+      <path d="M3 12h4l2-7 4 14 2-7h6" />
+      <circle cx="9" cy="5" r="1" />
     </>
   ),
   settings: (

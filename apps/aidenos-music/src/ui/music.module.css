@@ -2985,6 +2985,107 @@
   color: var(--tc-muted);
   line-height: 1.9;
 }
+.settingsDialog {
+  width: 500px;
+}
+.settingsIntro,
+.settingsFootnote {
+  color: var(--tc-muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+.settingsIntro { margin: -4px 0 17px; }
+.settingsFootnote {
+  border-top: 1px solid var(--tc-line);
+  margin: 18px 0 -2px;
+  padding-top: 14px;
+  font-size: 10px;
+}
+.settingsList { display: grid; gap: 9px; }
+.settingsRow {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 11px;
+  min-height: 70px;
+  padding: 11px 12px;
+  border: 1px solid var(--tc-line);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--tc-panel) 74%, var(--tc-teal) 6%);
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+.settingsRow:hover {
+  border-color: var(--tc-strong-line);
+  background: var(--tc-hover);
+  transform: translateY(-1px);
+}
+.settingsRow > input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.settingsRowIcon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  color: var(--tc-teal);
+  background: var(--tc-hover);
+}
+.settingsRowText { min-width: 0; }
+.settingsRowText strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tc-text);
+}
+.settingsRowText strong em {
+  display: inline-flex;
+  margin-left: 6px;
+  padding: 2px 5px;
+  border: 1px solid color-mix(in srgb, var(--tc-gold) 55%, transparent);
+  border-radius: 4px;
+  color: var(--tc-gold);
+  font-size: 8px;
+  font-style: normal;
+  letter-spacing: .08em;
+}
+.settingsRowText small {
+  display: block;
+  margin-top: 4px;
+  color: var(--tc-muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+.settingsSwitch {
+  justify-self: end;
+  width: 38px;
+  height: 22px;
+  padding: 3px;
+  border: 1px solid var(--tc-strong-line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--tc-panel) 84%, black 16%);
+  transition: background .2s ease, border-color .2s ease;
+}
+.settingsSwitch i {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--tc-muted);
+  transition: transform .2s cubic-bezier(.2,.8,.2,1), background .2s ease;
+}
+.settingsRow > input:checked + .settingsSwitch {
+  border-color: var(--tc-teal);
+  background: color-mix(in srgb, var(--tc-teal) 34%, var(--tc-panel));
+}
+.settingsRow > input:checked + .settingsSwitch i {
+  transform: translateX(16px);
+  background: var(--tc-teal);
+}
+.settingsRow > input:disabled + .settingsSwitch { opacity: .45; }
 .qrIntro {
   display: flex;
   align-items: center;

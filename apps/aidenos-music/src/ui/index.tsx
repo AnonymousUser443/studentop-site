@@ -40,6 +40,7 @@ import {
   CreatePlaylistDialog,
   LoginDialog,
   TrackMenuDialog,
+  VisualSettingsDialog,
 } from "./Dialogs";
 import {
   DetailPage,
@@ -78,6 +79,7 @@ type Modal =
   | { type: "track"; track: Track }
   | { type: "account" }
   | { type: "comments"; track: Track }
+  | { type: "settings" }
   | null;
 interface Notice {
   message: string;
@@ -116,6 +118,16 @@ function MusicAppContent({
     [notice, setNotice] = useState<Notice | null>(null),
     [navOpen, setNavOpen] = useState(false),
     [storedLikedIds, setLikedIds] = useState<Set<string>>(new Set());
+  const [spectrumEnabled, setSpectrumEnabled] = useState(
+      () => readStored<boolean>("tingchao.audioAnalysis.enabled", false) === true,
+    ),
+    [beatThisEnabled, setBeatThisEnabled] = useState(
+      () => readStored<boolean>("tingchao.beatThis.enabled", false) === true,
+    );
+  const beatThisReady: boolean = false;
+  const beatThisStatus = beatThisReady
+    ? "实验性模型已配置，首次使用会在本机加载模型。"
+    : "small0 尚未配置为可发布的浏览器模型，打开后不会影响播放。";
   const ownsLibrary = !!session.user?.id && libraryOwner === session.user.id;
   const library = ownsLibrary ? storedLibrary : null;
   const likedIds = ownsLibrary ? storedLikedIds : EMPTY_LIKES;
@@ -154,6 +166,18 @@ function MusicAppContent({
     }),
     shallowEqual,
   );
+  useEffect(() => {
+    writeStored("tingchao.audioAnalysis.enabled", spectrumEnabled);
+    const analysis = runtime.audioAnalysis;
+    analysis?.setEnabled(spectrumEnabled);
+    if (spectrumEnabled && current.status === "playing")
+      void analysis?.resume().catch(() => false);
+  }, [runtime, spectrumEnabled, current.status]);
+  useEffect(() => {
+    writeStored("tingchao.beatThis.enabled", beatThisEnabled);
+    if (beatThisEnabled && !beatThisReady)
+      setNotice({ message: "small0 实验模型尚未配置，当前不会启动推理。", error: false });
+  }, [beatThisEnabled, beatThisReady]);
   const sessionResource = useResource(
     (signal) => service.session(signal),
     `session-${revision}`,
@@ -569,6 +593,7 @@ function MusicAppContent({
                   <div className={s.topBarEnd}>
                     {host.setDesktopLyricsEnabled && <IconButton icon="lyrics" label="桌面歌词" active={host.desktopLyricsEnabled?.() ?? false} aria-pressed={host.desktopLyricsEnabled?.() ?? false} onClick={() => host.setDesktopLyricsEnabled?.(!(host.desktopLyricsEnabled?.() ?? false))} />}
                     <IconButton icon="more" label="当前歌曲评论" disabled={!current.track} onClick={() => current.track && setModal({ type: "comments", track: current.track })} />
+                    <IconButton icon="settings" label="听潮实验开关" active={modal?.type === "settings"} onClick={() => setModal({ type: "settings" })} />
                     <label className={s.themeChoice} title="听潮外观">
                       <Icon name="sun" size={16} />
                       <select
@@ -823,6 +848,18 @@ function MusicAppContent({
                     退出网易云音乐
                   </button>
                 </Dialog>
+              ) : modal?.type === "settings" ? (
+                <VisualSettingsDialog
+                  key="settings"
+                  spectrumEnabled={spectrumEnabled}
+                  onSpectrumChange={setSpectrumEnabled}
+                  beatThisEnabled={beatThisEnabled}
+                  onBeatThisChange={setBeatThisEnabled}
+                  spectrumAvailable={runtime.audioAnalysis?.available ?? false}
+                  beatThisReady={beatThisReady}
+                  beatThisStatus={beatThisStatus}
+                  onClose={() => setModal(null)}
+                />
               ) : null}
             </AnimatePresence>
           </div>
