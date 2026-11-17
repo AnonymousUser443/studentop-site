@@ -8,6 +8,7 @@ const ID = /^[a-f0-9]{24}$/;
 const HTML = ['index.html', 'projects/index.html', 'task-manager/index.html'];
 const ASSET_DIRS = 'css|js|img|fonts|audio|media';
 const ASSET = new RegExp('^assets/(?:' + ASSET_DIRS + ')/');
+const ROOT_WORKER_ASSET = /^assets\/beat-this\.worker-[A-Za-z0-9_-]+\.js$/;
 const ASSET_URL = new RegExp('^(?:/|\\./|\\.\\./)?(assets/(?:' + ASSET_DIRS + ')/[^\\s<>]*)$');
 const QUOTED_ASSET_URL = new RegExp('(["\'\x60])((?:/|\\./|\\.\\./)?assets/(?:' + ASSET_DIRS + ')/[^"\'\x60\\s<>]*)\\1', 'g');
 const EXT = new Set(['.css','.js','.mjs','.wasm','.onnx','.svg','.png','.jpg','.jpeg','.webp','.avif','.gif','.ico','.bmp','.woff','.woff2','.ttf','.otf','.opus','.mp3','.ogg','.wav','.m4a','.mp4','.webm']);
@@ -15,7 +16,7 @@ const LICENSES = new Set(['assets/fonts/OFL-NotoSansSC.txt','assets/fonts/OFL-No
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 function within(root, candidate) { const rel=path.relative(root,candidate); return rel==='' || (!path.isAbsolute(rel) && rel!=='..' && !rel.startsWith('..'+path.sep)); }
 function segments(name) { return name.split('/').every(s=>s && s!=='.' && s!=='..' && !s.startsWith('.') && !/[\\:\x00-\x1f\x7f]/.test(s) && !/[. ]$/.test(s)); }
-function assetName(name) { return ASSET.test(name) && segments(name) && !/(?:^|[\/._-])(?:secret|credentials?|private|password|auth)(?:[\/._-]|$)/i.test(name) && (EXT.has(path.extname(name).toLowerCase()) || LICENSES.has(name)); }
+function assetName(name) { return (ASSET.test(name) || ROOT_WORKER_ASSET.test(name)) && segments(name) && !/(?:^|[\/._-])(?:secret|credentials?|private|password|auth)(?:[\/._-]|$)/i.test(name) && (EXT.has(path.extname(name).toLowerCase()) || LICENSES.has(name)); }
 function safeFile(root, name) {
   if (!segments(name)) throw new Error('Unsafe public path: '+name);
   let full=root;

@@ -763,4 +763,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
-import{e as s,d as u,f as a}from"./chunks/index-MeN3hEaM.js";export{s as ensureMusicRuntime,u as mountMusicApp,a as mountMusicSurface};
+import{e as s,d as u,f as a}from"./chunks/index-DcL2bZjn.js";export{s as ensureMusicRuntime,u as mountMusicApp,a as mountMusicSurface};
