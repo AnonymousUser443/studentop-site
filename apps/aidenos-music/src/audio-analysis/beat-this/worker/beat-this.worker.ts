@@ -6,6 +6,10 @@ import {
   validateModelDescriptor,
   type TensorLike,
 } from "../pure";
+import {
+  computeBeatThisLogMel,
+  resampleMonoPcm,
+} from "../preprocess";
 import type { BeatThisModelAsset, BeatThisResult } from "../types";
 import type {
   BeatThisWorkerRequest,
@@ -93,7 +97,11 @@ function tensorDimensions(modelInput: BeatThisModelAsset["input"], samples: numb
   if (modelInput.shape.length !== expectedRank) {
     throw new BeatThisError("unsupported", "Model input rank does not match its declared layout");
   }
-  const dims = modelInput.layout === "batch-time" ? [1, samples] : [1, 1, samples];
+  const dims = modelInput.layout === "batch-time"
+    ? [1, samples]
+    : modelInput.layout === "batch-time-frequency"
+      ? [1, samples, modelInput.shape[2] === -1 ? 128 : modelInput.shape[2]]
+      : [1, 1, samples];
   return dims.map((value, index) => {
     const declared = modelInput.shape[index];
     if (declared !== -1 && declared !== value) {
@@ -103,31 +111,19 @@ function tensorDimensions(modelInput: BeatThisModelAsset["input"], samples: numb
   });
 }
 
-async function runAnalysis(
+async function runTensor(
   requestId: string,
-  audioBuffer: ArrayBuffer,
-  sampleRate: number,
-  length: number,
+  tensorData: Float32Array,
+  dims: number[],
   timeoutMs: number,
-): Promise<BeatThisResult> {
+): Promise<TensorLike> {
   if (!model) throw new BeatThisError("unsupported", "Worker has not been initialized");
-  if (!Number.isInteger(length) || length <= 0 || audioBuffer.byteLength !== length * 4) {
-    throw new BeatThisError("invalid_input", "Transferred PCM buffer length is invalid");
-  }
-  const pcm = new Float32Array(audioBuffer, 0, length);
-  const input = { kind: "pcm" as const, sampleRate, channels: 1 as const, pcm };
-  assertValidPcmInput(input, model.input.sampleRate);
-  if (model.input.maxSamples !== undefined && length > model.input.maxSamples) {
-    throw new BeatThisError("invalid_input", "PCM input exceeds model.maxSamples");
-  }
   const runtime = await loadRuntime();
   const Tensor = runtime.Tensor!;
   const session = await loadSession();
-  const dims = tensorDimensions(model.input, length);
-  const tensor = new Tensor("float32", pcm, dims);
-  const runPromise = session.run({ [model.input.name]: tensor });
-  // ONNX Runtime has no portable cancellation contract. Race the call and
-  // ignore a late result; the adapter can terminate the worker when required.
+  const runPromise = session.run({
+    [model.input.name]: new Tensor("float32", tensorData, dims),
+  });
   runPromise.catch(() => undefined);
   const outputs = await Promise.race([
     runPromise,
@@ -137,11 +133,68 @@ async function runAnalysis(
   ]);
   if (cancelled.has(requestId)) throw new BeatThisError("cancelled", "Beat analysis was cancelled");
   const tensorOutput = outputs[model.output.name];
-  const activations = extractBeatActivations(tensorOutput, model.output);
-  const points = activationsToBeatPoints(activations, model.output);
+  if (!tensorOutput) throw new BeatThisError("inference_failed", "Model output tensor was not returned");
+  return tensorOutput;
+}
+
+async function runAnalysis(
+  requestId: string,
+  audioBuffer: ArrayBuffer,
+  sampleRate: number,
+  length: number,
+  timeoutMs: number,
+  sourceDurationSeconds?: number,
+): Promise<BeatThisResult> {
+  if (!model) throw new BeatThisError("unsupported", "Worker has not been initialized");
+  if (!Number.isInteger(length) || length <= 0 || audioBuffer.byteLength !== length * 4) {
+    throw new BeatThisError("invalid_input", "Transferred PCM buffer length is invalid");
+  }
+  const pcm = new Float32Array(audioBuffer, 0, length);
+  const input = {
+    kind: "pcm" as const,
+    sampleRate,
+    channels: 1 as const,
+    pcm,
+    ...(sourceDurationSeconds === undefined ? {} : { sourceDurationSeconds }),
+  };
+  assertValidPcmInput(input, model.input.preprocess ? undefined : model.input.sampleRate);
+  if (!model.input.preprocess && model.input.maxSamples !== undefined && length > model.input.maxSamples) {
+    throw new BeatThisError("invalid_input", "PCM input exceeds model.maxSamples");
+  }
+  if (!model.input.preprocess) {
+    const tensorOutput = await runTensor(requestId, pcm, tensorDimensions(model.input, length), timeoutMs);
+    const activations = extractBeatActivations(tensorOutput, model.output);
+    const points = activationsToBeatPoints(activations, model.output);
+    return {
+      ...points,
+      durationSeconds: input.sourceDurationSeconds ?? length / sampleRate,
+      provider,
+    };
+  }
+  if (model.input.layout !== "batch-time-frequency")
+    throw new BeatThisError("invalid_model_descriptor", "Beat This! log-mel preprocessing requires batch-time-frequency input");
+  const resampled = resampleMonoPcm(pcm, sampleRate, model.input.sampleRate);
+  const spectrogram = computeBeatThisLogMel(resampled, model.input.sampleRate);
+  const frameCount = model.input.shape[1] > 0 ? model.input.shape[1] : 1_500;
+  const melCount = model.input.shape[2] > 0 ? model.input.shape[2] : spectrogram.mels;
+  if (melCount !== spectrogram.mels)
+    throw new BeatThisError("invalid_model_descriptor", "Model mel dimension does not match Beat This! preprocessing");
+  const beats: number[] = [];
+  const downbeats: number[] = [];
+  for (let start = 0; start < spectrogram.frames; start += frameCount) {
+    if (cancelled.has(requestId)) throw new BeatThisError("cancelled", "Beat analysis was cancelled");
+    const validFrames = Math.min(frameCount, spectrogram.frames - start);
+    const chunk = new Float32Array(frameCount * melCount);
+    chunk.set(spectrogram.data.subarray(start * melCount, (start + validFrames) * melCount));
+    const tensorOutput = await runTensor(requestId, chunk, [1, frameCount, melCount], timeoutMs);
+    const activations = extractBeatActivations(tensorOutput, model.output);
+    beats.push(...activations.beats.slice(0, validFrames));
+    downbeats.push(...activations.downbeats.slice(0, validFrames));
+  }
+  const points = activationsToBeatPoints({ beats, downbeats }, model.output);
   return {
     ...points,
-    durationSeconds: length / sampleRate,
+    durationSeconds: input.sourceDurationSeconds ?? length / sampleRate,
     provider,
   };
 }
@@ -171,6 +224,7 @@ scope.onmessage = (event) => {
             request.audio.sampleRate,
             request.audio.length,
             request.timeoutMs,
+            request.audio.sourceDurationSeconds,
           );
           if (!cancelled.has(request.requestId)) {
             post({ type: "result", requestId: request.requestId, result });

@@ -32,7 +32,7 @@ export function validateModelDescriptor(model: BeatThisModelAsset): string[] {
       input.shape.length !== expectedRank ||
       input.shape.some((dim) => !Number.isInteger(dim) || dim < -1 || dim === 0)
     ) {
-      issues.push(`input.shape must be ${expectedRank} dimensions with positive or -1 values`);
+    issues.push(`input.shape must be ${expectedRank} dimensions with positive or -1 values`);
     }
     if (input.maxSamples !== undefined &&
         (!Number.isInteger(input.maxSamples) || input.maxSamples <= 0)) {

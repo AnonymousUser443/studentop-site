@@ -10,7 +10,7 @@ const ASSET_DIRS = 'css|js|img|fonts|audio|media';
 const ASSET = new RegExp('^assets/(?:' + ASSET_DIRS + ')/');
 const ASSET_URL = new RegExp('^(?:/|\\./|\\.\\./)?(assets/(?:' + ASSET_DIRS + ')/[^\\s<>]*)$');
 const QUOTED_ASSET_URL = new RegExp('(["\'\x60])((?:/|\\./|\\.\\./)?assets/(?:' + ASSET_DIRS + ')/[^"\'\x60\\s<>]*)\\1', 'g');
-const EXT = new Set(['.css','.js','.mjs','.svg','.png','.jpg','.jpeg','.webp','.avif','.gif','.ico','.bmp','.woff','.woff2','.ttf','.otf','.opus','.mp3','.ogg','.wav','.m4a','.mp4','.webm']);
+const EXT = new Set(['.css','.js','.mjs','.wasm','.onnx','.svg','.png','.jpg','.jpeg','.webp','.avif','.gif','.ico','.bmp','.woff','.woff2','.ttf','.otf','.opus','.mp3','.ogg','.wav','.m4a','.mp4','.webm']);
 const LICENSES = new Set(['assets/fonts/OFL-NotoSansSC.txt','assets/fonts/OFL-NotoSerifSC.txt']);
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 function within(root, candidate) { const rel=path.relative(root,candidate); return rel==='' || (!path.isAbsolute(rel) && rel!=='..' && !rel.startsWith('..'+path.sep)); }

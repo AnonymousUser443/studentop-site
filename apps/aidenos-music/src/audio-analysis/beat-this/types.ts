@@ -22,7 +22,10 @@ export interface BeatThisCapabilities {
 
 export type BeatThisExecutionProvider = "wasm" | "webgpu";
 
-export type BeatThisInputLayout = "batch-time" | "batch-channel-time";
+export type BeatThisInputLayout =
+  | "batch-time"
+  | "batch-channel-time"
+  | "batch-time-frequency";
 
 export interface BeatThisModelInput {
   /** The only input representation implemented by this experiment. */
@@ -34,6 +37,8 @@ export interface BeatThisModelInput {
   shape: readonly number[];
   sampleRate: number;
   maxSamples?: number;
+  /** Browser preprocessing required before the ONNX tensor is created. */
+  preprocess?: "beat-this-log-mel";
 }
 
 export type BeatThisActivationKind = "probability" | "logit";

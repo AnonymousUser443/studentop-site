@@ -18,6 +18,11 @@ import type {
   Track,
 } from "../domain";
 import {
+  BeatThisAdapter,
+  BEAT_THIS_SMALL0_MODEL,
+  type BeatThisResult,
+} from "../audio-analysis/beat-this";
+import {
   PlaybackVisibilityContext,
   useDocumentVisible,
   useHost,
@@ -123,11 +128,22 @@ function MusicAppContent({
     ),
     [beatThisEnabled, setBeatThisEnabled] = useState(
       () => readStored<boolean>("tingchao.beatThis.enabled", false) === true,
-    );
-  const beatThisReady: boolean = false;
-  const beatThisStatus = beatThisReady
-    ? "实验性模型已配置，首次使用会在本机加载模型。"
-    : "small0 尚未配置为可发布的浏览器模型，打开后不会影响播放。";
+    ),
+    [beatThisResult, setBeatThisResult] = useState<BeatThisResult | null>(null),
+    [beatThisBusy, setBeatThisBusy] = useState(false),
+    [beatThisError, setBeatThisError] = useState("");
+  const beatThisAdapter = useRef<BeatThisAdapter | null>(null);
+  const beatThisCache = useRef(new Map<string, BeatThisResult>());
+  if (!beatThisAdapter.current)
+    beatThisAdapter.current = new BeatThisAdapter({ model: BEAT_THIS_SMALL0_MODEL });
+  const beatThisReady = true;
+  const beatThisStatus = beatThisBusy
+    ? "正在下载并分析当前歌曲，播放不会被暂停。"
+    : beatThisError
+      ? `分析失败：${beatThisError}`
+      : beatThisResult
+        ? `已完成 ${beatThisResult.beats.length} 个节拍、${beatThisResult.downbeats.length} 个强拍。`
+        : "模型资源已准备，打开后按当前歌曲分析。";
   const ownsLibrary = !!session.user?.id && libraryOwner === session.user.id;
   const library = ownsLibrary ? storedLibrary : null;
   const likedIds = ownsLibrary ? storedLikedIds : EMPTY_LIKES;
@@ -166,6 +182,10 @@ function MusicAppContent({
     }),
     shallowEqual,
   );
+  useEffect(() => () => {
+    beatThisAdapter.current?.dispose();
+    beatThisAdapter.current = null;
+  }, []);
   useEffect(() => {
     writeStored("tingchao.audioAnalysis.enabled", spectrumEnabled);
     const analysis = runtime.audioAnalysis;
@@ -175,9 +195,67 @@ function MusicAppContent({
   }, [runtime, spectrumEnabled, current.status]);
   useEffect(() => {
     writeStored("tingchao.beatThis.enabled", beatThisEnabled);
-    if (beatThisEnabled && !beatThisReady)
-      setNotice({ message: "small0 实验模型尚未配置，当前不会启动推理。", error: false });
-  }, [beatThisEnabled, beatThisReady]);
+  }, [beatThisEnabled]);
+  useEffect(() => {
+    const track = current.track;
+    if (!beatThisEnabled || !active || !track || !beatThisAdapter.current) {
+      setBeatThisBusy(false);
+      return;
+    }
+    const cached = beatThisCache.current.get(track.id);
+    if (cached) {
+      setBeatThisResult(cached);
+      setBeatThisError("");
+      return;
+    }
+    const controller = new AbortController();
+    setBeatThisBusy(true);
+    setBeatThisResult(null);
+    setBeatThisError("");
+    void (async () => {
+      try {
+        const snapshot = runtime.getSnapshot();
+        let sourceUrl = snapshot.source?.url;
+        if (!sourceUrl) {
+          sourceUrl = (
+            await service.resolve(track.id, snapshot.quality, controller.signal)
+          ).url;
+        }
+        const response = await fetch(sourceUrl, {
+          mode: "cors",
+          credentials: "omit",
+          signal: controller.signal,
+        });
+        if (!response.ok) throw new Error(`音频下载失败（HTTP ${response.status}）`);
+        const contentLength = Number(response.headers.get("content-length"));
+        if (Number.isFinite(contentLength) && contentLength > 80 * 1024 * 1024)
+          throw new Error("音频文件超过 80 MB，浏览器实验已停止");
+        const data = await response.arrayBuffer();
+        if (data.byteLength > 80 * 1024 * 1024)
+          throw new Error("音频文件超过 80 MB，浏览器实验已停止");
+        const result = await beatThisAdapter.current!.analyze(
+          {
+            kind: "encoded-audio",
+            data,
+            mimeType: response.headers.get("content-type") || undefined,
+          },
+          controller.signal,
+        );
+        if (controller.signal.aborted) return;
+        beatThisCache.current.set(track.id, result);
+        setBeatThisResult(result);
+      } catch (error) {
+        if (controller.signal.aborted) return;
+        const message = error instanceof Error ? error.message : "浏览器推理失败";
+        setBeatThisError(message);
+        setNotice({ message: `small0 分析失败：${message}`, error: true });
+        setBeatThisEnabled(false);
+      } finally {
+        if (!controller.signal.aborted) setBeatThisBusy(false);
+      }
+    })();
+    return () => controller.abort();
+  }, [active, beatThisEnabled, current.track?.id, runtime, service]);
   const sessionResource = useResource(
     (signal) => service.session(signal),
     `session-${revision}`,

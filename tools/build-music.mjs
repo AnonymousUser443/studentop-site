@@ -11,6 +11,8 @@ const legal='/*!\nTingchao / STUDENTOP — AGPL-3.0-only.\nFolia Sonnet by chtho
   ['GNU Affero General Public License v3',path.join(root,'LICENSE')],
   ['PixiJS 8.21.0',path.join(app,'licenses/pixi-MIT.txt')],
   ['Pretext 0.0.9',path.join(app,'licenses/pretext-MIT.txt')],
+  ['Beat This! small0 model and preprocessing',path.join(app,'licenses/beat-this-MIT.txt')],
+  ['ONNX Runtime Web 1.31.1',path.join(app,'licenses/onnxruntime-web-MIT.txt')],
 ].map(([name,file])=>name+'\n'+fs.readFileSync(file,'utf8')).join('\n\n')+'\n*/\n';
 const {transformWithEsbuild}=await import(pathToFileURL(path.join(app,'node_modules/vite/dist/node/index.js')).href);
 // ES library output preserves whitespace for downstream tree shaking. This is a

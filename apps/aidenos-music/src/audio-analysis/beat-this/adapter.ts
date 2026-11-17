@@ -234,7 +234,10 @@ export class BeatThisAdapter {
     const pcm = input.kind === "encoded-audio"
       ? await decodeEncodedAudio(input, this.options.audioDecodeEnvironment)
       : input;
-    assertValidPcmInput(pcm, this.model!.input.sampleRate);
+    assertValidPcmInput(
+      pcm,
+      this.model!.input.preprocess ? undefined : this.model!.input.sampleRate,
+    );
     const copy = new Float32Array(pcm.pcm);
     const buffer = copy.buffer as ArrayBuffer;
     const requestId = this.nextRequestId("analyze");
