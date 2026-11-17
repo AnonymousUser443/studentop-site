@@ -6,7 +6,7 @@
 
 - 模型：`site/assets/media/beat-this/small0.onnx`
 - Runtime：ONNX Runtime Web 1.31.1 的 WASM 模块
-- 运行时资源：`ort.min.mjs`、`ort-wasm-simd-threaded.mjs` 和对应 WASM 文件
+- 运行时资源：`ort.min.js`、`ort-wasm-simd-threaded.js` 和对应 WASM 文件
 - 模型输入：`[1, 1500, 128]`，每帧 20 ms，22,050 Hz
 - 模型输出：`[1, 1500, 2]`，依次为 beat 和 downbeat logits
 
