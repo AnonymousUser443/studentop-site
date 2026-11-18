@@ -5,7 +5,7 @@ import { existsSync, realpathSync, lstatSync, readdirSync, readFileSync, mkdirSy
 const FORMAT = 1;
 const SCHEMA = 'aiden-public-site-release-v2';
 const ID = /^[a-f0-9]{24}$/;
-const HTML = ['index.html', 'projects/index.html', 'task-manager/index.html'];
+const HTML = ['index.html', 'projects/index.html', 'projects/music-workstation/index.html', 'task-manager/index.html'];
 const ASSET_DIRS = 'css|js|img|fonts|audio|media';
 const ASSET = new RegExp('^assets/(?:' + ASSET_DIRS + ')/');
 const ROOT_WORKER_ASSET = /^assets\/beat-this\.worker-[A-Za-z0-9_-]+\.js$/;

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#12332f">
+  <meta name="description" content="在浏览器里试听、逐拍标记和导出音乐时间点。音频只在本机处理。">
+  <title>音乐踩点工作站 · Studentop</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/music-workstation/workstation.css">
+  <script defer src="/assets/js/music-workstation/model.js"></script>
+  <script defer src="/assets/js/music-workstation/audio.js"></script>
+  <script defer src="/assets/js/music-workstation/timeline.js"></script>
+  <script defer src="/assets/js/music-workstation/workstation.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="mast-inner">
+      <div class="identity">
+        <span class="seal" aria-hidden="true">律</span>
+        <div><div class="eyebrow">STUDENTOP / 听觉工坊</div><h1>音乐踩点工作站</h1></div>
+      </div>
+      <div class="source">
+        <div class="file-copy"><span class="eyebrow">本机音源</span><span id="fileMeta">未载入音频</span></div>
+        <button class="btn open" id="btnOpen" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V3m-5 5 5-5 5 5M4 15v5a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg>打开音频</button>
+        <input id="fileInput" type="file" accept="audio/*,.wav,.mp3,.m4a,.flac,.ogg,.opus,.aac,.aiff" hidden>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="workspace">
+      <section class="sheet transport" aria-label="播放控制">
+        <div class="transport-row">
+          <div class="transport-primary">
+            <button class="btn primary play" id="btnPlay" type="button" disabled><span class="play-icon" aria-hidden="true">▶</span><span id="playLabel">播放</span></button>
+            <button class="btn square stop" id="btnStop" type="button" title="停止并回到开头" aria-label="停止并回到开头" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1"/></svg></button>
+            <div class="timecode mono" aria-label="播放位置"><strong id="timeCur">00:00.000</strong><span id="timeTotal"> / 00:00.000</span></div>
+          </div>
+          <div class="transport-options">
+            <label class="select-rate"><span class="sr-only">播放速率</span><select id="rateSel" title="播放速率"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select></label>
+            <form id="jumpForm" class="jump"><label class="sr-only" for="jumpInput">跳转时间，秒数或分:秒</label><input id="jumpInput" type="text" inputmode="decimal" placeholder="00:00.000" autocomplete="off" spellcheck="false"><button class="btn" id="btnJump" disabled>跳转</button></form>
+          </div>
+        </div>
+        <label class="sr-only" for="seekRange">播放进度</label><input id="seekRange" class="seek-range" type="range" min="0" max="1" step="0.001" value="0" disabled>
+      </section>
+
+      <section class="sheet pads" aria-labelledby="padTitle">
+        <div class="panel-head"><h2 id="padTitle">打点板</h2><span class="subtle" id="padHint">按键或轻点轨道</span></div>
+        <div id="lanePads" class="pad-grid"></div><p id="statusMsg" class="msg" role="status">就绪 · 音频不会上传。</p>
+      </section>
+
+      <section class="sheet editor" aria-labelledby="timelineTitle">
+        <div class="panel-head editor-head"><h2 id="timelineTitle">时间轴</h2><span id="viewInfo" class="view-info mono">全曲</span></div>
+        <div class="timeline-tools" role="group" aria-label="时间轴视图">
+          <div class="button-group">
+            <button id="btnZoomOut" type="button" class="btn square" aria-label="缩小时间轴" title="缩小时间轴" disabled>−</button>
+            <button id="btnZoomIn" type="button" class="btn square" aria-label="放大时间轴" title="放大时间轴" disabled>+</button>
+            <button id="btnFit" type="button" class="btn" disabled>全曲</button>
+          </div>
+          <div class="button-group">
+            <button id="btnPanLeft" type="button" class="btn square" aria-label="向前查看时间轴" title="向前查看" disabled>←</button>
+            <button id="btnPanRight" type="button" class="btn square" aria-label="向后查看时间轴" title="向后查看" disabled>→</button>
+          </div>
+          <label class="chip"><input type="checkbox" id="chkFollow" checked>跟随播放</label>
+          <label class="chip"><input type="checkbox" id="chkGrid">节拍网格</label>
+          <label class="bpm-control" id="gridControl" hidden><span class="sr-only">网格 BPM</span><input type="number" id="gridBpm" value="100" min="30" max="240" step="1" inputmode="numeric"><span>BPM</span></label>
+        </div>
+        <div id="timelineWrap" class="timeline" aria-label="波形和轨道">
+          <div class="wave-window">
+            <canvas id="waveCanvas" aria-hidden="true"></canvas>
+            <span class="playhead wave-head" aria-hidden="true" hidden></span>
+          </div>
+          <div class="lanes-window" tabindex="0" aria-label="标记轨道，可上下滚动">
+            <div id="lanesWrap" class="lanes-layer"><canvas id="lanesCanvas" aria-hidden="true"></canvas><span class="playhead lane-head" aria-hidden="true" hidden></span></div>
+          </div>
+          <div class="empty" id="emptyState">
+            <div class="empty-inner">
+              <svg class="empty-icon" viewBox="0 0 48 40" aria-hidden="true"><path d="M4 18v4m5-8v12m5-16v20m5-24v28m5-32v36m5-29v22m5-18v14m5-11v8m5-6v4"/></svg>
+              <h3>载入一首音频，开始踩点</h3>
+              <p>可把文件拖到这里，也可以从设备选取。</p>
+              <button class="btn brass" id="btnEmptyOpen" type="button">选择音频</button>
+              <div class="format-list">MP3 <span>·</span> WAV <span>·</span> M4A <span>·</span> OGG <span>·</span> FLAC</div>
+            </div>
+          </div>
+          <div id="loadingMask" class="timeline-notice" hidden><span class="spinner" aria-hidden="true"></span><span id="loadingText">正在解码音频…</span></div>
+          <div id="dropHint" class="drop-hint" hidden>松手载入音频</div>
+          <div id="gestureHint" class="gesture-hint mono" hidden></div>
+        </div>
+        <div class="editor-foot">
+          <span class="mouse-hint">拖波形定位 · Shift 拖动平移 · Ctrl / ⌘ + 滚轮缩放 · 拖标记微调</span>
+          <span class="touch-hint">点按定位 · 横滑平移 · 双指缩放 · 拖标记微调</span>
+          <span id="waveProgress" class="subtle" hidden>正在整理波形…</span>
+        </div>
+      </section>
+
+      <details class="sheet calibration" id="calibDetails">
+        <summary><strong>延迟校正</strong><span id="calibBadge" class="subtle">未设置</span></summary>
+        <div class="details-body">
+          <p id="calibSub">跟随 16 拍点按，或直接填写补偿值。不校正也可以正常打点。</p>
+          <div class="calib-controls">
+            <button id="btnCalib" class="btn" type="button">开始校正</button>
+            <button id="btnCalibCancel" class="btn" type="button" hidden>取消</button>
+            <button id="btnCalibTap" class="btn primary" type="button" hidden>跟拍（空格）</button>
+            <form id="calibForm" class="calib-manual"><label for="calibInput">延迟</label><input id="calibInput" type="number" min="0" max="600" step="1" value="0" inputmode="numeric"><span>ms</span><button class="btn">应用</button></form>
+            <label class="chip"><input type="checkbox" id="countInChk">播放前倒数</label>
+          </div>
+          <p class="subtle" id="latencyHint">浏览器输出延迟：—</p>
+        </div>
+      </details>
+    </div>
+
+    <aside class="side" aria-label="标记和轨道管理">
+      <section class="sheet marks" aria-labelledby="marksTitle">
+        <div class="panel-head"><h2 id="marksTitle">标记簿</h2><span id="markerCount" class="count mono">0 个</span></div>
+        <div class="stats">
+          <div><span>估算 BPM</span><strong id="statBpm" class="mono">—</strong></div>
+          <div><span>选中时间</span><strong id="selectedTime" class="mono">—</strong></div>
+        </div>
+        <div class="marker-tools" role="group" aria-label="编辑选中标记">
+          <button type="button" id="btnEarlier" class="btn" title="前移 10 毫秒；Alt+左键，加入 Shift 为 1 毫秒" aria-label="选中标记前移 10 毫秒" disabled>−10 ms</button>
+          <button type="button" id="btnLater" class="btn" title="后移 10 毫秒；Alt+右键，加入 Shift 为 1 毫秒" aria-label="选中标记后移 10 毫秒" disabled>+10 ms</button>
+          <button type="button" id="btnUndo" class="btn" title="撤销（Ctrl / ⌘ + Z）" disabled>撤销</button>
+          <button type="button" id="btnDelete" class="btn danger-text" disabled>删除</button>
+        </div>
+        <div id="markerList" class="marker-list"></div>
+        <nav id="pager" class="pager" aria-label="标记分页" hidden>
+          <button type="button" id="btnPreviousPage" class="btn" aria-label="上一页标记">‹</button><span id="pageInfo" class="subtle mono"></span><button type="button" id="btnNextPage" class="btn" aria-label="下一页标记">›</button>
+        </nav>
+      </section>
+
+      <details id="laneSettings" class="sheet lane-settings">
+        <summary><strong>轨道设置</strong><span class="subtle" id="laneCount">6 轨</span></summary>
+        <div class="details-body">
+          <div id="laneList" class="lane-list"></div>
+          <button class="btn" id="btnAddLane" type="button">＋ 添加轨道</button>
+        </div>
+      </details>
+
+      <section class="sheet transfer" aria-labelledby="transferTitle">
+        <div class="panel-head"><h2 id="transferTitle">文件操作</h2></div>
+        <div class="transfer-grid">
+          <button class="btn" id="btnJson" type="button" disabled>导出 JSON</button>
+          <button class="btn" id="btnCsv" type="button" disabled>导出 CSV</button>
+          <button class="btn" id="btnImport" type="button" disabled>导入 JSON</button>
+          <button class="btn danger-text" id="btnClear" type="button" disabled>清空标记</button>
+          <input id="importInput" type="file" accept="application/json,.json" hidden>
+        </div>
+        <p class="subtle">标记暂存在此浏览器。跨设备请导出 JSON。</p>
+      </section>
+    </aside>
+
+    <footer class="footer">
+      <a href="/projects/">← 返回作品簿</a>
+      <div class="shortcuts"><kbd>空格</kbd> 播放 <kbd>1–6</kbd> 默认轨道 <kbd>Del</kbd> 删除 <kbd>Ctrl/⌘ Z</kbd> 撤销</div>
+    </footer>
+  </main>
+
+  <dialog id="modal" aria-labelledby="modalTitle" aria-describedby="modalText">
+    <form method="dialog" class="dialog-body">
+      <h2 id="modalTitle">确认操作</h2><p id="modalText"></p>
+      <div class="dialog-actions"><button class="btn" id="modalCancel" value="cancel" autofocus>取消</button><button class="btn primary" id="modalOk" value="confirm">确定</button></div>
+    </form>
+  </dialog>
+</body>
+</html>
