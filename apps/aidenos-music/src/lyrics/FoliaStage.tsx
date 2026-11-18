@@ -6,6 +6,7 @@ import type { SonnetPixiRuntime } from "../vendor/folia/components/visualizer/so
 import { compileSonnetProgram } from "../vendor/folia/components/visualizer/sonnet/sonnetProgram";
 import { connectLyricClock } from "./lyricClock";
 import { findLyricIndex, readFoliaTheme, TINGCHAO_SONNET_TUNING, toFoliaLines } from "./foliaAdapter";
+import { createAudioAnalysisBridge, findAudioAnalysisSource } from "./AudioAnalysisBridge";
 import { shallowEqual, usePlayback } from "../ui/hooks";
 import s from "./FoliaStage.module.css";
 
@@ -31,6 +32,7 @@ export default function FoliaStage(props: StageProps) {
 function Stage({ runtime, active, appearance, translation, offset, fallback }: StageProps) {
   const root = useRef<HTMLDivElement>(null), canvasHost = useRef<HTMLDivElement>(null);
   const engine = useRef<SonnetPixiRuntime | null>(null);
+  const [audioBridge] = useState(() => createAudioAnalysisBridge());
   const clock = useMotionValue(0);
   const [theme, setTheme] = useState<Theme | null>(null);
   const [fits, setFits] = useState(false), [failed, setFailed] = useState(false);
@@ -40,6 +42,7 @@ function Stage({ runtime, active, appearance, translation, offset, fallback }: S
     lyrics: v.lyrics, track: v.currentTrack, status: v.status,
   }), shallowEqual, active);
   const lines = useMemo(() => toFoliaLines(state.lyrics), [state.lyrics]);
+  const audioSource = useMemo(() => findAudioAnalysisSource(runtime), [runtime]);
   const seed = state.track ? `netease:${state.track.id}` : "";
   const program = useMemo(() => compileSonnetProgram(lines, seed), [lines, seed]);
   const enabled = active && fits && !failed && theme !== null && lines.length > 0;
@@ -63,6 +66,26 @@ function Stage({ runtime, active, appearance, translation, offset, fallback }: S
     if (!enabled) return;
     return connectLyricClock(runtime, clock, offset);
   }, [runtime, clock, offset, enabled]);
+
+  // Analysis is an optional external stream. It is kept outside React state so
+  // high-frequency frames only update MotionValues consumed by Pixi.
+  useEffect(() => {
+    if (!audioSource || !active) {
+      audioBridge.disconnect();
+      return;
+    }
+    const cleanup = audioBridge.connect(audioSource, {
+      active: true,
+      hidden: typeof document !== "undefined" && document.hidden,
+    });
+    if (typeof document === "undefined") return cleanup;
+    const onVisibility = () => audioBridge.setLifecycle({ hidden: document.hidden });
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibility);
+      cleanup();
+    };
+  }, [audioBridge, audioSource, active]);
 
   const updateIndex = (time: number) => {
     const next = findLyricIndex(lines, time);
@@ -97,6 +120,12 @@ function Stage({ runtime, active, appearance, translation, offset, fallback }: S
         currentTime: clock, renderScale: 1, antialias: true, antialiasMode: "auto",
         smartBeatEnabled: false, lyricsFontScale: 0.7, staticMode: false,
         transparentBackground: true, paused: true, signal: controller.signal,
+        ...(audioSource
+          ? {
+              audioPower: audioBridge.values.audioPower,
+              audioBands: audioBridge.values.audioBands,
+            }
+          : {}),
         // Respect the surrounding sea scene: typography is the only strong moving subject.
         modulation: { stageScale: 0.72, cameraScale: 0.55, motionScale: 0.85, parallaxScale: 0.6, caScale: 0, ghostScale: 0, transitionGlitchScale: 0 },
       });
@@ -115,7 +144,7 @@ function Stage({ runtime, active, appearance, translation, offset, fallback }: S
       owned?.destroy();
     };
     // Mutable song/theme/pause inputs are applied below, including changes made during initialization.
-  }, [enabled, clock]);
+  }, [enabled, clock, audioBridge, audioSource]);
 
   useEffect(() => {
     const renderer = engine.current;

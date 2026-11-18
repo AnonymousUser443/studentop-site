@@ -5,6 +5,7 @@
 | 主题 | 入口 |
 | --- | --- |
 | 听潮 | [应用与接口](../apps/aidenos-music/README.md)、[实施记录](tingchao/PROGRESS.md)、[验收](tingchao/QA-20261116.md)、[2026-11-16 发布收据](tingchao/RELEASE-20261116.md) |
+| 音乐踩点工作站 | [用法、存档迁移与验收](MUSIC-WORKSTATION.md) |
 | 理韵寻踪 | [工程说明](../apps/liyun-explorer/README.md)、[2026-11-16 Git 收口](../apps/liyun-explorer/docs/SYNC-20261116.md)、[宣纸与性能复核](../apps/liyun-explorer/docs/performance-20261115/QA.md) |
 | 桌面与本地开发 | [任务管理器](TASK-MANAGER.md)、[缓存与资源版本](CACHE-UPDATES.md)、[协作维护](COLLABORATION.md) |
 | 测试与画面 | [QA 入口](../qa/README.md)、[旧桌面截图归档](../qa/archive/legacy-desktop/README.md) |

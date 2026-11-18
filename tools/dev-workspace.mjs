@@ -54,6 +54,7 @@ export function publicPath(raw) {
   if (pathname === '/') return 'index.html';
   if (pathname === '/projects' || pathname === '/projects/') return 'projects/index.html';
   if (pathname === '/index.html' || pathname === '/projects/index.html') return pathname.slice(1);
+  if (['/projects/music-workstation', '/projects/music-workstation/', '/projects/music-workstation/index.html'].includes(pathname)) return 'projects/music-workstation/index.html';
   if (pathname === '/task-manager' || pathname === '/task-manager/' || pathname === '/task-manager/index.html') return 'task-manager/index.html';
   if (['/assets/fonts/OFL-NotoSansSC.txt', '/assets/fonts/OFL-NotoSerifSC.txt'].includes(pathname)) return pathname.slice(1);
   // Public asset subtrees only: never workspace files, manifests, source maps or README.

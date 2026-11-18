@@ -66,7 +66,17 @@ trap cleanup EXIT
 
 # ---- 1. pack (exclude VCS / dependency noise) --------------------------------
 say "packing $SRC"
-tar -czf "$ARCHIVE" -C "$SRC" \
+# Immutable namespaces from earlier local builds already live in the remote
+# shared store. Keep only the version being published in the upload payload.
+# This avoids retransmitting tens of megabytes on every small frontend update.
+PACK_DIR="$TMP_DIR/payload"
+mkdir -p "$PACK_DIR"
+cp -a "$SRC"/. "$PACK_DIR"/ || die "staging failed"
+if [ -d "$PACK_DIR/assets/releases" ]; then
+  find "$PACK_DIR/assets/releases" -mindepth 1 -maxdepth 1 \
+    ! -name "$EXPECTED_VERSION" -exec rm -rf -- {} +
+fi
+tar -czf "$ARCHIVE" -C "$PACK_DIR" \
   --exclude='./.git' --exclude='./.git/*' \
   --exclude='./node_modules' --exclude='./node_modules/*' \
   --exclude='./.DS_Store' --exclude='./Thumbs.db' \

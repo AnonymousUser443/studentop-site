@@ -528,3 +528,79 @@ export function TrackMenuDialog({
     </Dialog>
   );
 }
+
+export function VisualSettingsDialog({
+  spectrumEnabled,
+  onSpectrumChange,
+  beatThisEnabled,
+  onBeatThisChange,
+  spectrumAvailable,
+  beatThisReady,
+  beatThisStatus,
+  onClose,
+}: {
+  spectrumEnabled: boolean;
+  onSpectrumChange: (enabled: boolean) => void;
+  beatThisEnabled: boolean;
+  onBeatThisChange: (enabled: boolean) => void;
+  spectrumAvailable: boolean;
+  beatThisReady: boolean;
+  beatThisStatus: string;
+  onClose: () => void;
+}) {
+  return (
+    <Dialog title="听潮实验开关" onClose={onClose} className={s.settingsDialog}>
+      <p className={s.settingsIntro}>
+        视觉分析默认关闭。每一项都只影响当前浏览器，不改变播放、队列或账号状态。
+      </p>
+      <div className={s.settingsList}>
+        <label className={s.settingsRow}>
+          <span className={s.settingsRowIcon}>
+            <Icon name="waveform" size={18} />
+          </span>
+          <span className={s.settingsRowText}>
+            <strong>实时频谱与能量</strong>
+            <small>
+              {spectrumAvailable
+                ? "驱动潮光背景和 Folia 音频反馈"
+                : "播放中的跨域音源可能不提供 Web Audio 取样"}
+            </small>
+          </span>
+          <input
+            type="checkbox"
+            checked={spectrumEnabled}
+            onChange={(event) => onSpectrumChange(event.currentTarget.checked)}
+          />
+          <span className={s.settingsSwitch} aria-hidden="true">
+            <i />
+          </span>
+        </label>
+        <label className={s.settingsRow}>
+          <span className={s.settingsRowIcon}>
+            <Icon name="pulse" size={18} />
+          </span>
+          <span className={s.settingsRowText}>
+            <strong>
+              Beat This small0 <em>实验性</em>
+            </strong>
+            <small>{beatThisStatus}</small>
+          </span>
+          <input
+            type="checkbox"
+            checked={beatThisEnabled}
+            disabled={!beatThisReady}
+            onChange={(event) => onBeatThisChange(event.currentTarget.checked)}
+          />
+          <span className={s.settingsSwitch} aria-hidden="true">
+            <i />
+          </span>
+        </label>
+      </div>
+      <p className={s.settingsFootnote}>
+        {beatThisReady
+          ? "small0 会在你手动打开后进入 Worker，首次分析可能需要几秒。"
+          : "small0 开关会在模型资源准备好后启用；当前保持不可选，避免伪造分析结果。"}
+      </p>
+    </Dialog>
+  );
+}

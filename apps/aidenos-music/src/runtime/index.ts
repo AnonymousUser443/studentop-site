@@ -10,6 +10,11 @@ import type {
   Track,
 } from "../domain";
 import { parseLyrics } from "../lyrics";
+import {
+  createAudioAnalyzer,
+  type AudioAnalysisController,
+  type AudioAnalysisAudio,
+} from "../audio-analysis";
 
 /** Small injectable boundary: the real runtime owns exactly one HTMLAudioElement. */
 export interface RuntimeAudio {
@@ -21,6 +26,8 @@ export interface RuntimeAudio {
   ended?: boolean;
   volume: number;
   muted: boolean;
+  /** CORS mode used when the browser fetches a remote media URL. */
+  crossOrigin?: "" | "anonymous" | "use-credentials" | string | null;
   preload: string;
   playbackRate?: number;
   error?: { code: number; message?: string } | null;
@@ -51,6 +58,9 @@ export interface RuntimeMediaSession {
 export interface MusicRuntimeOptions {
   audio?: RuntimeAudio;
   createAudio?: () => RuntimeAudio;
+  /** Inject an analyser in tests or a desktop host; null explicitly disables it. */
+  audioAnalysis?: AudioAnalysisController | null;
+  createAudioAnalysis?: (audio: RuntimeAudio) => AudioAnalysisController;
   storage?: RuntimeStorage | null;
   storageKey?: string;
   mediaSession?: RuntimeMediaSession | null;
@@ -92,7 +102,12 @@ function defaultMediaSession(): RuntimeMediaSession | null {
 function defaultAudio(): RuntimeAudio {
   if (typeof Audio === "undefined")
     throw new Error("MusicRuntime requires an audio object outside a browser.");
-  return new Audio();
+  const audio = new Audio();
+  // Set anonymous CORS before any signed CDN URL is assigned. This keeps the
+  // native element audible and lets an explicitly enabled analyser consume the
+  // same stream when the CDN returns Access-Control-Allow-Origin.
+  audio.crossOrigin = "anonymous";
+  return audio;
 }
 
 function text(value: unknown, max = 256): string {
@@ -257,6 +272,32 @@ export function createMusicRuntime(
     return id;
   };
   const audio = options.audio ?? options.createAudio?.() ?? defaultAudio();
+  if (audio.crossOrigin == null || audio.crossOrigin === "") {
+    try {
+      audio.crossOrigin = "anonymous";
+    } catch {
+      /* Test/host audio objects may expose a read-only media surface. */
+    }
+  }
+  let audioAnalysis: AudioAnalysisController | null =
+    options.audioAnalysis === undefined ? null : options.audioAnalysis;
+  if (options.audioAnalysis === undefined && typeof window !== "undefined") {
+    try {
+      audioAnalysis = options.createAudioAnalysis
+        ? options.createAudioAnalysis(audio)
+        : createAudioAnalyzer(audio as AudioAnalysisAudio, {
+            allowCrossOrigin: audio.crossOrigin === "anonymous",
+          });
+      // Visual analysis is an explicit, opt-in enhancement. In particular,
+      // do not create a MediaElementAudioSourceNode during ordinary playback:
+      // signed CDN URLs commonly lack CORS and would otherwise mute the track.
+      audioAnalysis.setEnabled(false);
+    } catch {
+      // Visual analysis is optional. Playback must remain available when Web
+      // Audio is absent, denied by policy, or cannot connect to a signed CDN URL.
+      audioAnalysis = null;
+    }
+  }
   const storage =
     options.storage === undefined ? defaultStorage() : options.storage;
   const storageKey = options.storageKey ?? STORAGE_KEY;
@@ -424,6 +465,7 @@ export function createMusicRuntime(
   }
 
   function clearAudio() {
+    audioAnalysis?.pause();
     audio.pause();
     try {
       if (audio.removeAttribute) audio.removeAttribute("src");
@@ -496,6 +538,9 @@ export function createMusicRuntime(
     try {
       await audio.play();
       if (disposed || generation !== myGeneration) return;
+      // Start analysis only after playback has cleared autoplay policy. The
+      // analyser is best-effort and never gates or interrupts audio playback.
+      void audioAnalysis?.resume().catch(() => false);
       if (!wantsPlaying) {
         audio.pause();
         update({ status: "paused" });
@@ -777,6 +822,7 @@ export function createMusicRuntime(
   });
 
   const api: MusicRuntime = {
+    audioAnalysis,
     getSnapshot: () => state,
     subscribe(listener) {
       if (disposed) return () => {};
@@ -833,6 +879,7 @@ export function createMusicRuntime(
     pause() {
       if (disposed) return;
       wantsPlaying = false;
+      audioAnalysis?.pause();
       audio.pause();
       if (state.currentTrack) update({ status: "paused" }, "force", true);
     },
@@ -1044,6 +1091,7 @@ export function createMusicRuntime(
       cancelRequests();
       disposed = true;
       wantsPlaying = false;
+      audioAnalysis?.dispose();
       for (const [type, listener] of audioListeners)
         audio.removeEventListener(type, listener);
       clearAudio();

@@ -1,3 +1,5 @@
+import type { AudioAnalysisController } from "./audio-analysis";
+
 export interface Artist {
   id: string;
   name: string;
@@ -257,6 +259,8 @@ export interface PlaybackState {
   error: MusicError | null;
 }
 export interface MusicRuntime {
+  /** Optional Web Audio analyser owned by the document-lifetime runtime. */
+  readonly audioAnalysis?: AudioAnalysisController | null;
   getSnapshot(): PlaybackState;
   subscribe(listener: () => void): () => void;
   playTracks(tracks: Track[], index?: number): Promise<void>;

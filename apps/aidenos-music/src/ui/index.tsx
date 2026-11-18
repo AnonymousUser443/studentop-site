@@ -18,6 +18,11 @@ import type {
   Track,
 } from "../domain";
 import {
+  BeatThisAdapter,
+  BEAT_THIS_SMALL0_MODEL,
+  type BeatThisResult,
+} from "../audio-analysis/beat-this";
+import {
   PlaybackVisibilityContext,
   useDocumentVisible,
   useHost,
@@ -40,6 +45,7 @@ import {
   CreatePlaylistDialog,
   LoginDialog,
   TrackMenuDialog,
+  VisualSettingsDialog,
 } from "./Dialogs";
 import {
   DetailPage,
@@ -78,6 +84,7 @@ type Modal =
   | { type: "track"; track: Track }
   | { type: "account" }
   | { type: "comments"; track: Track }
+  | { type: "settings" }
   | null;
 interface Notice {
   message: string;
@@ -116,6 +123,27 @@ function MusicAppContent({
     [notice, setNotice] = useState<Notice | null>(null),
     [navOpen, setNavOpen] = useState(false),
     [storedLikedIds, setLikedIds] = useState<Set<string>>(new Set());
+  const [spectrumEnabled, setSpectrumEnabled] = useState(
+      () => readStored<boolean>("tingchao.audioAnalysis.enabled", false) === true,
+    ),
+    [beatThisEnabled, setBeatThisEnabled] = useState(
+      () => readStored<boolean>("tingchao.beatThis.enabled", false) === true,
+    ),
+    [beatThisResult, setBeatThisResult] = useState<BeatThisResult | null>(null),
+    [beatThisBusy, setBeatThisBusy] = useState(false),
+    [beatThisError, setBeatThisError] = useState("");
+  const beatThisAdapter = useRef<BeatThisAdapter | null>(null);
+  const beatThisCache = useRef(new Map<string, BeatThisResult>());
+  if (!beatThisAdapter.current)
+    beatThisAdapter.current = new BeatThisAdapter({ model: BEAT_THIS_SMALL0_MODEL });
+  const beatThisReady = true;
+  const beatThisStatus = beatThisBusy
+    ? "正在下载并分析当前歌曲，播放不会被暂停。"
+    : beatThisError
+      ? `分析失败：${beatThisError}`
+      : beatThisResult
+        ? `已完成 ${beatThisResult.beats.length} 个节拍、${beatThisResult.downbeats.length} 个强拍。`
+        : "模型资源已准备，打开后按当前歌曲分析。";
   const ownsLibrary = !!session.user?.id && libraryOwner === session.user.id;
   const library = ownsLibrary ? storedLibrary : null;
   const likedIds = ownsLibrary ? storedLikedIds : EMPTY_LIKES;
@@ -154,6 +182,80 @@ function MusicAppContent({
     }),
     shallowEqual,
   );
+  useEffect(() => () => {
+    beatThisAdapter.current?.dispose();
+    beatThisAdapter.current = null;
+  }, []);
+  useEffect(() => {
+    writeStored("tingchao.audioAnalysis.enabled", spectrumEnabled);
+    const analysis = runtime.audioAnalysis;
+    analysis?.setEnabled(spectrumEnabled);
+    if (spectrumEnabled && current.status === "playing")
+      void analysis?.resume().catch(() => false);
+  }, [runtime, spectrumEnabled, current.status]);
+  useEffect(() => {
+    writeStored("tingchao.beatThis.enabled", beatThisEnabled);
+  }, [beatThisEnabled]);
+  useEffect(() => {
+    const track = current.track;
+    if (!beatThisEnabled || !active || !track || !beatThisAdapter.current) {
+      setBeatThisBusy(false);
+      return;
+    }
+    const cached = beatThisCache.current.get(track.id);
+    if (cached) {
+      setBeatThisResult(cached);
+      setBeatThisError("");
+      return;
+    }
+    const controller = new AbortController();
+    setBeatThisBusy(true);
+    setBeatThisResult(null);
+    setBeatThisError("");
+    void (async () => {
+      try {
+        const snapshot = runtime.getSnapshot();
+        let sourceUrl = snapshot.source?.url;
+        if (!sourceUrl) {
+          sourceUrl = (
+            await service.resolve(track.id, snapshot.quality, controller.signal)
+          ).url;
+        }
+        const response = await fetch(sourceUrl, {
+          mode: "cors",
+          credentials: "omit",
+          signal: controller.signal,
+        });
+        if (!response.ok) throw new Error(`音频下载失败（HTTP ${response.status}）`);
+        const contentLength = Number(response.headers.get("content-length"));
+        if (Number.isFinite(contentLength) && contentLength > 80 * 1024 * 1024)
+          throw new Error("音频文件超过 80 MB，浏览器实验已停止");
+        const data = await response.arrayBuffer();
+        if (data.byteLength > 80 * 1024 * 1024)
+          throw new Error("音频文件超过 80 MB，浏览器实验已停止");
+        const result = await beatThisAdapter.current!.analyze(
+          {
+            kind: "encoded-audio",
+            data,
+            mimeType: response.headers.get("content-type") || undefined,
+          },
+          controller.signal,
+        );
+        if (controller.signal.aborted) return;
+        beatThisCache.current.set(track.id, result);
+        setBeatThisResult(result);
+      } catch (error) {
+        if (controller.signal.aborted) return;
+        const message = error instanceof Error ? error.message : "浏览器推理失败";
+        setBeatThisError(message);
+        setNotice({ message: `small0 分析失败：${message}`, error: true });
+        setBeatThisEnabled(false);
+      } finally {
+        if (!controller.signal.aborted) setBeatThisBusy(false);
+      }
+    })();
+    return () => controller.abort();
+  }, [active, beatThisEnabled, current.track?.id, runtime, service]);
   const sessionResource = useResource(
     (signal) => service.session(signal),
     `session-${revision}`,
@@ -569,6 +671,7 @@ function MusicAppContent({
                   <div className={s.topBarEnd}>
                     {host.setDesktopLyricsEnabled && <IconButton icon="lyrics" label="桌面歌词" active={host.desktopLyricsEnabled?.() ?? false} aria-pressed={host.desktopLyricsEnabled?.() ?? false} onClick={() => host.setDesktopLyricsEnabled?.(!(host.desktopLyricsEnabled?.() ?? false))} />}
                     <IconButton icon="more" label="当前歌曲评论" disabled={!current.track} onClick={() => current.track && setModal({ type: "comments", track: current.track })} />
+                    <IconButton icon="settings" label="听潮实验开关" active={modal?.type === "settings"} onClick={() => setModal({ type: "settings" })} />
                     <label className={s.themeChoice} title="听潮外观">
                       <Icon name="sun" size={16} />
                       <select
@@ -823,6 +926,18 @@ function MusicAppContent({
                     退出网易云音乐
                   </button>
                 </Dialog>
+              ) : modal?.type === "settings" ? (
+                <VisualSettingsDialog
+                  key="settings"
+                  spectrumEnabled={spectrumEnabled}
+                  onSpectrumChange={setSpectrumEnabled}
+                  beatThisEnabled={beatThisEnabled}
+                  onBeatThisChange={setBeatThisEnabled}
+                  spectrumAvailable={runtime.audioAnalysis?.available ?? false}
+                  beatThisReady={beatThisReady}
+                  beatThisStatus={beatThisStatus}
+                  onClose={() => setModal(null)}
+                />
               ) : null}
             </AnimatePresence>
           </div>

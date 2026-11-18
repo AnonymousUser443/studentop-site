@@ -11,12 +11,21 @@ const legal='/*!\nTingchao / STUDENTOP — AGPL-3.0-only.\nFolia Sonnet by chtho
   ['GNU Affero General Public License v3',path.join(root,'LICENSE')],
   ['PixiJS 8.21.0',path.join(app,'licenses/pixi-MIT.txt')],
   ['Pretext 0.0.9',path.join(app,'licenses/pretext-MIT.txt')],
+  ['Beat This! small0 model and preprocessing',path.join(app,'licenses/beat-this-MIT.txt')],
+  ['ONNX Runtime Web 1.31.1',path.join(app,'licenses/onnxruntime-web-MIT.txt')],
 ].map(([name,file])=>name+'\n'+fs.readFileSync(file,'utf8')).join('\n\n')+'\n*/\n';
 const {transformWithEsbuild}=await import(pathToFileURL(path.join(app,'node_modules/vite/dist/node/index.js')).href);
 // ES library output preserves whitespace for downstream tree shaking. This is a
 // complete native entry, so compact the final artifact after Rollup has shaken it.
 // Keep third-party license notices; do not ship development comments or maps.
-async function copy(dir,prefix=''){for(const ent of fs.readdirSync(dir,{withFileTypes:true})){const rel=prefix+ent.name,src=path.join(dir,ent.name);if(ent.isSymbolicLink())throw Error('Unexpected music build symlink');if(ent.isDirectory()){await copy(src,rel+'/');continue;}if(!/\.(js|css)$/.test(rel))throw Error('Unexpected public module artifact: '+rel);const dest=path.join(root,'site/assets',rel.endsWith('.css')?'css/music':'js/music',rel);fs.mkdirSync(path.dirname(dest),{recursive:true});const artifact=await transformWithEsbuild(fs.readFileSync(src,'utf8'),rel,{loader:rel.endsWith('.css')?'css':'js',minify:true,legalComments:'inline',charset:'utf8',target:'es2020',sourcemap:false});fs.writeFileSync(dest,(rel==='entry.js'?legal:'')+artifact.code);staged.add(dest);}}
+function musicDestination(rel){
+  // Vite emits worker chunks under dist/assets and writes an absolute /assets URL
+  // into the library entry. Keep those chunks at the site asset root so the
+  // generated URL remains valid after the music bundle is staged below /assets/js/music.
+  if(rel.startsWith('assets/')) return path.join(root,'site/assets',rel.slice('assets/'.length));
+  return path.join(root,'site/assets',rel.endsWith('.css')?'css/music':'js/music',rel);
+}
+async function copy(dir,prefix=''){for(const ent of fs.readdirSync(dir,{withFileTypes:true})){const rel=prefix+ent.name,src=path.join(dir,ent.name);if(ent.isSymbolicLink())throw Error('Unexpected music build symlink');if(ent.isDirectory()){await copy(src,rel+'/');continue;}if(!/\.(js|css)$/.test(rel))throw Error('Unexpected public module artifact: '+rel);const dest=musicDestination(rel);fs.mkdirSync(path.dirname(dest),{recursive:true});const artifact=await transformWithEsbuild(fs.readFileSync(src,'utf8'),rel,{loader:rel.endsWith('.css')?'css':'js',minify:true,legalComments:'inline',charset:'utf8',target:'es2020',sourcemap:false});fs.writeFileSync(dest,(rel==='entry.js'?legal:'')+artifact.code);staged.add(dest);}}
 await copy(dist);
 // These two directories exclusively hold the current unversioned music build.
 // Old hashed chunks must not accumulate in future versioned site releases.
@@ -31,4 +40,10 @@ function prune(dir,boundary=fs.realpathSync(dir)){
   }
 }
 for(const directory of ['js/music','css/music'])prune(path.join(root,'site/assets',directory));
+// Worker chunks are staged at the public asset root because Vite emits an
+// absolute /assets URL for them. Remove stale hashed workers from prior builds.
+const publicAssets=path.join(root,'site/assets');
+for(const item of fs.readdirSync(publicAssets,{withFileTypes:true})){
+  if(item.isFile() && /^beat-this\.worker-[A-Za-z0-9_-]+\.js$/.test(item.name) && !staged.has(path.join(publicAssets,item.name))) fs.unlinkSync(path.join(publicAssets,item.name));
+}
 console.log('Staged native music assets (compacted, licenses retained, obsolete chunks removed).');
